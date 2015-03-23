@@ -9,11 +9,11 @@ set nocompatible
 let mapleader="\\"
 
 " Quick save.
-noremap <Leader>w :update<CR>
-noremap <Leader>s :wall<CR>
+noremap <Leader>w :update<Return>
+noremap <Leader>s :wall<Return>
 
 " Clear search with Escape key.
-nnoremap <esc> :noh<return><esc>
+nnoremap <Esc> :nohlsearch<Return><Esc>
 
 syntax enable
 set background=dark
@@ -64,7 +64,7 @@ set number
 set numberwidth=4
 
 " CtrlP settings.
-map <Leader>b :CtrlPBuffer<cr>
+map <Leader>b :CtrlPBuffer<Return>
 
 " Netrw settings.
 let g:netrw_liststyle=3
