@@ -65,6 +65,7 @@ set numberwidth=4
 
 " CtrlP settings.
 map <Leader>b :CtrlPBuffer<Return>
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
 " Netrw settings.
 let g:netrw_liststyle=3
