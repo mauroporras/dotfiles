@@ -6,6 +6,7 @@ mkdir -p ~/.vim/autoload ~/.vim/bundle && \
 
 echo 'Creating symbolic links.'
 ln -s ~/.vim/vimrc ~/.vimrc
+ln -s ~/.vim/tmux.conf ~/.tmux.conf
 
 echo 'Installing plugins.'
 cd ~/.vim
