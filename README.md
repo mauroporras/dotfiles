@@ -1,16 +1,26 @@
 # DotVim
 
+Awesome configuration and plugins for Vim and Tmux.
 
-## For Ubuntu, install GVim
+
+## To install Vim and Tmux
+
+
+### In Ubuntu, use GVim
 
 ````
-sudo apt-get install -y vim-gnome
+sudo apt-get install -y vim-gnome tmux
 ````
 
 
-## For Macintosh, install MacVim
+### In Macintosh, use MacVim
 
-[https://github.com/b4winckler/macvim](https://github.com/b4winckler/macvim)
+[https://github.com/b4winckler/macvim/releases](https://github.com/b4winckler/macvim/releases)
+
+Then, install Tmux:
+````
+brew install tmux
+````
 
 
 ## To install DotVim

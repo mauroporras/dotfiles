@@ -27,6 +27,9 @@ autocmd BufRead,BufNewFile *.es6 setfiletype javascript
 " Word separators
 :set iskeyword-=_
 
+" Highlighting and completion for MiniTest.
+set completefunc=syntaxcomplete#Complete
+
 " Make it obvious where 80 characters is.
 "set textwidth=80
 "set colorcolumn=+1
