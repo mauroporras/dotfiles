@@ -1,8 +1,8 @@
 execute pathogen#infect()
 
-" @amporras
+" @mauroporrasp
 " Use Vim settings, rather then Vi settings.
-" This setting must be as early as possible, as it has side effects.
+" This setting must be placed as early as possible, it has side effects.
 set nocompatible
 
 " Leader (default).
@@ -24,7 +24,7 @@ hi Cursor guibg=Green
 " Associate file extensions.
 autocmd BufRead,BufNewFile *.es6 setfiletype javascript
 
-" Word separators
+" Word separators.
 :set iskeyword-=_
 
 " Highlighting and completion for MiniTest.
@@ -35,8 +35,8 @@ set completefunc=syntaxcomplete#Complete
 "set colorcolumn=+1
 
 set guifont=Ubuntu\ Mono\ 12
-" For mVim.
-" set guifont=Ubuntu\ Mono:h16
+" For MacVim.
+"set guifont=Ubuntu\ Mono:h16
 set cursorline
 set ruler
 set laststatus=2
@@ -71,7 +71,8 @@ map <Leader>b :CtrlPBuffer<Return>
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
 " Netrw settings.
-let g:netrw_liststyle=3
+" Caution: liststyle 3 leaves multiple dirs in the buffer.
+"let g:netrw_liststyle=3
 
 " vim-airline settings.
 let g:airline_theme='powerlineish'
@@ -88,8 +89,8 @@ let g:indent_guides_start_level=2
 set splitbelow
 set splitright
 
-" All splits at least 5 lines and current one 30 lines.
-set winheight=30
+" All splits at least 5 lines and current one 20 lines.
+set winheight=20
 set winminheight=5
 
 " Quicker window movement.
