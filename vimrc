@@ -1,4 +1,3 @@
-execute pathogen#infect()
 
 " @mauroporrasp
 " Use Vim settings, rather then Vi settings.
