@@ -1,14 +1,12 @@
 #!/usr/bin/env sh
 
-echo 'Installing Pathogen.'
-mkdir -p ~/.vim/autoload ~/.vim/bundle && \
-  curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+echo 'Installing Vundler.'
+mkdir -p ~/.vim/bundle
+git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 echo 'Creating symbolic links.'
 ln -s ~/.vim/vimrc ~/.vimrc
 ln -s ~/.vim/tmux.conf ~/.tmux.conf
 
 echo 'Installing plugins.'
-cd ~/.vim
-git submodule init
-git submodule update
+vim +PluginInstall +qall

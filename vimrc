@@ -1,9 +1,32 @@
-execute pathogen#infect()
-
-" @mauroporrasp
-" Use Vim settings, rather then Vi settings.
+" Use Vim settings, instead of Vi settings.
 " This setting must be placed as early as possible, it has side effects.
 set nocompatible
+filetype off
+
+" Set the runtime path to include Vundle and initialize.
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" Begin Vundle plugins.
+" Let Vundle manage Vundle, required.
+Plugin 'gmarik/Vundle.vim'
+
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'bling/vim-airline'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'kien/ctrlp.vim'
+Plugin 'mattn/emmet-vim'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'sunaku/vim-ruby-minitest'
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-vinegar'
+
+" End Vundle plugins.
+call vundle#end()
+filetype plugin indent on
 
 " Leader (default).
 let mapleader="\\"
@@ -99,10 +122,10 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
-filetype plugin indent on
-
 " Remove menu bar, toolbar, and right and left scroll bars.
 set guioptions-=m
 set guioptions-=T
 set guioptions-=r
 set guioptions-=L
+
+" Curated by @mauroporrasp

@@ -34,6 +34,4 @@ git clone git@github.com:mporras/dotvim.git ~/.vim
 
 ## To update all plugins
 
-````
-~/.vim/update_plugins
-````
+Run `:PluginUpdate` inside Vim.
