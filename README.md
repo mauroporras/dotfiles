@@ -1,32 +1,34 @@
 # DotVim
 
-Awesome configuration and plugins for Vim and Tmux.
+Awesome configuration and plugins for Vim (Neovim) and Tmux.
 
 
-## To install Vim and Tmux
+## Install Neovim
+
+[https://github.com/neovim/neovim/wiki/Installing-Neovim](https://github.com/neovim/neovim/wiki/Installing-Neovim)
 
 
-### In Ubuntu, use GVim
+## Install Tmux
+
+
+### In Ubuntu
 
 ````
-sudo apt-get install -y vim-gnome tmux
+sudo apt-get install -y tmux
 ````
 
 
-### In Macintosh, use MacVim
+### In Macintosh
 
-[https://github.com/b4winckler/macvim/releases](https://github.com/b4winckler/macvim/releases)
-
-Then, install Tmux:
 ````
 brew install tmux
 ````
 
 
-## To install DotVim
+## Bootstrap DotVim
 
 ````
-cd; rm -rf ~/.vim ~/.vimrc ~/.tmux.conf
+cd; rm -rf ~/.tmux.conf ~/.nvimrc ~/.vimrc ~/.vim
 git clone git@github.com:mporras/dotvim.git ~/.vim
 ~/.vim/bootstrap
 ````

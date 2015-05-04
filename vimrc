@@ -113,8 +113,8 @@ set splitbelow
 set splitright
 
 " All splits at least 5 lines and current one 20 lines.
-set winheight=20
-set winminheight=5
+set winheight=10
+set winminheight=1
 
 " Quicker window movement.
 nnoremap <C-j> <C-w>j
