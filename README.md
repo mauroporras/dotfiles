@@ -28,8 +28,8 @@ brew install tmux
 ## Bootstrap DotVim
 
 ````
-cd; rm -rf ~/.tmux.conf ~/.nvimrc ~/.vimrc ~/.vim
-git clone git@github.com:mporras/dotvim.git ~/.vim
+cd; rm -rf ~/.tmux.conf ~/.nvimrc ~/.nvim ~/.vimrc ~/.vim
+git clone https://github.com/mporras/dotvim.git ~/.vim
 ~/.vim/bootstrap
 ````
 

@@ -29,7 +29,7 @@ call vundle#end()
 filetype plugin indent on
 
 " Leader (default).
-let mapleader="\\"
+let mapleader=','
 
 " Quick save.
 noremap <Leader>w :update<Return>
@@ -64,7 +64,7 @@ set cursorline
 set ruler
 set laststatus=2
 set cmdheight=2
-set hidden
+"set hidden
 set wildmenu
 set showcmd
 set hlsearch
@@ -104,7 +104,7 @@ let g:airline_right_sep=''
 let g:airline_section_z=''
 
 " vim-indent-guides settings.
-let g:indent_guides_enable_on_vim_startup=1
+"let g:indent_guides_enable_on_vim_startup=1
 let g:indent_guides_guide_size=1
 let g:indent_guides_start_level=2
 
