@@ -1,5 +1,8 @@
 #!/usr/bin/env sh
 
+echo 'Configuring Git.'
+~/.vim/git-config
+
 echo 'Installing Vundler.'
 mkdir -p ~/.vim/bundle
 git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
