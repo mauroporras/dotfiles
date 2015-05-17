@@ -1,6 +1,6 @@
 # DotFiles
 
-Awesome configuration and plugins for Vim (Neovim), Git and Tmux.
+Awesome configuration and plugins for Vim (Neovim), Tmux and Git.
 
 
 ## Install Neovim
@@ -8,23 +8,23 @@ Awesome configuration and plugins for Vim (Neovim), Git and Tmux.
 [https://github.com/neovim/neovim/wiki/Installing-Neovim](https://github.com/neovim/neovim/wiki/Installing-Neovim)
 
 
-## Install Git and Tmux
+## Install Tmux and Git
 
 
 ### In Ubuntu
 
 ````
-sudo apt-get install -y git tmux
+sudo apt-get install -y tmux git
 ````
 
 
 ### In Macintosh
 
-[http://git-scm.com/download/mac](http://git-scm.com/download/mac)
-
 ````
 brew install tmux
 ````
+
+[http://git-scm.com/download/mac](http://git-scm.com/download/mac)
 
 
 ## Bootstrap DotFiles
