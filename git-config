@@ -1,7 +1,12 @@
 #!/usr/bin/env sh
 
-git config --global user.name "Mauro Porras P."
-git config --global user.email "mauro.porrasp@gmail.com"
+echo 'Type your Git user name:'
+read git_name
+git config --global --replace-all user.name "$git_name"
+
+echo 'Type your Git user Email:'
+read git_email
+git config --global --replace-all user.email "$git_email"
 
 git config --global core.editor "vim"
 git config --global merge.tool "meld"
