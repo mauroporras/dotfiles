@@ -30,12 +30,13 @@ Plugin 'tpope/vim-vinegar'
 call vundle#end()
 filetype plugin indent on
 
-" Leader (default).
+" Leader.
 let mapleader=','
 
-" Quick save.
+" Custom maps.
 noremap <Leader>w :update<Return>
 noremap <Leader>s :wall<Return>
+noremap <Leader>q :bdelete!<Return>
 
 " Clear search with Escape key.
 nnoremap <Esc> :nohlsearch<Return><Esc>
