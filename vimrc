@@ -73,6 +73,8 @@ set showcmd
 set hlsearch
 set ignorecase
 set smartcase
+set incsearch
+set autowrite
 
 set nobackup
 set nowritebackup
@@ -90,7 +92,7 @@ set expandtab
 
 " Line numbers.
 set number
-set numberwidth=4
+set numberwidth=5
 
 " CtrlP settings.
 map <Leader>b :CtrlPBuffer<Return>
@@ -115,9 +117,9 @@ let g:indent_guides_start_level=2
 set splitbelow
 set splitright
 
-" All splits at least 5 lines and current one 20 lines.
-set winheight=10
+" All splits at least 1 line and current one 10 lines.
 set winminheight=1
+set winheight=10
 
 " Quicker window movement.
 nnoremap <C-j> <C-w>j
