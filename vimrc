@@ -41,6 +41,11 @@ noremap <Leader>q :bdelete!<Return>
 " Clear search with Escape key.
 nnoremap <Esc> :nohlsearch<Return><Esc>
 
+" Automatically jump to end of pasted text.
+vnoremap <silent> y y`]
+vnoremap <silent> p p`]
+nnoremap <silent> p p`]
+
 syntax enable
 set background=dark
 colorscheme solarized
