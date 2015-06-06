@@ -38,6 +38,7 @@ let mapleader=','
 noremap <Leader>w :update<Return>
 noremap <Leader>s :wall<Return>
 noremap <Leader>q :bdelete!<Return>
+noremap <Leader>a :e #<Return>
 
 " Clear search with Escape key.
 nnoremap <Esc> :nohlsearch<Return><Esc>
