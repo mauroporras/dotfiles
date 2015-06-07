@@ -39,3 +39,10 @@ git clone https://github.com/mporras/dotfiles.git ~/.vim
 ## To update all plugins
 
 Run `:PluginUpdate` inside Vim.
+
+
+## Misc
+
+
+### Inconsolata font
+[http://www.levien.com/type/myfonts/inconsolata.html](http://www.levien.com/type/myfonts/inconsolata.html)

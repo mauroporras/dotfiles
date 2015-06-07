@@ -67,7 +67,7 @@ set completefunc=syntaxcomplete#Complete
 "set textwidth=80
 "set colorcolumn=+1
 
-set guifont=Ubuntu\ Mono\ 12
+set guifont=Inconsolata\ Medium\ 13
 " For MacVim.
 "set guifont=Ubuntu\ Mono:h16
 set cursorline
