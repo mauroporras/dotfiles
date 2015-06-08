@@ -64,8 +64,8 @@ autocmd BufRead,BufNewFile *.es6 setfiletype javascript
 set completefunc=syntaxcomplete#Complete
 
 " Make it obvious where 80 characters is.
-"set textwidth=80
-"set colorcolumn=+1
+set textwidth=80
+set colorcolumn=+1
 
 set guifont=Inconsolata\ Medium\ 13
 " For MacVim.
