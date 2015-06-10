@@ -69,7 +69,7 @@ set colorcolumn=+1
 
 set guifont=Inconsolata\ Medium\ 13
 " For MacVim.
-"set guifont=Ubuntu\ Mono:h16
+"set guifont=Inconsolata:h16
 set cursorline
 set ruler
 set laststatus=2
