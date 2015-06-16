@@ -38,7 +38,8 @@ let mapleader=','
 noremap <Leader>w :update<Return>
 noremap <Leader>s :wall<Return>
 noremap <Leader>q :bdelete!<Return>
-noremap <Leader>a :e #<Return>
+noremap <Leader>a :edit #<Return>
+noremap <Leader>r :edit!<Return>
 
 " Clear search with Escape key.
 nnoremap <Esc> :nohlsearch<Return><Esc>
@@ -69,7 +70,10 @@ set colorcolumn=+1
 
 set guifont=Inconsolata\ Medium\ 13
 " For MacVim.
-"set guifont=Inconsolata:h16
+if has('gui_macvim')
+  set guifont=Inconsolata:h16
+endif
+
 set cursorline
 set ruler
 set laststatus=2
