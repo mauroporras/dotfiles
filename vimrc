@@ -100,6 +100,7 @@ set expandtab
 " Line numbers.
 set number
 set numberwidth=5
+set relativenumber
 
 " CtrlP settings.
 map <Leader>b :CtrlPBuffer<Return>
