@@ -17,6 +17,7 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'kien/ctrlp.vim'
 Plugin 'lokaltog/vim-easymotion'
 Plugin 'mattn/emmet-vim'
+Plugin 'mhinz/vim-startify'
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'sunaku/vim-ruby-minitest'
@@ -29,7 +30,8 @@ Plugin 'tpope/vim-vinegar'
 
 " End Vundle plugins.
 call vundle#end()
-filetype plugin indent on
+filetype plugin on
+filetype indent on
 
 " Leader.
 let mapleader=','
@@ -40,9 +42,6 @@ noremap <Leader>s :wall<Return>
 noremap <Leader>q :bdelete!<Return>
 noremap <Leader>a :edit #<Return>
 noremap <Leader>r :edit!<Return>
-
-" Clear search with Escape key.
-nnoremap <Esc> :nohlsearch<Return><Esc>
 
 " Automatically jump to end of pasted text.
 vnoremap <silent> y y`]
@@ -74,6 +73,7 @@ if has('gui_macvim')
   set guifont=Inconsolata:h16
 endif
 
+set encoding=utf-8
 set cursorline
 set ruler
 set laststatus=2
@@ -81,11 +81,16 @@ set cmdheight=2
 "set hidden
 set wildmenu
 set showcmd
+set autowrite
+
+" Searching.
 set hlsearch
 set ignorecase
 set smartcase
 set incsearch
-set autowrite
+
+" Clear search with Escape key.
+nnoremap <Esc> :nohlsearch<Return><Esc>
 
 set nobackup
 set nowritebackup
@@ -105,6 +110,7 @@ set expandtab
 set number
 set numberwidth=5
 set relativenumber
+set scrolloff=5
 
 " CtrlP settings.
 map <Leader>b :CtrlPBuffer<Return>
