@@ -1,5 +1,9 @@
 #!/usr/bin/env sh
 
+echo 'Removing current config files.'
+cd; rm -rf ~/.tmux.conf ~/.nvimrc ~/.nvim ~/.vimrc ~/.vim
+git clone https://github.com/mporras/dotfiles.git ~/.vim
+
 echo 'Configuring Git.'
 ~/.vim/git-config
 

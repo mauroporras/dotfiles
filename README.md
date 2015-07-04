@@ -29,10 +29,9 @@ brew install tmux
 
 ## Bootstrap DotFiles
 
+Ignore the color scheme error, it's normal since it's not yet installed.
 ````
-cd; rm -rf ~/.tmux.conf ~/.nvimrc ~/.nvim ~/.vimrc ~/.vim
-git clone https://github.com/mporras/dotfiles.git ~/.vim
-~/.vim/bootstrap
+source <(curl -s https://raw.githubusercontent.com/mporras/dotfiles/master/bootstrap)
 ````
 
 
