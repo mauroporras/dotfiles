@@ -11,8 +11,8 @@ call vundle#begin()
 " Let Vundle manage Vundle, required.
 Plugin 'gmarik/Vundle.vim'
 
-Plugin 'altercation/vim-colors-solarized'
 Plugin 'bling/vim-airline'
+Plugin 'chriskempson/base16-vim'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'kien/ctrlp.vim'
 Plugin 'lokaltog/vim-easymotion'
@@ -51,7 +51,8 @@ nnoremap <silent> p p`]
 
 syntax enable
 set background=dark
-colorscheme solarized
+let base16colorspace=256
+colorscheme base16-solarized
 hi CursorLine guibg=#003F30
 hi Cursor guibg=Green
 
@@ -68,7 +69,7 @@ set completefunc=syntaxcomplete#Complete
 set textwidth=80
 set colorcolumn=+1
 
-set guifont=Inconsolata\ Medium\ 13
+set guifont=Inconsolata\ Medium\ 14
 " For MacVim.
 if has('gui_macvim')
   set guifont=Inconsolata:h16
