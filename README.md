@@ -29,7 +29,6 @@ brew install tmux
 
 ## Bootstrap DotFiles
 
-Ignore the color scheme error, it's normal since it's not yet installed.
 ````
 source <(curl -s https://raw.githubusercontent.com/mporras/dotfiles/master/bootstrap)
 ````
@@ -43,5 +42,15 @@ Run `:PluginUpdate` inside Vim.
 ## Misc
 
 
-### Inconsolata font
-[http://www.levien.com/type/myfonts/inconsolata.html](http://www.levien.com/type/myfonts/inconsolata.html)
+### Inconsolata-g font
+[https://github.com/powerline/fonts](https://github.com/powerline/fonts)
+
+
+### Base16 color scheme
+[https://github.com/chriskempson/base16-shell](https://github.com/chriskempson/base16-shell)
+
+[https://github.com/chriskempson/base16-gnome-terminal](https://github.com/chriskempson/base16-gnome-terminal)
+
+[https://github.com/chriskempson/base16-iterm2](https://github.com/chriskempson/base16-iterm2)
+
+[https://github.com/chriskempson/base16-vim](https://github.com/chriskempson/base16-vim)

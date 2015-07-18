@@ -1,16 +1,15 @@
 #!/usr/bin/env sh
 
-echo 'Configuring Git...'
-~/.vim/git-config
-
 echo 'Bootstrapping new configuration...'
-cd; rm -rf ~/.tmux.conf ~/.nvimrc ~/.nvim ~/.vimrc ~/.vim
+cd; rm -rf ~/.vim ~/.nvim ~/.vimrc ~/.nvimrc ~/.tmux.conf
 git clone https://github.com/mporras/dotfiles.git ~/.vim
+ln -s ~/.vim ~/.nvim
 ln -s ~/.vim/vimrc ~/.nvimrc
 ln -s ~/.vim/vimrc ~/.vimrc
 ln -s ~/.vim/tmux.conf ~/.tmux.conf
 
-echo 'Installing Vundle and plugins...'
-mkdir -p ~/.vim/bundle
-git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-nvim +PluginInstall +qall
+echo 'Configuring Git...'
+~/.vim/git-config
+
+echo 'Starting Neovim to install plugins...'
+nvim

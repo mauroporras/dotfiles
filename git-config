@@ -1,12 +1,12 @@
 #!/usr/bin/env sh
 
-read -p 'Type your Git Email (empty to keep current): ' git_email
+read -p '> What is your Git Email? (empty to keep current): ' git_email
 if [ -n "$git_email" ]
   then
     git config --global --replace-all user.email "$git_email"
 fi
 
-read -p 'Type your Git user name (empty to keep current): ' git_name
+read -p '> What is your Git user name? (empty to keep current): ' git_name
 if [ -n "$git_name" ]
   then
     git config --global --replace-all user.name "$git_name"
