@@ -8,8 +8,9 @@ endif
 call plug#begin('~/.vim/plugged')
 Plug 'bling/vim-airline'
 Plug 'chriskempson/base16-vim'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'jiangmiao/auto-pairs'
-Plug 'kien/ctrlp.vim'
+Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'lokaltog/vim-easymotion'
 Plug 'mattn/emmet-vim'
 Plug 'mhinz/vim-startify'
@@ -20,6 +21,7 @@ Plug 'sunaku/vim-ruby-minitest'
 Plug 'terryma/vim-expand-region'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
@@ -83,8 +85,8 @@ set autowrite
 set hlsearch
 set ignorecase
 set smartcase
-set incsearch
-highlight Search ctermbg=28 ctermfg=0
+set noincsearch
+highlight Search ctermbg=38 ctermfg=0
 
 " Clear search with Escape key.
 nnoremap <Esc> :nohlsearch<Return><Esc>
@@ -113,6 +115,9 @@ set scrolloff=5
 map <Leader>b :CtrlPBuffer<Return>
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
+" Rainbow Parentheses settings.
+autocmd VimEnter * silent! RainbowParentheses
+
 " Netrw settings.
 " Caution: liststyle 3 leaves multiple dirs in the buffer.
 "let g:netrw_liststyle=3
@@ -129,6 +134,9 @@ let g:indent_guides_start_level=2
 " vim-expand-region settings.
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
+
+" vim-fugitive settings.
+noremap <Leader>g :Git<Space>
 
 " Open splits to right and bottom, which feels more natural.
 set splitbelow

@@ -36,7 +36,7 @@ source <(curl -s https://raw.githubusercontent.com/mporras/dotfiles/master/boots
 
 ## To update all plugins
 
-Run `:PluginUpdate` inside Vim.
+Run `:PlugUpdate` inside Vim.
 
 
 ## Misc
