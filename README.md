@@ -30,7 +30,7 @@ brew install tmux
 ## Bootstrap DotFiles
 
 ````
-source <(curl -s https://raw.githubusercontent.com/mporras/dotfiles/master/bootstrap)
+sh -c "$(curl -fsSL https://raw.github.com/mporras/dotfiles/master/bootstrap)"
 ````
 
 
@@ -52,5 +52,3 @@ Run `:PlugUpdate` inside Vim.
 [https://github.com/chriskempson/base16-gnome-terminal](https://github.com/chriskempson/base16-gnome-terminal)
 
 [https://github.com/chriskempson/base16-iterm2](https://github.com/chriskempson/base16-iterm2)
-
-[https://github.com/chriskempson/base16-vim](https://github.com/chriskempson/base16-vim)
