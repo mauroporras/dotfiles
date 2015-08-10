@@ -18,13 +18,11 @@ sudo apt-get install -y tmux git
 ````
 
 
-### In Macintosh
+### In OS X (Using Homebrew)
 
 ````
-brew install tmux
+brew install tmux git
 ````
-
-[http://git-scm.com/download/mac](http://git-scm.com/download/mac)
 
 
 ## Bootstrap DotFiles

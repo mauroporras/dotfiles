@@ -13,6 +13,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'lokaltog/vim-easymotion'
 Plug 'mattn/emmet-vim'
+Plug 'mhinz/vim-grepper'
 Plug 'mhinz/vim-startify'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'nathanaelkane/vim-indent-guides'
@@ -27,8 +28,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
 call plug#end()
 
-filetype plugin on
-filetype indent on
+filetype plugin indent on
 
 " Leader.
 let mapleader=','
@@ -62,7 +62,7 @@ autocmd BufRead,BufNewFile *.es6 setfiletype javascript
 " Highlighting and completion for MiniTest.
 set completefunc=syntaxcomplete#Complete
 
-" Make it obvious where 80 characters is.
+" Right margin column.
 set textwidth=80
 set colorcolumn=+1
 
@@ -91,6 +91,7 @@ highlight Search ctermbg=38 ctermfg=0
 " Clear search with Escape key.
 nnoremap <Esc> :nohlsearch<Return><Esc>
 
+" Disable backups.
 set nobackup
 set nowritebackup
 set noswapfile
@@ -145,6 +146,9 @@ set splitright
 " All splits at least 1 line and current one 10 lines.
 set winminheight=1
 set winheight=10
+
+" Disable parentheses matching.
+let loaded_matchparen = 1
 
 " Remove menu bar, toolbar, and right and left scroll bars.
 set guioptions-=m
