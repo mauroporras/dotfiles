@@ -113,7 +113,7 @@ set numberwidth=5
 set scrolloff=5
 
 " CtrlP settings.
-map <Leader>b :CtrlPBuffer<Return>
+noremap <Leader>b :CtrlPBuffer<Return>
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
 " Rainbow Parentheses settings.
