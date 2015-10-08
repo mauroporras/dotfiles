@@ -1,11 +1,11 @@
 " Install vim-plug if not present.
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+if empty(glob('~/.config/nvim/autoload/plug.vim'))
+  silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
         \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall
 endif
 
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.config/nvim/plugged')
 Plug 'bling/vim-airline'
 Plug 'chriskempson/base16-vim'
 Plug 'ctrlpvim/ctrlp.vim'
@@ -53,8 +53,6 @@ silent! colorscheme base16-solarized
 
 " Current line.
 set cursorline
-highlight CursorLine guibg=#003F30
-highlight Cursor guibg=Green
 
 " Associate file extensions.
 autocmd BufRead,BufNewFile *.es6 setfiletype javascript
@@ -65,12 +63,6 @@ set completefunc=syntaxcomplete#Complete
 " Right margin column.
 set textwidth=80
 set colorcolumn=+1
-
-set guifont=Inconsolata\ Medium\ 14
-" For MacVim.
-if has('gui_macvim')
-  set guifont=Inconsolata:h16
-endif
 
 set encoding=utf-8
 set ruler
@@ -109,35 +101,7 @@ set expandtab
 " Line numbers.
 set relativenumber
 set number
-set numberwidth=5
-set scrolloff=5
-
-" CtrlP settings.
-noremap <Leader>b :CtrlPBuffer<Return>
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
-
-" Rainbow Parentheses settings.
-autocmd VimEnter * silent! RainbowParentheses
-
-" Netrw settings.
-" Caution: liststyle 3 leaves multiple dirs in the buffer.
-"let g:netrw_liststyle=3
-
-" vim-airline settings.
-let g:airline_theme='powerlineish'
-let g:airline_powerline_fonts = 1
-
-" vim-indent-guides settings.
-"let g:indent_guides_enable_on_vim_startup=1
-let g:indent_guides_guide_size=1
-let g:indent_guides_start_level=2
-
-" vim-expand-region settings.
-vmap v <Plug>(expand_region_expand)
-vmap <C-v> <Plug>(expand_region_shrink)
-
-" vim-fugitive settings.
-noremap <Leader>g :Git<Space>
+set scrolloff=3
 
 " Open splits to right and bottom, which feels more natural.
 set splitbelow
@@ -148,10 +112,34 @@ set winminheight=1
 set winheight=10
 
 " Disable parentheses matching.
-let loaded_matchparen = 1
+let loaded_matchparen=1
 
-" Remove menu bar, toolbar, and right and left scroll bars.
-set guioptions-=m
-set guioptions-=T
-set guioptions-=r
-set guioptions-=L
+
+" Plugins settings.
+
+" CtrlP.
+noremap <Leader>b :CtrlPBuffer<Return>
+let g:ctrlp_user_command=['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+
+" Rainbow Parentheses.
+autocmd VimEnter * silent! RainbowParentheses
+
+" Netrw.
+" Caution: liststyle 3 leaves multiple dirs in the buffer.
+"let g:netrw_liststyle=3
+
+" vim-airline.
+let g:airline_theme='powerlineish'
+let g:airline_powerline_fonts=1
+
+" vim-indent-guides.
+"let g:indent_guides_enable_on_vim_startup=1
+let g:indent_guides_guide_size=1
+let g:indent_guides_start_level=2
+
+" vim-expand-region.
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
+
+" vim-fugitive.
+noremap <Leader>g :Git<Space>

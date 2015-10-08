@@ -1,15 +1,15 @@
 #!/usr/bin/env sh
 
-echo 'Bootstrapping new configuration...'
-cd; rm -rf ~/.vim ~/.nvim ~/.vimrc ~/.nvimrc ~/.tmux.conf
-git clone --quiet https://github.com/mporras/dotfiles.git ~/.vim
-ln -s ~/.vim ~/.nvim
-ln -s ~/.vim/vimrc ~/.nvimrc
-ln -s ~/.vim/vimrc ~/.vimrc
-ln -s ~/.vim/tmux.conf ~/.tmux.conf
+# Bootstrap new configuration.
+cd
+rm -rf dotfiles/ .config/nvim/ .tmux.conf
+git clone --quiet https://github.com/mporras/dotfiles.git
+mkdir .config/nvim/
+ln -s ~/dotfiles/init.vim ~/.config/nvim/init.vim
+ln -s ~/dotfiles/tmux.conf ~/.tmux.conf
 
-echo 'Configuring Git...'
-~/.vim/git-config
+# Configure Git.
+dotfiles/git-config
 
 echo 'Starting Neovim to install plugins...'
 nvim

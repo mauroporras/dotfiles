@@ -1,14 +1,18 @@
 # DotFiles
 
-Awesome configuration and plugins for Vim (Neovim), Tmux and Git.
+Awesome configuration and plugins for Neovim, tmux and Git.
 
 
-## Install Neovim
+## 1. Install Neovim
 
 [https://github.com/neovim/neovim/wiki/Installing-Neovim](https://github.com/neovim/neovim/wiki/Installing-Neovim)
 
+Transitioning from Vim: `:h nvim-from-vim`
 
-## Install Tmux and Git
+Installing a clipboard tool: `:h nvim-clipboard`
+
+
+## 2. Install tmux and Git
 
 
 ### In Ubuntu
@@ -25,26 +29,31 @@ brew install tmux git
 ````
 
 
-## Bootstrap DotFiles
+## 3. Bootstrap DotFiles
 
 ````
 sh -c "$(curl -fsSL https://raw.github.com/mporras/dotfiles/master/bootstrap)"
 ````
 
 
-## To update all plugins
-
-Run `:PlugUpdate` inside Vim.
+________________
 
 
 ## Misc
 
 
+### To update all plugins
+
+Run `:PlugUpdate` inside Neovim.
+
+
 ### Inconsolata-g font
+
 [https://github.com/powerline/fonts](https://github.com/powerline/fonts)
 
 
 ### Base16 color scheme
+
 [https://github.com/chriskempson/base16-shell](https://github.com/chriskempson/base16-shell)
 
 [https://github.com/chriskempson/base16-gnome-terminal](https://github.com/chriskempson/base16-gnome-terminal)
