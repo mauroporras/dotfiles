@@ -34,11 +34,13 @@ filetype plugin indent on
 let mapleader=','
 
 " Custom maps.
-noremap <Leader>w :update<Return>
-noremap <Leader>s :wall<Return>
-noremap <Leader>q :bdelete<Return>
 noremap <Leader>a :edit #<Return>
+noremap <Leader>b :CtrlPBuffer<Return>
+noremap <Leader>q :bdelete<Return>
 noremap <Leader>r :edit!<Return>
+noremap <Leader>s :wall<Return>
+noremap <Leader>t :tabnew .<Return>
+noremap <Leader>w :update<Return>
 
 " Automatically jump to end of pasted text.
 vnoremap <silent> y y`]
@@ -118,7 +120,6 @@ let loaded_matchparen=1
 " Plugins settings.
 
 " CtrlP.
-noremap <Leader>b :CtrlPBuffer<Return>
 let g:ctrlp_user_command=['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
 " Rainbow Parentheses.
@@ -131,6 +132,8 @@ autocmd VimEnter * silent! RainbowParentheses
 " vim-airline.
 let g:airline_theme='powerlineish'
 let g:airline_powerline_fonts=1
+let g:airline#extensions#tabline#enabled=1
+let g:airline#extensions#tabline#fnamemod=':t'
 
 " vim-indent-guides.
 "let g:indent_guides_enable_on_vim_startup=1
