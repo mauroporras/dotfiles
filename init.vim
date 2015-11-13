@@ -34,13 +34,13 @@ filetype plugin indent on
 let mapleader=','
 
 " Custom maps.
-noremap <Leader>a :edit #<Return>
-noremap <Leader>b :CtrlPBuffer<Return>
-noremap <Leader>q :bdelete<Return>
-noremap <Leader>r :edit!<Return>
-noremap <Leader>s :wall<Return>
-noremap <Leader>t :tabnew .<Return>
-noremap <Leader>w :update<Return>
+nnoremap <Leader>a :bprevious<Return>
+nnoremap <Leader>g :Git<Space>
+nnoremap <Leader>q :bdelete<Return>
+nnoremap <Leader>r :edit!<Return>
+nnoremap <Leader>s :bnext<Return>
+nnoremap <Leader>t :tabnew .<Return>
+nnoremap <Leader>w :wall<Return>
 
 " Automatically jump to end of pasted text.
 vnoremap <silent> y y`]
@@ -143,6 +143,3 @@ let g:indent_guides_start_level=2
 " vim-expand-region.
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
-
-" vim-fugitive.
-noremap <Leader>g :Git<Space>
