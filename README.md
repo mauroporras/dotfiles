@@ -42,9 +42,19 @@ ________________
 ## Misc
 
 
-### To update all plugins
+### The Silver Searcher
 
-Run `:PlugUpdate` inside Neovim.
+[https://github.com/ggreer/the_silver_searcher#installing](https://github.com/ggreer/the_silver_searcher#installing)
+
+
+### Ranger
+
+[http://ranger.nongnu.org](http://ranger.nongnu.org)
+
+
+### Tmuxinator
+
+[https://github.com/tmuxinator/tmuxinator](https://github.com/tmuxinator/tmuxinator)
 
 
 ### Inconsolata-g font
