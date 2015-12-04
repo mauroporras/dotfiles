@@ -21,6 +21,7 @@ Plug 'ngmy/vim-rubocop'
 Plug 'rbgrouleff/bclose.vim'
 Plug 'sunaku/vim-ruby-minitest'
 Plug 'terryma/vim-expand-region'
+Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
@@ -39,7 +40,7 @@ let mapleader=','
 nnoremap <Leader>a :edit #<CR>
 nnoremap <Leader>b :CtrlPBuffer<CR>
 nnoremap <Leader>m :CtrlPMRUFiles<CR>
-nnoremap <Leader>q :bdelete<CR>
+nnoremap <Leader>q :Bclose<CR>
 nnoremap <Leader>r :edit!<CR>
 nnoremap <Leader>s :wall<CR>
 nnoremap <Leader>t :CtrlPTag<CR>
