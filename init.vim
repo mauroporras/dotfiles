@@ -42,6 +42,8 @@ let mapleader=','
 nnoremap <Leader>a :edit #<CR>
 nnoremap <Leader>b :CtrlPBuffer<CR>
 nnoremap <Leader>m :CtrlPMRUFiles<CR>
+nnoremap <Leader>n :bnext<CR>
+nnoremap <Leader>p :bprevious<CR>
 nnoremap <Leader>q :Bclose<CR>
 nnoremap <Leader>r :edit!<CR>
 nnoremap <Leader>s :wall<CR>
@@ -49,8 +51,6 @@ nnoremap <Leader>t :CtrlPTag<CR>
 nnoremap <Leader>w :update<CR>
 nnoremap <Leader>. :tabnew .<CR>
 nnoremap - :call OpenRanger()<CR>
-nnoremap <Tab> :bnext<CR>
-nnoremap <S-Tab> :bprevious<CR>
 nnoremap <C-k> :wincmd k<CR>
 nnoremap <C-j> :wincmd j<CR>
 nnoremap <C-l> :wincmd l<CR>
