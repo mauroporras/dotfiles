@@ -44,7 +44,7 @@ nnoremap <Leader>b :CtrlPBuffer<CR>
 nnoremap <Leader>m :CtrlPMRUFiles<CR>
 nnoremap <Leader>n :bnext<CR>
 nnoremap <Leader>p :bprevious<CR>
-nnoremap <Leader>q :Bclose<CR>
+nnoremap <Leader>q :bdelete<CR>
 nnoremap <Leader>r :edit!<CR>
 nnoremap <Leader>s :wall<CR>
 nnoremap <Leader>t :CtrlPTag<CR>
