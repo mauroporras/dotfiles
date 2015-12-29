@@ -38,6 +38,7 @@ filetype plugin indent on
 
 " Leader.
 let mapleader=','
+set timeoutlen=3333
 
 " Custom maps.
 nnoremap <Leader>a :edit #<CR>
