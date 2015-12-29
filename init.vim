@@ -98,11 +98,6 @@ highlight Search ctermbg=38 ctermfg=0
 " Clear search with Escape key.
 nnoremap <Esc> :nohlsearch<CR><Esc>
 
-" Disable backups.
-set nobackup
-set nowritebackup
-set noswapfile
-
 " Remove spaces at the end and convert tabs to spaces before saving.
 autocmd BufWritePre * :%s/\s\+$//e
 autocmd BufWritePre * :retab
