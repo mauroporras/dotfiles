@@ -154,6 +154,9 @@ let g:user_emmet_mode='i'
 " CtrlP.
 let g:ctrlp_match_window='max:15'
 
+" Rubocop.
+let g:vimrubocop_keymap=0
+
 " The Silver Searcher.
 if executable('ag')
   " Use ag over grep.
