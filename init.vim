@@ -6,7 +6,6 @@ if empty(glob('~/.config/nvim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.config/nvim/plugged')
-Plug 'airblade/vim-gitgutter'
 Plug 'bling/vim-airline'
 Plug 'chriskempson/base16-vim'
 Plug 'ctrlpvim/ctrlp.vim'
@@ -61,6 +60,9 @@ nnoremap <C-h> :wincmd h<CR>
 vnoremap <silent> y y`]
 vnoremap <silent> p p`]
 nnoremap <silent> p p`]
+
+" ALWAYS use the clipboard for ALL operations.
+set clipboard+=unnamedplus
 
 " Color scheme.
 syntax enable
