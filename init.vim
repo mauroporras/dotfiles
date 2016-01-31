@@ -49,7 +49,7 @@ nnoremap <Leader>r :edit!<CR>
 nnoremap <Leader>s :wall<CR>
 nnoremap <Leader>t :CtrlPTag<CR>
 nnoremap <Leader>w :update<CR>
-nnoremap <Leader>. :tabnew .<CR>
+nnoremap <Leader>. :tabnew<CR>
 nnoremap - :call OpenRanger()<CR>
 nnoremap <C-k> :wincmd k<CR>
 nnoremap <C-j> :wincmd j<CR>
