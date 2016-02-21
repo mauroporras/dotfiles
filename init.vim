@@ -21,10 +21,12 @@ Plug 'ngmy/vim-rubocop'
 Plug 'rbgrouleff/bclose.vim'
 Plug 'sunaku/vim-ruby-minitest'
 Plug 'terryma/vim-expand-region'
+Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rails'
+Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'vim-ruby/vim-ruby'
 
@@ -34,20 +36,21 @@ filetype plugin indent on
 
 " Leader.
 let mapleader=','
+set timeoutlen=3333
 
 " Custom maps.
 nnoremap <Leader>a :edit #<CR>
 nnoremap <Leader>b :CtrlPBuffer<CR>
 nnoremap <Leader>m :CtrlPMRUFiles<CR>
+nnoremap <Leader>n :bnext<CR>
+nnoremap <Leader>p :bprevious<CR>
 nnoremap <Leader>q :bdelete<CR>
 nnoremap <Leader>r :edit!<CR>
 nnoremap <Leader>s :wall<CR>
 nnoremap <Leader>t :CtrlPTag<CR>
 nnoremap <Leader>w :update<CR>
-nnoremap <Leader>. :tabnew .<CR>
+nnoremap <Leader>. :tabnew<CR>
 nnoremap - :call OpenRanger()<CR>
-nnoremap <Tab> :bnext<CR>
-nnoremap <S-Tab> :bprevious<CR>
 nnoremap <C-k> :wincmd k<CR>
 nnoremap <C-j> :wincmd j<CR>
 nnoremap <C-l> :wincmd l<CR>
@@ -57,6 +60,9 @@ nnoremap <C-h> :wincmd h<CR>
 vnoremap <silent> y y`]
 vnoremap <silent> p p`]
 nnoremap <silent> p p`]
+
+" ALWAYS use the clipboard for ALL operations.
+set clipboard+=unnamedplus
 
 " Color scheme.
 syntax enable
@@ -93,11 +99,6 @@ set noincsearch
 highlight Search ctermbg=38 ctermfg=0
 " Clear search with Escape key.
 nnoremap <Esc> :nohlsearch<CR><Esc>
-
-" Disable backups.
-set nobackup
-set nowritebackup
-set noswapfile
 
 " Remove spaces at the end and convert tabs to spaces before saving.
 autocmd BufWritePre * :%s/\s\+$//e
@@ -153,6 +154,9 @@ let g:user_emmet_mode='i'
 
 " CtrlP.
 let g:ctrlp_match_window='max:15'
+
+" Rubocop.
+let g:vimrubocop_keymap=0
 
 " The Silver Searcher.
 if executable('ag')
