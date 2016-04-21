@@ -1,6 +1,6 @@
 # DotFiles
 
-Awesome configuration and plugins for Neovim, tmux and Git.
+Cool configuration and plugins for Neovim, tmux and Git.
 
 
 ## 1. Install Neovim
@@ -18,7 +18,7 @@ Installing a clipboard tool: `:h nvim-clipboard`
 ### In Ubuntu
 
 ````
-sudo apt-get install -y tmux git
+sudo apt install -y tmux git
 ````
 
 

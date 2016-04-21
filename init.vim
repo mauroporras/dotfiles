@@ -165,7 +165,7 @@ if executable('ag')
   set grepprg=ag\ --nogroup\ --nocolor
 
   " Use ag in CtrlP for listing files.
-  let g:ctrlp_user_command='ag %s -l --nocolor -g ""'
+  let g:ctrlp_user_command='ag %s -l --nocolor --nogroup --hidden --ignore ".git" -g ""'
   let g:ctrlp_use_caching=0
 
   " Bind \ to grep shortcut.

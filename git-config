@@ -12,6 +12,7 @@ if [ -n "$git_name" ]
     git config --global --replace-all user.name "$git_name"
 fi
 
+git config --global core.excludesfile ~/.gitignore_global
 git config --global core.editor 'nvim --noplugin'
 git config --global merge.tool 'meld'
 git config --global color.ui 'auto'
@@ -39,6 +40,7 @@ git config --global alias.dw 'diff --color-words -w -b'
 git config --global alias.ds 'diff --staged'
 git config --global alias.dsw 'diff --staged --color-words -w -b'
 git config --global alias.g 'grep --break --heading --line-number'
+git config --global alias.gi 'grep -i --break --heading --line-number'
 git config --global alias.rso 'remote show origin'
 git config --global alias.rpo 'remote prune origin'
 git config --global alias.sl 'stash list'

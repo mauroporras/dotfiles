@@ -1,20 +1,26 @@
 #!/usr/bin/env sh
 
-# Bootstrap new configuration.
+# Remove old config dirs and files.
 cd
-rm -rf dotfiles/ .config/nvim/ .config/ranger/ .tmux.conf
+rm -rf dotfiles/ .config/nvim/ .config/ranger/
+rm -rf .tmux.conf .ctags .gitignore_global
+
+# Clone dotfiles repo.
 git clone --quiet https://github.com/mporras/dotfiles.git
 
+# Create new symlinks.
 mkdir .config/nvim/
 ln -s ~/dotfiles/init.vim ~/.config/nvim/init.vim
-
 mkdir .config/ranger/
 ln -s ~/dotfiles/rc.conf ~/.config/ranger/rc.conf
 
 ln -s ~/dotfiles/tmux.conf ~/.tmux.conf
+ln -s ~/dotfiles/ctags ~/.ctags
+ln -s ~/dotfiles/gitignore_global ~/.gitignore_global
 
 # Configure Git.
 dotfiles/git-config
 
+# Start Neovim.
 echo 'Starting Neovim to install plugins...'
 nvim
