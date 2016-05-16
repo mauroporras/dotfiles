@@ -8,10 +8,10 @@ endif
 call plug#begin('~/.config/nvim/plugged')
 Plug 'chriskempson/base16-vim'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'easymotion/vim-easymotion'
 Plug 'francoiscabrol/ranger.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/rainbow_parentheses.vim'
-Plug 'lokaltog/vim-easymotion'
 Plug 'mattn/emmet-vim'
 Plug 'mhinz/vim-grepper'
 Plug 'mustache/vim-mustache-handlebars'
@@ -70,7 +70,7 @@ syntax enable
 set cursorline
 set background=dark
 let base16colorspace=256
-silent! colorscheme base16-solarized
+silent! colorscheme base16-solarized-dark
 
 " Associate file extensions.
 autocmd BufRead,BufNewFile *.es6 setfiletype javascript
@@ -112,7 +112,6 @@ set shiftround
 set expandtab
 
 " Line numbers.
-set relativenumber
 set number
 set scrolloff=5
 
@@ -137,7 +136,8 @@ autocmd VimEnter * silent! RainbowParentheses
 let g:airline_theme='powerlineish'
 let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enabled=1
-let g:airline#extensions#tabline#fnamemod=':t'
+let g:airline#extensions#tabline#fnamemod=':e:e'
+let g:airline#extensions#tabline#buffer_idx_mode=1
 let g:airline#extensions#tabline#left_sep=''
 let g:airline#extensions#tabline#left_alt_sep=''
 
@@ -155,6 +155,7 @@ let g:user_emmet_mode='i'
 
 " CtrlP.
 let g:ctrlp_match_window='max:15'
+let g:ctrlp_match_current_file=1
 
 " Rubocop.
 let g:vimrubocop_keymap=0
@@ -162,7 +163,7 @@ let g:vimrubocop_keymap=0
 " The Silver Searcher.
 if executable('ag')
   " Use ag over grep.
-  set grepprg=ag\ --nogroup\ --nocolor
+  set grepprg=ag\ --nogroup\ --nocolor\ --hidden
 
   " Use ag in CtrlP for listing files.
   let g:ctrlp_user_command='ag %s -l --nocolor --nogroup --hidden --ignore ".git" -g ""'
