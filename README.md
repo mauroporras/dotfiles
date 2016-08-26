@@ -15,17 +15,17 @@ Installing a clipboard tool: `:h nvim-clipboard`
 ## 2. Install tmux and Git
 
 
+### In macOS (Using Homebrew)
+
+````
+brew install tmux git
+````
+
+
 ### In Ubuntu
 
 ````
 sudo apt install -y tmux git
-````
-
-
-### In OS X (Using Homebrew)
-
-````
-brew install tmux git
 ````
 
 
@@ -42,11 +42,6 @@ ________________
 ## Misc
 
 
-### The Silver Searcher
-
-[https://github.com/ggreer/the_silver_searcher#installing](https://github.com/ggreer/the_silver_searcher#installing)
-
-
 ### Ranger
 
 [http://ranger.nongnu.org](http://ranger.nongnu.org)
@@ -55,6 +50,13 @@ ________________
 ### Tmuxinator
 
 [https://github.com/tmuxinator/tmuxinator](https://github.com/tmuxinator/tmuxinator)
+
+
+### The Silver Searcher and Fuzzy Finder
+
+[https://github.com/ggreer/the_silver_searcher#installing](https://github.com/ggreer/the_silver_searcher#installing)
+
+[https://github.com/junegunn/fzf#installation](https://github.com/junegunn/fzf#installation)
 
 
 ### Inconsolata-g font
