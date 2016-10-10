@@ -15,8 +15,10 @@ Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'mattn/emmet-vim'
 Plug 'mhinz/vim-grepper'
 Plug 'mustache/vim-mustache-handlebars'
+Plug 'mxw/vim-jsx'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'ngmy/vim-rubocop'
+Plug 'pangloss/vim-javascript'
 Plug 'rbgrouleff/bclose.vim'
 Plug 'sunaku/vim-ruby-minitest'
 Plug 'terryma/vim-expand-region'
@@ -136,8 +138,8 @@ autocmd VimEnter * silent! RainbowParentheses
 let g:airline_theme='powerlineish'
 let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enabled=1
-let g:airline#extensions#tabline#fnamemod=':e:e'
-let g:airline#extensions#tabline#buffer_idx_mode=1
+"let g:airline#extensions#tabline#fnamemod=':e:e'
+"let g:airline#extensions#tabline#buffer_idx_mode=1
 let g:airline#extensions#tabline#left_sep=''
 let g:airline#extensions#tabline#left_alt_sep=''
 
@@ -159,6 +161,9 @@ let g:ctrlp_match_current_file=1
 
 " Rubocop.
 let g:vimrubocop_keymap=0
+
+" JSX.
+let g:jsx_ext_required = 0
 
 " The Silver Searcher.
 if executable('ag')
