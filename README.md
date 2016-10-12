@@ -32,7 +32,7 @@ sudo apt install -y tmux git
 ## 3. Bootstrap DotFiles
 
 ````
-sh -c "$(curl -fsSL https://raw.github.com/mporras/dotfiles/master/bootstrap)"
+sh -c "$(curl -fsSL https://raw.github.com/mauroporrasp/dotfiles/master/bootstrap)"
 ````
 
 
