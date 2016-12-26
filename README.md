@@ -47,9 +47,9 @@ ________________
 [http://ranger.nongnu.org](http://ranger.nongnu.org)
 
 
-### Tmuxinator
+### tmuxp
 
-[https://github.com/tmuxinator/tmuxinator](https://github.com/tmuxinator/tmuxinator)
+[https://github.com/tony/tmuxp](https://github.com/tony/tmuxp)
 
 
 ### The Silver Searcher and Fuzzy Finder
