@@ -33,6 +33,12 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-ruby/vim-ruby'
 
+" For snippets.
+Plug 'ervandew/supertab'
+Plug 'SirVer/ultisnips'
+Plug 'Valloric/YouCompleteMe'
+Plug 'honza/vim-snippets'
+
 call plug#end()
 
 filetype plugin indent on
@@ -163,7 +169,7 @@ let g:ctrlp_match_current_file=1
 let g:vimrubocop_keymap=0
 
 " JSX.
-let g:jsx_ext_required = 0
+let g:jsx_ext_required=0
 
 " The Silver Searcher.
 if executable('ag')
@@ -178,6 +184,16 @@ if executable('ag')
   command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
   nnoremap \ :Ag<Space>
 endif
+
+" Make YouCompleteMe compatible with UltiSnips (using supertab).
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+
+" Better key bindings for UltiSnipsExpandTrigger.
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
 
 " Custom functions.
