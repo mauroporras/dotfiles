@@ -32,15 +32,13 @@ Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-ruby/vim-ruby'
-
+Plug 'editorconfig/editorconfig-vim'
 " For snippets.
 Plug 'ervandew/supertab'
 Plug 'SirVer/ultisnips'
 Plug 'Valloric/YouCompleteMe'
 Plug 'honza/vim-snippets'
-
 call plug#end()
-
 filetype plugin indent on
 
 " Leader.
@@ -121,7 +119,7 @@ set expandtab
 
 " Line numbers.
 set number
-set scrolloff=5
+set scrolloff=4
 
 " Open splits to right and bottom, which feels more natural.
 set splitbelow
@@ -171,18 +169,22 @@ let g:vimrubocop_keymap=0
 " JSX.
 let g:jsx_ext_required=0
 
-" The Silver Searcher.
+" Ag (The Silver Searcher).
 if executable('ag')
   " Use ag over grep.
-  set grepprg=ag\ --nogroup\ --nocolor\ --hidden
+  set grepprg=ag\ --vimgrep
 
   " Use ag in CtrlP for listing files.
   let g:ctrlp_user_command='ag %s -l --nocolor --nogroup --hidden --ignore ".git" -g ""'
   let g:ctrlp_use_caching=0
 
-  " Bind \ to grep shortcut.
-  command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
-  nnoremap \ :Ag<Space>
+  " Bindings for vim-grepper + Ag.
+  " Search with Ag.
+  nnoremap <leader>g :Grepper -tool ag<CR>
+  " Search only on the buffers.
+  nnoremap <leader>G :Grepper -tool ag -buffers<cr>
+  " Search the word under the cursor.
+  nnoremap <Leader>* :Grepper -tool ag -cword<CR>
 endif
 
 " Make YouCompleteMe compatible with UltiSnips (using supertab).
