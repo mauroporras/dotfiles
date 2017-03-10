@@ -104,6 +104,7 @@ set ignorecase
 set smartcase
 set noincsearch
 highlight Search ctermbg=38 ctermfg=0
+set inccommand=nosplit
 " Clear search with Escape key.
 nnoremap <Esc> :nohlsearch<CR><Esc>
 
