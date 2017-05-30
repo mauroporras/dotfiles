@@ -9,9 +9,9 @@ rm -rf .tmux.conf .ctags .gitignore_global
 git clone --quiet https://github.com/mauroporrasp/dotfiles.git
 
 # Create new symlinks.
-mkdir .config/nvim/
+mkdir -p .config/nvim/
 ln -s ~/dotfiles/init.vim ~/.config/nvim/init.vim
-mkdir .config/ranger/
+mkdir -p .config/ranger/
 ln -s ~/dotfiles/rc.conf ~/.config/ranger/rc.conf
 
 ln -s ~/dotfiles/tmux.conf ~/.tmux.conf
