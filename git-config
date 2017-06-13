@@ -22,7 +22,7 @@ git config --global color.grep.filename 'magenta'
 git config --global color.grep.linenumber 'blue'
 git config --global color.grep.match 'green'
 
-git config --global alias.au 'add -u'
+git config --global alias.ua 'add -u'
 git config --global alias.ai 'add -i'
 git config --global alias.ap 'add -p'
 
