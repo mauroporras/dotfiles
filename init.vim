@@ -38,6 +38,7 @@ Plug 'ervandew/supertab'
 Plug 'SirVer/ultisnips'
 Plug 'Valloric/YouCompleteMe'
 Plug 'honza/vim-snippets'
+Plug 'sbdchd/neoformat'
 call plug#end()
 filetype plugin indent on
 
@@ -111,6 +112,11 @@ nnoremap <Esc> :nohlsearch<CR><Esc>
 " Remove spaces at the end and convert tabs to spaces before saving.
 autocmd BufWritePre * :%s/\s\+$//e
 autocmd BufWritePre * :retab
+
+" Prettier.
+autocmd FileType javascript set formatprg=prettier\ --no-semi\ --single-quote\ --trailing-comma\ es5\ --stdin
+autocmd BufWritePre *.js :normal gggqG
+autocmd BufWritePre *.js exe "normal! gggqG\<C-o>\<C-o>"
 
 " Softtabs, 2 spaces.
 set tabstop=2
