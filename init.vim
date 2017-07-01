@@ -72,6 +72,9 @@ nnoremap <silent> p p`]
 " ALWAYS use the clipboard for ALL operations.
 set clipboard+=unnamedplus
 
+" Enable mouse, sometimes it's useful.
+set mouse=a
+
 " Color scheme.
 syntax enable
 set cursorline
