@@ -56,9 +56,8 @@ nnoremap <Leader>q :bdelete<CR>
 nnoremap <Leader>r :edit!<CR>
 nnoremap <Leader>s :wall<CR>
 nnoremap <Leader>t :CtrlPTag<CR>
-nnoremap <Leader>w :update<CR>
+nnoremap <Leader>w :Neoformat<CR>
 nnoremap <Leader>. :tabnew<CR>
-nnoremap - :call OpenRanger()<CR>
 nnoremap <C-k> :wincmd k<CR>
 nnoremap <C-j> :wincmd j<CR>
 nnoremap <C-l> :wincmd l<CR>
@@ -116,10 +115,10 @@ nnoremap <Esc> :nohlsearch<CR><Esc>
 autocmd BufWritePre * :%s/\s\+$//e
 autocmd BufWritePre * :retab
 
-" Prettier.
+" Neoformat and Prettier.
 autocmd FileType javascript set formatprg=prettier\ --no-semi\ --single-quote\ --trailing-comma\ es5\ --stdin
-autocmd BufWritePre *.js :normal gggqG
-autocmd BufWritePre *.js exe "normal! gggqG\<C-o>\<C-o>"
+" Use formatprg when available
+let g:neoformat_try_formatprg = 1
 
 " Softtabs, 2 spaces.
 set tabstop=2
