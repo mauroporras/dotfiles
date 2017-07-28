@@ -3,9 +3,13 @@
 Cool configuration and plugins for Neovim, tmux and Git.
 
 
-## 1. Install Neovim
+## 1. Install Neovim with Python support
 
 [https://github.com/neovim/neovim/wiki/Installing-Neovim](https://github.com/neovim/neovim/wiki/Installing-Neovim)
+
+````
+pip3 install --user --upgrade neovim
+````
 
 Transitioning from Vim: `:h nvim-from-vim`
 

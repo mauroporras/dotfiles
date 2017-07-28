@@ -8,6 +8,7 @@ endif
 call plug#begin('~/.config/nvim/plugged')
 Plug 'chriskempson/base16-vim'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'francoiscabrol/ranger.vim'
 Plug 'jiangmiao/auto-pairs'
@@ -39,11 +40,12 @@ Plug 'SirVer/ultisnips'
 Plug 'Valloric/YouCompleteMe'
 Plug 'honza/vim-snippets'
 Plug 'sbdchd/neoformat'
+Plug 'mhinz/vim-signify'
 call plug#end()
 filetype plugin indent on
 
 " Leader.
-let mapleader=','
+let mapleader=' '
 set timeoutlen=3333
 
 " Custom maps.
@@ -52,7 +54,7 @@ nnoremap <Leader>b :CtrlPBuffer<CR>
 nnoremap <Leader>m :CtrlPMRUFiles<CR>
 nnoremap <Leader>n :bnext<CR>
 nnoremap <Leader>p :bprevious<CR>
-nnoremap <Leader>q :bdelete<CR>
+nnoremap <Leader>q :Bclose<CR>
 nnoremap <Leader>r :edit!<CR>
 nnoremap <Leader>s :wall<CR>
 nnoremap <Leader>t :CtrlPTag<CR>
@@ -169,8 +171,9 @@ vmap <C-v> <Plug>(expand_region_shrink)
 let g:user_emmet_mode='i'
 
 " CtrlP.
-let g:ctrlp_match_window='max:15'
+let g:ctrlp_match_window='max:20'
 let g:ctrlp_match_current_file=1
+let g:ctrlp_by_filename=1
 
 " Rubocop.
 let g:vimrubocop_keymap=0
