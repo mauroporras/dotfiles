@@ -46,34 +46,25 @@ ________________
 ## Misc
 
 
-### Ranger
-
 [http://ranger.nongnu.org](http://ranger.nongnu.org)
 
-
-### tmuxp
-
 [https://github.com/tony/tmuxp](https://github.com/tony/tmuxp)
-
-
-### EditorConfig
 
 [https://github.com/editorconfig/editorconfig-vim](https://github.com/editorconfig/editorconfig-vim)
 
 
-### The Silver Searcher and Fuzzy Finder
-
-[https://github.com/ggreer/the_silver_searcher#installing](https://github.com/ggreer/the_silver_searcher#installing)
+### Search
 
 [https://github.com/junegunn/fzf#installation](https://github.com/junegunn/fzf#installation)
 
+[https://github.com/ggreer/the_silver_searcher#installing](https://github.com/ggreer/the_silver_searcher#installing)
 
-### Inconsolata-g font
+[https://andrew.stwrt.ca/posts/vim-ctags](https://andrew.stwrt.ca/posts/vim-ctags)
+
+
+### Appearance
 
 [https://github.com/powerline/fonts](https://github.com/powerline/fonts)
-
-
-### Base16 color scheme
 
 [https://github.com/chriskempson/base16-shell](https://github.com/chriskempson/base16-shell)
 
