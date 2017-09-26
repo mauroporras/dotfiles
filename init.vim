@@ -80,8 +80,10 @@ set mouse=a
 syntax enable
 set cursorline
 set background=dark
-let base16colorspace=256
-silent! colorscheme base16-solarized-dark
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
+endif
 
 " Associate file extensions.
 autocmd BufRead,BufNewFile *.es6 setfiletype javascript
