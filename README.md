@@ -64,7 +64,7 @@ ________________
 
 ### Appearance
 
-[https://github.com/powerline/fonts](https://github.com/powerline/fonts)
+[https://github.com/tonsky/FiraCode](https://github.com/tonsky/FiraCode)
 
 [https://github.com/chriskempson/base16-shell](https://github.com/chriskempson/base16-shell)
 
