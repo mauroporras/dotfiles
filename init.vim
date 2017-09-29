@@ -49,6 +49,7 @@ let mapleader=' '
 set timeoutlen=3333
 
 " Custom maps.
+nnoremap <Esc> :nohlsearch<CR><Esc>
 nnoremap <Leader>a :edit #<CR>
 nnoremap <Leader>b :CtrlPBuffer<CR>
 nnoremap <Leader>m :CtrlPMRUFiles<CR>
@@ -112,17 +113,10 @@ set smartcase
 set noincsearch
 highlight Search ctermbg=38 ctermfg=0
 set inccommand=nosplit
-" Clear search with Escape key.
-nnoremap <Esc> :nohlsearch<CR><Esc>
 
 " Remove spaces at the end and convert tabs to spaces before saving.
 autocmd BufWritePre * :%s/\s\+$//e
 autocmd BufWritePre * :retab
-
-" Neoformat and Prettier.
-autocmd FileType javascript set formatprg=prettier\ --no-semi\ --single-quote\ --trailing-comma\ es5\ --stdin
-" Use formatprg when available
-let g:neoformat_try_formatprg = 1
 
 " Softtabs, 2 spaces.
 set tabstop=2
@@ -148,17 +142,24 @@ let loaded_matchparen=1
 
 " Plugins settings.
 
+" Neoformat and Prettier.
+autocmd FileType javascript set formatprg=prettier\ --no-semi\ --single-quote\ --trailing-comma\ es5\ --stdin
+" Use formatprg when available
+let g:neoformat_try_formatprg=1
+
 " Rainbow Parentheses.
 autocmd VimEnter * silent! RainbowParentheses
 
 " vim-airline.
 let g:airline_theme='powerlineish'
+let g:airline_extensions=['branch', 'tabline']
 let g:airline_powerline_fonts=1
-let g:airline#extensions#tabline#enabled=1
-"let g:airline#extensions#tabline#fnamemod=':e:e'
-"let g:airline#extensions#tabline#buffer_idx_mode=1
+let g:airline#extensions#tabline#tab_nr_type=2
+let g:airline#extensions#tabline#show_close_button=0
 let g:airline#extensions#tabline#left_sep=''
 let g:airline#extensions#tabline#left_alt_sep=''
+let g:airline#extensions#tabline#right_sep=''
+let g:airline#extensions#tabline#right_alt_sep=''
 
 " vim-indent-guides.
 "let g:indent_guides_enable_on_vim_startup=1
