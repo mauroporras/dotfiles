@@ -27,6 +27,7 @@ git config --global alias.ai 'add -i'
 git config --global alias.ap 'add -p'
 
 git config --global alias.ci 'commit'
+git config --global alias.cip '! git commit && git push'
 git config --global alias.c 'checkout'
 git config --global alias.cb 'checkout -b'
 git config --global alias.cm 'checkout master'
