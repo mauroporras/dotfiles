@@ -7,14 +7,12 @@ endif
 
 call plug#begin('~/.config/nvim/plugged')
 Plug 'chriskempson/base16-vim'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'francoiscabrol/ranger.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'mattn/emmet-vim'
-Plug 'mhinz/vim-grepper'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'mxw/vim-jsx'
 Plug 'nathanaelkane/vim-indent-guides'
@@ -34,13 +32,12 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-ruby/vim-ruby'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'sbdchd/neoformat'
 " For snippets.
 Plug 'ervandew/supertab'
 Plug 'SirVer/ultisnips'
 Plug 'Valloric/YouCompleteMe'
 Plug 'honza/vim-snippets'
-Plug 'sbdchd/neoformat'
-Plug 'mhinz/vim-signify'
 call plug#end()
 filetype plugin indent on
 
@@ -51,14 +48,15 @@ set timeoutlen=3333
 " Custom maps.
 nnoremap <Esc> :nohlsearch<CR><Esc>
 nnoremap <Leader>a :edit #<CR>
-nnoremap <Leader>b :CtrlPBuffer<CR>
-nnoremap <Leader>m :CtrlPMRUFiles<CR>
-nnoremap <Leader>n :bnext<CR>
-nnoremap <Leader>p :bprevious<CR>
+nnoremap <Leader>b :Buffers<CR>
+nnoremap <Leader>h :History<CR>
+nnoremap <Leader>n :tabnext<CR>
+nnoremap <Leader>o :Files<CR>
+nnoremap <Leader>p :tabprevious<CR>
 nnoremap <Leader>q :Bclose<CR>
 nnoremap <Leader>r :edit!<CR>
 nnoremap <Leader>s :wall<CR>
-nnoremap <Leader>t :CtrlPTag<CR>
+nnoremap <Leader>t :Tags<CR>
 nnoremap <Leader>w :Neoformat<CR>
 nnoremap <Leader>. :tabnew<CR>
 nnoremap <C-k> :wincmd k<CR>
@@ -115,8 +113,8 @@ highlight Search ctermbg=38 ctermfg=0
 set inccommand=nosplit
 
 " Remove spaces at the end and convert tabs to spaces before saving.
-autocmd BufWritePre * :%s/\s\+$//e
-autocmd BufWritePre * :retab
+"autocmd BufWritePre * :%s/\s\+$//e
+"autocmd BufWritePre * :retab
 
 " Softtabs, 2 spaces.
 set tabstop=2
@@ -154,7 +152,7 @@ autocmd VimEnter * silent! RainbowParentheses
 let g:airline_theme='powerlineish'
 let g:airline_extensions=['branch', 'tabline']
 let g:airline_powerline_fonts=1
-let g:airline#extensions#tabline#tab_nr_type=2
+let g:airline#extensions#tabline#tab_nr_type=1
 let g:airline#extensions#tabline#show_close_button=0
 let g:airline#extensions#tabline#left_sep=''
 let g:airline#extensions#tabline#left_alt_sep=''
@@ -173,34 +171,11 @@ vmap <C-v> <Plug>(expand_region_shrink)
 " Emmet.
 let g:user_emmet_mode='i'
 
-" CtrlP.
-let g:ctrlp_match_window='max:20'
-let g:ctrlp_match_current_file=1
-let g:ctrlp_by_filename=1
-
 " Rubocop.
 let g:vimrubocop_keymap=0
 
 " JSX.
 let g:jsx_ext_required=0
-
-" Ag (The Silver Searcher).
-if executable('ag')
-  " Use ag over grep.
-  set grepprg=ag\ --vimgrep
-
-  " Use ag in CtrlP for listing files.
-  let g:ctrlp_user_command='ag %s -l --nocolor --nogroup --hidden --ignore ".git" -g ""'
-  let g:ctrlp_use_caching=0
-
-  " Bindings for vim-grepper + Ag.
-  " Search with Ag.
-  nnoremap <leader>g :Grepper -tool ag<CR>
-  " Search only on the buffers.
-  nnoremap <leader>G :Grepper -tool ag -buffers<cr>
-  " Search the word under the cursor.
-  nnoremap <Leader>* :Grepper -tool ag -cword<CR>
-endif
 
 " Make YouCompleteMe compatible with UltiSnips (using supertab).
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
