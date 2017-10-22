@@ -76,9 +76,7 @@ set clipboard+=unnamedplus
 set mouse=a
 
 " Color scheme.
-syntax enable
 set cursorline
-set background=dark
 if filereadable(expand("~/.vimrc_background"))
   let base16colorspace=256
   source ~/.vimrc_background
@@ -92,20 +90,13 @@ set textwidth=80
 set colorcolumn=+1
 
 " Misc.
-set encoding=utf-8
-set ruler
-set laststatus=2
 set cmdheight=2
-set wildmenu
-set showcmd
 set hidden
 set confirm
 
 " Searching.
-set hlsearch
 set ignorecase
 set smartcase
-set noincsearch
 highlight Search ctermbg=38 ctermfg=0
 set inccommand=nosplit
 
