@@ -11,7 +11,6 @@ Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'francoiscabrol/ranger.vim'
 Plug 'jiangmiao/auto-pairs'
-Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'mattn/emmet-vim'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'mxw/vim-jsx'
@@ -76,11 +75,13 @@ set clipboard+=unnamedplus
 set mouse=a
 
 " Color scheme.
-set cursorline
 if filereadable(expand("~/.vimrc_background"))
   let base16colorspace=256
   source ~/.vimrc_background
 endif
+highlight IncSearch ctermbg=51 ctermfg=0
+highlight MatchParen ctermbg=46 ctermfg=0
+highlight Search ctermbg=38 ctermfg=0
 
 " Highlighting and completion for MiniTest.
 set completefunc=syntaxcomplete#Complete
@@ -90,6 +91,7 @@ set textwidth=80
 set colorcolumn=+1
 
 " Misc.
+set cursorline
 set cmdheight=2
 set hidden
 set confirm
@@ -97,7 +99,6 @@ set confirm
 " Searching.
 set ignorecase
 set smartcase
-highlight Search ctermbg=38 ctermfg=0
 set inccommand=nosplit
 
 " Line numbers.
@@ -112,9 +113,6 @@ set splitright
 set winminheight=1
 set winheight=10
 
-" Disable parentheses matching.
-let loaded_matchparen=1
-
 
 " Plugins settings.
 
@@ -122,9 +120,6 @@ let loaded_matchparen=1
 autocmd FileType javascript set formatprg=prettier\ --no-semi\ --single-quote\ --trailing-comma\ es5\ --stdin
 " Use formatprg when available
 let g:neoformat_try_formatprg=1
-
-" Rainbow Parentheses.
-autocmd VimEnter * silent! RainbowParentheses
 
 " vim-airline.
 let g:airline_extensions=['branch', 'tabline']
