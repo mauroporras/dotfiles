@@ -112,16 +112,6 @@ set noincsearch
 highlight Search ctermbg=38 ctermfg=0
 set inccommand=nosplit
 
-" Remove spaces at the end and convert tabs to spaces before saving.
-"autocmd BufWritePre * :%s/\s\+$//e
-"autocmd BufWritePre * :retab
-
-" Softtabs, 2 spaces.
-set tabstop=2
-set shiftwidth=2
-set shiftround
-set expandtab
-
 " Line numbers.
 set number
 set scrolloff=4
