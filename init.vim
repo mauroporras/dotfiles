@@ -84,9 +84,6 @@ if filereadable(expand("~/.vimrc_background"))
   source ~/.vimrc_background
 endif
 
-" Associate file extensions.
-autocmd BufRead,BufNewFile *.es6 setfiletype javascript
-
 " Highlighting and completion for MiniTest.
 set completefunc=syntaxcomplete#Complete
 
