@@ -13,16 +13,14 @@ pip3 install --user --upgrade neovim
 
 Transitioning from Vim: `:h nvim-from-vim`
 
-Installing a clipboard tool: `:h nvim-clipboard`
-
 
 ## 2. Install tmux and Git
 
 
-### In macOS (Using Homebrew)
+### In macOS (Using MacPorts)
 
 ````
-brew install tmux git
+sudo port install tmux git
 ````
 
 
