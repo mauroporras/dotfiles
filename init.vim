@@ -14,7 +14,6 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'mattn/emmet-vim'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'mxw/vim-jsx'
-Plug 'nathanaelkane/vim-indent-guides'
 Plug 'ngmy/vim-rubocop'
 Plug 'pangloss/vim-javascript'
 Plug 'rbgrouleff/bclose.vim'
@@ -133,11 +132,6 @@ let g:airline#extensions#tabline#right_sep=''
 let g:airline#extensions#tabline#show_close_button=0
 let g:airline#extensions#tabline#show_splits=0
 let g:airline#extensions#tabline#tab_nr_type=1
-
-" vim-indent-guides.
-"let g:indent_guides_enable_on_vim_startup=1
-let g:indent_guides_guide_size=1
-let g:indent_guides_start_level=2
 
 " vim-expand-region.
 vmap v <Plug>(expand_region_expand)
