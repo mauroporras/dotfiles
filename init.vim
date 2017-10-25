@@ -12,23 +12,17 @@ Plug 'easymotion/vim-easymotion'
 Plug 'francoiscabrol/ranger.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'mattn/emmet-vim'
-Plug 'mustache/vim-mustache-handlebars'
 Plug 'mxw/vim-jsx'
-Plug 'ngmy/vim-rubocop'
 Plug 'pangloss/vim-javascript'
 Plug 'rbgrouleff/bclose.vim'
-Plug 'sunaku/vim-ruby-minitest'
 Plug 'terryma/vim-expand-region'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-rails'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'vim-ruby/vim-ruby'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'sbdchd/neoformat'
 " For snippets.
@@ -81,9 +75,6 @@ endif
 highlight IncSearch ctermbg=51 ctermfg=0
 highlight MatchParen ctermbg=46 ctermfg=0
 highlight Search ctermbg=38 ctermfg=0
-
-" Highlighting and completion for MiniTest.
-set completefunc=syntaxcomplete#Complete
 
 " Right margin column.
 set textwidth=80
@@ -139,9 +130,6 @@ vmap <C-v> <Plug>(expand_region_shrink)
 
 " Emmet.
 let g:user_emmet_mode='i'
-
-" Rubocop.
-let g:vimrubocop_keymap=0
 
 " JSX.
 let g:jsx_ext_required=0
