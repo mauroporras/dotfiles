@@ -7,14 +7,11 @@ endif
 
 call plug#begin('~/.config/nvim/plugged')
 Plug 'chriskempson/base16-vim'
-Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 Plug 'easymotion/vim-easymotion'
-Plug 'francoiscabrol/ranger.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'mattn/emmet-vim'
 Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
-Plug 'rbgrouleff/bclose.vim'
 Plug 'terryma/vim-expand-region'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tpope/vim-commentary'
@@ -25,7 +22,13 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'sbdchd/neoformat'
-" For snippets.
+" Fzf.
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
+" Ranger.
+Plug 'rbgrouleff/bclose.vim'
+Plug 'francoiscabrol/ranger.vim'
+" Snippets.
 Plug 'ervandew/supertab'
 Plug 'SirVer/ultisnips'
 Plug 'Valloric/YouCompleteMe'
