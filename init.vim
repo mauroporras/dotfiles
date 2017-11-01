@@ -86,8 +86,6 @@ set colorcolumn=+1
 " Misc.
 set cursorline
 set cmdheight=2
-set hidden
-set confirm
 
 " Searching.
 set ignorecase
