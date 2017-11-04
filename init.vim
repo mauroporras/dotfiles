@@ -59,11 +59,6 @@ nnoremap <C-j> :wincmd j<CR>
 nnoremap <C-l> :wincmd l<CR>
 nnoremap <C-h> :wincmd h<CR>
 
-" Automatically jump to end of pasted text.
-vnoremap <silent> y y`]
-vnoremap <silent> p p`]
-nnoremap <silent> p p`]
-
 " ALWAYS use the clipboard for ALL operations.
 set clipboard+=unnamedplus
 
