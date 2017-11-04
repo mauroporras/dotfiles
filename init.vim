@@ -78,6 +78,8 @@ endif
 highlight IncSearch ctermbg=51 ctermfg=0
 highlight MatchParen ctermbg=46 ctermfg=0
 highlight Search ctermbg=38 ctermfg=0
+highlight WildMenu ctermfg=0
+highlight StatusLine ctermfg=0
 
 " Right margin column.
 set textwidth=80
