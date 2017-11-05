@@ -17,7 +17,7 @@ git config --global core.editor 'nvim --noplugin'
 git config --global merge.tool 'meld'
 git config --global push.default 'simple'
 
-git config --global color.ui 'auto'
+git config --global color.ui 'always'
 git config --global color.grep.filename 'magenta'
 git config --global color.grep.linenumber 'blue'
 git config --global color.grep.match 'green'
