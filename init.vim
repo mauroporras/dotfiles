@@ -126,6 +126,9 @@ vmap <C-v> <Plug>(expand_region_shrink)
 " Emmet.
 let g:user_emmet_mode='i'
 
+" vim-javascript.
+let g:javascript_plugin_flow=1
+
 " JSX.
 let g:jsx_ext_required=0
 
