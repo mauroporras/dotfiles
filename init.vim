@@ -68,7 +68,7 @@ if filereadable(expand("~/.vimrc_background"))
   source ~/.vimrc_background
 endif
 highlight IncSearch ctermbg=51 ctermfg=0
-highlight MatchParen ctermbg=46 ctermfg=0
+highlight MatchParen ctermbg=232 ctermfg=41
 highlight Search ctermbg=38 ctermfg=0
 highlight WildMenu ctermfg=0
 highlight StatusLine ctermfg=0
