@@ -59,9 +59,6 @@ nnoremap <C-j> :wincmd j<CR>
 nnoremap <C-l> :wincmd l<CR>
 nnoremap <C-h> :wincmd h<CR>
 
-" ALWAYS use the clipboard for ALL operations.
-set clipboard+=unnamedplus
-
 " Enable mouse, sometimes it's useful.
 set mouse=a
 
