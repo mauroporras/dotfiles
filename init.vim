@@ -42,22 +42,34 @@ set timeoutlen=3333
 
 " Custom maps.
 nnoremap <Esc> :nohlsearch<CR><Esc>
-nnoremap <Leader>a :edit #<CR>
+nnoremap <Leader>; <C-w>p
+nnoremap <Leader>a :Ag<Space>
 nnoremap <Leader>b :Buffers<CR>
-nnoremap <Leader>h :History<CR>
+nnoremap <Leader>h <C-w>h
+nnoremap <Leader>j <C-w>j
+nnoremap <Leader>k <C-w>k
+nnoremap <Leader>l <C-w>l
 nnoremap <Leader>n :tabnext<CR>
 nnoremap <Leader>o :Files<CR>
 nnoremap <Leader>p :tabprevious<CR>
-nnoremap <Leader>q :Bclose<CR>
-nnoremap <Leader>r :edit!<CR>
+nnoremap <Leader>q <C-w>q
+nnoremap <leader>r :Ranger<CR>
 nnoremap <Leader>s :wall<CR>
-nnoremap <Leader>t :Tags<CR>
-nnoremap <Leader>w :Neoformat<CR>
-nnoremap <Leader>. :tabnew<CR>
-nnoremap <C-k> :wincmd k<CR>
-nnoremap <C-j> :wincmd j<CR>
-nnoremap <C-l> :wincmd l<CR>
-nnoremap <C-h> :wincmd h<CR>
+nnoremap <Leader>t :tabnew<CR>
+nnoremap <Leader>w :Windows<CR>
+nnoremap <Leader>y; :edit #<CR>
+nnoremap <Leader>yf :Neoformat<CR>
+nnoremap <Leader>yn :bnext<CR>
+nnoremap <Leader>yp :bprevious<CR>
+nnoremap <Leader>yq :Bclose<CR>
+nnoremap <Leader>yr :edit!<CR>
+nnoremap <Leader>zh :History<CR>
+nnoremap <Leader>zl :Lines<CR>
+nnoremap <Leader>zm :Marks<CR>
+nnoremap <Leader>zt :Tags<CR>
+cnoremap <C-A> <Home>
+cnoremap <C-B> <Left>
+cnoremap <C-F> <Right>
 
 " Enable mouse, sometimes it's useful.
 set mouse=a
@@ -100,6 +112,9 @@ set winheight=10
 
 
 " Plugins settings.
+
+" Ranger
+let g:ranger_map_keys=0
 
 " Neoformat and Prettier.
 autocmd FileType javascript set formatprg=prettier\ --no-semi\ --single-quote\ --trailing-comma\ es5\ --stdin
