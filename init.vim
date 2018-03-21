@@ -18,8 +18,6 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'sbdchd/neoformat'
 " Fzf.
@@ -53,7 +51,8 @@ nnoremap <Leader>n :tabnext<CR>
 nnoremap <Leader>o :Files<CR>
 nnoremap <Leader>p :tabprevious<CR>
 nnoremap <Leader>q <C-w>q
-nnoremap <leader>r :Ranger<CR>
+nnoremap <leader>rr :Ranger<CR>
+nnoremap <leader>rt :RangerNewTab<CR>
 nnoremap <Leader>s :wall<CR>
 nnoremap <Leader>t :tabnew<CR>
 nnoremap <Leader>w :Windows<CR>
@@ -82,14 +81,20 @@ endif
 highlight IncSearch ctermbg=51 ctermfg=0
 highlight MatchParen ctermbg=232 ctermfg=41
 highlight Search ctermbg=38 ctermfg=0
+highlight StatusLine ctermbg=232 ctermfg=231
+highlight StatusLineNC ctermbg=234 ctermfg=244
+highlight TabLine ctermbg=234 ctermfg=244
+highlight TabLineFill ctermbg=234 ctermfg=244
+highlight TabLineSel ctermbg=232 ctermfg=231
+highlight VertSplit ctermbg=232 ctermfg=232
 highlight WildMenu ctermfg=0
-highlight StatusLine ctermfg=0
 
 " Right margin column.
 set textwidth=80
 set colorcolumn=+1
 
 " Misc.
+let loaded_matchparen=1
 set cursorline
 set cmdheight=2
 
@@ -98,17 +103,9 @@ set ignorecase
 set smartcase
 set inccommand=nosplit
 
-" Line numbers.
-set number
-set scrolloff=4
-
 " Open splits to right and bottom, which feels more natural.
 set splitbelow
 set splitright
-
-" All splits at least 1 line and current one 10 lines.
-set winminheight=1
-set winheight=10
 
 
 " Plugins settings.
@@ -120,19 +117,6 @@ let g:ranger_map_keys=0
 autocmd FileType javascript set formatprg=prettier\ --no-semi\ --single-quote\ --trailing-comma\ es5\ --stdin
 " Use formatprg when available
 let g:neoformat_try_formatprg=1
-
-" vim-airline.
-let g:airline_extensions=['branch', 'tabline']
-let g:airline_powerline_fonts=1
-let g:airline_theme='powerlineish'
-let g:airline#extensions#tabline#fnamemod=':t'
-let g:airline#extensions#tabline#left_alt_sep=''
-let g:airline#extensions#tabline#left_sep=''
-let g:airline#extensions#tabline#right_alt_sep=''
-let g:airline#extensions#tabline#right_sep=''
-let g:airline#extensions#tabline#show_close_button=0
-let g:airline#extensions#tabline#show_splits=0
-let g:airline#extensions#tabline#tab_nr_type=1
 
 " vim-expand-region.
 vmap v <Plug>(expand_region_expand)
