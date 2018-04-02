@@ -3,18 +3,21 @@
 Cool configuration and plugins for Neovim, tmux and Git.
 
 
-## 1. Install Neovim with Python support
+## 1. Install Neovim
 
 [https://github.com/neovim/neovim/wiki/Installing-Neovim](https://github.com/neovim/neovim/wiki/Installing-Neovim)
+
+If you're transitioning from Vim: `:h nvim-from-vim`
+
+
+## 2. Add Python support to Neovim
 
 ````
 pip3 install --user --upgrade neovim
 ````
 
-Transitioning from Vim: `:h nvim-from-vim`
 
-
-## 2. Install tmux and Git
+## 3. Install tmux and Git
 
 
 ### In macOS (Using MacPorts)
@@ -31,7 +34,7 @@ sudo apt install -y tmux git
 ````
 
 
-## 3. Bootstrap DotFiles
+## 4. Bootstrap DotFiles
 
 ````
 sh -c "$(curl -fsSL https://raw.github.com/mauroporrasp/dotfiles/master/bootstrap)"
