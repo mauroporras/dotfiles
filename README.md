@@ -34,7 +34,18 @@ sudo apt install -y tmux git
 ````
 
 
-## 4. Bootstrap DotFiles
+## 4. Install browse & search utilities
+
+[https://ranger.github.io](https://ranger.github.io)
+
+[https://github.com/junegunn/fzf#installation](https://github.com/junegunn/fzf#installation)
+
+[https://github.com/ggreer/the_silver_searcher#installing](https://github.com/ggreer/the_silver_searcher#installing)
+
+[https://andrew.stwrt.ca/posts/vim-ctags](https://andrew.stwrt.ca/posts/vim-ctags)
+
+
+## 5. Bootstrap DotFiles
 
 ````
 sh -c "$(curl -fsSL https://raw.github.com/mauroporrasp/dotfiles/master/bootstrap)"
@@ -44,26 +55,12 @@ sh -c "$(curl -fsSL https://raw.github.com/mauroporrasp/dotfiles/master/bootstra
 ________________
 
 
-## Misc
+## Optional
 
-
-[http://ranger.nongnu.org](http://ranger.nongnu.org)
 
 [https://github.com/tony/tmuxp](https://github.com/tony/tmuxp)
 
 [https://github.com/editorconfig/editorconfig-vim](https://github.com/editorconfig/editorconfig-vim)
-
-
-### Search
-
-[https://github.com/junegunn/fzf#installation](https://github.com/junegunn/fzf#installation)
-
-[https://github.com/ggreer/the_silver_searcher#installing](https://github.com/ggreer/the_silver_searcher#installing)
-
-[https://andrew.stwrt.ca/posts/vim-ctags](https://andrew.stwrt.ca/posts/vim-ctags)
-
-
-### Appearance
 
 [https://github.com/tonsky/FiraCode](https://github.com/tonsky/FiraCode)
 
