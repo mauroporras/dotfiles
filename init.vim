@@ -98,6 +98,7 @@ set colorcolumn=+1
 let loaded_matchparen=1
 set cursorline
 set cmdheight=2
+set number
 
 " Searching.
 set ignorecase
