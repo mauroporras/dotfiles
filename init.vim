@@ -62,6 +62,7 @@ nnoremap <Leader>yn :bnext<CR>
 nnoremap <Leader>yp :bprevious<CR>
 nnoremap <Leader>yq :Bclose<CR>
 nnoremap <Leader>yr :edit!<CR>
+nnoremap <Leader>yt :BTags<CR>
 nnoremap <Leader>zh :History<CR>
 nnoremap <Leader>zl :Lines<CR>
 nnoremap <Leader>zm :Marks<CR>
