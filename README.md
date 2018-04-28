@@ -34,15 +34,15 @@ sudo apt install -y tmux git
 ````
 
 
-## 4. Install browse & search utilities
+## 4. Install utilities for browsing & searching
+
+[https://ctags.io/](https://ctags.io/)
 
 [https://ranger.github.io](https://ranger.github.io)
 
 [https://github.com/junegunn/fzf#installation](https://github.com/junegunn/fzf#installation)
 
 [https://github.com/ggreer/the_silver_searcher#installing](https://github.com/ggreer/the_silver_searcher#installing)
-
-[https://andrew.stwrt.ca/posts/vim-ctags](https://andrew.stwrt.ca/posts/vim-ctags)
 
 
 ## 5. Bootstrap DotFiles

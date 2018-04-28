@@ -2,8 +2,8 @@
 
 # Remove old config dirs and files.
 cd
-rm -rf dotfiles/ .config/nvim/ .config/ranger/
-rm -rf .tmux.conf .ctags .gitignore_global
+rm -rf dotfiles/ .config/nvim/ .config/ranger/ .ctags.d/
+rm -rf .tmux.conf .gitignore_global
 
 # Clone dotfiles repo.
 git clone --quiet https://github.com/mauroporrasp/dotfiles.git
@@ -13,9 +13,10 @@ mkdir -p .config/nvim/
 ln -s ~/dotfiles/init.vim ~/.config/nvim/init.vim
 mkdir -p .config/ranger/
 ln -s ~/dotfiles/rc.conf ~/.config/ranger/rc.conf
+mkdir -p .ctags.d/
+ln -s ~/dotfiles/general.ctags ~/.ctags.d/general.ctags
 
 ln -s ~/dotfiles/tmux.conf ~/.tmux.conf
-ln -s ~/dotfiles/ctags ~/.ctags
 ln -s ~/dotfiles/gitignore_global ~/.gitignore_global
 
 # Configure Git.
