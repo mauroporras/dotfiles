@@ -40,6 +40,8 @@ set timeoutlen=3333
 
 " Custom maps.
 nnoremap <Esc> :nohlsearch<CR><Esc>
+nnoremap <C-j> :cnext<CR>
+nnoremap <C-k> :cprevious<CR>
 nnoremap <Leader>; <C-w>p
 nnoremap <Leader>a :Ag<Space>
 nnoremap <Leader>b :Buffers<CR>
