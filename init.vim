@@ -8,24 +8,23 @@ endif
 call plug#begin('~/.config/nvim/plugged')
 Plug 'chriskempson/base16-vim'
 Plug 'easymotion/vim-easymotion'
+Plug 'editorconfig/editorconfig-vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'mattn/emmet-vim'
 Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
+Plug 'rafaqz/ranger.vim'
+Plug 'rbgrouleff/bclose.vim'
 Plug 'terryma/vim-expand-region'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
-Plug 'editorconfig/editorconfig-vim'
 Plug 'sbdchd/neoformat'
 " Fzf.
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
-" Ranger.
-Plug 'rbgrouleff/bclose.vim'
-Plug 'francoiscabrol/ranger.vim'
 " Snippets.
 Plug 'ervandew/supertab'
 Plug 'SirVer/ultisnips'
@@ -53,8 +52,13 @@ nnoremap <Leader>n :tabnext<CR>
 nnoremap <Leader>o :Files<CR>
 nnoremap <Leader>p :tabprevious<CR>
 nnoremap <Leader>q <C-w>q
-nnoremap <leader>rr :Ranger<CR>
-nnoremap <leader>rt :RangerNewTab<CR>
+nnoremap <Leader>ra :RangerAppend<CR>
+nnoremap <Leader>rc :set operatorfunc=RangerChangeOperator<cr>g@
+nnoremap <Leader>ri :RangerInsert<CR>
+nnoremap <Leader>rr :RangerEdit<CR>
+nnoremap <Leader>rs :RangerSplit<CR>
+nnoremap <Leader>rt :RangerTab<CR>
+nnoremap <Leader>rv :RangerVSplit<CR>
 nnoremap <Leader>s :wall<CR>
 nnoremap <Leader>t :tabnew<CR>
 nnoremap <Leader>w :Windows<CR>
@@ -113,9 +117,6 @@ set splitright
 
 
 " Plugins settings.
-
-" Ranger
-let g:ranger_map_keys=0
 
 " Neoformat and Prettier.
 autocmd FileType javascript set formatprg=prettier\ --no-semi\ --single-quote\ --trailing-comma\ es5\ --stdin
