@@ -94,15 +94,17 @@
 		<integer>1</integer>
 	</dict>
 	<key>NSWindow Frame NSFontPanel</key>
-	<string>426 203 929 410 0 0 1440 878 </string>
+	<string>497 173 964 189 0 0 1920 1058 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
-	<string>433 381 620 392 0 0 1440 900 </string>
+	<string>438 128 700 622 0 0 1440 878 </string>
+	<key>NSWindow Frame SessionsPreferences</key>
+	<string>269 126 606 469 0 0 1440 878 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>346 237 796 473 0 0 1440 878 </string>
+	<string>230 110 796 473 0 0 1440 878 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 0 1440 878 0 0 1440 878 </string>
+	<string>56 0 1864 1058 0 0 1920 1058 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>0 86 1210 792 0 0 1440 878 </string>
+	<string>56 86 1250 792 0 0 1440 878 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
 	<string>0 86 1250 792 0 0 1440 878 </string>
 	<key>NeverWarnAboutShortLivedSessions_00BF0E63-C8B0-4E71-9AED-4B8B5F6F73E5</key>
@@ -115,7 +117,7 @@
 			<key>ASCII Anti Aliased</key>
 			<true/>
 			<key>ASCII Ligatures</key>
-			<true/>
+			<false/>
 			<key>Ambiguous Double Width</key>
 			<false/>
 			<key>Ansi 0 Color</key>
@@ -2111,7 +2113,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2017-12-29T03:30:34Z</date>
+	<date>2018-05-13T04:41:31Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>ShowBookmarkName</key>
@@ -2131,7 +2133,7 @@
 	<key>WordCharacters</key>
 	<string>/-+\~_.</string>
 	<key>iTerm Version</key>
-	<string>3.1.5</string>
+	<string>3.1.6</string>
 	<key>kCPKSelectionViewPreferredModeKey</key>
 	<integer>7</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>
