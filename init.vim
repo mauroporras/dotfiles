@@ -14,7 +14,6 @@ Plug 'mattn/emmet-vim'
 Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
 Plug 'rafaqz/ranger.vim'
-Plug 'rbgrouleff/bclose.vim'
 Plug 'terryma/vim-expand-region'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tpope/vim-commentary'
@@ -66,7 +65,6 @@ nnoremap <Leader>y; :edit #<CR>
 nnoremap <Leader>yf :Neoformat<CR>
 nnoremap <Leader>yn :bnext<CR>
 nnoremap <Leader>yp :bprevious<CR>
-nnoremap <Leader>yq :Bclose<CR>
 nnoremap <Leader>yr :edit!<CR>
 nnoremap <Leader>yt :BTags<CR>
 nnoremap <Leader>zh :History<CR>
