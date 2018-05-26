@@ -6,7 +6,7 @@ rm -rf dotfiles/ .config/nvim/ .config/ranger/ .ctags.d/
 rm -rf .tmux.conf .gitignore_global
 
 # Clone dotfiles repo.
-git clone --quiet https://github.com/mauroporrasp/dotfiles.git
+git clone --quiet https://github.com/mauroporrasc/dotfiles.git
 
 # Create new symlinks.
 mkdir -p .config/nvim/
