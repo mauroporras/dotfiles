@@ -83,16 +83,15 @@ if filereadable(expand("~/.vimrc_background"))
   let base16colorspace=256
   source ~/.vimrc_background
 endif
-highlight IncSearch ctermbg=51 ctermfg=0
-highlight MatchParen ctermbg=232 ctermfg=41
-highlight Search ctermbg=38 ctermfg=0
-highlight StatusLine ctermbg=232 ctermfg=231
-highlight StatusLineNC ctermbg=234 ctermfg=244
-highlight TabLine ctermbg=234 ctermfg=244
-highlight TabLineFill ctermbg=234 ctermfg=244
-highlight TabLineSel ctermbg=232 ctermfg=231
-highlight VertSplit ctermbg=232 ctermfg=232
-highlight WildMenu ctermfg=0
+highlight IncSearch ctermbg=51 ctermfg=52
+highlight Search ctermbg=45 ctermfg=88
+highlight StatusLine ctermbg=white ctermfg=black
+highlight StatusLineNC ctermbg=gray ctermfg=white
+highlight TabLine ctermbg=gray ctermfg=black
+highlight TabLineFill ctermbg=gray
+highlight TabLineSel ctermbg=white ctermfg=black
+highlight VertSplit ctermbg=gray ctermfg=gray
+highlight WildMenu ctermbg=yellow ctermfg=white
 
 " Right margin column.
 set textwidth=80
