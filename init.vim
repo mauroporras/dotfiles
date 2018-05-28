@@ -98,7 +98,6 @@ set textwidth=80
 set colorcolumn=+1
 
 " Misc.
-set cursorline
 set cmdheight=2
 set number
 
