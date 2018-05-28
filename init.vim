@@ -83,14 +83,15 @@ if filereadable(expand("~/.vimrc_background"))
   let base16colorspace=256
   source ~/.vimrc_background
 endif
-highlight IncSearch ctermbg=51 ctermfg=52
-highlight Search ctermbg=45 ctermfg=88
+highlight IncSearch ctermbg=51 ctermfg=white
+highlight Search ctermbg=45 ctermfg=white
 highlight StatusLine ctermbg=white ctermfg=black
 highlight StatusLineNC ctermbg=gray ctermfg=white
 highlight TabLine ctermbg=gray ctermfg=black
 highlight TabLineFill ctermbg=gray
 highlight TabLineSel ctermbg=white ctermfg=black
 highlight VertSplit ctermbg=gray ctermfg=gray
+highlight Visual ctermbg=gray ctermfg=white
 highlight WildMenu ctermbg=yellow ctermfg=white
 
 " Misc.
