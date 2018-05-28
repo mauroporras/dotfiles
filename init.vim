@@ -93,10 +93,6 @@ highlight TabLineSel ctermbg=white ctermfg=black
 highlight VertSplit ctermbg=gray ctermfg=gray
 highlight WildMenu ctermbg=yellow ctermfg=white
 
-" Right margin column.
-set textwidth=80
-set colorcolumn=+1
-
 " Misc.
 set cmdheight=2
 set number
