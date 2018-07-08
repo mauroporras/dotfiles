@@ -89,7 +89,7 @@ highlight StatusLine ctermbg=white ctermfg=black
 highlight StatusLineNC ctermbg=gray ctermfg=white
 highlight TabLine ctermbg=gray ctermfg=black
 highlight TabLineFill ctermbg=gray
-highlight TabLineSel ctermbg=white ctermfg=black
+highlight TabLineSel ctermbg=black ctermfg=white
 highlight VertSplit ctermbg=gray ctermfg=gray
 highlight Visual ctermbg=gray ctermfg=white
 highlight WildMenu ctermbg=yellow ctermfg=white
