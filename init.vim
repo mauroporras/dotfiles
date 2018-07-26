@@ -38,18 +38,18 @@ set timeoutlen=3333
 
 " Custom maps.
 nnoremap <Esc> :nohlsearch<CR><Esc>
-nnoremap <C-j> :cnext<CR>
-nnoremap <C-k> :cprevious<CR>
-nnoremap <Leader>; <C-w>p
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+nnoremap <C-n> :tabnext<CR>
+nnoremap <C-p> :tabprevious<CR>
+nnoremap <C-s> :wall<CR>
 nnoremap <Leader>a :Ag<Space>
 nnoremap <Leader>b :Buffers<CR>
-nnoremap <Leader>h <C-w>h
-nnoremap <Leader>j <C-w>j
-nnoremap <Leader>k <C-w>k
-nnoremap <Leader>l <C-w>l
-nnoremap <Leader>n :tabnext<CR>
+nnoremap <Leader>n :cnext<CR>
+nnoremap <Leader>p :cprevious<CR>
 nnoremap <Leader>o :Files<CR>
-nnoremap <Leader>p :tabprevious<CR>
 nnoremap <Leader>q <C-w>q
 nnoremap <Leader>ra :RangerAppend<CR>
 nnoremap <Leader>rc :set operatorfunc=RangerChangeOperator<cr>g@
@@ -58,7 +58,6 @@ nnoremap <Leader>rr :RangerEdit<CR>
 nnoremap <Leader>rs :RangerSplit<CR>
 nnoremap <Leader>rt :RangerTab<CR>
 nnoremap <Leader>rv :RangerVSplit<CR>
-nnoremap <Leader>s :wall<CR>
 nnoremap <Leader>t :$tabnew<CR>
 nnoremap <Leader>w :Windows<CR>
 nnoremap <Leader>y; :edit #<CR>
