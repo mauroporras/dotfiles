@@ -83,6 +83,7 @@ if filereadable(expand("~/.vimrc_background"))
   source ~/.vimrc_background
 endif
 highlight IncSearch ctermbg=51 ctermfg=white
+highlight QuickFixLine ctermbg=gray ctermfg=white
 highlight Search ctermbg=45 ctermfg=white
 highlight StatusLine ctermbg=white ctermfg=black
 highlight StatusLineNC ctermbg=gray ctermfg=white
