@@ -112,9 +112,9 @@ set splitright
 
 " Ale.
 let g:ale_fixers = {
-\  'css': ['prettier'],
-\  'javascript': ['prettier'],
-\  'json': ['prettier'],
+\ 'css': ['prettier'],
+\ 'javascript': ['prettier'],
+\ 'json': ['prettier'],
 \}
 
 " vim-expand-region.
@@ -139,3 +139,10 @@ let g:SuperTabDefaultCompletionType = '<C-n>'
 let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+
+" Fzf.
+let g:fzf_action = {
+\ 'ctrl-t': 'tab split',
+\ 'ctrl-s': 'split',
+\ 'ctrl-v': 'vsplit'
+\}
