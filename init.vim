@@ -44,7 +44,6 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 nnoremap <C-n> :tabnext<CR>
 nnoremap <C-p> :tabprevious<CR>
-nnoremap <C-s> :wall<CR>
 nnoremap <Leader>a :Ag<Space>
 nnoremap <Leader>b :Buffers<CR>
 nnoremap <Leader>n :cnext<CR>
@@ -58,6 +57,7 @@ nnoremap <Leader>rr :RangerEdit<CR>
 nnoremap <Leader>rs :RangerSplit<CR>
 nnoremap <Leader>rt :RangerTab<CR>
 nnoremap <Leader>rv :RangerVSplit<CR>
+nnoremap <Leader>s :wall<CR>
 nnoremap <Leader>t :$tabnew<CR>
 nnoremap <Leader>w :Windows<CR>
 nnoremap <Leader>y; :edit #<CR>
