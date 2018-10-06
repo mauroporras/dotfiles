@@ -62,6 +62,6 @@ ________________
 
 [https://github.com/editorconfig/editorconfig-vim](https://github.com/editorconfig/editorconfig-vim)
 
-[https://github.com/tonsky/FiraCode](https://github.com/tonsky/FiraCode)
+[http://input.fontbureau.com](http://input.fontbureau.com)
 
 [https://github.com/chriskempson/base16-shell](https://github.com/chriskempson/base16-shell)
