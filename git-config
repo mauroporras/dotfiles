@@ -57,8 +57,10 @@ git config --global alias.rso 'remote show origin'
 git config --global alias.rpo 'remote prune origin'
 
 git config --global alias.sl 'stash list'
-git config --global alias.sp 'stash pop'
-git config --global alias.ss 'stash save'
+git config --global alias.spo 'stash pop'
+git config --global alias.spo1 "stash pop 'stash@{1}'"
+git config --global alias.spo2 "stash pop 'stash@{2}'"
+git config --global alias.spu 'stash push'
 
 git config --global alias.p 'pull'
 git config --global alias.pr 'pull --rebase'
