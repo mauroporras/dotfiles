@@ -73,6 +73,7 @@ nnoremap <Leader>zt :Tags<CR>
 cnoremap <C-a> <Home>
 cnoremap <C-b> <Left>
 cnoremap <C-f> <Right>
+tnoremap <Esc> <C-\><C-n>
 
 " Enable mouse, sometimes it's useful.
 set mouse=a
