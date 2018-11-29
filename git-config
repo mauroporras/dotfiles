@@ -28,8 +28,8 @@ git config --global alias.ap 'add -p'
 
 git config --global alias.ci 'commit'
 git config --global alias.cip '! git commit && git push'
-git config --global alias.wip '! git ci -m WIP-$(git rev-parse --abbrev-ref HEAD)'
-git config --global alias.wipp '! git ci -m WIP-$(git rev-parse --abbrev-ref HEAD) && git push'
+git config --global alias.wip "! git commit -m 'WIP: $(git rev-parse --abbrev-ref HEAD)'"
+git config --global alias.wipp "! git commit -m 'WIP: $(git rev-parse --abbrev-ref HEAD)' && git push'"
 git config --global alias.c 'checkout'
 git config --global alias.cb 'checkout -b'
 git config --global alias.cm 'checkout master'
