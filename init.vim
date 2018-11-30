@@ -37,6 +37,11 @@ let mapleader=' '
 set timeoutlen=3333
 
 " Custom maps.
+" Console.
+cnoremap <C-a> <Home>
+cnoremap <C-b> <Left>
+cnoremap <C-f> <Right>
+" Normal.
 nnoremap <Esc> :nohlsearch<CR><Esc>
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
@@ -70,10 +75,11 @@ nnoremap <Leader>zh :History<CR>
 nnoremap <Leader>zl :Lines<CR>
 nnoremap <Leader>zm :Marks<CR>
 nnoremap <Leader>zt :Tags<CR>
-cnoremap <C-a> <Home>
-cnoremap <C-b> <Left>
-cnoremap <C-f> <Right>
-tnoremap <Esc> <C-\><C-n>
+" Terminal.
+tnoremap <C-w>h <C-\><C-n><C-w>h
+tnoremap <C-w>j <C-\><C-n><C-w>j
+tnoremap <C-w>k <C-\><C-n><C-w>k
+tnoremap <C-w>l <C-\><C-n><C-w>l
 
 " Enable mouse, sometimes it's useful.
 set mouse=a
