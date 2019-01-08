@@ -55,13 +55,13 @@ nnoremap <Leader>n :cnext<CR>
 nnoremap <Leader>p :cprevious<CR>
 nnoremap <Leader>o :Files<CR>
 nnoremap <Leader>q <C-w>q
-nnoremap <Leader>ra :RangerAppend<CR>
-nnoremap <Leader>rc :set operatorfunc=RangerChangeOperator<cr>g@
-nnoremap <Leader>ri :RangerInsert<CR>
-nnoremap <Leader>rr :RangerEdit<CR>
-nnoremap <Leader>rs :RangerSplit<CR>
-nnoremap <Leader>rt :RangerTab<CR>
-nnoremap <Leader>rv :RangerVSplit<CR>
+nnoremap <Leader>r :RangerEdit<CR>
+nnoremap <Leader>Ra :RangerAppend<CR>
+nnoremap <Leader>Rc :set operatorfunc=RangerChangeOperator<cr>g@
+nnoremap <Leader>Ri :RangerInsert<CR>
+nnoremap <Leader>Rs :RangerSplit<CR>
+nnoremap <Leader>Rt :RangerTab<CR>
+nnoremap <Leader>Rv :RangerVSplit<CR>
 nnoremap <Leader>s :wall<CR>
 nnoremap <Leader>t :$tabnew<CR>
 nnoremap <Leader>w :Windows<CR>
