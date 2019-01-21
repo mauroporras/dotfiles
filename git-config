@@ -68,3 +68,6 @@ git config --global alias.pr 'pull --rebase'
 
 git config --global alias.r 'rebase'
 git config --global alias.ri 'rebase -i'
+
+git config --global alias.mm 'merge'
+git config --global alias.ms 'merge --squash'
