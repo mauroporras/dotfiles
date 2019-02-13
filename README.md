@@ -58,6 +58,8 @@ ________________
 ## Optional
 
 
+[https://formulae.brew.sh/formula/coreutils](https://formulae.brew.sh/formula/coreutils)
+
 [https://github.com/tony/tmuxp](https://github.com/tony/tmuxp)
 
 [https://github.com/editorconfig/editorconfig-vim](https://github.com/editorconfig/editorconfig-vim)
