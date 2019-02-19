@@ -64,6 +64,7 @@ nnoremap <Leader>Rt :RangerTab<CR>
 nnoremap <Leader>Rv :RangerVSplit<CR>
 nnoremap <Leader>s :wall<CR>
 nnoremap <Leader>t :$tabnew<CR>
+nnoremap <Leader>Tq :tabclose<CR>
 nnoremap <Leader>w :Windows<CR>
 nnoremap <Leader>y; :edit #<CR>
 nnoremap <Leader>yf :ALEFix<CR>
