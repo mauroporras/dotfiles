@@ -25,10 +25,10 @@ Plug 'w0rp/ale'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 " Snippets.
-Plug 'ervandew/supertab'
-Plug 'SirVer/ultisnips'
 Plug 'Valloric/YouCompleteMe'
+Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+Plug 'ervandew/supertab'
 call plug#end()
 filetype plugin indent on
 
@@ -51,6 +51,7 @@ nnoremap <C-n> :tabnext<CR>
 nnoremap <C-p> :tabprevious<CR>
 nnoremap <Leader>a :Ag<Space>
 nnoremap <Leader>b :Buffers<CR>
+nnoremap <Leader>g :YcmCompleter GoTo<CR>
 nnoremap <Leader>n :cnext<CR>
 nnoremap <Leader>p :cprevious<CR>
 nnoremap <Leader>o :Files<CR>
@@ -123,6 +124,7 @@ let g:ale_fixers = {
 \ 'css': ['prettier'],
 \ 'javascript': ['prettier'],
 \ 'json': ['prettier'],
+\ 'yaml': ['prettier'],
 \}
 
 " vim-expand-region.
