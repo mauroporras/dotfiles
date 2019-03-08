@@ -52,6 +52,7 @@ nnoremap <C-p> :tabprevious<CR>
 nnoremap <Leader>a :Ag<Space>
 nnoremap <Leader>b :Buffers<CR>
 nnoremap <Leader>g :YcmCompleter GoTo<CR>
+nnoremap <Leader>Gr :YcmCompleter RefactorRename<Space>
 nnoremap <Leader>n :cnext<CR>
 nnoremap <Leader>p :cprevious<CR>
 nnoremap <Leader>o :Files<CR>
