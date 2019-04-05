@@ -22,28 +22,30 @@ git config --global color.grep.filename 'magenta'
 git config --global color.grep.linenumber 'blue'
 git config --global color.grep.match 'green'
 
-git config --global alias.ua 'add -u'
 git config --global alias.ai 'add -i'
 git config --global alias.ap 'add -p'
+git config --global alias.ua 'add -u'
+
+git config --global alias.b 'branch'
+git config --global alias.ba 'branch -a'
+git config --global alias.big 'bisect good'
+git config --global alias.bib 'bisect bad'
+
+git config --global alias.c 'checkout'
+git config --global alias.cb 'checkout -b'
+git config --global alias.cd 'checkout dev'
+git config --global alias.cm 'checkout master'
+git config --global alias.cp 'checkout -p'
 
 git config --global alias.ci 'commit'
 git config --global alias.cip '!git commit && git push'
 git config --global alias.current-branch '!git rev-parse --abbrev-ref HEAD'
 git config --global alias.wip '!git commit -m WIP:\ $(git current-branch)'
 git config --global alias.wipp '!git commit -m WIP:\ $(git current-branch) && git push'
-git config --global alias.c 'checkout'
-git config --global alias.cb 'checkout -b'
-git config --global alias.cm 'checkout master'
-git config --global alias.cp 'cherry-pick'
-git config --global alias.big 'bisect good'
-git config --global alias.bib 'bisect bad'
-git config --global alias.b 'branch'
-git config --global alias.ba 'branch -a'
 
 git config --global alias.l 'log --graph --decorate --pretty=oneline --abbrev-commit'
 git config --global alias.la 'log --graph --decorate --pretty=oneline --abbrev-commit --all'
 git config --global alias.ld "log --graph --decorate --pretty=format:'%Cred%h%Creset - %Cgreen(%cr)%Creset %s%C(yellow)%d%Creset' --abbrev-commit --date=iso"
-git config --global alias.s 'status -sb'
 
 git config --global alias.d 'diff'
 git config --global alias.dw 'diff --color-words -w -b'
@@ -54,8 +56,13 @@ git config --global alias.dpr 'diff --color-words -w -b master...@'
 git config --global alias.g 'grep --break --heading --line-number'
 git config --global alias.gi 'grep -i --break --heading --line-number'
 
+git config --global alias.rp 'reset -p'
+git config --global alias.rs 'reset --soft'
+
 git config --global alias.rso 'remote show origin'
 git config --global alias.rpo 'remote prune origin'
+
+git config --global alias.s 'status -sb'
 
 git config --global alias.sl 'stash list'
 git config --global alias.spo 'stash pop'
