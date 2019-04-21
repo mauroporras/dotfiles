@@ -1,40 +1,46 @@
 # DotFiles
 
-Cool configuration and plugins for Neovim, tmux and Git.
+Cool configs for Neovim, tmux and Git, on Zsh.
+
+[https://hub.docker.com/r/mporras/dotfiles](https://hub.docker.com/r/mporras/dotfiles)
+
+## 1. Install Zsh and Oh My Zsh
+
+https://github.com/robbyrussell/oh-my-zsh/blob/master/README.md
 
 
-## 1. Install Neovim
+## 2. Install Neovim
 
 [https://github.com/neovim/neovim/wiki/Installing-Neovim](https://github.com/neovim/neovim/wiki/Installing-Neovim)
 
 If you're transitioning from Vim: `:h nvim-from-vim`
 
 
-## 2. Add Python support to Neovim
+## 3. Add Python support to Neovim
 
 ````
 pip3 install --user --upgrade neovim
 ````
 
 
-## 3. Install tmux and Git
+## 4. Install tmux and Git
 
 
-### In macOS (Using MacPorts)
+### macOS (Using MacPorts)
 
 ````
 sudo port install tmux git
 ````
 
 
-### In Ubuntu
+### Ubuntu
 
 ````
 sudo apt install -y tmux git
 ````
 
 
-## 4. Install utilities for browsing & searching
+## 5. Install utilities for browsing & searching
 
 [https://ctags.io/](https://ctags.io/)
 
@@ -45,10 +51,12 @@ sudo apt install -y tmux git
 [https://github.com/ggreer/the_silver_searcher#installing](https://github.com/ggreer/the_silver_searcher#installing)
 
 
-## 5. Bootstrap DotFiles
+## 6. Bootstrap DotFiles
 
 ````
-sh -c "$(curl -fsSL https://github.com/mauroporras/dotfiles/raw/master/bootstrap)"
+git clone https://github.com/mauroporras/dotfiles.git ~/dotfiles
+~/dotfiles/bootstrap
+~/dotfiles/git-config
 ````
 
 
@@ -67,3 +75,7 @@ ________________
 [http://input.fontbureau.com](http://input.fontbureau.com)
 
 [https://github.com/chriskempson/base16-shell](https://github.com/chriskempson/base16-shell)
+
+[https://github.com/direnv/direnv](https://github.com/direnv/direnv)
+
+[https://github.com/denysdovhan/spaceship-prompt](https://github.com/denysdovhan/spaceship-prompt)
