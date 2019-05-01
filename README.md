@@ -18,9 +18,9 @@ If you're transitioning from Vim: `:h nvim-from-vim`
 
 ## 3. Add Python support to Neovim
 
-````
+``` bash
 pip3 install --user --upgrade neovim
-````
+```
 
 
 ## 4. Install tmux and Git
@@ -28,16 +28,16 @@ pip3 install --user --upgrade neovim
 
 ### macOS (Using MacPorts)
 
-````
+``` bash
 sudo port install tmux git
-````
+```
 
 
 ### Ubuntu
 
-````
+``` bash
 sudo apt install -y tmux git
-````
+```
 
 
 ## 5. Install utilities for browsing & searching
@@ -53,18 +53,17 @@ sudo apt install -y tmux git
 
 ## 6. Bootstrap DotFiles
 
-````
+``` bash
 git clone https://github.com/mauroporras/dotfiles.git ~/dotfiles
 ~/dotfiles/bootstrap
 ~/dotfiles/git-config
-````
+```
 
 
-________________
+______
 
 
 ## Optional
-
 
 [https://formulae.brew.sh/formula/coreutils](https://formulae.brew.sh/formula/coreutils)
 
@@ -79,3 +78,9 @@ ________________
 [https://github.com/direnv/direnv](https://github.com/direnv/direnv)
 
 [https://github.com/denysdovhan/spaceship-prompt](https://github.com/denysdovhan/spaceship-prompt)
+
+
+## Quick links
+
+[https://man.openbsd.org/tmux.1#DEFAULT_KEY_BINDING](https://man.openbsd.org/tmux.1#DEFAULT_KEY_BINDING)
+[https://upload.wikimedia.org/wikipedia/commons/1/15/Xterm_256color_chart.svg](https://upload.wikimedia.org/wikipedia/commons/1/15/Xterm_256color_chart.svg)
