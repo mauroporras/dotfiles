@@ -51,7 +51,7 @@ sudo apt install -y tmux git
 [https://github.com/ggreer/the_silver_searcher#installing](https://github.com/ggreer/the_silver_searcher#installing)
 
 
-## 6. Bootstrap DotFiles
+## 6. Finally, bootstrap DotFiles
 
 ``` bash
 git clone https://github.com/mauroporras/dotfiles.git ~/dotfiles
