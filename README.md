@@ -42,7 +42,7 @@ sudo apt install -y tmux git
 
 ## 5. Install utilities for browsing & searching
 
-[https://ctags.io/](https://ctags.io/)
+[https://ctags.io](https://ctags.io)
 
 [https://ranger.github.io](https://ranger.github.io)
 
