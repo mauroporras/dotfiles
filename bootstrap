@@ -14,4 +14,5 @@ ln -sf ~/dotfiles/general.ctags .ctags.d/general.ctags
 ln -sf ~/dotfiles/tmux.conf .tmux.conf
 ln -sf ~/dotfiles/gitignore_global .gitignore_global
 
+mkdir -p .oh-my-zsh/custom/
 ln -sf ~/dotfiles/aliases.zsh ~/dotfiles/env_vars.zsh ~/dotfiles/functions.zsh .oh-my-zsh/custom/
