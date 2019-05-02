@@ -82,5 +82,5 @@ ______
 
 ## Quick links
 
-[https://man.openbsd.org/tmux.1#DEFAULT_KEY_BINDING](https://man.openbsd.org/tmux.1#DEFAULT_KEY_BINDING)
+[https://man.openbsd.org/tmux.1#DEFAULT_KEY_BINDINGS](https://man.openbsd.org/tmux.1#DEFAULT_KEY_BINDINGS)
 [https://upload.wikimedia.org/wikipedia/commons/1/15/Xterm_256color_chart.svg](https://upload.wikimedia.org/wikipedia/commons/1/15/Xterm_256color_chart.svg)
