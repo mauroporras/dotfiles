@@ -65,6 +65,8 @@ ______
 
 ## Optional
 
+[https://github.com/zeit/hyper](https://github.com/zeit/hyper)
+
 [https://formulae.brew.sh/formula/coreutils](https://formulae.brew.sh/formula/coreutils)
 
 [https://github.com/tony/tmuxp](https://github.com/tony/tmuxp)
