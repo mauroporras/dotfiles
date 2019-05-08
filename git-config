@@ -35,6 +35,7 @@ git config --global alias.c 'checkout'
 git config --global alias.cb 'checkout -b'
 git config --global alias.cd 'checkout dev'
 git config --global alias.cm 'checkout master'
+git config --global alias.cs 'checkout staging'
 git config --global alias.cp 'checkout -p'
 
 git config --global alias.ci 'commit'
@@ -59,8 +60,10 @@ git config --global alias.gi 'grep -i --break --heading --line-number'
 git config --global alias.rp 'reset -p'
 git config --global alias.rs 'reset --soft'
 
-git config --global alias.rso 'remote show origin'
 git config --global alias.rpo 'remote prune origin'
+git config --global alias.rpu 'remote prune upstream'
+git config --global alias.rso 'remote show origin'
+git config --global alias.rsu 'remote show upstream'
 
 git config --global alias.s 'status -sb'
 
