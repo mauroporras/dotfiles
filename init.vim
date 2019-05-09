@@ -1,3 +1,6 @@
+" To reload config:
+" :source %
+
 " Install vim-plug if not present.
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
   silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
@@ -6,7 +9,7 @@ if empty(glob('~/.config/nvim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.config/nvim/plugged')
-Plug 'chriskempson/base16-vim'
+Plug 'altercation/vim-colors-solarized'
 Plug 'easymotion/vim-easymotion'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'jiangmiao/auto-pairs'
@@ -88,10 +91,10 @@ tnoremap <C-w>l <C-\><C-n><C-w>l
 set mouse=a
 
 " Color scheme.
-if filereadable(expand("~/.vimrc_background"))
-  let base16colorspace=256
-  source ~/.vimrc_background
-endif
+syntax enable
+set background=light
+colorscheme solarized
+
 highlight IncSearch ctermbg=51 ctermfg=white
 highlight QuickFixLine ctermbg=gray ctermfg=white
 highlight Search ctermbg=45 ctermfg=white

@@ -2,7 +2,7 @@
 
 Cool configs for Neovim, tmux and Git, on Zsh.
 
-[https://hub.docker.com/r/mporras/dotfiles](https://hub.docker.com/r/mporras/dotfiles)
+[https://hub.docker.com/r/mauroporras/dotfiles](https://hub.docker.com/r/mauroporras/dotfiles)
 
 ## 1. Install Zsh and Oh My Zsh
 
@@ -65,6 +65,8 @@ ______
 
 ## Optional
 
+[https://github.com/zeit/hyper](https://github.com/zeit/hyper)
+
 [https://formulae.brew.sh/formula/coreutils](https://formulae.brew.sh/formula/coreutils)
 
 [https://github.com/tony/tmuxp](https://github.com/tony/tmuxp)
@@ -72,8 +74,6 @@ ______
 [https://github.com/editorconfig/editorconfig-vim](https://github.com/editorconfig/editorconfig-vim)
 
 [http://input.fontbureau.com](http://input.fontbureau.com)
-
-[https://github.com/chriskempson/base16-shell](https://github.com/chriskempson/base16-shell)
 
 [https://github.com/direnv/direnv](https://github.com/direnv/direnv)
 
@@ -83,4 +83,7 @@ ______
 ## Quick links
 
 [https://man.openbsd.org/tmux.1#DEFAULT_KEY_BINDINGS](https://man.openbsd.org/tmux.1#DEFAULT_KEY_BINDINGS)
+
 [https://upload.wikimedia.org/wikipedia/commons/1/15/Xterm_256color_chart.svg](https://upload.wikimedia.org/wikipedia/commons/1/15/Xterm_256color_chart.svg)
+
+[https://ethanschoonover.com/solarized](https://ethanschoonover.com/solarized)
