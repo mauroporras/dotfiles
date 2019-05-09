@@ -1,4 +1,5 @@
 alias ag='ag --hidden'
+
 alias dk='docker'
 alias dkc='docker container'
 alias dkcl='docker container ls'
@@ -8,9 +9,14 @@ alias dki='docker image'
 alias dkil='docker image ls'
 alias dkila='docker image ls -a'
 alias dkm='docker-compose'
+alias dkv='docker volume'
+alias dkvl='docker volume ls'
+
 alias ev='v ~/dotfiles/init.vim'
 alias ez='v ~/.zshrc'
+
 alias g='git'
+
 alias j='jobs'
 alias k1='kill %1'
 alias k2='kill %2'
@@ -20,9 +26,11 @@ alias r='ranger'
 alias sz='source ~/.zshrc'
 alias t='tmux'
 alias tpl='tmuxp load tmuxp.json'
+
 alias v='nvim'
 alias vd='nvim -d'
 alias vs='nvim -S'
 alias vss='nvim -S Session.vim'
 alias vv='nvim --noplugin'
+
 alias wa='which -a'
