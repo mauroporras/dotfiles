@@ -16,5 +16,6 @@ ln -sf ~/dotfiles/general.ctags .ctags.d/general.ctags
 
 ln -sf ~/dotfiles/tmux.conf .tmux.conf
 ln -sf ~/dotfiles/gitignore_global .gitignore_global
+ln -sf ~/dotfiles/.hyper.js .hyper.js
 
 ln -sf ~/dotfiles/aliases.zsh ~/dotfiles/env_vars.zsh ~/dotfiles/functions.zsh .oh-my-zsh/custom/

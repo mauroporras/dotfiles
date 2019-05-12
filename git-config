@@ -76,8 +76,8 @@ git config --global alias.spu 'stash push'
 git config --global alias.p 'pull'
 git config --global alias.pr 'pull --rebase'
 
-git config --global alias.r 'rebase'
-git config --global alias.ri 'rebase -i'
+git config --global alias.rb 'rebase'
+git config --global alias.rbi 'rebase -i'
 
 git config --global alias.mm 'merge'
 git config --global alias.ms 'merge --squash'

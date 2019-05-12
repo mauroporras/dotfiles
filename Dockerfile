@@ -20,8 +20,7 @@ RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh
 
 # Install utilities.
 RUN git clone --depth=1 --quiet https://github.com/junegunn/fzf.git && \
-    ./fzf/install && \
-    git clone --depth=1 --quiet https://github.com/chriskempson/base16-shell.git .config/base16-shell
+    ./fzf/install
 
 # Bootstrap dotfiles repo.
 RUN git clone --depth=1 --quiet https://github.com/mauroporras/dotfiles.git && \
