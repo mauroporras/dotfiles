@@ -1,6 +1,7 @@
 alias ag='ag --hidden'
 
 alias dk='docker'
+alias dkce='docker container exec'
 alias dkc='docker container'
 alias dkcl='docker container ls'
 alias dkcla='docker container ls -a'
