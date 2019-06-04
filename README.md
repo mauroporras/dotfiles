@@ -29,6 +29,8 @@ pip3 install --user --upgrade neovim
 
 ## 4. Install tmux and Git
 
+For tmux support: [https://github.com/tmux/tmux/wiki/FAQ](https://github.com/tmux/tmux/wiki/FAQ)
+
 
 ### macOS (Using MacPorts)
 
