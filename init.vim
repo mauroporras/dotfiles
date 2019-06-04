@@ -9,11 +9,11 @@ if empty(glob('~/.config/nvim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.config/nvim/plugged')
-Plug 'altercation/vim-colors-solarized'
 Plug 'easymotion/vim-easymotion'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'mattn/emmet-vim'
+Plug 'morhetz/gruvbox'
 Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
 Plug 'rafaqz/ranger.vim'
@@ -90,22 +90,28 @@ tnoremap <C-w>l <C-\><C-n><C-w>l
 " Enable mouse, sometimes it's useful.
 set mouse=a
 
-" Color scheme.
+" Color scheme & italics.
 syntax enable
+let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
 set background=light
-colorscheme solarized
+set termguicolors
+let g:gruvbox_italic=1
+let g:gruvbox_contrast_light='soft'
+let g:gruvbox_number_column='bg2'
+colorscheme gruvbox
 
-highlight IncSearch ctermbg=51 ctermfg=white
-highlight QuickFixLine ctermbg=gray ctermfg=white
-highlight Search ctermbg=45 ctermfg=white
-highlight StatusLine ctermbg=white ctermfg=black
-highlight StatusLineNC ctermbg=gray ctermfg=white
-highlight TabLine ctermbg=gray ctermfg=black
-highlight TabLineFill ctermbg=gray
-highlight TabLineSel ctermbg=black ctermfg=white
-highlight VertSplit ctermbg=gray ctermfg=gray
-highlight Visual ctermbg=gray ctermfg=white
-highlight WildMenu ctermbg=yellow ctermfg=white
+" highlight IncSearch ctermbg=51 ctermfg=white
+" highlight QuickFixLine ctermbg=gray ctermfg=white
+" highlight Search ctermbg=45 ctermfg=white
+" highlight StatusLine ctermbg=white ctermfg=black
+" highlight StatusLineNC ctermbg=gray ctermfg=white
+" highlight TabLine ctermbg=gray ctermfg=black
+" highlight TabLineFill ctermbg=gray
+" highlight TabLineSel ctermbg=black ctermfg=white
+" highlight VertSplit ctermbg=gray ctermfg=gray
+" highlight Visual ctermbg=gray ctermfg=white
+" highlight WildMenu ctermbg=yellow ctermfg=white
 
 " Misc.
 set cmdheight=2

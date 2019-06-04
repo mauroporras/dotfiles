@@ -22,7 +22,7 @@ To optimize Neovim: `:checkhealth`
 
 ## 3. Add Python support to Neovim
 
-``` bash
+```bash
 pip3 install --user --upgrade neovim
 ```
 
@@ -34,14 +34,14 @@ For tmux support: [https://github.com/tmux/tmux/wiki/FAQ](https://github.com/tmu
 
 ### macOS (Using MacPorts)
 
-``` bash
+```bash
 sudo port install tmux git
 ```
 
 
 ### Ubuntu
 
-``` bash
+```bash
 sudo apt install -y tmux git
 ```
 
@@ -57,10 +57,11 @@ sudo apt install -y tmux git
 
 ## 6. Finally, bootstrap DotFiles
 
-``` bash
+```bash
 git clone https://github.com/mauroporras/dotfiles.git ~/dotfiles
 ~/dotfiles/bootstrap
 ~/dotfiles/git-config
+~/dotfiles/install-terms
 ```
 
 
@@ -81,6 +82,8 @@ ______
 
 [http://input.fontbureau.com](http://input.fontbureau.com)
 
+[https://github.com/chriskempson/base16-shell](https://github.com/chriskempson/base16-shell)
+
 [https://github.com/direnv/direnv](https://github.com/direnv/direnv)
 
 [https://github.com/denysdovhan/spaceship-prompt](https://github.com/denysdovhan/spaceship-prompt)
@@ -92,4 +95,4 @@ ______
 
 [https://upload.wikimedia.org/wikipedia/commons/1/15/Xterm_256color_chart.svg](https://upload.wikimedia.org/wikipedia/commons/1/15/Xterm_256color_chart.svg)
 
-[https://ethanschoonover.com/solarized](https://ethanschoonover.com/solarized)
+[https://github.com/morhetz/gruvbox](https://github.com/morhetz/gruvbox)
