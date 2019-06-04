@@ -102,16 +102,16 @@ let g:gruvbox_number_column='bg2'
 colorscheme gruvbox
 " }}
 
-" highlight IncSearch ctermbg=51 ctermfg=white
+highlight IncSearch ctermbg=black ctermfg=51
 " highlight QuickFixLine ctermbg=gray ctermfg=white
-" highlight Search ctermbg=45 ctermfg=white
-" highlight StatusLine ctermbg=white ctermfg=black
-" highlight StatusLineNC ctermbg=gray ctermfg=white
-" highlight TabLine ctermbg=gray ctermfg=black
-" highlight TabLineFill ctermbg=gray
+highlight Search ctermbg=black ctermfg=45
+highlight StatusLine ctermbg=white ctermfg=black
+" highlight StatusLineNC ctermbg=white ctermfg=gray
+" highlight TabLine ctermbg=black ctermfg=gray
+" highlight TabLineFill ctermbg=black
 " highlight TabLineSel ctermbg=black ctermfg=white
 " highlight VertSplit ctermbg=gray ctermfg=gray
-" highlight Visual ctermbg=gray ctermfg=white
+" highlight Visual ctermbg=white ctermfg=gray
 " highlight WildMenu ctermbg=yellow ctermfg=white
 
 " Misc.
