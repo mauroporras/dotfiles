@@ -13,7 +13,11 @@ https://github.com/robbyrussell/oh-my-zsh/blob/master/README.md
 
 [https://github.com/neovim/neovim/wiki/Installing-Neovim](https://github.com/neovim/neovim/wiki/Installing-Neovim)
 
+If you are new: `:h nvim`
+
 If you're transitioning from Vim: `:h nvim-from-vim`
+
+To optimize Neovim: `:checkhealth`
 
 
 ## 3. Add Python support to Neovim
