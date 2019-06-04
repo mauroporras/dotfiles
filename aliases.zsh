@@ -27,7 +27,7 @@ alias l='ls -lAhF'
 alias r='ranger'
 alias sz='source ~/.zshrc'
 alias t='tmux'
-alias tpl='tmuxp load tmuxp.json'
+alias tpl='tmuxp load .'
 
 alias v='nvim'
 alias vd='nvim -d'
