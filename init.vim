@@ -46,10 +46,6 @@ cnoremap <C-b> <Left>
 cnoremap <C-f> <Right>
 " Normal.
 nnoremap <Esc> :nohlsearch<CR><Esc>
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
 nnoremap <C-n> :tabnext<CR>
 nnoremap <C-p> :tabprevious<CR>
 nnoremap <Leader>a :Ag<Space>
@@ -69,7 +65,6 @@ nnoremap <Leader>Rt :RangerTab<CR>
 nnoremap <Leader>Rv :RangerVSplit<CR>
 nnoremap <Leader>s :wall<CR>
 nnoremap <Leader>t :$tabnew<CR>
-nnoremap <Leader>Tq :tabclose<CR>
 nnoremap <Leader>w :Windows<CR>
 nnoremap <Leader>y; :edit #<CR>
 nnoremap <Leader>yf :ALEFix<CR>
