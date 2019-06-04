@@ -39,11 +39,14 @@ filetype plugin indent on
 let mapleader=' '
 set timeoutlen=3333
 
-" Custom maps.
-" Console.
+" Custom key maps.
+" Command line (:h mapmode-c).
 cnoremap <C-a> <Home>
 cnoremap <C-b> <Left>
+cnoremap <C-d> <Del>
 cnoremap <C-f> <Right>
+" Insert.
+inoremap <C-d> <Del>
 " Normal.
 nnoremap <Esc> :nohlsearch<CR><Esc>
 nnoremap <C-n> :tabnext<CR>
