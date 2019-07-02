@@ -13,6 +13,10 @@ alias dkm='docker-compose'
 alias dkv='docker volume'
 alias dkvl='docker volume ls'
 
+alias kb='kubectl'
+
+alias mkb='minikube'
+
 alias ev='v ~/dotfiles/init.vim'
 alias ez='v ~/.zshrc'
 
