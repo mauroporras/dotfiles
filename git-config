@@ -60,6 +60,8 @@ git config --global alias.gi 'grep -i --break --heading --line-number'
 git config --global alias.rp 'reset -p'
 git config --global alias.rs 'reset --soft'
 
+git config --global alias.fu 'fetch upstream'
+
 git config --global alias.rpo 'remote prune origin'
 git config --global alias.rpu 'remote prune upstream'
 git config --global alias.rso 'remote show origin'
