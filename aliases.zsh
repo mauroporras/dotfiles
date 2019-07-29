@@ -10,9 +10,14 @@ alias dkcsa='docker container stop $(docker container list -aq)'
 alias dki='docker image'
 alias dkil='docker image ls'
 alias dkila='docker image ls -a'
-alias dkm='docker-compose'
 alias dkv='docker volume'
 alias dkvl='docker volume ls'
+
+alias dkm='docker-compose'
+alias dkmb='docker-compose build'
+alias dkmd='docker-compose down'
+alias dkmu='docker-compose up'
+alias dkmub='docker-compose up --build'
 
 alias kb='kubectl'
 
