@@ -88,16 +88,18 @@ tnoremap <C-w>l <C-\><C-n><C-w>l
 " Enable mouse, sometimes it's useful.
 set mouse=a
 
-" Color scheme & italics.
+" Color scheme & italics. {{
 syntax enable
 let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
 set background=light
 set termguicolors
+let g:gruvbox_contrast_light='hard'
 let g:gruvbox_italic=1
-let g:gruvbox_contrast_light='soft'
+let g:gruvbox_italicize_strings=1
 let g:gruvbox_number_column='bg2'
 colorscheme gruvbox
+" }}
 
 " highlight IncSearch ctermbg=51 ctermfg=white
 " highlight QuickFixLine ctermbg=gray ctermfg=white
