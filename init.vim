@@ -70,7 +70,6 @@ nnoremap <Leader>s :wall<CR>
 nnoremap <Leader>t :$tabnew<CR>
 nnoremap <Leader>w :Windows<CR>
 nnoremap <Leader>y; :edit #<CR>
-nnoremap <Leader>yf :ALEFix<CR>
 nnoremap <Leader>yn :bnext<CR>
 nnoremap <Leader>yp :bprevious<CR>
 nnoremap <Leader>yr :edit!<CR>
@@ -129,10 +128,12 @@ set splitright
 
 " Plugins settings.
 
-" Ale.
+" Ale {{
+let g:ale_fix_on_save = 1
 let g:ale_fixers = {
 \ '*': ['prettier'],
 \}
+" }}
 
 " vim-expand-region.
 vmap v <Plug>(expand_region_expand)
