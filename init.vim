@@ -16,7 +16,8 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'mattn/emmet-vim'
 Plug 'morhetz/gruvbox'
 Plug 'mxw/vim-jsx'
-Plug 'pangloss/vim-javascript'
+Plug 'othree/yajs.vim'
+Plug 'HerringtonDarkholme/yats.vim'
 Plug 'rafaqz/ranger.vim'
 Plug 'terryma/vim-expand-region'
 Plug 'tmux-plugins/vim-tmux-focus-events'
@@ -142,9 +143,6 @@ vmap <C-v> <Plug>(expand_region_shrink)
 
 " Emmet.
 let g:user_emmet_mode='i'
-
-" vim-javascript.
-let g:javascript_plugin_flow=1
 
 " JSX.
 let g:jsx_ext_required=0
