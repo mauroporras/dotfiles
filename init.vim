@@ -90,6 +90,7 @@ tnoremap <C-w>l <C-\><C-n><C-w>l
 set mouse=a
 
 " Color scheme & italics. {{
+set termguicolors
 if filereadable(expand("~/.vimrc_background"))
   source ~/.vimrc_background
 endif
