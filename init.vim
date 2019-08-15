@@ -106,7 +106,7 @@ highlight TabLineFill ctermbg=white
 highlight TabLineSel ctermbg=gray ctermfg=white
 highlight VertSplit ctermbg=gray ctermfg=gray
 highlight Visual ctermbg=gray ctermfg=white
-" highlight WildMenu ctermbg=yellow ctermfg=white
+highlight WildMenu ctermbg=yellow ctermfg=white
 " }}
 
 " Misc.
