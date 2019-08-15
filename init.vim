@@ -14,7 +14,6 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'mattn/emmet-vim'
-Plug 'morhetz/gruvbox'
 Plug 'mxw/vim-jsx'
 Plug 'othree/yajs.vim'
 Plug 'HerringtonDarkholme/yats.vim'
@@ -90,22 +89,12 @@ tnoremap <C-w>l <C-\><C-n><C-w>l
 set mouse=a
 
 " Color scheme & italics. {{
-syntax enable
-let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
-let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
-set background=light
-set termguicolors
-let g:gruvbox_contrast_light='hard'
-let g:gruvbox_italic=1
-let g:gruvbox_italicize_strings=1
-let g:gruvbox_number_column='bg2'
-colorscheme gruvbox
 " }}
 
-highlight IncSearch ctermbg=black ctermfg=51
+" highlight IncSearch ctermbg=black ctermfg=51
 " highlight QuickFixLine ctermbg=gray ctermfg=white
-highlight Search ctermbg=black ctermfg=45
-highlight StatusLine ctermbg=white ctermfg=black
+" highlight Search ctermbg=black ctermfg=45
+" highlight StatusLine ctermbg=white ctermfg=black
 " highlight StatusLineNC ctermbg=white ctermfg=gray
 " highlight TabLine ctermbg=black ctermfg=gray
 " highlight TabLineFill ctermbg=black
