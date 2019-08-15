@@ -93,7 +93,8 @@ set mouse=a
 if filereadable(expand("~/.vimrc_background"))
   source ~/.vimrc_background
 endif
-" }}
+
+highlight Comment cterm=italic
 
 " highlight IncSearch ctermbg=black ctermfg=51
 " highlight QuickFixLine ctermbg=gray ctermfg=white
@@ -106,6 +107,7 @@ endif
 " highlight VertSplit ctermbg=gray ctermfg=gray
 " highlight Visual ctermbg=white ctermfg=gray
 " highlight WildMenu ctermbg=yellow ctermfg=white
+" }}
 
 " Misc.
 set cmdheight=2
