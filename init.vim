@@ -89,7 +89,7 @@ tnoremap <C-w>l <C-\><C-n><C-w>l
 " Enable mouse, sometimes it's useful.
 set mouse=a
 
-" Color scheme & italics. {{
+" Color scheme & italics {{
 if filereadable(expand("~/.vimrc_background"))
   source ~/.vimrc_background
 endif
