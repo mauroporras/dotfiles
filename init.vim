@@ -102,9 +102,9 @@ highlight IncSearch ctermbg=51 ctermfg=white
 highlight Search ctermbg=45 ctermfg=white
 highlight StatusLine ctermbg=white ctermfg=black
 highlight StatusLineNC ctermbg=gray ctermfg=white
-" highlight TabLine ctermbg=black ctermfg=gray
-" highlight TabLineFill ctermbg=black
-" highlight TabLineSel ctermbg=black ctermfg=white
+highlight TabLine ctermbg=white ctermfg=gray
+highlight TabLineFill ctermbg=white
+highlight TabLineSel ctermbg=gray ctermfg=white
 highlight VertSplit ctermbg=gray ctermfg=gray
 " highlight Visual ctermbg=white ctermfg=gray
 " highlight WildMenu ctermbg=yellow ctermfg=white
