@@ -8,7 +8,6 @@ Cool configs for Neovim, tmux and Git, on Zsh.
 
 https://github.com/robbyrussell/oh-my-zsh/blob/master/README.md
 
-
 ## 2. Install Neovim
 
 [https://github.com/neovim/neovim/wiki/Installing-Neovim](https://github.com/neovim/neovim/wiki/Installing-Neovim)
@@ -19,18 +18,15 @@ If you're transitioning from Vim: `:h nvim-from-vim`
 
 To optimize Neovim: `:checkhealth`
 
-
 ## 3. Add Python support to Neovim
 
 ```bash
 pip3 install --user --upgrade neovim
 ```
 
-
 ## 4. Install tmux and Git
 
 For tmux support: [https://github.com/tmux/tmux/wiki/FAQ](https://github.com/tmux/tmux/wiki/FAQ)
-
 
 ### macOS (Using MacPorts)
 
@@ -38,13 +34,11 @@ For tmux support: [https://github.com/tmux/tmux/wiki/FAQ](https://github.com/tmu
 sudo port install tmux git
 ```
 
-
 ### Ubuntu
 
 ```bash
 sudo apt install -y tmux git
 ```
-
 
 ## 5. Install utilities for browsing & searching
 
@@ -53,7 +47,6 @@ sudo apt install -y tmux git
 [https://github.com/junegunn/fzf#installation](https://github.com/junegunn/fzf#installation)
 
 [https://github.com/ggreer/the_silver_searcher#installing](https://github.com/ggreer/the_silver_searcher#installing)
-
 
 ## 6. Finally, bootstrap DotFiles
 
@@ -64,9 +57,7 @@ git clone https://github.com/mauroporras/dotfiles.git ~/dotfiles
 ~/dotfiles/install-terms
 ```
 
-
-______
-
+---
 
 ## Optional
 
@@ -88,11 +79,8 @@ ______
 
 [https://github.com/denysdovhan/spaceship-prompt](https://github.com/denysdovhan/spaceship-prompt)
 
-
 ## Quick links
 
 [https://man.openbsd.org/tmux.1#DEFAULT_KEY_BINDINGS](https://man.openbsd.org/tmux.1#DEFAULT_KEY_BINDINGS)
 
 [https://upload.wikimedia.org/wikipedia/commons/1/15/Xterm_256color_chart.svg](https://upload.wikimedia.org/wikipedia/commons/1/15/Xterm_256color_chart.svg)
-
-[https://github.com/morhetz/gruvbox](https://github.com/morhetz/gruvbox)
