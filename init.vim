@@ -100,8 +100,8 @@ highlight LineNr cterm=italic ctermbg=black ctermfg=gray
 highlight IncSearch ctermbg=51 ctermfg=white
 " highlight QuickFixLine ctermbg=gray ctermfg=white
 highlight Search ctermbg=45 ctermfg=white
-" highlight StatusLine ctermbg=white ctermfg=black
-" highlight StatusLineNC ctermbg=white ctermfg=gray
+highlight StatusLine ctermbg=white ctermfg=black
+highlight StatusLineNC ctermbg=gray ctermfg=white
 " highlight TabLine ctermbg=black ctermfg=gray
 " highlight TabLineFill ctermbg=black
 " highlight TabLineSel ctermbg=black ctermfg=white
