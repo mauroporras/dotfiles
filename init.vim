@@ -95,9 +95,8 @@ if filereadable(expand("~/.vimrc_background"))
 endif
 
 highlight Comment cterm=italic
-highlight LineNr cterm=italic ctermbg=254 ctermfg=gray
-
 highlight IncSearch ctermbg=51 ctermfg=white
+highlight LineNr cterm=italic ctermbg=254 ctermfg=gray
 " highlight QuickFixLine ctermbg=gray ctermfg=white
 highlight Search ctermbg=45 ctermfg=white
 highlight StatusLine ctermbg=white ctermfg=black
