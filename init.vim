@@ -9,6 +9,7 @@ if empty(glob('~/.config/nvim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.config/nvim/plugged')
+Plug 'chriskempson/base16-vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'ekalinin/Dockerfile.vim'
@@ -89,6 +90,9 @@ tnoremap <C-w>l <C-\><C-n><C-w>l
 set mouse=a
 
 " Color scheme & italics. {{
+if filereadable(expand("~/.vimrc_background"))
+  source ~/.vimrc_background
+endif
 " }}
 
 " highlight IncSearch ctermbg=black ctermfg=51
