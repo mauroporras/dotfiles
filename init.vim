@@ -90,23 +90,32 @@ tnoremap <C-w>l <C-\><C-n><C-w>l
 set mouse=a
 
 " Color scheme & italics {{
-if filereadable(expand("~/.vimrc_background"))
-  source ~/.vimrc_background
-endif
-
-highlight Comment cterm=italic
-highlight IncSearch ctermbg=51 ctermfg=white
-highlight LineNr cterm=italic ctermbg=254 ctermfg=gray
 highlight QuickFixLine ctermbg=yellow ctermfg=white
-highlight Search ctermbg=45 ctermfg=white
-highlight StatusLine ctermbg=white ctermfg=black
-highlight StatusLineNC ctermbg=gray ctermfg=white
 highlight TabLine ctermbg=white ctermfg=gray
 highlight TabLineFill ctermbg=white
 highlight TabLineSel ctermbg=gray ctermfg=white
-highlight VertSplit ctermbg=gray ctermfg=gray
-highlight Visual ctermbg=gray ctermfg=white
 highlight WildMenu ctermbg=yellow ctermfg=white
+
+function! s:base16_customize() abort
+  " Args: group, guifg, guibg, ctermfg, ctermbg, [bold,italic,underline]
+
+  call Base16hi('Comment', '', '', '', '', 'italic')
+  call Base16hi('IncSearch', '', '', '', g:base16_cterm0C)
+  " call Base16hi('MatchParen', '', '', g:base16_cterm00, g:base16_cterm0E)
+  " call Base16hi('Search ', '', '', '', g:base16_cterm0C)
+  call Base16hi('StatusLine', '', '', g:base16_cterm00, g:base16_cterm06)
+  call Base16hi('StatusLineNC', '', '', g:base16_cterm00, g:base16_cterm04)
+  call Base16hi('VertSplit ', '', '', g:base16_cterm04, g:base16_cterm04)
+  call Base16hi('Visual', '', '', g:base16_cterm03, g:base16_cterm06)
+endfunction
+
+augroup on_change_colorschema
+  autocmd!
+  autocmd ColorScheme * call s:base16_customize()
+augroup END
+
+" Trigger custom colors.
+colorscheme base16-default-light
 " }}
 
 " Misc.
