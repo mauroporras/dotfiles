@@ -100,7 +100,7 @@ function! s:base16_customize() abort
 
   call Base16hi('Comment', '', '', '', '', 'italic')
   " call Base16hi('IncSearch', '', '', '', g:base16_cterm0C)
-  " call Base16hi('MatchParen', '', '', g:base16_cterm00, g:base16_cterm0E)
+  call Base16hi('MatchParen', '', '', g:base16_cterm07, g:base16_cterm0E)
   " call Base16hi('Search ', '', '', '', g:base16_cterm0C)
   call Base16hi('StatusLine', '', '', g:base16_cterm00, g:base16_cterm06)
   call Base16hi('StatusLineNC', '', '', g:base16_cterm00, g:base16_cterm04)
