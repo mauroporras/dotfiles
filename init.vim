@@ -94,7 +94,6 @@ highlight QuickFixLine ctermbg=yellow ctermfg=white
 highlight TabLine ctermbg=white ctermfg=gray
 highlight TabLineFill ctermbg=white
 highlight TabLineSel ctermbg=gray ctermfg=white
-highlight WildMenu ctermbg=yellow ctermfg=white
 
 function! s:base16_customize() abort
   " Args: group, guifg, guibg, ctermfg, ctermbg, [bold,italic,underline]
@@ -107,6 +106,7 @@ function! s:base16_customize() abort
   call Base16hi('StatusLineNC', '', '', g:base16_cterm00, g:base16_cterm04)
   call Base16hi('VertSplit ', '', '', g:base16_cterm04, g:base16_cterm04)
   call Base16hi('Visual', '', '', g:base16_cterm03, g:base16_cterm06)
+  call Base16hi('WildMenu ', '', '', g:base16_cterm07, g:base16_cterm0A)
 endfunction
 
 augroup on_change_colorschema
