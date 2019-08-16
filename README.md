@@ -73,8 +73,6 @@ git clone https://github.com/mauroporras/dotfiles.git ~/dotfiles
 
 [http://input.fontbureau.com](http://input.fontbureau.com)
 
-[https://github.com/martinlindhe/base16-iterm2](https://github.com/martinlindhe/base16-iterm2)
-
 [https://github.com/direnv/direnv](https://github.com/direnv/direnv)
 
 [https://github.com/denysdovhan/spaceship-prompt](https://github.com/denysdovhan/spaceship-prompt)
