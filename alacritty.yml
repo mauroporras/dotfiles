@@ -273,7 +273,7 @@ colors:
 visual_bell:
   animation: EaseOutExpo
   duration: 0
-  color: "0xffffff"
+  color: '0xffffff'
 
 # Background opacity
 #
@@ -334,7 +334,7 @@ mouse:
     modifiers: None
 
 selection:
-  semantic_escape_chars: ',│`|:"'' ()[]{}<>'
+  semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
 
   # When set to `true`, selected text will be copied to the primary clipboard.
   save_to_clipboard: true
