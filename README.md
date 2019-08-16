@@ -72,7 +72,7 @@ ______
 
 [https://ctags.io](https://ctags.io)
 
-[https://github.com/zeit/hyper](https://github.com/zeit/hyper)
+[https://github.com/jwilm/alacritty](https://github.com/jwilm/alacritty)
 
 [https://formulae.brew.sh/formula/coreutils](https://formulae.brew.sh/formula/coreutils)
 
