@@ -8,6 +8,7 @@ if empty(glob('~/.config/nvim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall
 endif
 
+" {{{ Plugins.
 call plug#begin('~/.config/nvim/plugged')
 Plug 'chriskempson/base16-vim'
 Plug 'easymotion/vim-easymotion'
@@ -30,12 +31,14 @@ Plug 'w0rp/ale'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 " Snippets.
+" For JS and TS support, add --ts-completer when calling install.py
 Plug 'Valloric/YouCompleteMe'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'ervandew/supertab'
 call plug#end()
 filetype plugin indent on
+" }}}
 
 " Leader.
 let mapleader=' '
