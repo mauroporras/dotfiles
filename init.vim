@@ -42,7 +42,7 @@ filetype plugin indent on
 
 " Leader.
 let mapleader=' '
-set timeoutlen=3333
+set timeoutlen=3000
 
 " Custom key maps.
 " Command line (:h mapmode-c).
