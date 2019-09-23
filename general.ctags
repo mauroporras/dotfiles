@@ -4,6 +4,7 @@
 --exclude=.git
 --exclude=bin
 --exclude=build
+--exclude=dist
 --exclude=log
 --exclude=node_modules
 --exclude=public
