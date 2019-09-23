@@ -122,39 +122,42 @@ set inccommand=nosplit
 set splitbelow
 set splitright
 
-
-" Plugins settings.
-
-" Ale {{
+" {{{ Plugins settings.
+"   Ale.
 let g:ale_fix_on_save = 1
 let g:ale_fixers = {
 \ '*': ['prettier'],
 \}
-" }}
 
-" vim-expand-region.
+"   vim-expand-region.
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 
-" Emmet.
+"   Emmet.
 let g:user_emmet_mode='i'
+let g:user_emmet_settings = {
+\ 'javascript.jsx': {
+\   'extends': 'jsx',
+\ },
+\}
 
-" JSX.
+"   JSX.
 let g:jsx_ext_required=0
 
-" Make YouCompleteMe compatible with UltiSnips (using supertab).
+"   Make YouCompleteMe compatible with UltiSnips (using supertab).
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 let g:SuperTabDefaultCompletionType = '<C-n>'
 
-" Better key bindings for UltiSnipsExpandTrigger.
+"   Better key bindings for UltiSnipsExpandTrigger.
 let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
-" Fzf.
+"   Fzf.
 let g:fzf_action = {
 \ 'ctrl-t': 'tab split',
 \ 'ctrl-s': 'split',
-\ 'ctrl-v': 'vsplit'
+\ 'ctrl-v': 'vsplit',
 \}
+" }}}
