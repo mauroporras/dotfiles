@@ -161,3 +161,5 @@ let g:fzf_action = {
 \ 'ctrl-v': 'vsplit',
 \}
 " }}}
+
+" vim: foldmethod=marker
