@@ -96,6 +96,7 @@ if filereadable(expand("~/.vimrc_background"))
 endif
 
 " Syntax: (group, guifg, guibg, ctermfg, ctermbg, [bold,italic,underline])
+call Base16hi('ALEError', '', '', '', 225)
 call Base16hi('Comment', '', '', '', '', 'italic')
 call Base16hi('IncSearch', '', '', '', g:base16_cterm0C, 'bold')
 call Base16hi('MatchParen', '', '', g:base16_cterm00, g:base16_cterm0E)
