@@ -191,8 +191,8 @@ colors:
   # Colors which should be used to draw the terminal cursor. If these are unset,
   # the cursor color will be the inverse of the cell color.
   cursor:
-    cursor: "0xff00ff"
-    text: "0xffffff"
+    cursor: "0x00ff00"
+    text: "0xff00ff"
 
   # Selection colors
   #
@@ -534,8 +534,11 @@ key_bindings:
   #- { key: W,      mods: Command,         action: Quit             }
   #- { key: F,      mods: Command|Control, action: ToggleFullscreen }
 
+  - { key: A,        mods: Alt,     chars: "\x1ba"                           }
   - { key: B,        mods: Alt,     chars: "\x1bb"                           }
+  - { key: D,        mods: Alt,     chars: "\x1bd"                           }
   - { key: F,        mods: Alt,     chars: "\x1bf"                           }
+  - { key: W,        mods: Alt,     chars: "\x1bw"                           }
   - { key: Paste,                   action: Paste                            }
   - { key: Copy,                    action: Copy                             }
   - { key: L,        mods: Control, action: ClearLogNotice                   }

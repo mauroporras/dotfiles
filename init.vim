@@ -44,50 +44,53 @@ filetype plugin indent on
 let mapleader=' '
 set timeoutlen=3000
 
-" Custom key maps.
-" Command line (:h mapmode-c).
+" {{{ Custom key maps.
+
+"   Command line (:h mapmode-c).
 cnoremap <C-a> <Home>
 cnoremap <C-b> <Left>
 cnoremap <C-d> <Del>
 cnoremap <C-f> <Right>
-" Insert.
+
+"   Insert.
 inoremap <C-d> <Del>
-" Normal.
+
+"   {{{ Normal.
+nnoremap <C-n> :ALENext<CR>
+nnoremap <C-p> :ALEPrevious<CR>
 nnoremap <Esc> :nohlsearch<CR><Esc>
-nnoremap <C-n> :tabnext<CR>
-nnoremap <C-p> :tabprevious<CR>
+nnoremap <Down> :cnext<CR>
+nnoremap <Up> :cprevious<CR>
 nnoremap <Leader>a :Ag<Space>
-nnoremap <Leader>b :Buffers<CR>
 nnoremap <Leader>g :YcmCompleter GoTo<CR>
 nnoremap <Leader>Gr :YcmCompleter RefactorRename<Space>
-nnoremap <Leader>n :cnext<CR>
-nnoremap <Leader>p :cprevious<CR>
 nnoremap <Leader>o :Files<CR>
-nnoremap <Leader>q <C-w>q
-nnoremap <Leader>r :RangerEdit<CR>
-nnoremap <Leader>Ra :RangerAppend<CR>
-nnoremap <Leader>Rc :set operatorfunc=RangerChangeOperator<cr>g@
-nnoremap <Leader>Ri :RangerInsert<CR>
-nnoremap <Leader>Rs :RangerSplit<CR>
-nnoremap <Leader>Rt :RangerTab<CR>
-nnoremap <Leader>Rv :RangerVSplit<CR>
-nnoremap <Leader>s :wall<CR>
 nnoremap <Leader>t :$tabnew<CR>
 nnoremap <Leader>w :Windows<CR>
-nnoremap <Leader>y; :edit #<CR>
-nnoremap <Leader>yn :bnext<CR>
-nnoremap <Leader>yp :bprevious<CR>
-nnoremap <Leader>yr :edit!<CR>
 nnoremap <Leader>yt :BTags<CR>
 nnoremap <Leader>zh :History<CR>
 nnoremap <Leader>zl :Lines<CR>
 nnoremap <Leader>zm :Marks<CR>
 nnoremap <Leader>zt :Tags<CR>
-" Terminal.
+"     Buffers.
+nnoremap <Leader>b :Buffers<CR>
+nnoremap <Leader>d :bdelete<CR>
+nnoremap <Leader>l :edit #<CR>
+nnoremap <Leader>n :bnext<CR>
+nnoremap <Leader>p :bprevious<CR>
+nnoremap <Leader>s :wall<CR>
+"     Ranger.
+nnoremap <Leader>r :RangerEdit<CR>
+nnoremap <Leader>Rc :set operatorfunc=RangerChangeOperator<cr>g@
+"   }}}
+
+"   Terminal (:h mapmode-t).
 tnoremap <C-w>h <C-\><C-n><C-w>h
 tnoremap <C-w>j <C-\><C-n><C-w>j
 tnoremap <C-w>k <C-\><C-n><C-w>k
 tnoremap <C-w>l <C-\><C-n><C-w>l
+
+" }}}
 
 " {{{ Color scheme & italics.
 if filereadable(expand("~/.vimrc_background"))
