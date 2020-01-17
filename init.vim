@@ -14,6 +14,7 @@ Plug 'chriskempson/base16-vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'ekalinin/Dockerfile.vim'
+Plug 'GutenYe/json5.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'mattn/emmet-vim'
 Plug 'mxw/vim-jsx'
@@ -126,6 +127,7 @@ set number
 set splitbelow
 set splitright
 set mouse=a
+autocmd BufNewFile,BufRead *.json set syntax=json5
 
 " {{{ Plugins settings.
 "   Ale.
