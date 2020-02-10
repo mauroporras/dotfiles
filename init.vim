@@ -98,6 +98,9 @@ if filereadable(expand("~/.vimrc_background"))
   source ~/.vimrc_background
 endif
 
+" https://github.com/chriskempson/base16-vim#troubleshooting
+set termguicolors
+
 " Use `:highlight` to list all color groups.
 " Syntax: (group, guifg, guibg, ctermfg, ctermbg, [bold,italic,underline])
 call Base16hi('Comment', '', '', '', '', 'italic')
