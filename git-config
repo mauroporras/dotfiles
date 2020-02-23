@@ -25,7 +25,7 @@ git config --global color.grep.match 'green'
 git config --global alias.aa 'add -A'
 git config --global alias.ai 'add -i'
 git config --global alias.ap 'add -p'
-git config --global alias.ua 'add -u'
+git config --global alias.au 'add -u'
 
 git config --global alias.b 'branch -v'
 git config --global alias.ba 'branch -va'
