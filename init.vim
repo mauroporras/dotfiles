@@ -10,6 +10,7 @@ endif
 
 " {{{ Plugins.
 call plug#begin('~/.config/nvim/plugged')
+Plug 'ap/vim-css-color'
 Plug 'chriskempson/base16-vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'editorconfig/editorconfig-vim'
