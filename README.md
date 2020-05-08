@@ -1,6 +1,6 @@
 # DotFiles
 
-Cool configs for Neovim, tmux and Git, on Zsh.
+Configs for Neovim, tmux and Git, on Zsh.
 
 [https://hub.docker.com/r/mauroporras/dotfiles](https://hub.docker.com/r/mauroporras/dotfiles)
 
