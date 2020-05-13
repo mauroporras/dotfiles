@@ -87,3 +87,4 @@ git config --global alias.rbi 'rebase -i'
 
 git config --global alias.mm 'merge'
 git config --global alias.ms 'merge --squash'
+git config --global alias.mt 'mergetool'
