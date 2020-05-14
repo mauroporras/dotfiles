@@ -14,8 +14,11 @@ ln -sf ~/dotfiles/rc.conf .config/ranger/rc.conf
 mkdir -p .ctags.d/
 ln -sf ~/dotfiles/general.ctags .ctags.d/general.ctags
 
-ln -sf ~/dotfiles/tmux.conf .tmux.conf
-ln -sf ~/dotfiles/gitignore_global .gitignore_global
+mkdir -p .config/alacritty/
 ln -sf ~/dotfiles/alacritty.yml .config/alacritty/alacritty.yml
 
+mkdir -p .oh-my-zsh/custom/
 ln -sf ~/dotfiles/aliases.zsh ~/dotfiles/env_vars.zsh ~/dotfiles/functions.zsh .oh-my-zsh/custom/
+
+ln -sf ~/dotfiles/tmux.conf .tmux.conf
+ln -sf ~/dotfiles/gitignore_global .gitignore_global
