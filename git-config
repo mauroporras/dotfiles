@@ -14,7 +14,8 @@ fi
 
 git config --global core.excludesfile ~/.gitignore_global
 git config --global core.editor 'nvim --noplugin'
-git config --global merge.tool 'meld'
+git config --global merge.tool 'vimdiff'
+git config --global diff.tool 'vimdiff'
 git config --global push.default 'simple'
 
 git config --global color.ui 'always'
@@ -54,6 +55,7 @@ git config --global alias.dw 'diff --color-words -w -b'
 git config --global alias.ds 'diff --staged'
 git config --global alias.dsw 'diff --staged --color-words -w -b'
 git config --global alias.dpr 'diff --color-words -w -b master...@'
+git config --global alias.dt 'difftool'
 
 git config --global alias.g 'grep --break --heading --line-number'
 git config --global alias.gi 'grep -i --break --heading --line-number'
