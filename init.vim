@@ -127,7 +127,6 @@ call Base16hi('WildMenu', '', '', g:base16_cterm07, g:base16_cterm0A)
 set ignorecase
 set smartcase
 set inccommand=nosplit
-set nowrapscan
 
 " Misc.
 set cmdheight=2
