@@ -1,6 +1,6 @@
 export EDITOR='nvim'
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
-export FZF_DEFAULT_OPTS='--cycle --history=/usr/local/opt/fzf/history'
+export FZF_DEFAULT_OPTS="--cycle --history='$HOME/.fzf_history'"
 export LC_COLLATE=C
 export LESS='-R -i'
 
