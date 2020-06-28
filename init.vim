@@ -22,7 +22,6 @@ Plug 'mxw/vim-jsx'
 Plug 'othree/yajs.vim'
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'rafaqz/ranger.vim'
-Plug 'terryma/vim-expand-region'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
@@ -140,10 +139,6 @@ let g:ale_fix_on_save = 1
 let g:ale_fixers = {
 \ '*': ['prettier'],
 \}
-
-"   vim-expand-region.
-vmap v <Plug>(expand_region_expand)
-vmap <C-v> <Plug>(expand_region_shrink)
 
 "   Emmet.
 let g:user_emmet_mode='i'
