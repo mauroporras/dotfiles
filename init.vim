@@ -26,7 +26,6 @@ Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-surround'
 Plug 'w0rp/ale'
 " Fzf.
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
