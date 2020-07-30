@@ -15,6 +15,7 @@ fi
 git config --global core.excludesfile ~/.gitignore_global
 git config --global core.editor 'nvim --noplugin'
 git config --global merge.tool 'vimdiff'
+git config --global mergetool.prompt true
 git config --global diff.tool 'vimdiff'
 git config --global push.default 'simple'
 
