@@ -583,6 +583,7 @@ selection:
 # If the same trigger is assigned to multiple actions, all of them are executed
 # in the order they were defined in.
 key_bindings:
+  - { key: A,        mods: Alt,     chars: "\x1ba"                           }
   - { key: B,        mods: Alt,     chars: "\x1bb"                           }
   - { key: F,        mods: Alt,     chars: "\x1bf"                           }
   #- { key: Paste,                                action: Paste          }
