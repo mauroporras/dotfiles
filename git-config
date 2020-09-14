@@ -83,6 +83,8 @@ git config --global alias.spuki 'stash push --keep-index'
 git config --global alias.p 'pull'
 git config --global alias.pr 'pull --rebase'
 
+git config --global alias.pf 'push --force-with-lease'
+
 git config --global alias.rb 'rebase'
 git config --global alias.rba 'rebase --abort'
 git config --global alias.rbc 'rebase --continue'
