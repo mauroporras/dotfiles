@@ -5,7 +5,7 @@ ENV TERM xterm-256color
 WORKDIR /root/
 
 RUN apt-get -qq update && \
-    apt-get -qq install -y apt-utils cmake curl direnv git python-dev python-pip python3-dev python3-pip ranger software-properties-common silversearcher-ag tmux zsh
+    apt-get -qq install -y apt-utils cmake curl direnv git python3-dev python3-pip ranger software-properties-common silversearcher-ag tmux zsh
 
 # Install NeoVim.
 RUN add-apt-repository ppa:neovim-ppa/stable
