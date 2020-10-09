@@ -130,6 +130,7 @@ set number
 set splitbelow
 set splitright
 set mouse=a
+set listchars=tab:→\ ,space:·,nbsp:␣,trail:•,eol:¶,precedes:«,extends:»
 autocmd BufNewFile,BufRead *.json set syntax=json5
 
 " {{{ Plugins settings.
