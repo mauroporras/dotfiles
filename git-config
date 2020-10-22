@@ -29,8 +29,10 @@ git config --global alias.ai 'add -i'
 git config --global alias.ap 'add -p'
 git config --global alias.au 'add -u'
 
-git config --global alias.b 'branch -v'
+git config --global alias.b 'branch'
+git config --global alias.bv 'branch -v'
 git config --global alias.ba 'branch -va'
+
 git config --global alias.big 'bisect good'
 git config --global alias.bib 'bisect bad'
 
