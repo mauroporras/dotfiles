@@ -14,6 +14,7 @@ Plug 'ap/vim-css-color'
 Plug 'chriskempson/base16-vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'evanleck/vim-svelte', { 'branch': 'main' }
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'GutenYe/json5.vim'
 Plug 'jiangmiao/auto-pairs'
