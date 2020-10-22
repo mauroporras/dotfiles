@@ -184,8 +184,8 @@ colors:
   # Allowed values are CellForeground and CellBackground, which reference the
   # affected cell, or hexadecimal colors like #ff00ff.
   cursor:
-    cursor: "0xff00ff"
-    text: "0xffffff"
+    cursor: "0x0071a4"
+    text: "0xffd426"
 
   # Vi mode cursor colors
   #
@@ -339,7 +339,7 @@ selection:
 
   # If this is `true`, the cursor will be rendered as a hollow box when the
   # window is not focused.
-  #unfocused_hollow: true
+  unfocused_hollow: false
 
   # Thickness of the cursor relative to the cell width as floating point number
   # from `0.0` to `1.0`.
