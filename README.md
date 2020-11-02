@@ -40,13 +40,15 @@ sudo port install tmux git
 sudo apt install -y tmux git
 ```
 
-## 5. Install utilities for browsing & searching
+## 5. Install required utilities
 
-[https://ranger.github.io](https://ranger.github.io)
+[https://github.com/cli/cli#installation](https://github.com/cli/cli#installation)
+
+[https://github.com/ggreer/the_silver_searcher#installing](https://github.com/ggreer/the_silver_searcher#installing)
 
 [https://github.com/junegunn/fzf#installation](https://github.com/junegunn/fzf#installation)
 
-[https://github.com/ggreer/the_silver_searcher#installing](https://github.com/ggreer/the_silver_searcher#installing)
+[https://github.com/ranger/ranger#installing](https://github.com/ranger/ranger#installing)
 
 ## 6. Finally, bootstrap DotFiles
 

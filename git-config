@@ -96,3 +96,17 @@ git config --global alias.rbm 'rebase main'
 git config --global alias.mm 'merge'
 git config --global alias.ms 'merge --squash'
 git config --global alias.mt 'mergetool'
+
+# GitHub CLI aliases.
+
+gh alias set il 'issue list'
+gh alias set ilw 'issue list --web'
+gh alias set iv 'issue view'
+gh alias set ivw 'issue view --web'
+
+gh alias set prc 'pr checkout'
+gh alias set prv 'pr view'
+gh alias set prvw 'pr view --web'
+
+gh alias set rv 'repo view'
+gh alias set rvw 'repo view --web'
