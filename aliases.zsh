@@ -75,6 +75,7 @@ alias ypp='yarn publish --access=public'
 
 alias yr='yarn run'
 alias yrb='yarn run build'
+alias yrd='yarn run dev'
 alias yrs='yarn run start'
 
 alias yt='yarn test'
