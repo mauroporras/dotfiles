@@ -42,7 +42,7 @@ sudo apt install -y tmux git
 
 ## 5. Install required utilities
 
-[https://github.com/cli/cli#installation](https://github.com/cli/cli#installation)
+https://github.com/cli/cli#installation (required for the aliases).
 
 [https://github.com/ggreer/the_silver_searcher#installing](https://github.com/ggreer/the_silver_searcher#installing)
 
