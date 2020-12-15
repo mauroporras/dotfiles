@@ -71,8 +71,6 @@ git clone https://github.com/mauroporras/dotfiles.git ~/dotfiles
 
 [https://github.com/tony/tmuxp](https://github.com/tony/tmuxp)
 
-[https://github.com/editorconfig/editorconfig-vim](https://github.com/editorconfig/editorconfig-vim)
-
 [http://input.fontbureau.com](http://input.fontbureau.com)
 
 [https://github.com/direnv/direnv](https://github.com/direnv/direnv)
