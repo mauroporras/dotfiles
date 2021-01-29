@@ -135,6 +135,16 @@ set listchars=tab:→\ ,space:·,nbsp:␣,trail:•,eol:¶,precedes:«,extends:�
 autocmd BufNewFile,BufRead *.json set syntax=json5
 
 " {{{ Plugins settings.
+" Ag.
+command! -bang -nargs=* Ag
+  \ call fzf#vim#ag(
+  \   <q-args>,
+  \   '--hidden',
+  \   <bang>0 ? fzf#vim#with_preview('up:60%')
+  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \   <bang>0
+  \ )
+
 "   Ale.
 let g:ale_fix_on_save = 1
 let g:ale_fixers = {
