@@ -12,6 +12,8 @@ if [ -n "$git_name" ]
     git config --global --replace-all user.name "$git_name"
 fi
 
+git config --global init.defaultBranch main
+
 git config --global core.excludesfile ~/.gitignore_global
 git config --global core.editor 'nvim --noplugin'
 git config --global merge.tool 'vimdiff'
