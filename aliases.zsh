@@ -19,6 +19,7 @@ alias dkvl='docker volume ls'
 alias dkm='docker-compose'
 alias dkmb='docker-compose build'
 alias dkmd='docker-compose down'
+alias dkme='docker-compose exec'
 alias dkmu='docker-compose up'
 alias dkmub='docker-compose up --build'
 # }}}
