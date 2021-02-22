@@ -25,3 +25,4 @@ brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD"]
 cask "alacritty"
 cask "github"
 cask "google-chrome"
+cask "visual-studio-code"
