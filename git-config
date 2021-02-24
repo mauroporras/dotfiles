@@ -68,6 +68,7 @@ git config --global alias.gi 'grep -i --break --heading --line-number'
 
 git config --global alias.rp 'reset -p'
 git config --global alias.rs 'reset --soft'
+git config --global alias.rsm 'reset --soft main'
 
 git config --global alias.fu 'fetch upstream'
 
