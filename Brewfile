@@ -1,3 +1,6 @@
+# To install, run:
+# brew bundle
+
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/core"
