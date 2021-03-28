@@ -65,6 +65,7 @@ nnoremap <Up> :cprevious<CR>
 nnoremap <Leader>a :Ag<Space>
 nnoremap <Leader>g :YcmCompleter GoTo<CR>
 nnoremap <Leader>Gr :YcmCompleter RefactorRename<Space>
+nnoremap <Leader>i :G<Space>
 nnoremap <Leader>o :Files<CR>
 nnoremap <Leader>t :$tabnew<CR>
 nnoremap <Leader>w :Windows<CR>
