@@ -81,6 +81,7 @@ nnoremap <Leader>zt :Tags<CR>
 "     Buffers.
 nnoremap <Leader>b :Buffers<CR>
 nnoremap <Leader>d :Bclose<CR>
+nnoremap <Leader>e :edit!<CR>
 nnoremap <Leader>l :edit #<CR>
 nnoremap <Leader>n :bnext<CR>
 nnoremap <Leader>p :bprevious<CR>
