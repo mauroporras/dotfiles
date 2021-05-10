@@ -43,7 +43,7 @@ Plug 'honza/vim-snippets'
 Plug 'ervandew/supertab'
 call plug#end()
 filetype plugin indent on
-" }}}
+" }}} Plugins.
 
 " Leader.
 let mapleader=' '
@@ -86,9 +86,8 @@ nnoremap <Leader>n :bnext<CR>
 nnoremap <Leader>p :bprevious<CR>
 nnoremap <Leader>s :wall<CR>
 "     Ranger.
-nnoremap <Leader>r :RangerEdit<CR>
-nnoremap <Leader>Rc :set operatorfunc=RangerChangeOperator<cr>g@
-"   }}}
+nnoremap <Leader>r :Ranger<CR>
+"   }}} Normal.
 
 "   Terminal (:h mapmode-t).
 tnoremap <C-w>h <C-\><C-n><C-w>h
@@ -96,7 +95,7 @@ tnoremap <C-w>j <C-\><C-n><C-w>j
 tnoremap <C-w>k <C-\><C-n><C-w>k
 tnoremap <C-w>l <C-\><C-n><C-w>l
 
-" }}}
+" }}} Custom key maps.
 
 " {{{ Color scheme & italics.
 if filereadable(expand("~/.vimrc_background"))
@@ -123,7 +122,7 @@ call Base16hi('TabLineFill', '', '', '', g:base16_cterm05)
 call Base16hi('TabLineSel', '', '', g:base16_cterm05, g:base16_cterm00)
 call Base16hi('VertSplit', '', '', g:base16_cterm04, g:base16_cterm04)
 call Base16hi('WildMenu', '', '', g:base16_cterm07, g:base16_cterm0A)
-" }}}
+" }}} Color scheme & italics.
 
 " Searching.
 set ignorecase
