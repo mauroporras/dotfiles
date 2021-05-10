@@ -23,7 +23,10 @@ Plug 'mattn/emmet-vim'
 Plug 'mxw/vim-jsx'
 Plug 'othree/yajs.vim'
 Plug 'HerringtonDarkholme/yats.vim'
-Plug 'rafaqz/ranger.vim'
+Plug 'francoiscabrol/ranger.vim'
+" The plugin bclose is a dependency for ranger. See:
+" https://github.com/francoiscabrol/ranger.vim#installation
+Plug 'rbgrouleff/bclose.vim'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
@@ -180,6 +183,9 @@ let g:fzf_action = {
 \ 'ctrl-s': 'split',
 \ 'ctrl-v': 'vsplit',
 \}
-" }}}
+
+"   Ranger.
+let g:ranger_map_keys = 0
+" }}} Plugins settings.
 
 " vim: foldmethod=marker
