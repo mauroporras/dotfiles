@@ -24,7 +24,7 @@ Plug 'mxw/vim-jsx'
 Plug 'othree/yajs.vim'
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'francoiscabrol/ranger.vim'
-" The plugin bclose is a dependency for ranger. See:
+" The plugin bclose is also a dependency for ranger. See:
 " https://github.com/francoiscabrol/ranger.vim#installation
 Plug 'rbgrouleff/bclose.vim'
 Plug 'tmux-plugins/vim-tmux-focus-events'
@@ -80,7 +80,7 @@ nnoremap <Leader>zm :Marks<CR>
 nnoremap <Leader>zt :Tags<CR>
 "     Buffers.
 nnoremap <Leader>b :Buffers<CR>
-nnoremap <Leader>d :bdelete<CR>
+nnoremap <Leader>d :Bclose<CR>
 nnoremap <Leader>l :edit #<CR>
 nnoremap <Leader>n :bnext<CR>
 nnoremap <Leader>p :bprevious<CR>
