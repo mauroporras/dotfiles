@@ -85,6 +85,7 @@ nnoremap <Leader>e :edit!<CR>
 nnoremap <Leader>l :edit #<CR>
 nnoremap <Leader>n :bnext<CR>
 nnoremap <Leader>p :bprevious<CR>
+nnoremap <Leader>q <C-w>q
 nnoremap <Leader>s :wall<CR>
 "     Ranger.
 nnoremap <Leader>r :Ranger<CR>
