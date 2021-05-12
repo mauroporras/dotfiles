@@ -21,8 +21,7 @@ Plug 'GutenYe/json5.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'mattn/emmet-vim'
 Plug 'mxw/vim-jsx'
-Plug 'othree/yajs.vim'
-Plug 'HerringtonDarkholme/yats.vim'
+Plug 'pangloss/vim-javascript'
 Plug 'francoiscabrol/ranger.vim'
 " The plugin bclose is also a dependency for ranger. See:
 " https://github.com/francoiscabrol/ranger.vim#installation
