@@ -20,7 +20,6 @@ Plug 'ekalinin/Dockerfile.vim'
 Plug 'GutenYe/json5.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'mattn/emmet-vim'
-Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
 Plug 'francoiscabrol/ranger.vim'
 " The plugin bclose is also a dependency for ranger. See:
@@ -158,14 +157,6 @@ let g:ale_fixers = {
 
 "   Emmet.
 let g:user_emmet_mode='i'
-let g:user_emmet_settings = {
-\ 'javascript.jsx': {
-\   'extends': 'jsx',
-\ },
-\}
-
-"   JSX.
-let g:jsx_ext_required=0
 
 "   Make YouCompleteMe compatible with UltiSnips (using supertab).
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
