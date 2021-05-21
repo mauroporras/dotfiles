@@ -17,7 +17,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'evanleck/vim-svelte', { 'branch': 'main' }
 Plug 'ekalinin/Dockerfile.vim'
-Plug 'GutenYe/json5.vim'
+Plug 'gutenye/json5.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'mattn/emmet-vim'
 Plug 'pangloss/vim-javascript'
