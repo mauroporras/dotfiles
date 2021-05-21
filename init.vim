@@ -19,6 +19,7 @@ Plug 'evanleck/vim-svelte', { 'branch': 'main' }
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'gutenye/json5.vim'
 Plug 'jiangmiao/auto-pairs'
+Plug 'leafgarland/typescript-vim'
 Plug 'mattn/emmet-vim'
 Plug 'pangloss/vim-javascript'
 Plug 'francoiscabrol/ranger.vim'
