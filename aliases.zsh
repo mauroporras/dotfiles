@@ -17,12 +17,12 @@ alias dkvl='docker volume ls'
 # }}}
 
 # {{{ Docker Compose.
-alias dkm='docker-compose'
-alias dkmb='docker-compose build'
-alias dkmd='docker-compose down'
-alias dkme='docker-compose exec'
-alias dkmu='docker-compose up'
-alias dkmub='docker-compose up --build'
+alias dkm='docker compose'
+alias dkmb='docker compose build'
+alias dkmd='docker compose down'
+alias dkme='docker compose exec'
+alias dkmu='docker compose up'
+alias dkmub='docker compose up --build'
 # }}}
 
 alias kb='kubectl'
