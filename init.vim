@@ -35,6 +35,7 @@ Plug 'evanleck/vim-svelte', { 'branch': 'main' }
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'gutenye/json5.vim'
 Plug 'jiangmiao/auto-pairs'
+Plug 'kevinoid/vim-jsonc'
 Plug 'leafgarland/typescript-vim'
 Plug 'mattn/emmet-vim'
 Plug 'pangloss/vim-javascript'
