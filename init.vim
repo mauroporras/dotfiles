@@ -19,6 +19,13 @@ Plug 'junegunn/fzf.vim'
 Plug 'francoiscabrol/ranger.vim'
 Plug 'rbgrouleff/bclose.vim'
 
+"   Snippets.
+" For JS and TS support, add --ts-completer when calling install.py
+Plug 'Valloric/YouCompleteMe'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'ervandew/supertab'
+
 "   Misc.
 Plug 'ap/vim-css-color'
 Plug 'chriskempson/base16-vim'
@@ -36,12 +43,6 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'w0rp/ale'
-" Snippets.
-" For JS and TS support, add --ts-completer when calling install.py
-Plug 'Valloric/YouCompleteMe'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-Plug 'ervandew/supertab'
 call plug#end()
 filetype plugin indent on
 " }}} Plugins.
