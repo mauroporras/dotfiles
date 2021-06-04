@@ -19,6 +19,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'francoiscabrol/ranger.vim'
 Plug 'rbgrouleff/bclose.vim'
 
+"   Misc.
 Plug 'ap/vim-css-color'
 Plug 'chriskempson/base16-vim'
 Plug 'easymotion/vim-easymotion'
@@ -141,7 +142,7 @@ set listchars=tab:→\ ,space:·,nbsp:␣,trail:•,eol:¶,precedes:«,extends:�
 autocmd BufNewFile,BufRead *.json set syntax=json5
 
 " {{{ Plugins settings.
-" Ag.
+"   Ag.
 command! -bang -nargs=* Ag
   \ call fzf#vim#ag(
   \   <q-args>,
