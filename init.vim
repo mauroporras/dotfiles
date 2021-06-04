@@ -11,6 +11,10 @@ endif
 
 " {{{ Plugins.
 call plug#begin()
+"   Fzf.
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
 Plug 'ap/vim-css-color'
 Plug 'chriskempson/base16-vim'
 Plug 'easymotion/vim-easymotion'
@@ -31,9 +35,6 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'w0rp/ale'
-" Fzf.
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
 " Snippets.
 " For JS and TS support, add --ts-completer when calling install.py
 Plug 'Valloric/YouCompleteMe'
