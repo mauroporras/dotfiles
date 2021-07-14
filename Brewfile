@@ -29,6 +29,7 @@ brew "zsh"
 brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD"]
 
 cask "alacritty"
+cask "brave-browser"
 cask "figma"
 cask "firefox"
 cask "flycut"
