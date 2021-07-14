@@ -1,5 +1,9 @@
 alias ag='ag --hidden'
 
+# {{{ direnv.
+alias dea='direnv allow'
+# }}} direnv.
+
 # {{{ Docker.
 alias dk='docker'
 alias dkc='docker container'
