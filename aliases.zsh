@@ -2,6 +2,9 @@ alias ag='ag --hidden'
 
 # {{{ direnv.
 alias dea='direnv allow'
+alias dee='cp .envrc{.development,} && direnv allow'
+alias des='cp .envrc{.staging,} && direnv allow'
+alias dep='cp .envrc{.production,} && direnv allow'
 # }}} direnv.
 
 # {{{ Docker.
