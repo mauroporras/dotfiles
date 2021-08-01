@@ -13,7 +13,7 @@ RUN add-apt-repository ppa:neovim-ppa/stable
 RUN apt-get -qq update && \
     apt-get -qq install -y neovim
 
-RUN pip3 install --user --upgrade neovim tmuxp
+RUN pip3 install --user --upgrade neovim
 
 # Install Oh My Zsh.
 RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
