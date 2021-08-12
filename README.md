@@ -2,8 +2,6 @@
 
 Configs for Neovim, tmux and Git, on Zsh.
 
-[https://hub.docker.com/r/mauroporras/dotfiles](https://hub.docker.com/r/mauroporras/dotfiles)
-
 ## 1. Install Zsh and Oh My Zsh
 
 https://github.com/robbyrussell/oh-my-zsh/blob/master/README.md
