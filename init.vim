@@ -41,7 +41,6 @@ Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
-" Plug 'w0rp/ale'
 call plug#end()
 filetype plugin indent on
 " }}} Plugins.
@@ -107,7 +106,6 @@ endif
 
 " Use `:highlight` to list all color groups.
 " Syntax: (group, guifg, guibg, ctermfg, ctermbg, [bold,italic,underline])
-" call Base16hi('ALEError', '', '', '', 225)
 call Base16hi('Comment', '', '', '', '', 'italic')
 call Base16hi('Error', '', '', '', 225)
 call Base16hi('IncSearch', '', '', '', g:base16_cterm0C, 'bold')
@@ -150,12 +148,6 @@ command! -bang -nargs=* Ag
   \           : fzf#vim#with_preview('right:50%:hidden', '?'),
   \   <bang>0
   \ )
-
-"   Ale.
-" let g:ale_fix_on_save = 1
-" let g:ale_fixers = {
-" \ '*': ['prettier'],
-" \}
 
 "   CoC.
 "     To Open settings file:
