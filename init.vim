@@ -169,6 +169,7 @@ let g:coc_global_extensions = [
 \ 'coc-swagger',
 \ 'coc-tailwindcss',
 \ 'coc-tsserver',
+\ 'coc-ultisnips',
 \ 'coc-yaml'
 \]
 
