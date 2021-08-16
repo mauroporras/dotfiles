@@ -20,11 +20,8 @@ Plug 'francoiscabrol/ranger.vim'
 Plug 'rbgrouleff/bclose.vim'
 
 "   Snippets.
-" For JS and TS support, add --ts-completer when calling install.py
-" Plug 'Valloric/YouCompleteMe'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-" Plug 'ervandew/supertab'
 
 "   Misc.
 Plug 'ap/vim-css-color'
@@ -186,11 +183,6 @@ let g:coc_global_extensions = [
 
 "   Emmet.
 let g:user_emmet_mode='i'
-
-"   Make YouCompleteMe compatible with UltiSnips (using supertab).
-" let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-" let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-" let g:SuperTabDefaultCompletionType = '<C-n>'
 
 "   Fzf.
 let g:fzf_action = {
