@@ -22,8 +22,8 @@ Plug 'rbgrouleff/bclose.vim'
 "   Snippets.
 " For JS and TS support, add --ts-completer when calling install.py
 " Plug 'Valloric/YouCompleteMe'
-" Plug 'SirVer/ultisnips'
-" Plug 'honza/vim-snippets'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 " Plug 'ervandew/supertab'
 
 "   Misc.
