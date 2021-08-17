@@ -19,10 +19,6 @@ Plug 'junegunn/fzf.vim'
 Plug 'francoiscabrol/ranger.vim'
 Plug 'rbgrouleff/bclose.vim'
 
-"   Snippets.
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-
 "   Misc.
 Plug 'ap/vim-css-color'
 Plug 'chriskempson/base16-vim'
@@ -31,6 +27,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'evanleck/vim-svelte', { 'branch': 'main' }
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'gutenye/json5.vim'
+Plug 'honza/vim-snippets'
 Plug 'jiangmiao/auto-pairs'
 Plug 'kevinoid/vim-jsonc'
 Plug 'leafgarland/typescript-vim'
@@ -152,10 +149,13 @@ command! -bang -nargs=* Ag
 "   CoC.
 "     To Open settings file:
 "       :CocConfig
-"     To list all extensions:
-"       :CocList extensions
 "     To update all extensions:
 "       :CocUpdate
+"     To list stuff:
+"       :CocList
+"       E.g.:
+"         :CocList extensions
+"         :CocList snippets
 let g:coc_global_extensions = [
 \ 'coc-css',
 \ 'coc-emmet',
@@ -165,13 +165,16 @@ let g:coc_global_extensions = [
 \ 'coc-json',
 \ 'coc-markdownlint',
 \ 'coc-prettier',
+\ 'coc-snippets',
 \ 'coc-svelte',
 \ 'coc-swagger',
 \ 'coc-tailwindcss',
 \ 'coc-tsserver',
-\ 'coc-ultisnips',
 \ 'coc-yaml'
 \]
+
+"     Expand and jump (expand is higher priority).
+imap <C-j> <Plug>(coc-snippets-expand-jump)
 
 "   Emmet.
 let g:user_emmet_mode='i'
