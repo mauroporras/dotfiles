@@ -20,11 +20,8 @@ Plug 'francoiscabrol/ranger.vim'
 Plug 'rbgrouleff/bclose.vim'
 
 "   Snippets.
-" For JS and TS support, add --ts-completer when calling install.py
-Plug 'Valloric/YouCompleteMe'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-Plug 'ervandew/supertab'
 
 "   Misc.
 Plug 'ap/vim-css-color'
@@ -38,12 +35,12 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'kevinoid/vim-jsonc'
 Plug 'leafgarland/typescript-vim'
 Plug 'mattn/emmet-vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'pangloss/vim-javascript'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
-Plug 'w0rp/ale'
 call plug#end()
 filetype plugin indent on
 " }}} Plugins.
@@ -64,14 +61,13 @@ cnoremap <C-f> <Right>
 inoremap <C-d> <Del>
 
 "   {{{ Normal.
-nnoremap <C-n> :ALENext<CR>
-nnoremap <C-p> :ALEPrevious<CR>
+nnoremap <C-n> :call CocAction('diagnosticNext')<CR>
+nnoremap <C-p> :call CocAction('diagnosticPrevious')<CR>
 nnoremap <Esc> :nohlsearch<CR><Esc>
 nnoremap <Down> :cnext<CR>
 nnoremap <Up> :cprevious<CR>
 nnoremap <Leader>a :Ag<Space>
-nnoremap <Leader>g :YcmCompleter GoTo<CR>
-nnoremap <Leader>Gr :YcmCompleter RefactorRename<Space>
+nnoremap <Leader>g :call CocAction('jumpDefinition')<CR>
 nnoremap <Leader>i :G<Space>
 nnoremap <Leader>o :Files<CR>
 nnoremap <Leader>t :$tabnew<CR>
@@ -110,7 +106,6 @@ endif
 
 " Use `:highlight` to list all color groups.
 " Syntax: (group, guifg, guibg, ctermfg, ctermbg, [bold,italic,underline])
-call Base16hi('ALEError', '', '', '', 225)
 call Base16hi('Comment', '', '', '', '', 'italic')
 call Base16hi('Error', '', '', '', 225)
 call Base16hi('IncSearch', '', '', '', g:base16_cterm0C, 'bold')
@@ -154,19 +149,32 @@ command! -bang -nargs=* Ag
   \   <bang>0
   \ )
 
-"   Ale.
-let g:ale_fix_on_save = 1
-let g:ale_fixers = {
-\ '*': ['prettier'],
-\}
+"   CoC.
+"     To Open settings file:
+"       :CocConfig
+"     To list all extensions:
+"       :CocList extensions
+"     To update all extensions:
+"       :CocUpdate
+let g:coc_global_extensions = [
+\ 'coc-css',
+\ 'coc-emmet',
+\ 'coc-eslint',
+\ 'coc-git',
+\ 'coc-html',
+\ 'coc-json',
+\ 'coc-markdownlint',
+\ 'coc-prettier',
+\ 'coc-svelte',
+\ 'coc-swagger',
+\ 'coc-tailwindcss',
+\ 'coc-tsserver',
+\ 'coc-ultisnips',
+\ 'coc-yaml'
+\]
 
 "   Emmet.
 let g:user_emmet_mode='i'
-
-"   Make YouCompleteMe compatible with UltiSnips (using supertab).
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-let g:SuperTabDefaultCompletionType = '<C-n>'
 
 "   Fzf.
 let g:fzf_action = {
