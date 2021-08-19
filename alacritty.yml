@@ -585,31 +585,63 @@ colors:
 #   - ScrollToTop
 #   - ScrollToBottom
 #   - ClearHistory
+#       Remove the terminal's scrollback history.
 #   - Hide
+#       Hide the Alacritty window.
 #   - Minimize
+#       Minimize the Alacritty window.
 #   - Quit
+#       Quit Alacritty.
 #   - ToggleFullscreen
 #   - SpawnNewInstance
+#       Spawn a new instance of Alacritty.
 #   - ClearLogNotice
+#       Clear Alacritty's UI warning and error notice.
 #   - ClearSelection
+#       Remove the active selection.
 #   - ReceiveChar
 #   - None
 #
-#   (`mode: Vi` only):
+# - Vi mode exclusive actions:
+#
 #   - Open
+#       Perform the action of the first matching hint under the vi mode cursor
+#       with `mouse.enabled` set to `true`.
+#   - ToggleNormalSelection
+#   - ToggleLineSelection
+#   - ToggleBlockSelection
+#   - ToggleSemanticSelection
+#       Toggle semantic selection based on `selection.semantic_escape_chars`.
+#
+# - Vi mode exclusive cursor motion actions:
+#
 #   - Up
+#       One line up.
 #   - Down
+#       One line down.
 #   - Left
+#       One character left.
 #   - Right
+#       One character right.
 #   - First
+#       First column, or beginning of the line when already at the first column.
 #   - Last
+#       Last column, or beginning of the line when already at the last column.
 #   - FirstOccupied
+#       First non-empty cell in this terminal row, or first non-empty cell of
+#       the line when already at the first cell of the row.
 #   - High
+#       Top of the screen.
 #   - Middle
+#       Center of the screen.
 #   - Low
+#       Bottom of the screen.
 #   - SemanticLeft
+#       Start of the previous semantically separated word.
 #   - SemanticRight
+#       Start of the next semantically separated word.
 #   - SemanticLeftEnd
+#       End of the previous semantically separated word.
 #   - SemanticRightEnd
 #   - WordRight
 #   - WordLeft
