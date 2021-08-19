@@ -15,10 +15,6 @@ call plug#begin()
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
-"   Ranger.
-Plug 'francoiscabrol/ranger.vim'
-Plug 'rbgrouleff/bclose.vim'
-
 "   Misc.
 Plug 'ap/vim-css-color'
 Plug 'chriskempson/base16-vim'
@@ -29,11 +25,13 @@ Plug 'ekalinin/Dockerfile.vim'
 Plug 'gutenye/json5.vim'
 Plug 'honza/vim-snippets'
 Plug 'jiangmiao/auto-pairs'
+Plug 'kevinhwang91/rnvimr'
 Plug 'kevinoid/vim-jsonc'
 Plug 'leafgarland/typescript-vim'
 Plug 'mattn/emmet-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'pangloss/vim-javascript'
+Plug 'rbgrouleff/bclose.vim'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
@@ -84,7 +82,7 @@ nnoremap <Leader>p :bprevious<CR>
 nnoremap <Leader>q <C-w>q
 nnoremap <Leader>s :wall<CR>
 "     Ranger.
-nnoremap <Leader>r :Ranger<CR>
+nnoremap <Leader>r :RnvimrToggle<CR>
 "   }}} Normal.
 
 "   Terminal (:h mapmode-t).
@@ -136,6 +134,7 @@ set listchars=tab:→\ ,space:·,nbsp:␣,trail:•,eol:¶,precedes:«,extends:�
 autocmd BufNewFile,BufRead *.json set syntax=json5
 
 " {{{ Plugins settings.
+
 "   Ag.
 command! -bang -nargs=* Ag
   \ call fzf#vim#ag(
@@ -187,7 +186,11 @@ let g:fzf_action = {
 \}
 
 "   Ranger.
-let g:ranger_map_keys = 0
+"     Hidde after picking a file.
+let g:rnvimr_enable_picker = 1
+"     Resize floating window by all preset layouts
+tnoremap <silent> <M-r> <C-\><C-n>:RnvimrResize<CR>
+
 " }}} Plugins settings.
 
 " vim: foldmethod=marker
