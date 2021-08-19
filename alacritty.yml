@@ -736,6 +736,7 @@ key_bindings:
   - { key: A, mods: Alt, chars: "\x1ba" }
   - { key: B, mods: Alt, chars: "\x1bb" }
   - { key: F, mods: Alt, chars: "\x1bf" }
+  - { key: R, mods: Alt, chars: "\x1br" }
   #- { key: Paste,                                       action: Paste          }
   #- { key: Copy,                                        action: Copy           }
   #- { key: L,         mods: Control,                    action: ClearLogNotice }

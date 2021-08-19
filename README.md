@@ -46,7 +46,7 @@ https://github.com/cli/cli#installation (required for the aliases).
 
 [https://github.com/junegunn/fzf#installation](https://github.com/junegunn/fzf#installation)
 
-[https://github.com/ranger/ranger#installing](https://github.com/ranger/ranger#installing)
+[https://github.com/kevinhwang91/rnvimr#installation](https://github.com/kevinhwang91/rnvimr#installation)
 
 ## 6. Finally, bootstrap DotFiles
 
