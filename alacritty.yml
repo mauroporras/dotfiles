@@ -81,7 +81,7 @@ window:
   startup_mode: Maximized
 
   # Window title
-  title: Alacritty 🚀
+  #title: Alacritty
 
   # Allow terminal applications to change Alacritty's window title.
   dynamic_title: false
