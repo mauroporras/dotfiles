@@ -84,6 +84,7 @@ nnoremap <Leader>q <C-w>q
 nnoremap <Leader>s :wall<CR>
 "     Ranger.
 nnoremap <Leader>r :RnvimrToggle<CR>
+tnoremap <silent> <M-r> <C-\><C-n>:RnvimrResize<CR>
 "   }}} Normal.
 
 "   Terminal (:h mapmode-t).
@@ -217,8 +218,6 @@ EOF
 "   Ranger.
 "     Hidde after picking a file.
 let g:rnvimr_enable_picker = 1
-"     Resize floating window by all preset layouts
-tnoremap <silent> <M-r> <C-\><C-n>:RnvimrResize<CR>
 
 " }}} Plugins settings.
 
