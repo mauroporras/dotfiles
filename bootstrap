@@ -7,6 +7,7 @@ mkdir -p temp/ workspace/
 
 mkdir -p .config/nvim/
 ln -sf ~/dotfiles/init.vim .config/nvim/init.vim
+ln -sf ~/dotfiles/_coc.vim .config/nvim/_coc.vim
 ln -sf ~/dotfiles/coc-settings.json .config/nvim/coc-settings.json
 
 mkdir -p .config/ranger/

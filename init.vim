@@ -146,31 +146,7 @@ command! -bang -nargs=* Ag
   \ )
 
 "   CoC.
-"     To Open settings file:
-"       :CocConfig
-"     To update all extensions:
-"       :CocUpdate
-"     To list stuff:
-"       :CocList
-"       E.g.:
-"         :CocList extensions
-"         :CocList snippets
-let g:coc_global_extensions = [
-\ 'coc-css',
-\ 'coc-emmet',
-\ 'coc-eslint',
-\ 'coc-git',
-\ 'coc-html',
-\ 'coc-json',
-\ 'coc-markdownlint',
-\ 'coc-prettier',
-\ 'coc-snippets',
-\ 'coc-svelte',
-\ 'coc-swagger',
-\ 'coc-tailwindcss',
-\ 'coc-tsserver',
-\ 'coc-yaml'
-\]
+source ~/.config/nvim/_coc.vim
 
 "   Emmet.
 let g:user_emmet_mode='i'
