@@ -25,6 +25,7 @@ Plug 'ekalinin/Dockerfile.vim'
 Plug 'gutenye/json5.vim'
 Plug 'honza/vim-snippets'
 Plug 'jiangmiao/auto-pairs'
+Plug 'itchyny/lightline.vim'
 Plug 'kevinhwang91/rnvimr'
 Plug 'kevinoid/vim-jsonc'
 Plug 'mattn/emmet-vim'
@@ -108,12 +109,7 @@ call Base16hi('QuickFixLine', '', '', g:base16_cterm00, g:base16_cterm0A)
 call Base16hi('Search', '', '', '', g:base16_cterm0D)
 call Base16hi('SpellBad', '', '', '', 225)
 call Base16hi('SpellCap', '', '', '', 229)
-call Base16hi('StatusLine', '', '', g:base16_cterm00, g:base16_cterm05)
-call Base16hi('StatusLineNC', '', '', g:base16_cterm00, g:base16_cterm04)
 call Base16hi('Substitute', '', '', '', g:base16_cterm0D)
-call Base16hi('TabLine', '', '', g:base16_cterm02, g:base16_cterm05)
-call Base16hi('TabLineFill', '', '', '', g:base16_cterm05)
-call Base16hi('TabLineSel', '', '', g:base16_cterm05, g:base16_cterm00)
 call Base16hi('VertSplit', '', '', g:base16_cterm04, g:base16_cterm04)
 call Base16hi('WildMenu', '', '', g:base16_cterm07, g:base16_cterm0A)
 " }}} Color scheme & italics.
@@ -125,6 +121,7 @@ set inccommand=nosplit
 
 " Misc.
 set cmdheight=2
+set noshowmode
 set number
 set splitbelow
 set splitright
@@ -182,6 +179,17 @@ let g:fzf_action = {
 \ 'ctrl-t': 'tab split',
 \ 'ctrl-s': 'split',
 \ 'ctrl-v': 'vsplit',
+\}
+
+"   lightline.vim
+let g:lightline = {
+\ 'colorscheme': 'one',
+\ 'active': {
+\   'left': [ [ 'mode', 'paste' ], [ 'readonly', 'relativepath', 'modified' ] ],
+\ },
+\ 'inactive': {
+\   'left': [ [ 'readonly', 'relativepath', 'modified' ] ],
+\ },
 \}
 
 "   nvim-treesitter
