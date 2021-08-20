@@ -35,7 +35,6 @@ Plug 'rbgrouleff/bclose.vim'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-repeat'
 call plug#end()
 filetype plugin indent on
 " }}} Plugins.
