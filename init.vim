@@ -1,5 +1,6 @@
 " To reload config:
 " :source %
+" :so $MYVIMRC
 
 " Install vim-plug if not present. See:
 " https://github.com/junegunn/vim-plug/wiki/tips#automatic-installation
