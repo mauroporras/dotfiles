@@ -99,6 +99,8 @@ tnoremap <C-w>l <C-\><C-n><C-w>l
 
 " {{{ Color scheme & italics.
 if filereadable(expand("~/.vimrc_background"))
+  " See:
+  " https://github.com/chriskempson/base16-vim#256-colorspace
   let base16colorspace=256
   source ~/.vimrc_background
 endif
