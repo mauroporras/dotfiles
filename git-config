@@ -100,8 +100,14 @@ git config --global alias.mm 'merge'
 git config --global alias.ms 'merge --squash'
 git config --global alias.mt 'mergetool'
 
-# GitHub CLI aliases.
+# Git `fixup` and `autosquash`.
+# Example:
+#   g cif somehash
+#   g rbia somehash^
+git config --global alias.cif 'commit --fixup'
+git config --global alias.rbia 'rebase --interactive --autosquash'
 
+# GitHub CLI aliases.
 gh alias set il 'issue list'
 gh alias set ilw 'issue list --web'
 gh alias set iv 'issue view'
