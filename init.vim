@@ -55,6 +55,8 @@ cnoremap <C-f> <Right>
 
 "   Insert.
 inoremap <C-d> <Del>
+"     Expand and jump (expand is higher priority).
+imap <C-j> <Plug>(coc-snippets-expand-jump)
 
 "   {{{ Normal.
 nnoremap <C-n> :call CocAction('diagnosticNext')<CR>
@@ -169,9 +171,6 @@ let g:coc_global_extensions = [
 \ 'coc-tsserver',
 \ 'coc-yaml'
 \]
-
-"     Expand and jump (expand is higher priority).
-imap <C-j> <Plug>(coc-snippets-expand-jump)
 
 "   Emmet.
 let g:user_emmet_mode='i'
