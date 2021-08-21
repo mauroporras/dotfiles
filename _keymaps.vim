@@ -1,3 +1,7 @@
+" Key maps.
+"   To find what's using a key map:
+"     :verbose nmap <leader>b
+
 " Leader.
 let mapleader=' '
 set timeoutlen=3000
