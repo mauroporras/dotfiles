@@ -5,6 +5,7 @@
 source ~/.config/nvim/_plugins.vim
 source ~/.config/nvim/_colors-italics.vim
 source ~/.config/nvim/_keymaps.vim
+source ~/.config/nvim/_plugins-settings.vim
 
 " Searching.
 set ignorecase
@@ -19,57 +20,5 @@ set splitright
 set mouse=a
 set listchars=tab:→\ ,space:·,nbsp:␣,trail:•,eol:¶,precedes:«,extends:»
 autocmd BufNewFile,BufRead *.json set syntax=json5
-
-" {{{ Plugins settings.
-
-"   Ag.
-command! -bang -nargs=* Ag
-  \ call fzf#vim#ag(
-  \   <q-args>,
-  \   '--hidden --ignore .git',
-  \   <bang>0 ? fzf#vim#with_preview('up:60%')
-  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-  \   <bang>0
-  \ )
-
-"   CoC.
-source ~/.config/nvim/_coc.vim
-
-"   Emmet.
-let g:user_emmet_mode='i'
-
-"   Fzf.
-let g:fzf_action = {
-\ 'ctrl-t': 'tab split',
-\ 'ctrl-s': 'split',
-\ 'ctrl-v': 'vsplit',
-\}
-
-"   nvim-treesitter
-"     See:
-"       https://github.com/nvim-treesitter/nvim-treesitter#language-parsers
-"     To update all parsers:
-"       :TSUpdate
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-  ignore_install = { }, -- List of parsers to ignore installing
-  highlight = {
-    enable = true,              -- false will disable the whole extension
-    disable = { "c", "rust" },  -- list of language that will be disabled
-    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-    -- Using this option may slow down your editor, and you may see some duplicate highlights.
-    -- Instead of true it can also be a list of languages
-    additional_vim_regex_highlighting = false,
-  },
-}
-EOF
-
-"   Ranger.
-"     Hidde after picking a file.
-let g:rnvimr_enable_picker = 1
-
-" }}} Plugins settings.
 
 " vim: foldmethod=marker
