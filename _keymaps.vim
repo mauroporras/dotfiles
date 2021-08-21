@@ -29,7 +29,12 @@ nnoremap <Leader>a :Ag<Space>
 nnoremap <Leader>g :call CocAction('jumpDefinition')<CR>
 nnoremap <Leader>i :G<Space>
 nnoremap <Leader>o :Files<CR>
-nnoremap <Leader>t :$tabnew<CR>
+"   Tabs.
+nnoremap <Leader>tt :$tabnew<CR>
+nnoremap <Leader>tc :tabclose<CR>
+nnoremap <Leader>th :-tabmove<CR>
+nnoremap <Leader>tl :+tabmove<CR>
+
 nnoremap <Leader>w :Windows<CR>
 nnoremap <Leader>yt :BTags<CR>
 nnoremap <Leader>zh :History<CR>
