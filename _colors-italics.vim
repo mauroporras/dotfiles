@@ -1,3 +1,7 @@
+" To show the current scheme:
+"   :colorscheme
+"   :h :highlight
+
 if filereadable(expand("~/.vimrc_background"))
   " See:
   " https://github.com/chriskempson/base16-vim#256-colorspace
