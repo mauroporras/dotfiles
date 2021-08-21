@@ -33,6 +33,7 @@ nnoremap <Leader>a :Ag<Space>
 nnoremap <Leader>g :call CocAction('jumpDefinition')<CR>
 nnoremap <Leader>i :G<Space>
 nnoremap <Leader>o :Files<CR>
+
 "   Tabs.
 nnoremap <Leader>tt :$tabnew<CR>
 nnoremap <Leader>tc :tabclose<CR>
@@ -45,15 +46,17 @@ nnoremap <Leader>zh :History<CR>
 nnoremap <Leader>zl :Lines<CR>
 nnoremap <Leader>zm :Marks<CR>
 nnoremap <Leader>zt :Tags<CR>
+
 "   Buffers.
 nnoremap <Leader>b :Buffers<CR>
-nnoremap <Leader>d :Bclose<CR>
+nnoremap <Leader>d :bdelete<CR>
 nnoremap <Leader>e :edit!<CR>
 nnoremap <Leader>l :edit #<CR>
 nnoremap <Leader>n :bnext<CR>
 nnoremap <Leader>p :bprevious<CR>
 nnoremap <Leader>q <C-w>q
 nnoremap <Leader>s :wall<CR>
+
 "   Ranger.
 nnoremap <Leader>r :RnvimrToggle<CR>
 tnoremap <silent> <M-r> <C-\><C-n>:RnvimrResize<CR>
