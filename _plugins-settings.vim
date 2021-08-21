@@ -26,6 +26,8 @@ let g:fzf_action = {
 "     https://github.com/nvim-treesitter/nvim-treesitter#language-parsers
 "   To update all parsers:
 "     :TSUpdate
+"   To list all available commands:
+"     :h nvim-treesitter-commands
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
   ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
