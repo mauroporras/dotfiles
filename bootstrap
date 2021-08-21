@@ -9,6 +9,7 @@ mkdir -p .config/nvim/
 ln -sf ~/dotfiles/init.vim .config/nvim/init.vim
 ln -sf ~/dotfiles/_coc.vim .config/nvim/_coc.vim
 ln -sf ~/dotfiles/_plugins.vim .config/nvim/_plugins.vim
+ln -sf ~/dotfiles/_colors-italics.vim .config/nvim/_colors-italics.vim
 ln -sf ~/dotfiles/_keymaps.vim .config/nvim/_keymaps.vim
 ln -sf ~/dotfiles/coc-settings.json .config/nvim/coc-settings.json
 
