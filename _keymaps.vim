@@ -19,7 +19,12 @@ tnoremap <C-w>k <C-\><C-n><C-w>k
 tnoremap <C-w>l <C-\><C-n><C-w>l
 
 " Insert.
+inoremap <C-a> <Home>
+inoremap <C-b> <Left>
 inoremap <C-d> <Del>
+inoremap <C-e> <End>
+inoremap <C-f> <Right>
+
 "   Expand and jump (expand is higher priority).
 imap <C-j> <Plug>(coc-snippets-expand-jump)
 
