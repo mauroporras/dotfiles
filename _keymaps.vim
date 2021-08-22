@@ -32,7 +32,7 @@ nnoremap <Up> :cprevious<CR>
 nnoremap <Leader>a :Ag<Space>
 nnoremap <Leader>g :call CocAction('jumpDefinition')<CR>
 nnoremap <Leader>i :G<Space>
-nnoremap <Leader>o :Files<CR>
+nnoremap <Leader>o :GFiles<CR>
 
 "   Tabs.
 nnoremap <Leader>tt :$tabnew<CR>
