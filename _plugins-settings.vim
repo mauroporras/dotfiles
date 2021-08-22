@@ -45,5 +45,5 @@ require'nvim-treesitter.configs'.setup {
 EOF
 
 " Ranger.
-"   Hidde after picking a file.
+"   Hide after picking a file.
 let g:rnvimr_enable_picker = 1
