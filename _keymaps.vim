@@ -34,7 +34,7 @@ nnoremap <C-p> :call CocAction('diagnosticPrevious')<CR>
 nnoremap <Esc> :nohlsearch<CR><Esc>
 nnoremap <Down> :cnext<CR>
 nnoremap <Up> :cprevious<CR>
-nnoremap <Leader>a :Ag<Space>
+nnoremap <Leader>a :Rg<Space>
 nnoremap <Leader>g :call CocAction('jumpDefinition')<CR>
 nnoremap <Leader>i :G<Space>
 nnoremap <Leader>o :Files<CR>
