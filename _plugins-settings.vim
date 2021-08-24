@@ -11,13 +11,6 @@ source ~/.config/nvim/_coc.vim
 " Emmet.
 let g:user_emmet_mode='i'
 
-" Fzf.
-let g:fzf_action = {
-\ 'ctrl-t': 'tab split',
-\ 'ctrl-s': 'split',
-\ 'ctrl-v': 'vsplit',
-\}
-
 " nvim-treesitter
 "   See:
 "     https://github.com/nvim-treesitter/nvim-treesitter#language-parsers
