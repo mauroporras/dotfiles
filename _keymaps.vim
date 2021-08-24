@@ -34,10 +34,13 @@ nnoremap <C-p> :call CocAction('diagnosticPrevious')<CR>
 nnoremap <Esc> :nohlsearch<CR><Esc>
 nnoremap <Down> :cnext<CR>
 nnoremap <Up> :cprevious<CR>
-nnoremap <Leader>a :Rg<Space>
 nnoremap <Leader>g :call CocAction('jumpDefinition')<CR>
 nnoremap <Leader>i :G<Space>
-nnoremap <Leader>o :GFiles<CR>
+
+" Telescope.
+nnoremap <Leader>a <cmd>Telescope live_grep<CR>
+nnoremap <Leader>b <cmd>Telescope buffers<CR>
+nnoremap <Leader>o <cmd>Telescope git_files<CR>
 
 "   Tabs.
 nnoremap <Leader>tt :$tabnew<CR>
@@ -53,7 +56,6 @@ nnoremap <Leader>zm :Marks<CR>
 nnoremap <Leader>zt :Tags<CR>
 
 "   Buffers.
-nnoremap <Leader>b :Buffers<CR>
 nnoremap <Leader>d :bdelete<CR>
 nnoremap <Leader>e :edit!<CR>
 nnoremap <Leader>l :edit #<CR>

@@ -10,8 +10,12 @@ endif
 call plug#begin()
 
 " Fzf.
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
+ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+ Plug 'junegunn/fzf.vim'
+
+" telescope.nvim.
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 
 " Misc.
 Plug 'chriskempson/base16-vim'

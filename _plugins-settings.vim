@@ -37,3 +37,16 @@ EOF
 " Ranger.
 "   Hide after picking a file.
 let g:rnvimr_enable_picker = 1
+
+" Telescope.
+lua <<EOF
+require("telescope").setup {
+  defaults = {
+    mappings = {
+      i = {
+        ["<c-u>"] = false,
+      },
+    }
+  },
+}
+EOF
