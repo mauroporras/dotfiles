@@ -25,19 +25,21 @@ inoremap <C-d> <Del>
 inoremap <C-e> <End>
 inoremap <C-f> <Right>
 
-"   Expand and jump (expand is higher priority).
-imap <C-j> <Plug>(coc-snippets-expand-jump)
-
 " Normal.
-nnoremap <C-n> :call CocAction('diagnosticNext')<CR>
-nnoremap <C-p> :call CocAction('diagnosticPrevious')<CR>
 nnoremap <Esc> :nohlsearch<CR><Esc>
 nnoremap <Down> :cnext<CR>
 nnoremap <Up> :cprevious<CR>
 nnoremap <Leader>a :Rg<Space>
-nnoremap <Leader>g :call CocAction('jumpDefinition')<CR>
 nnoremap <Leader>i :G<Space>
 nnoremap <Leader>o :Files<CR>
+"   CoC.
+"     Expand and jump (expand is higher priority).
+imap <C-j> <Plug>(coc-snippets-expand-jump)
+nmap <C-n> <Plug>(coc-diagnostic-next)
+nmap <C-p> <Plug>(coc-diagnostic-prev)
+nmap <Leader>gd <Plug>(coc-definition)
+nmap <Leader>gr <Plug>(coc-references)
+nmap <Leader>gR <Plug>(coc-rename)
 
 "   Tabs.
 nnoremap <Leader>tt :$tabnew<CR>
