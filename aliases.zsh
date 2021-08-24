@@ -1,4 +1,4 @@
-alias ag='ag --hidden'
+alias rg='rg --hidden'
 
 # {{{ direnv.
 alias dea='direnv allow'
