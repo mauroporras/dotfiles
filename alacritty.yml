@@ -735,6 +735,7 @@ mouse:
 key_bindings:
   - { key: A, mods: Alt, chars: "\x1ba" }
   - { key: B, mods: Alt, chars: "\x1bb" }
+  - { key: C, mods: Alt, chars: "\x1bc" }
   - { key: F, mods: Alt, chars: "\x1bf" }
   - { key: R, mods: Alt, chars: "\x1br" }
   #- { key: Paste,                                       action: Paste          }
