@@ -1,4 +1,4 @@
-alias ag='ag --hidden'
+alias rg="rg --hidden --glob '!.git'"
 
 # {{{ direnv.
 alias dea='direnv allow'

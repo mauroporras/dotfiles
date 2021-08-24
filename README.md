@@ -42,7 +42,7 @@ sudo apt install -y tmux git
 
 https://github.com/cli/cli#installation (required for the aliases).
 
-[https://github.com/ggreer/the_silver_searcher#installing](https://github.com/ggreer/the_silver_searcher#installing)
+[https://github.com/BurntSushi/ripgrep#installation](https://github.com/BurntSushi/ripgrep#installation)
 
 [https://github.com/junegunn/fzf#installation](https://github.com/junegunn/fzf#installation)
 
