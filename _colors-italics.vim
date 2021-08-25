@@ -32,3 +32,5 @@ call Base16hi('TabLineFill', '', g:base16_gui05, '', g:base16_cterm05)
 call Base16hi('TabLineSel', g:base16_gui05, g:base16_gui00, g:base16_cterm05, g:base16_cterm00)
 call Base16hi('VertSplit', g:base16_gui04, g:base16_gui04, g:base16_cterm04, g:base16_cterm04)
 call Base16hi('WildMenu', g:base16_gui07, g:base16_gui0A, g:base16_cterm07, g:base16_cterm0A)
+
+highlight HighlightedyankRegion guibg=violet guifg=black
