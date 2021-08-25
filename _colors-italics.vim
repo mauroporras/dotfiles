@@ -17,20 +17,19 @@ endif
 " Use `:highlight` to list all color groups.
 " Syntax: (group, guifg, guibg, ctermfg, ctermbg, [bold,italic,underline])
 call Base16hi('Comment', '', '', '', '', 'italic')
-call Base16hi('Error', '', '', '', 225)
-call Base16hi('IncSearch', '', g:base16_gui0C, '', g:base16_cterm0C, 'bold')
-call Base16hi('MatchParen', g:base16_gui00, g:base16_gui0E, g:base16_cterm00, g:base16_cterm0E)
-call Base16hi('QuickFixLine', '', '', g:base16_cterm00, g:base16_cterm0A)
-call Base16hi('Search', '', g:base16_gui0D, '', g:base16_cterm0D)
-call Base16hi('SpellBad', '', '', '', 225)
-call Base16hi('SpellCap', '', '', '', 229)
 call Base16hi('StatusLine', g:base16_gui00, g:base16_gui05, g:base16_cterm00, g:base16_cterm05)
 call Base16hi('StatusLineNC', g:base16_gui00, g:base16_gui04, g:base16_cterm00, g:base16_cterm04)
-call Base16hi('Substitute', '', g:base16_gui0D, '', g:base16_cterm0D)
 call Base16hi('TabLine', g:base16_gui02, g:base16_gui05, g:base16_cterm02, g:base16_cterm05)
 call Base16hi('TabLineFill', '', g:base16_gui05, '', g:base16_cterm05)
 call Base16hi('TabLineSel', g:base16_gui05, g:base16_gui00, g:base16_cterm05, g:base16_cterm00)
 call Base16hi('VertSplit', g:base16_gui04, g:base16_gui04, g:base16_cterm04, g:base16_cterm04)
-call Base16hi('WildMenu', g:base16_gui07, g:base16_gui0A, g:base16_cterm07, g:base16_cterm0A)
 
 highlight HighlightedyankRegion guibg=violet guifg=black
+
+highlight IncSearch guibg=cyan guifg=black
+highlight Search guibg=black guifg=cyan
+highlight Substitute guibg=cyan guifg=black
+
+highlight MatchParen guibg=black guifg=magenta
+
+highlight QuickFixLine guibg=lime guifg=black
