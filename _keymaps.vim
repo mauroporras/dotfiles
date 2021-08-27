@@ -37,6 +37,7 @@ nnoremap <Leader>o :Files<CR>
 imap <C-j> <Plug>(coc-snippets-expand-jump)
 nmap <C-n> <Plug>(coc-diagnostic-next)
 nmap <C-p> <Plug>(coc-diagnostic-prev)
+nmap <Leader>E :CocRestart<CR>
 nmap <Leader>gd <Plug>(coc-definition)
 nmap <Leader>gr <Plug>(coc-references)
 nmap <Leader>gR <Plug>(coc-rename)
