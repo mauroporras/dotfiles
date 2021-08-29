@@ -3,7 +3,7 @@ export LC_COLLATE=C
 export LESS='-R -i'
 
 # fzf.
-export FZF_DEFAULT_COMMAND="rg --hidden --smart-case --no-ignore --glob '!{.git,node_modules}'"
+export FZF_DEFAULT_COMMAND="rg --hidden --smart-case --no-ignore --glob '!{.git,dist,node_modules,tags}'"
 # --history=HISTORY_FILE
 #   When enabled, CTRL-N and CTRL-P are automati-cally
 #   remapped to next-history and previous-history.
