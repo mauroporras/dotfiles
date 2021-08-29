@@ -1,4 +1,4 @@
-alias rg="rg --hidden --no-ignore --glob '!{.git,node_modules}'"
+alias rg="rg --hidden --smart-case --no-ignore --glob '!{.git,node_modules}'"
 
 # {{{ direnv.
 alias dea='direnv allow'
