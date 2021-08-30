@@ -32,6 +32,7 @@ nnoremap <Up> :cprevious<CR>
 nnoremap <Leader>a :Rg<Space>
 nnoremap <Leader>i :G<Space>
 nnoremap <Leader>o :Files<CR>
+nnoremap <Leader>S :GFiles?<CR>
 "   CoC.
 "     Expand and jump (expand is higher priority).
 imap <C-j> <Plug>(coc-snippets-expand-jump)
