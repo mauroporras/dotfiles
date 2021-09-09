@@ -14,6 +14,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 " Misc.
 Plug 'chriskempson/base16-vim'
+Plug 'dart-lang/dart-vim-plugin'
 Plug 'easymotion/vim-easymotion'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'evanleck/vim-svelte', { 'branch': 'main' }
