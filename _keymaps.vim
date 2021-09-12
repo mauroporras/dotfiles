@@ -4,7 +4,6 @@
 
 " Leader.
 let mapleader=' '
-set timeoutlen=3000
 
 " Command line (:h mapmode-c).
 cnoremap <C-a> <Home>
@@ -68,4 +67,7 @@ nnoremap <Leader>s :wall<CR>
 
 "   Ranger.
 nnoremap <Leader>r :RnvimrToggle<CR>
-tnoremap <silent> <M-r> <C-\><C-n>:RnvimrResize<CR>
+tnoremap <M-r> <C-\><C-n>:RnvimrResize<CR>
+
+"   vim-which-key.
+nnoremap <Leader> :WhichKey '<Space>'<CR>
