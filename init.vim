@@ -13,6 +13,7 @@ set smartcase
 set inccommand=nosplit
 
 " Misc.
+set cursorline
 set cmdheight=2
 set number
 set splitbelow
