@@ -9,7 +9,7 @@ command! -bang -nargs=* Rg
 source ~/.config/nvim/_coc.vim
 
 " Emmet.
-let g:user_emmet_mode='i'
+let g:user_emmet_mode = 'i'
 
 " nvim-treesitter
 "   See:
@@ -37,3 +37,7 @@ EOF
 " Ranger.
 "   Hide after picking a file.
 let g:rnvimr_enable_picker = 1
+
+" vim-sneak.
+"   For a minimalist alternative to EasyMotion.
+let g:sneak#label = 1

@@ -7,7 +7,7 @@
 " https://neovim.io/doc/user/options.html#'termguicolors'
 set termguicolors
 
-if filereadable(expand("~/.vimrc_background"))
+if filereadable(expand('~/.vimrc_background'))
   " See:
   " https://github.com/chriskempson/base16-vim#256-colorspace
   let base16colorspace=256
@@ -33,3 +33,6 @@ highlight Substitute guibg=cyan guifg=black
 highlight MatchParen guibg=black guifg=magenta
 
 highlight QuickFixLine guibg=lime guifg=black
+
+highlight Sneak guibg=black guifg=cyan
+highlight SneakScope guibg=cyan guifg=black

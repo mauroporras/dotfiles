@@ -71,3 +71,11 @@ tnoremap <M-r> <C-\><C-n>:RnvimrResize<CR>
 
 "   vim-which-key.
 nnoremap <Leader> :WhichKey '<Space>'<CR>
+
+"   vim-sneak.
+nmap <Leader>/ <Plug>Sneak_s
+nmap <Leader>? <Plug>Sneak_S
+vmap <Leader>/ <Plug>Sneak_s
+vmap <Leader>? <Plug>Sneak_S
+nnoremap ; ;
+nnoremap , ,
