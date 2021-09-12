@@ -13,6 +13,7 @@ call plug#begin()
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 " Misc.
+Plug 'andrewradev/inline_edit.vim'
 Plug 'chriskempson/base16-vim'
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'easymotion/vim-easymotion'
