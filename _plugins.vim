@@ -31,6 +31,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
+Plug 'unblevable/quick-scope'
 
 call plug#end()
 

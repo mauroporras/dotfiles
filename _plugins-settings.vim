@@ -41,3 +41,6 @@ let g:rnvimr_enable_picker = 1
 " vim-sneak.
 "   For a minimalist alternative to EasyMotion.
 let g:sneak#label = 1
+
+" quick-scope.
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']

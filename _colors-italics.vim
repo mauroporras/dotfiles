@@ -36,3 +36,6 @@ highlight QuickFixLine guibg=lime guifg=black
 
 highlight Sneak guibg=black guifg=cyan
 highlight SneakScope guibg=cyan guifg=black
+
+highlight QuickScopePrimary guibg=cyan guifg=black
+highlight QuickScopeSecondary guibg=black guifg=cyan
