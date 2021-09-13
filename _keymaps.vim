@@ -41,6 +41,7 @@ nmap <Leader>E :CocRestart<CR>
 nmap <Leader>gd <Plug>(coc-definition)
 nmap <Leader>gr <Plug>(coc-references)
 nmap <Leader>gR <Plug>(coc-rename)
+nnoremap <Leader>O :CocCommand explorer<CR>
 
 "   Tabs.
 nnoremap <Leader>tt :$tabnew<CR>
