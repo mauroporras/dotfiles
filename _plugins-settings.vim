@@ -1,7 +1,7 @@
 " Rg.
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
-  \   "rg --hidden --smart-case --no-ignore --glob '!{.git,dist,node_modules,tags}' --column --line-number --no-heading --color=always -- ".shellescape(<q-args>), 1,
+  \   "rg --follow --hidden --smart-case --no-ignore --glob '!{.git,dist,node_modules,tags}' --column --line-number --no-heading --color=always -- ".shellescape(<q-args>), 1,
   \   fzf#vim#with_preview(), <bang>0
   \ )
 
