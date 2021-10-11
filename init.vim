@@ -3,9 +3,9 @@
 " :so $MYVIMRC
 
 source ~/.config/nvim/_plugins.vim
-source ~/.config/nvim/_colors-italics.vim
-source ~/.config/nvim/_keymaps.vim
 source ~/.config/nvim/_plugins-settings.vim
+source ~/.config/nvim/_keymaps.vim
+source ~/.config/nvim/_colors-italics.vim
 
 " Searching.
 set ignorecase
