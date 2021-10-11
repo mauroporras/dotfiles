@@ -73,6 +73,9 @@ alias yais='yarn add --ignore-scripts'
 alias yad='yarn add --dev'
 alias yadis='yarn add --dev --ignore-scripts'
 
+alias yga='yarn global add'
+alias ygl='yarn global list'
+
 alias yrm='yarn remove'
 alias yrmis='yarn remove --ignore-scripts'
 
