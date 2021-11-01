@@ -32,6 +32,11 @@ nnoremap <Leader>a :Rg<Space>
 nnoremap <Leader>i :G<Space>
 nnoremap <Leader>o :Files<CR>
 nnoremap <Leader>S :GFiles?<CR>
+"   Scrolling.
+nnoremap <C-e> 2<C-e>
+nnoremap <C-y> 2<C-y>
+nnoremap <C-d> 4<C-d>
+nnoremap <C-u> 4<C-u>
 "   CoC.
 "     Expand and jump (expand is higher priority).
 imap <C-j> <Plug>(coc-snippets-expand-jump)
