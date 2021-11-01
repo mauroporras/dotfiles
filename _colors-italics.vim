@@ -8,6 +8,8 @@
 set termguicolors
 set background=light
 
+let g:neosolarized_contrast = "high"
+
 colorscheme NeoSolarized
 
 " Use `:highlight` to list all color groups.
