@@ -1,5 +1,6 @@
 " To show the current scheme:
 "   :colorscheme
+" Use `:highlight` to list all color groups.
 "   :h :highlight
 
 " Enable 24-bit RGB color.
@@ -16,17 +17,18 @@ if filereadable(expand('~/.vimrc_background'))
   source ~/.vimrc_background
 endif
 
-" Use `:highlight` to list all color groups.
-" Syntax: (group, guifg, guibg, ctermfg, ctermbg, [bold,italic,underline])
-call Base16hi('Comment', '', '', '', '', 'italic')
-call Base16hi('StatusLine', g:base16_gui00, g:base16_gui05, g:base16_cterm00, g:base16_cterm05)
-call Base16hi('StatusLineNC', g:base16_gui00, g:base16_gui04, g:base16_cterm00, g:base16_cterm04)
-call Base16hi('TabLine', g:base16_gui02, g:base16_gui05, g:base16_cterm02, g:base16_cterm05)
-call Base16hi('TabLineFill', '', g:base16_gui05, '', g:base16_cterm05)
-call Base16hi('TabLineSel', g:base16_gui05, g:base16_gui00, g:base16_cterm05, g:base16_cterm00)
-call Base16hi('VertSplit', g:base16_gui04, g:base16_gui04, g:base16_cterm04, g:base16_cterm04)
-
 highlight HighlightedyankRegion guibg=violet guifg=black
+
+highlight Comment gui=italic
+
+highlight StatusLine guibg=black guifg=white
+highlight StatusLineNC guibg=gray guifg=white
+
+highlight TabLine guibg=gray guifg=white
+highlight TabLineFill guibg=gray guifg=white
+highlight TabLineSel guibg=black guifg=white
+
+highlight VertSplit guibg=gray guifg=gray
 
 highlight IncSearch guibg=cyan guifg=black
 highlight Search guibg=black guifg=cyan
