@@ -39,5 +39,3 @@ highlight SneakScope guibg=cyan guifg=black
 highlight QuickScopePrimary guibg=cyan guifg=black
 highlight QuickScopeSecondary guibg=black guifg=cyan
 highlight CursorLine guibg=lightcyan
-
-highlight Title guifg=green
