@@ -21,5 +21,6 @@ set splitright
 set mouse=a
 set listchars=tab:→\ ,space:·,nbsp:␣,trail:•,eol:¶,precedes:«,extends:»
 autocmd BufNewFile,BufRead *.json set syntax=json5
+autocmd TextYankPost * silent! lua vim.highlight.on_yank { higroup="HighlightedyankRegion", timeout=400 }
 
 " vim: foldmethod=marker

@@ -32,21 +32,8 @@ nnoremap <Leader>a :Rg<Space>
 nnoremap <Leader>i :G<Space>
 nnoremap <Leader>o :Files<CR>
 nnoremap <Leader>S :GFiles?<CR>
-"   Scrolling.
-nnoremap <C-e> 2<C-e>
-nnoremap <C-y> 2<C-y>
-nnoremap <C-d> 4<C-d>
-nnoremap <C-u> 4<C-u>
-"   CoC.
-"     Expand and jump (expand is higher priority).
-imap <C-j> <Plug>(coc-snippets-expand-jump)
-nmap <C-n> <Plug>(coc-diagnostic-next)
-nmap <C-p> <Plug>(coc-diagnostic-prev)
-nmap <Leader>E :CocRestart<CR>
-nmap <Leader>gd <Plug>(coc-definition)
-nmap <Leader>gr <Plug>(coc-references)
-nmap <Leader>gR <Plug>(coc-rename)
-nnoremap <Leader>O :CocCommand explorer<CR>
+"   LSP.
+nmap <Leader>E :LspRestart<CR>
 
 "   Tabs.
 nnoremap <Leader>tt :$tabnew<CR>

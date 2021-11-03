@@ -5,11 +5,66 @@ command! -bang -nargs=* Rg
   \   fzf#vim#with_preview(), <bang>0
   \ )
 
-" CoC.
-source ~/.config/nvim/_coc.vim
-
 " Emmet.
 let g:user_emmet_mode = 'i'
+
+" {{{ LSP.
+"   :LspInfo
+"   :LspRestart
+lua << EOF
+require'lspconfig'.bashls.setup{}
+require'lspconfig'.cssls.setup{}
+require'lspconfig'.dartls.setup{}
+require'lspconfig'.diagnosticls.setup{}
+require'lspconfig'.dockerls.setup{}
+require'lspconfig'.html.setup{}
+require'lspconfig'.jsonls.setup{}
+require'lspconfig'.stylelint_lsp.setup{}
+require'lspconfig'.svelte.setup{}
+require'lspconfig'.tailwindcss.setup{}
+require'lspconfig'.tsserver.setup{}
+require'lspconfig'.yamlls.setup{}
+
+local nvim_lsp = require('lspconfig')
+
+-- Use an on_attach function to only map the following keys
+-- after the language server attaches to the current buffer.
+local on_attach = function(client, bufnr)
+  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+
+  -- Enable completion triggered by <c-x><c-o>
+  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+  -- Mappings.
+  local opts = { noremap=true, silent=false }
+
+  -- See `:help vim.lsp.*` for documentation on any of the below functions.
+  buf_set_keymap('n', '<Leader>gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+  buf_set_keymap('n', '<Leader>gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  buf_set_keymap('n', '<Leader>gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+  buf_set_keymap('n', '<Leader>gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+  buf_set_keymap('n', '<Leader>gR', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+  buf_set_keymap('n', '<Leader>k', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  buf_set_keymap('n', '<Leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  buf_set_keymap('n', '<Leader>cd', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+  buf_set_keymap('n', '<C-n>', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+  buf_set_keymap('n', '<C-p>', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
+end
+
+-- Use a loop to conveniently call 'setup' on multiple servers and
+-- map buffer local keybindings when the language server attaches.
+local servers = { 'svelte', 'tsserver' }
+for _, lsp in ipairs(servers) do
+  nvim_lsp[lsp].setup {
+    on_attach = on_attach,
+    flags = {
+      debounce_text_changes = 150,
+    }
+  }
+end
+EOF
+" }}} LSP.
 
 " nvim-treesitter
 "   See:
@@ -33,6 +88,10 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 EOF
+
+" Prettier.
+let g:prettier#autoformat = 1
+let g:prettier#autoformat_require_pragma = 0
 
 " Ranger.
 "   Hide after picking a file.

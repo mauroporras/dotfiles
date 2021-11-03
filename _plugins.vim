@@ -17,8 +17,6 @@ Plug 'andrewradev/inline_edit.vim'
 Plug 'antonk52/vim-browserslist'
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'evanleck/vim-svelte', { 'branch': 'main' }
-Plug 'ekalinin/Dockerfile.vim'
 Plug 'gutenye/json5.vim'
 Plug 'honza/vim-snippets'
 Plug 'jiangmiao/auto-pairs'
@@ -27,8 +25,9 @@ Plug 'kevinhwang91/rnvimr'
 Plug 'kevinoid/vim-jsonc'
 Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 Plug 'mattn/emmet-vim'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'rakr/vim-one'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
