@@ -7,6 +7,8 @@
 " https://neovim.io/doc/user/options.html#'termguicolors'
 set termguicolors
 
+set background=light
+
 if filereadable(expand('~/.vimrc_background'))
   " See:
   " https://github.com/chriskempson/base16-vim#256-colorspace
