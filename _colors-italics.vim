@@ -10,12 +10,7 @@ set termguicolors
 
 set background=light
 
-if filereadable(expand('~/.vimrc_background'))
-  " See:
-  " https://github.com/chriskempson/base16-vim#256-colorspace
-  let base16colorspace=256
-  source ~/.vimrc_background
-endif
+colorscheme solarized
 
 highlight HighlightedyankRegion guibg=violet guifg=black
 
@@ -44,3 +39,5 @@ highlight SneakScope guibg=cyan guifg=black
 highlight QuickScopePrimary guibg=cyan guifg=black
 highlight QuickScopeSecondary guibg=black guifg=cyan
 highlight CursorLine guibg=lightcyan
+
+highlight LineNr guibg=#eee8d5 guifg=gray
