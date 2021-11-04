@@ -66,6 +66,7 @@ alias wa='which -a'
 
 # {{{ Yarn.
 alias y='yarn'
+alias yif='yarn install --force'
 alias yis='yarn --ignore-scripts'
 
 alias ya='yarn add'
