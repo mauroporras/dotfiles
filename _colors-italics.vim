@@ -31,7 +31,7 @@ highlight Substitute guibg=cyan guifg=black
 
 highlight MatchParen guibg=black guifg=magenta
 
-highlight QuickFixLine guibg=lime guifg=black
+highlight QuickFixLine guibg=black guifg=lime
 
 highlight Sneak guibg=black guifg=cyan
 highlight SneakScope guibg=cyan guifg=black
@@ -39,5 +39,6 @@ highlight SneakScope guibg=cyan guifg=black
 highlight QuickScopePrimary guibg=cyan guifg=black
 highlight QuickScopeSecondary guibg=black guifg=cyan
 highlight CursorLine guibg=lightcyan
+highlight CursorLineNr guifg=tan
 
-highlight LineNr guibg=#eee8d5 guifg=gray
+highlight LineNr guibg=cornsilk guifg=wheat
