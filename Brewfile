@@ -6,6 +6,7 @@ tap "homebrew/cask"
 tap "homebrew/core"
 tap "universal-ctags/universal-ctags"
 
+brew "asciinema"
 brew "cmake"
 brew "coreutils"
 brew "direnv"
