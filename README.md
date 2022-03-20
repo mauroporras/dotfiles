@@ -54,7 +54,6 @@ https://github.com/cli/cli#installation (required for the aliases).
 git clone https://github.com/mauroporras/dotfiles.git ~/dotfiles
 ~/dotfiles/bootstrap
 ~/dotfiles/git-config
-~/dotfiles/install-terms
 ```
 
 ---
