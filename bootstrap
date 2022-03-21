@@ -2,9 +2,6 @@
 
 cd $HOME
 
-# Useful dirs.
-mkdir -p temp/ workspace/
-
 mkdir -p .config/nvim/
 ln -sf ~/dotfiles/init.vim .config/nvim/init.vim
 ln -sf ~/dotfiles/_coc.vim .config/nvim/_coc.vim
@@ -28,3 +25,6 @@ ln -sf ~/dotfiles/aliases.zsh ~/dotfiles/env_vars.zsh ~/dotfiles/functions.zsh .
 
 ln -sf ~/dotfiles/tmux.conf .tmux.conf
 ln -sf ~/dotfiles/gitignore_global .gitignore_global
+
+# Useful dirs.
+mkdir -p temp/ workspace/
