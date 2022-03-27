@@ -1,8 +1,3 @@
--- CoC.
-vim.cmd([[
-  source ~/.config/nvim/_coc.vim
-]])
-
 -- Emmet.
 vim.g.user_emmet_mode = 'i'
 

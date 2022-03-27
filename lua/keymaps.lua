@@ -39,16 +39,6 @@ vim.api.nvim_set_keymap('n', '<C-e>', '2<C-e>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-y>', '2<C-y>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-d>', '4<C-d>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-u>', '4<C-u>', { noremap = true })
---   CoC.
---     Expand and jump (expand is higher priority).
-vim.api.nvim_set_keymap('i', '<C-j>', '<Plug>(coc-snippets-expand-jump)', {})
-vim.api.nvim_set_keymap('n', '<C-n>', '<Plug>(coc-diagnostic-next)', {})
-vim.api.nvim_set_keymap('n', '<C-p>', '<Plug>(coc-diagnostic-prev)', {})
-vim.api.nvim_set_keymap('n', '<Leader>E', ':CocRestart<CR>', {})
-vim.api.nvim_set_keymap('n', '<Leader>gd', '<Plug>(coc-definition)', {})
-vim.api.nvim_set_keymap('n', '<Leader>gr', '<Plug>(coc-references)', {})
-vim.api.nvim_set_keymap('n', '<Leader>gR', '<Plug>(coc-rename)', {})
-vim.api.nvim_set_keymap('n', '<Leader>O', ':CocCommand explorer<CR>', { noremap = true })
 
 --   Tabs.
 vim.api.nvim_set_keymap('n', '<Leader>tt', ':$tabnew<CR>', { noremap = true })

@@ -5,8 +5,6 @@ cd $HOME
 mkdir -p .config/nvim/
 ln -sf ~/dotfiles/lua .config/nvim/
 ln -sf ~/dotfiles/init.lua .config/nvim/init.lua
-ln -sf ~/dotfiles/_coc.vim .config/nvim/_coc.vim
-ln -sf ~/dotfiles/coc-settings.json .config/nvim/coc-settings.json
 
 mkdir -p .config/ranger/
 ln -sf ~/dotfiles/rc.conf .config/ranger/rc.conf
