@@ -39,7 +39,7 @@ vim.api.nvim_set_keymap('n', '<C-e>', '2<C-e>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-y>', '2<C-y>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-d>', '4<C-d>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-u>', '4<C-u>', { noremap = true })
---   CoC.
+--   LSP.
 --     See `:help vim.diagnostic.*` for documentation on any of the functions below.
 -- vim.api.nvim_set_keymap('i', '<C-j>', '<Plug>(coc-snippets-expand-jump)', {})
 vim.api.nvim_set_keymap('n', '<C-n>', '<cmd>lua vim.diagnostic.goto_next()<CR>', {})
