@@ -36,10 +36,6 @@ return require('packer').startup(function(use)
   use 'antonk52/vim-browserslist'
   use 'dart-lang/dart-vim-plugin'
   use 'editorconfig/editorconfig-vim'
-  use {
-    'evanleck/vim-svelte',
-    branch = 'main'
-  }
   use 'ekalinin/Dockerfile.vim'
   use 'euclidianAce/BetterLua.vim'
   use 'gutenye/json5.vim'
