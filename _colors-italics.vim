@@ -10,13 +10,13 @@ set termguicolors
 
 set background=light
 
-if filereadable(expand('~/.vimrc_background'))
-  " See:
-  " https://github.com/chriskempson/base16-vim#256-colorspace
-  let base16colorspace=256
-  source ~/.vimrc_background
-endif
+" See:
+" https://github.com/rakr/vim-one#italic-support
+let g:one_allow_italics = 1
 
+colorscheme one
+
+" Custom highlights.
 highlight HighlightedyankRegion guibg=violet guifg=black
 
 highlight Comment gui=italic

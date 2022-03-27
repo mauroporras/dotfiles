@@ -15,7 +15,6 @@ Plug 'junegunn/fzf.vim'
 " Misc.
 Plug 'andrewradev/inline_edit.vim'
 Plug 'antonk52/vim-browserslist'
-Plug 'chriskempson/base16-vim'
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'evanleck/vim-svelte', { 'branch': 'main' }
@@ -30,6 +29,7 @@ Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 Plug 'mattn/emmet-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'rakr/vim-one'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'unblevable/quick-scope'
