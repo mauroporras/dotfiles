@@ -31,12 +31,22 @@ return require('packer').startup(function(use)
   }
   use 'junegunn/fzf.vim'
 
+  -- LSP and friends.
+  use 'neovim/nvim-lspconfig'
+  use 'hrsh7th/cmp-nvim-lsp'
+  use 'hrsh7th/cmp-buffer'
+  use 'hrsh7th/cmp-path'
+  use 'hrsh7th/cmp-cmdline'
+  use 'hrsh7th/nvim-cmp'
+  --   For snippets.
+  use 'hrsh7th/cmp-vsnip'
+  use 'hrsh7th/vim-vsnip'
+
   -- Misc.
   use 'andrewradev/inline_edit.vim'
   use 'antonk52/vim-browserslist'
   use 'editorconfig/editorconfig-vim'
   use 'euclidianAce/BetterLua.vim'
-  -- use 'honza/vim-snippets'
   use 'jiangmiao/auto-pairs'
   use 'justinmk/vim-sneak'
   use 'kevinhwang91/rnvimr'
@@ -45,7 +55,6 @@ return require('packer').startup(function(use)
     cmd = { 'WhichKey', 'WhichKey!' }
   }
   use 'mattn/emmet-vim'
-  use 'neovim/nvim-lspconfig'
   use {
    'nvim-treesitter/nvim-treesitter',
    run = ':TSUpdate'

@@ -14,6 +14,11 @@ vim.opt.smartcase = true
 vim.opt.inccommand = 'nosplit'
 
 -- Misc.
+vim.opt.completeopt = {
+ 'menu',
+ 'menuone',
+ 'noselect',
+}
 vim.opt.cursorline = true
 vim.opt.cmdheight = 2
 vim.opt.number = true
