@@ -98,6 +98,7 @@ git config --global alias.rb 'rebase'
 git config --global alias.rba 'rebase --abort'
 git config --global alias.rbc 'rebase --continue'
 git config --global alias.rbi 'rebase --interactive'
+git config --global alias.rbim 'rebase --interactive main'
 git config --global alias.rbm 'rebase main'
 
 git config --global alias.mm 'merge'
