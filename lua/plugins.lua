@@ -40,7 +40,6 @@ return require('packer').startup(function(use)
   use 'jiangmiao/auto-pairs'
   use 'justinmk/vim-sneak'
   use 'kevinhwang91/rnvimr'
-  use 'kevinoid/vim-jsonc'
   use {
     'liuchengxu/vim-which-key',
     cmd = { 'WhichKey', 'WhichKey!' }
