@@ -53,6 +53,7 @@ return require('packer').startup(function(use)
     cmd = { 'WhichKey', 'WhichKey!' }
   }
   use 'mattn/emmet-vim'
+  use 'neovim/nvim-lspconfig'
   use {
    'nvim-treesitter/nvim-treesitter',
    run = ':TSUpdate'
