@@ -17,6 +17,7 @@ vim.cmd([[
 
   colorscheme one
 
+  " Custom highlights.
   highlight HighlightedyankRegion guibg=violet guifg=black
 
   highlight Comment gui=italic
