@@ -36,7 +36,7 @@ alias kb='kubectl'
 
 alias mkb='minikube'
 
-alias ev='v ~/dotfiles/init.vim'
+alias ev='v ~/dotfiles/init.lua'
 alias ez='v ~/.zshrc'
 
 alias g='git'
