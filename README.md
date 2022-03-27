@@ -4,7 +4,7 @@ Configs for Neovim, tmux and Git, on Zsh.
 
 ## 1. Install Zsh and Oh My Zsh
 
-https://github.com/robbyrussell/oh-my-zsh/blob/master/README.md
+[https://github.com/robbyrussell/oh-my-zsh/blob/master/README.md](https://github.com/robbyrussell/oh-my-zsh/blob/master/README.md)
 
 ## 2. Install Neovim
 
@@ -40,7 +40,8 @@ sudo apt install -y tmux git
 
 ## 5. Install required utilities
 
-https://github.com/cli/cli#installation (required for the aliases).
+[https://github.com/cli/cli#installation](https://github.com/cli/cli#installation)
+(required for the aliases).
 
 [https://github.com/BurntSushi/ripgrep#installation](https://github.com/BurntSushi/ripgrep#installation)
 
