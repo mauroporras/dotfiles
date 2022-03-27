@@ -1,7 +1,7 @@
 -- Emmet.
 vim.g.user_emmet_mode = 'i'
 
--- {{{ LSP.
+-- LSP.
 --   :LspInfo
 --   :LspRestart
 require'lspconfig'.bashls.setup{}
@@ -16,7 +16,6 @@ require'lspconfig'.svelte.setup{}
 require'lspconfig'.tailwindcss.setup{}
 require'lspconfig'.tsserver.setup{}
 require'lspconfig'.yamlls.setup{}
--- }}} LSP.
 
 -- nvim-treesitter
 --   See:
