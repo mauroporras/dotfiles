@@ -1,6 +1,23 @@
 -- Emmet.
 vim.g.user_emmet_mode = 'i'
 
+-- {{{ LSP.
+--   :LspInfo
+--   :LspRestart
+require'lspconfig'.bashls.setup{}
+require'lspconfig'.cssls.setup{}
+require'lspconfig'.dartls.setup{}
+require'lspconfig'.diagnosticls.setup{}
+require'lspconfig'.dockerls.setup{}
+require'lspconfig'.html.setup{}
+require'lspconfig'.jsonls.setup{}
+require'lspconfig'.stylelint_lsp.setup{}
+require'lspconfig'.svelte.setup{}
+require'lspconfig'.tailwindcss.setup{}
+require'lspconfig'.tsserver.setup{}
+require'lspconfig'.yamlls.setup{}
+-- }}} LSP.
+
 -- nvim-treesitter
 --   See:
 --     https://github.com/nvim-treesitter/nvim-treesitter#language-parsers
@@ -8,7 +25,7 @@ vim.g.user_emmet_mode = 'i'
 --     :TSUpdate
 --   To list all available commands:
 --     :h nvim-treesitter-commands
-require'nvim-treesitter.configs'.setup({
+require('nvim-treesitter.configs').setup({
   -- one of: "all", "maintained" (parsers with maintainers), or a list of languages.
   ensure_installed = "maintained",
   -- List of parsers to ignore installing.
