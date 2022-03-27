@@ -17,6 +17,8 @@ vim.cmd([[
 
   colorscheme one
 
+  autocmd TextYankPost * silent! lua vim.highlight.on_yank({ higroup="HighlightedyankRegion", timeout=400 })
+
   " Custom highlights.
   highlight HighlightedyankRegion guibg=violet guifg=black
 
