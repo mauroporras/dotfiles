@@ -56,7 +56,6 @@ vim.api.nvim_set_keymap('n', '<Leader>gi', '<cmd>lua vim.lsp.buf.implementation(
 vim.api.nvim_set_keymap('n', '<Leader>gr', '<cmd>lua vim.lsp.buf.references()<CR>', {})
 -- vim.api.nvim_set_keymap('n', '<Leader>O', ':CocCommand explorer<CR>', { noremap = true })
 
-
 --   Tabs.
 vim.api.nvim_set_keymap('n', '<Leader>tt', ':$tabnew<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<Leader>tc', ':tabclose<CR>', { noremap = true })
