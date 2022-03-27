@@ -35,7 +35,6 @@ return require('packer').startup(function(use)
   use 'andrewradev/inline_edit.vim'
   use 'antonk52/vim-browserslist'
   use 'editorconfig/editorconfig-vim'
-  use 'ekalinin/Dockerfile.vim'
   use 'euclidianAce/BetterLua.vim'
   use 'gutenye/json5.vim'
   use 'honza/vim-snippets'
