@@ -36,7 +36,6 @@ return require('packer').startup(function(use)
   use 'antonk52/vim-browserslist'
   use 'editorconfig/editorconfig-vim'
   use 'euclidianAce/BetterLua.vim'
-  use 'gutenye/json5.vim'
   use 'honza/vim-snippets'
   use 'jiangmiao/auto-pairs'
   use 'justinmk/vim-sneak'
