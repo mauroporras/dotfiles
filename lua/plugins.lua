@@ -48,12 +48,16 @@ return require('packer').startup(function(use)
   use 'kevinhwang91/rnvimr'
   use {
     'liuchengxu/vim-which-key',
-    cmd = { 'WhichKey', 'WhichKey!' }
+    cmd = { 'WhichKey', 'WhichKey!' },
   }
   use 'mattn/emmet-vim'
   use {
-   'nvim-treesitter/nvim-treesitter',
-   run = ':TSUpdate'
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate',
+  }
+  use {
+    'prettier/vim-prettier',
+     run = 'yarn install',
   }
   use 'rakr/vim-one'
   use 'tpope/vim-commentary'

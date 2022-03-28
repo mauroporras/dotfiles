@@ -99,6 +99,10 @@ require('nvim-treesitter.configs').setup({
   },
 })
 
+-- Prettier.
+vim.g['prettier#autoformat'] = 1
+vim.g['prettier#autoformat_require_pragma'] = 0
+
 -- quick-scope.
 vim.g.qs_highlight_on_keys = {
   'f',
