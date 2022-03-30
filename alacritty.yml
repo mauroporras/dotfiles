@@ -188,7 +188,7 @@ font:
 # If `true`, bold text is drawn using the bright color variants.
 #draw_bold_text_with_bright_colors: false
 
-# Colors (Pencil Light)
+# Colors (Custom Pencil Light)
 # See:
 # https://github.com/eendroroy/alacritty-theme/blob/master/themes/pencil_light.yaml
 colors:
@@ -290,7 +290,7 @@ colors:
     blue: '#008ec4'
     magenta: '#523c79'
     cyan: '#20a5ba'
-    white: '#e0e0e0'
+    white: '#f0f0f0'
 
   # Bright colors
   bright:
@@ -301,7 +301,7 @@ colors:
     blue: '#20bbfc'
     magenta: '#6855de'
     cyan: '#4fb8cc'
-    white: '#f1f1f1'
+    white: '#f7f7f7'
 
   # Dim colors
   #

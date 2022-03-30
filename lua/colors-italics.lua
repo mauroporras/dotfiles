@@ -25,16 +25,16 @@ vim.cmd([[
   highlight Comment gui=italic
 
   highlight StatusLine guibg=black guifg=white
-  highlight StatusLineNC guibg=white guifg=gray
+  highlight StatusLineNC guibg=black guifg=lightgray
 
-  highlight TabLine guibg=gray guifg=white
-  highlight TabLineFill guibg=gray guifg=white
+  highlight TabLine guibg=lightgray guifg=black
+  highlight TabLineFill guibg=lightgray guifg=black
   highlight TabLineSel guibg=black guifg=white
 
-  highlight VertSplit guibg=gray guifg=gray
+  highlight VertSplit guibg=white guifg=black
 
   highlight IncSearch guibg=cyan guifg=black
-  highlight Search guibg=black guifg=cyan
+  highlight Search guibg=cyan guifg=black
   highlight Substitute guibg=cyan guifg=black
 
   highlight MatchParen guibg=black guifg=magenta
@@ -46,5 +46,6 @@ vim.cmd([[
 
   highlight QuickScopePrimary guibg=cyan guifg=black
   highlight QuickScopeSecondary guibg=black guifg=cyan
+
   highlight CursorLine guibg=lightcyan
 ]])
