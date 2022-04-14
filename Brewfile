@@ -7,6 +7,7 @@ tap "homebrew/core"
 tap "universal-ctags/universal-ctags"
 
 brew "asciinema"
+brew "bat" # https://github.com/sharkdp/bat
 brew "cmake"
 brew "coreutils"
 brew "direnv"

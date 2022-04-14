@@ -2,6 +2,9 @@
 
 cd $HOME
 
+mkdir -p .config/bat/
+ln -sf ~/dotfiles/misc-configs/bat/config .config/bat/config
+
 mkdir -p .config/git-delta/
 ln -sf ~/dotfiles/misc-configs/git-delta/themes.gitconfig .config/git-delta/themes.gitconfig
 
