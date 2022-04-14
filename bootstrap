@@ -2,6 +2,9 @@
 
 cd $HOME
 
+mkdir -p .config/git-delta/
+ln -sf ~/dotfiles/misc-configs/git-delta/themes.gitconfig .config/git-delta/themes.gitconfig
+
 mkdir -p .config/nvim/
 ln -sf ~/dotfiles/lua .config/nvim/
 ln -sf ~/dotfiles/init.lua .config/nvim/init.lua

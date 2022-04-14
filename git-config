@@ -16,7 +16,15 @@ git config --global init.defaultBranch main
 
 git config --global core.excludesfile ~/.gitignore_global
 git config --global core.editor 'nvim'
-git config --global merge.conflictStyle 'zdiff3'
+
+# For git-delta.
+git config --global include.path ~/.config/git-delta/themes.gitconfig
+git config --global core.pager 'delta'
+git config --global interactive.diffFilter 'delta --color-only'
+git config --global merge.conflictStyle 'diff3'
+git config --global diff.colorMoved 'default'
+git config --global delta.features 'hoopoe'
+
 git config --global merge.tool 'vimdiff'
 git config --global mergetool.prompt true
 git config --global diff.tool 'vimdiff'
@@ -60,10 +68,10 @@ git config --global alias.la 'log --graph --decorate --pretty=oneline --abbrev-c
 git config --global alias.ld "log --graph --decorate --pretty=format:'%Cred%h%Creset - %Cgreen(%cr)%Creset %s%C(yellow)%d%Creset' --abbrev-commit --date=iso"
 
 git config --global alias.d 'diff'
-git config --global alias.dw 'diff --color-words -w -b'
+git config --global alias.dw 'diff -w -b'
 git config --global alias.ds 'diff --staged'
-git config --global alias.dsw 'diff --staged --color-words -w -b'
-git config --global alias.dpr 'diff --color-words -w -b main...@'
+git config --global alias.dsw 'diff --staged -w -b'
+git config --global alias.dpr 'diff -w -b main...@'
 git config --global alias.dt 'difftool'
 
 git config --global alias.g 'grep --break --heading --line-number'
