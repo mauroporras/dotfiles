@@ -40,8 +40,8 @@ alias ev='v ~/dotfiles/init.lua'
 alias ez='v ~/.zshrc'
 
 alias g='git'
-# GitHub CLI.
-alias gt='github'
+alias gt='github' # GitHub CLI.
+alias lg='lazygit'
 
 # {{{ Jobs.
 alias j='jobs'
