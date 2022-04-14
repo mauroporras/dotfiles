@@ -1,0 +1,11 @@
+gui:
+  theme:
+    lightTheme: true
+    inactiveBorderColor:
+      - black
+git:
+  paging:
+    colorArg: always
+    # pager: delta --dark --paging=never
+refresher:
+  refreshInterval: 5

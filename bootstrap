@@ -17,6 +17,9 @@ ln -sf ~/dotfiles/general.ctags .ctags.d/general.ctags
 mkdir -p .config/alacritty/
 ln -sf ~/dotfiles/alacritty.yml .config/alacritty/alacritty.yml
 
+mkdir -p .config/lazygit/
+ln -sf ~/dotfiles/misc-configs/lazygit/config.yml .config/lazygit/config.yml
+
 mkdir -p .oh-my-zsh/custom/
 ln -sf ~/dotfiles/aliases.zsh ~/dotfiles/env_vars.zsh ~/dotfiles/functions.zsh .oh-my-zsh/custom/
 

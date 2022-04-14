@@ -9,6 +9,9 @@ export FZF_DEFAULT_COMMAND="rg --follow --hidden --smart-case --no-ignore --glob
 #   remapped to next-history and previous-history.
 export FZF_DEFAULT_OPTS="--cycle --history='$HOME/.fzf_history'"
 
+# lazygit
+export CONFIG_DIR=~/.config/lazygit
+
 # Spaceship prompt.
 export SPACESHIP_BATTERY_SHOW=false
 export SPACESHIP_BATTERY_THRESHOLD=45
