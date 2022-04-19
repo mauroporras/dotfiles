@@ -48,6 +48,7 @@ return require('packer').startup(function(use)
   use 'justinmk/vim-sneak'
   use 'kevinhwang91/rnvimr'
   use 'kevinoid/vim-jsonc'
+  use 'lewis6991/gitsigns.nvim'
   use {
     'liuchengxu/vim-which-key',
     cmd = { 'WhichKey', 'WhichKey!' }

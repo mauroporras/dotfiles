@@ -6,6 +6,9 @@ vim.cmd([[
 -- Emmet.
 vim.g.user_emmet_mode = 'i'
 
+-- gitsigns.
+require('gitsigns').setup()
+
 -- nvim-treesitter
 --   See:
 --     https://github.com/nvim-treesitter/nvim-treesitter#language-parsers
