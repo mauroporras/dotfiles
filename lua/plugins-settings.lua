@@ -9,6 +9,10 @@ vim.g.user_emmet_mode = 'i'
 -- gitsigns.
 require('gitsigns').setup()
 
+-- floaterm.
+vim.g.floaterm_width = 0.9
+vim.g.floaterm_height = 0.9
+
 -- nvim-treesitter
 --   See:
 --     https://github.com/nvim-treesitter/nvim-treesitter#language-parsers

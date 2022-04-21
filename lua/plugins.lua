@@ -64,8 +64,8 @@ return require('packer').startup(function(use)
   }
   use 'rakr/vim-one'
   use 'tpope/vim-commentary'
-  use 'tpope/vim-fugitive'
   use 'unblevable/quick-scope'
+  use 'voldikss/vim-floaterm'
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

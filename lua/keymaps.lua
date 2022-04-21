@@ -31,7 +31,7 @@ vim.api.nvim_set_keymap('n', '<Esc>', ':nohlsearch<CR><Esc>', { noremap = true }
 vim.api.nvim_set_keymap('n', '<Down>', ':cnext<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<Up>', ':cprevious<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<Leader>a', ':Rg<Space>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<Leader>i', ':G<Space>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<Leader>i', ':FloatermNew lazygit<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<Leader>o', ':Files<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<Leader>S', ':GFiles?<CR>', { noremap = true })
 --   Scrolling.
