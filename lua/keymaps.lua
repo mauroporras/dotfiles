@@ -73,6 +73,17 @@ vim.api.nvim_set_keymap('n', '<Leader>p', ':bprevious<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<Leader>q', '<C-w>q', { noremap = true })
 vim.api.nvim_set_keymap('n', '<Leader>s', ':wall<CR>', { noremap = true })
 
+-- gitsigns.
+vim.api.nvim_set_keymap('n', '<Leader>vD', ':Gitsigns toggle_deleted<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<Leader>vd', ':Gitsigns diffthis<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<Leader>vn', ':Gitsigns next_hunk<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<Leader>vp', ':Gitsigns prev_hunk<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<Leader>vR', ':Gitsigns reset_buffer<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<Leader>vr', ':Gitsigns reset_hunk<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<Leader>vS', ':Gitsigns stage_buffer<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<Leader>vs', ':Gitsigns stage_hunk<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<Leader>vu', ':Gitsigns undo_stage_hunk<CR>', { noremap = true })
+
 --   Ranger.
 vim.api.nvim_set_keymap('n', '<Leader>r', ':RnvimrToggle<CR>', { noremap = true })
 vim.api.nvim_set_keymap('t', '<M-r>', '<C-\\><C-n>:RnvimrResize<CR>', { noremap = true })
