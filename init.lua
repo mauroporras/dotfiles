@@ -14,6 +14,11 @@ vim.opt.smartcase = true
 vim.opt.inccommand = 'nosplit'
 
 -- Misc.
+vim.opt.completeopt = {
+ 'menu',
+ 'menuone',
+ 'noselect',
+}
 vim.opt.cursorline = true
 vim.opt.cmdheight = 2
 vim.opt.number = true
@@ -30,3 +35,10 @@ vim.opt.listchars = {
   precedes = '«',
   extends = '»',
 }
+
+vim.cmd([[
+  " Recognize some extensions known to have JSON with comments.
+  autocmd BufNewFile,BufRead tsconfig.json setlocal filetype=jsonc
+  " To have Neoformat run Prettier on save:
+  autocmd BufWritePre * Neoformat
+]])

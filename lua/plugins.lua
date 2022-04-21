@@ -21,7 +21,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 return require('packer').startup(function(use)
-  -- Packer can manage itself
+  -- Packer can manage itself.
   use 'wbthomason/packer.nvim'
 
   -- Fzf.
@@ -31,19 +31,18 @@ return require('packer').startup(function(use)
   }
   use 'junegunn/fzf.vim'
 
+  -- LSP and friends.
+  use 'neovim/nvim-lspconfig' -- Collection of configurations for built-in LSP client
+  use 'hrsh7th/nvim-cmp' -- Autocompletion plugin
+  use 'hrsh7th/cmp-nvim-lsp' -- LSP source for nvim-cmp
+  use 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp
+  use 'L3MON4D3/LuaSnip' -- Snippets plugin
+
   -- Misc.
   use 'andrewradev/inline_edit.vim'
   use 'antonk52/vim-browserslist'
-  use 'dart-lang/dart-vim-plugin'
   use 'editorconfig/editorconfig-vim'
-  use {
-    'evanleck/vim-svelte',
-    branch = 'main'
-  }
-  use 'ekalinin/Dockerfile.vim'
   use 'euclidianAce/BetterLua.vim'
-  use 'gutenye/json5.vim'
-  use 'honza/vim-snippets'
   use 'jiangmiao/auto-pairs'
   use 'justinmk/vim-sneak'
   use 'kevinhwang91/rnvimr'
@@ -51,25 +50,22 @@ return require('packer').startup(function(use)
   use 'lewis6991/gitsigns.nvim'
   use {
     'liuchengxu/vim-which-key',
-    cmd = { 'WhichKey', 'WhichKey!' }
+    cmd = { 'WhichKey', 'WhichKey!' },
   }
   use 'mattn/emmet-vim'
   use {
-    'neoclide/coc.nvim',
-    branch = 'release'
-  }
-  use {
-   'nvim-treesitter/nvim-treesitter',
-   run = ':TSUpdate'
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate',
   }
   use 'p00f/nvim-ts-rainbow'
   use 'rakr/vim-one'
+  use 'sbdchd/neoformat'
   use 'tpope/vim-commentary'
   use 'unblevable/quick-scope'
   use 'voldikss/vim-floaterm'
 
-  -- Automatically set up your configuration after cloning packer.nvim
-  -- Put this at the end after all plugins
+  -- Automatically set up your configuration after cloning packer.nvim.
+  -- Put this at the end after all plugins.
   if packer_bootstrap then
     require('packer').sync()
   end
