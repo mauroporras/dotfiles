@@ -34,6 +34,8 @@ vim.api.nvim_set_keymap('n', '<Leader>a', ':Rg<Space>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<Leader>i', ':FloatermNew lazygit<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<Leader>o', ':Files<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<Leader>S', ':GFiles?<CR>', { noremap = true })
+--   Code.
+vim.api.nvim_set_keymap('n', '<Leader>co', ':SymbolsOutline<CR>', { noremap = true })
 --   Scrolling.
 vim.api.nvim_set_keymap('n', '<C-e>', '2<C-e>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-y>', '2<C-y>', { noremap = true })

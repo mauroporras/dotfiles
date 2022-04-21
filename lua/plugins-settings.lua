@@ -147,6 +147,11 @@ vim.cmd([[
     \ )
 ]])
 
+-- symbols-outline.
+vim.g.symbols_outline = {
+  auto_preview = false,
+}
+
 -- vim-sneak.
 --   For a minimalist alternative to EasyMotion.
 vim.g['sneak#label'] = 1

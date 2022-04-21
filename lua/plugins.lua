@@ -60,6 +60,7 @@ return require('packer').startup(function(use)
   use 'p00f/nvim-ts-rainbow'
   use 'rakr/vim-one'
   use 'sbdchd/neoformat'
+  use 'simrat39/symbols-outline.nvim'
   use 'tpope/vim-commentary'
   use 'unblevable/quick-scope'
   use 'voldikss/vim-floaterm'
