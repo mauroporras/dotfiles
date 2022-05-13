@@ -82,6 +82,7 @@ vim.api.nvim_set_keymap('n', '<Leader>q', '<C-w>q', { noremap = true })
 vim.api.nvim_set_keymap('n', '<Leader>s', ':wall<CR>', { noremap = true })
 
 -- gitsigns.
+vim.api.nvim_set_keymap('n', '<Leader>vb', ':Gitsigns blame_line<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<Leader>vD', ':Gitsigns toggle_deleted<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<Leader>vd', ':Gitsigns diffthis<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<Leader>vn', ':Gitsigns next_hunk<CR>', { noremap = true })
