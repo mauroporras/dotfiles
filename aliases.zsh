@@ -118,5 +118,7 @@ alias pnrb='pnpm run build'
 alias pnrd='pnpm run dev'
 alias pnrs='pnpm run start'
 
+alias pnrw='pnpm run -w'
+
 alias pnt='pnpm test'
 # }}}
