@@ -62,6 +62,7 @@ return require('packer').startup(function(use)
    'nvim-treesitter/nvim-treesitter',
    run = ':TSUpdate'
   }
+  use 'p00f/nvim-ts-rainbow'
   use 'rakr/vim-one'
   use 'tpope/vim-commentary'
   use 'unblevable/quick-scope'
