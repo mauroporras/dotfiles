@@ -41,6 +41,7 @@ return require('packer').startup(function(use)
   -- Misc.
   use 'andrewradev/inline_edit.vim'
   use 'antonk52/vim-browserslist'
+  use 'chentoast/marks.nvim'
   use 'editorconfig/editorconfig-vim'
   use 'euclidianAce/BetterLua.vim'
   use 'jiangmiao/auto-pairs'
