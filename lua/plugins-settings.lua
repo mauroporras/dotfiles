@@ -157,4 +157,7 @@ vim.g.symbols_outline = {
 vim.g['sneak#label'] = 1
 
 -- marks.
-require'marks'.setup{}
+require'marks'.setup {
+  default_mappings = false,
+  refresh_interval = 333,
+}
