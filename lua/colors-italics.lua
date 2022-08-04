@@ -37,6 +37,7 @@ vim.cmd([[
   highlight Search guibg=cyan guifg=black
   highlight Substitute guibg=cyan guifg=black
 
+  highlight clear MatchParen
   highlight MatchParen guibg=black guifg=magenta
 
   highlight QuickFixLine guibg=lime guifg=black
