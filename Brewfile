@@ -30,7 +30,6 @@ brew "tmuxp"
 brew "tree"
 brew "watch"
 brew "watchman"
-brew "yarn"
 brew "zlib"
 brew "zsh"
 brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD"]
