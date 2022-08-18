@@ -83,6 +83,8 @@ git config --global alias.rsm 'reset --soft main'
 
 git config --global alias.fu 'fetch upstream'
 
+git config --global alias.rao 'remote add origin'
+git config --global alias.rau 'remote add upstream'
 git config --global alias.rpo 'remote prune origin'
 git config --global alias.rpu 'remote prune upstream'
 git config --global alias.rso 'remote show origin'
