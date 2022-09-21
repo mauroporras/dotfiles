@@ -81,6 +81,7 @@ git config --global alias.rp 'reset -p'
 git config --global alias.rs 'reset --soft'
 git config --global alias.rsm 'reset --soft main'
 
+git config --global alias.f 'fetch'
 git config --global alias.fu 'fetch upstream'
 
 git config --global alias.rao 'remote add origin'
