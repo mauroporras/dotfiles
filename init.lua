@@ -39,6 +39,10 @@ vim.opt.listchars = {
 vim.cmd([[
   " Recognize some extensions known to have JSON with comments.
   autocmd BufNewFile,BufRead tsconfig.json setlocal filetype=jsonc
+
   " To have Neoformat run Prettier on save:
-  autocmd BufWritePre * Neoformat
+  augroup fmt
+    autocmd!
+    autocmd BufWritePre * undojoin | Neoformat
+  augroup END
 ]])
