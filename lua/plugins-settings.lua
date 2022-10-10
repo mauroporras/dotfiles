@@ -1,8 +1,3 @@
--- CoC.
-vim.cmd([[
-  source ~/.config/nvim/_coc.vim
-]])
-
 -- Emmet.
 vim.g.user_emmet_mode = 'i'
 
@@ -13,6 +8,80 @@ require('gitsigns').setup()
 vim.g.floaterm_width = 0.9
 vim.g.floaterm_height = 0.9
 
+-- LSP.
+--   :LspInfo
+--   :LspRestart
+require'lspconfig'.bashls.setup{}
+require'lspconfig'.cssls.setup{}
+require'lspconfig'.dartls.setup{}
+require'lspconfig'.diagnosticls.setup{}
+require'lspconfig'.dockerls.setup{}
+require'lspconfig'.html.setup{}
+require'lspconfig'.jsonls.setup{}
+require'lspconfig'.stylelint_lsp.setup{}
+require'lspconfig'.svelte.setup{}
+require'lspconfig'.tailwindcss.setup{}
+require'lspconfig'.tsserver.setup{}
+require'lspconfig'.yamlls.setup{}
+
+-- neoformat
+vim.g.neoformat_try_node_exe = 1
+
+-- {{{ nvim-cmp.
+-- Add additional capabilities supported by nvim-cmp
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+
+local lspconfig = require('lspconfig')
+
+-- Enable some language servers with the additional completion capabilities offered by nvim-cmp
+local servers = {
+  'bashls',
+  'cssls',
+  'dartls',
+  'diagnosticls',
+  'dockerls',
+  'html',
+  'jsonls',
+  'stylelint_lsp',
+  'svelte',
+  'tailwindcss',
+  'tsserver',
+  'yamlls',
+}
+
+for _, lsp in ipairs(servers) do
+  lspconfig[lsp].setup {
+    -- on_attach = my_custom_on_attach,
+    capabilities = capabilities,
+  }
+end
+
+-- luasnip setup
+local luasnip = require 'luasnip'
+
+-- nvim-cmp setup
+local cmp = require 'cmp'
+cmp.setup {
+  snippet = {
+    expand = function(args)
+      require('luasnip').lsp_expand(args.body)
+    end,
+  },
+  mapping = cmp.mapping.preset.insert({
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<CR>'] = cmp.mapping.confirm {
+      behavior = cmp.ConfirmBehavior.Replace,
+      select = true,
+    },
+  }),
+  sources = {
+    { name = 'nvim_lsp' },
+    { name = 'luasnip' },
+  },
+}
+-- }}} nvim-cmp.
+
 -- nvim-treesitter
 --   See:
 --     https://github.com/nvim-treesitter/nvim-treesitter#language-parsers
@@ -20,16 +89,26 @@ vim.g.floaterm_height = 0.9
 --     :TSUpdate
 --   To list all available commands:
 --     :h nvim-treesitter-commands
-require'nvim-treesitter.configs'.setup({
-  -- one of: "all", "maintained" (parsers with maintainers), or a list of languages.
-  ensure_installed = "maintained",
-  -- List of parsers to ignore installing.
+require('nvim-treesitter.configs').setup({
+  -- A list of parser names, or "all"
+  ensure_installed = 'all',
+
+  -- Install parsers synchronously (only applied to `ensure_installed`)
+  sync_install = false,
+
+  -- List of parsers to ignore installing (for "all")
   ignore_install = { },
+
   highlight = {
-    -- false will disable the whole extension
+    -- `false` will disable the whole extension
     enable = true,
+
+    -- NOTE: these are the names of the parsers and not the filetype. (for example if you want to
+    -- disable highlighting for the `tex` filetype, you need to include `latex` in this list as this is
+    -- the name of the parser)
     -- list of language that will be disabled
     disable = { },
+
     -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
     -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
     -- Using this option may slow down your editor, and you may see some duplicate highlights.
@@ -68,6 +147,17 @@ vim.cmd([[
     \ )
 ]])
 
+-- symbols-outline.
+vim.g.symbols_outline = {
+  auto_preview = false,
+}
+
 -- vim-sneak.
 --   For a minimalist alternative to EasyMotion.
 vim.g['sneak#label'] = 1
+
+-- marks.
+require'marks'.setup {
+  default_mappings = false,
+  refresh_interval = 333,
+}
