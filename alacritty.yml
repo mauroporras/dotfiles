@@ -46,8 +46,8 @@ window:
   #
   # Blank space added around the window in pixels. This padding is scaled
   # by DPI and the specified value is always added at both opposing sides.
-  padding:
-    x: 1
+  #padding:
+  #  x: 0
   #  y: 0
 
   # Spread additional padding evenly around the terminal content.
@@ -62,7 +62,7 @@ window:
   # Values for `decorations` (macOS only):
   #     - transparent: Title bar, transparent background and title bar buttons
   #     - buttonless: Title bar, transparent background and no title bar buttons
-  #decorations: full
+  decorations: buttonless
 
   # Background opacity
   #
@@ -182,7 +182,7 @@ font:
   builtin_box_drawing: false
 
 # If `true`, bold text is drawn using the bright color variants.
-#draw_bold_text_with_bright_colors: false
+draw_bold_text_with_bright_colors: true
 
 # Colors (Custom Pencil Light)
 # See:
