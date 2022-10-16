@@ -4,9 +4,6 @@
 gui:
   theme:
     lightTheme: true
-    activeBorderColor:
-      - cyan
-      - bold
     inactiveBorderColor:
       - black
     selectedLineBgColor:
