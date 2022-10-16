@@ -13,7 +13,8 @@ ln -sf ~/dotfiles/lua .config/nvim/
 ln -sf ~/dotfiles/init.lua .config/nvim/init.lua
 
 mkdir -p .config/ranger/
-ln -sf ~/dotfiles/rc.conf .config/ranger/rc.conf
+ln -sf ~/dotfiles/ranger/rc.conf .config/ranger/rc.conf
+ln -sf ~/dotfiles/ranger/rifle.conf .config/ranger/rifle.conf
 
 mkdir -p .ctags.d/
 ln -sf ~/dotfiles/general.ctags .ctags.d/general.ctags
