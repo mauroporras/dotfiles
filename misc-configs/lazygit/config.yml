@@ -1,8 +1,15 @@
+# See:
+# https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md
+
 gui:
   theme:
     lightTheme: true
     inactiveBorderColor:
       - black
+    selectedLineBgColor:
+      - white
+    selectedRangeBgColor:
+      - white
 git:
   paging:
     colorArg: always
