@@ -1,3 +1,8 @@
+-- Deno.
+vim.g.markdown_fenced_languages = {
+  "ts=typescript"
+}
+
 -- Emmet.
 vim.g.user_emmet_mode = 'i'
 
@@ -14,6 +19,7 @@ vim.g.floaterm_height = 0.9
 require'lspconfig'.bashls.setup{}
 require'lspconfig'.cssls.setup{}
 require'lspconfig'.dartls.setup{}
+require'lspconfig'.denols.setup{}
 require'lspconfig'.diagnosticls.setup{}
 require'lspconfig'.dockerls.setup{}
 require'lspconfig'.html.setup{}

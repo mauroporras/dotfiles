@@ -10,6 +10,7 @@ brew "asciinema"
 brew "bat" # https://github.com/sharkdp/bat
 brew "cmake"
 brew "coreutils"
+brew "deno"
 brew "direnv"
 brew "fzf"
 brew "gh"
