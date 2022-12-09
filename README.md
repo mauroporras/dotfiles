@@ -26,6 +26,14 @@ pip3 install --user --upgrade neovim
 
 For tmux support: [https://github.com/tmux/tmux/wiki/FAQ](https://github.com/tmux/tmux/wiki/FAQ)
 
+## 5. Install LSP configs
+
+```bash
+pnpm add -g bash-language-server diagnostic-languageserver dockerfile-language-server-nodejs neovim prettier stylelint-lsp svelte-language-server tailwindcss-language-server typescript typescript-language-server vscode-langservers-extracted yaml-language-server
+```
+
+Use `pnpm root -g` to display the root directory where global packages are installed.
+
 ### macOS (Using MacPorts)
 
 ```bash
