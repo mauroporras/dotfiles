@@ -135,6 +135,14 @@ vim.g.qs_highlight_on_keys = {
   'T',
 }
 
+
+-- vista.vim
+vim.g.vista_blink = { 0, 0 }
+vim.g.vista_sidebar_width = 50
+vim.cmd([[
+  let g:vista#renderer#enable_icon = 0
+]])
+
 -- Ranger.
 --   Hide after picking a file.
 vim.g.rnvimr_enable_picker = 1
@@ -147,11 +155,6 @@ vim.cmd([[
     \   fzf#vim#with_preview(), <bang>0
     \ )
 ]])
-
--- symbols-outline.
-vim.g.symbols_outline = {
-  auto_preview = false,
-}
 
 -- marks.
 require'marks'.setup {

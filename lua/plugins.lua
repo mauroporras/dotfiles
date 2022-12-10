@@ -49,6 +49,7 @@ return require('packer').startup(function(use)
   use 'kevinhwang91/rnvimr'
   use 'kevinoid/vim-jsonc'
   use 'lewis6991/gitsigns.nvim'
+  use 'liuchengxu/vista.vim'
   use {
     'liuchengxu/vim-which-key',
     cmd = { 'WhichKey', 'WhichKey!' },
@@ -61,7 +62,6 @@ return require('packer').startup(function(use)
   use 'p00f/nvim-ts-rainbow'
   use 'rakr/vim-one'
   use 'sbdchd/neoformat'
-  use 'simrat39/symbols-outline.nvim'
   use 'tpope/vim-commentary'
   use 'unblevable/quick-scope'
   use 'voldikss/vim-floaterm'
