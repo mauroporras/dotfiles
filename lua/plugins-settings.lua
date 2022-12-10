@@ -153,10 +153,6 @@ vim.g.symbols_outline = {
   auto_preview = false,
 }
 
--- vim-sneak.
---   For a minimalist alternative to EasyMotion.
-vim.g['sneak#label'] = 1
-
 -- marks.
 require'marks'.setup {
   default_mappings = false,

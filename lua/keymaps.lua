@@ -81,7 +81,7 @@ vim.api.nvim_set_keymap('n', '<Leader>p', ':bprevious<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<Leader>q', '<C-w>q', { noremap = true })
 vim.api.nvim_set_keymap('n', '<Leader>s', ':wall<CR>', { noremap = true })
 
--- gitsigns.
+--   gitsigns.
 vim.api.nvim_set_keymap('n', '<Leader>vb', ':Gitsigns blame_line<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<Leader>vD', ':Gitsigns toggle_deleted<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<Leader>vd', ':Gitsigns diffthis<CR>', { noremap = true })
@@ -93,17 +93,13 @@ vim.api.nvim_set_keymap('n', '<Leader>vS', ':Gitsigns stage_buffer<CR>', { norem
 vim.api.nvim_set_keymap('n', '<Leader>vs', ':Gitsigns stage_hunk<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<Leader>vu', ':Gitsigns undo_stage_hunk<CR>', { noremap = true })
 
+--   leap.nvim
+vim.api.nvim_set_keymap('n', '<Leader>/', '<Plug>(leap-forward-to)', {})
+vim.api.nvim_set_keymap('n', '<Leader>?', '<Plug>(leap-backward-to)', {})
+
 --   Ranger.
 vim.api.nvim_set_keymap('n', '<Leader>r', ':RnvimrToggle<CR>', { noremap = true })
 vim.api.nvim_set_keymap('t', '<M-r>', '<C-\\><C-n>:RnvimrResize<CR>', { noremap = true })
 
 --   vim-which-key.
 vim.api.nvim_set_keymap('n', '<Leader>', ":WhichKey '<Space>'<CR>", { noremap = true })
-
---   vim-sneak.
-vim.api.nvim_set_keymap('n', '<Leader>/', '<Plug>Sneak_s', {})
-vim.api.nvim_set_keymap('n', '<Leader>?', '<Plug>Sneak_S', {})
-vim.api.nvim_set_keymap('v', '<Leader>/', '<Plug>Sneak_s', {})
-vim.api.nvim_set_keymap('v', '<Leader>?', '<Plug>Sneak_S', {})
-vim.api.nvim_set_keymap('n', ';', ';', { noremap = true })
-vim.api.nvim_set_keymap('n', ',', ',', { noremap = true })
