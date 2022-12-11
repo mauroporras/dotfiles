@@ -9,16 +9,19 @@ vim.cmd([[
 -- Install "packer.nvim" if not present.
 -- See:
 -- https://github.com/wbthomason/packer.nvim#bootstrapping
-local fn = vim.fn
-local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-if fn.empty(fn.glob(install_path)) > 0 then
-
-  packer_bootstrap = fn.system({
-    'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path
-  })
-
-  print('Packer has been installed into "'..install_path..'". Restart Neovim and run `:PackerSync`.')
+local ensure_packer = function()
+  local fn = vim.fn
+  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+  if fn.empty(fn.glob(install_path)) > 0 then
+    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+    vim.cmd [[packadd packer.nvim]]
+    print('Packer has been installed into "'..install_path..'". Restart Neovim and run `:PackerSync`.')
+    return true
+  end
+  return false
 end
+
+local packer_bootstrap = ensure_packer()
 
 return require('packer').startup(function(use)
   -- Packer can manage itself.
