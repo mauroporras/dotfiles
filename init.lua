@@ -107,14 +107,62 @@ vim.keymap.set('n', '<Leader>cd', vim.diagnostic.open_float, {})
 vim.keymap.set('n', '<C-p>', vim.diagnostic.goto_prev, {})
 vim.keymap.set('n', '<C-n>', vim.diagnostic.goto_next, {})
 
-require'lspconfig'.bashls.setup{}
-require'lspconfig'.cssls.setup{}
-require'lspconfig'.dartls.setup{}
-require'lspconfig'.diagnosticls.setup{}
-require'lspconfig'.dockerls.setup{}
-require'lspconfig'.html.setup{}
-require'lspconfig'.jsonls.setup{}
+vim.keymap.set('n', '<Leader>E', ':LspRestart<CR>', {})
+
+-- Use an on_attach function to only map the following keys
+-- after the language server attaches to the current buffer
+local on_attach = function(client, bufnr)
+  -- Mappings.
+  -- See `:help vim.lsp.*` for documentation on any of the below functions
+  local bufopts = { noremap = true, silent = true, buffer = bufnr }
+
+  vim.keymap.set('n', '<Leader>gD', vim.lsp.buf.declaration, bufopts)
+  vim.keymap.set('n', '<Leader>gd', vim.lsp.buf.definition, bufopts)
+  vim.keymap.set('n', '<Leader>ch', vim.lsp.buf.hover, bufopts)
+  vim.keymap.set('n', '<Leader>gi', vim.lsp.buf.implementation, bufopts)
+  vim.keymap.set('n', '<Leader>cr', vim.lsp.buf.rename, bufopts)
+  vim.keymap.set('n', '<Leader>ca', vim.lsp.buf.code_action, bufopts)
+  vim.keymap.set('n', '<Leader>gr', vim.lsp.buf.references, bufopts)
+end
+
+-- neoformat
+vim.g.neoformat_try_node_exe = 1
+
+-- {{{ nvim-cmp.
+-- Add additional capabilities supported by nvim-cmp
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+
+local lspconfig = require('lspconfig')
+
+-- Enable some language servers with the additional completion capabilities offered by nvim-cmp
+local servers = {
+  'bashls',
+  'cssls',
+  'dartls',
+  'diagnosticls',
+  'dockerls',
+  'html',
+  'jsonls',
+  'rust_analyzer',
+  'stylelint_lsp',
+  'svelte',
+  'tailwindcss',
+  'tsserver',
+  'yamlls',
+}
+
+for _, lsp in ipairs(servers) do
+  lspconfig[lsp].setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+  }
+end
+
+-- Server-specific settings:
 require'lspconfig'.sumneko_lua.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
   settings = {
     Lua = {
       runtime = {
@@ -136,55 +184,6 @@ require'lspconfig'.sumneko_lua.setup {
     },
   },
 }
-require'lspconfig'.rust_analyzer.setup{}
-require'lspconfig'.stylelint_lsp.setup{}
-require'lspconfig'.svelte.setup{}
-require'lspconfig'.tailwindcss.setup{}
-require'lspconfig'.tsserver.setup{}
-require'lspconfig'.yamlls.setup{}
-
-vim.api.nvim_set_keymap('n', '<Leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', {})
-vim.api.nvim_set_keymap('n', '<Leader>ch', '<cmd>lua vim.lsp.buf.hover()<CR>', {})
-vim.api.nvim_set_keymap('n', '<Leader>cr', '<cmd>lua vim.lsp.buf.rename()<CR>', {})
-vim.api.nvim_set_keymap('n', '<Leader>E', ':LspRestart<CR>', {})
-vim.api.nvim_set_keymap('n', '<Leader>gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', {})
-vim.api.nvim_set_keymap('n', '<Leader>gd', '<cmd>lua vim.lsp.buf.definition()<CR>', {})
-vim.api.nvim_set_keymap('n', '<Leader>gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', {})
-vim.api.nvim_set_keymap('n', '<Leader>gr', '<cmd>lua vim.lsp.buf.references()<CR>', {})
--- }}} LSP.
-
--- neoformat
-vim.g.neoformat_try_node_exe = 1
-
--- {{{ nvim-cmp.
--- Add additional capabilities supported by nvim-cmp
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
-
-local lspconfig = require('lspconfig')
-
--- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-local servers = {
-  'bashls',
-  'cssls',
-  'dartls',
-  'diagnosticls',
-  'dockerls',
-  'html',
-  'jsonls',
-  'stylelint_lsp',
-  'svelte',
-  'tailwindcss',
-  'tsserver',
-  'yamlls',
-}
-
-for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup {
-    -- on_attach = my_custom_on_attach,
-    capabilities = capabilities,
-  }
-end
 
 -- luasnip setup
 require('luasnip')
@@ -210,6 +209,7 @@ cmp.setup {
   },
 }
 -- }}} nvim-cmp.
+-- }}} LSP.
 
 -- nvim-treesitter
 --   See:
