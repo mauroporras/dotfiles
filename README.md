@@ -22,15 +22,15 @@ To optimize Neovim: `:checkhealth`
 pip3 install --user --upgrade neovim
 ```
 
-## 4. Install tmux and Git
-
-For tmux support: [https://github.com/tmux/tmux/wiki/FAQ](https://github.com/tmux/tmux/wiki/FAQ)
-
-## 5. Install LSP configs
+## 4. Install LSP configs
 
 ```bash
 pnpm add -g bash-language-server diagnostic-languageserver dockerfile-language-server-nodejs neovim prettier stylelint-lsp svelte-language-server tailwindcss-language-server typescript typescript-language-server vscode-langservers-extracted yaml-language-server
 ```
+
+## 5. Install tmux and Git
+
+For tmux support: [https://github.com/tmux/tmux/wiki/FAQ](https://github.com/tmux/tmux/wiki/FAQ)
 
 Use `pnpm root -g` to display the root directory where global packages are installed.
 
@@ -46,7 +46,7 @@ brew install tmux git
 sudo apt install -y tmux git
 ```
 
-## 5. Install required utilities
+## 6. Install required utilities
 
 [https://github.com/cli/cli#installation](https://github.com/cli/cli#installation)
 (required for the aliases).
@@ -57,7 +57,7 @@ sudo apt install -y tmux git
 
 [https://github.com/kevinhwang91/rnvimr#installation](https://github.com/kevinhwang91/rnvimr#installation)
 
-## 6. Finally, bootstrap DotFiles
+## 7. Finally, bootstrap DotFiles
 
 ```bash
 git clone https://github.com/mauroporras/dotfiles.git ~/dotfiles
