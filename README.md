@@ -34,10 +34,10 @@ pnpm add -g bash-language-server diagnostic-languageserver dockerfile-language-s
 
 Use `pnpm root -g` to display the root directory where global packages are installed.
 
-### macOS (Using MacPorts)
+### macOS (Using Homebrew)
 
 ```bash
-sudo port install tmux git
+brew install tmux git
 ```
 
 ### Ubuntu
