@@ -2,6 +2,11 @@
 -- :source %
 -- :so $MYVIMRC
 
+-- Leader.
+vim.g.mapleader = ' '
+
+local optNRM = { noremap = true }
+
 -- {{{ Plugins installation.
 -- Runs whenever this file is updated.
 vim.cmd([[
@@ -286,11 +291,6 @@ require'marks'.setup {
 
 -- See:
 -- https://github.com/nanotee/nvim-lua-guide#defining-mappings
-
--- Leader.
-vim.g.mapleader = ' '
-
-local optNRM = { noremap = true }
 
 -- Command line (:h mapmode-c).
 vim.api.nvim_set_keymap('c', '<C-a>', '<Home>', optNRM)
