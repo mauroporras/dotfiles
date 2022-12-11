@@ -45,20 +45,17 @@ vim.api.nvim_set_keymap('n', '<C-d>', '4<C-d>', optNRM)
 vim.api.nvim_set_keymap('n', '<C-u>', '4<C-u>', optNRM)
 --   LSP.
 --     See `:help vim.diagnostic.*` for documentation on any of the functions below.
--- vim.api.nvim_set_keymap('i', '<C-j>', '<Plug>(coc-snippets-expand-jump)', {})
 vim.api.nvim_set_keymap('n', '<C-n>', '<cmd>lua vim.diagnostic.goto_next()<CR>', {})
 vim.api.nvim_set_keymap('n', '<C-p>', '<cmd>lua vim.diagnostic.goto_prev()<CR>', {})
 vim.api.nvim_set_keymap('n', '<Leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', {})
 vim.api.nvim_set_keymap('n', '<Leader>cd', '<cmd>lua vim.diagnostic.open_float()<CR>', {})
 vim.api.nvim_set_keymap('n', '<Leader>ch', '<cmd>lua vim.lsp.buf.hover()<CR>', {})
 vim.api.nvim_set_keymap('n', '<Leader>cr', '<cmd>lua vim.lsp.buf.rename()<CR>', {})
--- vim.api.nvim_set_keymap('n', '<Leader>cz', '', {})
 vim.api.nvim_set_keymap('n', '<Leader>E', ':LspRestart<CR>', {})
 vim.api.nvim_set_keymap('n', '<Leader>gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', {})
 vim.api.nvim_set_keymap('n', '<Leader>gd', '<cmd>lua vim.lsp.buf.definition()<CR>', {})
 vim.api.nvim_set_keymap('n', '<Leader>gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', {})
 vim.api.nvim_set_keymap('n', '<Leader>gr', '<cmd>lua vim.lsp.buf.references()<CR>', {})
--- vim.api.nvim_set_keymap('n', '<Leader>O', ':CocCommand explorer<CR>', optNoremap)
 
 --   Tabs.
 vim.api.nvim_set_keymap('n', '<Leader>tt', ':$tabnew<CR>', optNRM)
