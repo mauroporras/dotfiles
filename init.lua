@@ -87,16 +87,6 @@ require('packer').startup(function(use)
 end)
 -- }}} Plugins installation.
 
--- Emmet.
-vim.g.user_emmet_mode = 'i'
-
--- gitsigns.
-require('gitsigns').setup()
-
--- floaterm.
-vim.g.floaterm_width = 0.9
-vim.g.floaterm_height = 0.9
-
 -- {{{ LSP.
 -- :LspInfo
 -- :LspRestart
@@ -211,7 +201,7 @@ cmp.setup {
 -- }}} nvim-cmp.
 -- }}} LSP.
 
--- nvim-treesitter
+-- {{{ nvim-treesitter
 --   See:
 --     https://github.com/nvim-treesitter/nvim-treesitter#language-parsers
 --   To update all parsers:
@@ -254,6 +244,17 @@ require('nvim-treesitter.configs').setup({
     -- termcolors = {} -- table of colour name strings
   }
 })
+-- }}} nvim-treesitter
+
+-- Emmet.
+vim.g.user_emmet_mode = 'i'
+
+-- gitsigns.
+require('gitsigns').setup()
+
+-- floaterm.
+vim.g.floaterm_width = 0.9
+vim.g.floaterm_height = 0.9
 
 -- quick-scope.
 vim.g.qs_highlight_on_keys = {
