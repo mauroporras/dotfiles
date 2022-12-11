@@ -20,7 +20,7 @@ local ensure_packer = function()
   if fn.empty(fn.glob(install_path)) > 0 then
     fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
     vim.cmd [[packadd packer.nvim]]
-    print('Packer has been installed into "'..install_path..'". Restart Neovim and run `:PackerSync`.')
+    print('Packer has been installed into "' .. install_path .. '". Restart Neovim and run `:PackerSync`.')
     return true
   end
   return false
@@ -92,9 +92,9 @@ require('gitsigns').setup()
 vim.g.floaterm_width = 0.9
 vim.g.floaterm_height = 0.9
 
--- LSP.
---   :LspInfo
---   :LspRestart
+-- {{{ LSP.
+-- :LspInfo
+-- :LspRestart
 require'lspconfig'.bashls.setup{}
 require'lspconfig'.cssls.setup{}
 require'lspconfig'.dartls.setup{}
@@ -130,6 +130,20 @@ require'lspconfig'.svelte.setup{}
 require'lspconfig'.tailwindcss.setup{}
 require'lspconfig'.tsserver.setup{}
 require'lspconfig'.yamlls.setup{}
+
+-- See `:help vim.diagnostic.*` for documentation on any of the functions below.
+vim.api.nvim_set_keymap('n', '<C-n>', '<cmd>lua vim.diagnostic.goto_next()<CR>', {})
+vim.api.nvim_set_keymap('n', '<C-p>', '<cmd>lua vim.diagnostic.goto_prev()<CR>', {})
+vim.api.nvim_set_keymap('n', '<Leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', {})
+vim.api.nvim_set_keymap('n', '<Leader>cd', '<cmd>lua vim.diagnostic.open_float()<CR>', {})
+vim.api.nvim_set_keymap('n', '<Leader>ch', '<cmd>lua vim.lsp.buf.hover()<CR>', {})
+vim.api.nvim_set_keymap('n', '<Leader>cr', '<cmd>lua vim.lsp.buf.rename()<CR>', {})
+vim.api.nvim_set_keymap('n', '<Leader>E', ':LspRestart<CR>', {})
+vim.api.nvim_set_keymap('n', '<Leader>gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', {})
+vim.api.nvim_set_keymap('n', '<Leader>gd', '<cmd>lua vim.lsp.buf.definition()<CR>', {})
+vim.api.nvim_set_keymap('n', '<Leader>gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', {})
+vim.api.nvim_set_keymap('n', '<Leader>gr', '<cmd>lua vim.lsp.buf.references()<CR>', {})
+-- }}} LSP.
 
 -- neoformat
 vim.g.neoformat_try_node_exe = 1
@@ -312,19 +326,6 @@ vim.api.nvim_set_keymap('n', '<C-e>', '2<C-e>', optNRM)
 vim.api.nvim_set_keymap('n', '<C-y>', '2<C-y>', optNRM)
 vim.api.nvim_set_keymap('n', '<C-d>', '4<C-d>', optNRM)
 vim.api.nvim_set_keymap('n', '<C-u>', '4<C-u>', optNRM)
---   LSP.
---     See `:help vim.diagnostic.*` for documentation on any of the functions below.
-vim.api.nvim_set_keymap('n', '<C-n>', '<cmd>lua vim.diagnostic.goto_next()<CR>', {})
-vim.api.nvim_set_keymap('n', '<C-p>', '<cmd>lua vim.diagnostic.goto_prev()<CR>', {})
-vim.api.nvim_set_keymap('n', '<Leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', {})
-vim.api.nvim_set_keymap('n', '<Leader>cd', '<cmd>lua vim.diagnostic.open_float()<CR>', {})
-vim.api.nvim_set_keymap('n', '<Leader>ch', '<cmd>lua vim.lsp.buf.hover()<CR>', {})
-vim.api.nvim_set_keymap('n', '<Leader>cr', '<cmd>lua vim.lsp.buf.rename()<CR>', {})
-vim.api.nvim_set_keymap('n', '<Leader>E', ':LspRestart<CR>', {})
-vim.api.nvim_set_keymap('n', '<Leader>gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', {})
-vim.api.nvim_set_keymap('n', '<Leader>gd', '<cmd>lua vim.lsp.buf.definition()<CR>', {})
-vim.api.nvim_set_keymap('n', '<Leader>gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', {})
-vim.api.nvim_set_keymap('n', '<Leader>gr', '<cmd>lua vim.lsp.buf.references()<CR>', {})
 
 --   Tabs.
 vim.api.nvim_set_keymap('n', '<Leader>tt', ':$tabnew<CR>', optNRM)
