@@ -100,6 +100,13 @@ vim.g.floaterm_height = 0.9
 -- {{{ LSP.
 -- :LspInfo
 -- :LspRestart
+
+-- Mappings.
+-- See `:help vim.diagnostic.*` for documentation on any of the below functions.
+vim.keymap.set('n', '<Leader>cd', vim.diagnostic.open_float, {})
+vim.keymap.set('n', '<C-p>', vim.diagnostic.goto_prev, {})
+vim.keymap.set('n', '<C-n>', vim.diagnostic.goto_next, {})
+
 require'lspconfig'.bashls.setup{}
 require'lspconfig'.cssls.setup{}
 require'lspconfig'.dartls.setup{}
@@ -136,11 +143,7 @@ require'lspconfig'.tailwindcss.setup{}
 require'lspconfig'.tsserver.setup{}
 require'lspconfig'.yamlls.setup{}
 
--- See `:help vim.diagnostic.*` for documentation on any of the functions below.
-vim.api.nvim_set_keymap('n', '<C-n>', '<cmd>lua vim.diagnostic.goto_next()<CR>', {})
-vim.api.nvim_set_keymap('n', '<C-p>', '<cmd>lua vim.diagnostic.goto_prev()<CR>', {})
 vim.api.nvim_set_keymap('n', '<Leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', {})
-vim.api.nvim_set_keymap('n', '<Leader>cd', '<cmd>lua vim.diagnostic.open_float()<CR>', {})
 vim.api.nvim_set_keymap('n', '<Leader>ch', '<cmd>lua vim.lsp.buf.hover()<CR>', {})
 vim.api.nvim_set_keymap('n', '<Leader>cr', '<cmd>lua vim.lsp.buf.rename()<CR>', {})
 vim.api.nvim_set_keymap('n', '<Leader>E', ':LspRestart<CR>', {})
