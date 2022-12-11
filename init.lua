@@ -91,13 +91,16 @@ end)
 -- :LspInfo
 -- :LspRestart
 
+-- See:
+-- https://github.com/neovim/nvim-lspconfig#suggested-configuration
+
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions.
-vim.keymap.set('n', '<Leader>cd', vim.diagnostic.open_float, {})
-vim.keymap.set('n', '<C-p>', vim.diagnostic.goto_prev, {})
-vim.keymap.set('n', '<C-n>', vim.diagnostic.goto_next, {})
+vim.keymap.set('n', '<Leader>cd', vim.diagnostic.open_float, optNRM)
+vim.keymap.set('n', '<C-p>', vim.diagnostic.goto_prev, optNRM)
+vim.keymap.set('n', '<C-n>', vim.diagnostic.goto_next, optNRM)
 
-vim.keymap.set('n', '<Leader>E', ':LspRestart<CR>', {})
+vim.keymap.set('n', '<Leader>E', ':LspRestart<CR>', optNRM)
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
