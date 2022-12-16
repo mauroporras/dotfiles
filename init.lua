@@ -306,7 +306,13 @@ vim.api.nvim_set_keymap('i', '<C-e>', '<End>', optNRM)
 vim.api.nvim_set_keymap('i', '<C-f>', '<Right>', optNRM)
 
 -- Normal.
-vim.api.nvim_set_keymap('n', '<Esc>', ':nohlsearch<CR><Esc>', optNRM)
+require('legendary').setup({
+  keymaps = {
+    {
+      '<Esc>', ':nohlsearch<CR><Esc>', description = 'Stop the highlighting for the searh.'
+    },
+  },
+})
 vim.api.nvim_set_keymap('n', '<Down>', ':cnext<CR>', optNRM)
 vim.api.nvim_set_keymap('n', '<Up>', ':cprevious<CR>', optNRM)
 vim.api.nvim_set_keymap('n', '<Leader>a', ':Rg<Space>', optNRM)
@@ -367,9 +373,6 @@ vim.api.nvim_set_keymap('n', '<Leader>?', '<Plug>(leap-backward-to)', {})
 --   Ranger.
 vim.api.nvim_set_keymap('n', '<Leader>r', ':RnvimrToggle<CR>', optNRM)
 vim.api.nvim_set_keymap('t', '<M-r>', '<C-\\><C-n>:RnvimrResize<CR>', optNRM)
-
---   vim-which-key.
-vim.api.nvim_set_keymap('n', '<Leader>', ":WhichKey '<Space>'<CR>", optNRM)
 
 -- To show the current scheme:
 --   :colorscheme

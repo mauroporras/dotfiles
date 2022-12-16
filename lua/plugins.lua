@@ -60,11 +60,8 @@ return require('packer').startup(function(use)
   use 'kevinoid/vim-jsonc'
   use 'lewis6991/gitsigns.nvim'
   use 'liuchengxu/vista.vim'
-  use {
-    'liuchengxu/vim-which-key',
-    cmd = { 'WhichKey', 'WhichKey!' },
-  }
   use 'mattn/emmet-vim'
+  use 'mrjones2014/legendary.nvim'
   use {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate',
