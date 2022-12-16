@@ -53,6 +53,7 @@ return require('packer').startup(function(use)
   use 'chentoast/marks.nvim'
   use 'editorconfig/editorconfig-vim'
   use 'euclidianAce/BetterLua.vim'
+  use 'folke/trouble.nvim'
   use 'ggandor/leap.nvim'
   use 'jiangmiao/auto-pairs'
   use 'kevinhwang91/rnvimr'

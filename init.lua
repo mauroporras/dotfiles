@@ -230,6 +230,22 @@ require('gitsigns').setup()
 vim.g.floaterm_width = 0.9
 vim.g.floaterm_height = 0.9
 
+-- folke/trouble.nvim
+require("trouble").setup {
+  icons = false,
+  fold_open = "v", -- icon used for open folds
+  fold_closed = ">", -- icon used for closed folds
+  indent_lines = false, -- add an indent guide below the fold icons
+  signs = {
+    -- icons / text used for a diagnostic
+    error = "error",
+    information = "info",
+    hint = "hint",
+    warning = "warn",
+  },
+  use_diagnostic_signs = false -- enabling this will use the signs defined in your lsp client
+}
+
 -- quick-scope.
 vim.g.qs_highlight_on_keys = {
   'f',
@@ -327,6 +343,10 @@ vim.api.nvim_set_keymap('n', '<Leader>n', ':bnext<CR>', optNRM)
 vim.api.nvim_set_keymap('n', '<Leader>p', ':bprevious<CR>', optNRM)
 vim.api.nvim_set_keymap('n', '<Leader>q', '<C-w>q', optNRM)
 vim.api.nvim_set_keymap('n', '<Leader>s', ':wall<CR>', optNRM)
+
+-- folke/trouble.nvim
+vim.keymap.set("n", "<Leader>xx", ":TroubleToggle<CR>", optNRM)
+vim.keymap.set("n", "<Leader>xw", ":TroubleToggle workspace_diagnostics<CR>", optNRM)
 
 --   gitsigns.
 vim.api.nvim_set_keymap('n', '<Leader>vb', ':Gitsigns blame_line<CR>', optNRM)
