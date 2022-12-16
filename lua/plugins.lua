@@ -48,7 +48,6 @@ return require('packer').startup(function(use)
   use 'euclidianAce/BetterLua.vim'
   use 'folke/trouble.nvim'
   use 'ggandor/leap.nvim'
-  use 'jiangmiao/auto-pairs'
   use 'kevinhwang91/rnvimr'
   use 'kevinoid/vim-jsonc'
   use 'lewis6991/gitsigns.nvim'
@@ -79,6 +78,12 @@ return require('packer').startup(function(use)
   use 'sbdchd/neoformat'
   use 'unblevable/quick-scope'
   use 'voldikss/vim-floaterm'
+  use {
+    'windwp/nvim-autopairs',
+    config = function()
+      require('nvim-autopairs').setup()
+    end
+  }
 
   -- Automatically set up your configuration after cloning packer.nvim.
   -- Put this at the end after all plugins.
