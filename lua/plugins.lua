@@ -56,6 +56,12 @@ return require('packer').startup(function(use)
   use 'mattn/emmet-vim'
   use 'mrjones2014/legendary.nvim'
   use {
+    'numToStr/Comment.nvim',
+    config = function()
+      require('Comment').setup()
+    end
+  }
+  use {
     'nvim-telescope/telescope.nvim',
     tag = '0.1.x',
     requires = {
@@ -71,7 +77,6 @@ return require('packer').startup(function(use)
   use 'p00f/nvim-ts-rainbow'
   use 'rakr/vim-one'
   use 'sbdchd/neoformat'
-  use 'tpope/vim-commentary'
   use 'unblevable/quick-scope'
   use 'voldikss/vim-floaterm'
 
