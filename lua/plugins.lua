@@ -40,13 +40,6 @@ return require('packer').startup(function(use)
   use 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp
   use 'L3MON4D3/LuaSnip' -- Snippets plugin
 
-  -- Fzf.
-  use {
-   'junegunn/fzf',
-   run = ':call fzf#install()'
-  }
-  use 'junegunn/fzf.vim'
-
   -- Misc.
   use 'andrewradev/inline_edit.vim'
   use 'antonk52/vim-browserslist'
@@ -62,6 +55,15 @@ return require('packer').startup(function(use)
   use 'liuchengxu/vista.vim'
   use 'mattn/emmet-vim'
   use 'mrjones2014/legendary.nvim'
+  use {
+    'nvim-telescope/telescope.nvim',
+    tag = '0.1.x',
+    requires = {
+      { 'nvim-lua/plenary.nvim' },
+      { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
+      { 'nvim-telescope/telescope-ui-select.nvim' },
+    }
+  }
   use {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate',

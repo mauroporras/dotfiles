@@ -32,12 +32,9 @@ local on_attach = function(_, bufnr)
   local bufopts = { noremap = true, silent = true, buffer = bufnr }
 
   vim.keymap.set('n', '<Leader>gD', vim.lsp.buf.declaration, bufopts)
-  vim.keymap.set('n', '<Leader>gd', vim.lsp.buf.definition, bufopts)
   vim.keymap.set('n', '<Leader>ch', vim.lsp.buf.hover, bufopts)
-  vim.keymap.set('n', '<Leader>gi', vim.lsp.buf.implementation, bufopts)
   vim.keymap.set('n', '<Leader>cr', vim.lsp.buf.rename, bufopts)
   vim.keymap.set('n', '<Leader>ca', vim.lsp.buf.code_action, bufopts)
-  vim.keymap.set('n', '<Leader>gr', vim.lsp.buf.references, bufopts)
 end
 
 -- neoformat
@@ -246,6 +243,28 @@ require("trouble").setup {
   use_diagnostic_signs = false -- enabling this will use the signs defined in your lsp client
 }
 
+-- nvim-telescope/telescope.nvim
+require('telescope').setup {
+  pickers = {
+    find_files = {
+      -- Old command for fzf was:
+      -- ```bash
+      -- rg --files --follow --hidden --smart-case --no-ignore-vcs --column --line-number --no-heading --color=always --glob '!{.git,dist,node_modules,tags}'
+      -- ```
+      find_command = { "rg", "--files", "--follow", "--hidden", "--no-ignore-vcs", "--glob", "!{.git,dist,node_modules,tags}" },
+    }
+  },
+  extensions = {
+    fzf = {
+      fuzzy = true,                    -- false will only do exact matching
+      override_generic_sorter = true,  -- override the generic sorter
+      override_file_sorter = true,     -- override the file sorter
+    }
+  }
+}
+require('telescope').load_extension('fzf')
+require('telescope').load_extension('ui-select')
+
 -- quick-scope.
 vim.g.qs_highlight_on_keys = {
   'f',
@@ -264,15 +283,6 @@ vim.cmd([[
 -- Ranger.
 --   Hide after picking a file.
 vim.g.rnvimr_enable_picker = 1
-
--- Rg.
-vim.cmd([[
-  command! -bang -nargs=* Rg
-    \ call fzf#vim#grep(
-    \   "rg --follow --hidden --smart-case --no-ignore --glob '!{.git,dist,node_modules,tags}' --column --line-number --no-heading --color=always -- ".shellescape(<q-args>), 1,
-    \   fzf#vim#with_preview(), <bang>0
-    \ )
-]])
 
 -- marks.
 require'marks'.setup {
@@ -308,17 +318,21 @@ vim.api.nvim_set_keymap('i', '<C-f>', '<Right>', optNRM)
 -- Normal.
 require('legendary').setup({
   keymaps = {
-    {
-      '<Esc>', ':nohlsearch<CR><Esc>', description = 'Stop the highlighting for the searh.'
-    },
+    { '<Esc>', ':nohlsearch<CR><Esc>', description = 'Stop the highlighting for the search.' },
+    { '<Leader>a', ':Telescope live_grep<CR>', description = 'Search in all files.' },
+    { '<Leader>b', ':Telescope buffers<CR>', description = 'List buffers.' },
+    { '<Leader>gd', ':Telescope lsp_definitions<CR>', description = 'LSP definition of word under cursor.' },
+    { '<Leader>gi', ':Telescope lsp_implementations<CR>', description = 'LSP implementations of word under cursor.' },
+    { '<Leader>gr', ':Telescope lsp_references<CR>', description = 'LSP references of word under cursor.' },
+    { '<Leader>O', ':Telescope git_files<CR>', description = 'Find files.' },
+    { '<Leader>o', ':Telescope find_files<CR>', description = 'Find files.' },
+    { '<Leader>zl', ':Telescope current_buffer_fuzzy_find<CR>', description = 'Fuzzy search in the current buffer.' },
+    { '<Leader>zh', ':Telescope oldfiles<CR>', description = 'Lists previously open files.' },
   },
 })
 vim.api.nvim_set_keymap('n', '<Down>', ':cnext<CR>', optNRM)
 vim.api.nvim_set_keymap('n', '<Up>', ':cprevious<CR>', optNRM)
-vim.api.nvim_set_keymap('n', '<Leader>a', ':Rg<Space>', optNRM)
 vim.api.nvim_set_keymap('n', '<Leader>i', ':FloatermNew lazygit<CR>', optNRM)
-vim.api.nvim_set_keymap('n', '<Leader>o', ':Files<CR>', optNRM)
-vim.api.nvim_set_keymap('n', '<Leader>S', ':GFiles?<CR>', optNRM)
 --   Code.
 vim.api.nvim_set_keymap('n', '<Leader>co', ':Vista!!<CR>', optNRM)
 --   Scrolling.
@@ -333,15 +347,7 @@ vim.api.nvim_set_keymap('n', '<Leader>tc', ':tabclose<CR>', optNRM)
 vim.api.nvim_set_keymap('n', '<Leader>th', ':-tabmove<CR>', optNRM)
 vim.api.nvim_set_keymap('n', '<Leader>tl', ':+tabmove<CR>', optNRM)
 
-vim.api.nvim_set_keymap('n', '<Leader>w', ':Windows<CR>', optNRM)
-vim.api.nvim_set_keymap('n', '<Leader>yt', ':BTags<CR>', optNRM)
-vim.api.nvim_set_keymap('n', '<Leader>zh', ':History<CR>', optNRM)
-vim.api.nvim_set_keymap('n', '<Leader>zl', ':Lines<CR>', optNRM)
-vim.api.nvim_set_keymap('n', '<Leader>zm', ':Marks<CR>', optNRM)
-vim.api.nvim_set_keymap('n', '<Leader>zt', ':Tags<CR>', optNRM)
-
 --   Buffers.
-vim.api.nvim_set_keymap('n', '<Leader>b', ':Buffers<CR>', optNRM)
 vim.api.nvim_set_keymap('n', '<Leader>d', ':bdelete<CR>', optNRM)
 vim.api.nvim_set_keymap('n', '<Leader>e', ':edit!<CR>', optNRM)
 vim.api.nvim_set_keymap('n', '<Leader>l', ':edit #<CR>', optNRM)
@@ -350,7 +356,7 @@ vim.api.nvim_set_keymap('n', '<Leader>p', ':bprevious<CR>', optNRM)
 vim.api.nvim_set_keymap('n', '<Leader>q', '<C-w>q', optNRM)
 vim.api.nvim_set_keymap('n', '<Leader>s', ':wall<CR>', optNRM)
 
--- folke/trouble.nvim
+--   folke/trouble.nvim
 vim.keymap.set("n", "<Leader>xx", ":TroubleToggle<CR>", optNRM)
 vim.keymap.set("n", "<Leader>xw", ":TroubleToggle workspace_diagnostics<CR>", optNRM)
 
