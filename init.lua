@@ -324,6 +324,7 @@ require('legendary').setup({
     { '<Leader>gd', ':Telescope lsp_definitions<CR>', description = 'LSP definition of word under cursor.' },
     { '<Leader>gi', ':Telescope lsp_implementations<CR>', description = 'LSP implementations of word under cursor.' },
     { '<Leader>gr', ':Telescope lsp_references<CR>', description = 'LSP references of word under cursor.' },
+    { '<Leader>gs', ':Telescope lsp_document_symbols<CR>', description = 'Lists LSP document symbols in the current buffer.' },
     { '<Leader>O', ':Telescope git_files<CR>', description = 'Find files.' },
     { '<Leader>o', ':Telescope find_files<CR>', description = 'Find files.' },
     { '<Leader>zl', ':Telescope current_buffer_fuzzy_find<CR>', description = 'Fuzzy search in the current buffer.' },
