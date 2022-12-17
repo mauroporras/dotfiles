@@ -110,6 +110,7 @@ return require('packer').startup(function(use)
     requires = {
       { "kkharji/sqlite.lua" },
       { 'nvim-lua/plenary.nvim' },
+      { 'nvim-telescope/telescope-frecency.nvim' },
       { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
       { 'nvim-telescope/telescope-smart-history.nvim' },
       { 'nvim-telescope/telescope-ui-select.nvim' },
