@@ -244,15 +244,34 @@ require("trouble").setup {
 }
 
 -- nvim-telescope/telescope.nvim
+-- Old command for fzf was:
+-- ```bash
+-- rg --files --follow --hidden --no-ignore-vcs --glob '!{.git,dist,node_modules,tags}'
+-- ```
 require('telescope').setup {
+  defaults = {
+    -- :h telescope.defaults.vimgrep_arguments
+    vimgrep_arguments = {
+      "rg",
+      "--follow",
+      "--hidden",
+      "--no-ignore-vcs",
+      "--column",
+      "--no-heading",
+      "--color=never",
+    },
+  },
   pickers = {
+    -- :h telescope.builtin.find_files
     find_files = {
-      -- Old command for fzf was:
-      -- ```bash
-      -- rg --files --follow --hidden --smart-case --no-ignore-vcs --column --line-number --no-heading --color=always --glob '!{.git,dist,node_modules,tags}'
-      -- ```
-      find_command = { "rg", "--files", "--follow", "--hidden", "--no-ignore-vcs", "--glob", "!{.git,dist,node_modules,tags}" },
-    }
+      find_command = {
+        "rg",
+        "--files",
+        "--follow",
+        "--hidden",
+        "--no-ignore-vcs",
+      }
+    },
   },
 }
 require('telescope').load_extension('fzf')
