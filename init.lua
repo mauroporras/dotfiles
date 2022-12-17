@@ -267,6 +267,7 @@ require('telescope').setup {
         ["<C-j>"] = require('telescope.actions').move_selection_next,
       },
     },
+    prompt_prefix = '',
   },
   pickers = {
     -- :h telescope.builtin.find_files
