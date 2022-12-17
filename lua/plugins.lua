@@ -64,8 +64,10 @@ return require('packer').startup(function(use)
     'nvim-telescope/telescope.nvim',
     tag = '0.1.x',
     requires = {
+      { "kkharji/sqlite.lua" },
       { 'nvim-lua/plenary.nvim' },
       { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
+      { 'nvim-telescope/telescope-smart-history.nvim' },
       { 'nvim-telescope/telescope-ui-select.nvim' },
     }
   }

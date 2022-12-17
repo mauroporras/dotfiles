@@ -253,6 +253,10 @@ local telescope = require('telescope')
 telescope.setup {
   defaults = {
     dynamic_preview_title = true,
+    history = {
+      path = '~/.local/share/nvim/telescope_history.sqlite3',
+      limit = 100,
+    },
     -- :h telescope.defaults.vimgrep_arguments
     vimgrep_arguments = {
       "rg",
@@ -265,6 +269,8 @@ telescope.setup {
     },
     mappings = {
       i = {
+        ["<C-p>"] = require('telescope.actions').cycle_history_prev,
+        ["<C-n>"] = require('telescope.actions').cycle_history_next,
         ["<C-k>"] = require('telescope.actions').move_selection_previous,
         ["<C-j>"] = require('telescope.actions').move_selection_next,
       },
@@ -286,6 +292,7 @@ telescope.setup {
 }
 
 telescope.load_extension('fzf')
+telescope.load_extension('smart_history')
 telescope.load_extension('ui-select')
 
 -- quick-scope.
