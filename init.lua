@@ -254,13 +254,6 @@ require('telescope').setup {
       find_command = { "rg", "--files", "--follow", "--hidden", "--no-ignore-vcs", "--glob", "!{.git,dist,node_modules,tags}" },
     }
   },
-  extensions = {
-    fzf = {
-      fuzzy = true,                    -- false will only do exact matching
-      override_generic_sorter = true,  -- override the generic sorter
-      override_file_sorter = true,     -- override the file sorter
-    }
-  }
 }
 require('telescope').load_extension('fzf')
 require('telescope').load_extension('ui-select')
