@@ -320,6 +320,7 @@ require('legendary').setup({
     { '<Leader>gs', ':Telescope lsp_document_symbols<CR>', description = 'Lists LSP document symbols in the current buffer.' },
     { '<Leader>O', ':Telescope git_files<CR>', description = 'Find files.' },
     { '<Leader>o', ':Telescope find_files<CR>', description = 'Find files.' },
+    { '<Leader>vc', ':Telescope git_bcommits<CR>', description = "Lists buffer's Git commits." },
     { '<Leader>zl', ':Telescope current_buffer_fuzzy_find<CR>', description = 'Fuzzy search in the current buffer.' },
     { '<Leader>zh', ':Telescope oldfiles<CR>', description = 'Lists previously open files.' },
   },
