@@ -246,7 +246,7 @@ require("trouble").setup {
 -- nvim-telescope/telescope.nvim
 -- Old command for fzf was:
 -- ```bash
--- rg --files --follow --hidden --no-ignore-vcs --glob '!{.git,dist,node_modules,tags}'
+-- rg --files --follow --hidden --smart-case --no-ignore-vcs --glob '!{.git,dist,node_modules,tags}'
 -- ```
 local telescope = require('telescope')
 
@@ -262,6 +262,7 @@ telescope.setup {
       "rg",
       "--follow",
       "--hidden",
+      "--smart-case",
       "--no-ignore-vcs",
       "--column",
       "--no-heading",
@@ -285,6 +286,7 @@ telescope.setup {
         "--files",
         "--follow",
         "--hidden",
+        "--smart-case",
         "--no-ignore-vcs",
       }
     },
