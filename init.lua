@@ -248,7 +248,9 @@ require("trouble").setup {
 -- ```bash
 -- rg --files --follow --hidden --no-ignore-vcs --glob '!{.git,dist,node_modules,tags}'
 -- ```
-require('telescope').setup {
+local telescope = require('telescope')
+
+telescope.setup {
   defaults = {
     dynamic_preview_title = true,
     -- :h telescope.defaults.vimgrep_arguments
@@ -282,8 +284,9 @@ require('telescope').setup {
     },
   },
 }
-require('telescope').load_extension('fzf')
-require('telescope').load_extension('ui-select')
+
+telescope.load_extension('fzf')
+telescope.load_extension('ui-select')
 
 -- quick-scope.
 vim.g.qs_highlight_on_keys = {
