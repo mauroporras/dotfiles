@@ -250,6 +250,7 @@ require("trouble").setup {
 -- ```
 require('telescope').setup {
   defaults = {
+    dynamic_preview_title = true,
     -- :h telescope.defaults.vimgrep_arguments
     vimgrep_arguments = {
       "rg",
