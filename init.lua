@@ -427,6 +427,8 @@ vim.opt.termguicolors = true
 vim.opt.background = 'light'
 
 vim.cmd([[
+  let g:indent_blankline_char = '¦'
+
   " See:
   " https://github.com/rakr/vim-one#italic-support
   let g:one_allow_italics = 1
@@ -464,6 +466,8 @@ vim.cmd([[
   highlight QuickScopeSecondary guibg=black guifg=cyan
 
   highlight CursorLine guibg=lightcyan
+
+  highlight IndentBlanklineChar guifg=#F5F5F5 gui=nocombine
 ]])
 
 -- Searching.

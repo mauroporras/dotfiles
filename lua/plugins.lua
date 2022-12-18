@@ -52,6 +52,12 @@ return require('packer').startup(function(use)
   use 'kevinoid/vim-jsonc'
   use 'lewis6991/gitsigns.nvim'
   use 'liuchengxu/vista.vim'
+  use {
+    'lukas-reineke/indent-blankline.nvim',
+    config = function()
+      require('indent_blankline').setup()
+    end
+  }
   use 'mattn/emmet-vim'
   use 'mrjones2014/legendary.nvim'
   use {
