@@ -100,7 +100,7 @@ require'lspconfig'.sumneko_lua.setup {
 local luasnip = require('luasnip')
 
 -- nvim-cmp setup
-local cmp = require 'cmp'
+local cmp = require('cmp')
 cmp.setup {
   snippet = {
     expand = function(args)
@@ -133,6 +133,7 @@ cmp.setup {
   sources = {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
+    { name = 'buffer' },
   },
 }
 -- }}} nvim-cmp.
