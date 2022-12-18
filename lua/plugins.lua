@@ -33,7 +33,6 @@ return require('packer').startup(function(use)
   -- LSP and friends.
   -- See:
   -- https://github.com/neovim/nvim-lspconfig/wiki/Autocompletion
-  -- https://github.com/neovim/nvim-lspconfig/wiki/Snippets
   use 'neovim/nvim-lspconfig' -- Collection of configurations for built-in LSP client
   use {
     'hrsh7th/nvim-cmp', -- Autocompletion plugin
@@ -45,8 +44,10 @@ return require('packer').startup(function(use)
     }
   }
 
+  -- https://github.com/neovim/nvim-lspconfig/wiki/Snippets
   use 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp
   use 'L3MON4D3/LuaSnip' -- Snippets plugin
+  use 'rafamadriz/friendly-snippets'
 
   -- Misc.
   use 'andrewradev/inline_edit.vim'
