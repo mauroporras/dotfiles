@@ -98,8 +98,6 @@ require'lspconfig'.sumneko_lua.setup {
 
 -- luasnip setup
 local luasnip = require('luasnip')
-luasnip.filetype_extend("typescript", { "javascript" })
-require("luasnip.loaders.from_vscode").lazy_load()
 
 -- nvim-cmp setup
 local cmp = require('cmp')
