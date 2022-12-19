@@ -51,6 +51,10 @@ return require('packer').startup(function(use)
   -- Misc.
   use 'andrewradev/inline_edit.vim'
   use 'antonk52/vim-browserslist'
+  use {
+    "catppuccin/nvim",
+    as = "catppuccin",
+  }
   use 'chentoast/marks.nvim'
   use 'editorconfig/editorconfig-vim'
   use 'euclidianAce/BetterLua.vim'
@@ -95,7 +99,6 @@ return require('packer').startup(function(use)
     }
   }
   use 'p00f/nvim-ts-rainbow'
-  use 'rakr/vim-one'
   use 'sbdchd/neoformat'
   use 'unblevable/quick-scope'
   use 'voldikss/vim-floaterm'

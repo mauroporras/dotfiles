@@ -433,15 +433,9 @@ vim.api.nvim_set_keymap('t', '<M-r>', '<C-\\><C-n>:RnvimrResize<CR>', optNRM)
 -- https://neovim.io/doc/user/options.html#'termguicolors'
 vim.opt.termguicolors = true
 
-vim.opt.background = 'light'
+vim.cmd.colorscheme "catppuccin-latte"
 
 vim.cmd([[
-  " See:
-  " https://github.com/rakr/vim-one#italic-support
-  let g:one_allow_italics = 1
-
-  colorscheme one
-
   autocmd TextYankPost * silent! lua vim.highlight.on_yank({ higroup = "HighlightedyankRegion", timeout = 400 })
 
   " Custom highlights.
@@ -460,6 +454,7 @@ vim.cmd([[
 
   highlight VertSplit guibg=white guifg=black
 
+  highlight CurSearch guibg=black guifg=cyan
   highlight IncSearch guibg=cyan guifg=black
   highlight Search guibg=cyan guifg=black
   highlight Substitute guibg=cyan guifg=black
@@ -473,8 +468,6 @@ vim.cmd([[
   highlight QuickScopeSecondary guibg=black guifg=cyan
 
   highlight CursorLine guibg=lightcyan
-
-  highlight IndentBlanklineChar guifg=#F5F5F5 gui=nocombine
 ]])
 
 -- Searching.
