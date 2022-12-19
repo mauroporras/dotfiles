@@ -412,6 +412,9 @@ vim.api.nvim_set_keymap('n', '<Leader>vS', ':Gitsigns stage_buffer<CR>', optNRM)
 vim.api.nvim_set_keymap('n', '<Leader>vs', ':Gitsigns stage_hunk<CR>', optNRM)
 vim.api.nvim_set_keymap('n', '<Leader>vu', ':Gitsigns undo_stage_hunk<CR>', optNRM)
 
+-- indent-blankline.nvim
+vim.g.indent_blankline_char = '¦'
+
 --   leap.nvim
 vim.api.nvim_set_keymap('n', '<Leader>/', '<Plug>(leap-forward-to)', {})
 vim.api.nvim_set_keymap('n', '<Leader>?', '<Plug>(leap-backward-to)', {})
@@ -433,8 +436,6 @@ vim.opt.termguicolors = true
 vim.opt.background = 'light'
 
 vim.cmd([[
-  let g:indent_blankline_char = '¦'
-
   " See:
   " https://github.com/rakr/vim-one#italic-support
   let g:one_allow_italics = 1
