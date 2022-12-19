@@ -92,7 +92,7 @@ return require('packer').startup(function(use)
       { 'JoosepAlviste/nvim-ts-context-commentstring' },
     }
   }
-  use 'p00f/nvim-ts-rainbow'
+  -- use 'p00f/nvim-ts-rainbow'
   use 'sbdchd/neoformat'
   use 'unblevable/quick-scope'
   use 'voldikss/vim-floaterm'
