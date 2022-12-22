@@ -356,7 +356,6 @@ require('legendary').setup({
     { '<Leader>gi', ':Telescope lsp_implementations<CR>', description = 'LSP implementations of word under cursor.' },
     { '<Leader>gr', ':Telescope lsp_references<CR>', description = 'LSP references of word under cursor.' },
     { '<Leader>gs', ':Telescope lsp_document_symbols<CR>', description = 'Lists LSP symbols in current buffer.' },
-    { '<Leader>gS', ':Telescope lsp_dynamic_workspace_symbols<CR>', description = 'Lists LSP symbols in current workspace.' },
     { '<Leader>O', ':Telescope git_files<CR>', description = 'Find files.' },
     { '<Leader>o', ':Telescope find_files<CR>', description = 'Find files.' },
     { '<Leader>vc', ':Telescope git_bcommits<CR>', description = "Lists buffer's Git commits." },
