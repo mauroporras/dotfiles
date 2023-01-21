@@ -14,14 +14,14 @@
 # Any items in the `env` entry below will be added as
 # environment variables. Some entries may override variables
 # set by alacritty itself.
-#env:
+env:
   # TERM variable
   #
   # This value is used to set the `$TERM` environment variable for
   # each instance of Alacritty. If it is not present, alacritty will
   # check the local terminfo database and use `alacritty` if it is
   # available, otherwise `xterm-256color` is used.
-  #TERM: alacritty
+  TERM: xterm-256color
 
 window:
   # Window dimensions (changes require restart)
@@ -184,14 +184,14 @@ font:
 # If `true`, bold text is drawn using the bright color variants.
 #draw_bold_text_with_bright_colors: false
 
-# Colors (Custom Pencil Light)
+# Colors (Catppuccin latte)
 # See:
-# https://github.com/eendroroy/alacritty-theme/blob/master/themes/pencil_light.yaml
+# https://github.com/catppuccin/alacritty/blob/main/catppuccin-latte.yml
 colors:
   # Default colors
   primary:
-    background: '#ffffff'
-    foreground: '#424242'
+    background: '#EFF1F5'
+    foreground: '#4C4F69'
 
     # Bright and dim foreground colors
     #
@@ -199,8 +199,8 @@ colors:
     # present. If the bright foreground color is not set, or
     # `draw_bold_text_with_bright_colors` is `false`, the normal foreground
     # color will be used.
-    #dim_foreground: '#828482'
-    #bright_foreground: '#eaeaea'
+    dim_foreground: '#4C4F69'
+    bright_foreground: '#4C4F69'
 
   # Cursor colors
   #
@@ -284,39 +284,39 @@ colors:
 
   # Normal colors
   normal:
-    black: '#444444'
-    red: '#c30771'
-    green: '#10a778'
-    yellow: '#a89c14'
-    blue: '#008ec4'
-    magenta: '#523c79'
-    cyan: '#20a5ba'
-    white: '#e0e0e0'
+    black: "#5C5F77"
+    red: "#D20F39"
+    green: "#40A02B"
+    yellow: "#DF8E1D"
+    blue: "#1E66F5"
+    magenta: "#EA76CB"
+    cyan: "#179299"
+    white: "#ACB0BE"
 
   # Bright colors
   bright:
-    black: '#7d7d7d'
-    red: '#fb007a'
-    green: '#5fd7af'
-    yellow: '#cdbe18'
-    blue: '#20bbfc'
-    magenta: '#6855de'
-    cyan: '#4fb8cc'
-    white: '#f1f1f1'
+    black: "#6C6F85"
+    red: "#D20F39"
+    green: "#40A02B"
+    yellow: "#DF8E1D"
+    blue: "#1E66F5"
+    magenta: "#EA76CB"
+    cyan: "#179299"
+    white: "#BCC0CC"
 
   # Dim colors
   #
   # If the dim colors are not set, they will be calculated automatically based
   # on the `normal` colors.
-  #dim:
-  #  black:   '#131415'
-  #  red:     '#864343'
-  #  green:   '#777c44'
-  #  yellow:  '#9e824c'
-  #  blue:    '#556a7d'
-  #  magenta: '#75617b'
-  #  cyan:    '#5b7d78'
-  #  white:   '#828482'
+  dim:
+    black: "#5C5F77"
+    red: "#D20F39"
+    green: "#40A02B"
+    yellow: "#DF8E1D"
+    blue: "#1E66F5"
+    magenta: "#EA76CB"
+    cyan: "#179299"
+    white: "#ACB0BE"
 
   # Indexed Colors
   #
@@ -326,7 +326,9 @@ colors:
   # Example:
   #   `- { index: 16, color: '#ff00ff' }`
   #
-  #indexed_colors: []
+  indexed_colors:
+    - { index: 16, color: "#FE640B" }
+    - { index: 17, color: "#DC8A78" }
 
   # Transparent cell backgrounds
   #
