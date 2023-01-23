@@ -1,15 +1,29 @@
 # See:
 # https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md
 
+# Theme:
+# https://github.com/catppuccin/lazygit
+
 gui:
   theme:
-    lightTheme: true
+    lightTheme: false
+    activeBorderColor:
+      - '#40a02b' # Green
+      - bold
     inactiveBorderColor:
-      - black
+      - '#4c4f69' # Text
+    optionsTextColor:
+      - '#1e66f5' # Blue
     selectedLineBgColor:
-      - white
+      - '#ccd0da' # Surface0
     selectedRangeBgColor:
-      - white
+      - '#ccd0da' # Surface0
+    cherryPickedCommitBgColor:
+      - '#179299' # Teal
+    cherryPickedCommitFgColor:
+      - '#1e66f5' # Blue
+    unstagedChangesColor:
+      - red # Red
 git:
   paging:
     colorArg: always
