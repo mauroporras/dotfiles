@@ -113,6 +113,8 @@ alias pnul='pnpm unlink'
 
 alias pnp='pnpm publish'
 
+alias pne='pnpm exec'
+
 alias pnr='pnpm run'
 alias pnrb='pnpm run build'
 alias pnrd='pnpm run dev'
