@@ -58,9 +58,10 @@ return require('packer').startup(function(use)
       require('catppuccin').setup({
         integrations = {
           cmp = true,
-          illuminate = true,
           lsp_trouble = true,
-          native_lsp = true,
+          native_lsp = {
+            enabled = true,
+          },
           telescope = true,
           treesitter = true,
         }
