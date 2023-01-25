@@ -54,6 +54,18 @@ return require('packer').startup(function(use)
   use {
     "catppuccin/nvim",
     as = "catppuccin",
+    config = function()
+      require('catppuccin').setup({
+        integrations = {
+          cmp = true,
+          illuminate = true,
+          lsp_trouble = true,
+          native_lsp = true,
+          telescope = true,
+          treesitter = true,
+        }
+      })
+    end
   }
   use 'chentoast/marks.nvim'
   use 'editorconfig/editorconfig-vim'
