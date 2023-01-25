@@ -60,6 +60,18 @@ return require('packer').startup(function(use)
   use 'euclidianAce/BetterLua.vim'
   use 'folke/trouble.nvim'
   use 'ggandor/leap.nvim'
+  use {
+    'RRethy/vim-illuminate',
+    config = function()
+      require('illuminate').configure({
+        providers = {
+          'lsp',
+          'treesitter',
+        },
+        delay = 200,
+      })
+    end
+  }
   use 'kevinhwang91/rnvimr'
   use 'kevinoid/vim-jsonc'
   use 'lewis6991/gitsigns.nvim'
