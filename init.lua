@@ -457,8 +457,6 @@ vim.cmd([[
 
   highlight QuickScopePrimary guibg=cyan guifg=black
   highlight QuickScopeSecondary guibg=black guifg=cyan
-
-  highlight CursorLine guibg=white
 ]])
 
 -- Searching.
