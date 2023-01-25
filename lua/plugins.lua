@@ -59,7 +59,6 @@ return require('packer').startup(function(use)
         integrations = {
           cmp = true,
           illuminate = true,
-          leap = true,
           lsp_trouble = true,
           native_lsp = true,
           telescope = true,

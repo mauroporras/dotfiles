@@ -431,6 +431,8 @@ vim.cmd([[
   " Custom highlights.
   highlight HighlightedyankRegion guibg=violet guifg=black
 
+  highlight LeapLabelPrimary guibg=cyan guifg=black
+
   highlight Comment gui=italic
 
   highlight StatusLine guibg=black guifg=white
