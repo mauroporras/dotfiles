@@ -432,6 +432,7 @@ vim.cmd([[
   highlight HighlightedyankRegion guibg=violet guifg=black
 
   highlight LeapLabelPrimary guibg=cyan guifg=black
+  highlight LeapLabelSecondary guibg=black guifg=cyan
 
   highlight Comment gui=italic
 
