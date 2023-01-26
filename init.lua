@@ -436,9 +436,9 @@ vim.cmd([[
 
   highlight Comment gui=italic
 
-  highlight IlluminatedWordText guibg=white
-  highlight IlluminatedWordRead guibg=white
-  highlight IlluminatedWordWrite guibg=white
+  highlight IlluminatedWordText guibg=paleturquoise
+  highlight IlluminatedWordRead guibg=paleturquoise
+  highlight IlluminatedWordWrite guibg=paleturquoise
 
   highlight StatusLine guibg=black guifg=white
   highlight StatusLineNC guibg=black guifg=lightgray
