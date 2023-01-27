@@ -406,7 +406,8 @@ vim.api.nvim_set_keymap('n', '<Leader>vs', ':Gitsigns stage_hunk<CR>', optNRM)
 vim.api.nvim_set_keymap('n', '<Leader>vu', ':Gitsigns undo_stage_hunk<CR>', optNRM)
 
 -- indent-blankline.nvim
-vim.g.indent_blankline_char = '¦'
+vim.g.indent_blankline_char = ' '
+vim.g.indent_blankline_context_char = '¦'
 
 --   leap.nvim
 vim.api.nvim_set_keymap('n', '<Leader>/', '<Plug>(leap-forward-to)', {})
@@ -442,6 +443,8 @@ vim.cmd([[
   highlight IlluminatedWordText guibg=paleturquoise
   highlight IlluminatedWordRead guibg=paleturquoise
   highlight IlluminatedWordWrite guibg=paleturquoise
+
+  highlight IndentBlanklineContextChar guifg=lavender
 
   highlight StatusLine guibg=black guifg=white
   highlight StatusLineNC guibg=black guifg=lightgray
