@@ -106,7 +106,7 @@ window:
   #   - OnlyRight
   #   - Both
   #   - None (default)
-  #option_as_alt: None
+  option_as_alt: Both
 
 #scrolling:
   # Maximum number of lines in the scrollback buffer.
@@ -766,12 +766,7 @@ mouse:
 #
 # If the same trigger is assigned to multiple actions, all of them are executed
 # in the order they were defined in.
-key_bindings:
-  - { key: A, mods: Alt, chars: "\x1ba" }
-  - { key: B, mods: Alt, chars: "\x1bb" }
-  - { key: C, mods: Alt, chars: "\x1bc" }
-  - { key: F, mods: Alt, chars: "\x1bf" }
-  - { key: R, mods: Alt, chars: "\x1br" }
+#key_bindings:
   #- { key: Paste,                                       action: Paste          }
   #- { key: Copy,                                        action: Copy           }
   #- { key: L,         mods: Control,                    action: ClearLogNotice }
