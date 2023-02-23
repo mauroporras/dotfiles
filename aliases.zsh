@@ -2,6 +2,7 @@ alias rg="rg --follow --hidden --smart-case --no-ignore --glob '!{.git,dist,node
 
 # {{{ direnv.
 alias dea='direnv allow'
+alias deae='cp .envrc{.example,} && direnv allow'
 alias dead='cp .envrc{.development,} && direnv allow'
 alias deas='cp .envrc{.staging,} && direnv allow'
 alias deap='cp .envrc{.production,} && direnv allow'
