@@ -1,3 +1,6 @@
+# Default values:
+# https://raw.githubusercontent.com/alacritty/alacritty/master/alacritty.yml
+
 # Configuration for Alacritty, the GPU enhanced terminal emulator.
 
 # Import additional configuration files
@@ -100,6 +103,11 @@ window:
   # decorations. Commonly supported values are `Dark`, `Light`, and `None` for
   # auto pick-up. Set this to `None` to use the default theme variant.
   #decorations_theme_variant: None
+
+  # Resize increments
+  #
+  # Prefer resizing window by discrete steps equal to cell dimensions.
+  #resize_increments: false
 
   # Make `Option` key behave as `Alt` (macOS only):
   #   - OnlyLeft
@@ -623,6 +631,7 @@ mouse:
 #   - Quit
 #       Quit Alacritty.
 #   - ToggleFullscreen
+#   - ToggleMaximized
 #   - SpawnNewInstance
 #       Spawn a new instance of Alacritty.
 #   - CreateNewWindow
