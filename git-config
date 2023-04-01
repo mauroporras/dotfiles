@@ -64,6 +64,9 @@ git config --global alias.current-branch '!git rev-parse --abbrev-ref HEAD'
 git config --global alias.wip '!git commit -m WIP:\ $(git current-branch)'
 git config --global alias.wipp '!git commit -m WIP:\ $(git current-branch) && git push'
 
+git config --global alias.wta 'worktree add'
+git config --global alias.wtl 'worktree list'
+
 git config --global alias.l 'log --graph --decorate --pretty=oneline --abbrev-commit'
 git config --global alias.la 'log --graph --decorate --pretty=oneline --abbrev-commit --all'
 git config --global alias.ld "log --graph --decorate --pretty=format:'%Cred%h%Creset - %Cgreen(%cr)%Creset %s%C(yellow)%d%Creset' --abbrev-commit --date=iso"
