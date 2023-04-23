@@ -438,8 +438,6 @@ vim.cmd([[
   highlight LeapLabelPrimary guibg=cyan guifg=black
   highlight LeapLabelSecondary guibg=black guifg=cyan
 
-  highlight Comment gui=italic
-
   highlight IlluminatedWordText guibg=paleturquoise
   highlight IlluminatedWordRead guibg=paleturquoise
   highlight IlluminatedWordWrite guibg=paleturquoise
