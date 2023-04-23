@@ -445,7 +445,7 @@ vim.cmd([[
   highlight IndentBlanklineContextChar guifg=lavender
 
   highlight StatusLine guibg=black guifg=white
-  highlight StatusLineNC guibg=black guifg=lightgray
+  highlight StatusLineNC guibg=gray guifg=lightgray
 
   highlight TabLine guibg=lightgray guifg=black
   highlight TabLineFill guibg=lightgray guifg=black
