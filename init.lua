@@ -71,7 +71,7 @@ for _, lsp in ipairs(servers) do
 end
 
 -- Put plugins with server-specific settings here:
-require'lspconfig'.sumneko_lua.setup {
+require'lspconfig'.lua_ls.setup {
   on_attach = on_attach,
   capabilities = capabilities,
   settings = {
