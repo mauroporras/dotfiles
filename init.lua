@@ -311,10 +311,6 @@ vim.cmd([[
   let g:vista#renderer#enable_icon = 0
 ]])
 
--- Ranger.
---   Hide after picking a file.
-vim.g.rnvimr_enable_picker = 1
-
 -- marks.
 require'marks'.setup {
   default_mappings = false,
@@ -358,6 +354,13 @@ require('legendary').setup({
     { '<Leader>gs', ':Telescope lsp_document_symbols<CR>', description = 'Lists LSP symbols in current buffer.' },
     { '<Leader>O', ':Telescope git_files<CR>', description = 'Find files.' },
     { '<Leader>o', ':Telescope find_files<CR>', description = 'Find files.' },
+    {
+      '<Leader>r',
+      function()
+        require("ranger-nvim").open(true)
+      end,
+      description = 'Open Ranger.'
+    },
     { '<Leader>vc', ':Telescope git_bcommits<CR>', description = "Lists buffer's Git commits." },
     { '<Leader>zl', ':Telescope current_buffer_fuzzy_find<CR>', description = 'Fuzzy search in the current buffer.' },
     { '<Leader>zh', ':Telescope oldfiles<CR>', description = 'Lists previously open files.' },
@@ -412,10 +415,6 @@ vim.g.indent_blankline_context_char = '¦'
 --   leap.nvim
 vim.api.nvim_set_keymap('n', '<Leader>/', '<Plug>(leap-forward-to)', {})
 vim.api.nvim_set_keymap('n', '<Leader>?', '<Plug>(leap-backward-to)', {})
-
---   Ranger.
-vim.api.nvim_set_keymap('n', '<Leader>r', ':RnvimrToggle<CR>', optNRM)
-vim.api.nvim_set_keymap('t', '<M-r>', '<C-\\><C-n>:RnvimrResize<CR>', optNRM)
 
 -- To show the current scheme:
 --   :colorscheme

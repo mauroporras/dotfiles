@@ -84,7 +84,7 @@ return require('packer').startup(function(use)
       })
     end
   }
-  use 'kevinhwang91/rnvimr'
+  use 'kelly-lin/ranger.nvim'
   use 'kevinoid/vim-jsonc'
   use 'lewis6991/gitsigns.nvim'
   use 'liuchengxu/vista.vim'

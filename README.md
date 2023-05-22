@@ -55,8 +55,6 @@ sudo apt install -y tmux git
 
 [https://github.com/junegunn/fzf#installation](https://github.com/junegunn/fzf#installation)
 
-[https://github.com/kevinhwang91/rnvimr#installation](https://github.com/kevinhwang91/rnvimr#installation)
-
 ## 7. Finally, bootstrap DotFiles
 
 ```bash
