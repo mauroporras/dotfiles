@@ -128,7 +128,10 @@ return require('packer').startup(function(use)
   use {
     'windwp/nvim-autopairs',
     config = function()
-      require('nvim-autopairs').setup()
+      require('nvim-autopairs').setup({
+        map_c_h = true,
+        map_c_w = true
+      })
     end
   }
 
