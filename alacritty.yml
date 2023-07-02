@@ -1,5 +1,6 @@
 # Default values:
-# https://raw.githubusercontent.com/alacritty/alacritty/master/alacritty.yml
+# The example `alacritty.yml` file for each release can be found on
+# [GitHub releases page](https://github.com/alacritty/alacritty/releases).
 
 # Configuration for Alacritty, the GPU enhanced terminal emulator.
 
