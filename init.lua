@@ -254,6 +254,15 @@ telescope.setup {
       path = '~/.local/share/nvim/telescope_history.sqlite3',
       limit = 100,
     },
+    -- :h telescope.layout
+    layout_strategy = 'vertical',
+    layout_config = {
+      height = 0.9,
+      prompt_position = 'top',
+      scroll_speed = 4,
+      width = 0.9,
+    },
+    sorting_strategy = 'ascending',
     -- :h telescope.defaults.vimgrep_arguments
     vimgrep_arguments = {
       "rg",
