@@ -377,6 +377,7 @@ require('legendary').setup({
     { '<Leader>vc', ':Telescope git_bcommits<CR>', description = "Lists buffer's Git commits." },
     { '<Leader>zl', ':Telescope current_buffer_fuzzy_find<CR>', description = 'Fuzzy search in the current buffer.' },
     { '<Leader>zh', ':Telescope oldfiles<CR>', description = 'Lists previously open files.' },
+    { '<Leader>zr', ':Telescope resume<CR>', description = 'Lists results of previous picker.' },
   },
 })
 vim.api.nvim_set_keymap('n', '<Down>', ':cnext<CR>', optNRM)
