@@ -115,6 +115,7 @@ return require('packer').startup(function(use)
       { 'nvim-telescope/telescope-ui-select.nvim' },
     }
   }
+  use 'nvim-tree/nvim-web-devicons'
   use {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate',
