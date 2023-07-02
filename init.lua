@@ -266,13 +266,17 @@ telescope.setup {
     -- :h telescope.defaults.vimgrep_arguments
     vimgrep_arguments = {
       "rg",
+      -- Defaults:
+      "--color=never",
+      "--no-heading",
+      "--with-filename",
+      "--line-number",
+      "--column",
+      "--smart-case",
+      -- Custom:
       "--follow",
       "--hidden",
-      "--smart-case",
       "--no-ignore-vcs",
-      "--column",
-      "--no-heading",
-      "--color=never",
     },
     mappings = {
       i = {
