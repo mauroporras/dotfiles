@@ -2,11 +2,11 @@
 
 Configs for Neovim, tmux and Git, on Zsh.
 
-## 1. Install Zsh and Oh My Zsh
+## Install Zsh and Oh My Zsh
 
 [https://github.com/robbyrussell/oh-my-zsh/blob/master/README.md](https://github.com/robbyrussell/oh-my-zsh/blob/master/README.md)
 
-## 2. Install Neovim
+## Install Neovim
 
 [https://github.com/neovim/neovim/wiki/Installing-Neovim](https://github.com/neovim/neovim/wiki/Installing-Neovim)
 
@@ -16,19 +16,19 @@ If you're transitioning from Vim: `:h nvim-from-vim`
 
 To optimize Neovim: `:checkhealth`
 
-## 3. Add Python support to Neovim
+## Add Python support to Neovim
 
 ```bash
 pip3 install --user --upgrade neovim
 ```
 
-## 4. Install LSP configs
+## Install LSP configs
 
 ```bash
 pnpm add -g bash-language-server diagnostic-languageserver dockerfile-language-server-nodejs neovim prettier stylelint-lsp svelte-language-server tailwindcss-language-server typescript typescript-language-server vscode-langservers-extracted yaml-language-server
 ```
 
-## 5. Install tmux and Git
+## Install tmux and Git
 
 For tmux support: [https://github.com/tmux/tmux/wiki/FAQ](https://github.com/tmux/tmux/wiki/FAQ)
 
@@ -46,7 +46,7 @@ brew install tmux git
 sudo apt install -y tmux git
 ```
 
-## 6. Install required utilities
+## Install required utilities
 
 [https://github.com/cli/cli#installation](https://github.com/cli/cli#installation)
 (required for the aliases).
@@ -55,7 +55,7 @@ sudo apt install -y tmux git
 
 [https://github.com/junegunn/fzf#installation](https://github.com/junegunn/fzf#installation)
 
-## 7. Finally, bootstrap DotFiles
+## Finally, bootstrap DotFiles
 
 ```bash
 git clone https://github.com/mauroporras/dotfiles.git ~/dotfiles
