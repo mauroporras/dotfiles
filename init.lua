@@ -360,6 +360,7 @@ require('legendary').setup({
   keymaps = {
     { '<Esc>', ':nohlsearch<CR><Esc>', description = 'Stop the highlighting for the search.' },
     { '<Leader>a', ':Telescope live_grep<CR>', description = 'Search in all files.' },
+    { '<Leader>A', ':Telescope grep_string<CR>', description = 'Searches string under your cursor.' },
     { '<Leader>b', ':Telescope buffers<CR>', description = 'List buffers.' },
     { '<Leader>gd', ':Telescope lsp_definitions<CR>', description = 'LSP definition of word under cursor.' },
     { '<Leader>gi', ':Telescope lsp_implementations<CR>', description = 'LSP implementations of word under cursor.' },
