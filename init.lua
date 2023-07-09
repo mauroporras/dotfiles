@@ -363,12 +363,11 @@ require('legendary').setup({
     { '<Leader>a', ':Telescope live_grep<CR>', description = 'Search in all files.' },
     { '<Leader>A', ':Telescope grep_string<CR>', description = 'Searches string under your cursor.' },
     { '<Leader>b', ':Telescope buffers<CR>', description = 'List buffers.' },
-    { '<Leader>f', ':Telescope frecency workspace=CWD<CR>', description = 'Editing history with intelligent prioritization.' },
     { '<Leader>gd', ':Telescope lsp_definitions<CR>', description = 'LSP definition of word under cursor.' },
     { '<Leader>gi', ':Telescope lsp_implementations<CR>', description = 'LSP implementations of word under cursor.' },
     { '<Leader>gr', ':Telescope lsp_references<CR>', description = 'LSP references of word under cursor.' },
     { '<Leader>gs', ':Telescope lsp_document_symbols<CR>', description = 'Lists LSP symbols in current buffer.' },
-    { '<Leader>O', ':Telescope git_files<CR>', description = 'Find files.' },
+    { '<Leader>O', ':Telescope frecency workspace=CWD<CR>', description = 'Editing history with intelligent prioritization.' },
     { '<Leader>o', ':Telescope find_files<CR>', description = 'Find files.' },
     {
       '<Leader>r',
