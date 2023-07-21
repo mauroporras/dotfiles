@@ -24,6 +24,7 @@ gui:
       - '#1e66f5' # Blue
     unstagedChangesColor:
       - red # Red
+  border: 'rounded'
 git:
   paging:
     colorArg: always
