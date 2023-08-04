@@ -25,6 +25,7 @@ gui:
     unstagedChangesColor:
       - red # Red
   border: 'rounded'
+  showBranchCommitHash: true
 git:
   paging:
     colorArg: always
