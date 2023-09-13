@@ -318,6 +318,15 @@ vim.g.qs_highlight_on_keys = {
   'T',
 }
 
+-- ranger.nvim
+require("ranger-nvim").setup({
+  ui = {
+    border = "rounded",
+    height = 0.8,
+    width = 0.9,
+  }
+})
+
 -- vista.vim
 vim.g.vista_blink = { 0, 0 }
 vim.g.vista_sidebar_width = 50
