@@ -379,11 +379,18 @@ require('legendary').setup({
     { '<Leader>O', ':Telescope frecency workspace=CWD<CR>', description = 'Editing history with intelligent prioritization.' },
     { '<Leader>o', ':Telescope find_files<CR>', description = 'Find files.' },
     {
+      '<Leader>R',
+      function()
+        require("ranger-nvim").open(false)
+      end,
+      description = 'Open Ranger focused on the `cwd`.'
+    },
+    {
       '<Leader>r',
       function()
         require("ranger-nvim").open(true)
       end,
-      description = 'Open Ranger.'
+      description = 'Open Ranger focused on the file.'
     },
     { '<Leader>vc', ':Telescope git_bcommits<CR>', description = "Lists buffer's Git commits." },
     { '<Leader>zl', ':Telescope current_buffer_fuzzy_find<CR>', description = 'Fuzzy search in the current buffer.' },
