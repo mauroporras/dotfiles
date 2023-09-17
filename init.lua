@@ -290,6 +290,11 @@ telescope.setup {
     },
     prompt_prefix = '',
   },
+  extensions = {
+    frecency = {
+      show_scores = true,
+    }
+  },
   pickers = {
     -- :h telescope.builtin.find_files
     find_files = {
