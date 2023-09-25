@@ -278,14 +278,19 @@ telescope.setup {
       "--hidden",
       "--no-ignore-vcs",
     },
+    -- See:
+    -- :h telescope.mappings
+    -- If the function you want is part of `telescope.actions`,
+    -- then you can simply give a string.
     mappings = {
       i = {
-        ["<C-p>"] = require('telescope.actions').cycle_history_prev,
-        ["<C-n>"] = require('telescope.actions').cycle_history_next,
-        ["<C-k>"] = require('telescope.actions').move_selection_previous,
-        ["<C-j>"] = require('telescope.actions').move_selection_next,
-        ["<C-d>"] = false,
-        ["<C-u>"] = false,
+        ['<C-n>'] = 'cycle_history_next',
+        ['<C-p>'] = 'cycle_history_prev',
+        ['<C-j>'] = 'move_selection_next',
+        ['<C-k>'] = 'move_selection_previous',
+        ['<C-q>'] = require('telescope.actions').smart_send_to_qflist + require('telescope.actions').open_qflist ,
+        ['<C-d>'] = false,
+        ['<C-u>'] = false,
       },
     },
     prompt_prefix = '',
