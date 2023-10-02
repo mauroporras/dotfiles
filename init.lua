@@ -479,7 +479,8 @@ vim.cmd([[
   highlight IlluminatedWordRead guibg=paleturquoise
   highlight IlluminatedWordWrite guibg=paleturquoise
 
-  highlight IndentBlanklineChar guifg=lavender
+  highlight IblIndent guifg=lavender
+  highlight IblScope guifg=plum
 
   highlight StatusLine guibg=black guifg=white
   highlight StatusLineNC guibg=gray guifg=lightgray
