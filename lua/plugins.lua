@@ -69,6 +69,7 @@ return require('packer').startup(function(use)
     end
   }
   use 'chentoast/marks.nvim'
+  use 'github/copilot.vim'
   use 'euclidianAce/BetterLua.vim'
   use 'folke/trouble.nvim'
   use 'ggandor/leap.nvim'
