@@ -69,7 +69,6 @@ return require('packer').startup(function(use)
     end
   }
   use 'chentoast/marks.nvim'
-  use 'github/copilot.vim'
   use 'euclidianAce/BetterLua.vim'
   use 'folke/trouble.nvim'
   use 'ggandor/leap.nvim'
@@ -142,6 +141,24 @@ return require('packer').startup(function(use)
       require('nvim-autopairs').setup({
         map_c_h = true,
         map_c_w = true
+      })
+    end
+  }
+  use {
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "InsertEnter",
+    config = function()
+      require("copilot").setup({
+        suggestion = {
+          enabled = true,
+          auto_trigger = true,
+          keymap = {
+            accept = "<M-tab>",
+            accept_word = "<M-w>",
+            accept_line = "<M-l>",
+          },
+        },
       })
     end
   }
