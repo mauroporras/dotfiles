@@ -3,6 +3,7 @@
 -- :so $MYVIMRC
 
 require('plugins')
+require('snippets')
 
 -- Leader.
 vim.g.mapleader = ' '
