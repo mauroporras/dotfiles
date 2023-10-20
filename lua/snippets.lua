@@ -286,6 +286,9 @@ ls.add_snippets("typescript", {
 
 ls.filetype_extend("svelte", { "typescript", "javascript" })
 ls.add_snippets("svelte", {
+  s("cs", {
+    t'class="', i(1), t{ '"' },
+  }),
   s("sif", {
     t'{#if ', i(1, 'condition'), t{ '}', '' },
     i(2),
