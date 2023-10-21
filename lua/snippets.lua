@@ -193,17 +193,22 @@ ls.add_snippets("javascript", {
     t'    ', i(1), t{ '', '' },
     t'} while (', i(2, 'condition'), t')'
   }),
-  s("fe", {
+  s("for", {
+    t'for (let i = ', i(1, '0'), t'; i < ', i(2, 'array'), t{ '.length; i += 1) {', '' },
+    t'    ', i(3), t{ '', '' },
+    t'}'
+  }),
+  s("fore", {
     i(1, 'items'), t'.forEach((', i(2, 'item'), t{ ') => {', '' },
     t'    ', i(3),
     t{ '', '});' }
   }),
-  s("fi", {
+  s("fori", {
     t'for (const ', i(1, 'key'), t' in ', i(2, 'object'), t{ ') {', '' },
     t'    ', i(3), t{ '', '' },
     t'}'
   }),
-  s("fo", {
+  s("foro", {
     t'for (const ', i(1, 'entry'), t' of ', i(2, 'array'), t{ ') {', '' },
     t'    ', i(3), t{ '', '' },
     t'}'
