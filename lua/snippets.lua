@@ -209,7 +209,7 @@ ls.add_snippets("javascript", {
     t'}'
   }),
   s("foro", {
-    t'for (const ', i(1, 'entry'), t' of ', i(2, 'array'), t{ ') {', '' },
+    t'for (const ', i(1, 'entry'), t' of ', i(2, 'arrayOrMapOrSet'), t{ ') {', '' },
     t'    ', i(3), t{ '', '' },
     t'}'
   }),
