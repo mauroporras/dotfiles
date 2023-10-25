@@ -294,6 +294,9 @@ ls.add_snippets("svelte", {
   s("cs", {
     t'class="', i(1), t{ '"' },
   }),
+  s("sc", {
+    t'{@const ', i(1), t' = ', i(2), t{ '}' },
+  }),
   s("sif", {
     t'{#if ', i(1, 'condition'), t{ '}', '' },
     i(2),
