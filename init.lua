@@ -506,7 +506,6 @@ vim.cmd([[
 -- Searching.
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
-vim.opt.wrapscan = false
 -- Substituting.
 vim.opt.inccommand = 'nosplit'
 
