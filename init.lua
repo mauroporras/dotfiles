@@ -20,8 +20,8 @@ local optNRM = { noremap = true }
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions.
 vim.keymap.set('n', '<Leader>cd', vim.diagnostic.open_float, optNRM)
-vim.keymap.set('n', '<C-p>', vim.diagnostic.goto_prev, optNRM)
-vim.keymap.set('n', '<C-n>', vim.diagnostic.goto_next, optNRM)
+vim.keymap.set('n', '<Leader>n', vim.diagnostic.goto_next, optNRM)
+vim.keymap.set('n', '<Leader>p', vim.diagnostic.goto_prev, optNRM)
 
 vim.keymap.set('n', '<Leader>E', ':LspRestart<CR>', optNRM)
 
@@ -409,8 +409,8 @@ require('legendary').setup({
     { '<Leader>zr', ':Telescope resume<CR>', description = 'Lists results of previous picker.' },
   },
 })
-vim.api.nvim_set_keymap('n', '<Down>', ':cnext<CR>', optNRM)
-vim.api.nvim_set_keymap('n', '<Up>', ':cprevious<CR>', optNRM)
+vim.api.nvim_set_keymap('n', '<C-n>', ':cnext<CR>', optNRM)
+vim.api.nvim_set_keymap('n', '<C-p>', ':cprevious<CR>', optNRM)
 vim.api.nvim_set_keymap('n', '<Leader>i', ':FloatermNew lazygit<CR>', optNRM)
 --   Code.
 vim.api.nvim_set_keymap('n', '<Leader>co', ':Vista!!<CR>', optNRM)
@@ -443,8 +443,8 @@ vim.keymap.set("n", "<Leader>xw", ":TroubleToggle workspace_diagnostics<CR>", op
 vim.api.nvim_set_keymap('n', '<Leader>vb', ':Gitsigns blame_line<CR>', optNRM)
 vim.api.nvim_set_keymap('n', '<Leader>vD', ':Gitsigns toggle_deleted<CR>', optNRM)
 vim.api.nvim_set_keymap('n', '<Leader>vd', ':Gitsigns diffthis<CR>', optNRM)
-vim.api.nvim_set_keymap('n', '<Leader>n', ':Gitsigns next_hunk<CR>', optNRM)
-vim.api.nvim_set_keymap('n', '<Leader>p', ':Gitsigns prev_hunk<CR>', optNRM)
+vim.api.nvim_set_keymap('n', '<Leader>vn', ':Gitsigns next_hunk<CR>', optNRM)
+vim.api.nvim_set_keymap('n', '<Leader>vp', ':Gitsigns prev_hunk<CR>', optNRM)
 vim.api.nvim_set_keymap('n', '<Leader>vR', ':Gitsigns reset_buffer<CR>', optNRM)
 vim.api.nvim_set_keymap('n', '<Leader>vr', ':Gitsigns reset_hunk<CR>', optNRM)
 vim.api.nvim_set_keymap('n', '<Leader>vS', ':Gitsigns stage_buffer<CR>', optNRM)
