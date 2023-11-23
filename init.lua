@@ -72,7 +72,7 @@ for _, lsp in ipairs(servers) do
 end
 
 -- Put plugins with server-specific settings here:
-require'lspconfig'.lua_ls.setup {
+require('lspconfig').lua_ls.setup({
   on_attach = on_attach,
   capabilities = capabilities,
   settings = {
@@ -95,7 +95,7 @@ require'lspconfig'.lua_ls.setup {
       },
     },
   },
-}
+})
 
 -- luasnip setup
 local luasnip = require('luasnip')
@@ -248,7 +248,7 @@ require("trouble").setup {
 -- ```
 local telescope = require('telescope')
 
-telescope.setup {
+telescope.setup({
   defaults = {
     dynamic_preview_title = true,
     history = {
@@ -314,7 +314,7 @@ telescope.setup {
       }
     },
   },
-}
+})
 
 telescope.load_extension('frecency')
 telescope.load_extension('fzf')
