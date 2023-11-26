@@ -241,6 +241,65 @@ require("trouble").setup {
   use_diagnostic_signs = false -- enabling this will use the signs defined in your lsp client
 }
 
+-- lualine
+local custom_lualine_theme = require('lualine.themes.codedark')
+
+custom_lualine_theme.inactive = {
+  c = {
+    bg = 'gray',
+    fg = 'lightgray',
+  }
+}
+
+require('lualine').setup({
+  options = {
+    theme = custom_lualine_theme,
+  },
+  sections = {
+    lualine_a = {},
+    lualine_b = { 'diff', 'diagnostics' },
+    lualine_c = {
+      {
+        'filename',
+        path = 1,
+      },
+    },
+    lualine_x = {},
+    lualine_y = {},
+    lualine_z = { 'location' }
+  },
+  inactive_sections = {
+    lualine_a = {},
+    lualine_b = {},
+    lualine_c = {
+      {
+        'filename',
+        path = 1,
+      }
+    },
+    lualine_x = {},
+    lualine_y = {},
+    lualine_z = {}
+  },
+  tabline = {
+    lualine_b = { 'branch' },
+    lualine_c = {
+      {
+        'tabs',
+        mode = 2,
+        separator = { right = '' },
+      },
+    },
+  },
+  winbar = {
+    lualine_a = { 'filename' },
+    lualine_c = { 'navic' },
+  },
+  inactive_winbar = {
+    lualine_c = { 'filename' },
+  },
+})
+
 -- nvim-telescope/telescope.nvim
 -- Old command for fzf was:
 -- ```bash

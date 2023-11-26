@@ -114,6 +114,7 @@ return require('packer').startup(function(use)
       })
     end
   }
+  use 'nvim-lualine/lualine.nvim'
   use {
     'nvim-telescope/telescope.nvim',
     tag = '0.1.x',
