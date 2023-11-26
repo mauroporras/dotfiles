@@ -51,6 +51,7 @@ return require('packer').startup(function(use)
   -- Misc.
   use 'andrewradev/inline_edit.vim'
   use 'antonk52/vim-browserslist'
+
   use {
     "catppuccin/nvim",
     as = "catppuccin",
@@ -68,6 +69,7 @@ return require('packer').startup(function(use)
       })
     end
   }
+
   use 'chentoast/marks.nvim'
   use 'euclidianAce/BetterLua.vim'
   use 'folke/trouble.nvim'
@@ -144,6 +146,47 @@ return require('packer').startup(function(use)
       })
     end
   }
+
+  use {
+    'SmiteshP/nvim-navic',
+    config = function()
+      require('nvim-navic').setup({
+        icons = {
+          File = ' ',
+          Module = ' ',
+          Namespace = ' ',
+          Package = ' ',
+          Class = ' ',
+          Method = ' ',
+          Property = ' ',
+          Field = ' ',
+          Constructor = ' ',
+          Enum = ' ',
+          Interface = ' ',
+          Function = ' ',
+          Variable = ' ',
+          Constant = ' ',
+          String = ' ',
+          Number = ' ',
+          Boolean = ' ',
+          Array = ' ',
+          Object = ' ',
+          Key = ' ',
+          Null = ' ',
+          EnumMember = ' ',
+          Struct = ' ',
+          Event = ' ',
+          Operator = ' ',
+          TypeParameter = ' '
+        },
+        lsp = {
+          auto_attach = true,
+        },
+        separator = "  ",
+      })
+    end
+  }
+
   use {
     "zbirenbaum/copilot.lua",
     cmd = "Copilot",
