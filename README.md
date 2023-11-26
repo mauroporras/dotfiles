@@ -75,11 +75,26 @@ git clone https://github.com/mauroporras/dotfiles.git ~/dotfiles
 
 [https://github.com/direnv/direnv](https://github.com/direnv/direnv)
 
-[http://input.fontbureau.com](http://input.fontbureau.com)
-
 [https://ctags.io](https://ctags.io)
 
 [https://formulae.brew.sh/formula/coreutils](https://formulae.brew.sh/formula/coreutils)
+
+### How to patch the Input Mono Narrow font
+
+1. Setup the font patcher: https://github.com/ryanoasis/nerd-fonts#font-patcher
+
+2. Download the font archive: [http://input.fontbureau.com](http://input.fontbureau.com)
+
+3. Extract the font archive into the patcher's dir.
+
+4. From the patcher's dir, run these commands:
+
+```bash
+fontforge -script font-patcher -c --name postscript ./Input-Font/Bold.ttf
+fontforge -script font-patcher -c --name postscript ./Input-Font/BoldItalic.ttf
+fontforge -script font-patcher -c --name postscript ./Input-Font/Italic.ttf
+fontforge -script font-patcher -c --name postscript ./Input-Font/Regular.ttf
+```
 
 ## Quick links
 
