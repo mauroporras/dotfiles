@@ -188,25 +188,6 @@ return require('packer').startup(function(use)
     end
   }
 
-  use {
-    "zbirenbaum/copilot.lua",
-    cmd = "Copilot",
-    event = "InsertEnter",
-    config = function()
-      require("copilot").setup({
-        suggestion = {
-          enabled = true,
-          auto_trigger = true,
-          keymap = {
-            accept = "<M-tab>",
-            accept_word = "<M-w>",
-            accept_line = "<M-l>",
-          },
-        },
-      })
-    end
-  }
-
   -- Automatically set up your configuration after cloning packer.nvim.
   -- Put this at the end after all plugins.
   if packer_bootstrap then
