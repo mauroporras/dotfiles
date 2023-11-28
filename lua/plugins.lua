@@ -117,7 +117,7 @@ return require('packer').startup(function(use)
   use 'nvim-lualine/lualine.nvim'
   use {
     'nvim-telescope/telescope.nvim',
-    tag = '0.1.x',
+    branch = '0.1.x',
     requires = {
       { "kkharji/sqlite.lua" }, -- Required by telescope-smart-history.nvim
       { 'nvim-lua/plenary.nvim' },
