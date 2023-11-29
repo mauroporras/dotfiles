@@ -108,6 +108,9 @@ return require('packer').startup(function(use)
   use 'mrjones2014/legendary.nvim'
   use {
     'numToStr/Comment.nvim',
+    requires = {
+      'JoosepAlviste/nvim-ts-context-commentstring',
+    },
     config = function()
       require('Comment').setup({
         pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
@@ -131,9 +134,6 @@ return require('packer').startup(function(use)
   use {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate',
-    requires = {
-      { 'JoosepAlviste/nvim-ts-context-commentstring' },
-    }
   }
   use 'sbdchd/neoformat'
   use 'unblevable/quick-scope'
