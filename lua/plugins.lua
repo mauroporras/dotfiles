@@ -133,6 +133,9 @@ return require('packer').startup(function(use)
   use 'nvim-tree/nvim-web-devicons'
   use {
     'nvim-treesitter/nvim-treesitter',
+    requires = {
+      'nvim-treesitter/nvim-treesitter-textobjects',
+    },
     run = ':TSUpdate',
   }
   use 'sbdchd/neoformat'
