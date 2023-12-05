@@ -565,8 +565,6 @@ vim.cmd([[
   highlight Search guibg=cyan guifg=black
   highlight Substitute guibg=cyan guifg=black
 
-  highlight QuickFixLine guibg=lime guifg=black
-
   highlight QuickScopePrimary guibg=cyan guifg=black
   highlight QuickScopeSecondary guibg=black guifg=cyan
 ]])
