@@ -44,16 +44,16 @@ ls.add_snippets("javascript", {
   }),
 
   -- Await.
-  s("a", {
-    t'await ', i(1), t';'
+  s("aw", {
+    t'await ', i(1)
   }),
 
   -- const
   s("c", {
-    t'const ', i(1), t' = ', i(2), t';'
+    t'const ', i(1), t' = ', i(2),
   }),
-  s("ca", {
-    t'const ', i(1), t' = await ', i(2), t';'
+  s("caw", {
+    t'const ', i(1), t' = await ', i(2),
   }),
   s("caf", {
     t'const ', i(1), t' = (', i(2), t{ ') => {', '' },
@@ -68,26 +68,23 @@ ls.add_snippets("javascript", {
   s("cii", {
     t'const ', i(1), t' = ((', i(2), t{ ') => {', '' },
     t'    ', i(3),
-    t{ '', '})();' }
+    t{ '', '})()' }
   }),
   s("cm", {
     t'const ', i(1, 'newArray'), t' = ', i(2, 'items'), t'.map((', i(3, 'item'), t{ ') => {', '' },
-    t'    return ', i(4), t{ ';', '' },
-    t'});'
+    t'    return ', i(4), t{ '' },
+    t'})'
   }),
   s("cn", {
-    t'const ', i(1, 'foo'), t' = new ', i(2, 'Foo'), t'(', i(3), t');'
+    t'const ', i(1, 'foo'), t' = new ', i(2, 'Foo'), t'(', i(3), t')'
   }),
 
   -- console
   s("cl", {
-    t'console.log("---------- ', i(1), t':", ', i(2), t');'
+    t'console.log("---------- ', i(1), t':", ', i(2), t')'
   }),
   s("ce", {
-    t'console.error("Error:", ', i(1), t');'
-  }),
-  s("ci", {
-    t'console.info(', i(1), t');'
+    t'console.error("Error:", ', i(1), t')'
   }),
 
   -- class
@@ -103,7 +100,7 @@ ls.add_snippets("javascript", {
   }),
   s("clacs", {
     t'constructor (', i(1), t{ ') {', '' },
-    t{ '    super();', '', '' },
+    t{ '    super()', '', '' },
     t'    ', i(2), t{ '', '' },
     t'}'
   }),
@@ -146,15 +143,20 @@ ls.add_snippets("javascript", {
     t'}'
   }),
 
+  -- Debug.
+  s("deb", {
+    t{ '', 'debugger', '' },
+  }),
+
   -- export
   s("ex", {
-    t'export { ', i(1), t' };'
+    t'export { ', i(1), t' }'
   }),
   s("exl", {
-    t'export let ', i(1), t';'
+    t'export let ', i(1),
   }),
   s("ext", {
-    t'export type { ', i(1), t' };'
+    t'export type { ', i(1), t' }'
   }),
 
   -- if
@@ -173,18 +175,18 @@ ls.add_snippets("javascript", {
 
   -- import
   s("im", {
-    t'import { ', i(1), t' } from "', i(2), t'";'
+    t'import { ', i(1), t' } from "', i(2), t'"'
   }),
   s("imt", {
-    t'import type { ', i(1), t' } from "', i(2), t'";'
+    t'import type { ', i(1), t' } from "', i(2), t'"'
   }),
 
   -- let
   s("l", {
-    t'let ', i(1), t' = ', i(2), t';'
+    t'let ', i(1), t' = ', i(2),
   }),
-  s("la", {
-    t'let ', i(1), t' = await ', i(2), t';'
+  s("law", {
+    t'let ', i(1), t' = await ', i(2),
   }),
 
   -- Loops.
@@ -201,7 +203,7 @@ ls.add_snippets("javascript", {
   s("fore", {
     i(1, 'items'), t'.forEach((', i(2, 'item'), t{ ') => {', '' },
     t'    ', i(3),
-    t{ '', '});' }
+    t{ '', '})' }
   }),
   s("fori", {
     t'for (const ', i(1, 'key'), t' in ', i(2, 'object'), t{ ') {', '' },
@@ -221,7 +223,7 @@ ls.add_snippets("javascript", {
 
   -- return
   s("r", {
-    t'return ', i(1), t';'
+    t'return ', i(1)
   }),
 
   -- this
@@ -229,7 +231,7 @@ ls.add_snippets("javascript", {
     t'this.', i(1)
   }),
   s("tt", {
-    t'this.', i(1), t' = ', i(2), t';'
+    t'this.', i(1), t' = ', i(2),
   }),
 
   -- try
