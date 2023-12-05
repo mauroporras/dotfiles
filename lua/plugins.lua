@@ -46,7 +46,11 @@ return require('packer').startup(function(use)
   }
 
   use 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp
-  use 'L3MON4D3/LuaSnip' -- Snippets plugin
+  use {
+    'L3MON4D3/LuaSnip', -- Snippets plugin
+    tag = "v2.*",
+    run = "make install_jsregexp",
+  }
 
   -- Misc.
   use 'andrewradev/inline_edit.vim'
