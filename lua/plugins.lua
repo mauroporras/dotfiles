@@ -186,7 +186,7 @@ return require('packer').startup(function(use)
         lsp = {
           auto_attach = true,
         },
-        separator = "  ",
+        separator = ' › ',
       })
     end
   }
