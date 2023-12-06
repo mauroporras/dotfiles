@@ -35,6 +35,7 @@ return require('packer').startup(function(use)
   -- https://github.com/neovim/nvim-lspconfig/wiki/Autocompletion
   -- https://github.com/neovim/nvim-lspconfig/wiki/Snippets
   use 'neovim/nvim-lspconfig' -- Collection of configurations for built-in LSP client
+
   use {
     'hrsh7th/nvim-cmp', -- Autocompletion plugin
     requires = {
@@ -78,6 +79,7 @@ return require('packer').startup(function(use)
   use 'euclidianAce/BetterLua.vim'
   use 'folke/trouble.nvim'
   use 'ggandor/leap.nvim'
+
   use {
     'RRethy/vim-illuminate',
     config = function()
@@ -90,10 +92,12 @@ return require('packer').startup(function(use)
       })
     end
   }
+
   use 'kelly-lin/ranger.nvim'
   use 'kevinoid/vim-jsonc'
   use 'lewis6991/gitsigns.nvim'
   use 'liuchengxu/vista.vim'
+
   use {
     'lukas-reineke/indent-blankline.nvim',
     config = function()
@@ -108,8 +112,10 @@ return require('packer').startup(function(use)
       })
     end
   }
+
   use 'mattn/emmet-vim'
   use 'mrjones2014/legendary.nvim'
+
   use {
     'numToStr/Comment.nvim',
     requires = {
@@ -121,7 +127,9 @@ return require('packer').startup(function(use)
       })
     end
   }
+
   use 'nvim-lualine/lualine.nvim'
+
   use {
     'nvim-telescope/telescope.nvim',
     branch = '0.1.x',
@@ -134,7 +142,9 @@ return require('packer').startup(function(use)
       { 'nvim-telescope/telescope-ui-select.nvim' },
     }
   }
+
   use 'nvim-tree/nvim-web-devicons'
+
   use {
     'nvim-treesitter/nvim-treesitter',
     requires = {
@@ -142,9 +152,12 @@ return require('packer').startup(function(use)
     },
     run = ':TSUpdate',
   }
+
   use 'sbdchd/neoformat'
+
   use 'unblevable/quick-scope'
   use 'voldikss/vim-floaterm'
+
   use {
     'windwp/nvim-autopairs',
     config = function()
