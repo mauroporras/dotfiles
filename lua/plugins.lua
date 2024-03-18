@@ -168,6 +168,7 @@ return require('packer').startup(function(use)
     end
   }
 
+  -- "nvim-navic" is used in "lualine".
   use {
     'SmiteshP/nvim-navic',
     config = function()

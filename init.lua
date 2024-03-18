@@ -250,64 +250,44 @@ require("trouble").setup {
   use_diagnostic_signs = false -- enabling this will use the signs defined in your lsp client
 }
 
--- lualine
+-- {{{ lualine.
 local custom_lualine_theme = require('lualine.themes.codedark')
 
-custom_lualine_theme.inactive = {
-  c = {
-    bg = 'gray',
-    fg = 'lightgray',
-  }
+custom_lualine_theme.inactive.c = {
+  bg = 'gray',
+  fg = 'lightgray',
 }
 
 require('lualine').setup({
   options = {
     theme = custom_lualine_theme,
+    globalstatus = true,
   },
   sections = {
     lualine_a = {},
-    lualine_b = { 'diff', 'diagnostics' },
+    lualine_b = {
+      'diagnostics',
+      'diff',
+    },
     lualine_c = {
       {
         'filename',
         path = 1,
       },
+      'navic'
     },
     lualine_x = {},
     lualine_y = {},
     lualine_z = { 'location' }
   },
-  inactive_sections = {
-    lualine_a = {},
-    lualine_b = {},
-    lualine_c = {
-      {
-        'filename',
-        path = 1,
-      }
-    },
-    lualine_x = {},
-    lualine_y = {},
-    lualine_z = {}
-  },
-  tabline = {
-    lualine_b = { 'branch' },
-    lualine_c = {
-      {
-        'tabs',
-        mode = 2,
-        separator = { right = '' },
-      },
-    },
-  },
   winbar = {
     lualine_a = { 'filename' },
-    lualine_c = { 'navic' },
   },
   inactive_winbar = {
     lualine_c = { 'filename' },
   },
 })
+-- }}} lualine.
 
 -- nvim-telescope/telescope.nvim
 -- Old command for fzf was:
@@ -477,11 +457,14 @@ require('legendary').setup({
     { '<Leader>zr', ':Telescope resume<CR>', description = 'Lists results of previous picker.' },
   },
 })
+
 vim.api.nvim_set_keymap('n', '<C-n>', ':cnext<CR>', optNRM)
 vim.api.nvim_set_keymap('n', '<C-p>', ':cprevious<CR>', optNRM)
 vim.api.nvim_set_keymap('n', '<Leader>i', ':FloatermNew lazygit<CR>', optNRM)
+
 --   Code.
 vim.api.nvim_set_keymap('n', '<Leader>co', ':Vista!!<CR>', optNRM)
+
 --   Scrolling.
 vim.api.nvim_set_keymap('n', '<C-e>', '3<C-e>', optNRM)
 vim.api.nvim_set_keymap('n', '<C-y>', '3<C-y>', optNRM)
