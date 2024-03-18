@@ -1,5 +1,8 @@
 # To install, run:
+#
+# ```bash
 # brew bundle
+# ```
 
 tap "homebrew/bundle"
 tap "homebrew/cask"
@@ -33,6 +36,7 @@ brew "tree"
 brew "watch"
 brew "watchman"
 brew "zlib"
+brew "zoxide"
 brew "zsh"
 brew "zsh-completions"
 brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD"]
