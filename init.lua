@@ -346,6 +346,9 @@ telescope.setup({
   },
   extensions = {
     frecency = {
+      -- Stale entries won't be automatically removed and
+      -- the prompt won't show up.
+      auto_validate = false,
       show_scores = true,
     }
   },
