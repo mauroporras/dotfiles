@@ -72,8 +72,13 @@ ls.add_snippets("javascript", {
   }),
   s("cm", {
     t'const ', i(1, 'newArray'), t' = ', i(2, 'items'), t'.map((', i(3, 'item'), t{ ') => {', '' },
-    t'    return ', i(4), t{ '' },
+    t'    return ', i(4), t{ '', '' },
     t'})'
+  }),
+  s("cr", {
+    t'const ', i(1, 'result'), t' = ', i(2, 'items'), t'.reduce((', i(3, 'acc'), t', ', i(4, 'item'), t{ ') => {', '' },
+    t'    return ', i(5, 'acc + item'), t{ '', '' },
+    t'}, ', i(6, 'initial'), t')'
   }),
   s("cn", {
     t'const ', i(1, 'foo'), t' = new ', i(2, 'Foo'), t'(', i(3), t')'
@@ -81,6 +86,9 @@ ls.add_snippets("javascript", {
 
   -- console
   s("cl", {
+    t'console.log(', i(1), t')'
+  }),
+  s("cll", {
     t'console.log("---------- ', i(1), t':", ', i(2), t')'
   }),
   s("ce", {
@@ -146,6 +154,14 @@ ls.add_snippets("javascript", {
   -- Debug.
   s("deb", {
     t{ '', 'debugger', '' },
+  }),
+
+  -- Errors.
+  s("ne", {
+    t'Error("', i(1, 'My message'), t'.")'
+  }),
+  s("tne", {
+    t'throw Error("', i(1, 'My message'), t'.")'
   }),
 
   -- export
@@ -221,9 +237,31 @@ ls.add_snippets("javascript", {
     t'}'
   }),
 
+  -- Promises.
+  s("np", {
+    t{ 'new Promise((resolve, reject) => {', '' },
+    t'    ', i(1), t{ '', '' },
+    t'})'
+  }),
+
   -- return
   s("r", {
     t'return ', i(1)
+  }),
+
+  -- switch
+  s("sw", {
+    t'switch (', i(1, 'expr'), t{') {', '' },
+    t'    case ', i(2, '"A"'), t{ ':', '' },
+    t'        ', i(3, 'console.log("A")'), t{ ';', '' },
+    t{ '        break;', '' },
+    t'    case ', i(4, '"B"'), t{ ':', '' },
+    t'    case ', i(5, '"C"'), t{ ':', '' },
+    t'        ', i(6, 'console.log("B or C")'), t{ ';', '' },
+    t{ '        break;', '' },
+    t{ '    default:', '' },
+    t'        ', i(7, 'console.log("Neither")'), t{ ';', '' },
+    t'}'
   }),
 
   -- this
