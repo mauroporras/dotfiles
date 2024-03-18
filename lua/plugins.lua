@@ -170,7 +170,6 @@ return require('packer').startup(function(use)
   }
 
   use 'unblevable/quick-scope'
-  use 'voldikss/vim-floaterm'
 
   use {
     'windwp/nvim-autopairs',

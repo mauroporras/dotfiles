@@ -188,6 +188,11 @@ ls.add_snippets("javascript", {
     t'    ', i(3), t{ '', '' },
     t'}'
   }),
+  s("ifn", {
+    t'if (!', i(1, 'condition'), t{ ') {', '' },
+    t'    ', i(2), t{ '', '' },
+    t'}'
+  }),
 
   -- import
   s("im", {
@@ -347,6 +352,11 @@ ls.add_snippets("svelte", {
     i(2),
     t{ '', '{:else}', '' },
     i(3),
+    t{ '', '{/if}' }
+  }),
+  s("sifn", {
+    t'{#if !', i(1, 'condition'), t{ '}', '' },
+    i(2),
     t{ '', '{/if}' }
   }),
   s("se", {

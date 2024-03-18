@@ -42,7 +42,6 @@ alias ez='v ~/.zshrc'
 
 alias g='git'
 alias gt='github' # GitHub CLI.
-alias lg='lazygit'
 
 # {{{ Jobs.
 alias j='jobs'

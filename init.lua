@@ -230,10 +230,6 @@ vim.g.user_emmet_mode = 'i'
 -- gitsigns.
 require('gitsigns').setup()
 
--- floaterm.
-vim.g.floaterm_width = 0.9
-vim.g.floaterm_height = 0.9
-
 -- folke/trouble.nvim
 require("trouble").setup {
   icons = false,
@@ -461,7 +457,6 @@ require('legendary').setup({
 
 vim.api.nvim_set_keymap('n', '<C-n>', ':cnext<CR>', optNRM)
 vim.api.nvim_set_keymap('n', '<C-p>', ':cprevious<CR>', optNRM)
-vim.api.nvim_set_keymap('n', '<Leader>i', ':FloatermNew lazygit<CR>', optNRM)
 
 --   Code.
 vim.api.nvim_set_keymap('n', '<Leader>co', ':Vista!!<CR>', optNRM)

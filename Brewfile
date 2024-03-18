@@ -1,9 +1,11 @@
 # To install, run:
+#
+# ```bash
 # brew bundle
+# ```
 
 tap "homebrew/bundle"
-tap "homebrew/cask"
-tap "homebrew/core"
+tap "homebrew/cask-fonts"
 tap "universal-ctags/universal-ctags"
 
 brew "asciinema"
@@ -33,6 +35,7 @@ brew "tree"
 brew "watch"
 brew "watchman"
 brew "zlib"
+brew "zoxide"
 brew "zsh"
 brew "zsh-completions"
 brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD"]
@@ -41,11 +44,13 @@ cask "alacritty"
 cask "brave-browser"
 cask "figma"
 cask "firefox"
+cask "font-iosevka" # https://github.com/be5invis/Iosevka
 cask "flutter"
 cask "flycut"
 cask "github"
 cask "google-chrome"
 cask "iterm2"
+cask "kitty"
 cask "krisp"
 cask "ngrok"
 cask "notion"
