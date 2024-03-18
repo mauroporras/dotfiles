@@ -539,7 +539,7 @@ vim.cmd([[
   highlight TabLineFill guibg=lightgray guifg=black
   highlight TabLineSel guibg=black guifg=white
 
-  highlight VertSplit guibg=gray guifg=gray
+  highlight VertSplit guifg=gray
 
   highlight CurSearch guibg=black guifg=cyan
   highlight IncSearch guibg=cyan guifg=black
