@@ -491,8 +491,6 @@ vim.api.nvim_set_keymap('n', '<C-u>', '5<C-u>', optNRM)
 --   Tabs.
 vim.api.nvim_set_keymap('n', '<Leader>tt', ':$tabnew<CR>', optNRM)
 vim.api.nvim_set_keymap('n', '<Leader>tc', ':tabclose<CR>', optNRM)
-vim.api.nvim_set_keymap('n', '<Leader>th', ':-tabmove<CR>', optNRM)
-vim.api.nvim_set_keymap('n', '<Leader>tl', ':+tabmove<CR>', optNRM)
 
 --   Buffers.
 vim.api.nvim_set_keymap('n', '<Leader>d', ':bdelete<CR>', optNRM)
