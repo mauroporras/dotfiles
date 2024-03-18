@@ -483,10 +483,10 @@ vim.api.nvim_set_keymap('n', '<Leader>i', ':FloatermNew lazygit<CR>', optNRM)
 --   Code.
 vim.api.nvim_set_keymap('n', '<Leader>co', ':Vista!!<CR>', optNRM)
 --   Scrolling.
-vim.api.nvim_set_keymap('n', '<C-e>', '2<C-e>', optNRM)
-vim.api.nvim_set_keymap('n', '<C-y>', '2<C-y>', optNRM)
-vim.api.nvim_set_keymap('n', '<C-d>', '4<C-d>', optNRM)
-vim.api.nvim_set_keymap('n', '<C-u>', '4<C-u>', optNRM)
+vim.api.nvim_set_keymap('n', '<C-e>', '3<C-e>', optNRM)
+vim.api.nvim_set_keymap('n', '<C-y>', '3<C-y>', optNRM)
+vim.api.nvim_set_keymap('n', '<C-d>', '5<C-d>', optNRM)
+vim.api.nvim_set_keymap('n', '<C-u>', '5<C-u>', optNRM)
 
 --   Tabs.
 vim.api.nvim_set_keymap('n', '<Leader>tt', ':$tabnew<CR>', optNRM)
