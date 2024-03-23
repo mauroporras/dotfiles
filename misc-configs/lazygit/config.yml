@@ -22,6 +22,3 @@ gui:
     unstagedChangesColor:
       - red # Red
   showBranchCommitHash: true
-git:
-  paging:
-    pager: delta --paging=never
