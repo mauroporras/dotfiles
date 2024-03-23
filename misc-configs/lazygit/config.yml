@@ -9,6 +9,6 @@ gui:
     selectedLineBgColor:
       - '#ccd0da'
     cherryPickedCommitBgColor:
-      - '#bcc0cc'
+      - '#000000'
     cherryPickedCommitFgColor:
-      - '#179299'
+      - '#00ff00'
