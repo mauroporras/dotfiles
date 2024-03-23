@@ -3,6 +3,7 @@
 
 gui:
   expandFocusedSidePanel: true
+  nerdFontsVersion: '3'
   theme:
     selectedLineBgColor:
       - '#dddddd'
