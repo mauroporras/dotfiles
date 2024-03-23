@@ -1,13 +1,10 @@
 # See:
 # https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md#default
 
-# Theme:
-# https://github.com/catppuccin/lazygit
-
 gui:
   theme:
     selectedLineBgColor:
-      - '#ccd0da'
+      - '#cccccc'
     cherryPickedCommitBgColor:
       - '#000000'
     cherryPickedCommitFgColor:
