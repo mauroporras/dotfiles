@@ -2,6 +2,7 @@
 # https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md#default
 
 gui:
+  expandFocusedSidePanel: true
   theme:
     selectedLineBgColor:
       - '#dddddd'
