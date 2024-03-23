@@ -6,8 +6,8 @@ gui:
   nerdFontsVersion: '3'
   theme:
     selectedLineBgColor:
-      - '#dddddd'
+      - white
     cherryPickedCommitBgColor:
-      - '#000000'
+      - black
     cherryPickedCommitFgColor:
-      - '#00ff00'
+      - green
