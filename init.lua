@@ -321,7 +321,8 @@ telescope.setup({
       -- Custom:
       "--follow",
       "--hidden",
-      "--no-ignore-vcs",
+      "--no-ignore-vcs", -- Only respect rules in .rgignore
+      "--sort=path",
     },
     -- See:
     -- :h telescope.mappings
@@ -357,7 +358,8 @@ telescope.setup({
         "--follow",
         "--hidden",
         "--smart-case",
-        "--no-ignore-vcs",
+        "--no-ignore-vcs", -- Only respect rules in .rgignore
+        "--sort=path",
       }
     },
   },
@@ -462,6 +464,8 @@ vim.api.nvim_set_keymap('n', '<C-p>', ':cprevious<CR>', optNRM)
 
 --   Code.
 vim.api.nvim_set_keymap('n', '<Leader>co', ':Vista!!<CR>', optNRM)
+
+vim.api.nvim_set_keymap('n', '<Leader>cc', ':call codeium#Chat()<CR>', optNRM)
 
 --   Scrolling.
 vim.api.nvim_set_keymap('n', '<C-e>', '3<C-e>', optNRM)
