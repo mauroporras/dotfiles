@@ -1,28 +1,13 @@
 # See:
-# https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md
-
-# Theme:
-# https://github.com/catppuccin/lazygit
+# https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md#default
 
 gui:
+  expandFocusedSidePanel: true
+  nerdFontsVersion: '3'
   theme:
-    activeBorderColor:
-      - '#40a02b' # Green
-      - bold
-    inactiveBorderColor:
-      - '#4c4f69' # Text
-    optionsTextColor:
-      - '#1e66f5' # Blue
     selectedLineBgColor:
-      - '#ccd0da' # Surface0
+      - white
     cherryPickedCommitBgColor:
-      - '#179299' # Teal
+      - black
     cherryPickedCommitFgColor:
-      - '#1e66f5' # Blue
-    unstagedChangesColor:
-      - red # Red
-  showBranchCommitHash: true
-git:
-  paging:
-    colorArg: always
-    pager: delta --paging=never
+      - green
