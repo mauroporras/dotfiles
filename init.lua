@@ -465,8 +465,6 @@ vim.api.nvim_set_keymap('n', '<C-p>', ':cprevious<CR>', optNRM)
 --   Code.
 vim.api.nvim_set_keymap('n', '<Leader>co', ':Vista!!<CR>', optNRM)
 
-vim.api.nvim_set_keymap('n', '<Leader>cc', ':call codeium#Chat()<CR>', optNRM)
-
 --   Scrolling.
 vim.api.nvim_set_keymap('n', '<C-e>', '3<C-e>', optNRM)
 vim.api.nvim_set_keymap('n', '<C-y>', '3<C-y>', optNRM)
