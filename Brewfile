@@ -5,7 +5,6 @@
 # ```
 
 tap "homebrew/bundle"
-tap "universal-ctags/universal-ctags"
 
 brew "asciinema"
 brew "bat" # https://github.com/sharkdp/bat
