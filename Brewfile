@@ -5,7 +5,6 @@
 # ```
 
 tap "homebrew/bundle"
-tap "homebrew/cask-fonts"
 tap "universal-ctags/universal-ctags"
 
 brew "asciinema"
