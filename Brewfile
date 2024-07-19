@@ -46,6 +46,7 @@ cask "brave-browser"
 cask "figma"
 cask "firefox"
 cask "font-iosevka" # https://github.com/be5invis/Iosevka
+cask "font-symbols-only-nerd-font"
 cask "flutter"
 cask "flycut"
 cask "github"
