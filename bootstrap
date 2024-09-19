@@ -19,9 +19,6 @@ ln -sf ~/dotfiles/misc-configs/ranger/rifle.conf .config/ranger/rifle.conf
 mkdir -p .ctags.d/
 ln -sf ~/dotfiles/general.ctags .ctags.d/general.ctags
 
-mkdir -p .config/alacritty/
-ln -sf ~/dotfiles/alacritty.yml .config/alacritty/alacritty.yml
-
 mkdir -p .config/kitty/
 ln -sf ~/dotfiles/kitty/kitty.conf .config/kitty/kitty.conf
 ln -sf ~/dotfiles/kitty/kitty-startup.session .config/kitty/kitty-startup.session

@@ -69,8 +69,6 @@ git clone https://github.com/mauroporras/dotfiles.git ~/dotfiles
 
 [Spaceship Zsh prompt](https://github.com/spaceship-prompt/spaceship-prompt#installing)
 
-[https://github.com/jwilm/alacritty](https://github.com/jwilm/alacritty)
-
 [https://github.com/tony/tmuxp](https://github.com/tony/tmuxp)
 
 [https://github.com/direnv/direnv](https://github.com/direnv/direnv)
