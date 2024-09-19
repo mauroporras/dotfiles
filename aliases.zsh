@@ -55,8 +55,6 @@ alias k3='kill %3'
 alias l='ls -lAhF'
 alias r='ranger'
 alias sz='source ~/.zshrc'
-alias t='tmux'
-alias tpl='tmuxp load .'
 
 # {{{ Neovim.
 alias v='nvim'
