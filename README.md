@@ -1,6 +1,6 @@
 # DotFiles
 
-Configs for Neovim, tmux and Git, on Zsh.
+Configs for setting up a development environment using Neovim and Kitty on Zsh.
 
 ## Install Zsh and Oh My Zsh
 
@@ -26,18 +26,6 @@ pip3 install --user --upgrade neovim
 
 ```bash
 pnpm add -g bash-language-server diagnostic-languageserver dockerfile-language-server-nodejs neovim prettier stylelint-lsp svelte-language-server @tailwindcss/language-server typescript typescript-language-server vscode-langservers-extracted yaml-language-server
-```
-
-## Install tmux and Git
-
-For tmux support: [https://github.com/tmux/tmux/wiki/FAQ](https://github.com/tmux/tmux/wiki/FAQ)
-
-Use `pnpm root -g` to display the root directory where global packages are installed.
-
-### macOS (Using Homebrew)
-
-```bash
-brew install tmux git
 ```
 
 ## Install required utilities
@@ -87,7 +75,5 @@ fontforge -script font-patcher -c --name postscript ./Input-Font/Regular.ttf
 ```
 
 ## Quick links
-
-[https://man.openbsd.org/tmux.1#DEFAULT_KEY_BINDINGS](https://man.openbsd.org/tmux.1#DEFAULT_KEY_BINDINGS)
 
 [https://upload.wikimedia.org/wikipedia/commons/1/15/Xterm_256color_chart.svg](https://upload.wikimedia.org/wikipedia/commons/1/15/Xterm_256color_chart.svg)
