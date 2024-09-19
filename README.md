@@ -40,12 +40,6 @@ Use `pnpm root -g` to display the root directory where global packages are insta
 brew install tmux git
 ```
 
-### Ubuntu
-
-```bash
-sudo apt install -y tmux git
-```
-
 ## Install required utilities
 
 [https://github.com/cli/cli#installation](https://github.com/cli/cli#installation)
