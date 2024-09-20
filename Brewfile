@@ -34,7 +34,6 @@ brew "watch"
 brew "watchman"
 brew "zlib"
 brew "zoxide"
-brew "zsh"
 brew "zsh-completions"
 brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD"]
 

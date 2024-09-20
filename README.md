@@ -1,14 +1,22 @@
 # DotFiles
 
-Configs for setting up a development environment using Neovim and Kitty on Zsh.
+Configs for setting up a development environment using Neovim and Zsh on Kitty.
 
-## Install Zsh and Oh My Zsh
+## Install Homebrew
+
+[https://brew.sh](https://brew.sh)
+
+## Install dependencies using Homebrew
+
+```bash
+brew bundle
+```
+
+## Install Oh My Zsh
 
 [https://github.com/robbyrussell/oh-my-zsh/blob/master/README.md](https://github.com/robbyrussell/oh-my-zsh/blob/master/README.md)
 
-## Install Neovim
-
-[https://github.com/neovim/neovim/wiki/Installing-Neovim](https://github.com/neovim/neovim/wiki/Installing-Neovim)
+## Considerations for Neovim
 
 If you are new: `:h nvim`
 
