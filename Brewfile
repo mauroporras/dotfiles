@@ -12,7 +12,7 @@ brew "cmake"
 brew "coreutils"
 brew "fd"
 brew "fzf"
-brew "gh"
+brew "gh" # Required for the aliases.
 brew "git"
 brew "git-delta"
 brew "git-lfs"

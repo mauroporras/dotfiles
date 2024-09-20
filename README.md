@@ -52,15 +52,6 @@ pip3 install --user --upgrade neovim
 pnpm add -g bash-language-server diagnostic-languageserver dockerfile-language-server-nodejs neovim prettier stylelint-lsp svelte-language-server @tailwindcss/language-server typescript typescript-language-server vscode-langservers-extracted yaml-language-server
 ```
 
-## Install required utilities
-
-[https://github.com/cli/cli#installation](https://github.com/cli/cli#installation)
-(required for the aliases).
-
-[https://github.com/BurntSushi/ripgrep#installation](https://github.com/BurntSushi/ripgrep#installation)
-
-[https://github.com/junegunn/fzf#installation](https://github.com/junegunn/fzf#installation)
-
 ## Finally, bootstrap DotFiles
 
 ```bash
