@@ -2,23 +2,35 @@
 
 Configs for setting up a development environment using Neovim and Zsh on Kitty.
 
-## Install the Nix package manager
+## Packages and dependencies
+
+### Install the Nix package manager
 
 [https://nixos.org/download](https://nixos.org/download)
 
-## Install Homebrew
+### Install Homebrew
+
+#### Step 1:
 
 [https://brew.sh](https://brew.sh)
 
-## Install dependencies using Homebrew
+#### Step 2:
 
 ```bash
 brew bundle
 ```
 
-## Install Oh My Zsh
+### Install Oh My Zsh
 
-[https://github.com/robbyrussell/oh-my-zsh/blob/master/README.md](https://github.com/robbyrussell/oh-my-zsh/blob/master/README.md)
+#### Step 1:
+
+```bash
+nix-shell --command zsh -p curl
+```
+
+#### Step 2:
+
+[https://ohmyz.sh/#install](https://ohmyz.sh/#install)
 
 ## Considerations for Neovim
 
