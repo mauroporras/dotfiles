@@ -2,6 +2,10 @@
 
 Configs for setting up a development environment using Neovim and Zsh on Kitty.
 
+## Install the Nix package manager
+
+[https://nixos.org/download](https://nixos.org/download)
+
 ## Install Homebrew
 
 [https://brew.sh](https://brew.sh)
