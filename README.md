@@ -32,21 +32,21 @@ nix-shell --command zsh -p curl
 
 [https://ohmyz.sh/#install](https://ohmyz.sh/#install)
 
-## Considerations for Neovim
+## Neovim
 
-If you are new: `:h nvim`
+If you are new to Neovim: `:h nvim`
 
 If you're transitioning from Vim: `:h nvim-from-vim`
 
 To optimize Neovim: `:checkhealth`
 
-## Add Python support to Neovim
+### Add Python support to Neovim
 
 ```bash
 pip3 install --user --upgrade neovim
 ```
 
-## Install LSP configs
+### Install LSP configs
 
 ```bash
 pnpm add -g bash-language-server diagnostic-languageserver dockerfile-language-server-nodejs neovim prettier stylelint-lsp svelte-language-server @tailwindcss/language-server typescript typescript-language-server vscode-langservers-extracted yaml-language-server
