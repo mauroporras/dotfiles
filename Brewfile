@@ -37,7 +37,6 @@ brew "zoxide"
 brew "zsh-completions"
 brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD"]
 
-cask "brave-browser"
 cask "figma"
 cask "firefox"
 cask "font-iosevka" # https://github.com/be5invis/Iosevka
