@@ -14,7 +14,7 @@ brew "fd"
 brew "fzf"
 brew "gh" # Required for the aliases.
 brew "git"
-brew "git-delta"
+brew "git-delta" # Syntax-highlighting pager.
 brew "git-lfs"
 brew "httpie"
 brew "lazygit"

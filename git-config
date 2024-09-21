@@ -17,13 +17,15 @@ git config --global init.defaultBranch main
 git config --global core.excludesfile ~/.gitignore_global
 git config --global core.editor 'nvim'
 
-# For git-delta.
+# git-delta {{{
 git config --global include.path ~/.config/git-delta/themes.gitconfig
 git config --global core.pager 'delta'
 git config --global interactive.diffFilter 'delta --color-only'
 git config --global merge.conflictStyle 'diff3'
 git config --global diff.colorMoved 'default'
 git config --global delta.features 'hoopoe'
+git config --global delta.line-numbers true
+# }}}
 
 git config --global merge.tool 'vimdiff'
 git config --global mergetool.prompt true

@@ -11,3 +11,8 @@ gui:
       - black
     cherryPickedCommitFgColor:
       - green
+
+git:
+  paging:
+    colorArg: always
+    pager: delta --paging=never
