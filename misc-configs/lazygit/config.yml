@@ -11,6 +11,7 @@ gui:
       - black
     cherryPickedCommitFgColor:
       - green
+  showDivergenceFromBaseBranch: arrowAndNumber
 
 git:
   paging:
