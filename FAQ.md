@@ -2,7 +2,7 @@
 
 ## Terminal
 
-### Why to use 14pt font size?
+### Why to use a relatively big font size?
 
 - It's easier to read.
 - You can always zoom out anyways (<kbd>⌘</kbd> + <kbd>-</kbd>).
