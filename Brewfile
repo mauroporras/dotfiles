@@ -36,7 +36,6 @@ brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD"]
 cask "figma"
 cask "firefox"
 cask "font-iosevka" # https://github.com/be5invis/Iosevka
-cask "font-symbols-only-nerd-font"
 cask "flycut"
 cask "github"
 cask "google-chrome"
