@@ -1,3 +1,5 @@
+-- vim:foldmethod=marker
+
 -- To reload config:
 -- :source %
 -- :so $MYVIMRC
@@ -10,7 +12,7 @@ vim.g.mapleader = ' '
 
 local optNRM = { noremap = true }
 
--- {{{ LSP.
+-- LSP {{{
 -- :LspInfo
 -- :LspRestart
 
@@ -41,7 +43,7 @@ end
 -- neoformat
 vim.g.neoformat_try_node_exe = 1
 
--- {{{ nvim-cmp.
+-- nvim-cmp {{{
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
@@ -136,10 +138,10 @@ cmp.setup {
     { name = 'buffer' },
   },
 }
--- }}} nvim-cmp.
--- }}} LSP.
+-- }}}
+-- }}}
 
--- {{{ nvim-treesitter
+-- nvim-treesitter {{{
 --   See:
 --     https://github.com/nvim-treesitter/nvim-treesitter#language-parsers
 --   To update all parsers:
@@ -220,7 +222,7 @@ require('nvim-treesitter.configs').setup({
     },
   },
 })
--- }}} nvim-treesitter
+-- }}}
 
 -- Emmet.
 vim.g.user_emmet_mode = 'i'
@@ -244,7 +246,7 @@ require("trouble").setup {
   use_diagnostic_signs = false -- enabling this will use the signs defined in your lsp client
 }
 
--- {{{ lualine.
+-- lualine {{{
 local custom_lualine_theme = require('lualine.themes.codedark')
 
 custom_lualine_theme.inactive.c = {
@@ -281,7 +283,7 @@ require('lualine').setup({
     lualine_c = { 'filename' },
   },
 })
--- }}} lualine.
+-- }}}
 
 -- nvim-telescope/telescope.nvim
 -- Old command for fzf was:
