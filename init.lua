@@ -61,7 +61,7 @@ local servers = {
   'stylelint_lsp',
   'svelte',
   'tailwindcss',
-  'tsserver',
+  'ts_ls',
   'yamlls',
 }
 
@@ -321,7 +321,8 @@ telescope.setup({
       -- Custom:
       "--follow",
       "--hidden",
-      "--no-ignore-vcs",
+      "--no-ignore-vcs", -- Only respect rules in .rgignore
+      "--sort=path",
     },
     -- See:
     -- :h telescope.mappings
@@ -357,7 +358,8 @@ telescope.setup({
         "--follow",
         "--hidden",
         "--smart-case",
-        "--no-ignore-vcs",
+        "--no-ignore-vcs", -- Only respect rules in .rgignore
+        "--sort=path",
       }
     },
   },
