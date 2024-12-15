@@ -33,4 +33,4 @@ ln -sf ~/dotfiles/tmux.conf .tmux.conf
 ln -sf ~/dotfiles/gitignore_global .gitignore_global
 
 # Useful dirs.
-mkdir -p temp/ workspace/
+mkdir -p queue/ temp/ workspace/
