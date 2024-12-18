@@ -33,10 +33,6 @@ alias dkmu='docker compose up'
 alias dkmub='docker compose up --build'
 # }}}
 
-alias kb='kubectl'
-
-alias mkb='minikube'
-
 alias ev='v ~/dotfiles/init.lua'
 alias ez='v ~/.zshrc'
 
