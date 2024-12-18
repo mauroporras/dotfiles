@@ -1,6 +1,6 @@
 alias rg="rg --follow --hidden --smart-case --no-ignore --glob '!{.git,dist,node_modules,tags}'"
 
-# {{{ Docker.
+# Docker {{{
 alias dk='docker'
 alias dkc='docker container'
 alias dkce='docker container exec'
@@ -16,7 +16,7 @@ alias dkv='docker volume'
 alias dkvl='docker volume ls'
 # }}}
 
-# {{{ Docker Compose.
+# Docker Compose {{{
 alias dkm='docker compose'
 alias dkmb='docker compose build'
 alias dkmd='docker compose down'
@@ -25,31 +25,24 @@ alias dkmu='docker compose up'
 alias dkmub='docker compose up --build'
 # }}}
 
-alias ev='v ~/dotfiles/init.lua'
-alias ez='v ~/.zshrc'
-
+# Git {{{
 alias g='git'
 alias gt='github' # GitHub CLI.
 alias lg='lazygit'
+# }}}
 
-# {{{ Jobs.
+# Jobs {{{
 alias j='jobs'
 alias k1='kill %1'
 alias k2='kill %2'
 alias k3='kill %3'
 # }}}
 
-# alias l='ls -lAhFX'
 alias l='ls -lAhF'
 alias r='ranger'
-alias sz='source ~/.zshrc'
 
-# {{{ Neovim.
+# Neovim {{{
 alias v='nvim'
 alias vd='nvim -d'
 alias vs='nvim -S'
-alias vv='nvim --noplugin'
-# }}}
-
-alias wa='which -a'
 # }}}
