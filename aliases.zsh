@@ -97,29 +97,3 @@ alias yt='yarn test'
 alias yui='yarn upgrade-interactive'
 alias yuil='yarn upgrade-interactive --latest'
 # }}}
-
-# {{{ pnpm.
-alias pn='pnpm'
-alias pni='pnpm install'
-
-alias pna='pnpm add'
-alias pnad='pnpm add -D'
-
-alias pnrm='pnpm remove'
-
-alias pnl='pnpm link'
-alias pnul='pnpm unlink'
-
-alias pnp='pnpm publish'
-
-alias pne='pnpm exec'
-
-alias pnr='pnpm run'
-alias pnrb='pnpm run build'
-alias pnrd='pnpm run dev'
-alias pnrs='pnpm run start'
-
-alias pnrw='pnpm run -w'
-
-alias pnt='pnpm test'
-# }}}
