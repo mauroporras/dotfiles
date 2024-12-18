@@ -60,36 +60,4 @@ alias vv='nvim --noplugin'
 # }}}
 
 alias wa='which -a'
-
-# {{{ Yarn.
-alias y='yarn'
-alias yif='yarn install --force'
-alias yis='yarn --ignore-scripts'
-
-alias ya='yarn add'
-alias yais='yarn add --ignore-scripts'
-alias yad='yarn add --dev'
-alias yadis='yarn add --dev --ignore-scripts'
-
-alias yga='yarn global add'
-alias ygl='yarn global list'
-
-alias yrm='yarn remove'
-alias yrmis='yarn remove --ignore-scripts'
-
-alias yl='yarn link'
-alias yul='yarn unlink'
-
-alias yp='yarn publish'
-alias ypp='yarn publish --access=public'
-
-alias yr='yarn run'
-alias yrb='yarn run build'
-alias yrd='yarn run dev'
-alias yrs='yarn run start'
-
-alias yt='yarn test'
-
-alias yui='yarn upgrade-interactive'
-alias yuil='yarn upgrade-interactive --latest'
 # }}}
