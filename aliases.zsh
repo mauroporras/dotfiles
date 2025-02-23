@@ -1,3 +1,5 @@
+alias f='yazi'
+
 alias rg="rg --follow --hidden --smart-case --no-ignore --glob '!{.git,dist,node_modules,tags}'"
 
 # Docker {{{

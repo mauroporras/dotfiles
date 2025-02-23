@@ -25,5 +25,8 @@ ln -sf ~/dotfiles/misc-configs/lazygit/config.yml .config/lazygit/config.yml
 ln -sf ~/dotfiles/tmux.conf .tmux.conf
 ln -sf ~/dotfiles/gitignore_global .gitignore_global
 
+mkdir -p .config/yazi
+ln -sf ~/dotfiles/misc-configs/yazi/yazi.toml .config/yazi/yazi.toml
+
 # Useful dirs.
 mkdir -p queue/ temp/ workspace/
