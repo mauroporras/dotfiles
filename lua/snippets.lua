@@ -89,7 +89,7 @@ ls.add_snippets("javascript", {
     t'console.log(', i(1), t')'
   }),
   s("cll", {
-    t'console.log("---------- ', i(1), t':", ', i(2), t')'
+    t'console.log("---------- WITNESSME ', i(1), t'", ', i(2), t')'
   }),
   s("ce", {
     t'console.error("Error:", ', i(1), t')'
