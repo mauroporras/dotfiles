@@ -52,8 +52,6 @@ git clone https://github.com/mauroporras/dotfiles.git ~/dotfiles
 
 ## Optional
 
-[Spaceship Zsh prompt](https://github.com/spaceship-prompt/spaceship-prompt#installing)
-
 [https://ctags.io](https://ctags.io)
 
 [https://formulae.brew.sh/formula/coreutils](https://formulae.brew.sh/formula/coreutils)
