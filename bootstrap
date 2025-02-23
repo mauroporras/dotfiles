@@ -27,3 +27,15 @@ ln -sf ~/dotfiles/misc-configs/yazi/yazi.toml .config/yazi/yazi.toml
 
 # Useful dirs.
 mkdir -p queue temp workspace
+
+if [[ -z "$HAS_LOADED_CUSTOM_SCRIPTS" ]]; then
+  echo '
+if [[ -z "$HAS_LOADED_CUSTOM_SCRIPTS" ]]; then
+  export HAS_LOADED_CUSTOM_SCRIPTS=1
+
+  source ~/dotfiles/zsh/env_vars.zsh
+  source ~/dotfiles/zsh/functions.zsh
+  source ~/dotfiles/zsh/aliases.zsh
+fi
+  ' >> ~/.zshrc
+fi
