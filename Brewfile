@@ -31,7 +31,6 @@ brew "yazi"
 brew "zlib"
 brew "zoxide"
 brew "zsh-completions"
-brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD"]
 
 cask "figma"
 cask "firefox"
