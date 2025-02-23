@@ -39,7 +39,6 @@ alias k3='kill %3'
 # }}}
 
 alias l='ls -lAhF'
-alias r='ranger'
 
 # Neovim {{{
 alias v='nvim'

@@ -378,15 +378,6 @@ vim.g.qs_highlight_on_keys = {
   'T',
 }
 
--- ranger.nvim
-require("ranger-nvim").setup({
-  ui = {
-    border = "rounded",
-    height = 0.8,
-    width = 0.9,
-  }
-})
-
 -- vista.vim
 vim.g.vista_blink = { 0, 0 }
 vim.g.vista_sidebar_width = 50
@@ -438,20 +429,6 @@ require('legendary').setup({
     { '<Leader>gs', ':Telescope lsp_document_symbols<CR>', description = 'Lists LSP symbols in current buffer.' },
     { '<Leader>O', ':Telescope frecency workspace=CWD<CR>', description = 'Editing history with intelligent prioritization.' },
     { '<Leader>o', ':Telescope find_files<CR>', description = 'Find files.' },
-    {
-      '<Leader>R',
-      function()
-        require("ranger-nvim").open(false)
-      end,
-      description = 'Open Ranger focused on the `cwd`.'
-    },
-    {
-      '<Leader>r',
-      function()
-        require("ranger-nvim").open(true)
-      end,
-      description = 'Open Ranger focused on the file.'
-    },
     { '<Leader>vc', ':Telescope git_bcommits<CR>', description = "Lists buffer's Git commits." },
     { '<Leader>zl', ':Telescope current_buffer_fuzzy_find<CR>', description = 'Fuzzy search in the current buffer.' },
     { '<Leader>zh', ':Telescope oldfiles<CR>', description = 'Lists previously open files.' },
