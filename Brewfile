@@ -10,6 +10,7 @@ brew "asciinema"
 brew "bat" # https://github.com/sharkdp/bat
 brew "cmake"
 brew "coreutils"
+brew "direnv"
 brew "fd"
 brew "fzf"
 brew "gh" # Required for the aliases.
