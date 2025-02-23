@@ -38,7 +38,6 @@ cask "font-iosevka" # https://github.com/be5invis/Iosevka
 cask "flycut"
 cask "github"
 cask "google-chrome"
-cask "kitty"
 cask "krisp"
 cask "ngrok"
 cask "qbserve"

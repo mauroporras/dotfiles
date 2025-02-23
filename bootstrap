@@ -12,10 +12,6 @@ mkdir -p .config/nvim/
 ln -sf ~/dotfiles/lua .config/nvim/
 ln -sf ~/dotfiles/init.lua .config/nvim/init.lua
 
-mkdir -p .config/kitty/
-ln -sf ~/dotfiles/kitty/kitty.conf .config/kitty/kitty.conf
-ln -sf ~/dotfiles/kitty/kitty-startup.session .config/kitty/kitty-startup.session
-
 mkdir -p .config/lazygit/
 ln -sf ~/dotfiles/misc-configs/lazygit/config.yml .config/lazygit/config.yml
 

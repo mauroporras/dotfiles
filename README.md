@@ -1,6 +1,6 @@
 # DotFiles
 
-Configs for setting up a development environment using Neovim and Zsh on Kitty.
+Settings for a development environment using Neovim and Zsh.
 
 ## Packages and dependencies
 
