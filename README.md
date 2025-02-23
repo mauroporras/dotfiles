@@ -20,18 +20,6 @@ Configs for setting up a development environment using Neovim and Zsh on Kitty.
 brew bundle
 ```
 
-### Install Oh My Zsh
-
-#### Step 1:
-
-```bash
-nix-shell --command zsh -p curl
-```
-
-#### Step 2:
-
-[https://ohmyz.sh/#install](https://ohmyz.sh/#install)
-
 ## Neovim
 
 If you are new to Neovim: `:h nvim`
