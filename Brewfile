@@ -8,7 +8,6 @@ tap "homebrew/bundle"
 
 brew "asciinema"
 brew "bat" # https://github.com/sharkdp/bat
-brew "cmake"
 brew "coreutils"
 brew "direnv"
 brew "fd"
