@@ -2,20 +2,20 @@
 
 cd $HOME
 
-mkdir -p .config/bat/
+mkdir -p .config/bat
 ln -sf ~/dotfiles/misc-configs/bat/config .config/bat/config
 
-mkdir -p .config/git-delta/
+mkdir -p .config/git-delta
 ln -sf ~/dotfiles/misc-configs/git-delta/themes.gitconfig .config/git-delta/themes.gitconfig
 
-mkdir -p .config/nvim/
+mkdir -p .config/nvim
 ln -sf ~/dotfiles/lua .config/nvim/
 ln -sf ~/dotfiles/init.lua .config/nvim/init.lua
 
 mkdir -p .config/ghostty
 ln -sf ~/dotfiles/misc-configs/ghostty/config .config/ghostty/config
 
-mkdir -p .config/lazygit/
+mkdir -p .config/lazygit
 ln -sf ~/dotfiles/misc-configs/lazygit/config.yml .config/lazygit/config.yml
 
 ln -sf ~/dotfiles/gitignore_global .gitignore_global
@@ -24,4 +24,4 @@ mkdir -p .config/yazi
 ln -sf ~/dotfiles/misc-configs/yazi/yazi.toml .config/yazi/yazi.toml
 
 # Useful dirs.
-mkdir -p queue/ temp/ workspace/
+mkdir -p queue temp workspace
