@@ -52,3 +52,11 @@ Load:
 ```
 nvim -i custom.shada
 ```
+
+## Nix
+
+### Start a temporary Nix shell environment
+
+```
+nix-shell --command zsh -p go
+```
