@@ -20,6 +20,8 @@ ln -sf ~/dotfiles/misc-configs/lazygit/config.yml .config/lazygit/config.yml
 
 ln -sf ~/dotfiles/gitignore_global .gitignore_global
 
+ln -sf ~/dotfiles/misc-configs/starship/starship.toml .config/starship.toml
+
 mkdir -p .config/yazi
 ln -sf ~/dotfiles/misc-configs/yazi/yazi.toml .config/yazi/yazi.toml
 

@@ -23,6 +23,7 @@ brew "neovim"
 brew "node" # Only for LSP for now.
 brew "readline"
 brew "ripgrep"
+brew "starship"
 brew "tree"
 brew "watch"
 brew "yazi"
