@@ -12,6 +12,9 @@ mkdir -p .config/nvim/
 ln -sf ~/dotfiles/lua .config/nvim/
 ln -sf ~/dotfiles/init.lua .config/nvim/init.lua
 
+mkdir -p .config/ghostty
+ln -sf ~/dotfiles/misc-configs/ghostty/config .config/ghostty/config
+
 mkdir -p .config/lazygit/
 ln -sf ~/dotfiles/misc-configs/lazygit/config.yml .config/lazygit/config.yml
 

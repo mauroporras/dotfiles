@@ -1,0 +1,79 @@
+# In this config file you can use named X11 colors.
+# See:
+# https://en.wikipedia.org/wiki/X11_color_names
+
+theme = catppuccin-latte
+
+# Typically, this setting is used only for the first window.
+working-directory = /tmp
+
+# This controls when resize overlays are shown.
+resize-overlay = never
+
+font-family = Iosevka Fixed Slab
+font-size = 16
+
+adjust-cursor-thickness = 2
+
+cursor-color = magenta
+cursor-text = yellow
+
+mouse-hide-while-typing = true
+
+selection-foreground = green
+selection-background = black
+
+copy-on-select = clipboard
+
+unfocused-split-opacity = 0.9
+unfocused-split-fill = Navy Blue
+split-divider-color = Navy Blue
+
+window-inherit-font-size = false
+
+window-height = 500
+window-width = 500
+
+window-new-tab-position = end
+
+scrollback-limit = 100000000
+
+# Custom Keybindings
+
+# CR
+keybind = ctrl+m=text:\x0D
+# Esc
+keybind = ctrl+[=text:\x1B
+# Tab
+keybind = ctrl+i=text:\x09
+
+keybind = cmd+e=scroll_page_lines:3
+keybind = cmd+y=scroll_page_lines:-3
+
+keybind = cmd+r=clear_screen
+
+keybind = cmd+s=write_screen_file:paste
+
+keybind = shift+cmd+t=toggle_quick_terminal
+
+keybind = shift+ctrl+comma=move_tab:-1
+keybind = shift+ctrl+period=move_tab:1
+
+keybind = cmd+h=goto_split:left
+keybind = cmd+j=goto_split:down
+keybind = cmd+k=goto_split:up
+keybind = cmd+l=goto_split:right
+
+keybind = ctrl+cmd+h=resize_split:left,100
+keybind = ctrl+cmd+j=resize_split:down,100
+keybind = ctrl+cmd+k=resize_split:up,100
+keybind = ctrl+cmd+l=resize_split:right,100
+
+keybind = ctrl+cmd+enter=toggle_split_zoom
+
+keybind = cmd+minus=decrease_font_size:2
+keybind = cmd+equal=increase_font_size:2
+
+# Temporal
+keybind = cmd+[=text:
+keybind = cmd+]=text:
