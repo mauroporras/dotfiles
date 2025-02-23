@@ -20,7 +20,7 @@ brew "httpie"
 brew "lazygit"
 brew "less"
 brew "neovim"
-brew "node"
+brew "node" # Only for LSP for now.
 brew "readline"
 brew "ripgrep"
 brew "tree"
