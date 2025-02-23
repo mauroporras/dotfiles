@@ -32,7 +32,7 @@ brew "zsh-completions"
 
 cask "figma"
 cask "firefox"
-cask "font-iosevka" # https://github.com/be5invis/Iosevka
+cask "font-iosevka-slab" # https://github.com/be5invis/Iosevka
 cask "flycut"
 cask "github"
 cask "google-chrome"
