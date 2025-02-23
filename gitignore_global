@@ -34,5 +34,6 @@ ehthumbs.db
 Thumbs.db
 
 # Editors.
+*.shada
 *.vim
 tags
