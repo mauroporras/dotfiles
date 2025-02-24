@@ -208,6 +208,18 @@ return require('packer').startup(function(use)
   }
 
   use {
+    'folke/zen-mode.nvim',
+    config = function ()
+      require('zen-mode').setup({
+        window = {
+          width = 0.9,
+          height = 1,
+        },
+      })
+    end
+  }
+
+  use {
     'mikavilpas/yazi.nvim',
     requires = {
       { 'folke/snacks.nvim' },
