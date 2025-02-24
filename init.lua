@@ -321,7 +321,9 @@ telescope.setup({
       -- Custom:
       "--follow",
       "--hidden",
-      "--no-ignore-vcs", -- Only respect rules in .rgignore
+      -- Only respect rules in .rgignore since sometimes you want to search
+      -- inside files that are ignored by Git
+      "--no-ignore-vcs",
       "--sort=path",
     },
     -- See:
@@ -358,7 +360,9 @@ telescope.setup({
         "--follow",
         "--hidden",
         "--smart-case",
-        "--no-ignore-vcs", -- Only respect rules in .rgignore
+        -- Only respect rules in .rgignore since sometimes you want to search
+        -- inside files that are ignored by Git
+        "--no-ignore-vcs",
         "--sort=path",
       }
     },
