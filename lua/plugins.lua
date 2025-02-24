@@ -77,6 +77,18 @@ return require('packer').startup(function(use)
 
   use 'chentoast/marks.nvim'
   use 'euclidianAce/BetterLua.vim'
+
+  use {
+    'Exafunction/codeium.vim',
+    config = function ()
+      vim.g.codeium_filetypes = {
+        telescope = false
+      }
+      vim.g.codeium_no_map_tab = 1
+      vim.keymap.set('i', '<M-Tab>', function () return vim.fn['codeium#Accept']() end, { expr = true, silent = true })
+    end
+  }
+
   use 'folke/trouble.nvim'
   use 'ggandor/leap.nvim'
 
@@ -153,6 +165,20 @@ return require('packer').startup(function(use)
   }
 
   use 'sbdchd/neoformat'
+
+  use {
+    'SmiteshP/nvim-navbuddy',
+    requires = {
+      'MunifTanjim/nui.nvim',
+    },
+    config = function()
+      require('nvim-navbuddy').setup({
+        lsp = {
+          auto_attach = true,
+        },
+      })
+    end
+  }
 
   use 'unblevable/quick-scope'
 
