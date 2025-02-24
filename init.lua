@@ -489,9 +489,6 @@ vim.keymap.set('n', '<Leader>?', '<Plug>(leap-backward)', {})
 -- folke/zen-mode.nvim
 vim.keymap.set('n', '<C-w>z', ':ZenMode<CR>', optNRM)
 
--- folke/zen-mode.nvim
-vim.keymap.set('n', '<C-w>z', ':ZenMode<CR>', optNRM)
-
 -- To show the current scheme:
 --   :colorscheme
 -- Use `:highlight` to list all color groups.
