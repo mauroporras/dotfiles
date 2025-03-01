@@ -3,7 +3,7 @@
 
 gui:
   expandFocusedSidePanel: true
-  nerdFontsVersion: '3'
+  nerdFontsVersion: "3"
   theme:
     selectedLineBgColor:
       - white
@@ -17,3 +17,13 @@ git:
   paging:
     colorArg: always
     pager: delta --paging=never
+
+customCommands:
+  - key: "w"
+    context: "files"
+    command: "git wip"
+    description: "Work In Progress"
+  - key: "W"
+    context: "files"
+    command: "git wipp"
+    description: "Work In Progress and push"
