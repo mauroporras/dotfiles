@@ -17,7 +17,7 @@ git config --global init.defaultBranch main
 git config --global core.excludesfile ~/.gitignore_global
 git config --global core.editor 'nvim'
 
-# git-delta {{{
+# git-delta
 git config --global include.path ~/.config/git-delta/themes.gitconfig
 git config --global core.pager 'delta'
 git config --global interactive.diffFilter 'delta --color-only'
@@ -25,8 +25,21 @@ git config --global merge.conflictStyle 'diff3'
 git config --global diff.colorMoved 'default'
 git config --global delta.features 'hoopoe'
 git config --global delta.line-numbers true
-# }}}
 
+# GitHub CLI
+gh alias set --clobber il 'issue list'
+gh alias set --clobber ilw 'issue list --web'
+gh alias set --clobber iv 'issue view'
+gh alias set --clobber ivw 'issue view --web'
+
+gh alias set --clobber prc 'pr checkout'
+gh alias set --clobber prv 'pr view'
+gh alias set --clobber prvw 'pr view --web'
+
+gh alias set --clobber rv 'repo view'
+gh alias set --clobber rvw 'repo view --web'
+
+# Misc.
 git config --global merge.tool 'vimdiff'
 git config --global mergetool.prompt true
 git config --global diff.tool 'vimdiff'
@@ -63,8 +76,8 @@ git config --global alias.cp 'checkout -p'
 git config --global alias.ci 'commit'
 git config --global alias.cip '!git commit && git push'
 git config --global alias.current-branch '!git rev-parse --abbrev-ref HEAD'
-git config --global alias.wip '!git commit -m WIP:\ $(git current-branch)'
-git config --global alias.wipp '!git commit -m WIP:\ $(git current-branch) && git push'
+git config --global alias.wip '!git commit --no-verify -m WIP:\ $(git current-branch)'
+git config --global alias.wipp '!git wip && git push'
 
 git config --global alias.wta 'worktree add'
 git config --global alias.wtl 'worktree list'
@@ -128,16 +141,3 @@ git config --global alias.mt 'mergetool'
 #   g rbia somehash^
 git config --global alias.cif 'commit --fixup'
 git config --global alias.rbia 'rebase --interactive --autosquash'
-
-# GitHub CLI aliases.
-gh alias set il 'issue list'
-gh alias set ilw 'issue list --web'
-gh alias set iv 'issue view'
-gh alias set ivw 'issue view --web'
-
-gh alias set prc 'pr checkout'
-gh alias set prv 'pr view'
-gh alias set prvw 'pr view --web'
-
-gh alias set rv 'repo view'
-gh alias set rvw 'repo view --web'
