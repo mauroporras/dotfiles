@@ -31,12 +31,6 @@ brew "zlib"
 brew "zoxide"
 brew "zsh-completions"
 
-cask "figma"
-cask "firefox"
 cask "font-iosevka-slab" # https://github.com/be5invis/Iosevka
-cask "flycut"
-cask "github"
+# cask "flycut" # It got slow out of nowhere.
 cask "google-chrome"
-cask "krisp"
-cask "ngrok"
-cask "qbserve"

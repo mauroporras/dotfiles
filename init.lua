@@ -110,8 +110,8 @@ cmp.setup {
     end,
   },
   mapping = cmp.mapping.preset.insert({
-    ['<C-u>'] = cmp.mapping.scroll_docs(-5),
-    ['<C-d>'] = cmp.mapping.scroll_docs(5),
+    ['<C-u>'] = cmp.mapping.scroll_docs(-3),
+    ['<C-d>'] = cmp.mapping.scroll_docs(3),
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<CR>'] = cmp.mapping.confirm {
       behavior = cmp.ConfirmBehavior.Replace,
@@ -304,7 +304,7 @@ telescope.setup({
     layout_config = {
       height = 999,
       prompt_position = 'top',
-      scroll_speed = 4,
+      scroll_speed = 3,
       width = 999,
     },
     sorting_strategy = 'ascending',
@@ -450,8 +450,6 @@ vim.api.nvim_set_keymap('n', '<C-p>', ':cprevious<CR>', optNRM)
 vim.api.nvim_set_keymap('n', '<Leader>co', ':Vista!!<CR>', optNRM)
 
 --   Scrolling.
-vim.api.nvim_set_keymap('n', '<C-e>', '3<C-e>', optNRM)
-vim.api.nvim_set_keymap('n', '<C-y>', '3<C-y>', optNRM)
 vim.api.nvim_set_keymap('n', '<C-d>', '5<C-d>', optNRM)
 vim.api.nvim_set_keymap('n', '<C-u>', '5<C-u>', optNRM)
 
@@ -485,8 +483,8 @@ vim.api.nvim_set_keymap('n', '<Leader>vs', ':Gitsigns stage_hunk<CR>', optNRM)
 vim.api.nvim_set_keymap('n', '<Leader>vu', ':Gitsigns undo_stage_hunk<CR>', optNRM)
 
 --   leap.nvim
-vim.api.nvim_set_keymap('n', '<Leader>/', '<Plug>(leap-forward-to)', {})
-vim.api.nvim_set_keymap('n', '<Leader>?', '<Plug>(leap-backward-to)', {})
+vim.keymap.set('n', '<Leader>/', '<Plug>(leap-forward)', {})
+vim.keymap.set('n', '<Leader>?', '<Plug>(leap-backward)', {})
 
 -- folke/zen-mode.nvim
 vim.keymap.set('n', '<C-w>z', ':ZenMode<CR>', optNRM)

@@ -3,6 +3,8 @@
 
 gui:
   expandFocusedSidePanel: true
+  timeFormat: "2006-01-02 15:04"
+  shortTimeFormat: "15:04"
   nerdFontsVersion: "3"
   theme:
     selectedLineBgColor:
@@ -12,10 +14,10 @@ gui:
     cherryPickedCommitFgColor:
       - green
   showDivergenceFromBaseBranch: arrowAndNumber
+  showNumstatInFilesView: true
 
 git:
   paging:
-    colorArg: always
     pager: delta --paging=never
 
 customCommands:
