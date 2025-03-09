@@ -1,7 +1,8 @@
 alias e='nvim'
 alias f='yazi'
 alias g='git'
-alias l='ls -lAhF'
+# alias l='ls -lAhF'
+alias l='eza -lA'
 alias t='task'
 alias v='lazygit'
 
