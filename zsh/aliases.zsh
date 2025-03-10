@@ -2,7 +2,7 @@ alias e='nvim'
 alias f='yazi'
 alias g='git'
 # alias l='ls -lAhF'
-alias l='eza -lA'
+alias l='eza -aghl --group-directories-first --time-style=long-iso'
 alias t='task'
 alias v='lazygit'
 
