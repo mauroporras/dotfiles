@@ -21,7 +21,7 @@
 # Logs, backups, and databases.
 *.log
 *.orig
-*.sql
+# *.sql
 *.sqlite
 
 # OS generated files.

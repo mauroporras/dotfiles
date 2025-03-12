@@ -3,6 +3,7 @@ alias f='yazi'
 alias g='git'
 # alias l='ls -lAhF'
 alias l='eza -agl --group-directories-first --time-style=long-iso'
+alias mi='migrate'
 alias t='task'
 alias v='lazygit'
 
