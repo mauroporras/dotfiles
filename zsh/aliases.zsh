@@ -3,11 +3,10 @@ alias f='yazi'
 alias g='git'
 # alias l='ls -lAhF'
 alias l='eza -agl --group-directories-first --time-style=long-iso'
-alias mi='migrate'
+alias s="rg --follow --hidden --smart-case --no-ignore --glob '!{.git,dist,node_modules,tags}'"
 alias t='task'
 alias v='lazygit'
 
-alias rg="rg --follow --hidden --smart-case --no-ignore --glob '!{.git,dist,node_modules,tags}'"
 
 # Docker {{{
 alias dk='docker'
