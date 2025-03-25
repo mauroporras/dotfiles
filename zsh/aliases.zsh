@@ -1,4 +1,5 @@
-alias e='nvim'
+# alias e='nvim'
+alias e='nvim -i custom.shada'
 alias f='yazi'
 alias g='git'
 # alias l='ls -lAhF'
