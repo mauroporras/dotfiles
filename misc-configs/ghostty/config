@@ -26,7 +26,8 @@ selection-background = black
 copy-on-select = clipboard
 
 unfocused-split-opacity = 0.9
-unfocused-split-fill = Sienna
+unfocused-split-fill = Navy Blue
+split-divider-color = Navy Blue
 
 window-inherit-font-size = false
 
