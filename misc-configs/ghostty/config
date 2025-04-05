@@ -40,6 +40,10 @@ scrollback-limit = 100000000
 
 # Custom Keybindings
 
+# Ctrl+C
+keybind = cmd+c=text:\x03
+# Ctrl+D
+keybind = cmd+d=text:\x04
 # CR
 keybind = ctrl+m=text:\x0D
 # Esc
@@ -59,6 +63,11 @@ keybind = shift+cmd+t=toggle_quick_terminal
 keybind = shift+ctrl+comma=move_tab:-1
 keybind = shift+ctrl+period=move_tab:1
 
+keybind = shift+cmd+h=new_split:left
+keybind = shift+cmd+j=new_split:down
+keybind = shift+cmd+k=new_split:up
+keybind = shift+cmd+l=new_split:right
+
 keybind = cmd+h=goto_split:left
 keybind = cmd+j=goto_split:down
 keybind = cmd+k=goto_split:up
@@ -74,6 +83,7 @@ keybind = ctrl+cmd+enter=toggle_split_zoom
 keybind = cmd+minus=decrease_font_size:2
 keybind = cmd+equal=increase_font_size:2
 
-# Temporal
+# Assigned to nothing to unlearn them
 keybind = cmd+[=text:
 keybind = cmd+]=text:
+keybind = shift+cmd+d=text:
