@@ -80,7 +80,6 @@ return require('packer').startup(function(use)
 
   use 'RRethy/vim-illuminate'
 
-  use 'kevinoid/vim-jsonc'
   use 'lewis6991/gitsigns.nvim'
   use 'liuchengxu/vista.vim'
 
