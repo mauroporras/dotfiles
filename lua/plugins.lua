@@ -81,7 +81,6 @@ return require('packer').startup(function(use)
   use 'RRethy/vim-illuminate'
 
   use 'lewis6991/gitsigns.nvim'
-  use 'liuchengxu/vista.vim'
 
   use {
     'lukas-reineke/indent-blankline.nvim',

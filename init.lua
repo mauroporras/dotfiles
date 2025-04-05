@@ -369,13 +369,6 @@ vim.g.qs_highlight_on_keys = {
   'T',
 }
 
--- vista.vim
-vim.g.vista_blink = { 0, 0 }
-vim.g.vista_sidebar_width = 50
-vim.cmd([[
-  let g:vista#renderer#enable_icon = 0
-]])
-
 -- marks.
 require'marks'.setup {
   default_mappings = false,
@@ -432,9 +425,6 @@ require('legendary').setup({
 
 vim.api.nvim_set_keymap('n', '<C-n>', ':cnext<CR>', optNRM)
 vim.api.nvim_set_keymap('n', '<C-p>', ':cprevious<CR>', optNRM)
-
---   Code.
-vim.api.nvim_set_keymap('n', '<Leader>co', ':Vista!!<CR>', optNRM)
 
 --   Scrolling.
 vim.api.nvim_set_keymap('n', '<C-d>', '5<C-d>', optNRM)
