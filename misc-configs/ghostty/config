@@ -26,10 +26,8 @@ selection-background = black
 copy-on-select = clipboard
 
 unfocused-split-opacity = 0.9
-# unfocused-split-fill = Tan
-# split-divider-color = Tan
 unfocused-split-fill = Dark Slate Gray
-split-divider-color = Dark Slate Gray
+split-divider-color = Black
 
 window-inherit-font-size = false
 
