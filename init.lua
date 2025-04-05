@@ -231,20 +231,7 @@ vim.g.user_emmet_mode = 'i'
 require('gitsigns').setup()
 
 -- folke/trouble.nvim
-require("trouble").setup {
-  icons = false,
-  fold_open = "v", -- icon used for open folds
-  fold_closed = ">", -- icon used for closed folds
-  indent_lines = false, -- add an indent guide below the fold icons
-  signs = {
-    -- icons / text used for a diagnostic
-    error = "error",
-    information = "info",
-    hint = "hint",
-    warning = "warn",
-  },
-  use_diagnostic_signs = false -- enabling this will use the signs defined in your lsp client
-}
+require("trouble").setup()
 
 -- lualine {{{
 local custom_lualine_theme = require('lualine.themes.codedark')
@@ -468,8 +455,8 @@ vim.api.nvim_set_keymap('n', '<Leader>q', '<C-w>q', optNRM)
 vim.api.nvim_set_keymap('n', '<Leader>s', ':wall<CR>', optNRM)
 
 --   folke/trouble.nvim
-vim.keymap.set("n", "<Leader>xx", ":TroubleToggle<CR>", optNRM)
-vim.keymap.set("n", "<Leader>xw", ":TroubleToggle workspace_diagnostics<CR>", optNRM)
+vim.keymap.set("n", "<Leader>xx", ":Trouble diagnostics toggle<CR>", optNRM)
+vim.keymap.set("n", "<Leader>xX", ":Trouble diagnostics toggle filter.buf=0<CR>", optNRM)
 
 --   gitsigns.
 vim.api.nvim_set_keymap('n', '<Leader>vb', ':Gitsigns blame_line<CR>', optNRM)
