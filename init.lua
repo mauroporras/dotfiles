@@ -110,8 +110,8 @@ cmp.setup {
     end,
   },
   mapping = cmp.mapping.preset.insert({
-    ['<C-u>'] = cmp.mapping.scroll_docs(-5),
-    ['<C-d>'] = cmp.mapping.scroll_docs(5),
+    ['<C-u>'] = cmp.mapping.scroll_docs(-3),
+    ['<C-d>'] = cmp.mapping.scroll_docs(3),
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<CR>'] = cmp.mapping.confirm {
       behavior = cmp.ConfirmBehavior.Replace,
@@ -231,20 +231,7 @@ vim.g.user_emmet_mode = 'i'
 require('gitsigns').setup()
 
 -- folke/trouble.nvim
-require("trouble").setup {
-  icons = false,
-  fold_open = "v", -- icon used for open folds
-  fold_closed = ">", -- icon used for closed folds
-  indent_lines = false, -- add an indent guide below the fold icons
-  signs = {
-    -- icons / text used for a diagnostic
-    error = "error",
-    information = "info",
-    hint = "hint",
-    warning = "warn",
-  },
-  use_diagnostic_signs = false -- enabling this will use the signs defined in your lsp client
-}
+require("trouble").setup()
 
 -- lualine {{{
 local custom_lualine_theme = require('lualine.themes.codedark')
@@ -263,7 +250,7 @@ require('lualine').setup({
     lualine_a = {},
     lualine_b = {
       'diagnostics',
-      'diff',
+      -- 'diff',
     },
     lualine_c = {
       {
@@ -304,7 +291,7 @@ telescope.setup({
     layout_config = {
       height = 999,
       prompt_position = 'top',
-      scroll_speed = 4,
+      scroll_speed = 3,
       width = 999,
     },
     sorting_strategy = 'ascending',
@@ -382,13 +369,6 @@ vim.g.qs_highlight_on_keys = {
   'T',
 }
 
--- vista.vim
-vim.g.vista_blink = { 0, 0 }
-vim.g.vista_sidebar_width = 50
-vim.cmd([[
-  let g:vista#renderer#enable_icon = 0
-]])
-
 -- marks.
 require'marks'.setup {
   default_mappings = false,
@@ -446,18 +426,14 @@ require('legendary').setup({
 vim.api.nvim_set_keymap('n', '<C-n>', ':cnext<CR>', optNRM)
 vim.api.nvim_set_keymap('n', '<C-p>', ':cprevious<CR>', optNRM)
 
---   Code.
-vim.api.nvim_set_keymap('n', '<Leader>co', ':Vista!!<CR>', optNRM)
-
 --   Scrolling.
-vim.api.nvim_set_keymap('n', '<C-e>', '3<C-e>', optNRM)
-vim.api.nvim_set_keymap('n', '<C-y>', '3<C-y>', optNRM)
 vim.api.nvim_set_keymap('n', '<C-d>', '5<C-d>', optNRM)
 vim.api.nvim_set_keymap('n', '<C-u>', '5<C-u>', optNRM)
 
 --   Tabs.
 vim.api.nvim_set_keymap('n', '<Leader>tt', ':$tabnew<CR>', optNRM)
 vim.api.nvim_set_keymap('n', '<Leader>tc', ':tabclose<CR>', optNRM)
+vim.api.nvim_set_keymap('n', '<Leader>ts', ':tab split<CR>', optNRM)
 
 --   Buffers.
 vim.api.nvim_set_keymap('n', '<Leader>d', ':bdelete<CR>', optNRM)
@@ -469,8 +445,8 @@ vim.api.nvim_set_keymap('n', '<Leader>q', '<C-w>q', optNRM)
 vim.api.nvim_set_keymap('n', '<Leader>s', ':wall<CR>', optNRM)
 
 --   folke/trouble.nvim
-vim.keymap.set("n", "<Leader>xx", ":TroubleToggle<CR>", optNRM)
-vim.keymap.set("n", "<Leader>xw", ":TroubleToggle workspace_diagnostics<CR>", optNRM)
+vim.keymap.set("n", "<Leader>xx", ":Trouble diagnostics toggle filter.buf=0<CR>", optNRM)
+vim.keymap.set("n", "<Leader>xX", ":Trouble diagnostics toggle<CR>", optNRM)
 
 --   gitsigns.
 vim.api.nvim_set_keymap('n', '<Leader>vb', ':Gitsigns blame_line<CR>', optNRM)
@@ -485,8 +461,8 @@ vim.api.nvim_set_keymap('n', '<Leader>vs', ':Gitsigns stage_hunk<CR>', optNRM)
 vim.api.nvim_set_keymap('n', '<Leader>vu', ':Gitsigns undo_stage_hunk<CR>', optNRM)
 
 --   leap.nvim
-vim.api.nvim_set_keymap('n', '<Leader>/', '<Plug>(leap-forward-to)', {})
-vim.api.nvim_set_keymap('n', '<Leader>?', '<Plug>(leap-backward-to)', {})
+vim.keymap.set('n', '<Leader>/', '<Plug>(leap-forward)', {})
+vim.keymap.set('n', '<Leader>?', '<Plug>(leap-backward)', {})
 
 -- To show the current scheme:
 --   :colorscheme
@@ -514,7 +490,7 @@ vim.cmd([[
   highlight IlluminatedWordWrite guibg=paleturquoise
 
   highlight IblIndent guifg=lavender
-  highlight IblScope guifg=plum
+  highlight IblScope guifg=lavender
 
   highlight StatusLine guibg=black guifg=white
   highlight StatusLineNC guibg=gray guifg=lightgray

@@ -26,8 +26,8 @@ selection-background = black
 copy-on-select = clipboard
 
 unfocused-split-opacity = 0.9
-unfocused-split-fill = Navy Blue
-split-divider-color = Navy Blue
+unfocused-split-fill = Dark Slate Gray
+split-divider-color = Black
 
 window-inherit-font-size = false
 
@@ -40,6 +40,10 @@ scrollback-limit = 100000000
 
 # Custom Keybindings
 
+# Ctrl+C
+keybind = cmd+c=text:\x03
+# Ctrl+D
+keybind = cmd+d=text:\x04
 # CR
 keybind = ctrl+m=text:\x0D
 # Esc
@@ -47,8 +51,8 @@ keybind = ctrl+[=text:\x1B
 # Tab
 keybind = ctrl+i=text:\x09
 
-keybind = cmd+e=scroll_page_lines:3
-keybind = cmd+y=scroll_page_lines:-3
+keybind = cmd+e=scroll_page_lines:1
+keybind = cmd+y=scroll_page_lines:-1
 
 keybind = cmd+r=clear_screen
 
@@ -59,11 +63,19 @@ keybind = shift+cmd+t=toggle_quick_terminal
 keybind = shift+ctrl+comma=move_tab:-1
 keybind = shift+ctrl+period=move_tab:1
 
+# Create splits
+keybind = shift+cmd+h=new_split:left
+keybind = shift+cmd+j=new_split:down
+keybind = shift+cmd+k=new_split:up
+keybind = shift+cmd+l=new_split:right
+
+# Move between splits
 keybind = cmd+h=goto_split:left
 keybind = cmd+j=goto_split:down
 keybind = cmd+k=goto_split:up
 keybind = cmd+l=goto_split:right
 
+# Resize splits
 keybind = ctrl+cmd+h=resize_split:left,100
 keybind = ctrl+cmd+j=resize_split:down,100
 keybind = ctrl+cmd+k=resize_split:up,100
@@ -74,6 +86,9 @@ keybind = ctrl+cmd+enter=toggle_split_zoom
 keybind = cmd+minus=decrease_font_size:2
 keybind = cmd+equal=increase_font_size:2
 
-# Temporal
+# Assigned to nothing to unlearn them
 keybind = cmd+[=text:
 keybind = cmd+]=text:
+keybind = shift+cmd+d=text:
+keybind = ctrl+c=text:
+keybind = ctrl+d=text:

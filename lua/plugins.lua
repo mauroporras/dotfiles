@@ -54,9 +54,6 @@ return require('packer').startup(function(use)
   }
 
   -- Misc.
-  use 'andrewradev/inline_edit.vim'
-  use 'antonk52/vim-browserslist'
-
   use {
     "catppuccin/nvim",
     as = "catppuccin",
@@ -77,25 +74,13 @@ return require('packer').startup(function(use)
 
   use 'chentoast/marks.nvim'
   use 'euclidianAce/BetterLua.vim'
+
   use 'folke/trouble.nvim'
   use 'ggandor/leap.nvim'
 
-  use {
-    'RRethy/vim-illuminate',
-    config = function()
-      require('illuminate').configure({
-        providers = {
-          'lsp',
-          'treesitter',
-        },
-        delay = 200,
-      })
-    end
-  }
+  use 'RRethy/vim-illuminate'
 
-  use 'kevinoid/vim-jsonc'
   use 'lewis6991/gitsigns.nvim'
-  use 'liuchengxu/vista.vim'
 
   use {
     'lukas-reineke/indent-blankline.nvim',
@@ -153,6 +138,31 @@ return require('packer').startup(function(use)
   }
 
   use 'sbdchd/neoformat'
+
+  use {
+    'SmiteshP/nvim-navbuddy',
+    requires = {
+      'MunifTanjim/nui.nvim',
+    },
+    config = function()
+      require('nvim-navbuddy').setup({
+        lsp = {
+          auto_attach = true,
+        },
+      })
+    end
+  }
+
+  use({
+    "stevearc/oil.nvim",
+    config = function()
+      require("oil").setup({
+        view_options = {
+          show_hidden = true,
+        },
+      })
+    end,
+  })
 
   use 'unblevable/quick-scope'
 
