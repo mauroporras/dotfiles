@@ -44,6 +44,8 @@ scrollback-limit = 100000000
 keybind = cmd+c=text:\x03
 # Ctrl+D
 keybind = cmd+d=text:\x04
+# Ctrl+Z
+keybind = cmd+z=text:\x1A
 # CR
 keybind = ctrl+m=text:\x0D
 # Esc
@@ -92,3 +94,4 @@ keybind = cmd+]=text:
 keybind = shift+cmd+d=text:
 keybind = ctrl+c=text:
 keybind = ctrl+d=text:
+keybind = ctrl+z=text:
