@@ -87,3 +87,5 @@ keybind = cmd+equal=increase_font_size:2
 keybind = cmd+[=text:
 keybind = cmd+]=text:
 keybind = shift+cmd+d=text:
+keybind = ctrl+c=text:
+keybind = ctrl+d=text:
