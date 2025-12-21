@@ -571,6 +571,14 @@ vim.opt.listchars = {
   extends = '»',
 }
 
+-- Sync clipboard between OS and Neovim.
+--  Schedule the setting after `UiEnter` because it can increase startup-time.
+--  Remove this option if you want your OS clipboard to remain independent.
+--  See `:help 'clipboard'`
+vim.schedule(function()
+  vim.o.clipboard = 'unnamedplus'
+end)
+
 vim.cmd [[
   " Recognize some extensions known to have JSON with comments.
   autocmd BufNewFile,BufRead tsconfig.json setlocal filetype=jsonc
