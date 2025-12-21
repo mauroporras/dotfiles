@@ -48,6 +48,10 @@ vim.o.undofile = true
 vim.o.ignorecase = true
 vim.o.smartcase = true
 
+-- Keep signcolumn on by default
+vim.o.signcolumn = 'yes'
+-- vim.opt.signcolumn = 'auto:2'
+
 -- Substituting.
 vim.opt.inccommand = 'nosplit'
 
@@ -61,7 +65,6 @@ vim.opt.cursorline = true
 vim.opt.cmdheight = 2
 vim.opt.splitbelow = true
 vim.opt.splitright = true
-vim.opt.signcolumn = 'auto:2'
 vim.opt.listchars = {
   tab = '→ ',
   space = '·',
