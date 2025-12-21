@@ -186,6 +186,7 @@ return require('packer').startup(function(use)
     end,
   })
 
+  -- Easy left and right motion.
   use 'unblevable/quick-scope'
 
   use {
