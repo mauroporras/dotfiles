@@ -13,6 +13,48 @@ vim.g.maplocalleader = ' '
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = true
 
+-- Searching.
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+-- Substituting.
+vim.opt.inccommand = 'nosplit'
+
+-- Misc.
+vim.opt.completeopt = {
+  'menu',
+  'menuone',
+  'noselect',
+}
+vim.opt.cursorline = true
+vim.opt.cmdheight = 2
+-- Make line numbers default
+vim.o.number = true
+vim.opt.splitbelow = true
+vim.opt.splitright = true
+-- Enable mouse mode, can be useful for resizing splits for example!
+vim.o.mouse = 'a'
+vim.opt.signcolumn = 'auto:2'
+vim.opt.listchars = {
+  tab = '→ ',
+  space = '·',
+  nbsp = '␣',
+  trail = '•',
+  eol = '¶',
+  precedes = '«',
+  extends = '»',
+}
+
+-- Sync clipboard between OS and Neovim.
+--  Schedule the setting after `UiEnter` because it can increase startup-time.
+--  Remove this option if you want your OS clipboard to remain independent.
+--  See `:help 'clipboard'`
+vim.schedule(function()
+  vim.o.clipboard = 'unnamedplus'
+end)
+
+-- Enable break indent
+vim.o.breakindent = true
+
 require 'plugins'
 require 'snippets'
 
@@ -539,45 +581,6 @@ vim.cmd [[
   highlight QuickScopePrimary guibg=cyan guifg=black
   highlight QuickScopeSecondary guibg=black guifg=cyan
 ]]
-
--- Searching.
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
--- Substituting.
-vim.opt.inccommand = 'nosplit'
-
--- Misc.
-vim.opt.completeopt = {
-  'menu',
-  'menuone',
-  'noselect',
-}
-vim.opt.cursorline = true
-vim.opt.cmdheight = 2
--- Make line numbers default
-vim.o.number = true
-vim.opt.splitbelow = true
-vim.opt.splitright = true
--- Enable mouse mode, can be useful for resizing splits for example!
-vim.o.mouse = 'a'
-vim.opt.signcolumn = 'auto:2'
-vim.opt.listchars = {
-  tab = '→ ',
-  space = '·',
-  nbsp = '␣',
-  trail = '•',
-  eol = '¶',
-  precedes = '«',
-  extends = '»',
-}
-
--- Sync clipboard between OS and Neovim.
---  Schedule the setting after `UiEnter` because it can increase startup-time.
---  Remove this option if you want your OS clipboard to remain independent.
---  See `:help 'clipboard'`
-vim.schedule(function()
-  vim.o.clipboard = 'unnamedplus'
-end)
 
 vim.cmd [[
   " Recognize some extensions known to have JSON with comments.
