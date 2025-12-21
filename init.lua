@@ -143,6 +143,10 @@ vim.keymap.set('n', '<Right>', '<cmd>bnext<CR>', { desc = 'Next buffer' })
 -- Windows
 vim.keymap.set('n', '<Leader>q', '<C-w>q', { desc = 'Close window' })
 
+-- Quickfix
+vim.keymap.set('n', '<C-n>', '<cmd>cnext<CR>', { desc = 'Next quickfix item' })
+vim.keymap.set('n', '<C-p>', '<cmd>cprevious<CR>', { desc = 'Previous quickfix item' })
+
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
 -- is not what someone will guess without a bit more experience.
@@ -987,9 +991,6 @@ require('legendary').setup {
   },
 }
 --]]
-
-vim.api.nvim_set_keymap('n', '<C-n>', ':cnext<CR>', optNRM)
-vim.api.nvim_set_keymap('n', '<C-p>', ':cprevious<CR>', optNRM)
 
 --   Scrolling.
 vim.api.nvim_set_keymap('n', '<C-d>', '5<C-d>', optNRM)
