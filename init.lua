@@ -247,7 +247,6 @@ require('lualine').setup({
     lualine_a = {},
     lualine_b = {
       'diagnostics',
-      'diff',
     },
     lualine_c = {
       {
