@@ -1,0 +1,7 @@
+.git
+coverage
+dist
+node_modules
+
+*.orig
+Session.vim

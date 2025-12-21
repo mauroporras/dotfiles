@@ -1,0 +1,44 @@
+version: "3"
+
+tasks:
+  use:env:
+    internal: true
+    preconditions:
+      - sh: test -f shell.{{.ENV_NAME}}.nix
+        msg: Missing "shell.{{.ENV_NAME}}.nix" file.
+    cmds:
+      - cp shell.{{.ENV_NAME}}.nix shell.nix
+      # - direnv allow
+
+  use:dev:
+    cmds:
+      - task: use:env
+        vars:
+          ENV_NAME: development
+
+  use:prod:
+    cmds:
+      - task: use:env
+        vars:
+          ENV_NAME: production
+
+  build:
+    cmds:
+      - pnpm run build
+
+  dev:
+    preconditions:
+      - sh: which jq
+        msg: Missing "jq" command-line utility.
+    env:
+      ZEA_SYNC_LATEST_VERSION:
+        sh: jq -r .version ../desktop/package.json
+    cmds:
+      - pnpm run dev
+
+  start:
+    env:
+      ZEA_SYNC_LATEST_VERSION:
+        sh: jq -r .version ../desktop/package.json
+    cmds:
+      - pnpm run start
