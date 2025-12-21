@@ -13,6 +13,7 @@ vim.g.maplocalleader = ' '
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = true
 
+-- Setting options {{{
 -- [[ Setting options ]]
 -- See `:help vim.o`
 -- NOTE: You can change these options as you wish!
@@ -97,7 +98,9 @@ vim.o.scrolloff = 10
 -- instead raise a dialog asking if you wish to save the current file(s)
 -- See `:help 'confirm'`
 vim.o.confirm = true
+-- }}}
 
+-- Basic Keymaps {{{
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 -- To find what's using a key map:
@@ -195,7 +198,9 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 -- vim.keymap.set("n", "<C-S-l>", "<C-w>L", { desc = "Move window to the right" })
 -- vim.keymap.set("n", "<C-S-j>", "<C-w>J", { desc = "Move window to the lower" })
 -- vim.keymap.set("n", "<C-S-k>", "<C-w>K", { desc = "Move window to the upper" })
+-- }}}
 
+-- Basic Autocommands {{{
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
@@ -209,6 +214,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     vim.hl.on_yank { higroup = 'HighlightedyankRegion' }
   end,
 })
+-- }}}
 
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
@@ -995,6 +1001,7 @@ require('nvim-treesitter.configs').setup {
 }
 -- }}}
 
+-- Highlights {{{
 -- To show the current scheme:
 --   :colorscheme
 -- Use `:highlight` to list all color groups.
@@ -1033,6 +1040,7 @@ vim.cmd [[
   highlight QuickScopePrimary guibg=cyan guifg=black
   highlight QuickScopeSecondary guibg=black guifg=cyan
 ]]
+-- }}}
 
 vim.cmd [[
   " Recognize some extensions known to have JSON with comments.
