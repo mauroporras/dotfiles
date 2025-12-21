@@ -25,7 +25,7 @@
   -- Misc.
   use 'folke/trouble.nvim'
 
-  use 'mrjones2014/legendary.nvim'
+  use 'mrjones2014/legendary.nvim' -- NOTE: archived, consider migrating to which-key
 
   use {
     'numToStr/Comment.nvim',

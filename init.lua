@@ -850,6 +850,7 @@ vim.api.nvim_set_keymap('i', '<C-e>', '<End>', optNRM)
 vim.api.nvim_set_keymap('i', '<C-f>', '<Right>', optNRM)
 
 -- Normal.
+-- NOTE: legendary.nvim is archived, consider migrating to which-key
 require('legendary').setup {
   keymaps = {
     {
