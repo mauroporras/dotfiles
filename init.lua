@@ -205,6 +205,7 @@ require('lazy').setup({
   -- See `:help gitsigns` to understand what the configuration keys do
   { -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
+    event = 'VimEnter',
     keys = {
       { '<Leader>vb', '<cmd>Gitsigns blame_line<CR>', desc = 'Blame line' },
       { '<Leader>vD', '<cmd>Gitsigns toggle_deleted<CR>', desc = 'Toggle deleted' },
@@ -1025,7 +1026,6 @@ vim.api.nvim_set_keymap('n', '<Left>', ':bprevious<CR>', optNRM)
 vim.api.nvim_set_keymap('n', '<Right>', ':bnext<CR>', optNRM)
 vim.api.nvim_set_keymap('n', '<Leader>q', '<C-w>q', optNRM)
 vim.api.nvim_set_keymap('n', '<Leader>s', ':wall<CR>', optNRM)
-
 
 --   github/copilot.vim
 vim.keymap.set('i', '<C-l>', '<Plug>(copilot-accept-word)')
