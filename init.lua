@@ -333,12 +333,11 @@ require('lazy').setup {
     },
   },
 
-  -- Fuzzy Finder (files, lsp, etc)
   -- Old command for fzf was:
   -- rg --files --follow --hidden --smart-case --no-ignore-vcs --glob '!{.git,dist,node_modules,tags}'
-  {
+  { -- Fuzzy Finder (files, lsp, etc)
     'nvim-telescope/telescope.nvim',
-    branch = '0.1.x',
+    event = 'VimEnter',
     dependencies = {
       'nvim-lua/plenary.nvim',
       'nvim-telescope/telescope-frecency.nvim',
