@@ -454,6 +454,20 @@ require('lazy').setup({
   -- Better Lua syntax highlighting
   { 'euclidianAce/BetterLua.vim', ft = 'lua' },
 
+  { -- Indent guides
+    'lukas-reineke/indent-blankline.nvim',
+    main = 'ibl',
+    opts = {
+      indent = {
+        char = '│',
+      },
+      scope = {
+        show_start = false,
+        show_end = false,
+      },
+    },
+  },
+
   -- Highlight, edit, and navigate code
 }, {
   ui = {

@@ -25,21 +25,6 @@
   -- Misc.
   use 'folke/trouble.nvim'
 
-  use {
-    'lukas-reineke/indent-blankline.nvim',
-    config = function()
-      require('ibl').setup {
-        indent = {
-          char = '│',
-        },
-        scope = {
-          show_start = false,
-          show_end = false,
-        },
-      }
-    end,
-  }
-
   use 'mattn/emmet-vim'
   use 'mrjones2014/legendary.nvim'
 
