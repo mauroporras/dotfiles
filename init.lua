@@ -118,6 +118,13 @@ vim.keymap.set('n', '<Leader>e', function()
   vim.fn.winrestview(view)
 end, { desc = 'Reload file preserving position' })
 
+-- Windows (disabled to unlearn shortcuts)
+vim.keymap.set('n', '<C-w><C-w>', '<Nop>', { desc = 'Disabled' })
+vim.keymap.set('n', '<C-w>h', '<Nop>', { desc = 'Disabled' })
+vim.keymap.set('n', '<C-w>l', '<Nop>', { desc = 'Disabled' })
+vim.keymap.set('n', '<C-w>j', '<Nop>', { desc = 'Disabled' })
+vim.keymap.set('n', '<C-w>k', '<Nop>', { desc = 'Disabled' })
+
 -- Tabs
 vim.keymap.set('n', '<Leader>tn', '<cmd>tabnew<CR>', { desc = 'New tab after current' })
 vim.keymap.set('n', '<Leader>tp', '<cmd>-tabnew<CR>', { desc = 'New tab before current' })
@@ -956,12 +963,6 @@ vim.api.nvim_set_keymap('i', '<C-f>', '<Right>', optNRM)
 --[[
 require('legendary').setup {
   keymaps = {
-    -- Windows. Temporal.
-    { '<C-w><C-w>', '', description = 'Do nothing. To unlearn shortcut' },
-    { '<C-w>h', '', description = 'Do nothing. To unlearn shortcut' },
-    { '<C-w>l', '', description = 'Do nothing. To unlearn shortcut' },
-    { '<C-w>j', '', description = 'Do nothing. To unlearn shortcut' },
-    { '<C-w>k', '', description = 'Do nothing. To unlearn shortcut' },
     -- Misc.
     { '<Leader>a', ':Telescope live_grep<CR>', description = 'Search in all files' },
     { '<Leader>A', ':Telescope grep_string<CR>', description = 'Searches string under your cursor' },
