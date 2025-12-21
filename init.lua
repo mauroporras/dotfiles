@@ -157,6 +157,12 @@ vim.api.nvim_set_keymap('c', '<C-b>', '<Left>', { noremap = true })
 vim.api.nvim_set_keymap('c', '<C-d>', '<Del>', { noremap = true })
 vim.api.nvim_set_keymap('c', '<C-f>', '<Right>', { noremap = true })
 
+-- Terminal (:h mapmode-t)
+vim.keymap.set('t', '<C-w>h', '<C-\\><C-n><C-w>h', { desc = 'Move focus to left window' })
+vim.keymap.set('t', '<C-w>j', '<C-\\><C-n><C-w>j', { desc = 'Move focus to lower window' })
+vim.keymap.set('t', '<C-w>k', '<C-\\><C-n><C-w>k', { desc = 'Move focus to upper window' })
+vim.keymap.set('t', '<C-w>l', '<C-\\><C-n><C-w>l', { desc = 'Move focus to right window' })
+
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
 -- is not what someone will guess without a bit more experience.
@@ -960,12 +966,6 @@ telescope.load_extension 'ui-select'
 
 -- See:
 -- :help lua-guide
-
--- Terminal (:h mapmode-t).
-vim.api.nvim_set_keymap('t', '<C-w>h', '<C-\\><C-n><C-w>h', optNRM)
-vim.api.nvim_set_keymap('t', '<C-w>j', '<C-\\><C-n><C-w>j', optNRM)
-vim.api.nvim_set_keymap('t', '<C-w>k', '<C-\\><C-n><C-w>k', optNRM)
-vim.api.nvim_set_keymap('t', '<C-w>l', '<C-\\><C-n><C-w>l', optNRM)
 
 -- Insert.
 vim.api.nvim_set_keymap('i', '<C-a>', '<Home>', optNRM)
