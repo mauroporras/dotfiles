@@ -80,7 +80,6 @@ return require('packer').startup(function(use)
   -- Highlight other uses of the word under the cursor.
   use 'RRethy/vim-illuminate'
 
-  use 'kevinoid/vim-jsonc'
   use 'lewis6991/gitsigns.nvim'
   use 'liuchengxu/vista.vim'
 
