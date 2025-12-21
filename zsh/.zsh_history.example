@@ -1,0 +1,11 @@
+: 1760301857:0;sudo vim /etc/hosts
+: 1760658971:0;pnpm upgrade --latest --interactive
+: 1761055513:0;brew upgrade font-iosevka-slab
+: 1761315658:0;direnv allow
+: 1761406911:0;npx npkill
+: 1761736490:0;docker compose stats
+: 1762054277:0;brew upgrade lazygit
+: 1762456224:0;e ~/.zshrc
+: 1762456278:0;source ~/.zshrc
+: 1763412907:0;brew upgrade starship
+: 1763556911:0;echo .git > .rgignore
