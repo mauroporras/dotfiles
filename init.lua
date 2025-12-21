@@ -52,6 +52,9 @@ vim.o.smartcase = true
 vim.o.signcolumn = 'yes'
 -- vim.opt.signcolumn = 'auto:2'
 
+-- Decrease update time
+vim.o.updatetime = 250
+
 -- Substituting.
 vim.opt.inccommand = 'nosplit'
 
