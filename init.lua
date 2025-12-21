@@ -468,6 +468,14 @@ require('lazy').setup({
     },
   },
 
+  { -- Emmet for HTML/CSS expansion
+    'mattn/emmet-vim',
+    ft = { 'html', 'css', 'scss', 'svelte' },
+    init = function()
+      vim.g.user_emmet_mode = 'i'
+    end,
+  },
+
   -- Highlight, edit, and navigate code
 }, {
   ui = {
@@ -715,9 +723,6 @@ require('nvim-treesitter.configs').setup {
   },
 }
 -- }}}
-
--- Emmet.
-vim.g.user_emmet_mode = 'i'
 
 -- folke/trouble.nvim
 require('trouble').setup()

@@ -25,7 +25,6 @@
   -- Misc.
   use 'folke/trouble.nvim'
 
-  use 'mattn/emmet-vim'
   use 'mrjones2014/legendary.nvim'
 
   use {
