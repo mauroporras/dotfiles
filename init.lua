@@ -342,6 +342,36 @@ require('lazy').setup({
 
   -- Autocompletion
 
+  { -- You can easily change to a different colorscheme.
+    -- Change the name of the colorscheme plugin below, and then
+    -- change the command in the config to whatever the name of that colorscheme is.
+    --
+    -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
+    'catppuccin/nvim',
+    priority = 1000, -- Make sure to load this before all the other start plugins.
+    config = function()
+      ---@diagnostic disable-next-line: missing-fields
+      require('catppuccin').setup {
+        integrations = {
+          cmp = true,
+          gitsigns = true,
+          lsp_trouble = true,
+          native_lsp = {
+            enabled = true,
+          },
+          telescope = true,
+          treesitter = true,
+          which_key = true,
+        },
+      }
+
+      -- Load the colorscheme here.
+      -- Like many other themes, this one has different styles, and you could load
+      -- any other, such as 'catppuccin-latte', 'catppuccin-frappe', 'catppuccin-macchiato', or 'catppuccin-mocha'.
+      vim.cmd.colorscheme 'catppuccin-latte'
+    end,
+  },
+
   -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 }, {
@@ -858,8 +888,6 @@ vim.keymap.set('i', '<C-l>', '<Plug>(copilot-accept-word)')
 -- See:
 -- https://neovim.io/doc/user/options.html#'termguicolors'
 vim.opt.termguicolors = true
-
-vim.cmd.colorscheme 'catppuccin-latte'
 
 vim.cmd [[
   " Custom highlights.
