@@ -84,6 +84,11 @@ ls.add_snippets("javascript", {
     t'const ', i(1, 'foo'), t' = new ', i(2, 'Foo'), t'(', i(3), t')'
   }),
 
+  -- destructuring
+  s("des", {
+    t'const { ', i(1), t' } = ', i(2),
+  }),
+
   -- console
   s("cl", {
     t'console.log(', i(1), t')'
@@ -251,6 +256,9 @@ ls.add_snippets("javascript", {
     t{ 'new Promise((resolve, reject) => {', '' },
     t'    ', i(1), t{ '', '' },
     t'})'
+  }),
+  s("pa", {
+    t'Promise.all([', i(1), t'])'
   }),
 
   -- return
