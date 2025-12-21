@@ -134,6 +134,15 @@ vim.keymap.set('n', '<Leader>ts', '<cmd>tab split<CR>', { desc = 'Split to new t
 vim.keymap.set('n', '<M-h>', '<cmd>tabprevious<CR>', { desc = 'Previous tab' })
 vim.keymap.set('n', '<M-l>', '<cmd>tabnext<CR>', { desc = 'Next tab' })
 
+-- Buffers
+vim.keymap.set('n', '<Leader>d', '<cmd>bdelete<CR>', { desc = 'Delete buffer' })
+vim.keymap.set('n', '<Leader>l', '<cmd>edit #<CR>', { desc = 'Alternate buffer' })
+vim.keymap.set('n', '<Left>', '<cmd>bprevious<CR>', { desc = 'Previous buffer' })
+vim.keymap.set('n', '<Right>', '<cmd>bnext<CR>', { desc = 'Next buffer' })
+
+-- Windows
+vim.keymap.set('n', '<Leader>q', '<C-w>q', { desc = 'Close window' })
+
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
 -- is not what someone will guess without a bit more experience.
@@ -141,12 +150,6 @@ vim.keymap.set('n', '<M-l>', '<cmd>tabnext<CR>', { desc = 'Next tab' })
 -- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
 -- or just use <C-\><C-n> to exit terminal mode
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
-
--- TIP: Disable arrow keys in normal mode
--- vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
--- vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
--- vim.keymap.set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
--- vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
 
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
@@ -991,13 +994,6 @@ vim.api.nvim_set_keymap('n', '<C-p>', ':cprevious<CR>', optNRM)
 --   Scrolling.
 vim.api.nvim_set_keymap('n', '<C-d>', '5<C-d>', optNRM)
 vim.api.nvim_set_keymap('n', '<C-u>', '5<C-u>', optNRM)
-
---   Buffers.
-vim.api.nvim_set_keymap('n', '<Leader>d', ':bdelete<CR>', optNRM)
-vim.api.nvim_set_keymap('n', '<Leader>l', ':edit #<CR>', optNRM)
-vim.api.nvim_set_keymap('n', '<Left>', ':bprevious<CR>', optNRM)
-vim.api.nvim_set_keymap('n', '<Right>', ':bnext<CR>', optNRM)
-vim.api.nvim_set_keymap('n', '<Leader>q', '<C-w>q', optNRM)
 
 --   github/copilot.vim
 vim.keymap.set('i', '<C-l>', '<Plug>(copilot-accept-word)')
