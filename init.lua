@@ -119,6 +119,7 @@ vim.keymap.set('n', '<Leader>e', function()
   vim.cmd 'edit!'
   vim.fn.winrestview(view)
 end, { desc = 'Reload file preserving position' })
+vim.keymap.set('n', '<Leader>E', '<cmd>LspRestart<CR>', { desc = 'Restart LSP' })
 
 -- Windows (disabled to unlearn shortcuts)
 vim.keymap.set('n', '<C-w><C-w>', '<Nop>', { desc = 'Disabled' })
@@ -341,7 +342,7 @@ require('lazy').setup({
     keys = {
       { '<Leader>a', '<cmd>Telescope live_grep<CR>', desc = 'Search in all files' },
       { '<Leader>A', '<cmd>Telescope grep_string<CR>', desc = 'Search string under cursor' },
-      { '<Leader>b', '<cmd>Telescope buffers<CR>', desc = 'List buffers' },
+      { '<Leader>bb', '<cmd>Telescope buffers<CR>', desc = 'List buffers' },
       { '<Leader>gd', '<cmd>Telescope lsp_definitions<CR>', desc = 'LSP definitions' },
       { '<Leader>gi', '<cmd>Telescope lsp_implementations<CR>', desc = 'LSP implementations' },
       { '<Leader>gr', '<cmd>Telescope lsp_references<CR>', desc = 'LSP references' },
@@ -793,8 +794,6 @@ local optNRM = { noremap = true }
 vim.keymap.set('n', '<Leader>cd', vim.diagnostic.open_float, optNRM)
 vim.keymap.set('n', '<Leader>n', vim.diagnostic.goto_next, optNRM)
 vim.keymap.set('n', '<Leader>p', vim.diagnostic.goto_prev, optNRM)
-
-vim.keymap.set('n', '<Leader>E', ':LspRestart<CR>', optNRM)
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
