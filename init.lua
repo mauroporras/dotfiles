@@ -563,6 +563,9 @@ require('lazy').setup({
     opts = {},
   },
 
+  -- GitHub Copilot
+  { 'github/copilot.vim' },
+
   { -- Highlight unique characters for f/F/t/T motions
     'unblevable/quick-scope',
     init = function()

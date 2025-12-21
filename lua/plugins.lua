@@ -46,5 +46,4 @@
     run = ':TSUpdate',
   }
 
-  use 'github/copilot.vim'
 --]]
