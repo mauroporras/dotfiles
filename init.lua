@@ -62,6 +62,28 @@ vim.o.timeoutlen = 300
 vim.o.splitright = true
 vim.o.splitbelow = true
 
+-- Sets how neovim will display certain whitespace characters in the editor.
+--  See `:help 'list'`
+--  and `:help 'listchars'`
+--
+--  Notice listchars is set using `vim.opt` instead of `vim.o`.
+--  It is very similar to `vim.o` but offers an interface for conveniently interacting with tables.
+--   See `:help lua-options`
+--   and `:help lua-options-guide`
+vim.o.list = true
+vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+--[[
+vim.opt.listchars = {
+  tab = '→ ',
+  space = '·',
+  nbsp = '␣',
+  trail = '•',
+  eol = '¶',
+  precedes = '«',
+  extends = '»',
+}
+--]]
+
 -- Substituting.
 vim.opt.inccommand = 'nosplit'
 
@@ -73,15 +95,6 @@ vim.opt.completeopt = {
 }
 vim.opt.cursorline = true
 vim.opt.cmdheight = 2
-vim.opt.listchars = {
-  tab = '→ ',
-  space = '·',
-  nbsp = '␣',
-  trail = '•',
-  eol = '¶',
-  precedes = '«',
-  extends = '»',
-}
 
 require 'plugins'
 require 'snippets'
