@@ -558,7 +558,8 @@ vim.opt.cmdheight = 2
 vim.o.number = true
 vim.opt.splitbelow = true
 vim.opt.splitright = true
-vim.opt.mouse = 'a'
+-- Enable mouse mode, can be useful for resizing splits for example!
+vim.o.mouse = 'a'
 vim.opt.signcolumn = 'auto:2'
 vim.opt.listchars = {
   tab = '→ ',
