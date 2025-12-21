@@ -84,8 +84,8 @@ vim.opt.listchars = {
 }
 --]]
 
--- Substituting.
-vim.opt.inccommand = 'nosplit'
+-- Preview substitutions live, as you type!
+vim.o.inccommand = 'split'
 
 -- Misc.
 vim.opt.completeopt = {
