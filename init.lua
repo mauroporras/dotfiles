@@ -114,20 +114,23 @@ cmp.setup {
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
     },
-    ['<Tab>'] = cmp.mapping(function(fallback)
+    -- Tab is reserved for Copilot, so S-Tab is used for snippet forward jump.
+    -- ['<Tab>'] = cmp.mapping(function(fallback)
+    ['<S-Tab>'] = cmp.mapping(function(fallback)
       if luasnip.expand_or_jumpable() then
         luasnip.expand_or_jump()
       else
         fallback()
       end
     end, { 'i', 's' }),
-    ['<S-Tab>'] = cmp.mapping(function(fallback)
-      if luasnip.jumpable(-1) then
-        luasnip.jump(-1)
-      else
-        fallback()
-      end
-    end, { 'i', 's' }),
+    -- Snippet jump backward (disabled, Tab is reserved for Copilot).
+    -- ['<S-Tab>'] = cmp.mapping(function(fallback)
+    --   if luasnip.jumpable(-1) then
+    --     luasnip.jump(-1)
+    --   else
+    --     fallback()
+    --   end
+    -- end, { 'i', 's' }),
   }),
   sources = {
     { name = 'nvim_lsp' },
@@ -481,6 +484,9 @@ vim.api.nvim_set_keymap('n', '<Leader>vS', ':Gitsigns stage_buffer<CR>', optNRM)
 vim.api.nvim_set_keymap('n', '<Leader>vs', ':Gitsigns stage_hunk<CR>', optNRM)
 vim.api.nvim_set_keymap('n', '<Leader>vu', ':Gitsigns undo_stage_hunk<CR>', optNRM)
 
+
+--   github/copilot.vim
+vim.keymap.set('i', '<C-l>', '<Plug>(copilot-accept-word)')
 
 -- To show the current scheme:
 --   :colorscheme
