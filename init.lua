@@ -451,6 +451,9 @@ require('lazy').setup({
   -- Highlight other uses of the word under the cursor
   { 'RRethy/vim-illuminate' },
 
+  -- Better Lua syntax highlighting
+  { 'euclidianAce/BetterLua.vim', ft = 'lua' },
+
   -- Highlight, edit, and navigate code
 }, {
   ui = {

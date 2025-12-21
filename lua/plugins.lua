@@ -23,8 +23,6 @@
   }
 
   -- Misc.
-  use 'euclidianAce/BetterLua.vim'
-
   use 'folke/trouble.nvim'
 
   use {
