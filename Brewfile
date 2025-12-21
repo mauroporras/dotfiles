@@ -18,6 +18,9 @@ brew "gh" # Required for the aliases.
 brew "git"
 brew "git-delta" # Syntax-highlighting pager.
 brew "git-lfs"
+brew "go"
+brew "golang-migrate"
+brew "go-task/tap/go-task"
 brew "httpie"
 brew "lazygit"
 brew "less"
