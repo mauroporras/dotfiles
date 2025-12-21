@@ -67,15 +67,23 @@ keybind = shift+cmd+t=toggle_quick_terminal
 keybind = shift+ctrl+comma=move_tab:-1
 keybind = shift+ctrl+period=move_tab:1
 
+# Create splits
+keybind = shift+cmd+h=new_split:left
+keybind = shift+cmd+j=new_split:down
+keybind = shift+cmd+k=new_split:up
+keybind = shift+cmd+l=new_split:right
+
+# Move between splits
 keybind = cmd+h=goto_split:left
 keybind = cmd+j=goto_split:down
 keybind = cmd+k=goto_split:up
 keybind = cmd+l=goto_split:right
 
-keybind = ctrl+cmd+h=resize_split:left,100
-keybind = ctrl+cmd+j=resize_split:down,100
-keybind = ctrl+cmd+k=resize_split:up,100
-keybind = ctrl+cmd+l=resize_split:right,100
+# Resize splits
+keybind = ctrl+cmd+h=resize_split:left,200
+keybind = ctrl+cmd+j=resize_split:down,50
+keybind = ctrl+cmd+k=resize_split:up,50
+keybind = ctrl+cmd+l=resize_split:right,200
 
 keybind = ctrl+cmd+enter=toggle_split_zoom
 
