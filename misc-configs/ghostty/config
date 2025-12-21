@@ -42,11 +42,12 @@ quick-terminal-size = 80%
 
 # Custom Keybindings
 
-# Ctrl+C
+# Use Cmd instead of Ctrl for terminal signals (more ergonomic on macOS)
+# Interrupt process (replaces Ctrl+C)
 # keybind = cmd+c=text:\x03
-# Ctrl+D
+# Send EOF (replaces Ctrl+D)
 # keybind = cmd+d=text:\x04
-# Ctrl+Z
+# Suspend process (replaces Ctrl+Z)
 # keybind = cmd+z=text:\x1A
 # CR
 keybind = ctrl+m=text:\x0D
@@ -95,6 +96,7 @@ keybind = cmd+[=text:
 keybind = cmd+]=text:
 keybind = cmd+d=text:
 keybind = shift+cmd+d=text:
+# Pair with cmd+c/d/z above to force using Cmd for terminal signals
 # keybind = ctrl+c=text:
 # keybind = ctrl+d=text:
 # keybind = ctrl+z=text:
