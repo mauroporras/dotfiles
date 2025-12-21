@@ -448,6 +448,9 @@ require('lazy').setup({
     },
   },
 
+  -- Highlight other uses of the word under the cursor
+  { 'RRethy/vim-illuminate' },
+
   -- Highlight, edit, and navigate code
 }, {
   ui = {
