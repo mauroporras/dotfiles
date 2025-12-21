@@ -260,6 +260,7 @@ require('lazy').setup({
 
       -- Document existing key chains
       spec = {
+        { '<leader>c', group = '[C]ode' },
         { '<leader>m', group = '[M]isc' },
         { '<leader>t', group = '[T]abs' },
         { '<leader>v', group = '[V]ersioning' },
