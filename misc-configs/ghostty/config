@@ -38,6 +38,8 @@ window-new-tab-position = end
 
 scrollback-limit = 100000000
 
+quick-terminal-size = 80%
+
 # Custom Keybindings
 
 # CR
