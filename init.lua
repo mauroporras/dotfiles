@@ -98,6 +98,13 @@ vim.o.scrolloff = 10
 -- See `:help 'confirm'`
 vim.o.confirm = true
 
+-- [[ Basic Keymaps ]]
+--  See `:help vim.keymap.set()`
+
+-- Clear highlights on search when pressing <Esc> in normal mode
+--  See `:help hlsearch`
+vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+
 -- Misc.
 vim.opt.completeopt = {
   'menu',
@@ -527,7 +534,6 @@ require('legendary').setup {
     { '<C-w>j', '', description = 'Do nothing. To unlearn shortcut.' },
     { '<C-w>k', '', description = 'Do nothing. To unlearn shortcut.' },
     -- Misc.
-    { '<Esc>', ':nohlsearch<CR><Esc>', description = 'Stop the highlighting for the search.' },
     { '<Leader>a', ':Telescope live_grep<CR>', description = 'Search in all files.' },
     { '<Leader>A', ':Telescope grep_string<CR>', description = 'Searches string under your cursor.' },
     { '<Leader>b', ':Telescope buffers<CR>', description = 'List buffers.' },
