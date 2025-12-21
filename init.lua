@@ -205,6 +205,18 @@ require('lazy').setup({
   -- See `:help gitsigns` to understand what the configuration keys do
   { -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
+    keys = {
+      { '<Leader>vb', '<cmd>Gitsigns blame_line<CR>', desc = 'Blame line' },
+      { '<Leader>vD', '<cmd>Gitsigns toggle_deleted<CR>', desc = 'Toggle deleted' },
+      { '<Leader>vd', '<cmd>Gitsigns diffthis<CR>', desc = 'Diff this' },
+      { '<Leader>vn', '<cmd>Gitsigns next_hunk<CR>', desc = 'Next hunk' },
+      { '<Leader>vp', '<cmd>Gitsigns prev_hunk<CR>', desc = 'Previous hunk' },
+      { '<Leader>vR', '<cmd>Gitsigns reset_buffer<CR>', desc = 'Reset buffer' },
+      { '<Leader>vr', '<cmd>Gitsigns reset_hunk<CR>', desc = 'Reset hunk' },
+      { '<Leader>vS', '<cmd>Gitsigns stage_buffer<CR>', desc = 'Stage buffer' },
+      { '<Leader>vs', '<cmd>Gitsigns stage_hunk<CR>', desc = 'Stage hunk' },
+      { '<Leader>vu', '<cmd>Gitsigns undo_stage_hunk<CR>', desc = 'Undo stage hunk' },
+    },
     opts = {
       signs = {
         add = { text = '+' },
@@ -1014,17 +1026,6 @@ vim.api.nvim_set_keymap('n', '<Right>', ':bnext<CR>', optNRM)
 vim.api.nvim_set_keymap('n', '<Leader>q', '<C-w>q', optNRM)
 vim.api.nvim_set_keymap('n', '<Leader>s', ':wall<CR>', optNRM)
 
---   gitsigns.
-vim.api.nvim_set_keymap('n', '<Leader>vb', ':Gitsigns blame_line<CR>', optNRM)
-vim.api.nvim_set_keymap('n', '<Leader>vD', ':Gitsigns toggle_deleted<CR>', optNRM)
-vim.api.nvim_set_keymap('n', '<Leader>vd', ':Gitsigns diffthis<CR>', optNRM)
-vim.api.nvim_set_keymap('n', '<Leader>vn', ':Gitsigns next_hunk<CR>', optNRM)
-vim.api.nvim_set_keymap('n', '<Leader>vp', ':Gitsigns prev_hunk<CR>', optNRM)
-vim.api.nvim_set_keymap('n', '<Leader>vR', ':Gitsigns reset_buffer<CR>', optNRM)
-vim.api.nvim_set_keymap('n', '<Leader>vr', ':Gitsigns reset_hunk<CR>', optNRM)
-vim.api.nvim_set_keymap('n', '<Leader>vS', ':Gitsigns stage_buffer<CR>', optNRM)
-vim.api.nvim_set_keymap('n', '<Leader>vs', ':Gitsigns stage_hunk<CR>', optNRM)
-vim.api.nvim_set_keymap('n', '<Leader>vu', ':Gitsigns undo_stage_hunk<CR>', optNRM)
 
 --   github/copilot.vim
 vim.keymap.set('i', '<C-l>', '<Plug>(copilot-accept-word)')
