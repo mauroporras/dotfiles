@@ -4,3 +4,7 @@ tasks:
   format:
     cmds:
       - stylua .
+
+  clear-rr-cache:
+    cmds:
+      - rm -rf .git/rr-cache

@@ -26,6 +26,10 @@ tasks:
     cmds:
       - pnpm run build
 
+  clear-rr-cache:
+    cmds:
+      - rm -rf .git/rr-cache
+
   dev:
     preconditions:
       - sh: which jq
