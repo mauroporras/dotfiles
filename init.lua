@@ -498,6 +498,18 @@ require('lazy').setup({
     opts = {},
   },
 
+  { -- Navigate code symbols with LSP
+    'hasansujon786/nvim-navbuddy',
+    dependencies = {
+      'MunifTanjim/nui.nvim',
+    },
+    opts = {
+      lsp = {
+        auto_attach = true,
+      },
+    },
+  },
+
   -- Highlight, edit, and navigate code
 }, {
   ui = {

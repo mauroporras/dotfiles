@@ -49,20 +49,6 @@
   }
 
   use {
-    'SmiteshP/nvim-navbuddy',
-    requires = {
-      'MunifTanjim/nui.nvim',
-    },
-    config = function()
-      require('nvim-navbuddy').setup {
-        lsp = {
-          auto_attach = true,
-        },
-      }
-    end,
-  }
-
-  use {
     'stevearc/oil.nvim',
     config = function()
       require('oil').setup {
