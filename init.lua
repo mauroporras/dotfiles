@@ -100,6 +100,8 @@ vim.o.confirm = true
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
+-- To find what's using a key map:
+--   :verbose nmap <leader>b
 
 -- Clear highlights on search when pressing <Esc> in normal mode
 --  See `:help hlsearch`
@@ -162,6 +164,13 @@ vim.keymap.set('t', '<C-w>h', '<C-\\><C-n><C-w>h', { desc = 'Move focus to left 
 vim.keymap.set('t', '<C-w>j', '<C-\\><C-n><C-w>j', { desc = 'Move focus to lower window' })
 vim.keymap.set('t', '<C-w>k', '<C-\\><C-n><C-w>k', { desc = 'Move focus to upper window' })
 vim.keymap.set('t', '<C-w>l', '<C-\\><C-n><C-w>l', { desc = 'Move focus to right window' })
+
+-- Insert (:h mapmode-i)
+vim.keymap.set('i', '<C-a>', '<Home>')
+vim.keymap.set('i', '<C-b>', '<Left>')
+vim.keymap.set('i', '<C-d>', '<Del>')
+vim.keymap.set('i', '<C-e>', '<End>')
+vim.keymap.set('i', '<C-f>', '<Right>')
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
@@ -961,18 +970,8 @@ telescope.load_extension 'fzf'
 telescope.load_extension 'smart_history'
 telescope.load_extension 'ui-select'
 
--- To find what's using a key map:
---   :verbose nmap <leader>b
-
 -- See:
 -- :help lua-guide
-
--- Insert.
-vim.api.nvim_set_keymap('i', '<C-a>', '<Home>', optNRM)
-vim.api.nvim_set_keymap('i', '<C-b>', '<Left>', optNRM)
-vim.api.nvim_set_keymap('i', '<C-d>', '<Del>', optNRM)
-vim.api.nvim_set_keymap('i', '<C-e>', '<End>', optNRM)
-vim.api.nvim_set_keymap('i', '<C-f>', '<Right>', optNRM)
 
 -- Normal.
 -- NOTE: legendary.nvim is archived, consider migrating to which-key
