@@ -409,6 +409,11 @@ require('legendary').setup({
       end,
       description = 'Reload file and preserve scroll position.'
     },
+    -- Tabs.
+    { '<Leader>tn', ':tabnew<CR>', description = 'Opens tabpage after the current one.' },
+    { '<Leader>tp', ':-tabnew<CR>', description = 'Opens tabpage before the current.' },
+    { '<M-h>', ':tabprevious<CR>', description = 'Previous tab.' },
+    { '<M-l>', ':tabnext<CR>', description = 'Nex tab.' },
     { '<Esc>', ':nohlsearch<CR><Esc>', description = 'Stop the highlighting for the search.' },
     { '<Leader>a', ':Telescope live_grep<CR>', description = 'Search in all files.' },
     { '<Leader>A', ':Telescope grep_string<CR>', description = 'Searches string under your cursor.' },
