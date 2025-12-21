@@ -77,18 +77,8 @@ return require('packer').startup(function(use)
 
   use 'folke/trouble.nvim'
 
-  use {
-    'RRethy/vim-illuminate',
-    config = function()
-      require('illuminate').configure({
-        providers = {
-          'lsp',
-          'treesitter',
-        },
-        delay = 200,
-      })
-    end
-  }
+  -- Highlight other uses of the word under the cursor.
+  use 'RRethy/vim-illuminate'
 
   use 'kevinoid/vim-jsonc'
   use 'lewis6991/gitsigns.nvim'
