@@ -450,8 +450,6 @@ vim.api.nvim_set_keymap('n', '<C-n>', ':cnext<CR>', optNRM)
 vim.api.nvim_set_keymap('n', '<C-p>', ':cprevious<CR>', optNRM)
 
 --   Scrolling.
-vim.api.nvim_set_keymap('n', '<C-e>', '3<C-e>', optNRM)
-vim.api.nvim_set_keymap('n', '<C-y>', '3<C-y>', optNRM)
 vim.api.nvim_set_keymap('n', '<C-d>', '5<C-d>', optNRM)
 vim.api.nvim_set_keymap('n', '<C-u>', '5<C-u>', optNRM)
 
