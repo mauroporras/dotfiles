@@ -554,7 +554,8 @@ vim.opt.completeopt = {
 }
 vim.opt.cursorline = true
 vim.opt.cmdheight = 2
-vim.opt.number = true
+-- Make line numbers default
+vim.o.number = true
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.mouse = 'a'
