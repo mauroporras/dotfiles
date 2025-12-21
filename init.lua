@@ -108,6 +108,9 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>cq', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
+-- Save all buffers
+vim.keymap.set('n', '<Leader>s', '<cmd>wall<CR>', { desc = 'Save all buffers' })
+
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
 -- is not what someone will guess without a bit more experience.
@@ -1025,7 +1028,6 @@ vim.api.nvim_set_keymap('n', '<Leader>l', ':edit #<CR>', optNRM)
 vim.api.nvim_set_keymap('n', '<Left>', ':bprevious<CR>', optNRM)
 vim.api.nvim_set_keymap('n', '<Right>', ':bnext<CR>', optNRM)
 vim.api.nvim_set_keymap('n', '<Leader>q', '<C-w>q', optNRM)
-vim.api.nvim_set_keymap('n', '<Leader>s', ':wall<CR>', optNRM)
 
 --   github/copilot.vim
 vim.keymap.set('i', '<C-l>', '<Plug>(copilot-accept-word)')
