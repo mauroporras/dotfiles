@@ -36,3 +36,6 @@ Thumbs.db
 *.shada
 *.vim
 tags
+
+# AI
+.claude/settings.local.json
