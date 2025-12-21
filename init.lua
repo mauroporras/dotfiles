@@ -560,6 +560,11 @@ require('lazy').setup({
   { -- Yazi file manager integration
     'mikavilpas/yazi.nvim',
     dependencies = { 'folke/snacks.nvim' },
+    keys = {
+      { '<Leader>f', '<cmd>Yazi<CR>', desc = 'Open file manager focused on the current file.' },
+      { '<Leader>Fc', '<cmd>Yazi cwd<CR>', desc = 'Open file manager focused on the `cwd`.' },
+      { '<Leader>Fl', '<cmd>Yazi toggle<CR>', desc = 'Open file manager focused on the `cwd`.' },
+    },
     opts = {},
   },
 
@@ -982,9 +987,6 @@ require('legendary').setup {
       description = 'Editing history with intelligent prioritization.',
     },
     { '<Leader>o', ':Telescope find_files<CR>', description = 'Find files.' },
-    { '<Leader>f', ':Yazi<CR>', description = 'Open file manager focused on the current file.' },
-    { '<Leader>Fc', ':Yazi cwd<CR>', description = 'Open file manager focused on the `cwd`.' },
-    { '<Leader>Fl', ':Yazi toggle<CR>', description = 'Open file manager focused on the `cwd`.' },
     { '<Leader>vc', ':Telescope git_bcommits<CR>', description = "Lists buffer's Git commits." },
     { '<Leader>zl', ':Telescope current_buffer_fuzzy_find<CR>', description = 'Fuzzy search in the current buffer.' },
     { '<Leader>zh', ':Telescope oldfiles<CR>', description = 'Lists previously open files.' },
