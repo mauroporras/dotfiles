@@ -34,5 +34,10 @@ fi
 bindkey "^p" up-line-or-search
 bindkey "^n" down-line-or-search
 
+# Custom functions
+take() {
+  mkdir -p "$1" && cd "$1"
+}
+
 # Misc.
 # plugins=(colored-man-pages colorize docker httpie zsh-completions)
