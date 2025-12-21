@@ -27,18 +27,6 @@
 
   use 'mrjones2014/legendary.nvim' -- NOTE: archived, consider migrating to which-key
 
-  use {
-    'numToStr/Comment.nvim',
-    requires = {
-      'JoosepAlviste/nvim-ts-context-commentstring',
-    },
-    config = function()
-      require('Comment').setup {
-        pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
-      }
-    end,
-  }
-
   use 'nvim-lualine/lualine.nvim'
 
   use {
