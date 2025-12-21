@@ -1,5 +1,6 @@
 alias ai='claude'
 alias e='nvim -i custom.shada'
+alias ek='NVIM_APPNAME="nvim-kickstart" nvim'
 alias f='yazi'
 alias g='git'
 # Replacement for 'ls -lAhF --group-directories-first'
