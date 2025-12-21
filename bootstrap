@@ -20,6 +20,10 @@ ln -sf ~/dotfiles/misc-configs/lazygit/config.yml .config/lazygit/config.yml
 
 ln -sf ~/dotfiles/gitignore_global .gitignore_global
 
+mkdir -p .claude
+ln -sf ~/dotfiles/misc-configs/claude/commands .claude/commands
+ln -sf ~/dotfiles/misc-configs/claude/statusline-command.sh .claude/statusline-command.sh
+
 ln -sf ~/dotfiles/misc-configs/starship/starship.toml .config/starship.toml
 
 mkdir -p .config/yazi
