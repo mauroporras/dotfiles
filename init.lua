@@ -44,9 +44,10 @@ vim.o.breakindent = true
 -- Save undo history
 vim.o.undofile = true
 
--- Searching.
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
+-- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
+vim.o.ignorecase = true
+vim.o.smartcase = true
+
 -- Substituting.
 vim.opt.inccommand = 'nosplit'
 
