@@ -589,7 +589,12 @@ require('lazy').setup({
   },
 
   -- GitHub Copilot
-  { 'github/copilot.vim' },
+  {
+    'github/copilot.vim',
+    keys = {
+      { '<C-l>', '<Plug>(copilot-accept-word)', mode = 'i', desc = 'Accept Copilot word' },
+    },
+  },
 
   { -- Highlight unique characters for f/F/t/T motions
     'unblevable/quick-scope',
@@ -995,9 +1000,6 @@ require('legendary').setup {
   },
 }
 --]]
-
---   github/copilot.vim
-vim.keymap.set('i', '<C-l>', '<Plug>(copilot-accept-word)')
 
 -- To show the current scheme:
 --   :colorscheme
