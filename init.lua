@@ -779,9 +779,6 @@ vim.opt.completeopt = {
 }
 vim.opt.cmdheight = 2
 
-require 'plugins'
-require 'snippets'
-
 local optNRM = { noremap = true }
 
 -- LSP {{{
@@ -1039,6 +1036,8 @@ vim.cmd [[
   " Recognize some extensions known to have JSON with comments.
   autocmd BufNewFile,BufRead tsconfig.json setlocal filetype=jsonc
 ]]
+
+require 'snippets'
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
