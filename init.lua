@@ -358,7 +358,7 @@ require('lazy').setup {
       { '<Leader>O', '<cmd>Telescope frecency workspace=CWD<CR>', desc = 'Frecency (recent files)' },
       { '<Leader>o', '<cmd>Telescope find_files<CR>', desc = 'Find files' },
       { '<Leader>vc', '<cmd>Telescope git_bcommits<CR>', desc = 'Buffer Git commits' },
-      { '<Leader>ml', '<cmd>Telescope current_buffer_fuzzy_find<CR>', desc = 'Fuzzy find in buffer' },
+      { '<Leader>/', '<cmd>Telescope current_buffer_fuzzy_find<CR>', desc = 'Fuzzy find in buffer' },
       { '<Leader>mh', '<cmd>Telescope oldfiles<CR>', desc = 'Recent files' },
       { '<Leader>mr', '<cmd>Telescope resume<CR>', desc = 'Resume last picker' },
     },
