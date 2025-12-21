@@ -1,3 +1,4 @@
+alias ai='claude'
 alias e='nvim -i custom.shada'
 alias f='yazi'
 alias g='git'
