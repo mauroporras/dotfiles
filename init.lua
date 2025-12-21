@@ -112,9 +112,13 @@ vim.keymap.set('n', '<leader>cq', vim.diagnostic.setloclist, { desc = 'Open diag
 vim.keymap.set('n', '<Leader>s', '<cmd>wall<CR>', { desc = 'Save all buffers' })
 
 -- Tabs
+vim.keymap.set('n', '<Leader>tn', '<cmd>tabnew<CR>', { desc = 'New tab after current' })
+vim.keymap.set('n', '<Leader>tp', '<cmd>-tabnew<CR>', { desc = 'New tab before current' })
 vim.keymap.set('n', '<Leader>tt', '<cmd>$tabnew<CR>', { desc = 'New tab at end' })
 vim.keymap.set('n', '<Leader>tc', '<cmd>tabclose<CR>', { desc = 'Close tab' })
 vim.keymap.set('n', '<Leader>ts', '<cmd>tab split<CR>', { desc = 'Split to new tab' })
+vim.keymap.set('n', '<M-h>', '<cmd>tabprevious<CR>', { desc = 'Previous tab' })
+vim.keymap.set('n', '<M-l>', '<cmd>tabnext<CR>', { desc = 'Next tab' })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
@@ -954,11 +958,6 @@ require('legendary').setup {
       end,
       description = 'Reload file and preserve scroll position',
     },
-    -- Tabs.
-    { '<Leader>tn', ':tabnew<CR>', description = 'Opens tabpage after the current one' },
-    { '<Leader>tp', ':-tabnew<CR>', description = 'Opens tabpage before the current' },
-    { '<M-h>', ':tabprevious<CR>', description = 'Previous tab' },
-    { '<M-l>', ':tabnext<CR>', description = 'Nex tab' },
     -- Windows. Temporal.
     { '<C-w><C-w>', '', description = 'Do nothing. To unlearn shortcut' },
     { '<C-w>h', '', description = 'Do nothing. To unlearn shortcut' },
