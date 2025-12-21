@@ -23,24 +23,6 @@
   }
 
   -- Misc.
-  use {
-    'catppuccin/nvim',
-    as = 'catppuccin',
-    config = function()
-      require('catppuccin').setup {
-        integrations = {
-          cmp = true,
-          lsp_trouble = true,
-          native_lsp = {
-            enabled = true,
-          },
-          telescope = true,
-          treesitter = true,
-        },
-      }
-    end,
-  }
-
   use 'chentoast/marks.nvim'
   use 'euclidianAce/BetterLua.vim'
 
