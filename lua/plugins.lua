@@ -48,17 +48,6 @@
     run = ':TSUpdate',
   }
 
-  use {
-    'stevearc/oil.nvim',
-    config = function()
-      require('oil').setup {
-        view_options = {
-          show_hidden = true,
-        },
-      }
-    end,
-  }
-
   -- Easy left and right motion.
   use 'unblevable/quick-scope'
 

@@ -510,6 +510,15 @@ require('lazy').setup({
     },
   },
 
+  { -- File explorer as a buffer
+    'stevearc/oil.nvim',
+    opts = {
+      view_options = {
+        show_hidden = true,
+      },
+    },
+  },
+
   -- Highlight, edit, and navigate code
 }, {
   ui = {
