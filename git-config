@@ -45,6 +45,7 @@ git config --global mergetool.prompt true
 git config --global diff.tool 'vimdiff'
 git config --global push.default 'simple'
 git config --global push.autoSetupRemote true
+git config --global rerere.enabled true
 
 git config --global color.grep.filename 'magenta'
 git config --global color.grep.linenumber 'blue'
