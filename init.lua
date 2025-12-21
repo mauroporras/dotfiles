@@ -400,6 +400,15 @@ vim.api.nvim_set_keymap('i', '<C-f>', '<Right>', optNRM)
 -- Normal.
 require('legendary').setup({
   keymaps = {
+    {
+      '<Leader>e',
+      function()
+        local view = vim.fn.winsaveview()
+        vim.cmd('edit!')
+        vim.fn.winrestview(view)
+      end,
+      description = 'Reload file and preserve scroll position.'
+    },
     { '<Esc>', ':nohlsearch<CR><Esc>', description = 'Stop the highlighting for the search.' },
     { '<Leader>a', ':Telescope live_grep<CR>', description = 'Search in all files.' },
     { '<Leader>A', ':Telescope grep_string<CR>', description = 'Searches string under your cursor.' },
@@ -435,7 +444,6 @@ vim.api.nvim_set_keymap('n', '<Leader>tc', ':tabclose<CR>', optNRM)
 
 --   Buffers.
 vim.api.nvim_set_keymap('n', '<Leader>d', ':bdelete<CR>', optNRM)
-vim.api.nvim_set_keymap('n', '<Leader>e', ':edit!<CR>', optNRM)
 vim.api.nvim_set_keymap('n', '<Leader>l', ':edit #<CR>', optNRM)
 vim.api.nvim_set_keymap('n', '<Left>', ':bprevious<CR>', optNRM)
 vim.api.nvim_set_keymap('n', '<Right>', ':bnext<CR>', optNRM)
