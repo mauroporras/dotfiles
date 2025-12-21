@@ -216,9 +216,9 @@ require('lazy').setup({
       { '<Leader>vn', '<cmd>Gitsigns next_hunk<CR>', desc = 'Next hunk' },
       { '<Leader>vp', '<cmd>Gitsigns prev_hunk<CR>', desc = 'Previous hunk' },
       { '<Leader>vR', '<cmd>Gitsigns reset_buffer<CR>', desc = 'Reset buffer' },
-      { '<Leader>vr', '<cmd>Gitsigns reset_hunk<CR>', desc = 'Reset hunk' },
+      { '<Leader>vr', '<cmd>Gitsigns reset_hunk<CR>', mode = { 'n', 'v' }, desc = 'Reset hunk' },
       { '<Leader>vS', '<cmd>Gitsigns stage_buffer<CR>', desc = 'Stage buffer' },
-      { '<Leader>vs', '<cmd>Gitsigns stage_hunk<CR>', desc = 'Stage hunk' },
+      { '<Leader>vs', '<cmd>Gitsigns stage_hunk<CR>', mode = { 'n', 'v' }, desc = 'Stage hunk' },
       { '<Leader>vu', '<cmd>Gitsigns undo_stage_hunk<CR>', desc = 'Undo stage hunk' },
     },
     opts = {
@@ -292,8 +292,10 @@ require('lazy').setup({
 
       -- Document existing key chains
       spec = {
-        { '<leader>t', group = '[T]oggle' },
-        { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
+        { '<leader>m', group = '[M]isc' },
+        { '<leader>t', group = '[T]abs' },
+        { '<leader>v', group = '[V]ersioning' },
+        { '<leader>z', group = 'Buffers' },
       },
     },
   },
