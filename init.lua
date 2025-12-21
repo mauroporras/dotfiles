@@ -40,9 +40,6 @@ local on_attach = function(_, bufnr)
   vim.keymap.set('n', '<Leader>ca', vim.lsp.buf.code_action, bufopts)
 end
 
--- neoformat
-vim.g.neoformat_try_node_exe = 1
-
 -- nvim-cmp {{{
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
@@ -382,13 +379,6 @@ vim.g.qs_highlight_on_keys = {
   'T',
 }
 
--- vista.vim
-vim.g.vista_blink = { 0, 0 }
-vim.g.vista_sidebar_width = 50
-vim.cmd([[
-  let g:vista#renderer#enable_icon = 0
-]])
-
 -- marks.
 require'marks'.setup {
   default_mappings = false,
@@ -445,9 +435,6 @@ require('legendary').setup({
 
 vim.api.nvim_set_keymap('n', '<C-n>', ':cnext<CR>', optNRM)
 vim.api.nvim_set_keymap('n', '<C-p>', ':cprevious<CR>', optNRM)
-
---   Code.
-vim.api.nvim_set_keymap('n', '<Leader>co', ':Vista!!<CR>', optNRM)
 
 --   Scrolling.
 vim.api.nvim_set_keymap('n', '<C-e>', '3<C-e>', optNRM)
@@ -506,9 +493,6 @@ vim.cmd([[
   " Custom highlights.
   highlight HighlightedyankRegion guibg=violet guifg=black
 
-  highlight LeapLabelPrimary guibg=cyan guifg=black
-  highlight LeapLabelSecondary guibg=black guifg=cyan
-
   highlight IlluminatedWordText guibg=paleturquoise
   highlight IlluminatedWordRead guibg=paleturquoise
   highlight IlluminatedWordWrite guibg=paleturquoise
@@ -566,10 +550,4 @@ vim.opt.listchars = {
 vim.cmd([[
   " Recognize some extensions known to have JSON with comments.
   autocmd BufNewFile,BufRead tsconfig.json setlocal filetype=jsonc
-
-  " To have Neoformat run Prettier on save:
-  augroup fmt
-    autocmd!
-    autocmd BufWritePre * undojoin | Neoformat
-  augroup END
 ]])
