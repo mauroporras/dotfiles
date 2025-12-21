@@ -557,6 +557,12 @@ require('lazy').setup({
     },
   },
 
+  { -- Yazi file manager integration
+    'mikavilpas/yazi.nvim',
+    dependencies = { 'folke/snacks.nvim' },
+    opts = {},
+  },
+
   { -- Highlight unique characters for f/F/t/T motions
     'unblevable/quick-scope',
     init = function()

@@ -46,12 +46,5 @@
     run = ':TSUpdate',
   }
 
-  use {
-    'mikavilpas/yazi.nvim',
-    requires = {
-      { 'folke/snacks.nvim' },
-    },
-  }
-
   use 'github/copilot.vim'
 --]]
