@@ -802,7 +802,8 @@ local on_attach = function(_, bufnr)
   vim.keymap.set('n', '<Leader>ca', vim.lsp.buf.code_action, bufopts)
 end
 
--- nvim-cmp {{{
+-- FIXME: migrate to lazy.nvim
+--[[ nvim-cmp {{{
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
@@ -901,9 +902,11 @@ cmp.setup {
   },
 }
 -- }}}
+--]]
 -- }}}
 
--- nvim-treesitter {{{
+-- FIXME: migrate to lazy.nvim
+--[[ nvim-treesitter {{{
 --   See:
 --     https://github.com/nvim-treesitter/nvim-treesitter#language-parsers
 --   To update all parsers:
@@ -985,6 +988,7 @@ require('nvim-treesitter.configs').setup {
   },
 }
 -- }}}
+--]]
 
 -- Highlights {{{
 -- To show the current scheme:
@@ -1032,7 +1036,8 @@ vim.cmd [[
   autocmd BufNewFile,BufRead tsconfig.json setlocal filetype=jsonc
 ]]
 
-require 'snippets'
+-- FIXME: migrate to lazy.nvim
+-- require 'snippets'
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
