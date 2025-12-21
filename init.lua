@@ -602,9 +602,9 @@ require('lazy').setup({
     'mikavilpas/yazi.nvim',
     dependencies = { 'folke/snacks.nvim' },
     keys = {
-      { '<Leader>f', '<cmd>Yazi<CR>', desc = 'Open file manager focused on the current file' },
-      { '<Leader>Fc', '<cmd>Yazi cwd<CR>', desc = 'Open file manager focused on the `cwd`' },
-      { '<Leader>Fl', '<cmd>Yazi toggle<CR>', desc = 'Open file manager focused on the `cwd`' },
+      { '<Leader>f', '<cmd>Yazi<CR>', desc = 'File manager on current file' },
+      { '<Leader>Fc', '<cmd>Yazi cwd<CR>', desc = 'File manager on cwd' },
+      { '<Leader>Fl', '<cmd>Yazi toggle<CR>', desc = 'Toggle file manager' },
     },
     opts = {},
   },
