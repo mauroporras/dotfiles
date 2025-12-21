@@ -393,23 +393,50 @@ require('lazy').setup({
       -- - sr)'  - [S]urround [R]eplace [)] [']
       require('mini.surround').setup()
 
-      -- Simple and easy statusline.
-      --  You could remove this setup call if you don't like it,
-      --  and try some other statusline plugin
-      local statusline = require 'mini.statusline'
-      -- set use_icons to true if you have a Nerd Font
-      statusline.setup { use_icons = vim.g.have_nerd_font }
-
-      -- You can configure sections in the statusline by overriding their
-      -- default behavior. For example, here we set the section for
-      -- cursor location to LINE:COLUMN
-      ---@diagnostic disable-next-line: duplicate-set-field
-      statusline.section_location = function()
-        return '%2l:%-2v'
-      end
-
       -- ... and there is more!
       --  Check out: https://github.com/echasnovski/mini.nvim
+    end,
+  },
+
+  { -- Statusline
+    'nvim-lualine/lualine.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    config = function()
+      local custom_theme = require 'lualine.themes.codedark'
+
+      custom_theme.inactive.c = {
+        bg = 'gray',
+        fg = 'lightgray',
+      }
+
+      require('lualine').setup {
+        options = {
+          theme = custom_theme,
+          globalstatus = true,
+        },
+        sections = {
+          lualine_a = {},
+          lualine_b = {
+            'diagnostics',
+          },
+          lualine_c = {
+            {
+              'filename',
+              path = 1,
+            },
+            'navic',
+          },
+          lualine_x = {},
+          lualine_y = {},
+          lualine_z = { 'location' },
+        },
+        winbar = {
+          lualine_a = { 'filename' },
+        },
+        inactive_winbar = {
+          lualine_c = { 'filename' },
+        },
+      }
     end,
   },
 
@@ -666,44 +693,6 @@ vim.g.user_emmet_mode = 'i'
 
 -- folke/trouble.nvim
 require('trouble').setup()
-
--- lualine {{{
-local custom_lualine_theme = require 'lualine.themes.codedark'
-
-custom_lualine_theme.inactive.c = {
-  bg = 'gray',
-  fg = 'lightgray',
-}
-
-require('lualine').setup {
-  options = {
-    theme = custom_lualine_theme,
-    globalstatus = true,
-  },
-  sections = {
-    lualine_a = {},
-    lualine_b = {
-      'diagnostics',
-    },
-    lualine_c = {
-      {
-        'filename',
-        path = 1,
-      },
-      'navic',
-    },
-    lualine_x = {},
-    lualine_y = {},
-    lualine_z = { 'location' },
-  },
-  winbar = {
-    lualine_a = { 'filename' },
-  },
-  inactive_winbar = {
-    lualine_c = { 'filename' },
-  },
-}
--- }}}
 
 -- nvim-telescope/telescope.nvim
 -- Old command for fzf was:
