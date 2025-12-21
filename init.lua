@@ -151,6 +151,12 @@ vim.keymap.set('n', '<C-p>', '<cmd>cprevious<CR>', { desc = 'Previous quickfix i
 vim.keymap.set('n', '<C-d>', '5<C-d>')
 vim.keymap.set('n', '<C-u>', '5<C-u>')
 
+-- Command line (:h mapmode-c)
+vim.api.nvim_set_keymap('c', '<C-a>', '<Home>', { noremap = true })
+vim.api.nvim_set_keymap('c', '<C-b>', '<Left>', { noremap = true })
+vim.api.nvim_set_keymap('c', '<C-d>', '<Del>', { noremap = true })
+vim.api.nvim_set_keymap('c', '<C-f>', '<Right>', { noremap = true })
+
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
 -- is not what someone will guess without a bit more experience.
@@ -953,13 +959,7 @@ telescope.load_extension 'ui-select'
 --   :verbose nmap <leader>b
 
 -- See:
--- https://github.com/nanotee/nvim-lua-guide#defining-mappings
-
--- Command line (:h mapmode-c).
-vim.api.nvim_set_keymap('c', '<C-a>', '<Home>', optNRM)
-vim.api.nvim_set_keymap('c', '<C-b>', '<Left>', optNRM)
-vim.api.nvim_set_keymap('c', '<C-d>', '<Del>', optNRM)
-vim.api.nvim_set_keymap('c', '<C-f>', '<Right>', optNRM)
+-- :help lua-guide
 
 -- Terminal (:h mapmode-t).
 vim.api.nvim_set_keymap('t', '<C-w>h', '<C-\\><C-n><C-w>h', optNRM)
