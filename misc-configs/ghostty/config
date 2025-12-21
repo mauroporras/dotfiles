@@ -55,8 +55,8 @@ keybind = ctrl+[=text:\x1B
 # Tab
 keybind = ctrl+i=text:\x09
 
-keybind = cmd+e=scroll_page_lines:3
-keybind = cmd+y=scroll_page_lines:-3
+keybind = cmd+e=scroll_page_lines:1
+keybind = cmd+y=scroll_page_lines:-1
 
 keybind = cmd+r=clear_screen
 
