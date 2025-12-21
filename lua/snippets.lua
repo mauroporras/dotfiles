@@ -102,12 +102,16 @@ ls.add_snippets("javascript", {
     t{ '', '}'}
   }),
   s("clac", {
-    t'constructor (', i(1), t{ ') {', '' },
+    t{ 'constructor (', '' },
+    t'    ', i(1),
+    t{ '', ') {', '' },
     t'    ', i(2), t{ '', '' },
     t'}'
   }),
   s("clacs", {
-    t'constructor (', i(1), t{ ') {', '' },
+    t{ 'constructor (', '' },
+    t'    ', i(1),
+    t{ '', ') {', '' },
     t{ '    super()', '', '' },
     t'    ', i(2), t{ '', '' },
     t'}'
