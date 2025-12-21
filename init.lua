@@ -510,6 +510,44 @@ require('lazy').setup({
     },
   },
 
+  { -- Breadcrumbs showing code context (used in lualine)
+    'SmiteshP/nvim-navic',
+    opts = {
+      icons = {
+        File = ' ',
+        Module = ' ',
+        Namespace = ' ',
+        Package = ' ',
+        Class = ' ',
+        Method = ' ',
+        Property = ' ',
+        Field = ' ',
+        Constructor = ' ',
+        Enum = ' ',
+        Interface = ' ',
+        Function = ' ',
+        Variable = ' ',
+        Constant = ' ',
+        String = ' ',
+        Number = ' ',
+        Boolean = ' ',
+        Array = ' ',
+        Object = ' ',
+        Key = ' ',
+        Null = ' ',
+        EnumMember = ' ',
+        Struct = ' ',
+        Event = ' ',
+        Operator = ' ',
+        TypeParameter = ' ',
+      },
+      lsp = {
+        auto_attach = true,
+      },
+      separator = ' › ',
+    },
+  },
+
   { -- File explorer as a buffer
     'stevearc/oil.nvim',
     opts = {
