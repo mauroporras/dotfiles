@@ -4,10 +4,9 @@ alias f='yazi'
 alias g='git'
 # Replacement for 'ls -lAhF --group-directories-first'
 alias l='eza -agl --group-directories-first --time-style=long-iso'
+alias s="rg --follow --hidden --smart-case --no-ignore --glob '!{.git,dist,node_modules,tags}'"
 alias t='task'
 alias v='lazygit'
-
-alias rg="rg --follow --hidden --smart-case --no-ignore --glob '!{.git,dist,node_modules,tags}'"
 
 # Docker {{{
 alias dk='docker'
