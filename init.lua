@@ -58,6 +58,10 @@ vim.o.updatetime = 250
 -- Decrease mapped sequence wait time
 vim.o.timeoutlen = 300
 
+-- Configure how new splits should be opened
+vim.o.splitright = true
+vim.o.splitbelow = true
+
 -- Substituting.
 vim.opt.inccommand = 'nosplit'
 
@@ -69,8 +73,6 @@ vim.opt.completeopt = {
 }
 vim.opt.cursorline = true
 vim.opt.cmdheight = 2
-vim.opt.splitbelow = true
-vim.opt.splitright = true
 vim.opt.listchars = {
   tab = '→ ',
   space = '·',
