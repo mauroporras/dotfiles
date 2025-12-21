@@ -968,6 +968,7 @@ vim.api.nvim_set_keymap('i', '<C-f>', '<Right>', optNRM)
 
 -- Normal.
 -- NOTE: legendary.nvim is archived, consider migrating to which-key
+--[[
 require('legendary').setup {
   keymaps = {
     {
@@ -977,39 +978,40 @@ require('legendary').setup {
         vim.cmd 'edit!'
         vim.fn.winrestview(view)
       end,
-      description = 'Reload file and preserve scroll position.',
+      description = 'Reload file and preserve scroll position',
     },
     -- Tabs.
-    { '<Leader>tn', ':tabnew<CR>', description = 'Opens tabpage after the current one.' },
-    { '<Leader>tp', ':-tabnew<CR>', description = 'Opens tabpage before the current.' },
-    { '<M-h>', ':tabprevious<CR>', description = 'Previous tab.' },
-    { '<M-l>', ':tabnext<CR>', description = 'Nex tab.' },
+    { '<Leader>tn', ':tabnew<CR>', description = 'Opens tabpage after the current one' },
+    { '<Leader>tp', ':-tabnew<CR>', description = 'Opens tabpage before the current' },
+    { '<M-h>', ':tabprevious<CR>', description = 'Previous tab' },
+    { '<M-l>', ':tabnext<CR>', description = 'Nex tab' },
     -- Windows. Temporal.
-    { '<C-w><C-w>', '', description = 'Do nothing. To unlearn shortcut.' },
-    { '<C-w>h', '', description = 'Do nothing. To unlearn shortcut.' },
-    { '<C-w>l', '', description = 'Do nothing. To unlearn shortcut.' },
-    { '<C-w>j', '', description = 'Do nothing. To unlearn shortcut.' },
-    { '<C-w>k', '', description = 'Do nothing. To unlearn shortcut.' },
+    { '<C-w><C-w>', '', description = 'Do nothing. To unlearn shortcut' },
+    { '<C-w>h', '', description = 'Do nothing. To unlearn shortcut' },
+    { '<C-w>l', '', description = 'Do nothing. To unlearn shortcut' },
+    { '<C-w>j', '', description = 'Do nothing. To unlearn shortcut' },
+    { '<C-w>k', '', description = 'Do nothing. To unlearn shortcut' },
     -- Misc.
-    { '<Leader>a', ':Telescope live_grep<CR>', description = 'Search in all files.' },
-    { '<Leader>A', ':Telescope grep_string<CR>', description = 'Searches string under your cursor.' },
-    { '<Leader>b', ':Telescope buffers<CR>', description = 'List buffers.' },
-    { '<Leader>gd', ':Telescope lsp_definitions<CR>', description = 'LSP definition of word under cursor.' },
-    { '<Leader>gi', ':Telescope lsp_implementations<CR>', description = 'LSP implementations of word under cursor.' },
-    { '<Leader>gr', ':Telescope lsp_references<CR>', description = 'LSP references of word under cursor.' },
-    { '<Leader>gs', ':Telescope lsp_document_symbols<CR>', description = 'Lists LSP symbols in current buffer.' },
+    { '<Leader>a', ':Telescope live_grep<CR>', description = 'Search in all files' },
+    { '<Leader>A', ':Telescope grep_string<CR>', description = 'Searches string under your cursor' },
+    { '<Leader>b', ':Telescope buffers<CR>', description = 'List buffers' },
+    { '<Leader>gd', ':Telescope lsp_definitions<CR>', description = 'LSP definition of word under cursor' },
+    { '<Leader>gi', ':Telescope lsp_implementations<CR>', description = 'LSP implementations of word under cursor' },
+    { '<Leader>gr', ':Telescope lsp_references<CR>', description = 'LSP references of word under cursor' },
+    { '<Leader>gs', ':Telescope lsp_document_symbols<CR>', description = 'Lists LSP symbols in current buffer' },
     {
       '<Leader>O',
       ':Telescope frecency workspace=CWD<CR>',
-      description = 'Editing history with intelligent prioritization.',
+      description = 'Editing history with intelligent prioritization',
     },
-    { '<Leader>o', ':Telescope find_files<CR>', description = 'Find files.' },
+    { '<Leader>o', ':Telescope find_files<CR>', description = 'Find files' },
     { '<Leader>vc', ':Telescope git_bcommits<CR>', description = "Lists buffer's Git commits." },
-    { '<Leader>zl', ':Telescope current_buffer_fuzzy_find<CR>', description = 'Fuzzy search in the current buffer.' },
-    { '<Leader>zh', ':Telescope oldfiles<CR>', description = 'Lists previously open files.' },
-    { '<Leader>zr', ':Telescope resume<CR>', description = 'Lists results of previous picker.' },
+    { '<Leader>zl', ':Telescope current_buffer_fuzzy_find<CR>', description = 'Fuzzy search in the current buffer' },
+    { '<Leader>zh', ':Telescope oldfiles<CR>', description = 'Lists previously open files' },
+    { '<Leader>zr', ':Telescope resume<CR>', description = 'Lists results of previous picker' },
   },
 }
+--]]
 
 vim.api.nvim_set_keymap('n', '<C-n>', ':cnext<CR>', optNRM)
 vim.api.nvim_set_keymap('n', '<C-p>', ':cprevious<CR>', optNRM)
