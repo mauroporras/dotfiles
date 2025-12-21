@@ -24,6 +24,9 @@ vim.o.number = true
 --  Experiment for yourself to see if you like it!
 -- vim.o.relativenumber = true
 
+-- Enable mouse mode, can be useful for resizing splits for example!
+vim.o.mouse = 'a'
+
 -- Searching.
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
@@ -40,8 +43,6 @@ vim.opt.cursorline = true
 vim.opt.cmdheight = 2
 vim.opt.splitbelow = true
 vim.opt.splitright = true
--- Enable mouse mode, can be useful for resizing splits for example!
-vim.o.mouse = 'a'
 vim.opt.signcolumn = 'auto:2'
 vim.opt.listchars = {
   tab = '→ ',
