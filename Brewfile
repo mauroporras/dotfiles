@@ -4,7 +4,8 @@
 # brew bundle
 # ```
 
-tap "homebrew/bundle"
+#Error: homebrew/bundle was deprecated. This tap is now empty and all its contents were either deleted or migrated.
+#tap "homebrew/bundle"
 
 brew "asciinema"
 brew "bat" # https://github.com/sharkdp/bat
