@@ -4,11 +4,14 @@
 -- :source %
 -- :so $MYVIMRC
 
+-- Set <space> as the leader key
+-- See `:help mapleader`
+--  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
 require("plugins")
 require("snippets")
-
--- Leader.
-vim.g.mapleader = " "
 
 local optNRM = { noremap = true }
 
