@@ -87,13 +87,15 @@ vim.opt.listchars = {
 -- Preview substitutions live, as you type!
 vim.o.inccommand = 'split'
 
+-- Show which line your cursor is on
+vim.o.cursorline = true
+
 -- Misc.
 vim.opt.completeopt = {
   'menu',
   'menuone',
   'noselect',
 }
-vim.opt.cursorline = true
 vim.opt.cmdheight = 2
 
 require 'plugins'
