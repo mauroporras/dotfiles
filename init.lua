@@ -147,6 +147,10 @@ vim.keymap.set('n', '<Leader>q', '<C-w>q', { desc = 'Close window' })
 vim.keymap.set('n', '<C-n>', '<cmd>cnext<CR>', { desc = 'Next quickfix item' })
 vim.keymap.set('n', '<C-p>', '<cmd>cprevious<CR>', { desc = 'Previous quickfix item' })
 
+-- Scrolling
+vim.keymap.set('n', '<C-d>', '5<C-d>')
+vim.keymap.set('n', '<C-u>', '5<C-u>')
+
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
 -- is not what someone will guess without a bit more experience.
@@ -991,10 +995,6 @@ require('legendary').setup {
   },
 }
 --]]
-
---   Scrolling.
-vim.api.nvim_set_keymap('n', '<C-d>', '5<C-d>', optNRM)
-vim.api.nvim_set_keymap('n', '<C-u>', '5<C-u>', optNRM)
 
 --   github/copilot.vim
 vim.keymap.set('i', '<C-l>', '<Plug>(copilot-accept-word)')
