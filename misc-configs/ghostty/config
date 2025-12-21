@@ -90,6 +90,12 @@ keybind = ctrl+cmd+enter=toggle_split_zoom
 keybind = cmd+minus=decrease_font_size:2
 keybind = cmd+equal=increase_font_size:2
 
-# Temporal
+# Assigned to nothing to unlearn them
 keybind = cmd+[=text:
 keybind = cmd+]=text:
+keybind = cmd+d=text:
+keybind = shift+cmd+d=text:
+# keybind = ctrl+c=text:
+# keybind = ctrl+d=text:
+# keybind = ctrl+z=text:
+keybind = shift+enter=text:\x1b\r
