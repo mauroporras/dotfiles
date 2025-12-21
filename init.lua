@@ -449,7 +449,10 @@ require('lazy').setup {
     end,
   },
 
+  -- TODO:
   -- LSP Plugins
+
+  -- TODO:
   -- Main LSP Configuration
 
   { -- Autoformat
@@ -505,6 +508,7 @@ require('lazy').setup {
     },
   },
 
+  -- TODO:
   -- Autocompletion
 
   { -- You can easily change to a different colorscheme.
@@ -757,6 +761,7 @@ require('lazy').setup {
     },
   },
 
+  -- TODO:
   -- Highlight, edit, and navigate code
 }
 -- }}}
