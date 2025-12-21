@@ -55,6 +55,9 @@ vim.o.signcolumn = 'yes'
 -- Decrease update time
 vim.o.updatetime = 250
 
+-- Decrease mapped sequence wait time
+vim.o.timeoutlen = 300
+
 -- Substituting.
 vim.opt.inccommand = 'nosplit'
 
