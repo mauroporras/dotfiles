@@ -277,8 +277,14 @@ ls.add_snippets("javascript", {
   s("t", {
     t'this.', i(1)
   }),
-  s("tt", {
+  s("ta", {
     t'this.', i(1), t' = ', i(2),
+  }),
+  s("tp", {
+    t'this.#', i(1)
+  }),
+  s("tpa", {
+    t'this.#', i(1), t' = ', i(2),
   }),
 
   -- try
