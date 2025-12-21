@@ -74,8 +74,8 @@ return require('packer').startup(function(use)
 
   use 'chentoast/marks.nvim'
   use 'euclidianAce/BetterLua.vim'
+
   use 'folke/trouble.nvim'
-  use 'ggandor/leap.nvim'
 
   use {
     'RRethy/vim-illuminate',
