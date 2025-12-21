@@ -42,6 +42,12 @@ quick-terminal-size = 80%
 
 # Custom Keybindings
 
+# Ctrl+C
+# keybind = cmd+c=text:\x03
+# Ctrl+D
+# keybind = cmd+d=text:\x04
+# Ctrl+Z
+# keybind = cmd+z=text:\x1A
 # CR
 keybind = ctrl+m=text:\x0D
 # Esc
