@@ -488,6 +488,16 @@ require('lazy').setup({
     end,
   },
 
+  { -- Pretty diagnostics list
+    'folke/trouble.nvim',
+    cmd = 'Trouble',
+    keys = {
+      { '<Leader>xx', '<cmd>Trouble diagnostics toggle<CR>', desc = 'Diagnostics (Trouble)' },
+      { '<Leader>xX', '<cmd>Trouble diagnostics toggle filter.buf=0<CR>', desc = 'Buffer Diagnostics (Trouble)' },
+    },
+    opts = {},
+  },
+
   -- Highlight, edit, and navigate code
 }, {
   ui = {
@@ -736,9 +746,6 @@ require('nvim-treesitter.configs').setup {
 }
 -- }}}
 
--- folke/trouble.nvim
-require('trouble').setup()
-
 -- nvim-telescope/telescope.nvim
 -- Old command for fzf was:
 -- ```bash
@@ -928,10 +935,6 @@ vim.api.nvim_set_keymap('n', '<Left>', ':bprevious<CR>', optNRM)
 vim.api.nvim_set_keymap('n', '<Right>', ':bnext<CR>', optNRM)
 vim.api.nvim_set_keymap('n', '<Leader>q', '<C-w>q', optNRM)
 vim.api.nvim_set_keymap('n', '<Leader>s', ':wall<CR>', optNRM)
-
---   folke/trouble.nvim
-vim.keymap.set('n', '<Leader>xx', ':Trouble diagnostics toggle<CR>', optNRM)
-vim.keymap.set('n', '<Leader>xX', ':Trouble diagnostics toggle filter.buf=0<CR>', optNRM)
 
 --   gitsigns.
 vim.api.nvim_set_keymap('n', '<Leader>vb', ':Gitsigns blame_line<CR>', optNRM)
