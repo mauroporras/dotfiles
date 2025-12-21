@@ -46,16 +46,6 @@
     run = ':TSUpdate',
   }
 
-  use {
-    'windwp/nvim-autopairs',
-    config = function()
-      require('nvim-autopairs').setup {
-        map_c_h = true,
-        map_c_w = true,
-      }
-    end,
-  }
-
   -- "nvim-navic" is used in "lualine".
   use {
     'SmiteshP/nvim-navic',

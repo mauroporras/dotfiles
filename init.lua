@@ -526,6 +526,15 @@ require('lazy').setup({
     end,
   },
 
+  { -- Auto-insert matching brackets, quotes, etc.
+    'windwp/nvim-autopairs',
+    event = 'InsertEnter',
+    opts = {
+      map_c_h = true, -- <C-h> deletes a pair
+      map_c_w = true, -- <C-w> deletes a pair and the word before it
+    },
+  },
+
   -- Highlight, edit, and navigate code
 }, {
   ui = {
