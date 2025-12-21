@@ -113,6 +113,8 @@ vim.keymap.set('n', '<Leader>s', '<cmd>wall<CR>', { desc = 'Save all buffers' })
 
 -- Tabs
 vim.keymap.set('n', '<Leader>tt', '<cmd>$tabnew<CR>', { desc = 'New tab at end' })
+vim.keymap.set('n', '<Leader>tc', '<cmd>tabclose<CR>', { desc = 'Close tab' })
+vim.keymap.set('n', '<Leader>ts', '<cmd>tab split<CR>', { desc = 'Split to new tab' })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
@@ -991,10 +993,6 @@ vim.api.nvim_set_keymap('n', '<C-p>', ':cprevious<CR>', optNRM)
 --   Scrolling.
 vim.api.nvim_set_keymap('n', '<C-d>', '5<C-d>', optNRM)
 vim.api.nvim_set_keymap('n', '<C-u>', '5<C-u>', optNRM)
-
---   Tabs.
-vim.api.nvim_set_keymap('n', '<Leader>tc', ':tabclose<CR>', optNRM)
-vim.api.nvim_set_keymap('n', '<Leader>ts', ':tab split<CR>', optNRM)
 
 --   Buffers.
 vim.api.nvim_set_keymap('n', '<Leader>d', ':bdelete<CR>', optNRM)
