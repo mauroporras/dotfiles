@@ -130,7 +130,7 @@ vim.keymap.set('n', '<Leader>tn', '<cmd>tabnew<CR>', { desc = 'New tab after cur
 vim.keymap.set('n', '<Leader>tp', '<cmd>-tabnew<CR>', { desc = 'New tab before current' })
 vim.keymap.set('n', '<Leader>tt', '<cmd>$tabnew<CR>', { desc = 'New tab at end' })
 vim.keymap.set('n', '<Leader>tc', '<cmd>tabclose<CR>', { desc = 'Close tab' })
-vim.keymap.set('n', '<Leader>ts', '<cmd>tab split<CR>', { desc = 'Split to new tab' })
+vim.keymap.set('n', '<Leader>ts', '<cmd>tab split<CR>', { desc = 'Split to new tab' }) -- <C-w>T moves instead of copying
 vim.keymap.set('n', '<M-h>', '<cmd>tabprevious<CR>', { desc = 'Previous tab' })
 vim.keymap.set('n', '<M-l>', '<cmd>tabnext<CR>', { desc = 'Next tab' })
 
