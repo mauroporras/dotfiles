@@ -14,12 +14,12 @@ gui:
     cherryPickedCommitFgColor:
       - green
   showDivergenceFromBaseBranch: arrowAndNumber
-
+  showNumstatInFilesView: true
 git:
-  paging:
-    colorArg: always
-    pager: delta --paging=never
-
+  pagers:
+    - pager: delta --paging=never
+    - pager: delta --paging=never --side-by-side
+    - pager: cat
 customCommands:
   - key: "w"
     context: "files"
