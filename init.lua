@@ -111,6 +111,13 @@ vim.keymap.set('n', '<leader>cq', vim.diagnostic.setloclist, { desc = 'Open diag
 -- Save all buffers
 vim.keymap.set('n', '<Leader>s', '<cmd>wall<CR>', { desc = 'Save all buffers' })
 
+-- Reload file and preserve scroll position
+vim.keymap.set('n', '<Leader>e', function()
+  local view = vim.fn.winsaveview()
+  vim.cmd 'edit!'
+  vim.fn.winrestview(view)
+end, { desc = 'Reload file preserving position' })
+
 -- Tabs
 vim.keymap.set('n', '<Leader>tn', '<cmd>tabnew<CR>', { desc = 'New tab after current' })
 vim.keymap.set('n', '<Leader>tp', '<cmd>-tabnew<CR>', { desc = 'New tab before current' })
@@ -949,15 +956,6 @@ vim.api.nvim_set_keymap('i', '<C-f>', '<Right>', optNRM)
 --[[
 require('legendary').setup {
   keymaps = {
-    {
-      '<Leader>e',
-      function()
-        local view = vim.fn.winsaveview()
-        vim.cmd 'edit!'
-        vim.fn.winrestview(view)
-      end,
-      description = 'Reload file and preserve scroll position',
-    },
     -- Windows. Temporal.
     { '<C-w><C-w>', '', description = 'Do nothing. To unlearn shortcut' },
     { '<C-w>h', '', description = 'Do nothing. To unlearn shortcut' },
