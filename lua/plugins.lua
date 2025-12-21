@@ -38,8 +38,6 @@
     },
   }
 
-  use 'nvim-tree/nvim-web-devicons'
-
   use {
     'nvim-treesitter/nvim-treesitter',
     requires = {
