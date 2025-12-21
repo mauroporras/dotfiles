@@ -27,8 +27,6 @@
 
   use 'mrjones2014/legendary.nvim' -- NOTE: archived, consider migrating to which-key
 
-  use 'nvim-lualine/lualine.nvim'
-
   use {
     'nvim-telescope/telescope.nvim',
     branch = '0.1.x',
