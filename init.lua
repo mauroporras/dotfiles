@@ -519,6 +519,13 @@ require('lazy').setup({
     },
   },
 
+  { -- Highlight unique characters for f/F/t/T motions
+    'unblevable/quick-scope',
+    init = function()
+      vim.g.qs_highlight_on_keys = { 'f', 'F', 't', 'T' }
+    end,
+  },
+
   -- Highlight, edit, and navigate code
 }, {
   ui = {
@@ -855,14 +862,6 @@ telescope.load_extension 'frecency'
 telescope.load_extension 'fzf'
 telescope.load_extension 'smart_history'
 telescope.load_extension 'ui-select'
-
--- quick-scope.
-vim.g.qs_highlight_on_keys = {
-  'f',
-  'F',
-  't',
-  'T',
-}
 
 -- To find what's using a key map:
 --   :verbose nmap <leader>b

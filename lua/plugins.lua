@@ -46,9 +46,6 @@
     run = ':TSUpdate',
   }
 
-  -- Easy left and right motion.
-  use 'unblevable/quick-scope'
-
   use {
     'windwp/nvim-autopairs',
     config = function()
