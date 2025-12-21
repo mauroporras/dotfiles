@@ -105,9 +105,13 @@ end
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-local lspconfig = require 'lspconfig'
+-- Configure global LSP settings
+vim.lsp.config("*", {
+  on_attach = on_attach,
+  capabilities = capabilities,
+})
 
--- Enable some language servers with the additional completion capabilities offered by nvim-cmp
+-- Enable language servers with default settings
 local servers = {
   'bashls',
   'cssls',
@@ -124,16 +128,11 @@ local servers = {
 }
 
 for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-  }
+  vim.lsp.enable(lsp)
 end
 
--- Put plugins with server-specific settings here:
-require('lspconfig').lua_ls.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
+-- Configure servers with specific settings
+vim.lsp.config("lua_ls", {
   settings = {
     Lua = {
       runtime = {
@@ -154,7 +153,9 @@ require('lspconfig').lua_ls.setup {
       },
     },
   },
-}
+})
+
+vim.lsp.enable("lua_ls")
 
 -- luasnip setup
 local luasnip = require 'luasnip'
