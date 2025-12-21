@@ -54,8 +54,6 @@ return require('packer').startup(function(use)
   }
 
   -- Misc.
-  use 'antonk52/vim-browserslist'
-
   use {
     "catppuccin/nvim",
     as = "catppuccin",
