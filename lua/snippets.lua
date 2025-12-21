@@ -291,7 +291,7 @@ ls.add_snippets("javascript", {
   s("try", {
     t{ 'try {', '' },
     t'    ', i(1), t{ '', '' },
-    t'} catch (', i(2, 'error'), t{ ') {', '' },
+    t'} catch (', i(2, 'err'), t{ ') {', '' },
     t'    ', i(3), t{ '', '' },
     t'}'
   }),
