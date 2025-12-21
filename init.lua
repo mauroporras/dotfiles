@@ -440,6 +440,14 @@ require('lazy').setup({
     end,
   },
 
+  { -- Show marks in the sign column
+    'chentoast/marks.nvim',
+    opts = {
+      default_mappings = false,
+      refresh_interval = 333,
+    },
+  },
+
   -- Highlight, edit, and navigate code
 }, {
   ui = {
@@ -789,12 +797,6 @@ vim.g.qs_highlight_on_keys = {
   'F',
   't',
   'T',
-}
-
--- marks.
-require('marks').setup {
-  default_mappings = false,
-  refresh_interval = 333,
 }
 
 -- To find what's using a key map:

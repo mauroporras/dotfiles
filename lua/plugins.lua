@@ -23,7 +23,6 @@
   }
 
   -- Misc.
-  use 'chentoast/marks.nvim'
   use 'euclidianAce/BetterLua.vim'
 
   use 'folke/trouble.nvim'
