@@ -414,6 +414,11 @@ require('legendary').setup({
     { '<Leader>tp', ':-tabnew<CR>', description = 'Opens tabpage before the current.' },
     { '<M-h>', ':tabprevious<CR>', description = 'Previous tab.' },
     { '<M-l>', ':tabnext<CR>', description = 'Nex tab.' },
+    -- Windows.
+    { '<C-h>', '<C-w>h', description = 'Window left.' },
+    { '<C-l>', '<C-w>l', description = 'Window right.' },
+    { '<C-j>', '<C-w>j', description = 'Window up.' },
+    { '<C-k>', '<C-w>k', description = 'Window down.' },
     { '<Esc>', ':nohlsearch<CR><Esc>', description = 'Stop the highlighting for the search.' },
     { '<Leader>a', ':Telescope live_grep<CR>', description = 'Search in all files.' },
     { '<Leader>A', ':Telescope grep_string<CR>', description = 'Searches string under your cursor.' },
