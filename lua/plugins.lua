@@ -161,6 +161,20 @@ return require('packer').startup(function(use)
     end
   }
 
+  use {
+    'SmiteshP/nvim-navbuddy',
+    requires = {
+      'MunifTanjim/nui.nvim',
+    },
+    config = function()
+      require('nvim-navbuddy').setup({
+        lsp = {
+          auto_attach = true,
+        },
+      })
+    end
+  }
+
   use 'unblevable/quick-scope'
 
   use {
