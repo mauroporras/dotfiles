@@ -288,7 +288,7 @@ telescope.setup({
     layout_config = {
       height = 999,
       prompt_position = 'top',
-      scroll_speed = 4,
+      scroll_speed = 3,
       width = 999,
     },
     sorting_strategy = 'ascending',
