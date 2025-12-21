@@ -419,6 +419,13 @@ require('legendary').setup({
     { '<C-l>', '<C-w>l', description = 'Window right.' },
     { '<C-j>', '<C-w>j', description = 'Window up.' },
     { '<C-k>', '<C-w>k', description = 'Window down.' },
+    -- Windows. Temporal.
+    { '<C-w><C-w>', '', description = 'Do nothing. To unlearn shortcut.' },
+    { '<C-w>h', '', description = 'Do nothing. To unlearn shortcut.' },
+    { '<C-w>l', '', description = 'Do nothing. To unlearn shortcut.' },
+    { '<C-w>j', '', description = 'Do nothing. To unlearn shortcut.' },
+    { '<C-w>k', '', description = 'Do nothing. To unlearn shortcut.' },
+    -- Misc.
     { '<Esc>', ':nohlsearch<CR><Esc>', description = 'Stop the highlighting for the search.' },
     { '<Leader>a', ':Telescope live_grep<CR>', description = 'Search in all files.' },
     { '<Leader>A', ':Telescope grep_string<CR>', description = 'Searches string under your cursor.' },
