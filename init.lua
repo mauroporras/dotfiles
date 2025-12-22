@@ -501,8 +501,6 @@ vim.keymap.set("i", "<C-l>", "<Plug>(copilot-accept-word)")
 vim.o.termguicolors = true
 
 --[[
-vim.cmd.colorscheme("catppuccin-latte")
-
 vim.cmd([=[
   " Custom highlights.
   highlight HighlightedyankRegion guibg=violet guifg=black
