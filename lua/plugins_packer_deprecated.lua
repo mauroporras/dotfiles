@@ -56,12 +56,6 @@ return require("packer").startup(function(use)
     run = "make install_jsregexp",
   })
 
-  -- Misc.
-  use("euclidianAce/BetterLua.vim")
-
-  use("mattn/emmet-vim")
-  use("mrjones2014/legendary.nvim")
-
   use({
     "nvim-telescope/telescope.nvim",
     branch = "0.1.x",
@@ -108,8 +102,6 @@ return require("packer").startup(function(use)
     end,
   })
 
-  -- Easy left and right motion.
-  use("unblevable/quick-scope")
 
   use({
     "windwp/nvim-autopairs",
@@ -127,8 +119,6 @@ return require("packer").startup(function(use)
       { "folke/snacks.nvim" },
     },
   })
-
-  use("github/copilot.vim")
 
   -- Automatically set up your configuration after cloning packer.nvim.
   -- Put this at the end after all plugins.
