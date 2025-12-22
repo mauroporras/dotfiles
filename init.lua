@@ -510,7 +510,7 @@ vim.o.termguicolors = true
 --[[
 vim.cmd.colorscheme("catppuccin-latte")
 
-vim.cmd([[
+vim.cmd([=[
   " Custom highlights.
   highlight HighlightedyankRegion guibg=violet guifg=black
 
@@ -537,10 +537,10 @@ vim.cmd([[
 
   highlight QuickScopePrimary guibg=cyan guifg=black
   highlight QuickScopeSecondary guibg=black guifg=cyan
-]])
+]=])
 
-vim.cmd([[
+vim.cmd([=[
   " Recognize some extensions known to have JSON with comments.
   autocmd BufNewFile,BufRead tsconfig.json setlocal filetype=jsonc
-]])
+]=])
 --]]
