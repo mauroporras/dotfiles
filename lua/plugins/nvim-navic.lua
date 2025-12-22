@@ -2,11 +2,6 @@
 return {
   "SmiteshP/nvim-navic",
   opts = {
-    lsp = {
-      auto_attach = true,
-    },
-    separator = " › ",
-    -- Custom icons:
     --[[
       icons = {
         File = " ",
@@ -37,5 +32,9 @@ return {
         TypeParameter = " ",
       },
     --]]
+    lsp = {
+      auto_attach = true,
+    },
+    separator = " › ",
   },
 }
