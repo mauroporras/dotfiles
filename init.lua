@@ -9,7 +9,7 @@ require("00_settings")
 require("01_lazy_plugin_manager")
 require("02_keymaps")
 -- require("plugins") -- Packer (deprecated)
-require("snippets")
+-- require("snippets")
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
