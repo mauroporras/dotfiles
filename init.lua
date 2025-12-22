@@ -486,10 +486,6 @@ vim.api.nvim_set_keymap("n", "<Leader>q", "<C-w>q", optNRM)
 vim.api.nvim_set_keymap("n", "<Leader>s", ":wall<CR>", optNRM)
 
 --[[
---   folke/trouble.nvim
-vim.keymap.set("n", "<Leader>xx", ":Trouble diagnostics toggle<CR>", optNRM)
-vim.keymap.set("n", "<Leader>xX", ":Trouble diagnostics toggle filter.buf=0<CR>", optNRM)
-
 --   github/copilot.vim
 vim.keymap.set("i", "<C-l>", "<Plug>(copilot-accept-word)")
 --]]
