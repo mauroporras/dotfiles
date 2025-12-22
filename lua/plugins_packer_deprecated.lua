@@ -77,21 +77,6 @@ return require("packer").startup(function(use)
     run = ":TSUpdate",
   })
 
-  use({
-    "SmiteshP/nvim-navbuddy",
-    requires = {
-      "MunifTanjim/nui.nvim",
-    },
-    config = function()
-      require("nvim-navbuddy").setup({
-        lsp = {
-          auto_attach = true,
-        },
-      })
-    end,
-  })
-
-
   -- Automatically set up your configuration after cloning packer.nvim.
   -- Put this at the end after all plugins.
   if packer_bootstrap then
