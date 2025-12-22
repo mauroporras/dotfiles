@@ -82,8 +82,6 @@ return require("packer").startup(function(use)
   -- Highlight other uses of the word under the cursor.
   use("RRethy/vim-illuminate")
 
-  use("lewis6991/gitsigns.nvim")
-
   use({
     "lukas-reineke/indent-blankline.nvim",
     config = function()

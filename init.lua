@@ -249,9 +249,6 @@ require("nvim-treesitter.configs").setup({
 -- Emmet.
 vim.g.user_emmet_mode = "i"
 
--- gitsigns.
-require("gitsigns").setup()
-
 -- folke/trouble.nvim
 require("trouble").setup()
 
@@ -495,18 +492,6 @@ vim.api.nvim_set_keymap("n", "<Leader>s", ":wall<CR>", optNRM)
 --   folke/trouble.nvim
 vim.keymap.set("n", "<Leader>xx", ":Trouble diagnostics toggle<CR>", optNRM)
 vim.keymap.set("n", "<Leader>xX", ":Trouble diagnostics toggle filter.buf=0<CR>", optNRM)
-
---   gitsigns.
-vim.api.nvim_set_keymap("n", "<Leader>vb", ":Gitsigns blame_line<CR>", optNRM)
-vim.api.nvim_set_keymap("n", "<Leader>vD", ":Gitsigns toggle_deleted<CR>", optNRM)
-vim.api.nvim_set_keymap("n", "<Leader>vd", ":Gitsigns diffthis<CR>", optNRM)
-vim.api.nvim_set_keymap("n", "<Leader>vn", ":Gitsigns next_hunk<CR>", optNRM)
-vim.api.nvim_set_keymap("n", "<Leader>vp", ":Gitsigns prev_hunk<CR>", optNRM)
-vim.api.nvim_set_keymap("n", "<Leader>vR", ":Gitsigns reset_buffer<CR>", optNRM)
-vim.api.nvim_set_keymap("n", "<Leader>vr", ":Gitsigns reset_hunk<CR>", optNRM)
-vim.api.nvim_set_keymap("n", "<Leader>vS", ":Gitsigns stage_buffer<CR>", optNRM)
-vim.api.nvim_set_keymap("n", "<Leader>vs", ":Gitsigns stage_hunk<CR>", optNRM)
-vim.api.nvim_set_keymap("n", "<Leader>vu", ":Gitsigns undo_stage_hunk<CR>", optNRM)
 
 --   github/copilot.vim
 vim.keymap.set("i", "<C-l>", "<Plug>(copilot-accept-word)")
