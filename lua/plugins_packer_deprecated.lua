@@ -62,18 +62,6 @@ return require("packer").startup(function(use)
   use("mattn/emmet-vim")
   use("mrjones2014/legendary.nvim")
 
-  use({
-    "numToStr/Comment.nvim",
-    requires = {
-      "JoosepAlviste/nvim-ts-context-commentstring",
-    },
-    config = function()
-      require("Comment").setup({
-        pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
-      })
-    end,
-  })
-
   use("nvim-lualine/lualine.nvim")
 
   use({
