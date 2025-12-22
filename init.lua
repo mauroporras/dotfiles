@@ -249,9 +249,6 @@ require("nvim-treesitter.configs").setup({
 -- Emmet.
 vim.g.user_emmet_mode = "i"
 
--- folke/trouble.nvim
-require("trouble").setup()
-
 -- lualine {{{
 local custom_lualine_theme = require("lualine.themes.codedark")
 
