@@ -9,7 +9,8 @@ mkdir -p .config/git-delta
 ln -sf ~/dotfiles/misc-configs/git-delta/themes.gitconfig .config/git-delta/themes.gitconfig
 
 mkdir -p .config/nvim
-ln -sf ~/dotfiles/lua .config/nvim/
+# -n: treat existing symlink to dir as file (ensures idempotent re-runs)
+ln -sfn ~/dotfiles/lua .config/nvim/lua
 ln -sf ~/dotfiles/init.lua .config/nvim/init.lua
 
 mkdir -p .config/ghostty
