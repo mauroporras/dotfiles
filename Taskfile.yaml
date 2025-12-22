@@ -8,3 +8,7 @@ tasks:
   clear-rr-cache:
     cmds:
       - rm -rf .git/rr-cache
+
+  clear-nvim-plugins:
+    cmds:
+      - rm -rf ~/.local/share/nvim ~/.local/state/nvim ~/.cache/nvim
