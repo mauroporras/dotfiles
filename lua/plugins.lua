@@ -1,15 +1,16 @@
 -- vim:foldmethod=marker
 
+--[[
 -- This file is external to init.lua so that it doesn't
 -- trigger `PackerSync` every time it changes.
 
 -- Runs whenever this file is updated.
-vim.cmd([[
+vim.cmd([=[
   augroup packer_user_config
     autocmd!
     autocmd BufWritePost plugins.lua source <afile> | PackerSync
   augroup end
-]])
+]=])
 
 -- Install "packer.nvim" if not present.
 -- See:
@@ -19,7 +20,7 @@ local ensure_packer = function()
   local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
   if fn.empty(fn.glob(install_path)) > 0 then
     fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
-    vim.cmd([[packadd packer.nvim]])
+    vim.cmd([=[packadd packer.nvim]=])
     print('Packer has been installed into "' .. install_path .. '". Restart Neovim and run `:PackerSync`.')
     return true
   end
@@ -255,3 +256,4 @@ return require("packer").startup(function(use)
     require("packer").sync()
   end
 end)
+--]]
