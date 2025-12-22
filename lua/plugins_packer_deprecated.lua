@@ -92,13 +92,6 @@ return require("packer").startup(function(use)
   })
 
 
-  use({
-    "mikavilpas/yazi.nvim",
-    requires = {
-      { "folke/snacks.nvim" },
-    },
-  })
-
   -- Automatically set up your configuration after cloning packer.nvim.
   -- Put this at the end after all plugins.
   if packer_bootstrap then
