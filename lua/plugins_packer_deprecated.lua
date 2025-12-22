@@ -59,21 +59,6 @@ return require("packer").startup(function(use)
   -- Misc.
   use("euclidianAce/BetterLua.vim")
 
-  use({
-    "lukas-reineke/indent-blankline.nvim",
-    config = function()
-      require("ibl").setup({
-        indent = {
-          char = "│",
-        },
-        scope = {
-          show_start = false,
-          show_end = false,
-        },
-      })
-    end,
-  })
-
   use("mattn/emmet-vim")
   use("mrjones2014/legendary.nvim")
 
