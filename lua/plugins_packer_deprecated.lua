@@ -80,9 +80,6 @@ return require("packer").startup(function(use)
 
   use("folke/trouble.nvim")
 
-  -- Highlight other uses of the word under the cursor.
-  use("RRethy/vim-illuminate")
-
   use({
     "lukas-reineke/indent-blankline.nvim",
     config = function()
