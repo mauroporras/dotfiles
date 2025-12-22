@@ -84,30 +84,6 @@ return require("packer").startup(function(use)
   })
 
   use({
-    "stevearc/conform.nvim",
-    config = function()
-      require("conform").setup({
-        formatters_by_ft = {
-          css = { "prettierd" },
-          html = { "prettierd" },
-          javascript = { "prettierd" },
-          javascriptreact = { "prettierd" },
-          json = { "prettierd" },
-          jsonc = { "prettierd" },
-          lua = { "stylua" },
-          markdown = { "prettierd" },
-          scss = { "prettierd" },
-          svelte = { "prettierd" },
-          typescript = { "prettierd" },
-          typescriptreact = { "prettierd" },
-          yaml = { "prettierd" },
-        },
-        format_on_save = {},
-      })
-    end,
-  })
-
-  use({
     "SmiteshP/nvim-navbuddy",
     requires = {
       "MunifTanjim/nui.nvim",
