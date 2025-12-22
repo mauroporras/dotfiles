@@ -8,7 +8,7 @@
 require("00_settings")
 require("01_lazy_plugin_manager")
 require("02_keymaps")
--- require("plugins") -- Packer (deprecated)
+-- require("plugins_packer_deprecated")
 -- require("snippets") -- depends on LuaSnip plugin
 
 -- [[ Basic Autocommands ]]
