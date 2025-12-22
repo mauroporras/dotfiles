@@ -62,8 +62,6 @@ return require("packer").startup(function(use)
   use("mattn/emmet-vim")
   use("mrjones2014/legendary.nvim")
 
-  use("nvim-lualine/lualine.nvim")
-
   use({
     "nvim-telescope/telescope.nvim",
     branch = "0.1.x",
