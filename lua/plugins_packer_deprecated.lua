@@ -57,7 +57,6 @@ return require("packer").startup(function(use)
   })
 
   -- Misc.
-  use("chentoast/marks.nvim")
   use("euclidianAce/BetterLua.vim")
 
   use({
