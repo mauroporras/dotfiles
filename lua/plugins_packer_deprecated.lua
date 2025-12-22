@@ -78,8 +78,6 @@ return require("packer").startup(function(use)
   use("chentoast/marks.nvim")
   use("euclidianAce/BetterLua.vim")
 
-  use("folke/trouble.nvim")
-
   use({
     "lukas-reineke/indent-blankline.nvim",
     config = function()
