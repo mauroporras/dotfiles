@@ -41,8 +41,6 @@ vim.keymap.set("n", "<Leader>cd", vim.diagnostic.open_float, optNRM)
 vim.keymap.set("n", "<Leader>n", vim.diagnostic.goto_next, optNRM)
 vim.keymap.set("n", "<Leader>p", vim.diagnostic.goto_prev, optNRM)
 
-vim.keymap.set("n", "<Leader>E", ":LspRestart<CR>", optNRM)
-
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(_, bufnr)
@@ -267,15 +265,6 @@ vim.api.nvim_set_keymap("i", "<C-f>", "<Right>", optNRM)
 -- Normal.
 require("legendary").setup({
   keymaps = {
-    {
-      "<Leader>e",
-      function()
-        local view = vim.fn.winsaveview()
-        vim.cmd("edit!")
-        vim.fn.winrestview(view)
-      end,
-      description = "Reload file and preserve scroll position.",
-    },
     -- Misc.
     -- TODO: legendary is deprecated. Remove keymaps when migrating a plugin.
     -- They're now defined in their respective plugin files.
@@ -309,8 +298,6 @@ vim.api.nvim_set_keymap("n", "<C-p>", ":cprevious<CR>", optNRM)
 --   Scrolling.
 vim.api.nvim_set_keymap("n", "<C-d>", "5<C-d>", optNRM)
 vim.api.nvim_set_keymap("n", "<C-u>", "5<C-u>", optNRM)
-
-vim.api.nvim_set_keymap("n", "<Leader>s", ":wall<CR>", optNRM)
 
 --[[
 --   github/copilot.vim

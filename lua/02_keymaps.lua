@@ -45,6 +45,19 @@ vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper win
 -- vim.keymap.set("n", "<C-S-j>", "<C-w>J", { desc = "Move window to the lower" })
 -- vim.keymap.set("n", "<C-S-k>", "<C-w>K", { desc = "Move window to the upper" })
 
+-- Save all buffers
+vim.keymap.set("n", "<Leader>s", "<cmd>wall<CR>", { desc = "Save all buffers" })
+
+-- Reload file and preserve scroll position
+vim.keymap.set("n", "<Leader>e", function()
+  local view = vim.fn.winsaveview()
+  vim.cmd("edit!")
+  vim.fn.winrestview(view)
+end, { desc = "Reload file preserving position" })
+
+-- Restart LSP server(s)
+vim.keymap.set("n", "<Leader>E", "<cmd>LspRestart<CR>", { desc = "Restart LSP" })
+
 -- Windows (disabled to unlearn shortcuts)
 vim.keymap.set("n", "<C-w><C-w>", "<Nop>", { desc = "Disabled" })
 vim.keymap.set("n", "<C-w>h", "<Nop>", { desc = "Disabled" })
