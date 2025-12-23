@@ -100,14 +100,6 @@ return {
         },
         prompt_prefix = "",
       },
-      extensions = {
-        frecency = {
-          -- Stale entries won't be automatically removed and
-          -- the prompt won't show up.
-          auto_validate = false,
-          show_scores = true,
-        },
-      },
       pickers = {
         -- :h telescope.builtin.find_files
         find_files = {
@@ -122,6 +114,14 @@ return {
             "--no-ignore-vcs",
             "--sort=path",
           },
+        },
+      },
+      extensions = {
+        frecency = {
+          -- Stale entries won't be automatically removed and
+          -- the prompt won't show up.
+          auto_validate = false,
+          show_scores = true,
         },
       },
     })
