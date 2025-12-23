@@ -1,3 +1,4 @@
+-- Toggle comments with gc/gcc.
 return {
   "numToStr/Comment.nvim",
   event = "BufReadPost",

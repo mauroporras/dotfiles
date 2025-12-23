@@ -1,3 +1,4 @@
+-- GitHub AI code completion.
 return {
   "github/copilot.vim",
   event = "InsertEnter",

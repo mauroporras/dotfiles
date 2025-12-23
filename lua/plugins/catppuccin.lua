@@ -1,3 +1,4 @@
+-- Soothing pastel colorscheme.
 return {
   "catppuccin/nvim",
   name = "catppuccin",

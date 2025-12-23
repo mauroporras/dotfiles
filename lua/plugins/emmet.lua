@@ -1,3 +1,4 @@
+-- Emmet abbreviation expansion for HTML/CSS.
 return {
   "mattn/emmet-vim",
   ft = { "html", "css", "svelte" },
