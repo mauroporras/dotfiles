@@ -86,6 +86,9 @@ vim.keymap.set("n", "<Leader>q", "<C-w>q", { desc = "Close window" })
 vim.keymap.set("n", "<C-n>", "<cmd>cnext<CR>", { desc = "Next quickfix item" })
 vim.keymap.set("n", "<C-p>", "<cmd>cprevious<CR>", { desc = "Previous quickfix item" })
 
+-- Folding
+vim.keymap.set("n", "<Leader>zz", "<cmd>set foldmethod=indent<CR>", { desc = "Set foldmethod to indent" })
+
 -- Scrolling
 vim.keymap.set("n", "<C-d>", "5<C-d>")
 vim.keymap.set("n", "<C-u>", "5<C-u>")
