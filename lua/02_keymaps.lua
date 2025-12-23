@@ -92,9 +92,9 @@ vim.keymap.set("n", "<Leader>Fe", "<cmd>set foldmethod=expr<CR>", { desc = "Fold
 vim.keymap.set("n", "<Leader>Fi", "<cmd>set foldmethod=indent<CR>", { desc = "Fold based on indentation level" })
 vim.keymap.set(
   "n",
-  "<Leader>Fk",
+  "<Leader>FM",
   "<cmd>set foldmethod=marker<CR>",
-  { desc = "Fold text between commented {{{ and }}} markers" }
+  { desc = "Fold between commented {{{ and }}} markers" }
 )
 vim.keymap.set("n", "<Leader>Fm", "<cmd>set foldmethod=manual<CR>", { desc = "Create folds manually with zf" })
 vim.keymap.set("n", "<Leader>Fs", "<cmd>set foldmethod=syntax<CR>", { desc = "Fold from syntax highlighting" })
