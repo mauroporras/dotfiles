@@ -61,7 +61,15 @@ return {
       end,
       desc = "Fuzzy find in buffer",
     },
-    { "<Leader>R", "<cmd>Telescope oldfiles<CR>", desc = "Recent files" },
+    -- No preview for faster file picking
+    -- { "<Leader>R", "<cmd>Telescope oldfiles<CR>", desc = "Recent files" },
+    {
+      "<Leader>R",
+      function()
+        require("telescope.builtin").oldfiles({ previewer = false })
+      end,
+      desc = "Recent files",
+    },
     { "<Leader>zr", "<cmd>Telescope resume<CR>", desc = "Resume last picker" },
   },
   config = function()
