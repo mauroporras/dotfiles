@@ -228,8 +228,3 @@ require("nvim-treesitter.configs").setup({
 })
 -- }}}
 --]]
-
---[[
---   github/copilot.vim
-vim.keymap.set("i", "<C-l>", "<Plug>(copilot-accept-word)")
---]]
