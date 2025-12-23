@@ -1,5 +1,6 @@
 return {
   "lewis6991/gitsigns.nvim",
+  event = "VimEnter",
   opts = {},
   keys = {
     { "<Leader>vb", "<cmd>Gitsigns blame_line<CR>", desc = "Blame line" },
@@ -13,4 +14,15 @@ return {
     { "<Leader>vs", "<cmd>Gitsigns stage_hunk<CR>", desc = "Stage hunk" },
     { "<Leader>vu", "<cmd>Gitsigns undo_stage_hunk<CR>", desc = "Undo stage hunk" },
   },
+  --[[
+  opts = {
+    signs = {
+      add = { text = "+" },
+      change = { text = "~" },
+      delete = { text = "_" },
+      topdelete = { text = "‾" },
+      changedelete = { text = "~" },
+    },
+  },
+  --]]
 }
