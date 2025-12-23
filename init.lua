@@ -248,13 +248,6 @@ vim.api.nvim_set_keymap("t", "<C-w>j", "<C-\\><C-n><C-w>j", optNRM)
 vim.api.nvim_set_keymap("t", "<C-w>k", "<C-\\><C-n><C-w>k", optNRM)
 vim.api.nvim_set_keymap("t", "<C-w>l", "<C-\\><C-n><C-w>l", optNRM)
 
--- Insert.
-vim.api.nvim_set_keymap("i", "<C-a>", "<Home>", optNRM)
-vim.api.nvim_set_keymap("i", "<C-b>", "<Left>", optNRM)
-vim.api.nvim_set_keymap("i", "<C-d>", "<Del>", optNRM)
-vim.api.nvim_set_keymap("i", "<C-e>", "<End>", optNRM)
-vim.api.nvim_set_keymap("i", "<C-f>", "<Right>", optNRM)
-
 --[[
 -- Normal.
 require("legendary").setup({
