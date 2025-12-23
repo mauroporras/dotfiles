@@ -1,6 +1,6 @@
 return {
   "lewis6991/gitsigns.nvim",
-  event = "VimEnter",
+  event = "BufReadPost",
   opts = {},
   keys = {
     { "<Leader>vb", "<cmd>Gitsigns blame_line<CR>", desc = "Blame line" },
