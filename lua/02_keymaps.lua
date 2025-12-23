@@ -45,9 +45,6 @@ vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper win
 -- vim.keymap.set("n", "<C-S-j>", "<C-w>J", { desc = "Move window to the lower" })
 -- vim.keymap.set("n", "<C-S-k>", "<C-w>K", { desc = "Move window to the upper" })
 
--- Save all buffers
-vim.keymap.set("n", "<Leader>s", "<cmd>wall<CR>", { desc = "Save all buffers" })
-
 -- Reload buffer and preserve scroll position
 vim.keymap.set("n", "<Leader>e", function()
   local view = vim.fn.winsaveview()
@@ -78,6 +75,7 @@ vim.keymap.set("n", "<M-l>", "<cmd>tabnext<CR>", { desc = "Next tab" })
 -- Buffers
 vim.keymap.set("n", "<Leader>d", "<cmd>bdelete<CR>", { desc = "Delete buffer" })
 vim.keymap.set("n", "<Leader>l", "<cmd>edit #<CR>", { desc = "Alternate buffer" })
+vim.keymap.set("n", "<Leader>s", "<cmd>wall<CR>", { desc = "Save all buffers" })
 vim.keymap.set("n", "<Left>", "<cmd>bprevious<CR>", { desc = "Previous buffer" })
 vim.keymap.set("n", "<Right>", "<cmd>bnext<CR>", { desc = "Next buffer" })
 
