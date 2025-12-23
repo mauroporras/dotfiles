@@ -112,21 +112,30 @@ vim.keymap.set("n", "<Leader>Fs", "<cmd>set foldmethod=syntax<CR>", { desc = "Fo
 vim.keymap.set("n", "<C-d>", "5<C-d>")
 vim.keymap.set("n", "<C-u>", "5<C-u>")
 
--- Command line (:h mapmode-c)
+-- Command line {{{
+-- See:
+--   :h mapmode-c
 vim.keymap.set("c", "<C-a>", "<Home>")
 vim.keymap.set("c", "<C-b>", "<Left>")
 vim.keymap.set("c", "<C-d>", "<Del>")
 vim.keymap.set("c", "<C-f>", "<Right>")
+-- }}}
 
--- Terminal (:h mapmode-t)
+-- Terminal {{{
+-- See:
+--   :h mapmode-t
 vim.keymap.set("t", "<C-w>h", "<C-\\><C-n><C-w>h", { desc = "Move focus to left window" })
 vim.keymap.set("t", "<C-w>j", "<C-\\><C-n><C-w>j", { desc = "Move focus to lower window" })
 vim.keymap.set("t", "<C-w>k", "<C-\\><C-n><C-w>k", { desc = "Move focus to upper window" })
 vim.keymap.set("t", "<C-w>l", "<C-\\><C-n><C-w>l", { desc = "Move focus to right window" })
+-- }}}
 
--- Insert (:h mapmode-i)
+-- Insert {{{
+-- See:
+--   :h mapmode-i
 vim.keymap.set("i", "<C-a>", "<Home>")
 vim.keymap.set("i", "<C-b>", "<Left>")
 vim.keymap.set("i", "<C-d>", "<Del>")
 vim.keymap.set("i", "<C-e>", "<End>")
 vim.keymap.set("i", "<C-f>", "<Right>")
+-- }}}
