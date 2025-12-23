@@ -273,9 +273,6 @@ require("legendary").setup({
 })
 --]]
 
-vim.api.nvim_set_keymap("n", "<C-n>", ":cnext<CR>", optNRM)
-vim.api.nvim_set_keymap("n", "<C-p>", ":cprevious<CR>", optNRM)
-
 --[[
 --   github/copilot.vim
 vim.keymap.set("i", "<C-l>", "<Plug>(copilot-accept-word)")

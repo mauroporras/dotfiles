@@ -83,6 +83,10 @@ vim.keymap.set("n", "<Right>", "<cmd>bnext<CR>", { desc = "Next buffer" })
 -- Windows
 vim.keymap.set("n", "<Leader>q", "<C-w>q", { desc = "Close window" })
 
+-- Quickfix
+vim.keymap.set("n", "<C-n>", "<cmd>cnext<CR>", { desc = "Next quickfix item" })
+vim.keymap.set("n", "<C-p>", "<cmd>cprevious<CR>", { desc = "Previous quickfix item" })
+
 -- Scrolling
 vim.keymap.set("n", "<C-d>", "5<C-d>")
 vim.keymap.set("n", "<C-u>", "5<C-u>")
