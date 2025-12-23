@@ -1,6 +1,6 @@
 return {
   "stevearc/oil.nvim",
-  cmd = "Oil",
+  event = "VimEnter",
   opts = {
     view_options = {
       show_hidden = true,
