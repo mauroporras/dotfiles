@@ -276,11 +276,6 @@ require("legendary").setup({
       end,
       description = "Reload file and preserve scroll position.",
     },
-    -- Tabs.
-    { "<Leader>tn", ":tabnew<CR>", description = "Opens tabpage after the current one." },
-    { "<Leader>tp", ":-tabnew<CR>", description = "Opens tabpage before the current." },
-    { "<M-h>", ":tabprevious<CR>", description = "Previous tab." },
-    { "<M-l>", ":tabnext<CR>", description = "Nex tab." },
     -- Misc.
     -- TODO: legendary is deprecated. Remove keymaps when migrating a plugin.
     -- They're now defined in their respective plugin files.
@@ -314,11 +309,6 @@ vim.api.nvim_set_keymap("n", "<C-p>", ":cprevious<CR>", optNRM)
 --   Scrolling.
 vim.api.nvim_set_keymap("n", "<C-d>", "5<C-d>", optNRM)
 vim.api.nvim_set_keymap("n", "<C-u>", "5<C-u>", optNRM)
-
---   Tabs.
-vim.api.nvim_set_keymap("n", "<Leader>tt", ":$tabnew<CR>", optNRM)
-vim.api.nvim_set_keymap("n", "<Leader>tc", ":tabclose<CR>", optNRM)
-vim.api.nvim_set_keymap("n", "<Leader>ts", ":tab split<CR>", optNRM)
 
 --   Buffers.
 vim.api.nvim_set_keymap("n", "<Leader>d", ":bdelete<CR>", optNRM)
