@@ -90,7 +90,12 @@ vim.keymap.set("n", "<C-p>", "<cmd>cprevious<CR>", { desc = "Previous quickfix i
 vim.keymap.set("n", "<Leader>Fd", "<cmd>set nofoldenable<CR>", { desc = "Disable folding" })
 vim.keymap.set("n", "<Leader>Fe", "<cmd>set foldmethod=expr<CR>", { desc = "Foldmethod expr" })
 vim.keymap.set("n", "<Leader>Fi", "<cmd>set foldmethod=indent<CR>", { desc = "Foldmethod indent" })
-vim.keymap.set("n", "<Leader>Fk", "<cmd>set foldmethod=marker<CR>", { desc = "Foldmethod marker" })
+vim.keymap.set(
+  "n",
+  "<Leader>Fk",
+  "<cmd>set foldmethod=marker<CR>",
+  { desc = "Fold text between commented {{{ and }}} markers" }
+)
 vim.keymap.set("n", "<Leader>Fm", "<cmd>set foldmethod=manual<CR>", { desc = "Foldmethod manual" })
 vim.keymap.set("n", "<Leader>Fs", "<cmd>set foldmethod=syntax<CR>", { desc = "Foldmethod syntax" })
 
