@@ -6,6 +6,7 @@ return {
   opts = {},
   keys = {
     { "<Leader>vb", "<cmd>Gitsigns blame_line<CR>", desc = "Blame line" },
+    { "<Leader>vB", "<cmd>Gitsigns blame<CR>", desc = "Blame current buffer" },
     { "<Leader>vD", "<cmd>Gitsigns toggle_deleted<CR>", desc = "Toggle deleted" },
     { "<Leader>vd", "<cmd>Gitsigns diffthis<CR>", desc = "Diff this" },
     { "<Leader>vP", "<cmd>Gitsigns preview_hunk<CR>", desc = "Preview hunk inline" },
