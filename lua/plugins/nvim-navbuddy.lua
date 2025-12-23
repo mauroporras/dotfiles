@@ -1,5 +1,6 @@
 return {
   "SmiteshP/nvim-navbuddy",
+  cmd = "Navbuddy",
   dependencies = {
     "MunifTanjim/nui.nvim",
   },
