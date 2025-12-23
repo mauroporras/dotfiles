@@ -281,12 +281,6 @@ require("legendary").setup({
     { "<Leader>tp", ":-tabnew<CR>", description = "Opens tabpage before the current." },
     { "<M-h>", ":tabprevious<CR>", description = "Previous tab." },
     { "<M-l>", ":tabnext<CR>", description = "Nex tab." },
-    -- Windows. Temporal.
-    { "<C-w><C-w>", "", description = "Do nothing. To unlearn shortcut." },
-    { "<C-w>h", "", description = "Do nothing. To unlearn shortcut." },
-    { "<C-w>l", "", description = "Do nothing. To unlearn shortcut." },
-    { "<C-w>j", "", description = "Do nothing. To unlearn shortcut." },
-    { "<C-w>k", "", description = "Do nothing. To unlearn shortcut." },
     -- Misc.
     -- TODO: legendary is deprecated. Remove keymaps when migrating a plugin.
     -- They're now defined in their respective plugin files.
