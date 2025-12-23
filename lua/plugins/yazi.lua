@@ -6,7 +6,9 @@ return {
   },
   keys = {
     { "<Leader>f", "<cmd>Yazi<CR>", desc = "Open file manager focused on the current file" },
-    { "<Leader>Fc", "<cmd>Yazi cwd<CR>", desc = "Open file manager focused on the cwd" },
-    { "<Leader>Fl", "<cmd>Yazi toggle<CR>", desc = "Resume last yazi session" },
+    -- Commented to free up <Leader>F for folding keymaps
+    -- I almost never use these keymaps.
+    -- { "<Leader>Fc", "<cmd>Yazi cwd<CR>", desc = "Open file manager focused on the cwd" },
+    -- { "<Leader>Fl", "<cmd>Yazi toggle<CR>", desc = "Resume last yazi session" },
   },
 }

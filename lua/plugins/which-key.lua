@@ -6,7 +6,7 @@ return {
     -- Document existing key chains
     spec = {
       { "<leader>c", group = "[C]ode" },
-      { "<leader>F", group = "[F]ile manager extras" },
+      { "<leader>F", group = "[F]olding" },
       { "<leader>g", group = "[G]o to using LSP" },
       { "<leader>m", group = "[M]isc" },
       { "<leader>t", group = "[T]abs" },

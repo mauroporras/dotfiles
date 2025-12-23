@@ -86,9 +86,13 @@ vim.keymap.set("n", "<Leader>q", "<C-w>q", { desc = "Close window" })
 vim.keymap.set("n", "<C-n>", "<cmd>cnext<CR>", { desc = "Next quickfix item" })
 vim.keymap.set("n", "<C-p>", "<cmd>cprevious<CR>", { desc = "Previous quickfix item" })
 
--- Folding
-vim.keymap.set("n", "<Leader>zz", "<cmd>set foldmethod=indent<CR>", { desc = "Set foldmethod to indent" })
-vim.keymap.set("n", "<Leader>zq", "<cmd>set nofoldenable<CR>", { desc = "Disable folding" })
+-- Folding (:h foldmethod)
+vim.keymap.set("n", "<Leader>Fd", "<cmd>set nofoldenable<CR>", { desc = "Disable folding" })
+vim.keymap.set("n", "<Leader>Fe", "<cmd>set foldmethod=expr<CR>", { desc = "Foldmethod expr" })
+vim.keymap.set("n", "<Leader>Fi", "<cmd>set foldmethod=indent<CR>", { desc = "Foldmethod indent" })
+vim.keymap.set("n", "<Leader>Fk", "<cmd>set foldmethod=marker<CR>", { desc = "Foldmethod marker" })
+vim.keymap.set("n", "<Leader>Fm", "<cmd>set foldmethod=manual<CR>", { desc = "Foldmethod manual" })
+vim.keymap.set("n", "<Leader>Fs", "<cmd>set foldmethod=syntax<CR>", { desc = "Foldmethod syntax" })
 
 -- Scrolling
 vim.keymap.set("n", "<C-d>", "5<C-d>")
