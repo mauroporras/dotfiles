@@ -242,12 +242,6 @@ require("nvim-treesitter.configs").setup({
 -- }}}
 --]]
 
--- Terminal (:h mapmode-t).
-vim.api.nvim_set_keymap("t", "<C-w>h", "<C-\\><C-n><C-w>h", optNRM)
-vim.api.nvim_set_keymap("t", "<C-w>j", "<C-\\><C-n><C-w>j", optNRM)
-vim.api.nvim_set_keymap("t", "<C-w>k", "<C-\\><C-n><C-w>k", optNRM)
-vim.api.nvim_set_keymap("t", "<C-w>l", "<C-\\><C-n><C-w>l", optNRM)
-
 --[[
 -- Normal.
 require("legendary").setup({

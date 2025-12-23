@@ -93,6 +93,12 @@ vim.keymap.set("c", "<C-b>", "<Left>")
 vim.keymap.set("c", "<C-d>", "<Del>")
 vim.keymap.set("c", "<C-f>", "<Right>")
 
+-- Terminal (:h mapmode-t)
+vim.keymap.set("t", "<C-w>h", "<C-\\><C-n><C-w>h", { desc = "Move focus to left window" })
+vim.keymap.set("t", "<C-w>j", "<C-\\><C-n><C-w>j", { desc = "Move focus to lower window" })
+vim.keymap.set("t", "<C-w>k", "<C-\\><C-n><C-w>k", { desc = "Move focus to upper window" })
+vim.keymap.set("t", "<C-w>l", "<C-\\><C-n><C-w>l", { desc = "Move focus to right window" })
+
 -- Insert (:h mapmode-i)
 vim.keymap.set("i", "<C-a>", "<Home>")
 vim.keymap.set("i", "<C-b>", "<Left>")
