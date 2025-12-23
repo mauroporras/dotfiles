@@ -43,6 +43,9 @@ end, { desc = "Reload file buffer position" })
 -- Restart LSP server(s)
 vim.keymap.set("n", "<Leader>E", "<cmd>LspRestart<CR>", { desc = "Restart LSP" })
 
+-- Open Lazy plugin manager
+vim.keymap.set("n", "<Leader>L", "<cmd>Lazy<CR>", { desc = "Open Lazy" })
+
 -- Disabled keymaps {{{
 -- Disabled to unlearn shortcuts
 vim.keymap.set("n", "<C-w><C-w>", "<Nop>", { desc = "Disabled" })

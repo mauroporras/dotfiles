@@ -30,5 +30,5 @@
   "trouble.nvim": { "branch": "main", "commit": "bd67efe408d4816e25e8491cc5ad4088e708a69a" },
   "vim-illuminate": { "branch": "master", "commit": "0d1e93684da00ab7c057410fecfc24f434698898" },
   "which-key.nvim": { "branch": "main", "commit": "3aab2147e74890957785941f0c1ad87d0a44c15a" },
-  "yazi.nvim": { "branch": "main", "commit": "636ff6f0b16355031dae38b4d4dda0549779bac7" }
+  "yazi.nvim": { "branch": "main", "commit": "76c61e39b37baccbcb5e02927dd6f7246d0bf95b" }
 }
