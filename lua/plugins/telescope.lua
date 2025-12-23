@@ -41,7 +41,7 @@ return {
     { "<Leader>O", "<cmd>Telescope frecency workspace=CWD<CR>", desc = "Frecency file picker" },
     { "<Leader>o", "<cmd>Telescope find_files<CR>", desc = "Find files" },
     { "<Leader>vc", "<cmd>Telescope git_bcommits<CR>", desc = "Buffer git commits" },
-    { "<Leader>zl", "<cmd>Telescope current_buffer_fuzzy_find<CR>", desc = "Fuzzy find in buffer" },
+    { "<Leader>/", "<cmd>Telescope current_buffer_fuzzy_find<CR>", desc = "Fuzzy find in buffer" },
     { "<Leader>zh", "<cmd>Telescope oldfiles<CR>", desc = "Recent files" },
     { "<Leader>zr", "<cmd>Telescope resume<CR>", desc = "Resume last picker" },
   },
