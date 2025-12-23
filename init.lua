@@ -6,9 +6,9 @@
 
 -- Note: `:source %` won't reload required files (cached in package.loaded)
 require("00_settings")
-require("01_lazy_plugin_manager")
+require("01_highlights")
 require("02_keymaps")
-require("03_highlights")
+require("03_lazy_plugin_manager")
 -- require("plugins_packer_deprecated")
 -- require("snippets") -- depends on LuaSnip plugin
 
@@ -277,21 +277,4 @@ require("legendary").setup({
 --[[
 --   github/copilot.vim
 vim.keymap.set("i", "<C-l>", "<Plug>(copilot-accept-word)")
---]]
-
--- To show the current scheme:
---   :colorscheme
--- Use `:highlight` to list all color groups.
---   :h :highlight
-
--- Enable 24-bit RGB color.
--- See:
--- https://neovim.io/doc/user/options.html#'termguicolors'
-vim.o.termguicolors = true
-
---[[
-vim.cmd([=[
-  " Recognize some extensions known to have JSON with comments.
-  autocmd BufNewFile,BufRead tsconfig.json setlocal filetype=jsonc
-]=])
 --]]

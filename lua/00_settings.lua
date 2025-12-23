@@ -101,3 +101,8 @@ vim.opt.completeopt = {
   "noselect",
 }
 vim.o.cmdheight = 2
+
+vim.cmd([=[
+  " Recognize some extensions known to have JSON with comments.
+  autocmd BufNewFile,BufRead tsconfig.json setlocal filetype=jsonc
+]=])
