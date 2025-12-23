@@ -248,16 +248,6 @@ require("nvim-treesitter.configs").setup({
 --[[
 -- Emmet.
 vim.g.user_emmet_mode = "i"
-
-
--- quick-scope.
-vim.g.qs_highlight_on_keys = {
-  "f",
-  "F",
-  "t",
-  "T",
-}
-
 --]]
 
 -- To find what's using a key map:
