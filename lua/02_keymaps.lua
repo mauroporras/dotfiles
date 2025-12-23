@@ -49,12 +49,14 @@ end, { desc = "Reload file buffer position" })
 -- Restart LSP server(s)
 vim.keymap.set("n", "<Leader>E", "<cmd>LspRestart<CR>", { desc = "Restart LSP" })
 
--- Windows (disabled to unlearn shortcuts)
+-- Disabled keymaps {{{
+-- Disabled to unlearn shortcuts
 vim.keymap.set("n", "<C-w><C-w>", "<Nop>", { desc = "Disabled" })
 vim.keymap.set("n", "<C-w>h", "<Nop>", { desc = "Disabled" })
 vim.keymap.set("n", "<C-w>l", "<Nop>", { desc = "Disabled" })
 vim.keymap.set("n", "<C-w>j", "<Nop>", { desc = "Disabled" })
 vim.keymap.set("n", "<C-w>k", "<Nop>", { desc = "Disabled" })
+-- }}}
 
 -- Tabs {{{
 vim.keymap.set("n", "<Leader>tn", "<cmd>tabnew<CR>", { desc = "New tab after current" })
