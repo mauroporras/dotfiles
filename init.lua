@@ -250,95 +250,6 @@ require("nvim-treesitter.configs").setup({
 vim.g.user_emmet_mode = "i"
 
 
--- nvim-telescope/telescope.nvim
--- Old command for fzf was:
--- ```bash
--- rg --files --follow --hidden --smart-case --no-ignore-vcs --glob '!{.git,dist,node_modules,tags}'
--- ```
-local telescope = require("telescope")
-
-telescope.setup({
-  defaults = {
-    dynamic_preview_title = true,
-    history = {
-      path = "~/.local/share/nvim/telescope_history.sqlite3",
-      limit = 100,
-    },
-    -- :h telescope.layout
-    layout_strategy = "vertical",
-    layout_config = {
-      height = 999,
-      prompt_position = "top",
-      scroll_speed = 3,
-      width = 999,
-    },
-    sorting_strategy = "ascending",
-    -- :h telescope.defaults.vimgrep_arguments
-    vimgrep_arguments = {
-      "rg",
-      -- Defaults:
-      "--color=never",
-      "--no-heading",
-      "--with-filename",
-      "--line-number",
-      "--column",
-      "--smart-case",
-      -- Custom:
-      "--follow",
-      "--hidden",
-      -- Only respect rules in .rgignore since sometimes you want to search
-      -- inside files that are ignored by Git
-      "--no-ignore-vcs",
-      "--sort=path",
-    },
-    -- See:
-    -- :h telescope.mappings
-    -- If the function you want is part of `telescope.actions`,
-    -- then you can simply give a string.
-    mappings = {
-      i = {
-        ["<C-n>"] = "cycle_history_next",
-        ["<C-p>"] = "cycle_history_prev",
-        ["<C-j>"] = "move_selection_next",
-        ["<C-k>"] = "move_selection_previous",
-        ["<C-q>"] = require("telescope.actions").smart_send_to_qflist + require("telescope.actions").open_qflist,
-        ["<C-d>"] = false,
-        ["<C-u>"] = false,
-      },
-    },
-    prompt_prefix = "",
-  },
-  extensions = {
-    frecency = {
-      -- Stale entries won't be automatically removed and
-      -- the prompt won't show up.
-      auto_validate = false,
-      show_scores = true,
-    },
-  },
-  pickers = {
-    -- :h telescope.builtin.find_files
-    find_files = {
-      find_command = {
-        "rg",
-        "--files",
-        "--follow",
-        "--hidden",
-        "--smart-case",
-        -- Only respect rules in .rgignore since sometimes you want to search
-        -- inside files that are ignored by Git
-        "--no-ignore-vcs",
-        "--sort=path",
-      },
-    },
-  },
-})
-
-telescope.load_extension("frecency")
-telescope.load_extension("fzf")
-telescope.load_extension("smart_history")
-telescope.load_extension("ui-select")
-
 -- quick-scope.
 vim.g.qs_highlight_on_keys = {
   "f",
@@ -404,6 +315,8 @@ require("legendary").setup({
     { "<C-w>j", "", description = "Do nothing. To unlearn shortcut." },
     { "<C-w>k", "", description = "Do nothing. To unlearn shortcut." },
     -- Misc.
+    -- TODO: legendary is deprecated. Remove keymaps when migrating a plugin.
+    -- They're now defined in their respective plugin files.
     { "<Leader>a", ":Telescope live_grep<CR>", description = "Search in all files." },
     { "<Leader>A", ":Telescope grep_string<CR>", description = "Searches string under your cursor." },
     { "<Leader>b", ":Telescope buffers<CR>", description = "List buffers." },

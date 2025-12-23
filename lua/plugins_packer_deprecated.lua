@@ -57,19 +57,6 @@ return require("packer").startup(function(use)
   })
 
   use({
-    "nvim-telescope/telescope.nvim",
-    branch = "0.1.x",
-    requires = {
-      { "kkharji/sqlite.lua" }, -- Required by telescope-smart-history.nvim
-      { "nvim-lua/plenary.nvim" },
-      { "nvim-telescope/telescope-frecency.nvim" },
-      { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
-      { "nvim-telescope/telescope-smart-history.nvim" },
-      { "nvim-telescope/telescope-ui-select.nvim" },
-    },
-  })
-
-  use({
     "nvim-treesitter/nvim-treesitter",
     requires = {
       "nvim-treesitter/nvim-treesitter-textobjects",
