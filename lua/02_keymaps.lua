@@ -88,16 +88,16 @@ vim.keymap.set("n", "<C-p>", "<cmd>cprevious<CR>", { desc = "Previous quickfix i
 
 -- Folding (:h foldmethod)
 vim.keymap.set("n", "<Leader>Fd", "<cmd>set nofoldenable<CR>", { desc = "Disable folding" })
-vim.keymap.set("n", "<Leader>Fe", "<cmd>set foldmethod=expr<CR>", { desc = "Foldmethod expr" })
-vim.keymap.set("n", "<Leader>Fi", "<cmd>set foldmethod=indent<CR>", { desc = "Foldmethod indent" })
+vim.keymap.set("n", "<Leader>Fe", "<cmd>set foldmethod=expr<CR>", { desc = "Fold via foldexpr (Treesitter)" })
+vim.keymap.set("n", "<Leader>Fi", "<cmd>set foldmethod=indent<CR>", { desc = "Fold based on indentation level" })
 vim.keymap.set(
   "n",
   "<Leader>Fk",
   "<cmd>set foldmethod=marker<CR>",
   { desc = "Fold text between commented {{{ and }}} markers" }
 )
-vim.keymap.set("n", "<Leader>Fm", "<cmd>set foldmethod=manual<CR>", { desc = "Foldmethod manual" })
-vim.keymap.set("n", "<Leader>Fs", "<cmd>set foldmethod=syntax<CR>", { desc = "Foldmethod syntax" })
+vim.keymap.set("n", "<Leader>Fm", "<cmd>set foldmethod=manual<CR>", { desc = "Create folds manually with zf" })
+vim.keymap.set("n", "<Leader>Fs", "<cmd>set foldmethod=syntax<CR>", { desc = "Fold from syntax highlighting" })
 
 -- Scrolling
 vim.keymap.set("n", "<C-d>", "5<C-d>")
