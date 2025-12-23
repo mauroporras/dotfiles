@@ -1,6 +1,6 @@
 return {
   "nvim-lualine/lualine.nvim",
-  event = "VimEnter",
+  event = "BufReadPost",
   config = function()
     local custom_theme = require("lualine.themes.codedark")
 
