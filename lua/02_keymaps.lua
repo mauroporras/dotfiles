@@ -56,7 +56,7 @@ vim.keymap.set("n", "<C-w>l", "<Nop>", { desc = "Disabled" })
 vim.keymap.set("n", "<C-w>j", "<Nop>", { desc = "Disabled" })
 vim.keymap.set("n", "<C-w>k", "<Nop>", { desc = "Disabled" })
 
--- Tabs
+-- Tabs {{{
 vim.keymap.set("n", "<Leader>tn", "<cmd>tabnew<CR>", { desc = "New tab after current" })
 vim.keymap.set("n", "<Leader>tp", "<cmd>-tabnew<CR>", { desc = "New tab before current" })
 vim.keymap.set("n", "<Leader>tt", "<cmd>$tabnew<CR>", { desc = "New tab at end" })
@@ -65,13 +65,15 @@ vim.keymap.set("n", "<Leader>tc", "<cmd>tabclose<CR>", { desc = "Close tab" })
 vim.keymap.set("n", "<Leader>ts", "<cmd>tab split<CR>", { desc = "Split to new tab" }) -- <C-w>T moves instead of copying
 vim.keymap.set("n", "<M-h>", "<cmd>tabprevious<CR>", { desc = "Previous tab" })
 vim.keymap.set("n", "<M-l>", "<cmd>tabnext<CR>", { desc = "Next tab" })
+-- }}}
 
--- Buffers
+-- Buffers {{{
 vim.keymap.set("n", "<Leader>d", "<cmd>bdelete<CR>", { desc = "Delete buffer" })
 vim.keymap.set("n", "<Leader>l", "<cmd>edit #<CR>", { desc = "Alternate buffer" })
 vim.keymap.set("n", "<Leader>s", "<cmd>wall<CR>", { desc = "Save all buffers" })
 vim.keymap.set("n", "<Left>", "<cmd>bprevious<CR>", { desc = "Previous buffer" })
 vim.keymap.set("n", "<Right>", "<cmd>bnext<CR>", { desc = "Next buffer" })
+-- }}}
 
 -- Windows
 vim.keymap.set("n", "<Leader>q", "<C-w>q", { desc = "Close window" })
