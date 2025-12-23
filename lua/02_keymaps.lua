@@ -53,7 +53,7 @@ vim.keymap.set("n", "<Leader>e", function()
   local view = vim.fn.winsaveview()
   vim.cmd("edit!")
   vim.fn.winrestview(view)
-end, { desc = "Reload file preserving position" })
+end, { desc = "Reload file buffer position" })
 
 -- Restart LSP server(s)
 vim.keymap.set("n", "<Leader>E", "<cmd>LspRestart<CR>", { desc = "Restart LSP" })
