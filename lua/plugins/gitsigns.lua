@@ -2,9 +2,6 @@
 return {
   "lewis6991/gitsigns.nvim",
   event = "BufReadPost",
-  -- Empty opts table tells lazy.nvim to call setup() with default settings.
-  -- Without this, setup() won't be called and the plugin won't initialize.
-  opts = {},
   keys = {
     { "<Leader>vb", "<cmd>Gitsigns blame_line<CR>", desc = "Blame line" },
     { "<Leader>vB", "<cmd>Gitsigns blame<CR>", desc = "Blame current buffer" },
@@ -20,6 +17,9 @@ return {
     { "<Leader>vu", "<cmd>Gitsigns undo_stage_hunk<CR>", desc = "Undo stage hunk" },
     { "<Leader>vq", "<cmd>Gitsigns setqflist<CR>", desc = "Hunks to quickfix" },
   },
+  -- Empty opts table tells lazy.nvim to call setup() with default settings.
+  -- Without this, setup() won't be called and the plugin won't initialize.
+  opts = {},
   --[[
   opts = {
     signs = {
