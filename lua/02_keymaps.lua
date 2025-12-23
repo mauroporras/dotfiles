@@ -82,3 +82,9 @@ vim.keymap.set("n", "<Right>", "<cmd>bnext<CR>", { desc = "Next buffer" })
 
 -- Windows
 vim.keymap.set("n", "<Leader>q", "<C-w>q", { desc = "Close window" })
+
+-- Command line (:h mapmode-c)
+vim.keymap.set("c", "<C-a>", "<Home>")
+vim.keymap.set("c", "<C-b>", "<Left>")
+vim.keymap.set("c", "<C-d>", "<Del>")
+vim.keymap.set("c", "<C-f>", "<Right>")

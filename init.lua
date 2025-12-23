@@ -242,12 +242,6 @@ require("nvim-treesitter.configs").setup({
 -- }}}
 --]]
 
--- Command line (:h mapmode-c).
-vim.api.nvim_set_keymap("c", "<C-a>", "<Home>", optNRM)
-vim.api.nvim_set_keymap("c", "<C-b>", "<Left>", optNRM)
-vim.api.nvim_set_keymap("c", "<C-d>", "<Del>", optNRM)
-vim.api.nvim_set_keymap("c", "<C-f>", "<Right>", optNRM)
-
 -- Terminal (:h mapmode-t).
 vim.api.nvim_set_keymap("t", "<C-w>h", "<C-\\><C-n><C-w>h", optNRM)
 vim.api.nvim_set_keymap("t", "<C-w>j", "<C-\\><C-n><C-w>j", optNRM)
