@@ -86,7 +86,9 @@ vim.keymap.set("n", "<Leader>q", "<C-w>q", { desc = "Close window" })
 vim.keymap.set("n", "<C-n>", "<cmd>cnext<CR>", { desc = "Next quickfix item" })
 vim.keymap.set("n", "<C-p>", "<cmd>cprevious<CR>", { desc = "Previous quickfix item" })
 
--- Folding (:h foldmethod) {{{
+-- Folding {{{
+-- See:
+--   :h foldmethod
 --
 -- Modelines are special comments that set Vim options for a specific file.
 -- Place them at the top or bottom of a file (within first/last 5 lines).
