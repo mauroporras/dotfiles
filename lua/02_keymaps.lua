@@ -88,6 +88,7 @@ vim.keymap.set("n", "<C-p>", "<cmd>cprevious<CR>", { desc = "Previous quickfix i
 
 -- Folding
 vim.keymap.set("n", "<Leader>zz", "<cmd>set foldmethod=indent<CR>", { desc = "Set foldmethod to indent" })
+vim.keymap.set("n", "<Leader>zq", "<cmd>set nofoldenable<CR>", { desc = "Disable folding" })
 
 -- Scrolling
 vim.keymap.set("n", "<C-d>", "5<C-d>")
