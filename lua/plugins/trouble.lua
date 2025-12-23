@@ -1,3 +1,4 @@
+-- Pretty list for diagnostics, quickfix, LSP references, etc.
 return {
   "folke/trouble.nvim",
   -- Empty opts table tells lazy.nvim to call setup() with default settings.

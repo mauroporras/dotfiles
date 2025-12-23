@@ -1,3 +1,4 @@
+-- Statusline and winbar.
 return {
   "nvim-lualine/lualine.nvim",
   event = "BufReadPost",

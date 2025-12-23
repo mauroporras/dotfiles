@@ -1,3 +1,4 @@
+-- Fuzzy finder for files, buffers, grep, LSP, and more.
 -- Old command for fzf was:
 -- ```bash
 -- rg --files --follow --hidden --smart-case --no-ignore-vcs --glob '!{.git,dist,node_modules,tags}'

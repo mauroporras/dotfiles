@@ -1,3 +1,4 @@
+-- Show indent guides.
 return {
   "lukas-reineke/indent-blankline.nvim",
   event = "BufReadPost",

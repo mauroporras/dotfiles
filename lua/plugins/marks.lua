@@ -1,3 +1,6 @@
+-- Show Vim marks in the sign column.
+-- See:
+--    :h mark
 return {
   "chentoast/marks.nvim",
   event = "BufReadPost",

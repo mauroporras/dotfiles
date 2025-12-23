@@ -1,3 +1,4 @@
+-- Breadcrumb navigation popup for LSP symbols.
 return {
   "SmiteshP/nvim-navbuddy",
   cmd = "Navbuddy",

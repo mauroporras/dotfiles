@@ -1,3 +1,4 @@
+-- Yazi file manager integration.
 return {
   "mikavilpas/yazi.nvim",
   dependencies = {
