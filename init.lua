@@ -310,12 +310,6 @@ vim.api.nvim_set_keymap("n", "<C-p>", ":cprevious<CR>", optNRM)
 vim.api.nvim_set_keymap("n", "<C-d>", "5<C-d>", optNRM)
 vim.api.nvim_set_keymap("n", "<C-u>", "5<C-u>", optNRM)
 
---   Buffers.
-vim.api.nvim_set_keymap("n", "<Leader>d", ":bdelete<CR>", optNRM)
-vim.api.nvim_set_keymap("n", "<Leader>l", ":edit #<CR>", optNRM)
-vim.api.nvim_set_keymap("n", "<Left>", ":bprevious<CR>", optNRM)
-vim.api.nvim_set_keymap("n", "<Right>", ":bnext<CR>", optNRM)
-vim.api.nvim_set_keymap("n", "<Leader>q", "<C-w>q", optNRM)
 vim.api.nvim_set_keymap("n", "<Leader>s", ":wall<CR>", optNRM)
 
 --[[

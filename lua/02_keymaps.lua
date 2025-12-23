@@ -60,3 +60,12 @@ vim.keymap.set("n", "<Leader>tc", "<cmd>tabclose<CR>", { desc = "Close tab" })
 vim.keymap.set("n", "<Leader>ts", "<cmd>tab split<CR>", { desc = "Split to new tab" }) -- <C-w>T moves instead of copying
 vim.keymap.set("n", "<M-h>", "<cmd>tabprevious<CR>", { desc = "Previous tab" })
 vim.keymap.set("n", "<M-l>", "<cmd>tabnext<CR>", { desc = "Next tab" })
+
+-- Buffers
+vim.keymap.set("n", "<Leader>d", "<cmd>bdelete<CR>", { desc = "Delete buffer" })
+vim.keymap.set("n", "<Leader>l", "<cmd>edit #<CR>", { desc = "Alternate buffer" })
+vim.keymap.set("n", "<Left>", "<cmd>bprevious<CR>", { desc = "Previous buffer" })
+vim.keymap.set("n", "<Right>", "<cmd>bnext<CR>", { desc = "Next buffer" })
+
+-- Windows
+vim.keymap.set("n", "<Leader>q", "<C-w>q", { desc = "Close window" })
