@@ -33,7 +33,14 @@ return {
   },
   keys = {
     { "<Leader>a", "<cmd>Telescope live_grep<CR>", desc = "Search in all files" },
-    { "<Leader>A", "<cmd>Telescope grep_string<CR>", desc = "Search string under cursor" },
+    {
+      "<Leader>A",
+      function()
+        require("telescope.builtin").live_grep({ grep_open_files = true })
+      end,
+      desc = "Search in open files",
+    },
+    { "<Leader>*", "<cmd>Telescope grep_string<CR>", desc = "Search word under cursor" },
     { "<Leader>b", "<cmd>Telescope buffers<CR>", desc = "List buffers" },
     { "<Leader>gd", "<cmd>Telescope lsp_definitions<CR>", desc = "LSP definitions" },
     { "<Leader>gi", "<cmd>Telescope lsp_implementations<CR>", desc = "LSP implementations" },
@@ -45,14 +52,12 @@ return {
     {
       "<Leader>/",
       function()
-        require("telescope.builtin").current_buffer_fuzzy_find(
-          require("telescope.themes").get_dropdown({
-            layout_config = {
-              width = { padding = 0 },
-              height = { padding = 0 },
-            },
-          })
-        )
+        require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
+          layout_config = {
+            width = { padding = 0 },
+            height = { padding = 0 },
+          },
+        }))
       end,
       desc = "Fuzzy find in buffer",
     },
