@@ -244,17 +244,6 @@ require("nvim-treesitter.configs").setup({
 -- }}}
 --]]
 
---[[
--- Emmet.
-vim.g.user_emmet_mode = "i"
---]]
-
--- To find what's using a key map:
---   :verbose nmap <leader>b
-
--- See:
--- https://github.com/nanotee/nvim-lua-guide#defining-mappings
-
 -- Command line (:h mapmode-c).
 vim.api.nvim_set_keymap("c", "<C-a>", "<Home>", optNRM)
 vim.api.nvim_set_keymap("c", "<C-b>", "<Left>", optNRM)
