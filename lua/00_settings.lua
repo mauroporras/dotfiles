@@ -107,6 +107,9 @@ vim.cmd([=[
   autocmd BufNewFile,BufRead tsconfig.json setlocal filetype=jsonc
 ]=])
 
+-- [[ Basic Autocommands ]]
+--  See `:help lua-guide-autocommands`
+
 -- Highlight when yanking (copying) text
 --  Try it with `yap` in normal mode
 --  See `:help vim.hl.on_yank()`

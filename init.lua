@@ -12,9 +12,6 @@ require("03_lazy_plugin_manager")
 -- require("plugins_packer_deprecated")
 -- require("snippets") -- depends on LuaSnip plugin
 
--- [[ Basic Autocommands ]]
---  See `:help lua-guide-autocommands`
-
 local optNRM = { noremap = true }
 
 --[[
