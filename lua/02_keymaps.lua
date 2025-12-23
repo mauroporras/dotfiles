@@ -83,6 +83,10 @@ vim.keymap.set("n", "<Right>", "<cmd>bnext<CR>", { desc = "Next buffer" })
 -- Windows
 vim.keymap.set("n", "<Leader>q", "<C-w>q", { desc = "Close window" })
 
+-- Scrolling
+vim.keymap.set("n", "<C-d>", "5<C-d>")
+vim.keymap.set("n", "<C-u>", "5<C-u>")
+
 -- Command line (:h mapmode-c)
 vim.keymap.set("c", "<C-a>", "<Home>")
 vim.keymap.set("c", "<C-b>", "<Left>")

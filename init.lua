@@ -282,10 +282,6 @@ require("legendary").setup({
 vim.api.nvim_set_keymap("n", "<C-n>", ":cnext<CR>", optNRM)
 vim.api.nvim_set_keymap("n", "<C-p>", ":cprevious<CR>", optNRM)
 
---   Scrolling.
-vim.api.nvim_set_keymap("n", "<C-d>", "5<C-d>", optNRM)
-vim.api.nvim_set_keymap("n", "<C-u>", "5<C-u>", optNRM)
-
 --[[
 --   github/copilot.vim
 vim.keymap.set("i", "<C-l>", "<Plug>(copilot-accept-word)")
