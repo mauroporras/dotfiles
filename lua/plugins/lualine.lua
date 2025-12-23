@@ -1,5 +1,6 @@
 return {
   "nvim-lualine/lualine.nvim",
+  event = "VimEnter",
   config = function()
     local custom_theme = require("lualine.themes.codedark")
 
