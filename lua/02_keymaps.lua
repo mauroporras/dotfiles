@@ -87,6 +87,16 @@ vim.keymap.set("n", "<C-n>", "<cmd>cnext<CR>", { desc = "Next quickfix item" })
 vim.keymap.set("n", "<C-p>", "<cmd>cprevious<CR>", { desc = "Previous quickfix item" })
 
 -- Folding (:h foldmethod)
+--
+-- Modelines are special comments that set Vim options for a specific file.
+-- Place them at the top or bottom of a file (within first/last 5 lines).
+-- See :h modeline
+--
+-- Examples:
+--   -- vim:foldmethod=marker
+--   -- vim:foldmethod=indent
+--   # vim:foldmethod=syntax   (for shell scripts)
+--   // vim:foldmethod=manual  (for C/JS/etc)
 vim.keymap.set("n", "<Leader>Fd", "<cmd>set nofoldenable<CR>", { desc = "Disable folding" })
 vim.keymap.set("n", "<Leader>Fe", "<cmd>set foldmethod=expr<CR>", { desc = "Fold via foldexpr (Treesitter)" })
 vim.keymap.set("n", "<Leader>Fi", "<cmd>set foldmethod=indent<CR>", { desc = "Fold based on indentation level" })
