@@ -48,7 +48,7 @@ vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper win
 -- Save all buffers
 vim.keymap.set("n", "<Leader>s", "<cmd>wall<CR>", { desc = "Save all buffers" })
 
--- Reload file and preserve scroll position
+-- Reload buffer and preserve scroll position
 vim.keymap.set("n", "<Leader>e", function()
   local view = vim.fn.winsaveview()
   vim.cmd("edit!")
