@@ -17,6 +17,7 @@ return {
     { "<Leader>vS", "<cmd>Gitsigns stage_buffer<CR>", desc = "Stage buffer" },
     { "<Leader>vs", "<cmd>Gitsigns stage_hunk<CR>", desc = "Stage hunk" },
     { "<Leader>vu", "<cmd>Gitsigns undo_stage_hunk<CR>", desc = "Undo stage hunk" },
+    { "<Leader>vq", "<cmd>Gitsigns setqflist<CR>", desc = "Hunks to quickfix" },
   },
   --[[
   opts = {
