@@ -42,7 +42,20 @@ return {
     { "<Leader>O", "<cmd>Telescope frecency workspace=CWD<CR>", desc = "Frecency file picker" },
     { "<Leader>o", "<cmd>Telescope find_files<CR>", desc = "Find files" },
     { "<Leader>vc", "<cmd>Telescope git_bcommits<CR>", desc = "Buffer git commits" },
-    { "<Leader>/", "<cmd>Telescope current_buffer_fuzzy_find<CR>", desc = "Fuzzy find in buffer" },
+    {
+      "<Leader>/",
+      function()
+        require("telescope.builtin").current_buffer_fuzzy_find(
+          require("telescope.themes").get_dropdown({
+            layout_config = {
+              width = { padding = 0 },
+              height = { padding = 0 },
+            },
+          })
+        )
+      end,
+      desc = "Fuzzy find in buffer",
+    },
     { "<Leader>R", "<cmd>Telescope oldfiles<CR>", desc = "Recent files" },
     { "<Leader>zr", "<cmd>Telescope resume<CR>", desc = "Resume last picker" },
   },
@@ -122,6 +135,9 @@ return {
           -- the prompt won't show up.
           auto_validate = false,
           show_scores = true,
+        },
+        ["ui-select"] = {
+          require("telescope.themes").get_dropdown(),
         },
       },
     })
