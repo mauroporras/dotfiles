@@ -10,6 +10,7 @@ return {
     { "<Leader>vd", "<cmd>Gitsigns diffthis<CR>", desc = "Diff this" },
     { "<Leader>vn", "<cmd>Gitsigns next_hunk<CR>", desc = "Next hunk" },
     { "<Leader>vp", "<cmd>Gitsigns prev_hunk<CR>", desc = "Prev hunk" },
+    { "<Leader>vP", "<cmd>Gitsigns preview_hunk<CR>", desc = "Preview hunk inline" },
     { "<Leader>vR", "<cmd>Gitsigns reset_buffer<CR>", desc = "Reset buffer" },
     { "<Leader>vr", "<cmd>Gitsigns reset_hunk<CR>", desc = "Reset hunk" },
     { "<Leader>vS", "<cmd>Gitsigns stage_buffer<CR>", desc = "Stage buffer" },
