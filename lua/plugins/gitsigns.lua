@@ -1,6 +1,8 @@
 return {
   "lewis6991/gitsigns.nvim",
   event = "BufReadPost",
+  -- Empty opts table tells lazy.nvim to call setup() with default settings.
+  -- Without this, setup() won't be called and the plugin won't initialize.
   opts = {},
   keys = {
     { "<Leader>vb", "<cmd>Gitsigns blame_line<CR>", desc = "Blame line" },

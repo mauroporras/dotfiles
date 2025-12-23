@@ -1,5 +1,7 @@
 return {
   "folke/trouble.nvim",
+  -- Empty opts table tells lazy.nvim to call setup() with default settings.
+  -- Without this, setup() won't be called and the plugin won't initialize.
   opts = {},
   keys = {
     { "<Leader>xx", "<cmd>Trouble diagnostics toggle<CR>", desc = "Diagnostics" },
