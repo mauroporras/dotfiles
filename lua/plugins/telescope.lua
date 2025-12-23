@@ -59,10 +59,10 @@ return {
         -- :h telescope.layout
         layout_strategy = "vertical",
         layout_config = {
-          height = 999,
+          height = { padding = 0 },
+          width = { padding = 0 },
           prompt_position = "top",
           scroll_speed = 3,
-          width = 999,
         },
         sorting_strategy = "ascending",
         -- :h telescope.defaults.vimgrep_arguments
