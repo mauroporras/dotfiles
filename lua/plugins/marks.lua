@@ -1,4 +1,7 @@
 return {
   "chentoast/marks.nvim",
-  opts = {},
+  opts = {
+    default_mappings = false,
+    refresh_interval = 333,
+  },
 }

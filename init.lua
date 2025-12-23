@@ -258,11 +258,6 @@ vim.g.qs_highlight_on_keys = {
   "T",
 }
 
--- marks.
-require("marks").setup({
-  default_mappings = false,
-  refresh_interval = 333,
-})
 --]]
 
 -- To find what's using a key map:
