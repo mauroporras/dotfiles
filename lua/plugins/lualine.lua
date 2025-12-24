@@ -1,7 +1,7 @@
 -- Statusline and winbar.
 return {
   "nvim-lualine/lualine.nvim",
-  event = "BufReadPost",
+  event = "VeryLazy",
   config = function()
     local custom_theme = require("lualine.themes.codedark")
 
