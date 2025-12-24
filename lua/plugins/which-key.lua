@@ -8,7 +8,7 @@ return {
       { "<leader>c", group = "[C]ode" },
       { "<leader>F", group = "[F]olding" },
       { "<leader>g", group = "[G]o to using LSP" },
-      { "<leader>m", group = "[M]isc" },
+      { "<leader>m", group = "To-do [M]arks" },
       { "<leader>t", group = "[T]abs" },
       { "<leader>v", group = "[V]ersioning" },
       { "<leader>x", group = "Diagnostics" },
