@@ -1,3 +1,6 @@
 [mgr]
 show_hidden = true
 scrolloff = 10
+
+[input]
+cursor_blink = true
