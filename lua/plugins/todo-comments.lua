@@ -21,6 +21,8 @@ return {
     { "<Leader>mn", "<Cmd>TodoTelescope keywords=NOTE<CR>", desc = "NOTE to-do marks" },
     { "<Leader>ms", "<Cmd>TodoTelescope keywords=TEST<CR>", desc = "TEST to-do marks" },
     { "<Leader>mq", "<Cmd>TodoQuickFix<CR>", desc = "QuickFix all to-do marks" },
+    { "<Leader>mi", "<Cmd>TodoTelescope keywords=FIX,TODO<CR>", desc = "Important to-do marks" },
+    { "<Leader>mq", "<Cmd>TodoQuickFix<CR>", desc = "QuickFix all to-do marks" },
   },
   opts = {
     signs = false,
