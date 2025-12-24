@@ -128,6 +128,10 @@ return {
       function()
         require("telescope.builtin").current_buffer_fuzzy_find({
           prompt_title = "Fuzzy Find in Buffer",
+          tiebreak = function(current, existing)
+            -- Prefer lower line numbers (earlier in file)
+            return current.lnum < existing.lnum
+          end,
         })
       end,
       desc = "Fuzzy find in buffer",
