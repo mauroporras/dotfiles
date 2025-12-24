@@ -9,8 +9,9 @@ return {
       "nvim-tree/nvim-web-devicons",
     },
     keys = {
-      { "<Leader>zt", "<Cmd>Neotree toggle<CR>", desc = "Toggle file explorer" },
-      { "<Leader>zb", "<Cmd>Neotree buffers<CR>", desc = "Open buffers in explorer" },
+      { "<Leader>zb", "<Cmd>Neotree buffers<CR>", desc = "Open buffers in tree explorer" },
+      { "<Leader>zg", "<Cmd>Neotree git_status<CR>", desc = "Git status in tree explorer" },
+      { "<Leader>zt", "<Cmd>Neotree toggle<CR>", desc = "Toggle tree file explorer" },
     },
   },
   {
