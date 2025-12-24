@@ -37,4 +37,6 @@ require("lazy").setup({
   install = { colorscheme = { "catppuccin" } },
   -- automatically check for plugin updates
   checker = { enabled = true },
+  -- full screen UI
+  ui = { size = { width = 1, height = 1 } },
 })
