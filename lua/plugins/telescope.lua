@@ -32,7 +32,13 @@ return {
     "nvim-telescope/telescope-smart-history.nvim",
   },
   keys = {
-    { "<Leader>a", "<cmd>Telescope live_grep<CR>", desc = "Search in all files" },
+    {
+      "<Leader>a",
+      function()
+        require("telescope.builtin").live_grep({ prompt_title = "Search in all files" })
+      end,
+      desc = "Search in all files",
+    },
     {
       "<Leader>A",
       function()
@@ -43,12 +49,18 @@ return {
       end,
       desc = "Search in open files",
     },
-    { "<Leader>*", "<cmd>Telescope grep_string<CR>", desc = "Search word under cursor" },
     { "<Leader>b", "<cmd>Telescope buffers<CR>", desc = "List buffers" },
     { "<Leader>gd", "<cmd>Telescope lsp_definitions<CR>", desc = "LSP definitions" },
     { "<Leader>gi", "<cmd>Telescope lsp_implementations<CR>", desc = "LSP implementations" },
     { "<Leader>gr", "<cmd>Telescope lsp_references<CR>", desc = "LSP references" },
     { "<Leader>gs", "<cmd>Telescope lsp_document_symbols<CR>", desc = "LSP document symbols" },
+    {
+      "<Leader>*",
+      function()
+        require("telescope.builtin").grep_string({ prompt_title = "Search word under cursor" })
+      end,
+      desc = "Search word under cursor",
+    },
     -- No preview for faster file picking
     -- { "<Leader>R", "<cmd>Telescope frecency workspace=CWD<CR>", desc = "Frecency file picker" },
     {
