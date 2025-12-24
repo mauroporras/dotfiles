@@ -49,10 +49,6 @@ return {
       end,
       desc = "Search in open files",
     },
-    { "<Leader>gd", "<cmd>Telescope lsp_definitions<CR>", desc = "LSP definitions" },
-    { "<Leader>gi", "<cmd>Telescope lsp_implementations<CR>", desc = "LSP implementations" },
-    { "<Leader>gr", "<cmd>Telescope lsp_references<CR>", desc = "LSP references" },
-    { "<Leader>gs", "<cmd>Telescope lsp_document_symbols<CR>", desc = "LSP document symbols" },
     {
       "<Leader>*",
       function()
@@ -66,6 +62,34 @@ return {
         require("telescope.builtin").buffers({ prompt_title = "Buffers" })
       end,
       desc = "List buffers",
+    },
+    {
+      "<Leader>gd",
+      function()
+        require("telescope.builtin").lsp_definitions({ prompt_title = "LSP Definitions" })
+      end,
+      desc = "LSP definitions",
+    },
+    {
+      "<Leader>gi",
+      function()
+        require("telescope.builtin").lsp_implementations({ prompt_title = "LSP Implementations" })
+      end,
+      desc = "LSP implementations",
+    },
+    {
+      "<Leader>gr",
+      function()
+        require("telescope.builtin").lsp_references({ prompt_title = "LSP References" })
+      end,
+      desc = "LSP references",
+    },
+    {
+      "<Leader>gs",
+      function()
+        require("telescope.builtin").lsp_document_symbols({ prompt_title = "Document Symbols" })
+      end,
+      desc = "LSP document symbols",
     },
     -- No preview for faster file picking
     -- { "<Leader>R", "<cmd>Telescope frecency workspace=CWD<CR>", desc = "Frecency file picker" },
@@ -83,11 +107,20 @@ return {
     {
       "<Leader>o",
       function()
-        require("telescope.builtin").find_files({ prompt_title = "Find files by name" })
+        require("telescope.builtin").find_files({
+          prompt_title = "Find files by name",
+          previewer = false,
+        })
       end,
       desc = "Find files",
     },
-    { "<Leader>vc", "<cmd>Telescope git_bcommits<CR>", desc = "Buffer git commits" },
+    {
+      "<Leader>vc",
+      function()
+        require("telescope.builtin").git_bcommits({ prompt_title = "Buffer Git Commits" })
+      end,
+      desc = "Buffer git commits",
+    },
     {
       "<Leader>/",
       function()
@@ -113,7 +146,13 @@ return {
       end,
       desc = "Old (recent) files",
     },
-    { "<Leader>zr", "<cmd>Telescope resume<CR>", desc = "Resume last picker" },
+    {
+      "<Leader>zr",
+      function()
+        require("telescope.builtin").resume({ prompt_title = "Resume Last Picker" })
+      end,
+      desc = "Resume last picker",
+    },
   },
   config = function()
     local telescope = require("telescope")
