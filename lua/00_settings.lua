@@ -41,9 +41,8 @@ vim.o.undofile = true
 vim.o.ignorecase = true
 vim.o.smartcase = true
 
--- Keep signcolumn on by default
-vim.o.signcolumn = "yes"
--- vim.opt.signcolumn = 'auto:2'
+-- Show signcolumn when signs exist, with room for up to 3 (gitsigns, marks, diagnostics)
+vim.o.signcolumn = "auto:3"
 
 -- Decrease update time
 vim.o.updatetime = 250
