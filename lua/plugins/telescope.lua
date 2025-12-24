@@ -62,7 +62,13 @@ return {
       end,
       desc = "Frecency file picker",
     },
-    { "<Leader>o", "<cmd>Telescope find_files<CR>", desc = "Find files" },
+    {
+      "<Leader>o",
+      function()
+        require("telescope.builtin").find_files({ prompt_title = "Find files by name" })
+      end,
+      desc = "Find files",
+    },
     { "<Leader>vc", "<cmd>Telescope git_bcommits<CR>", desc = "Buffer git commits" },
     {
       "<Leader>/",
