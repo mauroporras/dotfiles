@@ -88,6 +88,8 @@ vim.keymap.set("n", "<C-p>", "<cmd>cprevious<CR>", { desc = "Previous quickfix i
 -- See:
 --   :h foldmethod
 --
+-- In visual mode, use zf to create a fold from the selection.
+--
 -- Modelines are special comments that set Vim options for a specific file.
 -- Place them at the top or bottom of a file (within first/last 5 lines).
 -- See :h modeline
