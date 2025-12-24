@@ -5,16 +5,6 @@ return {
   "nvim-treesitter/nvim-treesitter",
   lazy = false, -- NOTE: this plugin does not support lazy-loading.
   build = ":TSUpdate",
-  -- See `:h nvim-treesitter`
-  -- A list of parser names, or "all"
-  --   See:
-  --     https://github.com/nvim-treesitter/nvim-treesitter/blob/main/SUPPORTED_LANGUAGES.md
-  --   To update all parsers:
-  --     :TSUpdate
-  --   List installed:
-  --     :TSInstallInfo
-  --   To list all available commands:
-  --     :h nvim-treesitter-commands
   config = function()
     -- Install parsers (no-op if already installed)
     require("nvim-treesitter").install({
@@ -71,7 +61,19 @@ return {
   end,
 }
 
--- WARN: Don't delete this list, kept for reference.
+-- WARN: Don't delete this, kept for reference.
+
+-- See `:h nvim-treesitter`
+-- A list of parser names, or "all"
+--   See:
+--     https://github.com/nvim-treesitter/nvim-treesitter/blob/main/SUPPORTED_LANGUAGES.md
+--   To update all parsers:
+--     :TSUpdate
+--   List installed:
+--     :TSInstallInfo
+--   To list all available commands:
+--     :h nvim-treesitter-commands
+
 --[[
 ensure_installed = {
   "bash",
