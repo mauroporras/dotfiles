@@ -53,6 +53,7 @@ ensure_installed = {
   "scss",
   "svelte",
   "toml",
+  "tsx",
   "typescript",
   "vim",
   "vimdoc",
