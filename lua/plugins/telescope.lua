@@ -36,7 +36,10 @@ return {
     {
       "<Leader>A",
       function()
-        require("telescope.builtin").live_grep({ grep_open_files = true })
+        require("telescope.builtin").live_grep({
+          grep_open_files = true,
+          prompt_title = "Live Grep in Open Files",
+        })
       end,
       desc = "Search in open files",
     },
@@ -51,7 +54,11 @@ return {
     {
       "<Leader>R",
       function()
-        require("telescope").extensions.frecency.frecency({ workspace = "CWD", previewer = false })
+        require("telescope").extensions.frecency.frecency({
+          workspace = "CWD",
+          previewer = false,
+          prompt_title = "Frecency",
+        })
       end,
       desc = "Frecency file picker",
     },
@@ -61,6 +68,7 @@ return {
       "<Leader>/",
       function()
         require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
+          prompt_title = "Fuzzy Find in Buffer",
           layout_config = {
             width = { padding = 0 },
             height = { padding = 0 },
@@ -74,7 +82,10 @@ return {
     {
       "<Leader>O",
       function()
-        require("telescope.builtin").oldfiles({ previewer = false })
+        require("telescope.builtin").oldfiles({
+          previewer = false,
+          prompt_title = "Old (recent) files",
+        })
       end,
       desc = "Old (recent) files",
     },
