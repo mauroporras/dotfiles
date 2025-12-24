@@ -1,14 +1,14 @@
 -- vim:foldmethod=marker
 
 -- See
---   `:help vim.keymap.set()`
+--   `:h vim.keymap.set()`
 --   https://github.com/nanotee/nvim-lua-guide#defining-mappings
 
 -- To find what's using a key map:
 --   :verbose nmap <leader>b
 
 -- Clear highlights on search when pressing <Esc> in normal mode
---   See `:help hlsearch`
+--   See `:h hlsearch`
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 -- Diagnostic keymaps

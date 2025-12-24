@@ -1,7 +1,7 @@
 -- vim:foldmethod=marker
 
 --  See:
---    `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
+--    `:h lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
 --
 --  To check the current status of your plugins, run
 --    :Lazy

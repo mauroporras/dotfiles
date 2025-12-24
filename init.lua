@@ -23,7 +23,7 @@ local optNRM = { noremap = true }
 -- https://github.com/neovim/nvim-lspconfig#suggested-configuration
 
 -- Mappings.
--- See `:help vim.diagnostic.*` for documentation on any of the below functions.
+-- See `:h vim.diagnostic.*` for documentation on any of the below functions.
 vim.keymap.set("n", "<Leader>cd", vim.diagnostic.open_float, optNRM)
 vim.keymap.set("n", "<Leader>n", vim.diagnostic.goto_next, optNRM)
 vim.keymap.set("n", "<Leader>p", vim.diagnostic.goto_prev, optNRM)
@@ -32,7 +32,7 @@ vim.keymap.set("n", "<Leader>p", vim.diagnostic.goto_prev, optNRM)
 -- after the language server attaches to the current buffer
 local on_attach = function(_, bufnr)
   -- Mappings.
-  -- See `:help vim.lsp.*` for documentation on any of the below functions
+  -- See `:h vim.lsp.*` for documentation on any of the below functions
   local bufopts = { noremap = true, silent = true, buffer = bufnr }
 
   vim.keymap.set("n", "<Leader>gD", vim.lsp.buf.declaration, bufopts)
