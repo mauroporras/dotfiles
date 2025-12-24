@@ -11,6 +11,13 @@ return {
   },
   -- [[ Configure Treesitter ]] See `:h nvim-treesitter`
   opts = {
+    -- A list of parser names, or "all"
+    --   See:
+    --     https://github.com/nvim-treesitter/nvim-treesitter/blob/main/SUPPORTED_LANGUAGES.md
+    --   To update all parsers:
+    --     :TSUpdate
+    --   To list all available commands:
+    --     :h nvim-treesitter-commands
     ensure_installed = {
       "bash",
       "c",

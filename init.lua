@@ -147,45 +147,7 @@ cmp.setup({
 
 --[[
 -- nvim-treesitter {{{
---   See:
---     https://github.com/nvim-treesitter/nvim-treesitter#language-parsers
---   To update all parsers:
---     :TSUpdate
---   To list all available commands:
---     :h nvim-treesitter-commands
 require("nvim-treesitter.configs").setup({
-  -- A list of parser names, or "all"
-  ensure_installed = {
-    "bash",
-    "c",
-    "cmake",
-    "cpp",
-    "css",
-    "diff",
-    "dockerfile",
-    "git_rebase",
-    "gitattributes",
-    "gitcommit",
-    "gitignore",
-    "html",
-    "javascript",
-    "jsdoc",
-    "json",
-    "json5",
-    "jsonc",
-    "lua",
-    "make",
-    "markdown",
-    "markdown_inline",
-    "regex",
-    "scss",
-    "svelte",
-    "toml",
-    "typescript",
-    "vim",
-    "yaml",
-  },
-
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,
 
