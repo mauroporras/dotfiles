@@ -93,10 +93,12 @@ vim.opt.completeopt = {
 }
 vim.o.cmdheight = 2
 
-vim.cmd([=[
-  " Recognize some extensions known to have JSON with comments.
-  autocmd BufNewFile,BufRead tsconfig.json setlocal filetype=jsonc
-]=])
+-- Recognize files that contain JSON with comments
+vim.filetype.add({
+  filename = {
+    ["tsconfig.json"] = "jsonc",
+  },
+})
 
 -- [[ Basic Autocommands ]]
 --  See `:h lua-guide-autocommands`
