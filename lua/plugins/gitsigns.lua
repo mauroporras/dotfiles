@@ -20,15 +20,4 @@ return {
   -- Empty opts table tells lazy.nvim to call setup() with default settings.
   -- Without this, setup() won't be called and the plugin won't initialize.
   opts = {},
-  --[[
-  opts = {
-    signs = {
-      add = { text = "+" },
-      change = { text = "~" },
-      delete = { text = "_" },
-      topdelete = { text = "‾" },
-      changedelete = { text = "~" },
-    },
-  },
-  --]]
 }
