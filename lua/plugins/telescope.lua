@@ -23,7 +23,6 @@ return {
         return vim.fn.executable("make") == 1
       end,
     },
-    { "nvim-telescope/telescope-ui-select.nvim" },
 
     "nvim-tree/nvim-web-devicons",
 
@@ -230,15 +229,11 @@ return {
           auto_validate = false,
           show_scores = true,
         },
-        ["ui-select"] = {
-          require("telescope.themes").get_dropdown(),
-        },
       },
     })
 
     telescope.load_extension("frecency")
     telescope.load_extension("fzf")
     telescope.load_extension("smart_history")
-    telescope.load_extension("ui-select")
   end,
 }
