@@ -7,8 +7,20 @@ return {
     { "<Leader>vB", "<cmd>Gitsigns blame<CR>", desc = "Blame current buffer" },
     { "<Leader>vd", "<cmd>Gitsigns diffthis<CR>", desc = "Diff this" },
     { "<Leader>vD", "<cmd>Gitsigns toggle_deleted<CR>", desc = "Toggle deleted" },
-    { "<Leader>vn", function() require("gitsigns").nav_hunk("next", { target = "all" }) end, desc = "Next hunk" },
-    { "<Leader>vp", function() require("gitsigns").nav_hunk("prev", { target = "all" }) end, desc = "Prev hunk" },
+    {
+      "<Leader>vn",
+      function()
+        require("gitsigns").nav_hunk("next", { target = "all" })
+      end,
+      desc = "Next hunk",
+    },
+    {
+      "<Leader>vp",
+      function()
+        require("gitsigns").nav_hunk("prev", { target = "all" })
+      end,
+      desc = "Prev hunk",
+    },
     { "<Leader>vP", "<cmd>Gitsigns preview_hunk<CR>", desc = "Preview hunk inline" },
     { "<Leader>vr", "<cmd>Gitsigns reset_hunk<CR>", desc = "Reset hunk" },
     { "<Leader>vR", "<cmd>Gitsigns reset_buffer<CR>", desc = "Reset buffer" },

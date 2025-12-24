@@ -127,13 +127,9 @@ return {
     {
       "<Leader>/",
       function()
-        require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
+        require("telescope.builtin").current_buffer_fuzzy_find({
           prompt_title = "Fuzzy Find in Buffer",
-          layout_config = {
-            width = { padding = 0 },
-            height = { padding = 0 },
-          },
-        }))
+        })
       end,
       desc = "Fuzzy find in buffer",
     },
