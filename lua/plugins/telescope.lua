@@ -59,7 +59,10 @@ return {
     {
       "<Leader>b",
       function()
-        require("telescope.builtin").buffers({ prompt_title = "Buffers" })
+        require("telescope.builtin").buffers({
+          prompt_title = "Buffers",
+          previewer = false,
+        })
       end,
       desc = "List buffers",
     },

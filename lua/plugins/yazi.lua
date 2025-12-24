@@ -1,4 +1,11 @@
 -- Yazi file manager integration.
+--
+-- Default keybindings when Yazi is open:
+--   <C-v> open selected file(s) in vertical splits
+--   <C-x> open selected file(s) in horizontal splits
+--   <C-t> open selected file(s) in new tabs
+--   <C-q> send selected file(s) to quickfix list
+--   <Tab> jump to open buffer
 ---@type LazySpec
 return {
   "mikavilpas/yazi.nvim",
