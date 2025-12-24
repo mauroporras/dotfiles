@@ -46,7 +46,15 @@ return {
     { "<Leader>gi", "<cmd>Telescope lsp_implementations<CR>", desc = "LSP implementations" },
     { "<Leader>gr", "<cmd>Telescope lsp_references<CR>", desc = "LSP references" },
     { "<Leader>gs", "<cmd>Telescope lsp_document_symbols<CR>", desc = "LSP document symbols" },
-    { "<Leader>O", "<cmd>Telescope frecency workspace=CWD<CR>", desc = "Frecency file picker" },
+    -- No preview for faster file picking
+    -- { "<Leader>R", "<cmd>Telescope frecency workspace=CWD<CR>", desc = "Frecency file picker" },
+    {
+      "<Leader>R",
+      function()
+        require("telescope").extensions.frecency.frecency({ workspace = "CWD", previewer = false })
+      end,
+      desc = "Frecency file picker",
+    },
     { "<Leader>o", "<cmd>Telescope find_files<CR>", desc = "Find files" },
     { "<Leader>vc", "<cmd>Telescope git_bcommits<CR>", desc = "Buffer git commits" },
     {
@@ -62,13 +70,13 @@ return {
       desc = "Fuzzy find in buffer",
     },
     -- No preview for faster file picking
-    -- { "<Leader>R", "<cmd>Telescope oldfiles<CR>", desc = "Recent files" },
+    -- { "<Leader>O", "<cmd>Telescope oldfiles<CR>", desc = "Old (recent) files" },
     {
-      "<Leader>R",
+      "<Leader>O",
       function()
         require("telescope.builtin").oldfiles({ previewer = false })
       end,
-      desc = "Recent files",
+      desc = "Old (recent) files",
     },
     { "<Leader>zr", "<cmd>Telescope resume<CR>", desc = "Resume last picker" },
   },
