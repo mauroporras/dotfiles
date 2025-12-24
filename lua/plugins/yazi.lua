@@ -10,7 +10,12 @@ return {
     floating_window_scaling_factor = 1.0,
   },
   keys = {
-    { "<Leader>f", "<cmd>Yazi<CR>", desc = "Open file manager at the current file" },
+    {
+      "<Leader>f",
+      mode = { "n", "v" },
+      "<cmd>Yazi<CR>",
+      desc = "Open file manager at the current file",
+    },
     -- Commented to free up <Leader>F for folding keymaps
     -- I almost never use these keymaps.
     -- { "<Leader>Fc", "<cmd>Yazi cwd<CR>", desc = "Open file manager focused on the cwd" },
