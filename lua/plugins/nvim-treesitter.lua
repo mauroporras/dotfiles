@@ -71,7 +71,7 @@ return {
   end,
 }
 
--- WARN: Don't delete this list; kept for reference.
+-- WARN: Don't delete this list, kept for reference.
 --[[
 ensure_installed = {
   "bash",
