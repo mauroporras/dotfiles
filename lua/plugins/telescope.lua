@@ -49,7 +49,6 @@ return {
       end,
       desc = "Search in open files",
     },
-    { "<Leader>b", "<cmd>Telescope buffers<CR>", desc = "List buffers" },
     { "<Leader>gd", "<cmd>Telescope lsp_definitions<CR>", desc = "LSP definitions" },
     { "<Leader>gi", "<cmd>Telescope lsp_implementations<CR>", desc = "LSP implementations" },
     { "<Leader>gr", "<cmd>Telescope lsp_references<CR>", desc = "LSP references" },
@@ -60,6 +59,13 @@ return {
         require("telescope.builtin").grep_string({ prompt_title = "Search word under cursor" })
       end,
       desc = "Search word under cursor",
+    },
+    {
+      "<Leader>b",
+      function()
+        require("telescope.builtin").buffers({ prompt_title = "Buffers" })
+      end,
+      desc = "List buffers",
     },
     -- No preview for faster file picking
     -- { "<Leader>R", "<cmd>Telescope frecency workspace=CWD<CR>", desc = "Frecency file picker" },
