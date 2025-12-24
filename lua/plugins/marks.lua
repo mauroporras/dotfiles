@@ -1,12 +1,13 @@
 -- Show Vim marks in the sign column.
+
 -- See:
---    :h mark
---
+--   :h mark
+
 -- 'x (single quote):
 --   Jump to the beginning of the line where mark "x" was set.
 -- `x (backtick):
 --   Jump to the exact cursor position (row and column) where mark "x" was set.
---
+
 -- The following default mappings are included:
 --   dmx       Delete mark x
 --   dm-       Delete all marks on the current line
