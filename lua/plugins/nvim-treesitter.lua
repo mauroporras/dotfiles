@@ -5,6 +5,56 @@ return {
   "nvim-treesitter/nvim-treesitter",
   lazy = false, -- NOTE: this plugin does not support lazy-loading.
   build = ":TSUpdate",
+  ---@alias lazyvim.TSConfig: TSConfig
+  opts = {
+    ensure_installed = {
+      "bash",
+      "c",
+      "cmake",
+      "cpp",
+      "css",
+      "diff",
+      "dockerfile",
+      "git_rebase",
+      "gitattributes",
+      "gitcommit",
+      "gitignore",
+      "go",
+      "gomod",
+      "gosum",
+      "gowork",
+      "html",
+      "javascript",
+      "jsdoc",
+      "json",
+      "json5",
+      "jsonc",
+      "lua",
+      "luadoc",
+      "luap",
+      "make",
+      "markdown",
+      "markdown_inline",
+      "printf",
+      "python",
+      "query",
+      "regex",
+      "scss",
+      "svelte",
+      "toml",
+      "tsx",
+      "typescript",
+      "vim",
+      "vimdoc",
+      "xml",
+      "yaml",
+    },
+  },
+  config = function(_, opts)
+    local TS = require("nvim-treesitter")
+
+    TS.setup(opts)
+  end,
 }
 
 -- WARN: Don't delete this, kept for reference.
