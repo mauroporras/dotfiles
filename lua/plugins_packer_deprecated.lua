@@ -21,12 +21,4 @@ use({
   tag = "v2.*",
   run = "make install_jsregexp",
 })
-
-use({
-  "nvim-treesitter/nvim-treesitter",
-  requires = {
-    "nvim-treesitter/nvim-treesitter-textobjects",
-  },
-  run = ":TSUpdate",
-})
 --]]
