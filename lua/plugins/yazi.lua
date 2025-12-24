@@ -14,7 +14,7 @@ return {
     { "nvim-lua/plenary.nvim", lazy = true },
   },
   opts = {
-    floating_window_scaling_factor = 1.0,
+    floating_window_scaling_factor = 1,
   },
   keys = {
     {
