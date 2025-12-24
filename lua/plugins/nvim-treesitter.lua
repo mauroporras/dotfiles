@@ -11,7 +11,8 @@ return {
   --     https://github.com/nvim-treesitter/nvim-treesitter/blob/main/SUPPORTED_LANGUAGES.md
   --   To update all parsers:
   --     :TSUpdate
-  -- List installed: :TSInstallInfo
+  --   List installed:
+  --     :TSInstallInfo
   --   To list all available commands:
   --     :h nvim-treesitter-commands
   config = function()
