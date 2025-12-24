@@ -147,7 +147,45 @@ cmp.setup({
 
 --[[
 -- nvim-treesitter {{{
-require("nvim-treesitter.configs").setup({
+--   See:
+--     https://github.com/nvim-treesitter/nvim-treesitter#language-parsers
+--   To update all parsers:
+--     :TSUpdate
+--   To list all available commands:
+--     :h nvim-treesitter-commands
+require('nvim-treesitter.configs').setup {
+  -- A list of parser names, or "all"
+  ensure_installed = {
+    'bash',
+    'c',
+    'cmake',
+    'cpp',
+    'css',
+    'diff',
+    'dockerfile',
+    'git_rebase',
+    'gitattributes',
+    'gitcommit',
+    'gitignore',
+    'html',
+    'javascript',
+    'jsdoc',
+    'json',
+    'json5',
+    'jsonc',
+    'lua',
+    'make',
+    'markdown',
+    'markdown_inline',
+    'regex',
+    'scss',
+    'svelte',
+    'toml',
+    'typescript',
+    'vim',
+    'yaml',
+  },
+
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,
 
@@ -174,6 +212,20 @@ require("nvim-treesitter.configs").setup({
     -- Instead of true it can also be a list of languages
     additional_vim_regex_highlighting = false,
   },
-})
+
+  -- See:
+  -- https://github.com/nvim-treesitter/nvim-treesitter-textobjects
+  textobjects = {
+    select = {
+      enable = true,
+      keymaps = {
+        ['af'] = '@function.outer',
+        ['if'] = '@function.inner',
+        ['ac'] = '@class.outer',
+        ['ic'] = '@class.inner',
+      },
+    },
+  },
+}
 -- }}}
 --]]
