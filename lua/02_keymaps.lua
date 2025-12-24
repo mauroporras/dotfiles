@@ -33,18 +33,18 @@ vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower win
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 -- }}}
 
--- Reload buffer and preserve scroll position
+-- Reload buffer preserving position
 vim.keymap.set("n", "<Leader>e", function()
   local view = vim.fn.winsaveview()
   vim.cmd("edit!")
   vim.fn.winrestview(view)
-end, { desc = "Reload file buffer position" })
+end, { desc = "Reload buffer preserving position" })
 
 -- Restart LSP server(s)
 vim.keymap.set("n", "<Leader>E", "<cmd>LspRestart<CR>", { desc = "Restart LSP" })
 
 -- Open Lazy plugin manager
-vim.keymap.set("n", "<Leader>L", "<cmd>Lazy<CR>", { desc = "Open Lazy" })
+vim.keymap.set("n", "<Leader>L", "<cmd>Lazy<CR>", { desc = "Open Lazy plugin manager" })
 
 -- Disabled keymaps {{{
 -- Disabled to unlearn shortcuts
