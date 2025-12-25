@@ -1,3 +1,4 @@
+-- TODO: check official docs
 -- Statusline and winbar.
 return {
   "nvim-lualine/lualine.nvim",

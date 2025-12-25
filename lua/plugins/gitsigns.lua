@@ -1,3 +1,4 @@
+-- TODO: check official docs
 -- Git signs in the sign column, plus hunk actions.
 return {
   "lewis6991/gitsigns.nvim",

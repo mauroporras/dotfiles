@@ -1,3 +1,4 @@
+-- TODO: check official docs
 -- GitHub AI code completion.
 return {
   "github/copilot.vim",

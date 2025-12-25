@@ -1,3 +1,4 @@
+-- TODO: check official docs
 -- Easy left and right motion.
 return {
   "unblevable/quick-scope",

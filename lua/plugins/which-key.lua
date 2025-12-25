@@ -1,3 +1,4 @@
+-- TODO: check official docs
 -- Show keybindings popup when pressing a prefix key.
 return {
   "folke/which-key.nvim",

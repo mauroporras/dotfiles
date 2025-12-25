@@ -1,3 +1,4 @@
+-- TODO: check official docs
 -- Pretty list for diagnostics, quickfix, LSP references, etc.
 return {
   "folke/trouble.nvim",

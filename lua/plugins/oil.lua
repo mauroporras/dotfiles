@@ -1,3 +1,4 @@
+-- TODO: check official docs
 -- File explorer that lets you edit the filesystem like a buffer.
 return {
   "stevearc/oil.nvim",

@@ -1,3 +1,4 @@
+-- TODO: check official docs
 -- Breadcrumb navigation popup for LSP symbols.
 return {
   "SmiteshP/nvim-navbuddy",

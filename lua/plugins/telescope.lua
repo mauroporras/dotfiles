@@ -1,3 +1,4 @@
+-- TODO: check official docs
 -- Fuzzy finder for files, buffers, grep, LSP, and more.
 --
 -- Old command for fzf was:

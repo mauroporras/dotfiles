@@ -1,3 +1,4 @@
+-- TODO: check official docs
 -- Linting
 return {
   "mfussenegger/nvim-lint",

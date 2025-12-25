@@ -1,3 +1,4 @@
+-- TODO: check official docs
 -- Soothing pastel colorscheme.
 return {
   "catppuccin/nvim",

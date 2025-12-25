@@ -1,3 +1,4 @@
+-- TODO: check official docs
 -- Used in lualine to show current code context.
 return {
   "SmiteshP/nvim-navic",
