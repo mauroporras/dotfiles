@@ -2,10 +2,10 @@
 -- https://github.com/anuvyklack/pretty-fold.nvim
 -- TODO: Configure pretty-fold.nvim
 --
---[[
 return {
+  --[[
   "anuvyklack/pretty-fold.nvim",
   event = "BufReadPost",
   opts = {},
+  --]]
 }
---]]
