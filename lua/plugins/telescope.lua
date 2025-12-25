@@ -94,6 +94,13 @@ return {
       end,
       desc = "LSP document symbols",
     },
+    {
+      "<Leader>gS",
+      function()
+        require("telescope.builtin").lsp_dynamic_workspace_symbols({ prompt_title = "Workspace Symbols" })
+      end,
+      desc = "LSP workspace symbols",
+    },
     -- No preview for faster file picking
     -- { "<Leader>R", "<cmd>Telescope frecency workspace=CWD<CR>", desc = "Frecency file picker" },
     {
