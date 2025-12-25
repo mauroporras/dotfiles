@@ -124,7 +124,11 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   end,
 })
 
--- Enable treesitter highlighting for all filetypes with a parser
+-- Enable treesitter highlighting for all filetypes with a parser.
+-- WARN: The nvim-treesitter docs recommend explicit patterns per filetype:
+--   https://github.com/nvim-treesitter/nvim-treesitter?tab=readme-ov-file#highlighting
+-- We use pcall for all filetypes instead — it silently fails when no parser exists,
+-- avoiding the need to maintain an explicit filetype list.
 vim.api.nvim_create_autocmd("FileType", {
   group = augroup("treesitter_highlight"),
   callback = function()
