@@ -3,6 +3,7 @@ return {
   "folke/which-key.nvim",
   event = "VeryLazy",
   opts = {
+    delay = 1000, -- 1 second timeout
     -- Document existing key chains
     spec = {
       { "<leader>c", group = "[C]ode" },
