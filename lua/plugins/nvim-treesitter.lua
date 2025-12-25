@@ -1,4 +1,4 @@
--- Treesitter provides syntax highlighting and code parsing.
+-- Syntax highlighting and code parsing.
 --
 -- See `:h lsp-vs-treesitter`
 -- Run `:checkhealth nvim-treesitter` if troubles.
