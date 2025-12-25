@@ -10,8 +10,7 @@ return {
   lazy = false,
   build = ":TSUpdate",
   config = function(_, opts)
-    -- A list of parser names
-    --   See:
+    -- A list of parser names. See:
     --     https://github.com/nvim-treesitter/nvim-treesitter/blob/main/SUPPORTED_LANGUAGES.md
     --   Update all parsers `:TSUpdate`
     --   List installed `:checkhealth nvim-treesitter`
