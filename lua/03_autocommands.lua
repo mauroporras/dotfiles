@@ -138,7 +138,6 @@ vim.api.nvim_create_autocmd("FileType", {
 
 -- Enable treesitter folding for all filetypes.
 -- See: https://github.com/nvim-treesitter/nvim-treesitter?tab=readme-ov-file#folding
--- Check current fold settings: `:set foldmethod? foldexpr? foldlevel? foldenable?`
 vim.api.nvim_create_autocmd("FileType", {
   group = augroup("treesitter_folding"),
   callback = function()

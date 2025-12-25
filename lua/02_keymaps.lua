@@ -111,6 +111,12 @@ vim.keymap.set(
 )
 vim.keymap.set("n", "<Leader>Fm", "<cmd>set foldmethod=manual<CR>", { desc = "Create folds manually with zf" })
 vim.keymap.set("n", "<Leader>Fs", "<cmd>set foldmethod=syntax<CR>", { desc = "Fold from syntax highlighting" })
+vim.keymap.set(
+  "n",
+  "<Leader>FI",
+  "<cmd>set foldmethod? foldexpr? foldlevel? foldenable?<CR>",
+  { desc = "Show folding info" }
+)
 -- }}}
 
 -- Scrolling
