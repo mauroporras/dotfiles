@@ -15,6 +15,7 @@ return {
     -- Update all parsers `:TSUpdate`
     -- List installed `:checkhealth nvim-treesitter`
     -- List all available commands `:h nvim-treesitter-commands`
+    -- View treesitter AST `:InspectTree`
     require("nvim-treesitter").install({
       "bash",
       "c",

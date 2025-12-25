@@ -123,3 +123,11 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     vim.fn.mkdir(vim.fn.fnamemodify(file, ":p:h"), "p")
   end,
 })
+
+-- Enable treesitter highlighting for all filetypes with a parser
+vim.api.nvim_create_autocmd("FileType", {
+  group = augroup("treesitter_highlight"),
+  callback = function()
+    pcall(vim.treesitter.start)
+  end,
+})
