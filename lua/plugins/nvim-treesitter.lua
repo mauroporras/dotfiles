@@ -1,9 +1,9 @@
 -- Syntax highlighting and code parsing.
 --
--- See `:h lsp-vs-treesitter`
--- If troubles `:checkhealth nvim-treesitter`
---
--- See `:h nvim-treesitter`
+-- See
+--   `:h lsp-vs-treesitter`
+--   `:h nvim-treesitter`
+-- NOTE: if troubles `:checkhealth nvim-treesitter`
 return {
   "nvim-treesitter/nvim-treesitter",
   -- WARN:This plugin does not support lazy-loading.
