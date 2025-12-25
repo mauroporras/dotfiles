@@ -4,6 +4,11 @@ return {
   name = "catppuccin",
   priority = 1000,
   opts = {
+    flavour = "latte",
+    -- Automatically detect installed plugins and enable their integrations.
+    -- WARN: available on lazy.nvim only.
+    auto_integrations = true,
+    --[[
     integrations = {
       cmp = true,
       gitsigns = true,
@@ -13,9 +18,10 @@ return {
       telescope = true,
       treesitter = true,
     },
+    --]]
   },
   config = function(_, opts)
     require("catppuccin").setup(opts)
-    vim.cmd.colorscheme("catppuccin-latte")
+    vim.cmd.colorscheme("catppuccin")
   end,
 }
