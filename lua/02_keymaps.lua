@@ -100,6 +100,7 @@ vim.keymap.set("n", "<C-p>", "<cmd>cprevious<CR>", { desc = "Previous quickfix i
 --   # vim:foldmethod=syntax   (for shell scripts)
 --   // vim:foldmethod=manual  (for C/JS/etc)
 vim.keymap.set("n", "<Leader>Fd", "<cmd>set nofoldenable<CR>", { desc = "Disable folding" })
+-- NOTE:this is the default one.
 vim.keymap.set("n", "<Leader>Fe", "<cmd>set foldmethod=expr<CR>", { desc = "Fold via foldexpr (Treesitter)" })
 vim.keymap.set("n", "<Leader>Fi", "<cmd>set foldmethod=indent<CR>", { desc = "Fold based on indentation level" })
 vim.keymap.set(
