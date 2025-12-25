@@ -1,7 +1,7 @@
 -- Syntax highlighting and code parsing.
 --
 -- See `:h lsp-vs-treesitter`
--- If troubles, run `:checkhealth nvim-treesitter`
+-- If troubles `:checkhealth nvim-treesitter`
 --
 -- See `:h nvim-treesitter`
 return {
