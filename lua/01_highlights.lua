@@ -5,11 +5,6 @@
 -- Use `:highlight` to list all color groups.
 --   :h :highlight
 
--- Enable 24-bit RGB color.
--- See:
--- https://neovim.io/doc/user/options.html#'termguicolors'
-vim.o.termguicolors = true
-
 vim.cmd([[
   " Custom highlights.
   highlight HighlightedyankRegion guibg=violet guifg=black
