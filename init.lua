@@ -20,9 +20,6 @@ local optNRM = { noremap = true }
 -- :LspInfo
 -- :LspRestart
 
--- See:
--- https://github.com/neovim/nvim-lspconfig#suggested-configuration
-
 -- Mappings.
 -- See `:h vim.diagnostic.*` for documentation on any of the below functions.
 vim.keymap.set("n", "<Leader>cd", vim.diagnostic.open_float, optNRM)
