@@ -30,6 +30,8 @@ return {
     "kkharji/sqlite.lua",
     "nvim-telescope/telescope-frecency.nvim",
     "nvim-telescope/telescope-smart-history.nvim",
+    -- Replaces vim.ui.select with Telescope picker
+    "nvim-telescope/telescope-ui-select.nvim",
   },
   keys = {
     {
@@ -261,11 +263,15 @@ return {
           auto_validate = false,
           show_scores = true,
         },
+        ["ui-select"] = {
+          require("telescope.themes").get_dropdown(),
+        },
       },
     })
 
     telescope.load_extension("frecency")
     telescope.load_extension("fzf")
     telescope.load_extension("smart_history")
+    telescope.load_extension("ui-select")
   end,
 }
