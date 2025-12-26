@@ -21,9 +21,9 @@ return {
       sections = {
         -- Assign to empty tables to remove current mode.
         -- lualine_a = {},
-        lualine_b = {
-          "diagnostics",
-        },
+        -- lualine_b = {
+        --   "diagnostics",
+        -- },
         lualine_c = {
           {
             "filename",
