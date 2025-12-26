@@ -24,7 +24,7 @@ return {
       "cpp",
       "css",
       "diff",
-      "dockerfile",
+      "dockerfile", -- TODO: fix docker
       "git_rebase",
       "gitattributes",
       "gitcommit",
