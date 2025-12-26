@@ -353,6 +353,9 @@ return {
         -- <c-k>: Toggle signature help
         --
         -- See :h blink-cmp-config-keymap for defining your own keymap
+        preset = "default",
+
+        --[[
         preset = "none",
 
         -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
@@ -363,6 +366,7 @@ return {
         ["<C-u>"] = { "scroll_documentation_up", "fallback" },
         ["<C-d>"] = { "scroll_documentation_down", "fallback" },
         ["<CR>"] = { "accept", "fallback" },
+        --]]
       },
 
       appearance = {
