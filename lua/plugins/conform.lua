@@ -50,6 +50,5 @@ return {
       typescriptreact = { "prettierd" },
       yaml = { "prettierd" },
     },
-    format_on_save = {},
   },
 }
