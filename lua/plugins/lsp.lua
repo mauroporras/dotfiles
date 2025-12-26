@@ -1,5 +1,6 @@
 -- LSP Configuration
--- Adapted from kickstart.nvim
+-- :LspInfo
+-- :LspRestart
 return {
   {
     -- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
@@ -22,14 +23,14 @@ return {
       -- Mason must be loaded before its dependents so we need to set it up here.
       -- NOTE: `opts = {}` is the same as calling `require('mason').setup({})`
       {
-          "mason-org/mason.nvim",
-          opts = {
-            ui = {
-              width = 1,
-              height = 1,
-            },
+        "mason-org/mason.nvim",
+        opts = {
+          ui = {
+            width = 1,
+            height = 1,
           },
         },
+      },
       "mason-org/mason-lspconfig.nvim",
       "WhoIsSethDaniel/mason-tool-installer.nvim",
 
