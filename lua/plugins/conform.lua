@@ -1,4 +1,3 @@
--- TODO: check official docs
 -- Code formatter with format-on-save support.
 return {
   "stevearc/conform.nvim",
