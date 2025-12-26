@@ -13,8 +13,6 @@ require("04_lazy_plugin_manager")
 -- require("plugins_packer_deprecated")
 -- require("snippets") -- depends on LuaSnip plugin
 
-local optNRM = { noremap = true }
-
 --[[
 -- LSP {{{
 -- luasnip setup
