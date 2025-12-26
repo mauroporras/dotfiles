@@ -1,8 +1,11 @@
--- TODO: check official docs
 -- Show keybindings popup when pressing a prefix key.
 return {
   "folke/which-key.nvim",
   event = "VeryLazy",
+  dependencies = {
+    "nvim-mini/mini.icons",
+    "nvim-tree/nvim-web-devicons",
+  },
   opts = {
     delay = 1000, -- 1 second timeout
     -- Document existing key chains
