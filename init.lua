@@ -17,28 +17,6 @@ local optNRM = { noremap = true }
 
 --[[
 -- LSP {{{
--- :LspInfo
--- :LspRestart
-
--- Mappings.
--- See `:h vim.diagnostic.*` for documentation on any of the below functions.
-vim.keymap.set("n", "<Leader>cd", vim.diagnostic.open_float, optNRM)
-vim.keymap.set("n", "<Leader>n", vim.diagnostic.goto_next, optNRM)
-vim.keymap.set("n", "<Leader>p", vim.diagnostic.goto_prev, optNRM)
-
--- Use an on_attach function to only map the following keys
--- after the language server attaches to the current buffer
-local on_attach = function(_, bufnr)
-  -- Mappings.
-  -- See `:h vim.lsp.*` for documentation on any of the below functions
-  local bufopts = { noremap = true, silent = true, buffer = bufnr }
-
-  vim.keymap.set("n", "<Leader>gD", vim.lsp.buf.declaration, bufopts)
-  vim.keymap.set("n", "<Leader>ch", vim.lsp.buf.hover, bufopts)
-  vim.keymap.set("n", "<Leader>cr", vim.lsp.buf.rename, bufopts)
-  vim.keymap.set("n", "<Leader>ca", vim.lsp.buf.code_action, bufopts)
-end
-
 -- nvim-cmp {{{
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
