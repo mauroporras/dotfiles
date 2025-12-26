@@ -25,7 +25,7 @@ brew "httpie"
 brew "lazygit"
 brew "less"
 brew "neovim"
-brew "node" # FIXME: Only for LSP for now.
+brew "node"
 brew "prettierd"
 brew "readline"
 brew "ripgrep"
