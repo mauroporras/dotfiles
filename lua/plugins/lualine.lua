@@ -3,6 +3,7 @@
 return {
   "nvim-lualine/lualine.nvim",
   event = "VeryLazy",
+  dependencies = { "nvim-tree/nvim-web-devicons" },
   config = function()
     local custom_theme = require("lualine.themes.codedark")
 
