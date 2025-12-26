@@ -359,9 +359,9 @@ return {
         --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
         ["<C-n>"] = { "select_next", "fallback" },
         ["<C-p>"] = { "select_prev", "fallback" },
+        ["<C-Space>"] = { "show", "show_documentation", "hide_documentation" },
         ["<C-u>"] = { "scroll_documentation_up", "fallback" },
         ["<C-d>"] = { "scroll_documentation_down", "fallback" },
-        ["<C-Space>"] = { "show", "show_documentation", "hide_documentation" },
         ["<CR>"] = { "accept", "fallback" },
       },
 
