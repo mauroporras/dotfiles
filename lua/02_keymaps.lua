@@ -46,6 +46,9 @@ vim.keymap.set("n", "<Leader>E", "<cmd>LspRestart<CR>", { desc = "Restart LSP" }
 -- Open Lazy plugin manager
 vim.keymap.set("n", "<Leader>L", "<cmd>Lazy<CR>", { desc = "Open Lazy plugin manager" })
 
+-- Open Mason LSP/tool installer
+vim.keymap.set("n", "<Leader>M", "<cmd>Mason<CR>", { desc = "Open Mason" })
+
 -- Disabled keymaps {{{
 -- Disabled to unlearn shortcuts
 vim.keymap.set("n", "<C-w><C-w>", "<Nop>", { desc = "Disabled" })
