@@ -1,4 +1,3 @@
--- TODO: check official docs
 -- Highlights in comments:
 --
 -- FIX: Something that needs to be fixed
@@ -37,7 +36,6 @@ return {
   dependencies = { "nvim-lua/plenary.nvim" },
   keys = {
     { "<Leader>ma", "<Cmd>TodoTelescope<CR>", desc = "Telescope all to-do marks" },
-    { "<Leader>mq", "<Cmd>TodoQuickFix<CR>", desc = "QuickFix all to-do marks" },
     { "<Leader>mf", "<Cmd>TodoTelescope keywords=FIX,FIXME,BUG,FIXIT,ISSUE<CR>", desc = "Telescope FIX to-do marks" },
     { "<Leader>mt", "<Cmd>TodoTelescope keywords=TODO<CR>", desc = "Telescope TODO to-do marks" },
   },

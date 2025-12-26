@@ -38,14 +38,6 @@ To optimize Neovim: `:checkhealth`
 pip3 install --user --upgrade neovim
 ```
 
-### Install LSP configs
-
-<!-- FIXME: maybe can be removed when LSP gets upgraded to the new way -->
-
-```bash
-npm add -g bash-language-server diagnostic-languageserver dockerfile-language-server-nodejs neovim prettier stylelint-lsp svelte-language-server @tailwindcss/language-server typescript typescript-language-server vscode-langservers-extracted yaml-language-server
-```
-
 ## Finally, bootstrap DotFiles
 
 ```bash
