@@ -13,6 +13,7 @@ return {
       },
     },
   },
+
   {
     -- Main LSP Configuration
     "neovim/nvim-lspconfig",
@@ -227,6 +228,7 @@ return {
       })
     end,
   },
+
   { -- Autocompletion
     "saghen/blink.cmp",
     event = "VimEnter",
