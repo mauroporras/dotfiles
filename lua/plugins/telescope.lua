@@ -66,6 +66,9 @@ return {
       end,
       desc = "List buffers",
     },
+    -- Jump to the definition of the word under your cursor.
+    -- This is where a variable was first declared, or where a function is defined, etc.
+    -- To jump back, press <C-t>.
     {
       "<Leader>gd",
       function()
@@ -73,6 +76,8 @@ return {
       end,
       desc = "LSP definitions",
     },
+    -- Jump to the implementation of the word under your cursor.
+    -- Useful when your language has ways of declaring types without an actual implementation.
     {
       "<Leader>gi",
       function()
@@ -80,6 +85,7 @@ return {
       end,
       desc = "LSP implementations",
     },
+    -- Find references for the word under your cursor.
     {
       "<Leader>gr",
       function()
@@ -87,6 +93,8 @@ return {
       end,
       desc = "LSP references",
     },
+    -- Fuzzy find all the symbols in your current document.
+    -- Symbols are things like variables, functions, types, etc.
     {
       "<Leader>gs",
       function()
@@ -94,6 +102,8 @@ return {
       end,
       desc = "LSP document symbols",
     },
+    -- Fuzzy find all the symbols in your current workspace.
+    -- Similar to document symbols, except searches over your entire project.
     {
       "<Leader>gS",
       function()
