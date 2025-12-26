@@ -44,17 +44,22 @@ return {
             vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
           end
 
+          -- See `:h vim.lsp.*` for documentation on any of the below functions
+
+          -- Show documentation for the symbol under your cursor.
+          map("<Leader>ch", vim.lsp.buf.hover, "[H]over Documentation")
+
           -- Rename the variable under your cursor.
           --  Most Language Servers support renaming across files, etc.
-          map("grn", vim.lsp.buf.rename, "[R]e[n]ame")
+          map("<Leader>cr", vim.lsp.buf.rename, "[R]e[n]ame")
 
           -- Execute a code action, usually your cursor needs to be on top of an error
           -- or a suggestion from your LSP for this to activate.
-          map("gra", vim.lsp.buf.code_action, "[G]oto Code [A]ction", { "n", "x" })
+          map("<Leader>ca", vim.lsp.buf.code_action, "[G]oto Code [A]ction", { "n", "x" })
 
           -- WARN: This is not Goto Definition, this is Goto Declaration.
           --  For example, in C this would take you to the header.
-          map("grD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
+          map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 
           ---@param client vim.lsp.Client
           ---@param method vim.lsp.protocol.Method
