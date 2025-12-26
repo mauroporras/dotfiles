@@ -187,19 +187,33 @@ return {
       }
 
       -- Ensure the servers and tools above are installed
-      -- To check the current status of installed tools: :Mason
+      --
+      -- To check the current status of installed tools and/or manually install
+      -- other tools, you can run
+      --    :Mason
+      --
+      -- You can press `g?` for help in this menu.
+      --
+      -- `mason` had to be setup earlier: to configure its options see the
+      -- `dependencies` table for `nvim-lspconfig` above.
+      --
+      -- You can add other tools here that you want Mason to install
+      -- for you, so that they are available from within Neovim.
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
-        "stylua", -- Lua formatter
+        "stylua", -- Used to format Lua code
       })
       require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
       require("mason-lspconfig").setup({
-        ensure_installed = {},
+        ensure_installed = {}, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
         automatic_installation = false,
         handlers = {
           function(server_name)
             local server = servers[server_name] or {}
+            -- This handles overriding only values explicitly passed
+            -- by the server configuration above. Useful when disabling
+            -- certain features of an LSP (for example, turning off formatting for ts_ls)
             server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
             require("lspconfig")[server_name].setup(server)
           end,
@@ -217,11 +231,25 @@ return {
         "L3MON4D3/LuaSnip",
         version = "2.*",
         build = (function()
+          -- Build Step is needed for regex support in snippets.
+          -- This step is not supported in many windows environments.
+          -- Remove the below condition to re-enable on windows.
           if vim.fn.has("win32") == 1 or vim.fn.executable("make") == 0 then
             return
           end
           return "make install_jsregexp"
         end)(),
+        dependencies = {
+          -- `friendly-snippets` contains a variety of premade snippets.
+          --    See the README about individual language/framework/plugin snippets:
+          --    https://github.com/rafamadriz/friendly-snippets
+          -- {
+          --   'rafamadriz/friendly-snippets',
+          --   config = function()
+          --     require('luasnip.loaders.from_vscode').lazy_load()
+          --   end,
+          -- },
+        },
         opts = {},
       },
       "folke/lazydev.nvim",
