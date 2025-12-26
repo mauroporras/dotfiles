@@ -205,6 +205,15 @@ return {
       -- Enable the following language servers
       --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
       --
+      --  Finding available LSP servers:
+      --    In Neovim:
+      --      :Mason - Browse/install LSP servers, linters, formatters (press g? for help)
+      --      :help lspconfig-all - Lists all pre-configured LSPs supported by nvim-lspconfig
+      --      :LspInfo - Shows currently active LSP servers for the current buffer
+      --    Online:
+      --      https://mason-registry.dev/registry/list
+      --      https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
+      --
       --  Add any additional override configuration in the following tables. Available keys are:
       --  - cmd (table): Override the default command used to start the server
       --  - filetypes (table): Override the default list of associated filetypes for the server
@@ -222,7 +231,8 @@ return {
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`ts_ls`) will work just fine
-        -- ts_ls = {},
+        ts_ls = {},
+        bashls = {},
 
         lua_ls = {
           -- cmd = { ... },
