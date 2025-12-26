@@ -97,7 +97,12 @@ return {
 
           -- WARN: This is not Goto Definition, this is Goto Declaration.
           --  For example, in C this would take you to the header.
-          map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
+          map("<Leader>gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
+
+          -- Diagnostic keymaps
+          map("<Leader>cd", vim.diagnostic.open_float, "Open [D]iagnostic float")
+          map("<Leader>n", vim.diagnostic.goto_next, "Go to [N]ext diagnostic")
+          map("<Leader>p", vim.diagnostic.goto_prev, "Go to [P]revious diagnostic")
 
           -- This function resolves a difference between neovim nightly (version 0.11) and stable (version 0.10)
           ---@param client vim.lsp.Client
