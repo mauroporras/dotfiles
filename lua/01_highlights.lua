@@ -1,3 +1,5 @@
+-- TODO:check that custom highlights are working as expected.
+--
 -- To show the current scheme:
 --   :colorscheme
 -- Use `:highlight` to list all color groups.
