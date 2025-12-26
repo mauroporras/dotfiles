@@ -11,7 +11,7 @@ require("02_keymaps")
 require("03_autocommands")
 require("04_lazy_plugin_manager")
 -- require("plugins_packer_deprecated")
--- require("snippets") -- depends on LuaSnip plugin
+require("05_snippets")
 
 --[[
 -- LSP {{{
