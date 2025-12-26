@@ -17,15 +17,8 @@ local optNRM = { noremap = true }
 
 --[[
 -- LSP {{{
--- nvim-cmp {{{
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
--- Configure global LSP settings
-vim.lsp.config("*", {
-  on_attach = on_attach,
-  capabilities = capabilities,
-})
 
 -- Enable language servers with default settings
 local servers = {
@@ -42,36 +35,6 @@ local servers = {
   "ts_ls",
   "yamlls",
 }
-
-for _, lsp in ipairs(servers) do
-  vim.lsp.enable(lsp)
-end
-
--- Configure servers with specific settings
-vim.lsp.config("lua_ls", {
-  settings = {
-    Lua = {
-      runtime = {
-        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-        version = "LuaJIT",
-      },
-      diagnostics = {
-        -- Get the language server to recognize the `vim` global
-        globals = { "vim" },
-      },
-      workspace = {
-        -- Make the server aware of Neovim runtime files
-        library = vim.api.nvim_get_runtime_file("", true),
-      },
-      -- Do not send telemetry data containing a randomized but unique identifier
-      telemetry = {
-        enable = false,
-      },
-    },
-  },
-})
-
-vim.lsp.enable("lua_ls")
 
 -- luasnip setup
 local luasnip = require("luasnip")
@@ -116,6 +79,5 @@ cmp.setup({
     { name = "buffer" },
   },
 })
--- }}}
 -- }}}
 --]]
