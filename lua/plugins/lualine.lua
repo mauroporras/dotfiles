@@ -19,7 +19,8 @@ return {
         globalstatus = true,
       },
       sections = {
-        lualine_a = {},
+        -- Assign to empty tables to remove current mode.
+        -- lualine_a = {},
         lualine_b = {
           "diagnostics",
         },
