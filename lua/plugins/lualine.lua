@@ -19,7 +19,6 @@ return {
         globalstatus = true,
       },
       sections = {
-        -- Assign to empty tables to remove current mode.
         -- lualine_a = {},
         -- lualine_b = {
         --   "diagnostics",
@@ -31,9 +30,9 @@ return {
           },
           "navic",
         },
-        lualine_x = {},
-        lualine_y = {},
-        lualine_z = { "location" },
+        -- lualine_x = {},
+        -- lualine_y = {},
+        -- lualine_z = { "location" },
       },
       winbar = {
         lualine_a = { "filename" },
