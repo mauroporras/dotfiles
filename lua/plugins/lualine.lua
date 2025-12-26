@@ -20,9 +20,9 @@ return {
       },
       sections = {
         -- lualine_a = {},
-        -- lualine_b = {
-        --   "diagnostics",
-        -- },
+        lualine_b = {
+          "diagnostics",
+        },
         lualine_c = {
           {
             "filename",
