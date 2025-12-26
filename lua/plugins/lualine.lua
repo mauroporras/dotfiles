@@ -15,6 +15,7 @@ return {
     require("lualine").setup({
       options = {
         theme = custom_theme,
+        -- Display a single statusline for the entire Neovim instance.
         globalstatus = true,
       },
       sections = {
