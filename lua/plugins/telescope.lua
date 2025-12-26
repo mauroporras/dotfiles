@@ -101,6 +101,16 @@ return {
       end,
       desc = "LSP workspace symbols",
     },
+    -- Jump to the type of the word under your cursor.
+    -- Useful when you're not sure what type a variable is and you want to see
+    -- the definition of its *type*, not where it was *defined*.
+    {
+      "<Leader>gt",
+      function()
+        require("telescope.builtin").lsp_type_definitions({ prompt_title = "Type Definition" })
+      end,
+      desc = "LSP type definition",
+    },
     -- No preview for faster file picking
     -- { "<Leader>R", "<cmd>Telescope frecency workspace=CWD<CR>", desc = "Frecency file picker" },
     {
