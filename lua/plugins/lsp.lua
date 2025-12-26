@@ -102,8 +102,8 @@ return {
 
           -- Diagnostic keymaps
           map("<Leader>cd", vim.diagnostic.open_float, "Open [D]iagnostic float")
-          map("<Leader>n", vim.diagnostic.goto_next, "Go to [N]ext diagnostic")
-          map("<Leader>p", vim.diagnostic.goto_prev, "Go to [P]revious diagnostic")
+          map("<Leader>n", function() vim.diagnostic.jump({ count = 1 }) end, "Go to [N]ext diagnostic")
+          map("<Leader>p", function() vim.diagnostic.jump({ count = -1 }) end, "Go to [P]revious diagnostic")
 
           -- This function resolves a difference between neovim nightly (version 0.11) and stable (version 0.10)
           ---@param client vim.lsp.Client
