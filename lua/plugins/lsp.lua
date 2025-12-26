@@ -231,8 +231,17 @@ return {
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`ts_ls`) will work just fine
-        ts_ls = {},
         bashls = {},
+        cssls = {},
+        diagnosticls = {},
+        dockerls = {},
+        html = {},
+        jsonls = {},
+        stylelint_lsp = {},
+        svelte = {},
+        tailwindcss = {},
+        ts_ls = {},
+        yamlls = {},
 
         lua_ls = {
           -- cmd = { ... },

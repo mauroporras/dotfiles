@@ -17,25 +17,6 @@ local optNRM = { noremap = true }
 
 --[[
 -- LSP {{{
--- Add additional capabilities supported by nvim-cmp
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
--- Enable language servers with default settings
-local servers = {
-  "bashls",
-  "cssls",
-  "dartls",
-  "diagnosticls",
-  "dockerls",
-  "html",
-  "jsonls",
-  "stylelint_lsp",
-  "svelte",
-  "tailwindcss",
-  "ts_ls",
-  "yamlls",
-}
-
 -- luasnip setup
 local luasnip = require("luasnip")
 
