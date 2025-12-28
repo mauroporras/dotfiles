@@ -10,9 +10,9 @@
 
 vim.api.nvim_set_hl(0, "HighlightedyankRegion", { bg = "violet", fg = "black" })
 
-vim.api.nvim_set_hl(0, "IlluminatedWordText", { bg = "paleturquoise" })
-vim.api.nvim_set_hl(0, "IlluminatedWordRead", { bg = "paleturquoise" })
-vim.api.nvim_set_hl(0, "IlluminatedWordWrite", { bg = "paleturquoise" })
+vim.api.nvim_set_hl(0, "LspReferenceText", { bg = "paleturquoise" })
+vim.api.nvim_set_hl(0, "LspReferenceRead", { bg = "paleturquoise" })
+vim.api.nvim_set_hl(0, "LspReferenceWrite", { bg = "paleturquoise" })
 
 vim.api.nvim_set_hl(0, "IblIndent", { fg = "lavender" })
 vim.api.nvim_set_hl(0, "IblScope", { fg = "lavender" })
