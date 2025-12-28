@@ -19,7 +19,7 @@ return {
         globalstatus = true,
       },
       sections = {
-        -- lualine_a = {},
+        lualine_a = {},
         lualine_b = {
           "diagnostics",
         },
