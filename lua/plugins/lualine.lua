@@ -35,10 +35,10 @@ return {
         -- lualine_z = { "location" },
       },
       winbar = {
-        lualine_a = { "filename" },
+        lualine_a = { { "filename", path = 4 } },
       },
       inactive_winbar = {
-        lualine_c = { "filename" },
+        lualine_c = { { "filename", path = 4 } },
       },
     })
   end,
