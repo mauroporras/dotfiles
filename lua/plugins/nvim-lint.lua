@@ -1,10 +1,10 @@
--- TODO: check official docs
 -- Linting
 return {
   "mfussenegger/nvim-lint",
   event = { "BufReadPre", "BufNewFile" },
   config = function()
     local lint = require("lint")
+    -- TODO: add more linters as needed (e.g., typescript = { "eslint" }, go = { "golangcilint" })
     lint.linters_by_ft = {
       markdown = { "markdownlint" },
     }
