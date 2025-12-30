@@ -17,5 +17,9 @@ return {
       size = "80%",
       border = "rounded",
     },
+    source_buffer = {
+      follow_node = false,
+      highlight = false,
+    },
   },
 }
