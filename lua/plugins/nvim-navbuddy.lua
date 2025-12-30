@@ -6,6 +6,8 @@ return {
     { "<leader>cn", "<cmd>Navbuddy<cr>", desc = "Navbuddy" },
   },
   dependencies = {
+    -- Ensure lspconfig loads first since auto_attach hooks into LSP clients.
+    "neovim/nvim-lspconfig",
     "SmiteshP/nvim-navic",
     "MunifTanjim/nui.nvim",
   },
