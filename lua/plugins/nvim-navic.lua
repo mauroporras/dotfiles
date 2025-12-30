@@ -1,4 +1,3 @@
--- TODO: check official docs
 -- Used in lualine to show current code context.
 return {
   "SmiteshP/nvim-navic",
@@ -38,5 +37,7 @@ return {
       auto_attach = true,
     },
     separator = " › ",
+    highlight = true,
+    click = true,
   },
 }

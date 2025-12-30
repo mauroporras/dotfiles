@@ -15,6 +15,9 @@ vim.api.nvim_set_hl(0, "LspReferenceWrite", { bg = "paleturquoise" })
 vim.api.nvim_set_hl(0, "IblIndent", { fg = "lavender" })
 vim.api.nvim_set_hl(0, "IblScope", { fg = "lavender" })
 
+vim.api.nvim_set_hl(0, "NavicText", { fg = "lightgray" })
+vim.api.nvim_set_hl(0, "NavicSeparator", { fg = "lightgray" })
+
 vim.api.nvim_set_hl(0, "StatusLine", { bg = "black", fg = "white" })
 vim.api.nvim_set_hl(0, "StatusLineNC", { bg = "gray", fg = "lightgray" })
 
