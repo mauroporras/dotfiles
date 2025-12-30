@@ -1,4 +1,3 @@
--- TODO: check official docs
 -- Syntax highlighting and code parsing.
 --
 -- See
