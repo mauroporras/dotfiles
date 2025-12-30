@@ -2,6 +2,9 @@
 return {
   "SmiteshP/nvim-navbuddy",
   cmd = "Navbuddy",
+  keys = {
+    { "<leader>cn", "<cmd>Navbuddy<cr>", desc = "Navbuddy" },
+  },
   dependencies = {
     "SmiteshP/nvim-navic",
     "MunifTanjim/nui.nvim",
@@ -11,7 +14,7 @@ return {
       auto_attach = true,
     },
     window = {
-      size = "100%",
+      size = "90%",
     },
   },
 }
