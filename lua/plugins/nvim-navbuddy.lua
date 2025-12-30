@@ -1,4 +1,10 @@
 -- Breadcrumb navigation popup for LSP symbols.
+-- Useful keymaps inside Navbuddy:
+--   j/k: move up/down, h/l: navigate panels
+--   o/<CR>: jump to symbol, y: yank name, r: rename
+--   v: visual select, i/a: insert/append
+--   c: comment scope, d: delete scope
+--   <C-v>: vsplit, <C-s>: hsplit, <C-t>: new tab
 return {
   "SmiteshP/nvim-navbuddy",
   cmd = "Navbuddy",
