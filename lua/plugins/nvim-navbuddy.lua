@@ -14,7 +14,8 @@ return {
       auto_attach = true,
     },
     window = {
-      size = "90%",
+      size = "80%",
+      border = "rounded",
     },
   },
 }
