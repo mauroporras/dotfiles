@@ -1,6 +1,4 @@
--- TODO:check that custom highlights are working as expected.
---
--- Note: If you run `:colorscheme <name>` mid-session, it will override these.
+-- NOTE: If you run `:colorscheme <name>` mid-session, it will override these.
 -- Use a ColorScheme autocmd if you need highlights to persist through colorscheme changes.
 --
 -- To show the current scheme:
