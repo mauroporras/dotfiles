@@ -1,4 +1,3 @@
--- TODO: check official docs
 -- File explorer sidebar.
 return {
   {

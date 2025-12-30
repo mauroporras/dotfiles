@@ -1,4 +1,3 @@
--- TODO: check official docs
 -- Show Vim marks in the sign column.
 
 -- See:
