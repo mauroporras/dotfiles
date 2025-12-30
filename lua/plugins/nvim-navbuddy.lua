@@ -10,5 +10,8 @@ return {
     lsp = {
       auto_attach = true,
     },
+    window = {
+      size = "100%",
+    },
   },
 }
