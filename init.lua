@@ -4,7 +4,7 @@
 -- :source %
 -- :so $MYVIMRC
 
--- Note: `:source %` won't reload required files (cached in package.loaded)
+-- NOTE: `:source %` won't reload required files (cached in package.loaded)
 --
 -- Order matters:
 -- - Plugin manager loads early so keymaps/autocommands can override plugin defaults
