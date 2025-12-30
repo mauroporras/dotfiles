@@ -16,8 +16,13 @@ return {
       auto_attach = true,
     },
     window = {
-      size = "80%",
-      border = "rounded",
+      size = { height = "97%", width = "100%" },
+      border = "none",
+      sections = {
+        left = { border = "rounded" },
+        mid = { border = "rounded" },
+        right = { border = "rounded" },
+      },
     },
   },
 }
