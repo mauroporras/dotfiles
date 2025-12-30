@@ -34,8 +34,8 @@ return {
     lsp = {
       auto_attach = true,
     },
-    separator = " › ",
     highlight = true,
+    separator = " › ",
     click = true,
   },
 }
