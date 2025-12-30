@@ -7,5 +7,7 @@ return {
     map_c_h = true,
     -- Map <c-w> to delete a pair if possible.
     map_c_w = true,
+    -- Use treesitter for smarter context-aware pairing.
+    check_ts = true,
   },
 }
