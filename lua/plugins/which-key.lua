@@ -9,6 +9,10 @@ return {
   opts = {
     delay = 1000, -- 1 second timeout
     -- Document existing key chains
+    notify = true,
+    plugins = {
+      spelling = { enabled = true },
+    },
     spec = {
       { "<leader>c", group = "[C]ode" },
       { "<leader>F", group = "[F]olding" },
