@@ -128,11 +128,6 @@ ls.add_snippets("javascript", {
     t'    ', i(3),
     t{ '', '}'}
   }),
-  s("clai", {
-    t'class ', i(1, 'Foo'), t' implements ', i(2, 'Bar'), t{ ' {', '' },
-    t'    ', i(3),
-    t{ '', '}'}
-  }),
 
   -- Class methods.
   s({
@@ -350,6 +345,13 @@ ls.add_snippets("typescript", {
   s("in", {
     t'interface ', i(1, 'Bar'), t{ ' {', '' },
     t'    ', i(2),
+    t{ '', '}'}
+  }),
+
+  -- class implements
+  s("clai", {
+    t'class ', i(1, 'Foo'), t' implements ', i(2, 'Bar'), t{ ' {', '' },
+    t'    ', i(3),
     t{ '', '}'}
   }),
 })
