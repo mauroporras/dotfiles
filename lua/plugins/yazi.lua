@@ -9,6 +9,7 @@
 ---@type LazySpec
 return {
   "mikavilpas/yazi.nvim",
+  version = "*", -- use the latest stable version
   dependencies = {
     -- Lua utility library used by many plugins
     { "nvim-lua/plenary.nvim", lazy = true },
