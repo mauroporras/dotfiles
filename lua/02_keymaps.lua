@@ -1,5 +1,3 @@
--- vim:foldmethod=marker
-
 -- See
 --   `:h vim.keymap.set()`
 --   https://github.com/nanotee/nvim-lua-guide#defining-mappings
@@ -153,3 +151,5 @@ vim.keymap.set("i", "<C-d>", "<Del>")
 vim.keymap.set("i", "<C-e>", "<End>")
 vim.keymap.set("i", "<C-f>", "<Right>")
 -- }}}
+
+-- vim:foldmethod=marker

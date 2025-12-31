@@ -1,5 +1,3 @@
--- vim:foldmethod=marker
-
 local ls = require("luasnip")
 local s = ls.snippet
 local sn = ls.snippet_node
@@ -115,6 +113,7 @@ ls.add_snippets("javascript", {
     t'    ', i(2), t{ '', '' },
     t'}'
   }),
+  -- Extra blank line after super() is intentional.
   s("clacs", {
     t{ 'constructor (', '' },
     t'    ', i(1),
@@ -157,7 +156,7 @@ ls.add_snippets("javascript", {
     t'}'
   }),
 
-  -- Debug.
+  -- Debug. Leading blank line is intentional.
   s("deb", {
     t{ '', 'debugger', '' },
   }),
@@ -407,3 +406,5 @@ ls.add_snippets("svelte", {
     t{ '', '</style>' }
   }),
 })
+
+-- vim:foldmethod=marker

@@ -1,5 +1,3 @@
--- vim:foldmethod=marker
-
 --  See:
 --    `:h lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
 --
@@ -40,3 +38,5 @@ require("lazy").setup({
   -- automatically check for plugin updates
   checker = { enabled = true },
 })
+
+-- vim:foldmethod=marker

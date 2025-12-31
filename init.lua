@@ -1,5 +1,3 @@
--- vim:foldmethod=marker
-
 -- To reload config:
 -- :source %
 -- :so $MYVIMRC
@@ -16,3 +14,5 @@ require("02_keymaps")
 require("03_autocommands")
 require("04_highlights")
 require("05_snippets")
+
+-- vim:foldmethod=marker

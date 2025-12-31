@@ -1,5 +1,3 @@
--- vim:foldmethod=marker
-
 -- NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
 -- Set <space> as the leader key
 -- See `:h mapleader`
@@ -99,3 +97,5 @@ vim.filetype.add({
     ["tsconfig.json"] = "jsonc",
   },
 })
+
+-- vim:foldmethod=marker
