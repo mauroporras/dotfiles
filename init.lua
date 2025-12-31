@@ -9,7 +9,6 @@
 -- - Highlights must load after the colorscheme so they don't get overridden
 require("00_settings")
 require("01_lazy_plugin_manager")
--- require("plugins_packer_deprecated")
 require("02_keymaps")
 require("03_autocommands")
 require("04_highlights")
