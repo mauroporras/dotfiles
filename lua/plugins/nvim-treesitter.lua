@@ -6,7 +6,7 @@
 -- NOTE: if troubles `:checkhealth nvim-treesitter`
 return {
   "nvim-treesitter/nvim-treesitter",
-  -- WARN:This plugin does not support lazy-loading.
+  -- WARN: This plugin does not support lazy-loading.
   lazy = false,
   build = ":TSUpdate",
   config = function(_, opts)
