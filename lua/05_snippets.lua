@@ -113,6 +113,7 @@ ls.add_snippets("javascript", {
     t'    ', i(2), t{ '', '' },
     t'}'
   }),
+  -- Extra blank line after super() is intentional.
   s("clacs", {
     t{ 'constructor (', '' },
     t'    ', i(1),
@@ -123,11 +124,6 @@ ls.add_snippets("javascript", {
   }),
   s("clae", {
     t'class ', i(1, 'Foo'), t' extends ', i(2, 'Bar'), t{ ' {', '' },
-    t'    ', i(3),
-    t{ '', '}'}
-  }),
-  s("clai", {
-    t'class ', i(1, 'Foo'), t' implements ', i(2, 'Bar'), t{ ' {', '' },
     t'    ', i(3),
     t{ '', '}'}
   }),
@@ -160,7 +156,7 @@ ls.add_snippets("javascript", {
     t'}'
   }),
 
-  -- Debug.
+  -- Debug. Leading blank line is intentional.
   s("deb", {
     t{ '', 'debugger', '' },
   }),
@@ -350,6 +346,13 @@ ls.add_snippets("typescript", {
     t'    ', i(2),
     t{ '', '}'}
   }),
+
+  -- class implements
+  s("clai", {
+    t'class ', i(1, 'Foo'), t' implements ', i(2, 'Bar'), t{ ' {', '' },
+    t'    ', i(3),
+    t{ '', '}'}
+  }),
 })
 
 ls.filetype_extend("svelte", { "typescript", "javascript" })
@@ -403,3 +406,5 @@ ls.add_snippets("svelte", {
     t{ '', '</style>' }
   }),
 })
+
+-- vim:foldmethod=marker

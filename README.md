@@ -32,18 +32,6 @@ If you're transitioning from Vim: `:h nvim-from-vim`
 
 To optimize Neovim: `:checkhealth`
 
-### Add Python support to Neovim
-
-```bash
-pip3 install --user --upgrade neovim
-```
-
-### Install LSP configs
-
-```bash
-npm add -g bash-language-server diagnostic-languageserver dockerfile-language-server-nodejs neovim prettier stylelint-lsp svelte-language-server @tailwindcss/language-server typescript typescript-language-server vscode-langservers-extracted yaml-language-server
-```
-
 ## Finally, bootstrap DotFiles
 
 ```bash

@@ -1,2 +1,2 @@
 # Stylua's multi-line formatting makes snippets harder to read.
-lua/snippets.lua
+lua/05_snippets.lua
