@@ -146,9 +146,12 @@ return {
       desc = "Find files",
     },
     {
-      "<Leader>vc",
+      "<Leader>vh",
       function()
-        require("telescope.builtin").git_bcommits({ prompt_title = "Buffer Git Commits" })
+        require("telescope.builtin").git_bcommits({
+          prompt_title = "Buffer Git Commits",
+          git_command = { "git", "log", "--pretty=%h %an %ad: %s", "--date=short", "--follow", "--" },
+        })
       end,
       desc = "Buffer git commits",
     },
