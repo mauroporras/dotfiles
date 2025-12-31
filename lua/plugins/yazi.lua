@@ -15,6 +15,7 @@ return {
     { "nvim-lua/plenary.nvim", lazy = true },
   },
   opts = {
+    -- Make it fullscreen.
     floating_window_scaling_factor = 1,
     yazi_floating_window_border = "none",
   },
