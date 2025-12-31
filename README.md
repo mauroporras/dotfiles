@@ -32,12 +32,6 @@ If you're transitioning from Vim: `:h nvim-from-vim`
 
 To optimize Neovim: `:checkhealth`
 
-### Add Python support to Neovim
-
-```bash
-pip3 install --user --upgrade neovim
-```
-
 ## Finally, bootstrap DotFiles
 
 ```bash
