@@ -28,7 +28,7 @@
 -- FAILED: A test that has failed
 --
 -- NOTE: To see all the keywords and their settings, run the following command in Neovim:
--- :lua print(vim.inspect(require("todo-comments.config").options.keywords
+-- :lua print(vim.inspect(require("todo-comments.config").options.keywords))
 return {
   "folke/todo-comments.nvim",
   event = "VeryLazy",
