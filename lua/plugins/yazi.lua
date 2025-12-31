@@ -1,4 +1,3 @@
--- TODO: check official docs
 -- Yazi file manager integration.
 --
 -- Default keybindings when Yazi is open:
