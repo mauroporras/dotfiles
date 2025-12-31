@@ -24,6 +24,7 @@ brew "go-task/tap/go-task"
 brew "httpie"
 brew "lazygit"
 brew "less"
+brew "markdownlint-cli" # Markdown linter for nvim-lint
 brew "neovim"
 brew "node"
 brew "prettierd"
