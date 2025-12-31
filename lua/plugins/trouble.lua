@@ -1,6 +1,7 @@
 -- Pretty list for diagnostics, quickfix, LSP references, etc.
 return {
   "folke/trouble.nvim",
+  cmd = "Trouble",
   -- Empty opts table tells lazy.nvim to call setup() with default settings.
   -- Without this, setup() won't be called and the plugin won't initialize.
   opts = {},
