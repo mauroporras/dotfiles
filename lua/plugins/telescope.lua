@@ -197,9 +197,14 @@ return {
       ["<C-k>"] = "move_selection_previous",
       ["<C-n>"] = "cycle_history_next",
       ["<C-p>"] = "cycle_history_prev",
-      ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
       ["<M-p>"] = layout.toggle_preview,
       ["<M-l>"] = layout.cycle_layout_next,
+      -- Send to quickfix, open it, and jump to first item.
+      ["<C-q>"] = function(prompt_bufnr)
+        actions.smart_send_to_qflist(prompt_bufnr)
+        actions.open_qflist(prompt_bufnr)
+        vim.cmd("cfirst")
+      end,
     }
 
     local databases_dir = vim.fn.stdpath("data") .. "/databases"
