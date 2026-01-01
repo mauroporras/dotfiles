@@ -239,9 +239,10 @@ return {
             ["<C-j>"] = "move_selection_next",
             ["<C-k>"] = "move_selection_previous",
             ["<C-q>"] = require("telescope.actions").smart_send_to_qflist + require("telescope.actions").open_qflist,
+            ["<M-p>"] = require("telescope.actions.layout").toggle_preview,
+            -- Disable to allow default insert mode editing (delete forward/backward)
             ["<C-d>"] = false,
             ["<C-u>"] = false,
-            ["<M-p>"] = require("telescope.actions.layout").toggle_preview,
           },
           n = {
             ["J"] = "preview_scrolling_down",
