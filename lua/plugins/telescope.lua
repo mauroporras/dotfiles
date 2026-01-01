@@ -195,7 +195,7 @@ return {
       defaults = {
         dynamic_preview_title = true,
         history = {
-          path = "~/.local/share/nvim/telescope_history.sqlite3",
+          path = vim.fn.stdpath("data") .. "/telescope_history.sqlite3",
           limit = 100,
         },
         -- :h telescope.layout
