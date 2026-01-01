@@ -63,7 +63,7 @@ return {
       function()
         require("telescope.builtin").buffers({
           prompt_title = "Buffers",
-          previewer = false,
+          -- previewer = false,
         })
       end,
       desc = "List buffers",
@@ -128,7 +128,7 @@ return {
       function()
         require("telescope").extensions.frecency.frecency({
           workspace = "CWD",
-          previewer = false,
+          -- previewer = false,
           prompt_title = "Frecency",
         })
       end,
@@ -139,7 +139,7 @@ return {
       function()
         require("telescope.builtin").find_files({
           prompt_title = "Find files by name",
-          previewer = false,
+          -- previewer = false,
         })
       end,
       desc = "Find files",
@@ -173,7 +173,7 @@ return {
       "<Leader>O",
       function()
         require("telescope.builtin").oldfiles({
-          previewer = false,
+          -- previewer = false,
           prompt_title = "Old (recent) files",
         })
       end,
@@ -218,7 +218,7 @@ return {
           path = databases_dir .. "/telescope_history.sqlite3",
         },
         -- :h telescope.layout
-        layout_strategy = "vertical",
+        -- layout_strategy = "vertical",
         layout_config = {
           height = { padding = 0 },
           width = { padding = 0 },
