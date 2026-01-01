@@ -189,6 +189,18 @@ return {
   },
   config = function()
     local telescope = require("telescope")
+    local actions = require("telescope.actions")
+    local layout = require("telescope.actions.layout")
+
+    local common_mappings = {
+      ["<C-j>"] = "move_selection_next",
+      ["<C-k>"] = "move_selection_previous",
+      ["<C-n>"] = "cycle_history_next",
+      ["<C-p>"] = "cycle_history_prev",
+      ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
+      ["<M-p>"] = layout.toggle_preview,
+      ["<M-l>"] = layout.cycle_layout_next,
+    }
 
     local databases_dir = vim.fn.stdpath("data") .. "/databases"
     vim.fn.mkdir(databases_dir, "p")
@@ -232,23 +244,16 @@ return {
         -- If the function you want is part of `telescope.actions`,
         -- then you can simply give a string.
         mappings = {
-          i = {
-            ["<C-n>"] = "cycle_history_next",
-            ["<C-p>"] = "cycle_history_prev",
-            ["<C-j>"] = "move_selection_next",
-            ["<C-k>"] = "move_selection_previous",
-            ["<C-q>"] = require("telescope.actions").smart_send_to_qflist + require("telescope.actions").open_qflist,
-            ["<M-p>"] = require("telescope.actions.layout").toggle_preview,
-            ["<M-l>"] = require("telescope.actions.layout").cycle_layout_next,
+          i = vim.tbl_extend("force", common_mappings, {
             -- Disable to allow default insert mode editing (delete forward/backward)
             ["<C-d>"] = false,
             ["<C-u>"] = false,
-          },
-          n = {
+          }),
+          n = vim.tbl_extend("force", common_mappings, {
             ["J"] = "preview_scrolling_down",
             ["K"] = "preview_scrolling_up",
             ["q"] = "close",
-          },
+          }),
         },
         prompt_prefix = "",
       },
