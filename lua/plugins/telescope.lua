@@ -191,12 +191,16 @@ return {
   config = function()
     local telescope = require("telescope")
 
+    local databases_dir = vim.fn.stdpath("data") .. "/databases"
+    vim.fn.mkdir(databases_dir, "p")
+
     telescope.setup({
       defaults = {
         dynamic_preview_title = true,
         history = {
-          path = vim.fn.stdpath("data") .. "/telescope_history.sqlite3",
-          limit = 100,
+          -- .sqlite3 extension required for telescope-smart-history.nvim
+          -- See `:h telescope-smart-history.nvim-telescope-smart-history-nvim`
+          path = databases_dir .. "/telescope_history.sqlite3",
         },
         -- :h telescope.layout
         layout_strategy = "vertical",
