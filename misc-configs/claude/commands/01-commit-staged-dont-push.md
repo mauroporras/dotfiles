@@ -3,8 +3,16 @@ description: Commit staged changes, don't push
 ---
 
 Commit CURRENTLY STAGED CHANGES ONLY.
-- Always re-check the currently staged changes before committing
-- Do NOT run `git add` - only commit what is already staged
-- Do NOT stage additional files
-- Do NOT add "Co-Authored-By", "Generated with Claude Code", or any Claude/Anthropic attribution. No free marketing for Claude/Anthropic.
-- Don't push to the remote repository
+
+Use conventional commits format: `type(scope): description`
+
+Do NOT Run `git add` or stage additional files
+Do NOT Run `git log` or check commit history
+Do NOT Run `git status`
+Do NOT Add "Co-Authored-By", "Generated with Claude Code", or any Claude/Anthropic attribution. It only clutters the commit history with unnecessary information.
+Do NOT Push to the remote
+
+Only run two commands:
+
+1. `git diff --cached` to check what's staged
+2. `git commit -m "..."` to commit
