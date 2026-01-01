@@ -221,6 +221,10 @@ return {
           prompt_position = "top",
           scroll_speed = 1,
         },
+        cycle_layout_list = {
+          { layout_strategy = "vertical", layout_config = { scroll_speed = 1 } },
+          { layout_strategy = "horizontal", layout_config = { scroll_speed = 1 } },
+        },
         sorting_strategy = "ascending",
         -- :h telescope.defaults.vimgrep_arguments
         vimgrep_arguments = {
