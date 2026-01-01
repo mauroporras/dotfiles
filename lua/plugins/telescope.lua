@@ -229,8 +229,7 @@ return {
           "--no-ignore-vcs",
           "--sort=path",
         },
-        -- See:
-        -- :h telescope.mappings
+        -- See `:h telescope.mappings`
         -- If the function you want is part of `telescope.actions`,
         -- then you can simply give a string.
         mappings = {
@@ -242,6 +241,7 @@ return {
             ["<C-q>"] = require("telescope.actions").smart_send_to_qflist + require("telescope.actions").open_qflist,
             ["<C-d>"] = false,
             ["<C-u>"] = false,
+            ["<M-p>"] = require("telescope.actions.layout").toggle_preview,
           },
         },
         prompt_prefix = "",
