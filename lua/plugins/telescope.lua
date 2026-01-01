@@ -257,6 +257,8 @@ return {
             -- Disable to allow default insert mode editing (delete forward/backward)
             ["<C-d>"] = false,
             ["<C-u>"] = false,
+            -- Disable to allow native cursor movement
+            ["<C-f>"] = false,
           }),
           n = vim.tbl_extend("force", common_mappings, {
             ["J"] = "preview_scrolling_down",
