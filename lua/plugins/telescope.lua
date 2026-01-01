@@ -246,6 +246,7 @@ return {
           n = {
             ["J"] = "preview_scrolling_down",
             ["K"] = "preview_scrolling_up",
+            ["q"] = "close",
           },
         },
         prompt_prefix = "",
