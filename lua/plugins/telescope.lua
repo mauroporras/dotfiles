@@ -208,7 +208,7 @@ return {
           height = { padding = 0 },
           width = { padding = 0 },
           prompt_position = "top",
-          scroll_speed = 3,
+          scroll_speed = 1,
         },
         sorting_strategy = "ascending",
         -- :h telescope.defaults.vimgrep_arguments
