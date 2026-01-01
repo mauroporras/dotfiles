@@ -243,6 +243,10 @@ return {
             ["<C-u>"] = false,
             ["<M-p>"] = require("telescope.actions.layout").toggle_preview,
           },
+          n = {
+            ["J"] = "preview_scrolling_down",
+            ["K"] = "preview_scrolling_up",
+          },
         },
         prompt_prefix = "",
       },
