@@ -27,6 +27,7 @@ return {
     "nvim-tree/nvim-web-devicons",
 
     "kkharji/sqlite.lua",
+    -- See `:h telescope-frecency-configuration`
     "nvim-telescope/telescope-frecency.nvim",
     "nvim-telescope/telescope-smart-history.nvim",
     -- Replaces vim.ui.select with Telescope picker
@@ -122,8 +123,6 @@ return {
       end,
       desc = "LSP type definition",
     },
-    -- No preview for faster file picking
-    -- { "<Leader>R", "<cmd>Telescope frecency workspace=CWD<CR>", desc = "Frecency file picker" },
     {
       "<Leader>R",
       function()
@@ -270,6 +269,8 @@ return {
         },
       },
       extensions = {
+        ---@module 'frecency'
+        ---@type FrecencyOpts
         frecency = {
           -- Stale entries won't be automatically removed and
           -- the prompt won't show up.
