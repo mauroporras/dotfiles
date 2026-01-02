@@ -36,7 +36,11 @@ require("lazy").setup({
   -- full screen UI
   ui = { size = { width = 1, height = 1 } },
   -- automatically check for plugin updates
-  checker = { enabled = true },
+  checker = {
+    enabled = true,
+    -- Check once per day (in seconds)
+    frequency = 86400,
+  },
 })
 
 -- vim:foldmethod=marker
