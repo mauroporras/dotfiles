@@ -1,5 +1,5 @@
 ---
-description: Create a new branch for the current Git changes
+description: Create a new branch for ALL the uncommitted Git changes
 ---
 
 The branch name must be descriptive based on the current Git changes (e.g., `fix/typo-in-readme`, `feat/add-validation`)
