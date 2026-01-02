@@ -9,6 +9,7 @@
 
 brew "asciinema"
 brew "bat" # https://github.com/sharkdp/bat
+brew "cloudflared" # Cloudflare Tunnel client
 brew "coreutils"
 brew "direnv"
 brew "eza"
