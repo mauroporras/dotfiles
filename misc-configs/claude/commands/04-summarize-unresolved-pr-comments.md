@@ -1,8 +1,8 @@
 ---
-description: Fetch and summarize this PR's comments
+description: Fetch and summarize this PR's UNRESOLVED comments
 ---
 
-Fetch and summarize this PR's UNRESOLVED comments and format them as "Author: #unique-tag" so we can address them one by one.
+Format them as "Author: #unique-tag" so we can address them one by one.
 
 Use the GraphQL API to get only unresolved review threads:
 
