@@ -30,7 +30,36 @@ if type brew &>/dev/null; then
   compinit
 fi
 
-# Custom bindings
+# Vi mode
+bindkey -v
+export KEYTIMEOUT=1  # Reduce escape delay
+
+# Change cursor shape for different vi modes
+function zle-keymap-select {
+  if [[ ${KEYMAP} == vicmd ]] || [[ $1 = 'block' ]]; then
+    echo -ne '\e[2 q'  # Block cursor
+  elif [[ ${KEYMAP} == main ]] || [[ ${KEYMAP} == viins ]] || [[ $1 = 'beam' ]]; then
+    echo -ne '\e[6 q'  # Beam cursor
+  fi
+}
+zle -N zle-keymap-select
+
+# Start with beam cursor
+function zle-line-init {
+  echo -ne '\e[6 q'
+}
+zle -N zle-line-init
+
+# Restore useful emacs bindings in vi insert mode
+bindkey "^a" beginning-of-line
+bindkey "^e" end-of-line
+bindkey "^k" kill-line
+bindkey "^u" backward-kill-line
+bindkey "^w" backward-kill-word
+bindkey "^y" yank
+bindkey "^d" delete-char
+bindkey "^f" forward-char
+bindkey "^b" backward-char
 bindkey "^p" up-line-or-search
 bindkey "^n" down-line-or-search
 
