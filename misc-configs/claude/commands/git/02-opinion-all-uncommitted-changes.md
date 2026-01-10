@@ -1,13 +1,16 @@
 ---
-description: I want your opinion on ALL the uncommitted Git changes
+description: Opinion on ALL uncommitted Git changes
 ---
 
-Run these commands and these commands ONLY:
+## Context
 
-1. `git status --short` to get an overview of changes
-2. `git diff` and `git diff --staged` to understand the changes
+- Current Git status: !`git status --short`
+- Unstaged changes: !`git diff`
+- Staged changes: !`git diff --staged`
 
-Then provide your opinion on:
+## Your task
+
+Provide your opinion on:
 
 - Code quality and style consistency with the existing codebase
 - Potential bugs, edge cases, or issues
@@ -15,3 +18,7 @@ Then provide your opinion on:
 - Any other suggestions for improvements
 
 Keep your feedback concise and actionable.
+
+Do NOT:
+
+- Run additional `git status`, `git log`, `git diff`, or `git add` commands.
