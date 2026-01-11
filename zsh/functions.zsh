@@ -58,6 +58,8 @@ bindkey "^u" backward-kill-line
 bindkey "^w" backward-kill-word
 bindkey "^y" yank
 bindkey "^d" delete-char
+bindkey "^?" backward-delete-char
+bindkey "^h" backward-delete-char
 bindkey "^f" forward-char
 bindkey "^b" backward-char
 bindkey "^p" up-line-or-search
