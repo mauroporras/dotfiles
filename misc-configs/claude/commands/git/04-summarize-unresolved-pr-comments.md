@@ -60,3 +60,5 @@ Create a markdown file named `pr-{number}-comments.md` (using the actual PR numb
 Generate descriptive tags based on the comment content (e.g., `#fix-null-check`, `#add-error-handling`, `#rename-variable`) so I can copy-paste them to reference specific comments. Summarize each comment concisely instead of quoting the full text. Group comments by file path if there are multiple in the same file. Use checkboxes so I can track progress.
 
 If there are no unresolved comments, do not create the file. Just inform me that there are no unresolved comments.
+
+After creating the file, let me know you're ready to address comments one by one. I'll reference them by their tag (e.g., `#fix-null-check`).
