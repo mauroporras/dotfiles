@@ -199,11 +199,10 @@ return {
       ["<C-p>"] = "cycle_history_prev",
       ["<M-p>"] = layout.toggle_preview,
       ["<M-l>"] = layout.cycle_layout_next,
-      -- Send to quickfix, open it, and jump to first item.
+      -- Send to quickfix and open it.
       ["<C-q>"] = function(prompt_bufnr)
         actions.smart_send_to_qflist(prompt_bufnr)
         actions.open_qflist(prompt_bufnr)
-        vim.cmd("cfirst")
       end,
     }
 
