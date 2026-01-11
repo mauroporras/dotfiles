@@ -51,6 +51,8 @@ quick-terminal-size = 80%
 # keybind = cmd+z=text:\x1A
 # CR
 keybind = ctrl+m=text:\x0D
+# LF
+keybind = ctrl+j=text:\x0A
 # Esc
 keybind = ctrl+[=text:\x1B
 # Tab
