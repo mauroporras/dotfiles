@@ -17,5 +17,6 @@ Do NOT:
 
 - Run additional `git status`, `git log`, `git diff`, or `git add` commands.
 - Add "Co-Authored-By", "Generated with Claude Code", or any Claude/Anthropic attribution.
-  It only clutters the commit history with unnecessary information.
+  If a human committed it, it's their responsibility regardless of whether AI generated it.
+  Besides, it clutters commit history.
 - Push to remote
