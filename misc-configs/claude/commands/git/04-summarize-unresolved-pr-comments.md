@@ -1,5 +1,6 @@
 ---
 description: Fetch and summarize this PR's UNRESOLVED comments
+allowed-tools: Write
 ---
 
 ## Context
