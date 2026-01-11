@@ -2,14 +2,15 @@
 description: Get familiar with the current branch's changes
 ---
 
-Get familiar with the current branch's changes compared to the default branch.
+## Context
 
-Do not check the branch name, linked GitHub issues, PR descriptions, or any other contextual clues - analyze the changes purely based on the code.
+- Commits on this branch: !`git log origin/HEAD..HEAD --oneline`
+- Files changed: !`git diff origin/HEAD...HEAD --stat`
+- Full diff: !`git diff origin/HEAD...HEAD`
 
-1. Determine the default branch by running `git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'`
-2. Run `git log <default-branch>..HEAD --oneline` to see the commits on this branch
-3. Run `git diff <default-branch>...HEAD --stat` to see which files changed and how much
-4. Run `git diff <default-branch>...HEAD` to review the actual changes
+## Your task
+
+Analyze the changes purely based on the code (do not check the branch name, linked GitHub issues, PR descriptions, or any other contextual clues).
 
 Provide a summary that includes:
 
@@ -17,3 +18,7 @@ Provide a summary that includes:
 - Key files modified and what kind of changes were made
 - Any potential concerns or areas worth highlighting
 - Be prepared to answer questions about the changes
+
+Do NOT:
+
+- Run additional git commands.
