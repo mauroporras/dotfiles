@@ -3,14 +3,14 @@
 --   https://github.com/nanotee/nvim-lua-guide#defining-mappings
 
 -- To find what's using a key map:
---   :verbose nmap <leader>b
+--   :verbose nmap <Leader>b
 
 -- Clear highlights on search when pressing <Esc> in normal mode
 --   See `:h hlsearch`
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 -- Diagnostic keymaps
-vim.keymap.set("n", "<leader>cq", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
+vim.keymap.set("n", "<Leader>cq", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which

@@ -31,6 +31,3 @@ vim.api.nvim_set_hl(0, "CurSearch", { bg = "black", fg = "cyan" })
 vim.api.nvim_set_hl(0, "IncSearch", { bg = "cyan", fg = "black" })
 vim.api.nvim_set_hl(0, "Search", { bg = "cyan", fg = "black" })
 vim.api.nvim_set_hl(0, "Substitute", { bg = "cyan", fg = "black" })
-
-vim.api.nvim_set_hl(0, "QuickScopePrimary", { bg = "cyan", fg = "black" })
-vim.api.nvim_set_hl(0, "QuickScopeSecondary", { bg = "black", fg = "cyan" })

@@ -9,7 +9,7 @@ return {
   "SmiteshP/nvim-navbuddy",
   cmd = "Navbuddy",
   keys = {
-    { "<leader>cn", "<cmd>Navbuddy<cr>", desc = "Navbuddy" },
+    { "<Leader>cn", "<cmd>Navbuddy<cr>", desc = "Navbuddy" },
   },
   dependencies = {
     -- Ensure lspconfig loads first since auto_attach hooks into LSP clients.

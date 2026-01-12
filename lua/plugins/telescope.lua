@@ -155,7 +155,7 @@ return {
       desc = "Buffer git commits",
     },
     {
-      "<Leader>/",
+      "<Leader>F",
       function()
         require("telescope.builtin").current_buffer_fuzzy_find({
           prompt_title = "Fuzzy Find in Buffer",
