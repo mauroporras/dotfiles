@@ -24,6 +24,8 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+local ONE_DAY = 86400 -- seconds
+
 -- Setup lazy.nvim
 require("lazy").setup({
   spec = {
@@ -38,8 +40,7 @@ require("lazy").setup({
   -- automatically check for plugin updates
   checker = {
     enabled = true,
-    -- Check once per day (in seconds)
-    frequency = 86400,
+    frequency = ONE_DAY * 7,
   },
 })
 
