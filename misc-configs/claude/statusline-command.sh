@@ -16,6 +16,9 @@ context_pct=$((current_usage * 100 / context_size))
 
 cd "$current_dir" 2>/dev/null || cd /
 git_branch=$(git branch --show-current 2>/dev/null)
+if [[ -z "$git_branch" ]]; then
+  git_branch="Not a Git repo"
+fi
 session_id=$(echo "$input" | jq -r '.session.id // .session_id // "unknown"')
 
 # Colors
