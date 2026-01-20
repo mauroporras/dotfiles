@@ -1,5 +1,6 @@
 ---
 description: Get familiar with the current branch's changes
+allowed-tools: Read
 ---
 
 ## Context

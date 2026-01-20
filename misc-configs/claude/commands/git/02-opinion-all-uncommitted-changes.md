@@ -1,5 +1,6 @@
 ---
 description: Opinion on ALL uncommitted Git changes
+allowed-tools: Read
 ---
 
 ## Context

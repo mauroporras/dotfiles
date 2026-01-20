@@ -1,6 +1,6 @@
 ---
 description: Fetch and summarize this PR's UNRESOLVED comments
-allowed-tools: Write
+allowed-tools: Write, Bash(gh:*)
 ---
 
 ## Context

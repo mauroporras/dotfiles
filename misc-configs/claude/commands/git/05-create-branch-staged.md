@@ -1,5 +1,6 @@
 ---
 description: New branch for STAGED changes
+allowed-tools: Bash(git checkout:*)
 ---
 
 ## Context
