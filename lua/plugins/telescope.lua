@@ -155,10 +155,10 @@ return {
       desc = "Buffer git commits",
     },
     {
-      "<Leader>F",
+      "<Leader>S",
       function()
         require("telescope.builtin").current_buffer_fuzzy_find({
-          prompt_title = "Fuzzy Find in Buffer",
+          prompt_title = "Fuzzy Search in Buffer",
           tiebreak = function(current, existing)
             -- Prefer lower line numbers (earlier in file)
             return current.lnum < existing.lnum
