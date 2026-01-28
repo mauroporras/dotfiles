@@ -1,5 +1,7 @@
 ---
 description: New branch for STAGED changes
+disable-model-invocation: true
+context: fork
 allowed-tools: Bash(git checkout:*)
 ---
 

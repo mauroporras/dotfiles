@@ -1,5 +1,6 @@
 ---
 description: Opinion on ALL uncommitted Git changes
+disable-model-invocation: true
 allowed-tools: Read
 ---
 

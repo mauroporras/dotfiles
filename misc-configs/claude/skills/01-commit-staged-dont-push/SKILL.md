@@ -1,5 +1,8 @@
 ---
 description: Commit STAGED changes, don't push
+disable-model-invocation: true
+context: fork
+argument-hint: [issue-number]
 allowed-tools: Bash(git commit:*)
 ---
 
@@ -24,5 +27,6 @@ NEVER:
 - Add "Co-Authored-By", "Generated with Claude Code", or any Claude/Anthropic attribution.
   If a human committed it, it's their responsibility regardless of whether AI generated it.
   Besides, it clutters the commit history.
-- Add a commit body.
+- Add a commit body, UNLESS an issue number is provided via $ARGUMENTS.
+  If provided, add a body with `Close #<issue-number>`.
 - Push to remote.
