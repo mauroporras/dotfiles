@@ -22,4 +22,4 @@ Provide a summary that includes:
 
 Do NOT:
 
-- Run additional git commands.
+- Run additional Git commands.
