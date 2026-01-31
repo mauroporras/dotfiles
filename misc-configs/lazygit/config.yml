@@ -29,7 +29,7 @@ git:
     - pager: cat
   # The number of lines of context to show around each diff hunk. Can be changed
   # from within Lazygit with the `{` and `}` keys.
-  diffContextSize: 10
+  diffContextSize: 15
 customCommands:
   - key: "w"
     context: "files"
