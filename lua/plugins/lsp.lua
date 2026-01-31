@@ -23,7 +23,6 @@ return {
     dependencies = {
       -- Automatically install LSPs and related tools to stdpath for Neovim
       -- Mason must be loaded before its dependents so we need to set it up here.
-      -- NOTE: `opts = {}` is the same as calling `require('mason').setup({})`
       {
         "mason-org/mason.nvim",
         opts = {
@@ -41,6 +40,15 @@ return {
 
       -- Allows extra capabilities provided by blink.cmp
       "saghen/blink.cmp",
+
+      -- Replaces ts_ls
+      -- Provides better support for typescript-svelte-plugin
+      {
+        "pmizio/typescript-tools.nvim",
+        dependencies = { "nvim-lua/plenary.nvim" },
+        ft = { "typescript", "javascript", "javascriptreact", "typescriptreact", "svelte" },
+        opts = {},
+      },
     },
     config = function()
       -- Brief aside: **What is LSP?**
@@ -242,7 +250,8 @@ return {
         stylelint_lsp = {},
         svelte = {},
         tailwindcss = {},
-        ts_ls = {},
+        -- Replaced by typescript-tools.nvim
+        -- ts_ls = {},
         yamlls = {},
 
         lua_ls = {
@@ -297,7 +306,8 @@ return {
     end,
   },
 
-  { -- Autocompletion
+  {
+    -- Autocompletion
     "saghen/blink.cmp",
     event = "VimEnter",
     version = "1.*",
