@@ -83,7 +83,7 @@ return {
     {
       "<Leader>gi",
       function()
-        require("telescope.builtin").lsp_implementations({ prompt_title = "LSP Implementations" })
+        require("telescope.builtin").lsp_implementations({ prompt_title = "LSP Implementations", jump_type = "never" })
       end,
       desc = "LSP implementations",
     },
@@ -91,7 +91,7 @@ return {
     {
       "<Leader>gr",
       function()
-        require("telescope.builtin").lsp_references({ prompt_title = "LSP References" })
+        require("telescope.builtin").lsp_references({ prompt_title = "LSP References", jump_type = "never" })
       end,
       desc = "LSP references",
     },
@@ -119,7 +119,7 @@ return {
     {
       "<Leader>gt",
       function()
-        require("telescope.builtin").lsp_type_definitions({ prompt_title = "Type Definition" })
+        require("telescope.builtin").lsp_type_definitions({ prompt_title = "Type Definition", jump_type = "never" })
       end,
       desc = "LSP type definition",
     },
