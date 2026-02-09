@@ -7,7 +7,7 @@ allowed-tools: Read
 ## Context
 
 - Commits on this branch: !`git log origin/HEAD..HEAD --oneline`
-- Files changed: !`git diff origin/HEAD...HEAD --stat`
+- List of changed files: !`git diff origin/HEAD...HEAD --stat`
 - Full diff: !`git diff origin/HEAD...HEAD`
 
 ## Your task
