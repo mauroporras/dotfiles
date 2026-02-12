@@ -11,7 +11,7 @@ return {
     -- Document existing key chains
     notify = true,
     plugins = {
-      spelling = { enabled = true },
+      -- spelling = { enabled = true },
     },
     spec = {
       { "<Leader>c", group = "[C]ode", icon = "💻" },
