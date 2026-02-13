@@ -25,6 +25,10 @@ ln -sf ~/dotfiles/gitignore_global .gitignore_global
 mkdir -p .claude
 ln -sfn ~/dotfiles/misc-configs/claude/skills .claude/skills
 ln -sf ~/dotfiles/misc-configs/claude/statusline-command.sh .claude/statusline-command.sh
+# Copied (not symlinked) because Claude Code modifies settings.json at runtime.
+[[ -f .claude/settings.json ]] && cp .claude/settings.json ".claude/settings.$(date +%Y%m%d%H%M%S).json"
+cp ~/dotfiles/misc-configs/claude/settings.json .claude/settings.json
+ln -sf ~/dotfiles/misc-configs/claude/CLAUDE.md .claude/CLAUDE.md
 
 ln -sf ~/dotfiles/misc-configs/starship/starship.toml .config/starship.toml
 
