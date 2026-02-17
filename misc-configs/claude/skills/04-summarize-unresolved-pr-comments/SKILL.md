@@ -41,7 +41,7 @@ query($owner: String!, $repo: String!, $pr: Int!) {
 }' -f owner="OWNER" -f repo="REPO" -F pr=PR_NUMBER
 ```
 
-Filter the results to only show threads where `isResolved: false`.
+Filter the results to only show threads where `isResolved: false`. Include comments from all authors, including automated reviewers (e.g., Copilot, bots). Do not skip or filter out comments based on the author.
 
 ### Step 2: Fetch top-level "Changes Requested" reviews
 
