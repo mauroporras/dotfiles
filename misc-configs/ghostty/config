@@ -90,7 +90,9 @@ keybind = ctrl+cmd+l=resize_split:right,200
 
 keybind = ctrl+cmd+enter=toggle_split_zoom
 
-keybind = cmd+minus=decrease_font_size:2
+# Asymmetric: decrease is faster because you usually want to shrink quickly
+# to fit more content, but grow back gradually to find the right size.
+keybind = cmd+minus=decrease_font_size:4
 keybind = cmd+equal=increase_font_size:2
 
 # Assigned to nothing to unlearn them
