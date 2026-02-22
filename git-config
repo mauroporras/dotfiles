@@ -75,12 +75,14 @@ git config --global alias.bib 'bisect bad'
 git config --global alias.big 'bisect good'
 git config --global alias.bir 'bisect reset'
 
-git config --global alias.c 'checkout'
-git config --global alias.cb 'checkout -b'
-git config --global alias.cd 'checkout dev'
-git config --global alias.cm 'checkout main'
-git config --global alias.cs 'checkout staging'
-git config --global alias.cp 'checkout -p'
+# Not used that much anymore.
+# I'm using LazyGit instead.
+# git config --global alias.c 'checkout'
+# git config --global alias.cb 'checkout -b'
+# git config --global alias.cd 'checkout dev'
+# git config --global alias.cm 'checkout main'
+# git config --global alias.cs 'checkout staging'
+# git config --global alias.cp 'checkout -p'
 
 git config --global alias.ci 'commit'
 git config --global alias.cip '!git commit && git push'
@@ -140,9 +142,11 @@ git config --global alias.rbi 'rebase --interactive'
 git config --global alias.rbim 'rebase --interactive main'
 git config --global alias.rbm 'rebase main'
 
-git config --global alias.mm 'merge'
-git config --global alias.ms 'merge --squash'
-git config --global alias.mt 'mergetool'
+# Not used that much anymore.
+# I'm using LazyGit instead.
+# git config --global alias.mm 'merge'
+# git config --global alias.ms 'merge --squash'
+# git config --global alias.mt 'mergetool'
 
 # Git `fixup` and `autosquash`.
 # Example:
