@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -euo pipefail
 
 current_email=$(git config --global user.email || true)
 current_name=$(git config --global user.name || true)
