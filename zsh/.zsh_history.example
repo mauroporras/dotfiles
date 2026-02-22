@@ -9,3 +9,5 @@
 : 1762456278:0;source ~/.zshrc
 : 1763412907:0;brew upgrade starship
 : 1763556911:0;echo .git > .rgignore
+: 1771791203:0;git rerere clear
+: 1771792334:0;brew upgrade claude-code
