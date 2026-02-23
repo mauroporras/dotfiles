@@ -12,3 +12,5 @@
 : 1771791203:0;git rerere clear
 : 1771792334:0;brew upgrade claude-code
 : 1771792629:0;git remote prune origin
+: 1771855139:0;cp ~/dotfiles/example-configs/* .
+: 1771855166:0;cp ~/dotfiles/example-configs/.* .
