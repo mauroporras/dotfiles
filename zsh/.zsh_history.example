@@ -14,3 +14,5 @@
 : 1771792629:0;git remote prune origin
 : 1771855139:0;cp ~/dotfiles/example-configs/* .
 : 1771855166:0;cp ~/dotfiles/example-configs/.* .
+: 1771855469:0;pnpm add --save-dev --save-exact prettier
+: 1771855523:0;pnpm add --save-dev --save-exact prettier-plugin-organize-imports
