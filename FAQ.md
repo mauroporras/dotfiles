@@ -19,6 +19,10 @@ Used to go to the beginning of the line.
 
 ## Neovim
 
+### Why not use `scrolloff`?
+
+It adds extra lines above and below the cursor, which can be disorienting. The cursor should stay exactly where you put it without the editor shifting content around. Use `zz` to manually center the cursor when needed.
+
 ### Useful commands
 
 #### Open files in diff mode
