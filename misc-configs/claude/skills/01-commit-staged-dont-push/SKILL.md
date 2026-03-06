@@ -8,7 +8,6 @@ allowed-tools: Bash(git commit:*)
 
 ## Context
 
-- Current Git status: !`git status --short`
 - Current Git diff (staged changes only): !`git diff --staged`
 
 ## Your task
@@ -23,10 +22,10 @@ ALWAYS:
 
 NEVER:
 
-- Run ADDITIONAL `git status`, `git log`, `git diff`, or `git add` commands.
+- Run ADDITIONAL `git status`, `git log`, `git diff`, `git add`, or `git push` commands.
+- Use heredoc, `$(cat <<'EOF'...)`, or any command substitution. Use a plain `git commit -m "message"` command.
 - Add "Co-Authored-By", "Generated with Claude Code", or any Claude/Anthropic attribution.
   AI is a tool, not a collaborator. If a human committed it, it's their responsibility.
   Besides, it clutters the commit history.
 - Add a commit body, UNLESS an issue number is provided via $ARGUMENTS.
   If provided, add a body with `Close #<issue-number>`.
-- Push to remote.
