@@ -19,6 +19,10 @@ Used to go to the beginning of the line.
 
 ## Neovim
 
+### Why use `quick-scope` over `flash.nvim`'s char mode?
+
+flash.nvim's char mode requires pressing two keys for change motions (e.g., `cf` then two characters), which makes simple `f/F/t/T` motions slower. quick-scope just highlights the unique characters on the line without changing how the motions work.
+
 ### Why not use `scrolloff`?
 
 It adds extra lines above and below the cursor, which can be disorienting. The cursor should stay exactly where you put it without the editor shifting content around. Use `zz` to manually center the cursor when needed.
