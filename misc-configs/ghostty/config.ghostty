@@ -40,6 +40,11 @@ scrollback-limit = 100000000
 
 quick-terminal-size = 80%
 
+# Characters NOT considered part of a word
+# See:
+# https://ghostty.org/docs/config/reference#selection-word-chars
+selection-word-chars = " \t'\"│`|:,()[]{}<>"-/=+?─.
+
 notify-on-command-finish = unfocused
 notify-on-command-finish-action = bell,notify
 notify-on-command-finish-after = 3s
