@@ -1,7 +1,7 @@
 {
   "statusLine": {
     "type": "command",
-    "command": "/bin/bash /Users/mauro/.claude/statusline-command.sh"
+    "command": "/bin/bash ~/.claude/statusline-command.sh"
   },
   "attribution": {
     "commit": "",
