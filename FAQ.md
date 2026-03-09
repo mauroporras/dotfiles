@@ -31,7 +31,7 @@ It adds extra lines above and below the cursor, which can be disorienting. The c
 
 #### Open files in diff mode
 
-```
+```sh
 nvim -d file1.txt file2.txt
 ```
 
@@ -43,7 +43,7 @@ Write:
 
 Load:
 
-```
+```sh
 nvim -S [Session.vim]
 ```
 
@@ -57,7 +57,7 @@ Write:
 
 Load:
 
-```
+```sh
 nvim -i custom.shada
 ```
 
@@ -65,6 +65,6 @@ nvim -i custom.shada
 
 ### Start a temporary Nix shell environment
 
-```
+```sh
 nix-shell --command zsh -p go
 ```
