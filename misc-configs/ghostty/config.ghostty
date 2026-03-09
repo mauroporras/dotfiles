@@ -72,7 +72,7 @@ keybind = cmd+y=scroll_page_lines:-1
 
 keybind = cmd+r=clear_screen
 
-keybind = cmd+s=write_screen_file:paste
+keybind = shift+cmd+s=write_screen_file:paste
 
 keybind = shift+cmd+t=toggle_quick_terminal
 
