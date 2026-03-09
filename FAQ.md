@@ -5,15 +5,15 @@
 ### Why to use a relatively big font size?
 
 - It's easier to read
-- You can always zoom out anyways (<kbd>⌘</kbd> + <kbd>-</kbd>)
+- You can always zoom out anyways (`⌘` + `-`)
 
 ### Never remap these keys
 
-<kbd>ctrl</kbd> + <kbd>h</kbd>
+`ctrl` + `h`
 
 Used to delete back.
 
-<kbd>ctrl</kbd> + <kbd>a</kbd>
+`ctrl` + `a`
 
 Used to go to the beginning of the line.
 
