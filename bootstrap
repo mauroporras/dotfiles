@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-cd $HOME
+cd "$HOME"
 
 # -- Bat --
 mkdir -p .config/bat
