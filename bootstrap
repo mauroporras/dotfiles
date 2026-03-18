@@ -2,26 +2,33 @@
 
 cd $HOME
 
+# -- Bat --
 mkdir -p .config/bat
 ln -sf ~/dotfiles/misc-configs/bat/config .config/bat/config
 
+# -- Git Delta --
 mkdir -p .config/git-delta
 ln -sf ~/dotfiles/misc-configs/git-delta/themes.gitconfig .config/git-delta/themes.gitconfig
 
+# -- Neovim --
 mkdir -p .config/nvim
 # -n: treat existing symlink to dir as file (ensures idempotent re-runs)
 ln -sfn ~/dotfiles/lua .config/nvim/lua
 ln -sf ~/dotfiles/init.lua .config/nvim/init.lua
 ln -sf ~/dotfiles/lazy-lock.json .config/nvim/lazy-lock.json
 
+# -- Ghostty --
 mkdir -p .config/ghostty
 ln -sf ~/dotfiles/misc-configs/ghostty/config.ghostty .config/ghostty/config
 
+# -- Lazygit --
 mkdir -p .config/lazygit
 ln -sf ~/dotfiles/misc-configs/lazygit/config.yml .config/lazygit/config.yml
 
+# -- Git --
 ln -sf ~/dotfiles/gitignore_global .gitignore_global
 
+# -- Claude Code --
 mkdir -p .claude
 ln -sf ~/dotfiles/misc-configs/claude/CLAUDE.md .claude/CLAUDE.md
 ln -sfn ~/dotfiles/misc-configs/claude/skills .claude/skills
@@ -30,14 +37,17 @@ ln -sf ~/dotfiles/misc-configs/claude/statusline-command.sh .claude/statusline-c
 [[ -f .claude/settings.json ]] && cp .claude/settings.json ".claude/settings.$(date +%Y%m%d%H%M%S).json"
 cp ~/dotfiles/misc-configs/claude/settings.json .claude/settings.json
 
+# -- Starship --
 ln -sf ~/dotfiles/misc-configs/starship/starship.toml .config/starship.toml
 
+# -- Yazi --
 mkdir -p .config/yazi
 ln -sf ~/dotfiles/misc-configs/yazi/yazi.toml .config/yazi/yazi.toml
 
-# Useful dirs.
+# -- Directories --
 mkdir -p queue temp workspace
 
+# -- Zsh --
 if [[ -z "$HAS_LOADED_CUSTOM_SCRIPTS" ]]; then
   echo '
 if [[ -z "$HAS_LOADED_CUSTOM_SCRIPTS" ]]; then
