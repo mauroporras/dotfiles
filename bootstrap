@@ -31,7 +31,15 @@ ln -sf ~/dotfiles/gitignore_global .gitignore_global
 # -- Claude Code --
 mkdir -p .claude
 ln -sf ~/dotfiles/misc-configs/claude/CLAUDE.md .claude/CLAUDE.md
-ln -sfn ~/dotfiles/misc-configs/claude/skills .claude/skills
+# Linked individually (not the whole dir) to allow third-party skills alongside ours.
+mkdir -p .claude/skills
+ln -sfn ~/dotfiles/misc-configs/claude/skills/01-commit-staged-dont-push .claude/skills/01-commit-staged-dont-push
+ln -sfn ~/dotfiles/misc-configs/claude/skills/02-opinion-all-uncommitted-changes .claude/skills/02-opinion-all-uncommitted-changes
+ln -sfn ~/dotfiles/misc-configs/claude/skills/03-familiarize-branch-changes .claude/skills/03-familiarize-branch-changes
+ln -sfn ~/dotfiles/misc-configs/claude/skills/04-summarize-unresolved-pr-comments .claude/skills/04-summarize-unresolved-pr-comments
+ln -sfn ~/dotfiles/misc-configs/claude/skills/05-create-branch-staged .claude/skills/05-create-branch-staged
+ln -sfn ~/dotfiles/misc-configs/claude/skills/06-explain-code .claude/skills/06-explain-code
+# Status line
 ln -sf ~/dotfiles/misc-configs/claude/statusline-command.sh .claude/statusline-command.sh
 # Copied (not symlinked) because Claude Code modifies settings.json at runtime.
 [[ -f .claude/settings.json ]] && cp .claude/settings.json ".claude/settings.$(date +%Y%m%d%H%M%S).json"
