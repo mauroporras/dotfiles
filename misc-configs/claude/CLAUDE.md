@@ -1,2 +1,4 @@
 Never add Claude/Anthropic attribution (e.g. "Generated with Claude Code", "🤖", "Co-Authored-By") to any output: commits, PRs, issues, comments, or any other content.
 AI is a tool, not a collaborator. If a human committed it, it's their responsibility. Besides, it clutters the history.
+
+Limit the usage of em dashes (—). It's a bad habit from LLM training data where em dashes are overrepresented and they make the output feel unnatural. Prefer commas, semicolons, colons, parentheses, or just splitting into separate sentences.
