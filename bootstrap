@@ -48,7 +48,7 @@ ln -sf ~/dotfiles/misc-configs/yazi/yazi.toml .config/yazi/yazi.toml
 mkdir -p queue temp workspace
 
 # -- Zsh --
-if [[ -z "$HAS_LOADED_CUSTOM_SCRIPTS" ]]; then
+if ! grep -q 'HAS_LOADED_CUSTOM_SCRIPTS' ~/.zshrc 2>/dev/null; then
   echo '
 if [[ -z "$HAS_LOADED_CUSTOM_SCRIPTS" ]]; then
   export HAS_LOADED_CUSTOM_SCRIPTS=1
