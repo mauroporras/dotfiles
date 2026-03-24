@@ -1,7 +1,13 @@
 .git
+.idea
+.svelte-kit
+.wrangler
+build
 coverage
 dist
 node_modules
 
+*.log
 *.orig
+pnpm-lock.yaml
 Session.vim
