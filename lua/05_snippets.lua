@@ -90,14 +90,14 @@ ls.add_snippets("javascript", {
   }),
 
   -- console
-  s("cl", {
-    t'console.log(', i(1), t')'
-  }),
-  s("cll", {
+  s("col", {
     t'console.log("---------- WITNESSME ', i(1), t'", ', i(2), t')'
   }),
-  s("ce", {
+  s("coe", {
     t'console.error("Error:", ', i(1), t')'
+  }),
+  s("cot", {
+    t'console.trace("---------- WITNESSME ', i(1), t'", ', i(2), t')'
   }),
 
   -- class
