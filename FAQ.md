@@ -7,6 +7,13 @@
 - It's easier to read
 - You can always zoom out anyways (`⌘` + `-`)
 
+### Iosevka Term vs Iosevka Fixed
+
+Why `Iosevka Fixed Slab`:
+
+- **Term** scales wide glyphs down to fit one cell. May look compressed.
+- **Fixed** disables ligatures instead. No scaling, natural proportions.
+
 ### Never remap these keys
 
 `ctrl` + `h`
