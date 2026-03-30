@@ -1,12 +1,12 @@
 ---
-description: Opinion on STAGED Git changes
+description: Opinion on STAGED changes
 disable-model-invocation: true
 allowed-tools: Read
 ---
 
 ## Context
 
-- Current Git diff (staged changes only): !`git diff --staged`
+- Current staged changes only: !`git diff --staged`
 
 ## Your task
 
@@ -17,8 +17,10 @@ Based on the above STAGED changes, provide your opinion on:
 - Whether the changes are well-structured and focused
 - Any other suggestions for improvements
 
-Keep your feedback concise and actionable.
+ALWAYS:
 
-Do NOT:
+- Keep your feedback concise and actionable.
 
-- Run additional `git status`, `git log`, `git diff`, or `git add` commands.
+NEVER:
+
+- Run additional Git commands.

@@ -8,7 +8,7 @@ allowed-tools: Bash(git commit:*)
 
 ## Context
 
-- Current Git diff (staged changes only): !`git diff --staged`
+- Current staged changes only: !`git diff --staged`
 
 ## Your task
 
@@ -23,4 +23,4 @@ ALWAYS:
 
 NEVER:
 
-- Run ADDITIONAL `git status`, `git log`, `git diff`, `git add`, or `git push` commands.
+- Run additional Git commands.

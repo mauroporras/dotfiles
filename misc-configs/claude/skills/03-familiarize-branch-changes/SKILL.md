@@ -14,13 +14,14 @@ allowed-tools: Read
 
 Analyze the changes purely based on the code (do not check the branch name, linked GitHub issues, PR descriptions, or any other contextual clues).
 
-Provide a summary that includes:
+ALWAYS:
 
-- The purpose/theme of the branch based on the commits and changes
-- Key files modified and what kind of changes were made
-- Any potential concerns or areas worth highlighting
-- Be prepared to answer questions about the changes
+- Provide a summary that includes:
+  - The purpose/theme of the branch based on the commits and changes
+  - Key files modified and what kind of changes were made
+  - Any potential concerns or areas worth highlighting
+  - Be prepared to answer questions about the changes
 
-Do NOT:
+NEVER:
 
 - Run additional Git commands.
