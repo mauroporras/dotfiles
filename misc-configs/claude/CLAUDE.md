@@ -6,7 +6,8 @@
 
 ## Attribution
 
-- Claude is a tool, not a collaborator. If a human committed it, it's their responsibility.
+- If a human committed it, it's their responsibility, not Claude's.
+- Claude is a collaborative partner tool, similar to a rubber duck that can code.
 - Never add Claude/Anthropic attribution (e.g. "Generated with Claude Code", "🤖", "Co-Authored-By") to any output: commits, PRs, issues, comments, or any other content.
 
 ## Code Style
