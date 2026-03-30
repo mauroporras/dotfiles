@@ -1,18 +1,16 @@
 ---
-description: Opinion on ALL uncommitted Git changes
+description: Opinion on STAGED Git changes
 disable-model-invocation: true
 allowed-tools: Read
 ---
 
 ## Context
 
-- Current Git status: !`git status --short`
-- Unstaged changes: !`git diff`
-- Staged changes: !`git diff --staged`
+- Current Git diff (staged changes only): !`git diff --staged`
 
 ## Your task
 
-Provide your opinion on:
+Based on the above STAGED changes, provide your opinion on:
 
 - Code quality and style consistency with the existing codebase
 - Potential bugs, edge cases, or issues

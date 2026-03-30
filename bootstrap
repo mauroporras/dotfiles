@@ -35,7 +35,7 @@ ln -sf ~/dotfiles/misc-configs/claude/CLAUDE.md .claude/CLAUDE.md
 mkdir -p .claude/skills
 ln -sfn ~/dotfiles/misc-configs/claude/skills/00-reminder .claude/skills/00-reminder
 ln -sfn ~/dotfiles/misc-configs/claude/skills/01-commit-staged-dont-push .claude/skills/01-commit-staged-dont-push
-ln -sfn ~/dotfiles/misc-configs/claude/skills/02-opinion-all-uncommitted-changes .claude/skills/02-opinion-all-uncommitted-changes
+ln -sfn ~/dotfiles/misc-configs/claude/skills/02-opinion-staged-changes .claude/skills/02-opinion-staged-changes
 ln -sfn ~/dotfiles/misc-configs/claude/skills/03-familiarize-branch-changes .claude/skills/03-familiarize-branch-changes
 ln -sfn ~/dotfiles/misc-configs/claude/skills/04-summarize-unresolved-pr-comments .claude/skills/04-summarize-unresolved-pr-comments
 ln -sfn ~/dotfiles/misc-configs/claude/skills/05-create-branch-staged .claude/skills/05-create-branch-staged

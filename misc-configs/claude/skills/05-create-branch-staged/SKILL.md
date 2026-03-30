@@ -7,7 +7,6 @@ allowed-tools: Bash(git checkout:*)
 
 ## Context
 
-- Current Git status: !`git status --short`
 - Current Git diff (staged changes only): !`git diff --staged`
 
 ## Your task
