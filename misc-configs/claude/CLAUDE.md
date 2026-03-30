@@ -13,9 +13,12 @@
 ## Code Style
 
 - Follow [the naming cheatsheet](https://github.com/kettanaito/naming-cheatsheet).
-- When adding comments to code, explain _why_ something is done, not _what_ it does. The code already shows the "what"; a comment restating it is just noise. Comments should capture intent, constraints, workarounds, or non-obvious reasoning that a reader couldn't derive from the code alone.
+- When adding comments to code, explain _why_ something is done, not _what_ it does.
+  The code already shows the "what", a comment restating it is just noise.
+  Comments should capture intent, constraints, workarounds, or non-obvious reasoning that a reader couldn't derive from the code alone.
 - Avoid mutation as much as possible: produce new values rather than modifying in place.
-- Extract conditions and thresholds into named constants so the intent is readable (e.g. `hasChildren = parent.children.length > 0`).
+- Extract `if` conditions into named constants instead of inlining them.
+  It makes the intent more readable. E.g.: `hasChildren = parent.children.length > 0`
 - Assign the return value to a `retval` constant before returning it. This makes the value visible in a debugger without needing to step out of the function.
 - Prefer guard clauses (early returns for invalid/edge cases) over deeply nested `if/else` blocks. They keep the happy path at the top indentation level.
 - Avoid single line early returns (e.g. `if (foo) return`). Use a block instead so breakpoints can target the return independently.
