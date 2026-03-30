@@ -28,6 +28,10 @@
 
 - Use JavaScript private fields (`#field`) for class internals, not the TypeScript `private` keyword.
 
+### Svelte
+
+- In `$effect` cleanup returns, assign the cleanup function to a named `teardown` constant before returning it (same reasoning as the `retval` rule: debugger visibility and readability).
+
 ## Git
 
 - ALWAYS run all Git commands directly from the current working directory. Git automatically finds the repo root.
