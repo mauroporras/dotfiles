@@ -396,7 +396,7 @@ ls.add_snippets("svelte", {
     t{ '', '</script>' }
   }),
   s("sscm", {
-    t{ '<script context="module" lang="ts">', '' },
+    t{ '<script module lang="ts">', '' },
     i(1),
     t{ '', '</script>' }
   }),
