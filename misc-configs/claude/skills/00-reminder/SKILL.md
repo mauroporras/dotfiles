@@ -5,10 +5,10 @@ disable-model-invocation: true
 
 ## Your task
 
-Remember the ground rules. Internalize them before continuing with whatever task is in progress.
+REMEMBER:
 
-Pay special attention to:
+- Run ALL Git commands from the current working directory.
+  NEVER `cd` into other directories to run Git.
+  Git automatically finds the repo root.
 
-- **Git**: Run all Git commands from the current working directory. NEVER `cd` into subdirectories to run git. Git automatically finds the repo root.
-
-Confirm you've re-read the rules, then continue.
+Confirm you've understood the above before continuing.
