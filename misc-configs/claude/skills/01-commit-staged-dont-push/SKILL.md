@@ -4,7 +4,10 @@ disable-model-invocation: true
 context: fork
 argument-hint: [issue-number]
 allowed-tools: Bash(git commit:*)
+model: claude-haiku-4-5
 ---
+
+# Commit STAGED changes, don't push
 
 ## Context
 

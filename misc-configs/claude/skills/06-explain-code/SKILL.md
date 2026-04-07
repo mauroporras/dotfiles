@@ -1,5 +1,5 @@
 ---
-description: explain code with visual diagrams and analogies
+description: Explain code with visual diagrams and analogies
 disable-model-invocation: true
 argument-hint: [file or code]
 ---
