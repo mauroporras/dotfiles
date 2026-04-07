@@ -47,5 +47,6 @@ cask "font-iosevka-slab" # https://github.com/be5invis/Iosevka
 cask "flycut"
 cask "ghostty"
 cask "google-chrome"
+cask "postgres-app" # https://postgresapp.com/
 cask "rectangle"
 cask "redis-insight"
