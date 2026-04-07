@@ -1,5 +1,4 @@
 ---
-description: Commit STAGED changes, don't push
 disable-model-invocation: true
 context: fork
 argument-hint: [issue-number]

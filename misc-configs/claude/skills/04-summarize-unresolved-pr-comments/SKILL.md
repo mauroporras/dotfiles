@@ -1,8 +1,9 @@
 ---
-description: Fetch and summarize this PR's UNRESOLVED comments
 disable-model-invocation: true
 allowed-tools: Write, Bash(gh:*)
 ---
+
+# Fetch and summarize this PR's UNRESOLVED comments
 
 ## Context
 

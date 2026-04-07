@@ -1,7 +1,8 @@
 ---
-description: Remind yourself of the ground rules before continuing
 disable-model-invocation: true
 ---
+
+# Reminder before continuing
 
 ## Your task
 

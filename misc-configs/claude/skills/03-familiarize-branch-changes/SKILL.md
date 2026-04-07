@@ -1,8 +1,9 @@
 ---
-description: Get familiar with the current branch's changes
 disable-model-invocation: true
 allowed-tools: Read
 ---
+
+# Get familiar with the current branch's changes
 
 ## Context
 

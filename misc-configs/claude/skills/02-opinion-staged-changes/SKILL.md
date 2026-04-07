@@ -1,8 +1,9 @@
 ---
-description: Opinion on STAGED changes
 disable-model-invocation: true
 allowed-tools: Read
 ---
+
+# Opinion on STAGED changes
 
 ## Context
 
