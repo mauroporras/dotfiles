@@ -2,6 +2,7 @@
 disable-model-invocation: true
 context: fork
 allowed-tools: Bash(git checkout:*)
+model: claude-haiku-4-5
 ---
 
 # New branch for STAGED changes
