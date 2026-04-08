@@ -1,5 +1,6 @@
 # Get editor completions based on the config schema
 "$schema" = 'https://starship.rs/config-schema.json'
 
+# https://starship.rs/config/#command-duration
 [cmd_duration]
 disabled = true
