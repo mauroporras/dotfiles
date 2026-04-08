@@ -13,6 +13,7 @@ brew "cloudflared" # Cloudflare Tunnel client
 brew "coreutils"
 brew "direnv"
 brew "eza"
+brew "fastfetch"
 brew "fd"
 brew "fzf"
 brew "gh" # Required for the aliases.
