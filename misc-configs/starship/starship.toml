@@ -23,6 +23,11 @@ disabled = false
 [package]
 display_private = true
 
+# https://starship.rs/config/#status
+# Display the exit code of the previous command if non-zero.
+# [status]
+# disabled = false
+
 # https://starship.rs/config/#node-js
 # [nodejs]
 # disabled = true
