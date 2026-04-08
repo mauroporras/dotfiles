@@ -1,2 +1,6 @@
 # Disable line length rule
 MD013: false
+
+# Match Prettier's 4-space nested list indent
+MD007:
+    indent: 4
