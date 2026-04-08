@@ -31,3 +31,13 @@ display_private = true
 # https://starship.rs/config/#node-js
 # [nodejs]
 # disabled = true
+
+# https://starship.rs/config/#custom-commands
+# Show the installed psql client version.
+# [custom.psql]
+# description = "psql client version"
+# command = "psql --version | awk '{print $3}'"
+# when = "command -v psql >/dev/null 2>&1"
+# symbol = "🐘 "
+# format = "[$symbol$output]($style) "
+# style = "bold blue"
