@@ -19,6 +19,10 @@ disabled = true
 [direnv]
 disabled = false
 
+# https://starship.rs/config/#package-version
+[package]
+display_private = true
+
 # https://starship.rs/config/#node-js
 # [nodejs]
 # disabled = true
