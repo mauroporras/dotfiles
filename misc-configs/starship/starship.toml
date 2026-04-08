@@ -4,3 +4,7 @@
 # https://starship.rs/config/#command-duration
 [cmd_duration]
 disabled = true
+
+# https://starship.rs/config/#node-js
+# [nodejs]
+# disabled = true
