@@ -27,7 +27,7 @@ tasks:
   format:changed:
     desc: Format only Git changed files
     cmds:
-      - "{ git diff --relative --name-only --diff-filter=ACMR; git diff --relative --staged --name-only --diff-filter=ACMR; } | sort -u | xargs -r pnpm exec prettier --write --ignore-unknown"
+      - "{ git diff --relative --name-only --diff-filter=ACMR; git diff --staged --relative --name-only --diff-filter=ACMR; git ls-files --others --exclude-standard; } | sort -u | xargs -r pnpm exec prettier --write --ignore-unknown"
 
   format:check:
     desc: Check files formatting
