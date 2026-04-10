@@ -18,6 +18,13 @@ disabled = true
 # https://starship.rs/config/#direnv
 [direnv]
 disabled = false
+format = '[$symbol$loaded$allowed]($style) '
+symbol = '🧬'
+allowed_msg = ''
+not_allowed_msg = '⛔'
+denied_msg = '🚫'
+loaded_msg = ''
+unloaded_msg = '💤'
 
 # https://starship.rs/config/#package-version
 [package]
