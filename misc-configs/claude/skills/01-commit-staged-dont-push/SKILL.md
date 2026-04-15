@@ -21,7 +21,8 @@ ALWAYS:
 - Use a single-line message without a body, UNLESS an issue number is provided via $ARGUMENTS.
   If provided, add a body with `Close #<issue-number>`.
 - Use conventional commits format. E.g.: "type(scope): description"
-- Prioritize brevity over grammar. Keep messages short, even if grammatically imperfect.
+- Prioritize brevity over grammar:
+  Keep messages short, even if grammatically imperfect
 
 NEVER:
 
