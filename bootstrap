@@ -40,6 +40,7 @@ ln -sfn ~/dotfiles/misc-configs/claude/skills/03-familiarize-branch-changes .cla
 ln -sfn ~/dotfiles/misc-configs/claude/skills/04-summarize-unresolved-pr-comments .claude/skills/04-summarize-unresolved-pr-comments
 ln -sfn ~/dotfiles/misc-configs/claude/skills/05-create-branch-staged .claude/skills/05-create-branch-staged
 ln -sfn ~/dotfiles/misc-configs/claude/skills/06-explain-code .claude/skills/06-explain-code
+ln -sfn ~/dotfiles/misc-configs/claude/skills/07-guess-whats-next .claude/skills/07-guess-whats-next
 # Status line
 ln -sf ~/dotfiles/misc-configs/claude/statusline-command.sh .claude/statusline-command.sh
 # Copied (not symlinked) because Claude Code modifies settings.json at runtime.
