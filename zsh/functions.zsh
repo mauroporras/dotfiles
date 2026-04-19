@@ -50,7 +50,7 @@ function zle-line-init {
 }
 zle -N zle-line-init
 
-# Restore useful emacs bindings in vi insert mode
+# Restore useful readline bindings in vi insert mode
 bindkey "^a" beginning-of-line
 bindkey "^e" end-of-line
 bindkey "^k" kill-line

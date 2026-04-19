@@ -16,6 +16,8 @@ Why `Iosevka Fixed Slab`:
 
 ### Never remap these keys
 
+These are readline bindings used by the shell.
+
 `ctrl` + `h`
 
 Used to delete back.
