@@ -33,4 +33,4 @@ Run this command to create and switch to the new branch: `git checkout -b <branc
 
 NEVER:
 
-- Run additional Git commands.
+- Run additional Git commands

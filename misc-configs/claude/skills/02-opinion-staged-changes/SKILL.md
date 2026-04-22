@@ -24,4 +24,4 @@ ALWAYS:
 
 NEVER:
 
-- Run additional Git commands.
+- Run additional Git commands

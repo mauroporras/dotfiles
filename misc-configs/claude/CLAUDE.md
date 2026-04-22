@@ -19,10 +19,15 @@
 - Avoid mutation as much as possible: produce new values rather than modifying in place.
 - Extract `if` conditions into named constants instead of inlining them.
   It makes the intent more readable. E.g.: `hasChildren = parent.children.length > 0`
-- Assign the return value to a `retval` constant before returning it. This makes the value visible in a debugger without needing to step out of the function.
+- Assign the return value of a function/method to a `retval` constant before returning it.
+  This makes the value visible in a debugger without needing to step out of the function.
 - Prefer guard clauses (early returns for invalid/edge cases) over deeply nested `if/else` blocks. They keep the happy path at the top indentation level.
 - Avoid single line early returns (e.g. `if (foo) return`). Use a block instead so breakpoints can target the return independently.
 - Always add explicit return types to functions. Type inference is convenient but explicit return types catch accidental changes, serve as documentation, and speed up type-checking in larger codebases.
+- Use empty lines liberally: a wall of code without spacing is hard to read.
+  Separate logical blocks of code with empty lines.
+  Always leave a blank line before a `return` statement.
+  Leave a blank line after guard clauses to separate edge-case handling from the happy path.
 
 ### JavaScript/TypeScript
 
