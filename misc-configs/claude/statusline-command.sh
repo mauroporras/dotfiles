@@ -30,6 +30,12 @@ if [[ -z "$git_branch" ]]; then
 fi
 session_id=$(echo "$input" | jq -r '.session.id // .session_id // "unknown"')
 
+added_dirs_basenames=$(echo "$input" | jq -r '.workspace.added_dirs // [] | map(. | split("/") | last) | join(",")')
+added_dirs_display=""
+if [[ -n "$added_dirs_basenames" ]]; then
+  added_dirs_display="+${added_dirs_basenames}"
+fi
+
 five_hour_pct=$(echo "$input" | jq -r '.rate_limits.five_hour.used_percentage // empty')
 five_hour_resets=$(echo "$input" | jq -r '.rate_limits.five_hour.resets_at // empty')
 seven_day_pct=$(echo "$input" | jq -r '.rate_limits.seven_day.used_percentage // empty')
@@ -82,7 +88,13 @@ cyan='\033[36m'
 magenta='\033[35m'
 reset='\033[0m'
 
-line="${bold}${blue}${current_dir}${reset} (${bold}${green}${git_branch}${reset}) • ${bold}${magenta}${model}${reset} • ${bold}${cyan}effort:${effort_level} thinking:${thinking_display}${reset} • ${bold}${yellow}${tokens_k}k/${context_k}k${reset} (${bold}${cyan}${context_pct}%${reset})"
+line="${bold}${blue}${current_dir}${reset} (${bold}${green}${git_branch}${reset})"
+
+if [[ -n "$added_dirs_display" ]]; then
+  line="${line} ${bold}${blue}${added_dirs_display}${reset}"
+fi
+
+line="${line} • ${bold}${magenta}${model}${reset} • ${bold}${cyan}effort:${effort_level} thinking:${thinking_display}${reset} • ${bold}${yellow}${tokens_k}k/${context_k}k${reset} (${bold}${cyan}${context_pct}%${reset})"
 
 if [[ -n "$rate_limits_display" ]]; then
   line="${line} • ${bold}${green}${rate_limits_display}${reset}"
