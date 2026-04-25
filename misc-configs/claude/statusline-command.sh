@@ -170,12 +170,6 @@ if [[ -n "$added_dirs_display" ]]; then
   line="${line} ${bold}${blue}${added_dirs_display}${reset}"
 fi
 
-line="${line} • ${bold}${magenta}${model}${reset} • ${bold}${cyan}effort:${effort_level} thinking:${thinking_display}${reset}"
-
-if [[ -n "$output_style_display" ]]; then
-  line="${line} ${bold}${cyan}${output_style_display}${reset}"
-fi
-
 if [[ "$exceeds_200k" == "true" ]]; then
   tokens_used_color="$red"
   tokens_used_prefix="!"
@@ -184,7 +178,15 @@ else
   tokens_used_prefix=""
 fi
 
-line="${line} • ${bold}${tokens_used_color}${tokens_used_prefix}${tokens_k}k${reset}${bold}${yellow}/${context_k}k${reset} (${bold}${cyan}${context_pct}%${reset})"
+line="${line} • ${bold}${magenta}${model}${reset} • ${bold}${tokens_used_color}${tokens_used_prefix}${tokens_k}k${reset}${bold}${yellow}/${context_k}k${reset} (${bold}${cyan}${context_pct}%${reset}) • ${bold}${cyan}effort:${effort_level} thinking:${thinking_display}${reset}"
+
+if [[ -n "$output_style_display" ]]; then
+  line="${line} ${bold}${cyan}${output_style_display}${reset}"
+fi
+
+if [[ -n "$rate_limits_display" ]]; then
+  line="${line} • ${rate_limits_display}"
+fi
 
 if [[ -n "$cache_pct" ]]; then
   is_cache_healthy=$((cache_pct >= 70))
@@ -203,10 +205,6 @@ fi
 
 if [[ -n "$cost_display" ]]; then
   line="${line} ${light_gray}${cost_display}${reset}"
-fi
-
-if [[ -n "$rate_limits_display" ]]; then
-  line="${line} • ${rate_limits_display}"
 fi
 
 line="${line} • ${light_gray}${session_id}${reset}"
