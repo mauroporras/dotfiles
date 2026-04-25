@@ -159,7 +159,7 @@ if [[ -n "$five_hour_pct_int" || -n "$seven_day_pct_int" ]]; then
   seven_day_color=$(rate_limit_color "$seven_day_pct_int")
   five_hour_pct_text="${five_hour_pct_int:--}"
   seven_day_pct_text="${seven_day_pct_int:--}"
-  rate_limits_display="${bold}${five_hour_color}5h:${five_hour_pct_text}% (${five_hour_reset_display})${reset} ${bold}${seven_day_color}7d:${seven_day_pct_text}% (${seven_day_reset_display})${reset}"
+  rate_limits_display="${bold}${five_hour_color}5h:${five_hour_pct_text}%${reset} ${light_gray}${five_hour_reset_display}${reset} ${bold}${seven_day_color}7d:${seven_day_pct_text}%${reset} ${light_gray}${seven_day_reset_display}${reset}"
 fi
 
 if [[ "$git_branch_is_repo" == "true" ]]; then
