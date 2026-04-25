@@ -49,6 +49,10 @@ exceeds_200k=$(echo "$input" | jq -r '.exceeds_200k_tokens // false')
 claude_version=$(echo "$input" | jq -r '.version // empty')
 output_style=$(echo "$input" | jq -r '.output_style.name // empty')
 
+# Default output style stays silent: it's the baseline. Depth is requested
+# in-conversation ("walk me through why ...") rather than by switching the
+# global style. Surfacing the name only when it's non-default makes a
+# deliberate switch (e.g. explanatory) visible at a glance.
 output_style_display=""
 if [[ -n "$output_style" && "$output_style" != "default" ]]; then
   output_style_display="style:${output_style}"
