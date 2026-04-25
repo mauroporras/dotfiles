@@ -35,8 +35,10 @@ context_pct=$((current_usage * 100 / context_size))
 
 cd "$current_dir" 2>/dev/null || cd /
 git_branch=$(git branch --show-current 2>/dev/null)
+git_branch_is_repo=true
 if [[ -z "$git_branch" ]]; then
-  git_branch="Not a Git repo"
+  git_branch="no-repo"
+  git_branch_is_repo=false
 fi
 session_id=$(echo "$input" | jq -r '.session.id // .session_id // "unknown"')
 
@@ -160,7 +162,13 @@ if [[ -n "$five_hour_pct_int" || -n "$seven_day_pct_int" ]]; then
   rate_limits_display="${bold}${five_hour_color}5h:${five_hour_pct_text}% (${five_hour_reset_display})${reset} ${bold}${seven_day_color}7d:${seven_day_pct_text}% (${seven_day_reset_display})${reset}"
 fi
 
-line="${bold}${blue}${current_dir_display}${reset} (${bold}${green}${git_branch}${reset})"
+if [[ "$git_branch_is_repo" == "true" ]]; then
+  git_branch_color="$green"
+else
+  git_branch_color="$red"
+fi
+
+line="${bold}${blue}${current_dir_display}${reset}:${bold}${git_branch_color}${git_branch}${reset}"
 
 if [[ -n "$project_divergence_display" ]]; then
   line="${line} ${bold}${blue}${project_divergence_display}${reset}"
