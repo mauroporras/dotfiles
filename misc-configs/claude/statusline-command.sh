@@ -51,6 +51,19 @@ if [[ -n "$added_dirs_basenames" ]]; then
   added_dirs_display="+${added_dirs_basenames}"
 fi
 
+# Cache hit ratio for this turn's input tokens. A sustained drop means the
+# prompt prefix changed (TTL lapsed, CLAUDE.md edited, /compact ran, etc.)
+# and the next turns will be ~10x slower and pricier until the cache rebuilds.
+usage_input=$(echo "$input" | jq -r '.context_window.current_usage.input_tokens // 0')
+usage_cache_creation=$(echo "$input" | jq -r '.context_window.current_usage.cache_creation_input_tokens // 0')
+usage_cache_read=$(echo "$input" | jq -r '.context_window.current_usage.cache_read_input_tokens // 0')
+cache_input_total=$((usage_input + usage_cache_creation + usage_cache_read))
+
+cache_pct=""
+if [[ $cache_input_total -gt 0 ]]; then
+  cache_pct=$((usage_cache_read * 100 / cache_input_total))
+fi
+
 five_hour_pct=$(echo "$input" | jq -r '.rate_limits.five_hour.used_percentage // empty')
 five_hour_resets=$(echo "$input" | jq -r '.rate_limits.five_hour.resets_at // empty')
 seven_day_pct=$(echo "$input" | jq -r '.rate_limits.seven_day.used_percentage // empty')
@@ -125,6 +138,21 @@ else
 fi
 
 line="${line} • ${bold}${tokens_used_color}${tokens_used_prefix}${tokens_k}k${reset}${bold}${yellow}/${context_k}k${reset} (${bold}${cyan}${context_pct}%${reset})"
+
+if [[ -n "$cache_pct" ]]; then
+  is_cache_healthy=$((cache_pct >= 70))
+  is_cache_mediocre=$((cache_pct >= 40))
+
+  if [[ $is_cache_healthy -eq 1 ]]; then
+    cache_color="$green"
+  elif [[ $is_cache_mediocre -eq 1 ]]; then
+    cache_color="$yellow"
+  else
+    cache_color="$red"
+  fi
+
+  line="${line} ${bold}${cache_color}cache:${cache_pct}%${reset}"
+fi
 
 if [[ -n "$rate_limits_display" ]]; then
   line="${line} • ${bold}${green}${rate_limits_display}${reset}"
