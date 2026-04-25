@@ -4,6 +4,13 @@ input=$(cat)
 
 current_dir=$(echo "$input" | jq -r '.workspace.current_dir')
 current_dir_display=${current_dir/#$HOME/\~}
+project_dir=$(echo "$input" | jq -r '.workspace.project_dir // empty')
+project_dir_display=${project_dir/#$HOME/\~}
+
+project_divergence_display=""
+if [[ -n "$project_dir_display" && "$project_dir_display" != "$current_dir_display" ]]; then
+  project_divergence_display="← ${project_dir_display}"
+fi
 model=$(echo "$input" | jq -r '.model.display_name')
 # The "/1000k" context segment already conveys the 1M window, so drop the suffix.
 model=${model% (1M context)}
@@ -118,6 +125,10 @@ red='\033[31m'
 reset='\033[0m'
 
 line="${bold}${blue}${current_dir_display}${reset} (${bold}${green}${git_branch}${reset})"
+
+if [[ -n "$project_divergence_display" ]]; then
+  line="${line} ${bold}${blue}${project_divergence_display}${reset}"
+fi
 
 if [[ -n "$added_dirs_display" ]]; then
   line="${line} ${bold}${blue}${added_dirs_display}${reset}"
