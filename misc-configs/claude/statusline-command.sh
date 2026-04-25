@@ -110,14 +110,16 @@ format_reset_short() {
   fi
 }
 
-rate_limits_display=""
+five_hour_pct_int=""
+seven_day_pct_int=""
+five_hour_reset_display=""
+seven_day_reset_display=""
 if [[ -n "$five_hour_pct" || -n "$seven_day_pct" ]]; then
   now_epoch=$(date +%s)
-  five_hour_pct_display="${five_hour_pct:--}"
-  seven_day_pct_display="${seven_day_pct:--}"
+  five_hour_pct_int="${five_hour_pct%.*}"
+  seven_day_pct_int="${seven_day_pct%.*}"
   five_hour_reset_display=$(format_reset_short "$five_hour_resets" "$now_epoch")
   seven_day_reset_display=$(format_reset_short "$seven_day_resets" "$now_epoch")
-  rate_limits_display="5h:${five_hour_pct_display%.*}% (${five_hour_reset_display}) 7d:${seven_day_pct_display%.*}% (${seven_day_reset_display})"
 fi
 
 # Colors
@@ -131,6 +133,32 @@ red='\033[31m'
 gray='\033[90m'
 light_gray='\033[38;5;245m'
 reset='\033[0m'
+
+rate_limit_color() {
+  local pct=$1
+
+  if [[ -z "$pct" ]]; then
+    echo "$light_gray"
+    return
+  fi
+
+  if [[ $pct -ge 80 ]]; then
+    echo "$red"
+  elif [[ $pct -ge 50 ]]; then
+    echo "$yellow"
+  else
+    echo "$green"
+  fi
+}
+
+rate_limits_display=""
+if [[ -n "$five_hour_pct_int" || -n "$seven_day_pct_int" ]]; then
+  five_hour_color=$(rate_limit_color "$five_hour_pct_int")
+  seven_day_color=$(rate_limit_color "$seven_day_pct_int")
+  five_hour_pct_text="${five_hour_pct_int:--}"
+  seven_day_pct_text="${seven_day_pct_int:--}"
+  rate_limits_display="${bold}${five_hour_color}5h:${five_hour_pct_text}% (${five_hour_reset_display})${reset} ${bold}${seven_day_color}7d:${seven_day_pct_text}% (${seven_day_reset_display})${reset}"
+fi
 
 line="${bold}${blue}${current_dir_display}${reset} (${bold}${green}${git_branch}${reset})"
 
@@ -178,7 +206,7 @@ if [[ -n "$cost_display" ]]; then
 fi
 
 if [[ -n "$rate_limits_display" ]]; then
-  line="${line} • ${bold}${green}${rate_limits_display}${reset}"
+  line="${line} • ${rate_limits_display}"
 fi
 
 line="${line} • ${light_gray}${session_id}${reset}"
