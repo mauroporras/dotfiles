@@ -71,6 +71,12 @@ if [[ $cache_input_total -gt 0 ]]; then
   cache_pct=$((usage_cache_read * 100 / cache_input_total))
 fi
 
+cost_usd=$(echo "$input" | jq -r '.cost.total_cost_usd // empty')
+cost_display=""
+if [[ -n "$cost_usd" ]]; then
+  cost_display=$(printf '$%.2f' "$cost_usd")
+fi
+
 five_hour_pct=$(echo "$input" | jq -r '.rate_limits.five_hour.used_percentage // empty')
 five_hour_resets=$(echo "$input" | jq -r '.rate_limits.five_hour.resets_at // empty')
 seven_day_pct=$(echo "$input" | jq -r '.rate_limits.seven_day.used_percentage // empty')
@@ -122,6 +128,8 @@ yellow='\033[33m'
 cyan='\033[36m'
 magenta='\033[35m'
 red='\033[31m'
+gray='\033[90m'
+light_gray='\033[38;5;245m'
 reset='\033[0m'
 
 line="${bold}${blue}${current_dir_display}${reset} (${bold}${green}${git_branch}${reset})"
@@ -162,17 +170,21 @@ if [[ -n "$cache_pct" ]]; then
     cache_color="$red"
   fi
 
-  line="${line} ${bold}${cache_color}cache:${cache_pct}%${reset}"
+  line="${line} • ${bold}${cache_color}cache:${cache_pct}%${reset}"
+fi
+
+if [[ -n "$cost_display" ]]; then
+  line="${line} ${light_gray}${cost_display}${reset}"
 fi
 
 if [[ -n "$rate_limits_display" ]]; then
   line="${line} • ${bold}${green}${rate_limits_display}${reset}"
 fi
 
-line="${line} • ${bold}${session_id}${reset}"
+line="${line} • ${light_gray}${session_id}${reset}"
 
 if [[ -n "$claude_version" ]]; then
-  line="${line} • ${bold}v${claude_version}${reset}"
+  line="${line} • ${light_gray}v${claude_version}${reset}"
 fi
 
 echo -e "$line"
