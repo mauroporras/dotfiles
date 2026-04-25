@@ -4,6 +4,15 @@ input=$(cat)
 
 current_dir=$(echo "$input" | jq -r '.workspace.current_dir')
 model=$(echo "$input" | jq -r '.model.display_name')
+effort_level=$(echo "$input" | jq -r '.effort.level // "?"')
+thinking_enabled=$(echo "$input" | jq -r '.thinking.enabled // false')
+
+if [[ "$thinking_enabled" == "true" ]]; then
+  thinking_display="on"
+else
+  thinking_display="off"
+fi
+
 # Debug: uncomment to see raw input
 # echo "$input" > /tmp/statusline-debug.json
 
@@ -30,4 +39,4 @@ cyan='\033[36m'
 magenta='\033[35m'
 reset='\033[0m'
 
-echo -e "${bold}${blue}${current_dir}${reset} (${bold}${green}${git_branch}${reset}) • ${bold}${magenta}${model}${reset} • ${bold}${yellow}${tokens_k}k/${context_k}k${reset} (${bold}${cyan}${context_pct}%${reset}) • ${bold}${session_id}${reset}"
+echo -e "${bold}${blue}${current_dir}${reset} (${bold}${green}${git_branch}${reset}) • ${bold}${magenta}${model}${reset} • ${bold}${cyan}effort:${effort_level} thinking:${thinking_display}${reset} • ${bold}${yellow}${tokens_k}k/${context_k}k${reset} (${bold}${cyan}${context_pct}%${reset}) • ${bold}${session_id}${reset}"
