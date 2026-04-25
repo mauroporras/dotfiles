@@ -31,13 +31,46 @@ fi
 session_id=$(echo "$input" | jq -r '.session.id // .session_id // "unknown"')
 
 five_hour_pct=$(echo "$input" | jq -r '.rate_limits.five_hour.used_percentage // empty')
+five_hour_resets=$(echo "$input" | jq -r '.rate_limits.five_hour.resets_at // empty')
 seven_day_pct=$(echo "$input" | jq -r '.rate_limits.seven_day.used_percentage // empty')
+seven_day_resets=$(echo "$input" | jq -r '.rate_limits.seven_day.resets_at // empty')
+
+format_reset_short() {
+  local target=$1
+  local now=$2
+
+  if [[ -z "$target" ]]; then
+    echo "-"
+    return
+  fi
+
+  local secs=$((target - now))
+  if [[ $secs -le 0 ]]; then
+    echo "now"
+    return
+  fi
+
+  local days=$((secs / 86400))
+  local hours=$(( (secs % 86400) / 3600 ))
+  local mins=$(( (secs % 3600) / 60 ))
+
+  if [[ $days -gt 0 ]]; then
+    echo "${days}d${hours}h"
+  elif [[ $hours -gt 0 ]]; then
+    echo "${hours}h${mins}m"
+  else
+    echo "${mins}m"
+  fi
+}
 
 rate_limits_display=""
 if [[ -n "$five_hour_pct" || -n "$seven_day_pct" ]]; then
-  five_hour_part="${five_hour_pct:--}"
-  seven_day_part="${seven_day_pct:--}"
-  rate_limits_display="5h:${five_hour_part%.*}% 7d:${seven_day_part%.*}%"
+  now_epoch=$(date +%s)
+  five_hour_pct_display="${five_hour_pct:--}"
+  seven_day_pct_display="${seven_day_pct:--}"
+  five_hour_reset_display=$(format_reset_short "$five_hour_resets" "$now_epoch")
+  seven_day_reset_display=$(format_reset_short "$seven_day_resets" "$now_epoch")
+  rate_limits_display="5h:${five_hour_pct_display%.*}% (${five_hour_reset_display}) 7d:${seven_day_pct_display%.*}% (${seven_day_reset_display})"
 fi
 
 # Colors
