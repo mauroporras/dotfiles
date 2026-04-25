@@ -3,6 +3,7 @@
 input=$(cat)
 
 current_dir=$(echo "$input" | jq -r '.workspace.current_dir')
+current_dir_display=${current_dir/#$HOME/\~}
 model=$(echo "$input" | jq -r '.model.display_name')
 # The "/1000k" context segment already conveys the 1M window, so drop the suffix.
 model=${model% (1M context)}
@@ -103,7 +104,7 @@ magenta='\033[35m'
 red='\033[31m'
 reset='\033[0m'
 
-line="${bold}${blue}${current_dir}${reset} (${bold}${green}${git_branch}${reset})"
+line="${bold}${blue}${current_dir_display}${reset} (${bold}${green}${git_branch}${reset})"
 
 if [[ -n "$added_dirs_display" ]]; then
   line="${line} ${bold}${blue}${added_dirs_display}${reset}"
