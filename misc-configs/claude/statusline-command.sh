@@ -4,6 +4,8 @@ input=$(cat)
 
 current_dir=$(echo "$input" | jq -r '.workspace.current_dir')
 model=$(echo "$input" | jq -r '.model.display_name')
+# The "/1000k" context segment already conveys the 1M window, so drop the suffix.
+model=${model% (1M context)}
 effort_level=$(echo "$input" | jq -r '.effort.level // "?"')
 thinking_enabled=$(echo "$input" | jq -r '.thinking.enabled // false')
 
