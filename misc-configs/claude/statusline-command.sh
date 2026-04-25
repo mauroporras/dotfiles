@@ -35,6 +35,12 @@ session_id=$(echo "$input" | jq -r '.session.id // .session_id // "unknown"')
 # as a tripwire rather than a generic threshold.
 exceeds_200k=$(echo "$input" | jq -r '.exceeds_200k_tokens // false')
 claude_version=$(echo "$input" | jq -r '.version // empty')
+output_style=$(echo "$input" | jq -r '.output_style.name // empty')
+
+output_style_display=""
+if [[ -n "$output_style" && "$output_style" != "default" ]]; then
+  output_style_display="style:${output_style}"
+fi
 
 added_dirs_basenames=$(echo "$input" | jq -r '.workspace.added_dirs // [] | map(. | split("/") | last) | join(",")')
 added_dirs_display=""
@@ -101,7 +107,13 @@ if [[ -n "$added_dirs_display" ]]; then
   line="${line} ${bold}${blue}${added_dirs_display}${reset}"
 fi
 
-line="${line} • ${bold}${magenta}${model}${reset} • ${bold}${cyan}effort:${effort_level} thinking:${thinking_display}${reset} • ${bold}${yellow}${tokens_k}k/${context_k}k${reset} (${bold}${cyan}${context_pct}%${reset})"
+line="${line} • ${bold}${magenta}${model}${reset} • ${bold}${cyan}effort:${effort_level} thinking:${thinking_display}${reset}"
+
+if [[ -n "$output_style_display" ]]; then
+  line="${line} ${bold}${cyan}${output_style_display}${reset}"
+fi
+
+line="${line} • ${bold}${yellow}${tokens_k}k/${context_k}k${reset} (${bold}${cyan}${context_pct}%${reset})"
 
 if [[ "$exceeds_200k" == "true" ]]; then
   line="${line} ${bold}${red}!200k${reset}"
