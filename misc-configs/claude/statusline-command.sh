@@ -186,7 +186,7 @@ else
   tokens_used_prefix=""
 fi
 
-line="${line} • ${bold}${magenta}${model}${reset} • ${bold}${tokens_used_color}${tokens_used_prefix}${tokens_k}k${reset}${bold}${yellow}/${context_k}k${reset} (${bold}${cyan}${context_pct}%${reset}) • ${bold}${cyan}effort:${effort_level} thinking:${thinking_display}${reset}"
+line="${line} • ${bold}${magenta}${model}${reset} • ${bold}${tokens_used_color}${tokens_used_prefix}${tokens_k}k${reset}${bold}${yellow}/${context_k}k${reset} ${light_gray}${context_pct}%${reset} • ${bold}${cyan}effort:${effort_level} thinking:${thinking_display}${reset}"
 
 if [[ -n "$output_style_display" ]]; then
   line="${line} ${bold}${cyan}${output_style_display}${reset}"
