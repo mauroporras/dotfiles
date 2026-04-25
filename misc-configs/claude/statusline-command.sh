@@ -34,6 +34,7 @@ session_id=$(echo "$input" | jq -r '.session.id // .session_id // "unknown"')
 # to the long-context pricing tier (~2x input, ~1.5x output), so we surface it
 # as a tripwire rather than a generic threshold.
 exceeds_200k=$(echo "$input" | jq -r '.exceeds_200k_tokens // false')
+claude_version=$(echo "$input" | jq -r '.version // empty')
 
 added_dirs_basenames=$(echo "$input" | jq -r '.workspace.added_dirs // [] | map(. | split("/") | last) | join(",")')
 added_dirs_display=""
@@ -111,5 +112,9 @@ if [[ -n "$rate_limits_display" ]]; then
 fi
 
 line="${line} • ${bold}${session_id}${reset}"
+
+if [[ -n "$claude_version" ]]; then
+  line="${line} • ${bold}v${claude_version}${reset}"
+fi
 
 echo -e "$line"
