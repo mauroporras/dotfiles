@@ -34,11 +34,35 @@ context_k=$((context_size / 1000))
 context_pct=$((current_usage * 100 / context_size))
 
 cd "$current_dir" 2>/dev/null || cd /
-git_branch=$(git branch --show-current 2>/dev/null)
-git_branch_is_repo=true
-if [[ -z "$git_branch" ]]; then
-  git_branch="no-repo"
-  git_branch_is_repo=false
+
+git_branch="no-repo"
+git_branch_is_repo=false
+
+# Detect repo membership via rev-parse rather than `git branch --show-current`,
+# which returns empty during rebase / detached HEAD and would otherwise falsely
+# read as "no-repo".
+if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+  git_branch_is_repo=true
+  current_branch=$(git branch --show-current 2>/dev/null)
+
+  if [[ -n "$current_branch" ]]; then
+    git_branch="$current_branch"
+  else
+    git_dir=$(git rev-parse --git-dir 2>/dev/null)
+    rebase_merge_head_file="$git_dir/rebase-merge/head-name"
+    rebase_apply_head_file="$git_dir/rebase-apply/head-name"
+
+    if [[ -f "$rebase_merge_head_file" ]]; then
+      rebase_branch_ref=$(<"$rebase_merge_head_file")
+      git_branch="${rebase_branch_ref#refs/heads/} (rebasing)"
+    elif [[ -f "$rebase_apply_head_file" ]]; then
+      rebase_branch_ref=$(<"$rebase_apply_head_file")
+      git_branch="${rebase_branch_ref#refs/heads/} (rebasing)"
+    else
+      short_sha=$(git rev-parse --short HEAD 2>/dev/null)
+      git_branch="(detached @ ${short_sha:-?})"
+    fi
+  fi
 fi
 session_id=$(echo "$input" | jq -r '.session.id // .session_id // "unknown"')
 
