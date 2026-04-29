@@ -75,7 +75,7 @@ output_style=$(echo "$input" | jq -r '.output_style.name // empty')
 
 # Depth can also be requested in-conversation ("walk me through why ...") rather
 # than by switching the global style.
-output_style_display="style:${output_style:-default}"
+output_style_display="${output_style:-default}"
 
 added_dirs_basenames=$(echo "$input" | jq -r '.workspace.added_dirs // [] | map(. | split("/") | last) | join(",")')
 added_dirs_display=""
@@ -201,9 +201,9 @@ else
   tokens_used_prefix=""
 fi
 
-line="${line} • ${bold}${magenta}${model}${reset} • ${bold}${tokens_used_color}${tokens_used_prefix}${tokens_k}k${reset}${bold}${yellow}/${context_k}k${reset} ${light_gray}${context_pct}%${reset} • ${bold}${cyan}effort:${effort_level} thinking:${thinking_display}${reset}"
+line="${line} • ${bold}${magenta}${model}${reset} • ${bold}${tokens_used_color}${tokens_used_prefix}${tokens_k}k${reset}${bold}${yellow}/${context_k}k${reset} ${light_gray}${context_pct}%${reset} • ${light_gray}effort:${reset}${bold}${cyan}${effort_level}${reset} ${light_gray}thinking:${reset}${bold}${cyan}${thinking_display}${reset}"
 
-line="${line} ${bold}${cyan}${output_style_display}${reset}"
+line="${line} ${light_gray}style:${reset}${bold}${cyan}${output_style_display}${reset}"
 
 line="${line} • ${rate_limits_display}"
 
