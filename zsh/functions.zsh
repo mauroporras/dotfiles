@@ -2,19 +2,6 @@
 # Rembember to check from time to time if the
 # way to load the utilities has changed.
 
-# fzf
-# See: https://github.com/junegunn/fzf#setting-up-shell-integration
-source <(fzf --zsh)
-
-# https://direnv.net/docs/hook.html#zsh
-eval "$(direnv hook zsh)"
-
-# https://github.com/ajeetdsouza/zoxide?tab=readme-ov-file#installation
-eval "$(zoxide init zsh)"
-
-# https://starship.rs/guide/#step-2-set-up-your-shell-to-use-starship
-eval "$(starship init zsh)"
-
 # zsh-completions
 # See: https://github.com/zsh-users/zsh-completions
 #
@@ -29,6 +16,22 @@ if type brew &>/dev/null; then
   autoload -Uz compinit
   compinit
 fi
+
+# fzf
+# See: https://github.com/junegunn/fzf#setting-up-shell-integration
+source <(fzf --zsh)
+
+# https://direnv.net/docs/hook.html#zsh
+eval "$(direnv hook zsh)"
+
+# https://github.com/ajeetdsouza/zoxide?tab=readme-ov-file#installation
+eval "$(zoxide init zsh)"
+
+# https://starship.rs/guide/#step-2-set-up-your-shell-to-use-starship
+eval "$(starship init zsh)"
+
+# https://ngrok.com
+eval "$(ngrok completion)"
 
 # Vi mode
 bindkey -v
