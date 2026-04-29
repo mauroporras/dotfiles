@@ -151,14 +151,13 @@ cyan='\033[36m'
 magenta='\033[35m'
 red='\033[31m'
 gray='\033[90m'
-light_gray='\033[38;5;245m'
 reset='\033[0m'
 
 rate_limit_color() {
   local pct=$1
 
   if [[ -z "$pct" ]]; then
-    echo "$light_gray"
+    echo "$gray"
     return
   fi
 
@@ -175,7 +174,7 @@ five_hour_color=$(rate_limit_color "$five_hour_pct_int")
 seven_day_color=$(rate_limit_color "$seven_day_pct_int")
 five_hour_pct_text="${five_hour_pct_int:--}"
 seven_day_pct_text="${seven_day_pct_int:--}"
-rate_limits_display="${bold}${five_hour_color}5h:${five_hour_pct_text}%${reset} ${light_gray}${five_hour_reset_display}${reset} ${bold}${seven_day_color}7d:${seven_day_pct_text}%${reset} ${light_gray}${seven_day_reset_display}${reset}"
+rate_limits_display="${five_hour_color}5h:${bold}${five_hour_pct_text}%${reset} ${gray}${five_hour_reset_display}${reset} ${seven_day_color}7d:${bold}${seven_day_pct_text}%${reset} ${gray}${seven_day_reset_display}${reset}"
 
 if [[ "$git_branch_is_repo" == "true" ]]; then
   git_branch_color="$green"
@@ -183,14 +182,14 @@ else
   git_branch_color="$red"
 fi
 
-line="${bold}${blue}${current_dir_display}${reset}:${bold}${git_branch_color}${git_branch}${reset}"
+line="${blue}${current_dir_display}${reset}:${git_branch_color}${git_branch}${reset}"
 
 if [[ -n "$project_divergence_display" ]]; then
-  line="${line} ${bold}${blue}${project_divergence_display}${reset}"
+  line="${line} ${blue}${project_divergence_display}${reset}"
 fi
 
 if [[ -n "$added_dirs_display" ]]; then
-  line="${line} ${bold}${blue}${added_dirs_display}${reset}"
+  line="${line} ${blue}${added_dirs_display}${reset}"
 fi
 
 if [[ "$exceeds_200k" == "true" ]]; then
@@ -201,9 +200,9 @@ else
   tokens_used_prefix=""
 fi
 
-line="${line} • ${bold}${cyan}${model}${reset} • ${bold}${tokens_used_color}${tokens_used_prefix}${tokens_k}k${reset}${bold}/${context_k}k${reset} ${light_gray}${context_pct}%${reset} • ${light_gray}effort:${reset}${bold}${cyan}${effort_level}${reset} ${light_gray}thinking:${reset}${bold}${cyan}${thinking_display}${reset}"
+line="${line} • ${cyan}${model}${reset} • ${bold}${tokens_used_color}${tokens_used_prefix}${tokens_k}k${reset}/${context_k}k ${gray}${context_pct}%${reset} • ${gray}effort:${reset}${bold}${cyan}${effort_level}${reset} ${gray}thinking:${reset}${bold}${cyan}${thinking_display}${reset}"
 
-line="${line} ${light_gray}style:${reset}${bold}${cyan}${output_style_display}${reset}"
+line="${line} ${gray}style:${reset}${bold}${cyan}${output_style_display}${reset}"
 
 line="${line} • ${rate_limits_display}"
 
@@ -218,16 +217,16 @@ else
   cache_color="$red"
 fi
 
-line="${line} • ${bold}${cache_color}cache:${cache_pct}%${reset}"
+line="${line} • ${cache_color}cache:${bold}${cache_pct}%${reset}"
 
 if [[ -n "$cost_display" ]]; then
-  line="${line} ${light_gray}${cost_display}${reset}"
+  line="${line} ${gray}${cost_display}${reset}"
 fi
 
-line="${line} • ${light_gray}${session_id}${reset}"
+line="${line} • ${gray}${session_id}${reset}"
 
 if [[ -n "$claude_version" ]]; then
-  line="${line} • ${light_gray}v${claude_version}${reset}"
+  line="${line} • ${gray}v${claude_version}${reset}"
 fi
 
 echo -e "$line"
