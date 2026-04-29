@@ -16,3 +16,5 @@
 : 1771855166:0;cp ~/dotfiles/example-configs/.* .
 : 1771855469:0;pnpm add --save-dev --save-exact prettier
 : 1771855523:0;pnpm add --save-dev --save-exact prettier-plugin-organize-imports
+: 1777490809:0;brew outdated # Check for upgradable packages
+: 1777490825:0;brew upgrade # Upgrade all packages
