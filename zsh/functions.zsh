@@ -30,9 +30,6 @@ eval "$(zoxide init zsh)"
 # https://starship.rs/guide/#step-2-set-up-your-shell-to-use-starship
 eval "$(starship init zsh)"
 
-# https://ngrok.com
-eval "$(ngrok completion)"
-
 # Vi mode
 bindkey -v
 export KEYTIMEOUT=1  # Reduce escape delay
