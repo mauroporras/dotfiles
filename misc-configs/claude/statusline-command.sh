@@ -197,11 +197,11 @@ if [[ "$exceeds_200k" == "true" ]]; then
   tokens_used_color="$red"
   tokens_used_prefix="!"
 else
-  tokens_used_color="$yellow"
+  tokens_used_color=""
   tokens_used_prefix=""
 fi
 
-line="${line} • ${bold}${magenta}${model}${reset} • ${bold}${tokens_used_color}${tokens_used_prefix}${tokens_k}k${reset}${bold}${yellow}/${context_k}k${reset} ${light_gray}${context_pct}%${reset} • ${light_gray}effort:${reset}${bold}${cyan}${effort_level}${reset} ${light_gray}thinking:${reset}${bold}${cyan}${thinking_display}${reset}"
+line="${line} • ${bold}${cyan}${model}${reset} • ${bold}${tokens_used_color}${tokens_used_prefix}${tokens_k}k${reset}${bold}/${context_k}k${reset} ${light_gray}${context_pct}%${reset} • ${light_gray}effort:${reset}${bold}${cyan}${effort_level}${reset} ${light_gray}thinking:${reset}${bold}${cyan}${thinking_display}${reset}"
 
 line="${line} ${light_gray}style:${reset}${bold}${cyan}${output_style_display}${reset}"
 
