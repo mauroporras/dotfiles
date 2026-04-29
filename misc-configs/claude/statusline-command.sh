@@ -96,9 +96,10 @@ usage_cache_creation=$(echo "$input" | jq -r '.context_window.current_usage.cach
 usage_cache_read=$(echo "$input" | jq -r '.context_window.current_usage.cache_read_input_tokens // 0')
 cache_input_total=$((usage_input + usage_cache_creation + usage_cache_read))
 
-cache_pct=""
 if [[ $cache_input_total -gt 0 ]]; then
   cache_pct=$((usage_cache_read * 100 / cache_input_total))
+else
+  cache_pct=0
 fi
 
 cost_usd=$(echo "$input" | jq -r '.cost.total_cost_usd // empty')
@@ -140,17 +141,11 @@ format_reset_short() {
   fi
 }
 
-five_hour_pct_int=""
-seven_day_pct_int=""
-five_hour_reset_display=""
-seven_day_reset_display=""
-if [[ -n "$five_hour_pct" || -n "$seven_day_pct" ]]; then
-  now_epoch=$(date +%s)
-  five_hour_pct_int="${five_hour_pct%.*}"
-  seven_day_pct_int="${seven_day_pct%.*}"
-  five_hour_reset_display=$(format_reset_short "$five_hour_resets" "$now_epoch")
-  seven_day_reset_display=$(format_reset_short "$seven_day_resets" "$now_epoch")
-fi
+now_epoch=$(date +%s)
+five_hour_pct_int="${five_hour_pct%.*}"
+seven_day_pct_int="${seven_day_pct%.*}"
+five_hour_reset_display=$(format_reset_short "$five_hour_resets" "$now_epoch")
+seven_day_reset_display=$(format_reset_short "$seven_day_resets" "$now_epoch")
 
 # Colors
 bold='\033[1m'
@@ -181,14 +176,11 @@ rate_limit_color() {
   fi
 }
 
-rate_limits_display=""
-if [[ -n "$five_hour_pct_int" || -n "$seven_day_pct_int" ]]; then
-  five_hour_color=$(rate_limit_color "$five_hour_pct_int")
-  seven_day_color=$(rate_limit_color "$seven_day_pct_int")
-  five_hour_pct_text="${five_hour_pct_int:--}"
-  seven_day_pct_text="${seven_day_pct_int:--}"
-  rate_limits_display="${bold}${five_hour_color}5h:${five_hour_pct_text}%${reset} ${light_gray}${five_hour_reset_display}${reset} ${bold}${seven_day_color}7d:${seven_day_pct_text}%${reset} ${light_gray}${seven_day_reset_display}${reset}"
-fi
+five_hour_color=$(rate_limit_color "$five_hour_pct_int")
+seven_day_color=$(rate_limit_color "$seven_day_pct_int")
+five_hour_pct_text="${five_hour_pct_int:--}"
+seven_day_pct_text="${seven_day_pct_int:--}"
+rate_limits_display="${bold}${five_hour_color}5h:${five_hour_pct_text}%${reset} ${light_gray}${five_hour_reset_display}${reset} ${bold}${seven_day_color}7d:${seven_day_pct_text}%${reset} ${light_gray}${seven_day_reset_display}${reset}"
 
 if [[ "$git_branch_is_repo" == "true" ]]; then
   git_branch_color="$green"
@@ -220,24 +212,20 @@ if [[ -n "$output_style_display" ]]; then
   line="${line} ${bold}${cyan}${output_style_display}${reset}"
 fi
 
-if [[ -n "$rate_limits_display" ]]; then
-  line="${line} • ${rate_limits_display}"
+line="${line} • ${rate_limits_display}"
+
+is_cache_healthy=$((cache_pct >= 70))
+is_cache_mediocre=$((cache_pct >= 40))
+
+if [[ $is_cache_healthy -eq 1 ]]; then
+  cache_color="$green"
+elif [[ $is_cache_mediocre -eq 1 ]]; then
+  cache_color="$yellow"
+else
+  cache_color="$red"
 fi
 
-if [[ -n "$cache_pct" ]]; then
-  is_cache_healthy=$((cache_pct >= 70))
-  is_cache_mediocre=$((cache_pct >= 40))
-
-  if [[ $is_cache_healthy -eq 1 ]]; then
-    cache_color="$green"
-  elif [[ $is_cache_mediocre -eq 1 ]]; then
-    cache_color="$yellow"
-  else
-    cache_color="$red"
-  fi
-
-  line="${line} • ${bold}${cache_color}cache:${cache_pct}%${reset}"
-fi
+line="${line} • ${bold}${cache_color}cache:${cache_pct}%${reset}"
 
 if [[ -n "$cost_display" ]]; then
   line="${line} ${light_gray}${cost_display}${reset}"
