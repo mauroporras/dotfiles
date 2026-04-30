@@ -19,3 +19,4 @@
 : 1777490809:0;brew outdated # Check for upgradable packages
 : 1777490825:0;brew upgrade # Upgrade all packages
 : 1777510634:0;lsof -iTCP:3000 -n -P # What process is using port 3000
+: 1777510800:0;defaults write com.apple.finder AppleShowAllFiles -boolean true && killall Finder # Show hidden files in Finder
