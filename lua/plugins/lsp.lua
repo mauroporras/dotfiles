@@ -1,6 +1,6 @@
 -- LSP Configuration
--- :LspInfo
--- :LspRestart
+-- :checkhealth vim.lsp
+-- :lsp restart
 return {
   {
     -- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
@@ -219,7 +219,7 @@ return {
       --    In Neovim:
       --      :Mason - Browse/install LSP servers, linters, formatters (press g? for help)
       --      :help lspconfig-all - Lists all pre-configured LSPs supported by nvim-lspconfig
-      --      :LspInfo - Shows currently active LSP servers for the current buffer
+      --      :checkhealth vim.lsp - Shows currently active LSP servers for the current buffer
       --    Online:
       --      https://mason-registry.dev/registry/list
       --      https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md

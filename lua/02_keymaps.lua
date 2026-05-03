@@ -39,7 +39,7 @@ vim.keymap.set("n", "<Leader>e", function()
 end, { desc = "Reload buffer preserving position" })
 
 -- Restart LSP server(s)
-vim.keymap.set("n", "<Leader>E", "<cmd>LspRestart<CR>", { desc = "Restart LSP" })
+vim.keymap.set("n", "<Leader>E", "<cmd>lsp restart<CR>", { desc = "Restart LSP" })
 
 -- Open Lazy plugin manager
 vim.keymap.set("n", "<Leader>L", "<cmd>Lazy<CR>", { desc = "Open Lazy plugin manager" })
