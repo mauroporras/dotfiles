@@ -1,8 +1,10 @@
 # Ground Rules
 
+<!--
 > "A computer can never be held accountable, therefore a computer must never make a management decision."
 >
 > — IBM Training Manual, 1979
+-->
 
 ## Attribution
 
