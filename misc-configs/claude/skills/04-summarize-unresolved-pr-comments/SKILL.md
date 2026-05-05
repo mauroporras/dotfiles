@@ -90,11 +90,13 @@ URL: {pr-url}
 
 ### {path/to/file.ext}
 
-- [ ] Tag: #{unique-descriptive-tag}
-      Author: @{the-author}
-      At line: {path/to/file.ext:line}
-      Comment:
-      {concise-comment-summary}
+#### #{unique-descriptive-tag}
+
+Done: [ ]
+Author: @{the-author}
+At line: {path/to/file.ext:line}
+Comment:
+{concise-comment-summary}
 
 ## Contentious Comments
 
