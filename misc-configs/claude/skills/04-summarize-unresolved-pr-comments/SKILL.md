@@ -26,6 +26,7 @@ query($owner: String!, $repo: String!, $pr: Int!) {
       title
       reviewThreads(first: 100) {
         nodes {
+          id
           isResolved
           comments(first: 10) {
             nodes {
@@ -92,11 +93,13 @@ URL: {pr-url}
 
 #### #{unique-descriptive-tag}
 
-Done: [ ]
+- [ ] Done
+
+Line: {path/to/file.ext:line}
 Author: @{the-author}
-At line: {path/to/file.ext:line}
-Comment:
-{concise-comment-summary}
+Thread ID: {thread-id}
+_Comment:_
+{comment}
 
 ## Contentious Comments
 
@@ -105,7 +108,7 @@ Comment:
 
 ALWAYS:
 
-- Summarize each comment instead of quoting the full text and break line at around 80 characters
+- Break comment lines at around 80 characters
 - Prioritize brevity over grammar:
   Keep messages short, even if grammatically imperfect
 - For inline comments:
