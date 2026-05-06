@@ -200,7 +200,7 @@ else
   tokens_used_prefix=""
 fi
 
-line="${line} • ${cyan}${model}${reset} • ${bold}${tokens_used_color}${tokens_used_prefix}${tokens_k}k${reset}/${context_k}k ${gray}${context_pct}%${reset} • ${gray}effort:${reset}${bold}${cyan}${effort_level}${reset} ${gray}thinking:${reset}${bold}${cyan}${thinking_display}${reset}"
+line="${line} • ${cyan}${model}${reset} ${gray}advisor:${reset}${cyan}?${reset} • ${bold}${tokens_used_color}${tokens_used_prefix}${tokens_k}k${reset}/${context_k}k ${gray}${context_pct}%${reset} • ${gray}effort:${reset}${bold}${cyan}${effort_level}${reset} ${gray}thinking:${reset}${bold}${cyan}${thinking_display}${reset}"
 
 line="${line} ${gray}style:${reset}${bold}${cyan}${output_style_display}${reset}"
 

@@ -1,10 +1,10 @@
 {
-  "statusLine": {
-    "type": "command",
-    "command": "/bin/bash ~/.claude/statusline-command.sh"
-  },
   "attribution": {
     "commit": "",
     "pr": ""
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "/bin/bash ~/.claude/statusline-command.sh"
   }
 }
