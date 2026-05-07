@@ -1,5 +1,6 @@
 ---
 disable-model-invocation: true
+argument-hint: [hint]
 allowed-tools: Read
 ---
 
@@ -7,9 +8,19 @@ allowed-tools: Read
 
 Based on the current conversation, try to predict what the user is about to ask or work on next.
 
+## Hint
+
+If $ARGUMENTS is non-empty, treat it as a steering signal:
+
+- Bias your ranking and the kinds of guesses you generate toward it (e.g. a hint about "tests" should push test-related predictions higher).
+- It narrows the area to think about but doesn't override the conversation.
+- If the hint contradicts what the conversation suggests, still produce guesses, but call out the tension briefly.
+
+If $ARGUMENTS is empty, ignore this section and use the conversation alone.
+
 ## What to Analyze
 
-Base your guesses entirely on the current conversation:
+Base your guesses entirely on the current conversation (and $ARGUMENTS, if provided):
 
 - **Trajectory**: What has the user been building toward? What's the logical next step?
 - **Unfinished threads**: Did they mention something earlier that hasn't been addressed yet?
