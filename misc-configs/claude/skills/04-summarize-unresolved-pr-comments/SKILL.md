@@ -109,13 +109,11 @@ _Comment:_
 ALWAYS:
 
 - Break comment lines at around 80 characters
-- Prioritize brevity over grammar:
-  Keep messages short, even if grammatically imperfect
+- Use the checkboxes to track progress
 - For inline comments:
   Group by file path if there are multiple in the same file
 - For top-level reviews:
   Include a link to the review URL
-- Use checkboxes so the user can track progress
 - Omit any section that has no items
 - If there are no unresolved comments, do not create the file
   Just inform the user that there are no unresolved comments
