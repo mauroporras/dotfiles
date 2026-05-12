@@ -73,7 +73,7 @@ keybind = cmd+y=scroll_page_lines:-1
 keybind = home=scroll_to_top
 keybind = end=scroll_to_bottom
 
-keybind = cmd+r=clear_screen
+keybind = shift+cmd+r=clear_screen
 
 keybind = shift+cmd+s=write_screen_file:paste
 
