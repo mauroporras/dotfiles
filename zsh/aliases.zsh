@@ -3,6 +3,7 @@ alias e='nvim -i custom.shada'
 alias ek='NVIM_APPNAME="nvim-kickstart" nvim'
 alias f='yazi'
 alias g='git'
+alias k='kubectl'
 # Replacement for 'ls -lAhF --group-directories-first'
 alias l='eza -agl --group-directories-first --time-style=long-iso'
 alias s="rg --follow --hidden --smart-case --no-ignore --glob '!{.git,dist,node_modules,tags}'"
