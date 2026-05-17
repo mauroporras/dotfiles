@@ -47,6 +47,7 @@ brew "zlib"
 brew "zoxide"
 brew "zsh-completions"
 
+cask "bruno" # https://www.usebruno.com/
 cask "font-iosevka-slab" # https://github.com/be5invis/Iosevka
 cask "flycut"
 cask "ghostty"
