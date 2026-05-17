@@ -24,6 +24,8 @@ brew "go"
 brew "golang-migrate"
 brew "go-task/tap/go-task"
 brew "httpie"
+brew "k3d"
+brew "kubectl"
 brew "lazygit"
 brew "less"
 brew "markdownlint-cli" # Markdown linter for nvim-lint
