@@ -21,6 +21,10 @@ fi
 # See: https://github.com/junegunn/fzf#setting-up-shell-integration
 source <(fzf --zsh)
 
+# k3d
+# See: https://k3d.io/stable/usage/commands/k3d_completion_zsh/
+source <(k3d completion zsh)
+
 # https://direnv.net/docs/hook.html#zsh
 eval "$(direnv hook zsh)"
 
