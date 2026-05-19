@@ -6,5 +6,6 @@
   "statusLine": {
     "type": "command",
     "command": "/bin/bash ~/.claude/statusline-command.sh"
-  }
+  },
+  "autoMemoryEnabled": false
 }

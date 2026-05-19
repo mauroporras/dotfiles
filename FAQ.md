@@ -70,6 +70,12 @@ Load:
 nvim -i custom.shada
 ```
 
+## Claude
+
+### Why disable `autoMemoryEnabled`?
+
+I prefer explicit CLAUDE.md over implicit memory. I don't want some comment I made to become the law.
+
 ## Nix
 
 ### Start a temporary Nix shell environment
