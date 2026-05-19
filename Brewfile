@@ -42,6 +42,7 @@ brew "zlib"
 brew "direnv"
 brew "go-task/tap/go-task"
 brew "golang-migrate"
+brew "hashicorp/tap/terraform"
 brew "tree-sitter-cli"
 
 # Editors, linters & formatters
