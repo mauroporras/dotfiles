@@ -9,6 +9,12 @@ export FZF_DEFAULT_COMMAND="rg --files --follow --hidden --smart-case --no-ignor
 #   remapped to next-history and previous-history
 export FZF_DEFAULT_OPTS="--cycle --history='$HOME/.fzf_history'"
 
+# k9s
+# Pin the config dir to ~/.config/k9s so it lives alongside every other
+# tool's config, instead of macOS's ~/Library/Application Support/k9s.
+export K9S_CONFIG_DIR="$HOME/.config/k9s"
+export K9S_SKIN=one-light
+
 # lazygit
 export CONFIG_DIR=~/.config/lazygit
 

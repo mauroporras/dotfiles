@@ -21,6 +21,15 @@ ln -sf ~/dotfiles/lazy-lock.json .config/nvim/lazy-lock.json
 mkdir -p .config/ghostty
 ln -sf ~/dotfiles/misc-configs/ghostty/config.ghostty .config/ghostty/config
 
+# -- K9s --
+# Requires K9S_CONFIG_DIR=~/.config/k9s (set in zsh/env_vars.zsh); otherwise
+# k9s defaults to ~/Library/Application Support/k9s on macOS.
+# Skin is fetched from upstream instead of tracked in this repo, since it's
+# 100+ lines of vendor-owned YAML. Re-run bootstrap to pull updates.
+mkdir -p .config/k9s/skins
+curl -fsSL https://raw.githubusercontent.com/derailed/k9s/master/skins/one-light.yaml \
+  -o .config/k9s/skins/one-light.yaml
+
 # -- Lazygit --
 mkdir -p .config/lazygit
 ln -sf ~/dotfiles/misc-configs/lazygit/config.yml .config/lazygit/config.yml
