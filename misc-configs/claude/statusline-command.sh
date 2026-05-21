@@ -10,8 +10,19 @@
 set -o pipefail
 LC_ALL=C  # stable decimal separator for printf '$%.2f' across locales
 
-SHOW_COST=false
+SHOW_CACHE_AND_COST=false
 SHOW_SESSION_ID=false
+
+# Colors
+bold='\033[1m'
+blue='\033[34m'
+green='\033[32m'
+yellow='\033[33m'
+cyan='\033[36m'
+magenta='\033[35m'
+red='\033[31m'
+gray='\033[90m'
+reset='\033[0m'
 
 input=$(cat)
 
@@ -109,23 +120,37 @@ output_style_display="${output_style:-default}"
 
 added_dirs_display=""
 
-# Cache hit ratio for this turn's input tokens. A sustained drop means the
-# prompt prefix changed (TTL lapsed, CLAUDE.md edited, /compact ran, etc.)
-# and the next turns will be ~10x slower and pricier until the cache rebuilds.
-usage_input=$(echo "$input" | jq -r '.context_window.current_usage.input_tokens // 0')
-usage_cache_creation=$(echo "$input" | jq -r '.context_window.current_usage.cache_creation_input_tokens // 0')
-usage_cache_read=$(echo "$input" | jq -r '.context_window.current_usage.cache_read_input_tokens // 0')
-cache_input_total=$((usage_input + usage_cache_creation + usage_cache_read))
-
-if [[ $cache_input_total -gt 0 ]]; then
-  cache_pct=$((usage_cache_read * 100 / cache_input_total))
-else
-  cache_pct=0
-fi
-
+cache_display=""
 cost_display=""
-if [[ "$SHOW_COST" == "true" ]]; then
-  cost_usd=$(echo "$input" | jq -r '.cost.total_cost_usd // empty')
+if [[ "$SHOW_CACHE_AND_COST" == "true" ]]; then
+  # Cache hit ratio for this turn's input tokens. A sustained drop means the
+  # prompt prefix changed (TTL lapsed, CLAUDE.md edited, /compact ran, etc.)
+  # and the next turns will be ~10x slower and pricier until the cache rebuilds.
+  { read -r usage_input; read -r usage_cache_creation; read -r usage_cache_read; read -r cost_usd; } < <(
+    echo "$input" | jq -r '
+      .context_window.current_usage.input_tokens // 0,
+      .context_window.current_usage.cache_creation_input_tokens // 0,
+      .context_window.current_usage.cache_read_input_tokens // 0,
+      .cost.total_cost_usd // ""
+    '
+  )
+  cache_input_total=$((usage_input + usage_cache_creation + usage_cache_read))
+  cache_pct=0
+
+  if [[ $cache_input_total -gt 0 ]]; then
+    cache_pct=$((usage_cache_read * 100 / cache_input_total))
+  fi
+
+  if [[ $cache_pct -ge 70 ]]; then
+    cache_color="$green"
+  elif [[ $cache_pct -ge 40 ]]; then
+    cache_color="$yellow"
+  else
+    cache_color="$red"
+  fi
+
+  cache_display="${cache_color}cache:${bold}${cache_pct}%${reset}"
+
   if [[ -n "$cost_usd" ]]; then
     cost_display=$(printf '$%.2f' "$cost_usd")
   fi
@@ -267,17 +292,6 @@ seven_day_pct_int="${seven_day_pct%.*}"
 five_hour_reset_display=$(format_reset_short "$five_hour_resets" "$now_epoch")
 seven_day_reset_display=$(format_reset_short "$seven_day_resets" "$now_epoch")
 
-# Colors
-bold='\033[1m'
-blue='\033[34m'
-green='\033[32m'
-yellow='\033[33m'
-cyan='\033[36m'
-magenta='\033[35m'
-red='\033[31m'
-gray='\033[90m'
-reset='\033[0m'
-
 if [[ "$git_branch_is_repo" == "true" ]]; then
   git_branch_color="$green"
 else
@@ -408,18 +422,9 @@ line="${line} ${gray}style:${reset}${bold}${cyan}${output_style_display}${reset}
 
 line="${line} • ${rate_limits_display}"
 
-is_cache_healthy=$((cache_pct >= 70))
-is_cache_mediocre=$((cache_pct >= 40))
-
-if [[ $is_cache_healthy -eq 1 ]]; then
-  cache_color="$green"
-elif [[ $is_cache_mediocre -eq 1 ]]; then
-  cache_color="$yellow"
-else
-  cache_color="$red"
+if [[ -n "$cache_display" ]]; then
+  line="${line} • ${cache_display}"
 fi
-
-line="${line} • ${cache_color}cache:${bold}${cache_pct}%${reset}"
 
 if [[ -n "$cost_display" ]]; then
   line="${line} ${gray}${cost_display}${reset}"
