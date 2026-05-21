@@ -103,11 +103,80 @@ if [[ -n "$cost_usd" ]]; then
   cost_display=$(printf '$%.2f' "$cost_usd")
 fi
 
+github_repo_host=$(echo "$input" | jq -r '.workspace.repo.host // empty')
 github_repo_owner=$(echo "$input" | jq -r '.workspace.repo.owner // empty')
 github_repo_name=$(echo "$input" | jq -r '.workspace.repo.name // empty')
 
-pr_number=$(echo "$input" | jq -r '.pr.number // empty')
-pr_review_state=$(echo "$input" | jq -r '.pr.review_state // empty')
+pr_number=""
+pr_review_state=""
+pr_url=""
+
+# `gh pr view` hits the network (~300-800ms), so cache its output per
+# repo+branch and refresh in the background. Stale data is fine for a
+# statusline; what's not fine is a blocking call on every prompt.
+if [[ "$git_branch_is_repo" == "true" ]] && command -v gh >/dev/null 2>&1; then
+  pr_cache_dir="${TMPDIR:-/tmp}/claude-statusline-pr"
+  mkdir -p "$pr_cache_dir"
+
+  pr_repo_root=$(git rev-parse --show-toplevel 2>/dev/null)
+  pr_cache_slug=$(printf '%s:%s' "$pr_repo_root" "$git_branch" | shasum | cut -c1-16)
+  pr_cache_file="$pr_cache_dir/$pr_cache_slug.json"
+  pr_lock_dir="$pr_cache_dir/$pr_cache_slug.lock"
+  pr_cache_ttl=60
+
+  # Store the fetch timestamp inside the cache JSON itself rather than relying
+  # on file mtime: `stat -f %m` (BSD) and `stat -c %Y` (GNU) have incompatible
+  # flag meanings, and either set may be installed on macOS depending on whether
+  # coreutils is on PATH.
+  pr_cache_is_fresh=false
+  if [[ -f "$pr_cache_file" ]]; then
+    pr_cache_fetched_at=$(jq -r '.fetched_at // 0' "$pr_cache_file" 2>/dev/null)
+    pr_cache_age=$(( $(date +%s) - pr_cache_fetched_at ))
+
+    if [[ $pr_cache_age -lt $pr_cache_ttl ]]; then
+      pr_cache_is_fresh=true
+    fi
+  fi
+
+  # `mkdir` is atomic across processes, so it doubles as a single-writer lock:
+  # only one statusline invocation can spawn the background refresh at a time.
+  # Anything else for this repo+branch just renders the existing cache.
+  if [[ "$pr_cache_is_fresh" != "true" ]] && mkdir "$pr_lock_dir" 2>/dev/null; then
+    (
+      fetched_at=$(date +%s)
+
+      if gh pr view --json number,reviewDecision,isDraft,url >"$pr_cache_file.tmp" 2>/dev/null; then
+        jq --argjson ts "$fetched_at" '. + {fetched_at: $ts}' "$pr_cache_file.tmp" > "$pr_cache_file"
+        rm -f "$pr_cache_file.tmp"
+      else
+        printf '{"fetched_at": %s}\n' "$fetched_at" > "$pr_cache_file"
+      fi
+
+      rmdir "$pr_lock_dir"
+    ) &
+  fi
+
+  if [[ -f "$pr_cache_file" ]]; then
+    pr_number=$(jq -r '.number // empty' "$pr_cache_file" 2>/dev/null)
+
+    if [[ -n "$pr_number" ]]; then
+      pr_is_draft=$(jq -r '.isDraft // false' "$pr_cache_file")
+      pr_review_decision=$(jq -r '.reviewDecision // empty' "$pr_cache_file")
+      pr_url=$(jq -r '.url // empty' "$pr_cache_file")
+
+      if [[ "$pr_is_draft" == "true" ]]; then
+        pr_review_state="draft"
+      else
+        case "$pr_review_decision" in
+          APPROVED)          pr_review_state="approved" ;;
+          CHANGES_REQUESTED) pr_review_state="changes_requested" ;;
+          REVIEW_REQUIRED)   pr_review_state="pending" ;;
+          *)                 pr_review_state="open" ;;
+        esac
+      fi
+    fi
+  fi
+fi
 
 five_hour_pct=$(echo "$input" | jq -r '.rate_limits.five_hour.used_percentage // empty')
 five_hour_resets=$(echo "$input" | jq -r '.rate_limits.five_hour.resets_at // empty')
@@ -161,7 +230,17 @@ reset='\033[0m'
 
 github_repo_display=""
 if [[ -n "$github_repo_owner" && -n "$github_repo_name" ]]; then
-  github_repo_display="${github_repo_owner}/${github_repo_name}"
+  github_repo_label="${github_repo_owner}/${github_repo_name}"
+
+  # OSC 8 hyperlink: clickable in iTerm2, WezTerm, Kitty, Ghostty, Terminal.app.
+  # Uses BEL as terminator (not ESC+\) so a trailing backslash doesn't collide
+  # with the next color escape's leading backslash on concatenation.
+  if [[ -n "$github_repo_host" ]]; then
+    github_repo_url="https://${github_repo_host}/${github_repo_label}"
+    github_repo_display="\033]8;;${github_repo_url}\a${github_repo_label}\033]8;;\a"
+  else
+    github_repo_display="$github_repo_label"
+  fi
 fi
 
 pr_display=""
@@ -174,8 +253,13 @@ if [[ -n "$pr_number" ]]; then
     *)                 pr_color="$cyan" ;;
   esac
 
-  pr_state_label="${pr_review_state:-open}"
-  pr_display="${pr_color}#${pr_number} ${pr_state_label}${reset}"
+  pr_label="#${pr_number}:${pr_review_state}"
+
+  if [[ -n "$pr_url" ]]; then
+    pr_display="${pr_color}\033]8;;${pr_url}\a${pr_label}\033]8;;\a${reset}"
+  else
+    pr_display="${pr_color}${pr_label}${reset}"
+  fi
 fi
 
 rate_limit_color() {
@@ -207,14 +291,24 @@ else
   git_branch_color="$red"
 fi
 
-line="${blue}${current_dir_display}${reset}:${git_branch_color}${git_branch}${reset}"
+current_dir_link="\033]8;;file://${current_dir}\a${current_dir_display}\033]8;;\a"
+line="${blue}${current_dir_link}${reset} ${gray}›${reset} ${git_branch_color}${git_branch}${reset}"
 
+github_section=""
 if [[ -n "$github_repo_display" ]]; then
-  line="${line} ${gray}${github_repo_display}${reset}"
+  github_section="${gray}${github_repo_display}${reset}"
 fi
 
 if [[ -n "$pr_display" ]]; then
-  line="${line} ${pr_display}"
+  if [[ -n "$github_section" ]]; then
+    github_section="${github_section} ${gray}›${reset} ${pr_display}"
+  else
+    github_section="$pr_display"
+  fi
+fi
+
+if [[ -n "$github_section" ]]; then
+  line="${line} • ${github_section}"
 fi
 
 if [[ -n "$project_divergence_display" ]]; then
