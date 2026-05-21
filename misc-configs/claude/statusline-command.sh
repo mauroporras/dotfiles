@@ -122,7 +122,7 @@ if [[ "$git_branch_is_repo" == "true" ]] && command -v gh >/dev/null 2>&1; then
   pr_cache_slug=$(printf '%s:%s' "$pr_repo_root" "$git_branch" | shasum | cut -c1-16)
   pr_cache_file="$pr_cache_dir/$pr_cache_slug.json"
   pr_lock_dir="$pr_cache_dir/$pr_cache_slug.lock"
-  pr_cache_ttl=60
+  pr_cache_ttl=30
 
   # Store the fetch timestamp inside the cache JSON itself rather than relying
   # on file mtime: `stat -f %m` (BSD) and `stat -c %Y` (GNU) have incompatible
