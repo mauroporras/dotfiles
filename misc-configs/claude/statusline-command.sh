@@ -77,8 +77,6 @@ output_style=$(echo "$input" | jq -r '.output_style.name // empty')
 # than by switching the global style.
 output_style_display="${output_style:-default}"
 
-# Build later, once colors are in scope so each added dir can render as its
-# own clickable OSC 8 hyperlink.
 added_dirs_display=""
 
 # Cache hit ratio for this turn's input tokens. A sustained drop means the
@@ -101,9 +99,11 @@ if [[ -n "$cost_usd" ]]; then
   cost_display=$(printf '$%.2f' "$cost_usd")
 fi
 
-github_repo_host=$(echo "$input" | jq -r '.workspace.repo.host // empty')
-github_repo_owner=$(echo "$input" | jq -r '.workspace.repo.owner // empty')
-github_repo_name=$(echo "$input" | jq -r '.workspace.repo.name // empty')
+# One field per line so empty values don't collapse the way they would under
+# IFS=$'\t' (POSIX "IFS whitespace" rule).
+{ read -r github_repo_host; read -r github_repo_owner; read -r github_repo_name; } < <(
+  echo "$input" | jq -r '.workspace.repo.host // "", .workspace.repo.owner // "", .workspace.repo.name // ""'
+)
 
 pr_number=""
 pr_review_state=""
@@ -126,14 +126,12 @@ if [[ "$git_branch_is_repo" == "true" ]] && command -v gh >/dev/null 2>&1; then
   # on file mtime: `stat -f %m` (BSD) and `stat -c %Y` (GNU) have incompatible
   # flag meanings, and either set may be installed on macOS depending on whether
   # coreutils is on PATH.
-  pr_cache_is_fresh=false
-  if [[ -f "$pr_cache_file" ]]; then
-    pr_cache_fetched_at=$(jq -r '.fetched_at // 0' "$pr_cache_file" 2>/dev/null)
-    pr_cache_age=$(( $(date +%s) - pr_cache_fetched_at ))
+  pr_cache_fetched_at=$(jq -r '.fetched_at // 0' "$pr_cache_file" 2>/dev/null)
+  pr_cache_age=$(( $(date +%s) - pr_cache_fetched_at ))
 
-    if [[ $pr_cache_age -lt $pr_cache_ttl ]]; then
-      pr_cache_is_fresh=true
-    fi
+  pr_cache_is_fresh=false
+  if [[ $pr_cache_age -lt $pr_cache_ttl ]]; then
+    pr_cache_is_fresh=true
   fi
 
   # `mkdir` is atomic across processes, so it doubles as a single-writer lock:
@@ -150,37 +148,37 @@ if [[ "$git_branch_is_repo" == "true" ]] && command -v gh >/dev/null 2>&1; then
       pr_fetch_tmp="$pr_cache_file.fetch"
       pr_write_tmp="$pr_cache_file.write"
 
+      # `.write` tmp + `mv` makes the final state visible atomically, so readers
+      # never observe a partial JSON.
       if gh pr view --json number,reviewDecision,isDraft,url >"$pr_fetch_tmp" 2>/dev/null; then
-        # Write to a separate tmp, then `mv` so readers never observe a
-        # partial JSON.
         jq --argjson ts "$fetched_at" '. + {fetched_at: $ts}' "$pr_fetch_tmp" > "$pr_write_tmp" \
           && mv "$pr_write_tmp" "$pr_cache_file"
         rm -f "$pr_fetch_tmp" "$pr_write_tmp"
       else
-        printf '{"fetched_at": %s}\n' "$fetched_at" > "$pr_write_tmp" \
+        jq -n --argjson ts "$fetched_at" '{fetched_at: $ts}' > "$pr_write_tmp" \
           && mv "$pr_write_tmp" "$pr_cache_file"
       fi
+
+      # Prune stale entries for branches/repos no longer visited. Cheap to
+      # run from the background refresh, no need to schedule it elsewhere.
+      find "$pr_cache_dir" -name '*.json' -mtime +7 -delete 2>/dev/null
     ) &
   fi
 
-  if [[ -f "$pr_cache_file" ]]; then
-    pr_number=$(jq -r '.number // empty' "$pr_cache_file" 2>/dev/null)
+  { read -r pr_number; read -r pr_is_draft; read -r pr_review_decision; read -r pr_url; } < <(
+    jq -r '.number // "", .isDraft // false, .reviewDecision // "", .url // ""' "$pr_cache_file" 2>/dev/null
+  )
 
-    if [[ -n "$pr_number" ]]; then
-      pr_is_draft=$(jq -r '.isDraft // false' "$pr_cache_file" 2>/dev/null)
-      pr_review_decision=$(jq -r '.reviewDecision // empty' "$pr_cache_file" 2>/dev/null)
-      pr_url=$(jq -r '.url // empty' "$pr_cache_file" 2>/dev/null)
-
-      if [[ "$pr_is_draft" == "true" ]]; then
-        pr_review_state="draft"
-      else
-        case "$pr_review_decision" in
-          APPROVED)          pr_review_state="approved" ;;
-          CHANGES_REQUESTED) pr_review_state="changes_requested" ;;
-          REVIEW_REQUIRED)   pr_review_state="pending" ;;
-          *)                 pr_review_state="open" ;;
-        esac
-      fi
+  if [[ -n "$pr_number" ]]; then
+    if [[ "$pr_is_draft" == "true" ]]; then
+      pr_review_state="draft"
+    else
+      case "$pr_review_decision" in
+        APPROVED)          pr_review_state="approved" ;;
+        CHANGES_REQUESTED) pr_review_state="changes_requested" ;;
+        REVIEW_REQUIRED)   pr_review_state="pending" ;;
+        *)                 pr_review_state="open" ;;
+      esac
     fi
   fi
 fi
@@ -191,9 +189,10 @@ seven_day_pct=$(echo "$input" | jq -r '.rate_limits.seven_day.used_percentage //
 seven_day_resets=$(echo "$input" | jq -r '.rate_limits.seven_day.resets_at // empty')
 
 # Build an OSC 8 hyperlink with a unique id. Without an id (or with an id
-# shared across spans) some terminals — notably Ghostty — visually group
+# shared across spans) some terminals (notably Ghostty) visually group
 # adjacent hyperlinks on cmd-hover; the id-scoped close gives each span its
-# own scope.
+# own scope. BEL terminator (not ESC+\) so a trailing backslash doesn't
+# collide with the next color escape's leading backslash on concatenation.
 osc8_link() {
   local id=$1
   local url=$2
@@ -253,10 +252,8 @@ else
   git_branch_color="$red"
 fi
 
-# Render each added dir as an independently clickable file:// hyperlink. The
-# label is just the basename to keep the statusline narrow; the full path lives
-# in the URL. Process-substitution (`< <(...)`) keeps the loop in the parent
-# shell so the accumulated string isn't lost in a subshell.
+# Process substitution (`< <(...)`) keeps the loop in the parent shell so the
+# accumulated string isn't lost in a subshell.
 added_dirs_index=0
 while IFS= read -r added_dir; do
   if [[ -z "$added_dir" ]]; then
@@ -283,9 +280,6 @@ github_repo_display=""
 if [[ -n "$github_repo_owner" && -n "$github_repo_name" ]]; then
   github_repo_label="${github_repo_owner}/${github_repo_name}"
 
-  # OSC 8 hyperlink: clickable in iTerm2, WezTerm, Kitty, Ghostty, Terminal.app.
-  # Uses BEL as terminator (not ESC+\) so a trailing backslash doesn't collide
-  # with the next color escape's leading backslash on concatenation.
   if [[ -n "$github_repo_host" ]]; then
     github_repo_url="https://${github_repo_host}/${github_repo_label}"
     github_repo_display=$(osc8_link "statusline-repo" "$github_repo_url" "$github_repo_label")
