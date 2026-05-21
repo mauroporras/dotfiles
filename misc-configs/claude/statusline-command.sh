@@ -11,6 +11,7 @@ set -o pipefail
 LC_ALL=C  # stable decimal separator for printf '$%.2f' across locales
 
 SHOW_COST=false
+SHOW_SESSION_ID=false
 
 input=$(cat)
 
@@ -90,7 +91,10 @@ if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
     fi
   fi
 fi
-session_id=$(echo "$input" | jq -r '.session.id // .session_id // "unknown"')
+session_id=""
+if [[ "$SHOW_SESSION_ID" == "true" ]]; then
+  session_id=$(echo "$input" | jq -r '.session.id // .session_id // "unknown"')
+fi
 
 # On 1M-context models, crossing 200k input tokens flips the whole request
 # to the long-context pricing tier (~2x input, ~1.5x output), so we surface it
@@ -421,7 +425,9 @@ if [[ -n "$cost_display" ]]; then
   line="${line} ${gray}${cost_display}${reset}"
 fi
 
-line="${line} • ${gray}${session_id}${reset}"
+if [[ -n "$session_id" ]]; then
+  line="${line} • ${gray}${session_id}${reset}"
+fi
 
 if [[ -n "$claude_version" ]]; then
   line="${line} • ${gray}v${claude_version}${reset}"
