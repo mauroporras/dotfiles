@@ -10,6 +10,8 @@
 set -o pipefail
 LC_ALL=C  # stable decimal separator for printf '$%.2f' across locales
 
+SHOW_COST=false
+
 input=$(cat)
 
 # Validate once up front: if the harness ever pipes us malformed or empty input,
@@ -117,10 +119,12 @@ else
   cache_pct=0
 fi
 
-cost_usd=$(echo "$input" | jq -r '.cost.total_cost_usd // empty')
 cost_display=""
-if [[ -n "$cost_usd" ]]; then
-  cost_display=$(printf '$%.2f' "$cost_usd")
+if [[ "$SHOW_COST" == "true" ]]; then
+  cost_usd=$(echo "$input" | jq -r '.cost.total_cost_usd // empty')
+  if [[ -n "$cost_usd" ]]; then
+    cost_display=$(printf '$%.2f' "$cost_usd")
+  fi
 fi
 
 # One field per line so empty values don't collapse the way they would under
