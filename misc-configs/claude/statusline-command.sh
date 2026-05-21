@@ -2,6 +2,13 @@
 
 input=$(cat)
 
+# Validate once up front: if the harness ever pipes us malformed or empty input,
+# fall back to an empty object so the ~14 downstream `jq` calls don't each
+# spew "parse error" to stderr.
+if ! printf '%s' "$input" | jq -e . >/dev/null 2>&1; then
+  input='{}'
+fi
+
 current_dir=$(echo "$input" | jq -r '.workspace.current_dir')
 current_dir_display=${current_dir/#$HOME/\~}
 project_dir=$(echo "$input" | jq -r '.workspace.project_dir // empty')
@@ -26,12 +33,19 @@ fi
 # Debug: uncomment to see raw input
 # echo "$input" > /tmp/statusline-debug.json
 
-# current_usage is an object
-current_usage=$(echo "$input" | jq -r '[.context_window.current_usage | .input_tokens, .output_tokens, .cache_creation_input_tokens, .cache_read_input_tokens] | add')
-context_size=$(echo "$input" | jq -r '.context_window.context_window_size')
+# current_usage is an object. Default each field to 0 so jq's `add` never
+# returns null (which would feed "null" into bash arithmetic below and trip
+# an "unbound variable" stderr noise on every render).
+current_usage=$(echo "$input" | jq -r '[(.context_window.current_usage // {}) | (.input_tokens // 0), (.output_tokens // 0), (.cache_creation_input_tokens // 0), (.cache_read_input_tokens // 0)] | add')
+context_size=$(echo "$input" | jq -r '.context_window.context_window_size // 0')
 tokens_k=$((current_usage / 1000))
 context_k=$((context_size / 1000))
-context_pct=$((current_usage * 100 / context_size))
+
+if [[ $context_size -gt 0 ]]; then
+  context_pct=$((current_usage * 100 / context_size))
+else
+  context_pct=0
+fi
 
 cd "$current_dir" 2>/dev/null || cd /
 
