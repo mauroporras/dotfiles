@@ -1,4 +1,14 @@
 #!/bin/bash
+# Renders the Claude Code statusline. Runs on every prompt, so:
+#   - never block (background the slow stuff, see PR cache below)
+#   - never write to stderr (terminals show it)
+#   - never exit non-zero (parent treats that as render failure)
+# These constraints explain the `2>/dev/null` everywhere, the `// 0` jq
+# defaults, and why `set -e`/`set -u` are deliberately not used: a single
+# failed sub-command should degrade one segment, not wipe the whole line.
+
+set -o pipefail
+LC_ALL=C  # stable decimal separator for printf '$%.2f' across locales
 
 input=$(cat)
 
@@ -127,7 +137,7 @@ pr_url=""
 # repo+branch and refresh in the background. Stale data is fine for a
 # statusline; what's not fine is a blocking call on every prompt.
 if [[ "$git_branch_is_repo" == "true" ]] && command -v gh >/dev/null 2>&1; then
-  pr_cache_dir="${TMPDIR:-/tmp}/claude-statusline-pr"
+  pr_cache_dir="/tmp/claude-statusline-pr"
   mkdir -p "$pr_cache_dir"
 
   pr_repo_root=$(git rev-parse --show-toplevel 2>/dev/null)
