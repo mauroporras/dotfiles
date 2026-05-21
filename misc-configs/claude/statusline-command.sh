@@ -77,8 +77,8 @@ output_style=$(echo "$input" | jq -r '.output_style.name // empty')
 # than by switching the global style.
 output_style_display="${output_style:-default}"
 
-# Build later, once colors and the `underline` escape are in scope so each
-# added dir can render as its own clickable, underlined OSC 8 hyperlink.
+# Build later, once colors are in scope so each added dir can render as its
+# own clickable OSC 8 hyperlink.
 added_dirs_display=""
 
 # Cache hit ratio for this turn's input tokens. A sustained drop means the
@@ -190,6 +190,18 @@ five_hour_resets=$(echo "$input" | jq -r '.rate_limits.five_hour.resets_at // em
 seven_day_pct=$(echo "$input" | jq -r '.rate_limits.seven_day.used_percentage // empty')
 seven_day_resets=$(echo "$input" | jq -r '.rate_limits.seven_day.resets_at // empty')
 
+# Build an OSC 8 hyperlink with a unique id. Without an id (or with an id
+# shared across spans) some terminals — notably Ghostty — visually group
+# adjacent hyperlinks on cmd-hover; the id-scoped close gives each span its
+# own scope.
+osc8_link() {
+  local id=$1
+  local url=$2
+  local label=$3
+
+  printf '\033]8;id=%s;%s\a%s\033]8;id=%s;\a' "$id" "$url" "$label" "$id"
+}
+
 format_reset_short() {
   local target=$1
   local now=$2
@@ -233,7 +245,6 @@ cyan='\033[36m'
 magenta='\033[35m'
 red='\033[31m'
 gray='\033[90m'
-underline='\033[4m'
 reset='\033[0m'
 
 if [[ "$git_branch_is_repo" == "true" ]]; then
@@ -246,22 +257,27 @@ fi
 # label is just the basename to keep the statusline narrow; the full path lives
 # in the URL. Process-substitution (`< <(...)`) keeps the loop in the parent
 # shell so the accumulated string isn't lost in a subshell.
-added_dirs_first=true
+added_dirs_index=0
 while IFS= read -r added_dir; do
   if [[ -z "$added_dir" ]]; then
     continue
   fi
 
   added_dir_basename=${added_dir##*/}
-  added_dir_link="\033]8;;file://${added_dir}\a${underline}${added_dir_basename}\033]8;;\a${reset}"
+  added_dir_link="$(osc8_link "statusline-added-${added_dirs_index}" "file://${added_dir}" "${added_dir_basename}")${reset}"
 
-  if $added_dirs_first; then
-    added_dirs_display="${blue}+${added_dir_link}"
-    added_dirs_first=false
+  if [[ $added_dirs_index -eq 0 ]]; then
+    added_dirs_display="${blue}[${added_dir_link}"
   else
     added_dirs_display="${added_dirs_display}${gray},${blue}${added_dir_link}"
   fi
+
+  added_dirs_index=$((added_dirs_index + 1))
 done < <(echo "$input" | jq -r '.workspace.added_dirs // [] | .[]')
+
+if [[ -n "$added_dirs_display" ]]; then
+  added_dirs_display="${added_dirs_display}${blue}]${reset}"
+fi
 
 github_repo_display=""
 if [[ -n "$github_repo_owner" && -n "$github_repo_name" ]]; then
@@ -272,7 +288,7 @@ if [[ -n "$github_repo_owner" && -n "$github_repo_name" ]]; then
   # with the next color escape's leading backslash on concatenation.
   if [[ -n "$github_repo_host" ]]; then
     github_repo_url="https://${github_repo_host}/${github_repo_label}"
-    github_repo_display="\033]8;;${github_repo_url}\a${underline}${github_repo_label}\033]8;;\a"
+    github_repo_display=$(osc8_link "statusline-repo" "$github_repo_url" "$github_repo_label")
   else
     github_repo_display="$github_repo_label"
   fi
@@ -288,13 +304,10 @@ if [[ -n "$pr_number" ]]; then
     *)                 pr_color="$cyan" ;;
   esac
 
-  # Inter-segment resets are intentionally omitted: each foreground color code
-  # overrides the previous one without clearing underline, so an underline
-  # applied at the wrapper level carries through to every segment.
   pr_label="${git_branch_color}#${pr_number}${gray}:${pr_color}${pr_review_state}${reset}"
 
   if [[ -n "$pr_url" ]]; then
-    pr_display="\033]8;;${pr_url}\a${underline}${pr_label}\033]8;;\a"
+    pr_display=$(osc8_link "statusline-pr" "$pr_url" "$pr_label")
   else
     pr_display="$pr_label"
   fi
@@ -323,7 +336,7 @@ five_hour_pct_text="${five_hour_pct_int:--}"
 seven_day_pct_text="${seven_day_pct_int:--}"
 rate_limits_display="${five_hour_color}5h:${bold}${five_hour_pct_text}%${reset} ${gray}${five_hour_reset_display}${reset} ${seven_day_color}7d:${bold}${seven_day_pct_text}%${reset} ${gray}${seven_day_reset_display}${reset}"
 
-current_dir_link="\033]8;;file://${current_dir}\a${underline}${current_dir_display}\033]8;;\a"
+current_dir_link=$(osc8_link "statusline-dir" "file://${current_dir}" "$current_dir_display")
 line="${blue}${current_dir_link}${reset}"
 
 # Workspace decorations sit between the current dir and the branch chevron so
