@@ -77,11 +77,9 @@ output_style=$(echo "$input" | jq -r '.output_style.name // empty')
 # than by switching the global style.
 output_style_display="${output_style:-default}"
 
-added_dirs_basenames=$(echo "$input" | jq -r '.workspace.added_dirs // [] | map(. | split("/") | last) | join(",")')
+# Build later, once colors and the `underline` escape are in scope so each
+# added dir can render as its own clickable, underlined OSC 8 hyperlink.
 added_dirs_display=""
-if [[ -n "$added_dirs_basenames" ]]; then
-  added_dirs_display="+${added_dirs_basenames}"
-fi
 
 # Cache hit ratio for this turn's input tokens. A sustained drop means the
 # prompt prefix changed (TTL lapsed, CLAUDE.md edited, /compact ran, etc.)
@@ -143,16 +141,25 @@ if [[ "$git_branch_is_repo" == "true" ]] && command -v gh >/dev/null 2>&1; then
   # Anything else for this repo+branch just renders the existing cache.
   if [[ "$pr_cache_is_fresh" != "true" ]] && mkdir "$pr_lock_dir" 2>/dev/null; then
     (
+      # Ensure the lock is released even if the subshell exits early (signal,
+      # disk error, gh hang killed externally), so future refreshes aren't
+      # blocked by a stale lock dir.
+      trap 'rmdir "$pr_lock_dir" 2>/dev/null' EXIT
+
       fetched_at=$(date +%s)
+      pr_fetch_tmp="$pr_cache_file.fetch"
+      pr_write_tmp="$pr_cache_file.write"
 
-      if gh pr view --json number,reviewDecision,isDraft,url >"$pr_cache_file.tmp" 2>/dev/null; then
-        jq --argjson ts "$fetched_at" '. + {fetched_at: $ts}' "$pr_cache_file.tmp" > "$pr_cache_file"
-        rm -f "$pr_cache_file.tmp"
+      if gh pr view --json number,reviewDecision,isDraft,url >"$pr_fetch_tmp" 2>/dev/null; then
+        # Write to a separate tmp, then `mv` so readers never observe a
+        # partial JSON.
+        jq --argjson ts "$fetched_at" '. + {fetched_at: $ts}' "$pr_fetch_tmp" > "$pr_write_tmp" \
+          && mv "$pr_write_tmp" "$pr_cache_file"
+        rm -f "$pr_fetch_tmp" "$pr_write_tmp"
       else
-        printf '{"fetched_at": %s}\n' "$fetched_at" > "$pr_cache_file"
+        printf '{"fetched_at": %s}\n' "$fetched_at" > "$pr_write_tmp" \
+          && mv "$pr_write_tmp" "$pr_cache_file"
       fi
-
-      rmdir "$pr_lock_dir"
     ) &
   fi
 
@@ -160,9 +167,9 @@ if [[ "$git_branch_is_repo" == "true" ]] && command -v gh >/dev/null 2>&1; then
     pr_number=$(jq -r '.number // empty' "$pr_cache_file" 2>/dev/null)
 
     if [[ -n "$pr_number" ]]; then
-      pr_is_draft=$(jq -r '.isDraft // false' "$pr_cache_file")
-      pr_review_decision=$(jq -r '.reviewDecision // empty' "$pr_cache_file")
-      pr_url=$(jq -r '.url // empty' "$pr_cache_file")
+      pr_is_draft=$(jq -r '.isDraft // false' "$pr_cache_file" 2>/dev/null)
+      pr_review_decision=$(jq -r '.reviewDecision // empty' "$pr_cache_file" 2>/dev/null)
+      pr_url=$(jq -r '.url // empty' "$pr_cache_file" 2>/dev/null)
 
       if [[ "$pr_is_draft" == "true" ]]; then
         pr_review_state="draft"
@@ -226,7 +233,35 @@ cyan='\033[36m'
 magenta='\033[35m'
 red='\033[31m'
 gray='\033[90m'
+underline='\033[4m'
 reset='\033[0m'
+
+if [[ "$git_branch_is_repo" == "true" ]]; then
+  git_branch_color="$green"
+else
+  git_branch_color="$red"
+fi
+
+# Render each added dir as an independently clickable file:// hyperlink. The
+# label is just the basename to keep the statusline narrow; the full path lives
+# in the URL. Process-substitution (`< <(...)`) keeps the loop in the parent
+# shell so the accumulated string isn't lost in a subshell.
+added_dirs_first=true
+while IFS= read -r added_dir; do
+  if [[ -z "$added_dir" ]]; then
+    continue
+  fi
+
+  added_dir_basename=${added_dir##*/}
+  added_dir_link="\033]8;;file://${added_dir}\a${underline}${added_dir_basename}\033]8;;\a${reset}"
+
+  if $added_dirs_first; then
+    added_dirs_display="${blue}+${added_dir_link}"
+    added_dirs_first=false
+  else
+    added_dirs_display="${added_dirs_display}${gray},${blue}${added_dir_link}"
+  fi
+done < <(echo "$input" | jq -r '.workspace.added_dirs // [] | .[]')
 
 github_repo_display=""
 if [[ -n "$github_repo_owner" && -n "$github_repo_name" ]]; then
@@ -237,7 +272,7 @@ if [[ -n "$github_repo_owner" && -n "$github_repo_name" ]]; then
   # with the next color escape's leading backslash on concatenation.
   if [[ -n "$github_repo_host" ]]; then
     github_repo_url="https://${github_repo_host}/${github_repo_label}"
-    github_repo_display="\033]8;;${github_repo_url}\a${github_repo_label}\033]8;;\a"
+    github_repo_display="\033]8;;${github_repo_url}\a${underline}${github_repo_label}\033]8;;\a"
   else
     github_repo_display="$github_repo_label"
   fi
@@ -253,12 +288,15 @@ if [[ -n "$pr_number" ]]; then
     *)                 pr_color="$cyan" ;;
   esac
 
-  pr_label="#${pr_number}:${pr_review_state}"
+  # Inter-segment resets are intentionally omitted: each foreground color code
+  # overrides the previous one without clearing underline, so an underline
+  # applied at the wrapper level carries through to every segment.
+  pr_label="${git_branch_color}#${pr_number}${gray}:${pr_color}${pr_review_state}${reset}"
 
   if [[ -n "$pr_url" ]]; then
-    pr_display="${pr_color}\033]8;;${pr_url}\a${pr_label}\033]8;;\a${reset}"
+    pr_display="\033]8;;${pr_url}\a${underline}${pr_label}\033]8;;\a"
   else
-    pr_display="${pr_color}${pr_label}${reset}"
+    pr_display="$pr_label"
   fi
 fi
 
@@ -285,18 +323,24 @@ five_hour_pct_text="${five_hour_pct_int:--}"
 seven_day_pct_text="${seven_day_pct_int:--}"
 rate_limits_display="${five_hour_color}5h:${bold}${five_hour_pct_text}%${reset} ${gray}${five_hour_reset_display}${reset} ${seven_day_color}7d:${bold}${seven_day_pct_text}%${reset} ${gray}${seven_day_reset_display}${reset}"
 
-if [[ "$git_branch_is_repo" == "true" ]]; then
-  git_branch_color="$green"
-else
-  git_branch_color="$red"
+current_dir_link="\033]8;;file://${current_dir}\a${underline}${current_dir_display}\033]8;;\a"
+line="${blue}${current_dir_link}${reset}"
+
+# Workspace decorations sit between the current dir and the branch chevron so
+# they read as modifiers of the dir, not of the branch.
+if [[ -n "$project_divergence_display" ]]; then
+  line="${line} ${blue}${project_divergence_display}${reset}"
 fi
 
-current_dir_link="\033]8;;file://${current_dir}\a${current_dir_display}\033]8;;\a"
-line="${blue}${current_dir_link}${reset} ${gray}›${reset} ${git_branch_color}${git_branch}${reset}"
+if [[ -n "$added_dirs_display" ]]; then
+  line="${line} ${added_dirs_display}"
+fi
+
+line="${line} ${gray}›${reset} ${git_branch_color}${git_branch}${reset}"
 
 github_section=""
 if [[ -n "$github_repo_display" ]]; then
-  github_section="${gray}${github_repo_display}${reset}"
+  github_section="${blue}${github_repo_display}${reset}"
 fi
 
 if [[ -n "$pr_display" ]]; then
@@ -309,14 +353,6 @@ fi
 
 if [[ -n "$github_section" ]]; then
   line="${line} • ${github_section}"
-fi
-
-if [[ -n "$project_divergence_display" ]]; then
-  line="${line} ${blue}${project_divergence_display}${reset}"
-fi
-
-if [[ -n "$added_dirs_display" ]]; then
-  line="${line} ${blue}${added_dirs_display}${reset}"
 fi
 
 if [[ "$exceeds_200k" == "true" ]]; then
