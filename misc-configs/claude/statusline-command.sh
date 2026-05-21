@@ -103,6 +103,12 @@ if [[ -n "$cost_usd" ]]; then
   cost_display=$(printf '$%.2f' "$cost_usd")
 fi
 
+github_repo_owner=$(echo "$input" | jq -r '.workspace.repo.owner // empty')
+github_repo_name=$(echo "$input" | jq -r '.workspace.repo.name // empty')
+
+pr_number=$(echo "$input" | jq -r '.pr.number // empty')
+pr_review_state=$(echo "$input" | jq -r '.pr.review_state // empty')
+
 five_hour_pct=$(echo "$input" | jq -r '.rate_limits.five_hour.used_percentage // empty')
 five_hour_resets=$(echo "$input" | jq -r '.rate_limits.five_hour.resets_at // empty')
 seven_day_pct=$(echo "$input" | jq -r '.rate_limits.seven_day.used_percentage // empty')
@@ -153,6 +159,25 @@ red='\033[31m'
 gray='\033[90m'
 reset='\033[0m'
 
+github_repo_display=""
+if [[ -n "$github_repo_owner" && -n "$github_repo_name" ]]; then
+  github_repo_display="${github_repo_owner}/${github_repo_name}"
+fi
+
+pr_display=""
+if [[ -n "$pr_number" ]]; then
+  case "$pr_review_state" in
+    approved)          pr_color="$green" ;;
+    changes_requested) pr_color="$red" ;;
+    pending)           pr_color="$yellow" ;;
+    draft)             pr_color="$gray" ;;
+    *)                 pr_color="$cyan" ;;
+  esac
+
+  pr_state_label="${pr_review_state:-open}"
+  pr_display="${pr_color}#${pr_number} ${pr_state_label}${reset}"
+fi
+
 rate_limit_color() {
   local pct=$1
 
@@ -183,6 +208,14 @@ else
 fi
 
 line="${blue}${current_dir_display}${reset}:${git_branch_color}${git_branch}${reset}"
+
+if [[ -n "$github_repo_display" ]]; then
+  line="${line} ${gray}${github_repo_display}${reset}"
+fi
+
+if [[ -n "$pr_display" ]]; then
+  line="${line} ${pr_display}"
+fi
 
 if [[ -n "$project_divergence_display" ]]; then
   line="${line} ${blue}${project_divergence_display}${reset}"
