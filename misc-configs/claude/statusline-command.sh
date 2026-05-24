@@ -12,6 +12,7 @@ LC_ALL=C  # stable decimal separator for printf '$%.2f' across locales
 
 SHOW_CACHE_AND_COST=false
 SHOW_SESSION_ID=false
+SHOW_ADVISOR=false
 
 # Colors
 bold='\033[1m'
@@ -416,7 +417,12 @@ else
   tokens_used_prefix=""
 fi
 
-line="${line} • ${cyan}${model}${reset} ${gray}advisor:${reset}${cyan}?${reset} • ${bold}${tokens_used_color}${tokens_used_prefix}${tokens_k}k${reset}/${context_k}k ${gray}${context_pct}%${reset} • ${gray}effort:${reset}${bold}${cyan}${effort_level}${reset} ${gray}thinking:${reset}${bold}${cyan}${thinking_display}${reset}"
+advisor_display=""
+if [[ "$SHOW_ADVISOR" == "true" ]]; then
+  advisor_display=" ${gray}advisor:${reset}${cyan}?${reset}"
+fi
+
+line="${line} • ${cyan}${model}${reset}${advisor_display} • ${bold}${tokens_used_color}${tokens_used_prefix}${tokens_k}k${reset}/${context_k}k ${gray}${context_pct}%${reset} • ${gray}effort:${reset}${bold}${cyan}${effort_level}${reset} ${gray}thinking:${reset}${bold}${cyan}${thinking_display}${reset}"
 
 line="${line} ${gray}style:${reset}${bold}${cyan}${output_style_display}${reset}"
 
