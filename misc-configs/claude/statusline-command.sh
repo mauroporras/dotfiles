@@ -48,11 +48,22 @@ model=$(echo "$input" | jq -r '.model.display_name')
 model=${model% (1M context)}
 effort_level=$(echo "$input" | jq -r '.effort.level // "?"')
 thinking_enabled=$(echo "$input" | jq -r '.thinking.enabled // false')
+fast_mode_enabled=$(echo "$input" | jq -r '.fast_mode // false')
 
 if [[ "$thinking_enabled" == "true" ]]; then
   thinking_display="on"
+  thinking_color="$green"
 else
   thinking_display="off"
+  thinking_color="$gray"
+fi
+
+if [[ "$fast_mode_enabled" == "true" ]]; then
+  fast_mode_display="on"
+  fast_mode_color="$green"
+else
+  fast_mode_display="off"
+  fast_mode_color="$gray"
 fi
 
 # Debug: uncomment to see raw input
@@ -422,7 +433,7 @@ if [[ "$SHOW_ADVISOR" == "true" ]]; then
   advisor_display=" ${gray}advisor:${reset}${cyan}?${reset}"
 fi
 
-line="${line} • ${cyan}${model}${reset}${advisor_display} • ${bold}${tokens_used_color}${tokens_used_prefix}${tokens_k}k${reset}/${context_k}k ${gray}${context_pct}%${reset} • ${gray}effort:${reset}${bold}${cyan}${effort_level}${reset} ${gray}thinking:${reset}${bold}${cyan}${thinking_display}${reset}"
+line="${line} • ${cyan}${model}${reset}${advisor_display} • ${bold}${tokens_used_color}${tokens_used_prefix}${tokens_k}k${reset}/${context_k}k ${gray}${context_pct}%${reset} • ${gray}effort:${reset}${bold}${cyan}${effort_level}${reset} ${gray}thinking:${reset}${bold}${thinking_color}${thinking_display}${reset} ${gray}fast:${reset}${bold}${fast_mode_color}${fast_mode_display}${reset}"
 
 line="${line} ${gray}style:${reset}${bold}${cyan}${output_style_display}${reset}"
 
