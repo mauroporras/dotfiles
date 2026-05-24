@@ -1,6 +1,31 @@
 {
   "permissions": {
-    "allow": [],
+    "allow": [
+      "Bash(brew info *)",
+      "Bash(brew list *)",
+      "Bash(brew search:*)",
+      "Bash(cat:*)",
+      "Bash(claude --version)",
+      "Bash(date:*)",
+      "Bash(find:*)",
+      "Bash(git log *)",
+      "Bash(git ls-tree:*)",
+      "Bash(git mv:*)",
+      "Bash(git show:*)",
+      "Bash(grep:*)",
+      "Bash(ls:*)",
+      "Bash(node --version:*)",
+      "Bash(npm --version:*)",
+      "Bash(npm root *)",
+      "Bash(task format:changed)",
+      "Bash(tree:*)",
+
+      "WebSearch",
+      "WebFetch(domain:docs.anthropic.com)",
+      "WebFetch(domain:docs.claude.com)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)"
+    ],
     "deny": [],
     "ask": [],
     "additionalDirectories": [
