@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [],
+    "deny": [],
+    "ask": [],
+    "additionalDirectories": [
+      "/tmp"
+    ]
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "task format:changed"
+          }
+        ]
+      }
+    ]
+  }
+}
