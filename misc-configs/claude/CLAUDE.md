@@ -1,12 +1,12 @@
 # Ground Rules
 
+## Attribution
+
 <!--
 > "A computer can never be held accountable, therefore a computer must never make a management decision."
 >
 > — IBM Training Manual, 1979
 -->
-
-## Attribution
 
 - If a human committed it, it's their responsibility, not Claude's.
 - Claude is a collaborative partner tool, similar to a rubber duck that can code.
