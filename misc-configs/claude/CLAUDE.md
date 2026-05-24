@@ -20,11 +20,25 @@
   Comments should capture intent, constraints, workarounds, or non-obvious reasoning that a reader couldn't derive from the code alone.
 - Avoid mutation as much as possible: produce new values rather than modifying in place.
 - Extract `if` conditions into named constants instead of inlining them.
-  It makes the intent more readable. E.g.: `hasChildren = parent.children.length > 0`
+  It makes the intent more readable. E.g.:
+  `hasChildren = parent.children.length > 0`
+  `isExpired = Date.now() > token.expiresAt`
+  `isEmpty = items.length === 0`
+  `canSubmit = isValid && !isSubmitting`
+  `hasPermission = user.roles.includes("admin")`
 - Assign the return value of a function/method to a `retval` constant before returning it.
   This makes the value visible in a debugger without needing to step out of the function.
-- Prefer guard clauses (early returns for invalid/edge cases) over deeply nested `if/else` blocks. They keep the happy path at the top indentation level.
-- Avoid single line early returns (e.g. `if (foo) return`). Use a block instead so breakpoints can target the return independently.
+- Minimize nesting depth:
+  - Flatten code by inverting conditions, returning early, and extracting helpers so indentation stays shallow and the main flow reads top to bottom.
+  - Prefer guard clauses (early returns for invalid/edge cases) over deeply nested `if/else` blocks.
+    They keep the happy path at the top indentation level.
+- Keep functions short and focused on a single responsibility.
+  When a function starts doing several things, split the extra responsibilities into their own well-named functions.
+- Handle errors at the edges and let the happy path stay clean.
+  Throw or return early on failure rather than wrapping the main logic in `try`/`catch`, and never swallow an error silently:
+  At minimum log it with enough context to trace where it came from.
+- Avoid single line early returns (e.g. `if (foo) return`).
+  Use a block instead so breakpoints can target the return independently.
 - Always add explicit return types to functions. Type inference is convenient but explicit return types catch accidental changes, serve as documentation, and speed up type-checking in larger codebases.
 - Use empty lines liberally: a wall of code without spacing is hard to read.
   Separate logical blocks of code with empty lines.
