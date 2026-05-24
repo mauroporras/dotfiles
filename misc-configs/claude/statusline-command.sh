@@ -130,6 +130,14 @@ output_style=$(echo "$input" | jq -r '.output_style.name // empty')
 # than by switching the global style.
 output_style_display="${output_style:-default}"
 
+# Mute the default style so it reads as "nothing special set", and only let a
+# deliberately-chosen style stand out in cyan.
+if [[ "$output_style_display" == "default" ]]; then
+  output_style_color="$gray"
+else
+  output_style_color="$cyan"
+fi
+
 added_dirs_display=""
 
 cache_display=""
@@ -435,7 +443,7 @@ fi
 
 line="${line} • ${cyan}${model}${reset}${advisor_display} • ${bold}${tokens_used_color}${tokens_used_prefix}${tokens_k}k${reset}/${context_k}k ${gray}${context_pct}%${reset} • ${gray}effort:${reset}${bold}${cyan}${effort_level}${reset} ${gray}thinking:${reset}${bold}${thinking_color}${thinking_display}${reset} ${gray}fast:${reset}${bold}${fast_mode_color}${fast_mode_display}${reset}"
 
-line="${line} ${gray}style:${reset}${bold}${cyan}${output_style_display}${reset}"
+line="${line} ${gray}style:${reset}${bold}${output_style_color}${output_style_display}${reset}"
 
 line="${line} • ${rate_limits_display}"
 
