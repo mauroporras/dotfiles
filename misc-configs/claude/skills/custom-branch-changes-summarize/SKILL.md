@@ -16,6 +16,11 @@ model: claude-haiku-4-5
 
 Summarize the changes purely based on the code (do not check the branch name, linked GitHub issues, PR descriptions, or any other contextual clues).
 
+REQUIRED:
+
+- Prioritize brevity over grammar:
+  Keep messages short, even if grammatically imperfect
+
 NEVER:
 
 - Run additional Git commands
