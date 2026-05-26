@@ -1,15 +1,15 @@
 ---
 disable-model-invocation: true
-allowed-tools: Read
+allowed-tools: Read, Bash(git --no-pager log:*), Bash(git --no-pager diff:*)
 ---
 
 # Get familiar with the current branch's changes
 
 ## Context
 
-- Commits on this branch: !`git log origin/HEAD..HEAD --oneline`
-- List of changed files: !`git diff origin/HEAD...HEAD --stat`
-- Full diff: !`git diff origin/HEAD...HEAD`
+- Commits on this branch: !`git --no-pager log origin/HEAD..HEAD --oneline`
+- List of changed files: !`git --no-pager diff origin/HEAD...HEAD --stat`
+- Full diff: !`git --no-pager diff origin/HEAD...HEAD`
 
 ## Your task
 

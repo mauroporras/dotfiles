@@ -2,7 +2,7 @@
 disable-model-invocation: true
 context: fork
 argument-hint: [issue-number]
-allowed-tools: Bash(git commit:*)
+allowed-tools: Bash(git commit:*), Bash(git --no-pager diff:*)
 model: claude-haiku-4-5
 ---
 
@@ -10,7 +10,7 @@ model: claude-haiku-4-5
 
 ## Context
 
-- Current staged changes only: !`git diff --staged`
+- Current staged changes only: !`git --no-pager diff --staged`
 - Issue number argument (empty if none): `$ARGUMENTS`
 
 ## Your task

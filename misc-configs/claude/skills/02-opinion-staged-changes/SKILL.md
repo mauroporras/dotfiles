@@ -1,13 +1,13 @@
 ---
 disable-model-invocation: true
-allowed-tools: Read
+allowed-tools: Read, Bash(git --no-pager diff:*)
 ---
 
 # Opinion on STAGED changes
 
 ## Context
 
-- Current staged changes only: !`git diff --staged`
+- Current staged changes only: !`git --no-pager diff --staged`
 
 ## Your task
 

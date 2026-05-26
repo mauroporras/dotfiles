@@ -1,7 +1,7 @@
 ---
 disable-model-invocation: true
 context: fork
-allowed-tools: Bash(git checkout:*)
+allowed-tools: Bash(git checkout:*), Bash(git --no-pager diff:*)
 model: claude-haiku-4-5
 ---
 
@@ -9,7 +9,7 @@ model: claude-haiku-4-5
 
 ## Context
 
-- Current Git diff (staged changes only): !`git diff --staged`
+- Current Git diff (staged changes only): !`git --no-pager diff --staged`
 
 ## Your task
 
