@@ -42,14 +42,15 @@ mkdir -p .claude
 ln -sf ~/dotfiles/misc-configs/claude/CLAUDE.md .claude/CLAUDE.md
 # Linked individually (not the whole dir) to allow third-party skills alongside ours.
 mkdir -p .claude/skills
-ln -sfn ~/dotfiles/misc-configs/claude/skills/00-reminder .claude/skills/00-reminder
-ln -sfn ~/dotfiles/misc-configs/claude/skills/01-commit-staged-dont-push .claude/skills/01-commit-staged-dont-push
-ln -sfn ~/dotfiles/misc-configs/claude/skills/02-opinion-staged-changes .claude/skills/02-opinion-staged-changes
-ln -sfn ~/dotfiles/misc-configs/claude/skills/03-familiarize-branch-changes .claude/skills/03-familiarize-branch-changes
-ln -sfn ~/dotfiles/misc-configs/claude/skills/04-summarize-unresolved-pr-comments .claude/skills/04-summarize-unresolved-pr-comments
-ln -sfn ~/dotfiles/misc-configs/claude/skills/05-create-branch-staged .claude/skills/05-create-branch-staged
-ln -sfn ~/dotfiles/misc-configs/claude/skills/06-explain-code .claude/skills/06-explain-code
-ln -sfn ~/dotfiles/misc-configs/claude/skills/07-guess-whats-next .claude/skills/07-guess-whats-next
+ln -sfn ~/dotfiles/misc-configs/claude/skills/custom-reminder .claude/skills/custom-reminder
+ln -sfn ~/dotfiles/misc-configs/claude/skills/custom-commit-staged-dont-push .claude/skills/custom-commit-staged-dont-push
+ln -sfn ~/dotfiles/misc-configs/claude/skills/custom-commit-staged-push .claude/skills/custom-commit-staged-push
+ln -sfn ~/dotfiles/misc-configs/claude/skills/custom-opinion-staged-changes .claude/skills/custom-opinion-staged-changes
+ln -sfn ~/dotfiles/misc-configs/claude/skills/custom-familiarize-branch-changes .claude/skills/custom-familiarize-branch-changes
+ln -sfn ~/dotfiles/misc-configs/claude/skills/custom-summarize-unresolved-pr-comments .claude/skills/custom-summarize-unresolved-pr-comments
+ln -sfn ~/dotfiles/misc-configs/claude/skills/custom-create-branch-staged .claude/skills/custom-create-branch-staged
+ln -sfn ~/dotfiles/misc-configs/claude/skills/custom-explain-code .claude/skills/custom-explain-code
+ln -sfn ~/dotfiles/misc-configs/claude/skills/custom-guess-whats-next .claude/skills/custom-guess-whats-next
 # Status line
 ln -sf ~/dotfiles/misc-configs/claude/statusline-command.sh .claude/statusline-command.sh
 # Copied (not symlinked) because Claude Code modifies settings.json at runtime.
