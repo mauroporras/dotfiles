@@ -42,15 +42,16 @@ mkdir -p .claude
 ln -sf ~/dotfiles/misc-configs/claude/CLAUDE.md .claude/CLAUDE.md
 # Linked individually (not the whole dir) to allow third-party skills alongside ours.
 mkdir -p .claude/skills
-ln -sfn ~/dotfiles/misc-configs/claude/skills/custom-reminder .claude/skills/custom-reminder
-ln -sfn ~/dotfiles/misc-configs/claude/skills/custom-commit-staged-dont-push .claude/skills/custom-commit-staged-dont-push
-ln -sfn ~/dotfiles/misc-configs/claude/skills/custom-commit-staged-push .claude/skills/custom-commit-staged-push
-ln -sfn ~/dotfiles/misc-configs/claude/skills/custom-opinion-staged-changes .claude/skills/custom-opinion-staged-changes
-ln -sfn ~/dotfiles/misc-configs/claude/skills/custom-familiarize-branch-changes .claude/skills/custom-familiarize-branch-changes
-ln -sfn ~/dotfiles/misc-configs/claude/skills/custom-summarize-unresolved-pr-comments .claude/skills/custom-summarize-unresolved-pr-comments
-ln -sfn ~/dotfiles/misc-configs/claude/skills/custom-create-branch-staged .claude/skills/custom-create-branch-staged
+ln -sfn ~/dotfiles/misc-configs/claude/skills/custom-branch-changes-analize .claude/skills/custom-branch-changes-analize
+ln -sfn ~/dotfiles/misc-configs/claude/skills/custom-branch-changes-summarize .claude/skills/custom-branch-changes-summarize
 ln -sfn ~/dotfiles/misc-configs/claude/skills/custom-explain-code .claude/skills/custom-explain-code
 ln -sfn ~/dotfiles/misc-configs/claude/skills/custom-guess-whats-next .claude/skills/custom-guess-whats-next
+ln -sfn ~/dotfiles/misc-configs/claude/skills/custom-reminder .claude/skills/custom-reminder
+ln -sfn ~/dotfiles/misc-configs/claude/skills/custom-staged-commit-dont-push .claude/skills/custom-staged-commit-dont-push
+ln -sfn ~/dotfiles/misc-configs/claude/skills/custom-staged-commit-push .claude/skills/custom-staged-commit-push
+ln -sfn ~/dotfiles/misc-configs/claude/skills/custom-staged-create-branch .claude/skills/custom-staged-create-branch
+ln -sfn ~/dotfiles/misc-configs/claude/skills/custom-staged-summarize .claude/skills/custom-staged-summarize
+ln -sfn ~/dotfiles/misc-configs/claude/skills/custom-unresolved-pr-comments-summarize .claude/skills/custom-unresolved-pr-comments-summarize
 # Status line
 ln -sf ~/dotfiles/misc-configs/claude/statusline-command.sh .claude/statusline-command.sh
 # Copied (not symlinked) because Claude Code modifies settings.json at runtime.
