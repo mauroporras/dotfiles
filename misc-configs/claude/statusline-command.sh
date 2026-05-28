@@ -35,9 +35,9 @@ if ! printf '%s' "$input" | jq -e . >/dev/null 2>&1; then
 fi
 
 current_dir=$(echo "$input" | jq -r '.workspace.current_dir')
-current_dir_display=${current_dir/#$HOME/\~}
+current_dir_display=${current_dir##*/}
 project_dir=$(echo "$input" | jq -r '.workspace.project_dir // empty')
-project_dir_display=${project_dir/#$HOME/\~}
+project_dir_display=${project_dir##*/}
 
 project_divergence_display=""
 if [[ -n "$project_dir_display" && "$project_dir_display" != "$current_dir_display" ]]; then
