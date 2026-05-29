@@ -17,6 +17,8 @@ Based on the above STAGED changes, create a new branch with a descriptive name.
 
 ALWAYS:
 
+- Prioritize brevity over grammar:
+  Keep the branch name short, even if grammatically imperfect
 - Use one of the following prefixes based on the type of change:
   - build/some-build-change
   - chore/some-chore
