@@ -1,7 +1,7 @@
 ---
 disable-model-invocation: true
 context: fork
-argument-hint: [wip] [push] [issue-number]
+argument-hint: [push] [wip] [issue-number]
 allowed-tools: Bash(git commit:*), Bash(git --no-pager diff:*), Bash(git push:*), Bash(git rev-parse:*)
 model: claude-haiku-4-5
 ---
