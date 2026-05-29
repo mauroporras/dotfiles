@@ -13,6 +13,7 @@ LC_ALL=C  # stable decimal separator for printf '$%.2f' across locales
 SHOW_CACHE_AND_COST=false
 SHOW_SESSION_ID=false
 SHOW_ADVISOR=false
+SHOW_CONTEXT_PCT=false
 
 # Colors
 bold='\033[1m'
@@ -441,7 +442,12 @@ if [[ "$SHOW_ADVISOR" == "true" ]]; then
   advisor_display=" ${gray}advisor:${reset}${cyan}?${reset}"
 fi
 
-line="${line} • ${cyan}${model}${reset}${advisor_display} • ${bold}${tokens_used_color}${tokens_used_prefix}${tokens_k}k${reset}/${context_k}k ${gray}${context_pct}%${reset} • ${gray}effort:${reset}${bold}${cyan}${effort_level}${reset} ${gray}thinking:${reset}${bold}${thinking_color}${thinking_display}${reset} ${gray}fast:${reset}${bold}${fast_mode_color}${fast_mode_display}${reset}"
+context_pct_display=""
+if [[ "$SHOW_CONTEXT_PCT" == "true" ]]; then
+  context_pct_display=" ${gray}${context_pct}%${reset}"
+fi
+
+line="${line} • ${cyan}${model}${reset}${advisor_display} • ${bold}${tokens_used_color}${tokens_used_prefix}${tokens_k}k${reset}/${context_k}k${context_pct_display} • ${gray}effort:${reset}${bold}${cyan}${effort_level}${reset} ${gray}thinking:${reset}${bold}${thinking_color}${thinking_display}${reset} ${gray}fast:${reset}${bold}${fast_mode_color}${fast_mode_display}${reset}"
 
 line="${line} ${gray}style:${reset}${bold}${output_style_color}${output_style_display}${reset}"
 
