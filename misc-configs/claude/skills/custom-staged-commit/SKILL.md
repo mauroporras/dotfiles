@@ -30,7 +30,7 @@ REQUIRED:
   Conventional commits format, e.g. `type(scope): description`.
   Prioritize brevity over grammar:
   Keep messages short, even if grammatically imperfect
-- Wip: when the `wip` token is present:
+- WIP: when the `wip` token is present:
   - Subject line MUST be `WIP(<current-branch>): <description>`, using the current branch shown above as the scope and a brief conventional-style description of the staged changes.
   - Pass `--no-verify` to `git commit`.
 - Body: include if and only if an issue number is present.
