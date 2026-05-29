@@ -42,7 +42,7 @@ mkdir -p .claude
 ln -sf ~/dotfiles/misc-configs/claude/CLAUDE.md .claude/CLAUDE.md
 # Linked individually (not the whole dir) to allow third-party skills alongside ours.
 mkdir -p .claude/skills
-ln -sfn ~/dotfiles/misc-configs/claude/skills/custom-branch-changes-analize .claude/skills/custom-branch-changes-analize
+ln -sfn ~/dotfiles/misc-configs/claude/skills/custom-branch-changes-analyze .claude/skills/custom-branch-changes-analyze
 ln -sfn ~/dotfiles/misc-configs/claude/skills/custom-branch-changes-summarize .claude/skills/custom-branch-changes-summarize
 ln -sfn ~/dotfiles/misc-configs/claude/skills/custom-explain-code .claude/skills/custom-explain-code
 ln -sfn ~/dotfiles/misc-configs/claude/skills/custom-guess-whats-next .claude/skills/custom-guess-whats-next
