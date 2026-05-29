@@ -47,8 +47,7 @@ ln -sfn ~/dotfiles/misc-configs/claude/skills/custom-branch-changes-summarize .c
 ln -sfn ~/dotfiles/misc-configs/claude/skills/custom-explain-code .claude/skills/custom-explain-code
 ln -sfn ~/dotfiles/misc-configs/claude/skills/custom-guess-whats-next .claude/skills/custom-guess-whats-next
 ln -sfn ~/dotfiles/misc-configs/claude/skills/custom-reminder .claude/skills/custom-reminder
-ln -sfn ~/dotfiles/misc-configs/claude/skills/custom-staged-commit-dont-push .claude/skills/custom-staged-commit-dont-push
-ln -sfn ~/dotfiles/misc-configs/claude/skills/custom-staged-commit-push .claude/skills/custom-staged-commit-push
+ln -sfn ~/dotfiles/misc-configs/claude/skills/custom-staged-commit .claude/skills/custom-staged-commit
 ln -sfn ~/dotfiles/misc-configs/claude/skills/custom-staged-create-branch .claude/skills/custom-staged-create-branch
 ln -sfn ~/dotfiles/misc-configs/claude/skills/custom-staged-summarize .claude/skills/custom-staged-summarize
 ln -sfn ~/dotfiles/misc-configs/claude/skills/custom-unresolved-pr-comments-summarize .claude/skills/custom-unresolved-pr-comments-summarize
