@@ -14,6 +14,7 @@ SHOW_CACHE_AND_COST=false
 SHOW_SESSION_ID=false
 SHOW_ADVISOR=false
 SHOW_CONTEXT_PCT=false
+SHOW_VERSION=false
 
 # Colors
 bold='\033[1m'
@@ -124,7 +125,10 @@ fi
 # to the long-context pricing tier (~2x input, ~1.5x output), so we surface it
 # as a tripwire rather than a generic threshold.
 exceeds_200k=$(echo "$input" | jq -r '.exceeds_200k_tokens // false')
-claude_version=$(echo "$input" | jq -r '.version // empty')
+claude_version=""
+if [[ "$SHOW_VERSION" == "true" ]]; then
+  claude_version=$(echo "$input" | jq -r '.version // empty')
+fi
 output_style=$(echo "$input" | jq -r '.output_style.name // empty')
 
 # Depth can also be requested in-conversation ("walk me through why ...") rather
