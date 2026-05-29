@@ -3,7 +3,7 @@ disable-model-invocation: true
 context: fork
 argument-hint: [push] [issue-number]
 allowed-tools: Bash(git commit:*), Bash(git --no-pager diff:*), Bash(git push:*), Bash(git rev-parse:*)
-model: claude-haiku-4-5
+model: haiku
 ---
 
 # Commit STAGED changes, optionally push

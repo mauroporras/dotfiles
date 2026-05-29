@@ -1,6 +1,6 @@
 ---
 disable-model-invocation: true
-model: claude-haiku-4-5
+model: haiku
 ---
 
 # Reminder before continuing
