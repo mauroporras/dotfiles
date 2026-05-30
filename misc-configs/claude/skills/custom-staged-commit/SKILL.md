@@ -53,6 +53,7 @@ After committing (and pushing, if requested), report the result using EXACTLY th
 Branch: <current branch, from the Context above>
 Commit: <short commit hash, from the `git commit` output>
 Message: <the commit subject you generated>
+Pushed: <Yes if you pushed, No otherwise>
 ```
 
 Derive every field from data already available (the Context branch and the `git commit` output). Do not run extra commands to populate it.
