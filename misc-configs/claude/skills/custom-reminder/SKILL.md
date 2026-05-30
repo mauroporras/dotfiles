@@ -1,6 +1,5 @@
 ---
 disable-model-invocation: true
-model: haiku
 ---
 
 # Reminder before continuing
