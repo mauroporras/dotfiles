@@ -2,7 +2,7 @@
 disable-model-invocation: true
 context: fork
 argument-hint: [push] [issue-number]
-allowed-tools: Bash(git --no-pager diff:*), Bash(git rev-parse:*), Bash(git commit:*), Bash(git push:*)
+allowed-tools: Bash(git --no-pager diff:*), Bash(git rev-parse:*), Bash(git remote get-url:*), Bash(git commit:*), Bash(git push:*)
 model: haiku
 ---
 
@@ -12,6 +12,7 @@ model: haiku
 
 - Current staged changes only: !`git --no-pager diff --staged`
 - Current branch: !`git rev-parse --abbrev-ref HEAD`
+- Remote URL: !`git remote get-url origin`
 - Arguments (issue number and/or `push`, empty if none): `$ARGUMENTS`
 
 ## Your task
@@ -54,6 +55,16 @@ Message: <the commit subject you generated>
 Branch: <current branch, from the Context above>
 Commit: <short commit hash, from the `git commit` output>
 Pushed: <Yes if you pushed, No otherwise>
+URL: <GitHub commit URL, only when Pushed is Yes; omit this line otherwise>
 ```
 
-Derive every field from data already available (the Context branch and the `git commit` output). Do not run extra commands to populate it.
+Derive every field from data already available (the Context branch, the Context remote URL, and the `git commit` output). Do not run extra commands to populate it.
+
+Build the `URL` field from the Context remote URL and the commit hash:
+
+- Normalize the remote to `https://github.com/<owner>/<repo>`:
+  - SSH (`git@github.com:<owner>/<repo>.git`) becomes `https://github.com/<owner>/<repo>`.
+  - HTTPS (`https://github.com/<owner>/<repo>.git`) becomes `https://github.com/<owner>/<repo>`.
+  - Strip any trailing `.git`.
+- Append `/commit/<short commit hash>`.
+- Only emit `URL` when you pushed (an unpushed commit 404s on GitHub) and the remote is a GitHub remote; omit the line otherwise.
