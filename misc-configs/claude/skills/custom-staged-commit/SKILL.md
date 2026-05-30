@@ -52,7 +52,7 @@ After committing (and pushing, if requested), report the result using EXACTLY th
 
 ```bash
 Subject: <the commit subject you generated>
-Body: <the commit body if you added one (e.g. `Close #72`), None otherwise>
+Body: <the commit body if you added one (e.g. `Close #72`); omit this line otherwise>
 Branch: <current branch, from the Context above>
 Commit: <short commit hash, from the `git commit` output>
 Pushed: <GitHub commit URL if you pushed to a GitHub remote, No otherwise>
