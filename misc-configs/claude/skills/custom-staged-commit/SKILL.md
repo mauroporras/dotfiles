@@ -54,17 +54,17 @@ After committing (and pushing, if requested), report the result using EXACTLY th
 Message: <the commit subject you generated>
 Branch: <current branch, from the Context above>
 Commit: <short commit hash, from the `git commit` output>
-Pushed: <Yes if you pushed, No otherwise>
-URL: <GitHub commit URL, only when Pushed is Yes; omit this line otherwise>
+Pushed: <GitHub commit URL if you pushed to a GitHub remote, No otherwise>
 ```
 
 Derive every field from data already available (the Context branch, the Context remote URL, and the `git commit` output). Do not run extra commands to populate it.
 
-Build the `URL` field from the Context remote URL and the commit hash:
+Build the `Pushed` field as follows:
 
-- Normalize the remote to `https://github.com/<owner>/<repo>`:
-  - SSH (`git@github.com:<owner>/<repo>.git`) becomes `https://github.com/<owner>/<repo>`.
-  - HTTPS (`https://github.com/<owner>/<repo>.git`) becomes `https://github.com/<owner>/<repo>`.
-  - Strip any trailing `.git`.
-- Append `/commit/<short commit hash>`.
-- Only emit `URL` when you pushed (an unpushed commit 404s on GitHub) and the remote is a GitHub remote; omit the line otherwise.
+- If you did not push, the value is `No`.
+- If you pushed to a GitHub remote, the value is the GitHub commit URL:
+  - Normalize the Context remote URL to `https://github.com/<owner>/<repo>`:
+    - SSH (`git@github.com:<owner>/<repo>.git`) becomes `https://github.com/<owner>/<repo>`.
+    - HTTPS (`https://github.com/<owner>/<repo>.git`) becomes `https://github.com/<owner>/<repo>`.
+    - Strip any trailing `.git`.
+  - Append `/commit/<short commit hash>`.
