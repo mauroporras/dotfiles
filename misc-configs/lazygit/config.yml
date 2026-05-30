@@ -7,6 +7,8 @@ gui:
   timeFormat: "2006-01-02 15:04"
   shortTimeFormat: "15:04"
   nerdFontsVersion: "3"
+  # Match Git's 7-char short hash after committing.
+  commitHashLength: 7
   branchColorPatterns:
     "^alpha$": cyan
     "^main$": cyan
