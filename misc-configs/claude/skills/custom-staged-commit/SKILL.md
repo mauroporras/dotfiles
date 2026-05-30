@@ -50,9 +50,9 @@ NEVER:
 After committing (and pushing, if requested), report the result using EXACTLY this format, one field per line and nothing else:
 
 ```bash
+Message: <the commit subject you generated>
 Branch: <current branch, from the Context above>
 Commit: <short commit hash, from the `git commit` output>
-Message: <the commit subject you generated>
 Pushed: <Yes if you pushed, No otherwise>
 ```
 
