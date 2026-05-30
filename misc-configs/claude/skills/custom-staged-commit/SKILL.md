@@ -51,7 +51,7 @@ NEVER:
 After committing (and pushing, if requested), report the result using EXACTLY this format, one field per line and nothing else:
 
 ```bash
-Message: <the commit subject you generated>
+Subject: <the commit subject you generated>
 Body: <the commit body if you added one (e.g. `Close #72`), None otherwise>
 Branch: <current branch, from the Context above>
 Commit: <short commit hash, from the `git commit` output>
