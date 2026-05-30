@@ -1,6 +1,7 @@
 ---
 disable-model-invocation: true
 argument-hint: [file or code]
+allowed-tools: Read
 ---
 
 # Explain code with visual diagrams and analogies
