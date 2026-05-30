@@ -55,14 +55,14 @@ Subject: <the commit subject you generated>
 Body: <the commit body if you added one (e.g. `Close #72`); omit this line otherwise>
 Branch: <current branch, from the Context above>
 Commit: <short commit hash, from the `git commit` output>
-Pushed: <GitHub commit URL if you pushed to a GitHub remote, No otherwise>
+Pushed to: <GitHub commit URL; include this line only when you pushed to a GitHub remote, omit it otherwise>
 ```
 
 Derive every field from data already available (the Context branch, the Context remote URL, and the `git commit` output). Do not run extra commands to populate it.
 
-Build the `Pushed` field as follows:
+Build the `Pushed to` field as follows:
 
-- If you did not push, the value is `No`.
+- If you did not push, omit the `Pushed to` line entirely.
 - If you pushed to a GitHub remote, the value is the GitHub commit URL:
   - Normalize the Context remote URL to `https://github.com/<owner>/<repo>`:
     - SSH (`git@github.com:<owner>/<repo>.git`) becomes `https://github.com/<owner>/<repo>`.
