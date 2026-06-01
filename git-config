@@ -86,7 +86,7 @@ git config --global alias.bir 'bisect reset'
 git config --global alias.ci 'commit'
 git config --global alias.cip '!git commit && git push'
 git config --global alias.current-branch '!git rev-parse --abbrev-ref HEAD'
-git config --global alias.wip '!git commit --no-verify -m WIP:\ $(git current-branch)'
+git config --global alias.wip '!git commit --no-verify -m WIP\($(git current-branch)\)'
 git config --global alias.wipp '!git wip && git push'
 
 git config --global alias.wta 'worktree add'
