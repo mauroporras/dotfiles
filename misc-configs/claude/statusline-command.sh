@@ -451,11 +451,11 @@ if [[ "$SHOW_CONTEXT_PCT" == "true" ]]; then
   context_pct_display=" ${gray}${context_pct}%${reset}"
 fi
 
-line="${line} • ${cyan}${model}${reset}${advisor_display} • ${bold}${tokens_used_color}${tokens_used_prefix}${tokens_k}k${reset}/${context_k}k${context_pct_display} • ${gray}effort:${reset}${bold}${cyan}${effort_level}${reset} ${gray}thinking:${reset}${bold}${thinking_color}${thinking_display}${reset} ${gray}fast:${reset}${bold}${fast_mode_color}${fast_mode_display}${reset}"
+line="${line} • ${cyan}${model}${reset} ${bold}${tokens_used_color}${tokens_used_prefix}${tokens_k}k${reset}/${context_k}k${context_pct_display}${advisor_display} ${gray}effort:${reset}${bold}${cyan}${effort_level}${reset} ${gray}thinking:${reset}${bold}${thinking_color}${thinking_display}${reset} ${gray}fast:${reset}${bold}${fast_mode_color}${fast_mode_display}${reset}"
 
 line="${line} ${gray}style:${reset}${bold}${output_style_color}${output_style_display}${reset}"
 
-line="${line} • ${rate_limits_display}"
+line="${line} ${rate_limits_display}"
 
 if [[ -n "$cache_display" ]]; then
   line="${line} • ${cache_display}"
