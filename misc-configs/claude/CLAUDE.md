@@ -60,6 +60,11 @@
   }
   ```
 
+### Logging
+
+- When adding console logs, prefix the message with `---------- WITNESSME`.
+  This makes temporary debug logs easy to spot and grep out before committing.
+
 ### Error Handling
 
 - Handle errors at the edges and let the happy path stay clean.
