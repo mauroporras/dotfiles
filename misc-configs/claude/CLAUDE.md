@@ -93,6 +93,16 @@
   This keeps imports at the module level where they belong.
 - In `$effect` cleanup returns, assign the cleanup function to a named `teardown` constant before returning it (same reasoning as the `retval` rule: debugger visibility and readability).
 
+## API Design
+
+- **REST API path conventions**: Use flat paths for mutations, hierarchical paths for queries.
+  - Mutations (create/update/delete) use flat resource paths:
+    - `POST /cad-files`
+    - `PUT /cad-files/:id`
+    - `DELETE /cad-files/:id`
+  - Queries use hierarchical paths scoped to parent resources:
+    - `GET /workspaces/:workspaceId/cad-files?limit=100`
+
 ## Git
 
 - ALWAYS run all Git commands directly from the current working directory.
