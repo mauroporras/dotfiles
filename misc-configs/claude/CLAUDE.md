@@ -81,6 +81,7 @@
 ### JavaScript/TypeScript
 
 - Use JavaScript private fields (`#field`) for class internals, not the TypeScript `private` keyword.
+- **ALWAYS USE TYPESCRIPT PATH ALIASES** instead of relative imports (e.g., use `@workspace/*` instead of `../../../workspace/*`)
 
 ### Svelte
 
