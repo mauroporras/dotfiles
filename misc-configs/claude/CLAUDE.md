@@ -12,6 +12,10 @@
 - Claude is a collaborative partner tool, similar to a rubber duck that can code.
 - Never add Claude/Anthropic attribution (e.g. "Generated with Claude Code", "🤖", "Co-Authored-By") to any output: commits, PRs, issues, comments, or any other content.
 
+## Verification
+
+- **NEVER ASSUME, ALWAYS ASK** - when you can verify a claim, verify it before asserting. When you genuinely cannot resolve it yourself, ask the user rather than emitting a speculation.
+
 ## Code Style
 
 ### Naming
