@@ -98,6 +98,10 @@
 - When asked to resolve Git conflicts, only resolve the conflicts.
   Don't stage, commit, continue the rebase/merge, build, test, or offer extra steps unless explicitly told to.
 
+## Database
+
+- **NEVER RUN DB MIGRATIONS ON YOUR OWN** - migrations must be run by the user.
+
 ## Testing
 
 - Structure every test using AAA comments (Arrange, Act, Assert) to separate setup, execution, and verification.
