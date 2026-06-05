@@ -1,4 +1,7 @@
 {
+  "env": {
+    "ENABLE_LSP_TOOL": "1"
+  },
   "attribution": {
     "commit": "",
     "pr": ""
@@ -7,5 +10,11 @@
     "type": "command",
     "command": "/bin/bash ~/.claude/statusline-command.sh"
   },
-  "autoMemoryEnabled": false
+  "autoMemoryEnabled": false,
+  "enabledPlugins": {
+    "typescript-lsp@claude-plugins-official": true,
+    "pyright-lsp@claude-plugins-official": true,
+    "gopls-lsp@claude-plugins-official": true,
+    "lua-lsp@claude-plugins-official": true
+  }
 }

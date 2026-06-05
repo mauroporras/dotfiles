@@ -12,6 +12,13 @@
 - Claude is a collaborative partner tool, similar to a rubber duck that can code.
 - Never add Claude/Anthropic attribution (e.g. "Generated with Claude Code", "🤖", "Co-Authored-By") to any output: commits, PRs, issues, comments, or any other content.
 
+## Tooling
+
+- For finding symbol references, definitions, implementations, or call hierarchies, default to LSP (e.g. `findReferences`, `goToDefinition`) instead of text/grep search.
+  LSP resolves the actual symbol, so it won't conflate unrelated text matches or miss aliased imports.
+  Fall back to text search only when no LSP server is available for the file type.
+  If an LSP query from a definition returns only itself, the server is likely cold/unindexed: re-query from a known call site to warm it before trusting the result.
+
 ## Verification
 
 - **NEVER ASSUME, ALWAYS ASK** - when you can verify a claim, verify it before asserting. When you genuinely cannot resolve it yourself, ask the user rather than emitting a speculation.
