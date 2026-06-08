@@ -155,6 +155,20 @@
 
 ## Database (DB, SQL)
 
+### Schema
+
+- Prefer nullable timestamps over booleans for state that has a "when it happened" answer.
+  A `boolean` flag records only that something is true; a timestamp records both that it
+  is true (the column is non-`null`) and when it became true, which is almost always
+  information you end up wanting later for auditing, debugging, or analytics.
+  Name the column after the event in the past tense plus `_at` (no `is_` prefix: that suffix
+  already signals a timestamp, whereas `is_` falsely signals a boolean), and treat `null` as
+  "not yet". This keeps the column in the same `<event>_at` family as `created_at` / `updated_at` /
+  `deleted_at`. E.g.:
+  - `is_workspace_base_price_set` → `workspace_base_price_set_at`
+  - `is_published` → `published_at`
+  - `is_email_verified` → `email_verified_at`
+
 ### Migrations
 
 - **NEVER RUN DB MIGRATIONS ON YOUR OWN** - migrations must be run by the user.
