@@ -100,6 +100,42 @@
   This keeps imports at the module level where they belong.
 - In `$effect` cleanup returns, assign the cleanup function to a named `teardown` constant before returning it (same reasoning as the `retval` rule: debugger visibility and readability).
 
+## Clean Architecture
+
+### Use Cases
+
+- A use case is a single unit of application logic exposing one public method: `execute`.
+- `execute` takes exactly one parameter named `input`, typed as the use case's
+  own input contract (`<UseCaseName>Input`, an `interface`).
+- Keep use cases free of transport/persistence concerns: no HTTP, no SQL, no
+  framework types in the signature.
+  Adapters at the edges translate those into the input contract.
+- One responsibility per use case:
+  If `execute` starts branching into several distinct operations, split it into
+  separate use cases rather than overloading the input.
+
+#### Inputs and Outputs
+
+- Name a use case's input type after the use case plus `Input`, declared as
+  an `interface`, and name the `execute` parameter `input`.
+  E.g. `UpdatePriceListUseCase` takes `input: UpdatePriceListUseCaseInput`.
+- Name a use case's output type after the use case plus `Output`, declared as
+  an `interface`, and use it as `execute`'s explicit return type.
+  E.g. `UpdatePriceListUseCase.execute` returns `UpdatePriceListUseCaseOutput`.
+- Don't name either `*Dto`: a DTO is a transport/persistence shape, whereas
+  these are the use case's own input/result contracts.
+- Adapters at the edges translate the input contract from, and the output
+  contract into, HTTP responses, rows, etc.
+- Input and output must be simple data structures, never Entities.
+  If your output type is an Entity (e.g. an `Album` class), that's a smell.
+  Crossing a boundary with an Entity couples the caller to domain internals; map
+  the Entity to the input/output contract instead.
+  <!--
+  As Uncle Bob puts it:
+  > "we don't want to cheat and pass Entity objects between boundaries"
+  > — Clean Architecture, p. 207
+  -->
+
 ## API Design
 
 - **REST API path conventions**: Use flat paths for mutations, hierarchical paths for queries.
