@@ -4,13 +4,13 @@ set -euo pipefail
 current_email=$(git config --global user.email || true)
 current_name=$(git config --global user.name || true)
 
-read -p "> Git user.email [${current_email:-not set}] (empty to skip): " git_email
+read -rp "> Git user.email [${current_email:-not set}] (empty to skip): " git_email
 if [ -n "$git_email" ]
   then
     git config --global --replace-all user.email "$git_email"
 fi
 
-read -p "> Git user.name [${current_name:-not set}] (empty to skip): " git_name
+read -rp "> Git user.name [${current_name:-not set}] (empty to skip): " git_name
 if [ -n "$git_name" ]
   then
     git config --global --replace-all user.name "$git_name"
