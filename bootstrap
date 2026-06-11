@@ -28,8 +28,10 @@ ln -sf ~/dotfiles/misc-configs/ghostty/config.ghostty .config/ghostty/config
 # Skin is fetched from upstream instead of tracked in this repo, since it's
 # 100+ lines of vendor-owned YAML. Re-run bootstrap to pull updates.
 mkdir -p .config/k9s/skins
+# Download to a temp file first so a partial transfer never clobbers a working skin.
 curl -fsSL https://raw.githubusercontent.com/derailed/k9s/master/skins/one-light.yaml \
-  -o .config/k9s/skins/one-light.yaml
+  -o .config/k9s/skins/one-light.yaml.tmp
+mv .config/k9s/skins/one-light.yaml.tmp .config/k9s/skins/one-light.yaml
 
 # -- Lazygit --
 mkdir -p .config/lazygit
