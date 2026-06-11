@@ -1,4 +1,6 @@
 alias ai='claude'
+# Relative path is intentional: per-project shada (history, registers, marks).
+# Ignored globally via *.shada.
 alias e='nvim -i custom.shada'
 alias ek='NVIM_APPNAME="nvim-kickstart" nvim'
 alias f='yazi'
