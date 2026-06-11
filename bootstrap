@@ -65,14 +65,11 @@ ln -sf ~/dotfiles/misc-configs/yazi/yazi.toml .config/yazi/yazi.toml
 mkdir -p queue temp workspace
 
 # -- Zsh --
-if ! grep -q 'HAS_LOADED_CUSTOM_SCRIPTS' ~/.zshrc 2>/dev/null; then
+if ! grep -q 'dotfiles/zsh' ~/.zshrc 2>/dev/null; then
   echo '
-if [[ -z "$HAS_LOADED_CUSTOM_SCRIPTS" ]]; then
-  export HAS_LOADED_CUSTOM_SCRIPTS=1
-
-  source ~/dotfiles/zsh/env_vars.zsh
-  source ~/dotfiles/zsh/functions.zsh
-  source ~/dotfiles/zsh/aliases.zsh
-fi
-  ' >> ~/.zshrc
+# Source every config so adding a new *.zsh file needs no edit here.
+for zsh_config in ~/dotfiles/zsh/*.zsh; do
+  source "$zsh_config"
+done
+' >> ~/.zshrc
 fi
