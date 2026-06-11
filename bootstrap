@@ -67,6 +67,7 @@ mkdir -p queue temp workspace
 # -- Zsh --
 if ! grep -q 'dotfiles/zsh' ~/.zshrc 2>/dev/null; then
   echo '
+# Added from ~/dotfiles/bootstrap
 # Source every config so adding a new *.zsh file needs no edit here.
 for zsh_config in ~/dotfiles/zsh/*.zsh; do
   source "$zsh_config"
