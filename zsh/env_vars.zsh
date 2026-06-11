@@ -16,7 +16,7 @@ export K9S_CONFIG_DIR="$HOME/.config/k9s"
 export K9S_SKIN=one-light
 
 # lazygit
-export CONFIG_DIR=~/.config/lazygit
+export LG_CONFIG_FILE=~/.config/lazygit/config.yml
 
 # zsh
 # Characters considered part of a word
