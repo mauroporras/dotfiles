@@ -27,6 +27,9 @@ The arguments above may contain an issue number, the literal token `push`, both,
 REQUIRED:
 
 - Commit mode is inferred from the current branch shown above:
+  <!--
+  Branch list mirrors `branchColorPatterns` in misc-configs/lazygit/config.yml
+  -->
   - Base branches (`alpha`, `main`, `master`, `beta`, `production`): normal commit.
   - Any other branch: WIP commit.
 - Prioritize brevity over grammar:
