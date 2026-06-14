@@ -72,6 +72,7 @@ cask "google-chrome"
 cask "postgres-app" # https://postgresapp.com/
 cask "rectangle"
 cask "redis-insight"
+cask "wireshark-app" # GUI + ChmodBPF for non-root packet capture
 
 # Fonts
 cask "font-iosevka-slab" # https://github.com/be5invis/Iosevka
