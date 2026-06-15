@@ -384,7 +384,7 @@ if [[ -n "$pr_number" ]]; then
     *)                 pr_color="$cyan"; pr_state_display="⚪️" ;;
   esac
 
-  pr_label="${git_branch_color}#${pr_number}${gray}:${pr_color}${pr_state_display}${reset}"
+  pr_label="${git_branch_color}#${pr_number}${pr_color}${pr_state_display}${reset}"
 
   if [[ -n "$pr_url" ]]; then
     pr_display=$(osc8_link "statusline-pr" "$pr_url" "$pr_label")
@@ -438,7 +438,7 @@ fi
 
 if [[ -n "$pr_display" ]]; then
   if [[ -n "$github_section" ]]; then
-    github_section="${github_section} ${gray}›${reset} ${pr_display}"
+    github_section="${github_section} ${pr_display}"
   else
     github_section="$pr_display"
   fi
