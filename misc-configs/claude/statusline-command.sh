@@ -313,12 +313,18 @@ format_reset_short() {
   local hours=$(( (secs % 86400) / 3600 ))
   local mins=$(( (secs % 3600) / 60 ))
 
+  # Bold only the digits; the unit letters stay in the surrounding gray. `num_end`
+  # drops out of bold and restores gray (a plain reset would also clear the color
+  # the caller set around this whole segment).
+  local num="$bold"
+  local num_end="${reset}${gray}"
+
   if [[ $days -gt 0 ]]; then
-    echo "${days}d${hours}h"
+    echo "${num}${days}${num_end}d${num}${hours}${num_end}h"
   elif [[ $hours -gt 0 ]]; then
-    echo "${hours}h${mins}m"
+    echo "${num}${hours}${num_end}h${num}${mins}${num_end}m"
   else
-    echo "${mins}m"
+    echo "${num}${mins}${num_end}m"
   fi
 }
 
