@@ -53,7 +53,6 @@ model=$(echo "$input" | jq -r '.model.display_name')
 model=${model% (1M context)}
 effort_level=$(echo "$input" | jq -r '.effort.level // "?"')
 
-# Effort as a colored box: more effort reads "greener", less "redder".
 case "$effort_level" in
   high)   effort_display="🟩" ;;
   medium) effort_display="🟨" ;;
@@ -87,8 +86,7 @@ context_size=$(echo "$input" | jq -r '.context_window.context_window_size // 0')
 tokens_k=$((current_usage / 1000))
 context_k=$((context_size / 1000))
 
-# Render a 1M+ window as "1M" rather than "1000k". Windows are clean multiples
-# of 1000k (200k, 1M), so integer division is exact here.
+# Windows are clean multiples of 1000k (200k, 1M), so integer division is exact.
 if [[ $context_k -ge 1000 ]]; then
   context_display="$((context_k / 1000))M"
 else
