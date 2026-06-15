@@ -1,91 +1,65 @@
 ---
 disable-model-invocation: true
-allowed-tools: Write, Bash(gh:*)
+allowed-tools: Write, Bash(bash:*)
 ---
 
 # Fetch and summarize this PR's UNRESOLVED comments
 
 ## Context
 
-- OWNER: !`gh repo view --json owner -q .owner.login`
-- REPO: !`gh repo view --json name -q .name`
-- PR_NUMBER: !`gh pr view --json number -q .number`
+The data has already been fetched and filtered for you below. Use this
+precomputed JSON verbatim; do NOT re-run any commands or re-fetch anything.
+
+<!--
+The fetch lives in fetch-unresolved-comments.sh because skill `!` commands are
+statically analyzed and reject the `$(...)` substitution the GraphQL calls need.
+The script resolves owner/repo/pr, queries the API, and applies every filter
+(drops resolved threads and blank-body reviews), so the model only writes prose.
+-->
+
+- Unresolved comments data (JSON): !`bash "$HOME/.claude/skills/custom-unresolved-pr-comments-summarize/fetch-unresolved-comments.sh"`
+
+The JSON has this shape:
+
+```json
+{
+  "prNumber": 0,
+  "filename": "pr-0-comments.md",
+  "url": "https://github.com/owner/repo/pull/0",
+  "title": "PR title",
+  "unresolvedThreads": [
+    { "threadId": "…", "comments": [ { "author": "…", "body": "…", "path": "…", "line": 0 } ] }
+  ],
+  "reviews": [
+    { "author": "…", "body": "…", "url": "…", "state": "CHANGES_REQUESTED", "submittedAt": "…" }
+  ]
+}
+```
+
+`unresolvedThreads` already excludes resolved threads (all authors kept,
+including bots). `reviews` already excludes blank/whitespace-only bodies.
 
 ## Your task
 
-### Step 1: Fetch unresolved inline review threads
+Write a markdown file summarizing the unresolved comments above. Everything
+mechanical (fetching, filtering resolved threads, dropping blank-body reviews)
+is already done; build the file purely from the precomputed Context JSON.
 
-Use this GraphQL query (substitute OWNER, REPO, PR_NUMBER from context above):
+### Guard clause
 
-```bash
-gh api graphql -f query='
-query($owner: String!, $repo: String!, $pr: Int!) {
-  repository(owner: $owner, name: $repo) {
-    pullRequest(number: $pr) {
-      url
-      title
-      reviewThreads(first: 100) {
-        nodes {
-          id
-          isResolved
-          comments(first: 10) {
-            nodes {
-              author { login }
-              body
-              path
-              line
-            }
-          }
-        }
-      }
-    }
-  }
-}' -f owner="OWNER" -f repo="REPO" -F pr=PR_NUMBER
-```
+If both `unresolvedThreads` and `reviews` are empty, do NOT create the file.
+Just inform the user that there are no unresolved comments and stop.
 
-ALWAYS:
+### Create the file
 
-- Filter the results to only show threads where `isResolved: false`
-- Include comments from all authors, including automated reviewers (e.g., Copilot, bots)
-- Do not skip or filter out comments based on the author
-
-### Step 2: Fetch top-level "Changes Requested" reviews
-
-Top-level review comments (the body of a review, not attached to a specific file line) are not captured by `reviewThreads`.
-Fetch them separately:
-
-```bash
-gh api graphql -f query='
-query($owner: String!, $repo: String!, $pr: Int!) {
-  repository(owner: $owner, name: $repo) {
-    pullRequest(number: $pr) {
-      reviews(first: 100, states: [CHANGES_REQUESTED]) {
-        nodes {
-          author { login }
-          body
-          url
-          state
-          submittedAt
-        }
-      }
-    }
-  }
-}' -f owner="OWNER" -f repo="REPO" -F pr=PR_NUMBER
-```
-
-ALWAYS:
-
-Include reviews that have a non-empty `body` (skip reviews where the body is blank or only whitespace). These represent top-level change requests that aren't tied to a specific file/line.
-
-### Step 3: Create file
-
-Create a file named `pr-{pr-number}-comments.md` in the current directory, like this:
+Create the file named by the `filename` field (from the Context JSON) in the
+current directory, like this:
 
 ```markdown
-# PR #{pr-number} Review Comments
+# PR #{prNumber} Review Comments
 
-Title: {pr-title}
-URL: {pr-url}
+Title: {title}
+URL: {url}
 
 ## Files
 
@@ -97,7 +71,7 @@ URL: {pr-url}
 
 Line: {path/to/file.ext:line}
 Author: @{the-author}
-Thread ID: {thread-id}
+Thread ID: {threadId}
 _Comment:_
 {comment}
 
@@ -108,6 +82,9 @@ _Comment:_
 
 ALWAYS:
 
+- Source every field from the precomputed Context JSON:
+  - `{prNumber}`/`{title}`/`{url}` from the top-level fields
+  - inline comments from `unresolvedThreads`, top-level reviews from `reviews`
 - Break comment lines at around 80 characters
 - Use the checkboxes to track progress
 - For inline comments:
@@ -115,7 +92,5 @@ ALWAYS:
 - For top-level reviews:
   Include a link to the review URL
 - Omit any section that has no items
-- If there are no unresolved comments, do not create the file
-  Just inform the user that there are no unresolved comments
 - When you're done:
   Suggest the first tag to start working on and ask if the user wants to address it
