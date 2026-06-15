@@ -128,7 +128,7 @@ keybind = cmd+]=text:
 keybind = cmd+d=text:
 keybind = shift+cmd+d=text:
 # Pair with cmd+c/d/z above to force using Cmd for terminal signals
-#keybind = ctrl+c=text:
-#keybind = ctrl+d=text:
-#keybind = ctrl+z=text:
+# keybind = ctrl+c=text:
+# keybind = ctrl+d=text:
+# keybind = ctrl+z=text:
 keybind = shift+enter=text:\x1b\r
