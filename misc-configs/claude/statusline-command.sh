@@ -395,20 +395,15 @@ if [[ -n "$pr_number" ]]; then
   fi
 fi
 
+# Only the elevated tiers get a color; a healthy/low percentage stays in the
+# default foreground (like the context counter) so colors mean "pay attention".
 rate_limit_color() {
   local pct=$1
 
-  if [[ -z "$pct" ]]; then
-    echo "$gray"
-    return
-  fi
-
-  if [[ $pct -ge 80 ]]; then
+  if [[ -n "$pct" && $pct -ge 80 ]]; then
     echo "$red"
-  elif [[ $pct -ge 50 ]]; then
+  elif [[ -n "$pct" && $pct -ge 50 ]]; then
     echo "$yellow"
-  else
-    echo "$green"
   fi
 }
 
