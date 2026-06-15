@@ -49,22 +49,30 @@ model=$(echo "$input" | jq -r '.model.display_name')
 # The "/1000k" context segment already conveys the 1M window, so drop the suffix.
 model=${model% (1M context)}
 effort_level=$(echo "$input" | jq -r '.effort.level // "?"')
+
+# Abbreviate the effort value to a single letter to keep the segment compact.
+case "$effort_level" in
+  high)   effort_display="H" ;;
+  medium) effort_display="M" ;;
+  low)    effort_display="L" ;;
+  *)      effort_display="$effort_level" ;;
+esac
 thinking_enabled=$(echo "$input" | jq -r '.thinking.enabled // false')
 fast_mode_enabled=$(echo "$input" | jq -r '.fast_mode // false')
 
 if [[ "$thinking_enabled" == "true" ]]; then
-  thinking_display="on"
+  thinking_display="🟢"
   thinking_color="$green"
 else
-  thinking_display="off"
+  thinking_display="🔴"
   thinking_color="$gray"
 fi
 
 if [[ "$fast_mode_enabled" == "true" ]]; then
-  fast_mode_display="on"
+  fast_mode_display="🟢"
   fast_mode_color="$green"
 else
-  fast_mode_display="off"
+  fast_mode_display="🔴"
   fast_mode_color="$gray"
 fi
 
@@ -451,7 +459,7 @@ if [[ "$SHOW_CONTEXT_PCT" == "true" ]]; then
   context_pct_display=" ${gray}${context_pct}%${reset}"
 fi
 
-line="${line} • ${cyan}${model}${reset} ${bold}${tokens_used_color}${tokens_used_prefix}${tokens_k}k${reset}/${context_k}k${context_pct_display}${advisor_display} ${gray}effort:${reset}${bold}${cyan}${effort_level}${reset} ${gray}thinking:${reset}${bold}${thinking_color}${thinking_display}${reset} ${gray}fast:${reset}${bold}${fast_mode_color}${fast_mode_display}${reset}"
+line="${line} • ${cyan}${model}${reset} ${bold}${tokens_used_color}${tokens_used_prefix}${tokens_k}k${reset}/${context_k}k${context_pct_display}${advisor_display} 💪🏻${bold}${cyan}${effort_display}${reset} 🧠${bold}${thinking_color}${thinking_display}${reset} ⚡️${bold}${fast_mode_color}${fast_mode_display}${reset}"
 
 line="${line} ${gray}style:${reset}${bold}${output_style_color}${output_style_display}${reset}"
 
