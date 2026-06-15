@@ -18,6 +18,7 @@ SHOW_VERSION=false
 
 # Colors
 bold='\033[1m'
+inverse='\033[7m'
 blue='\033[34m'
 green='\033[32m'
 yellow='\033[33m'
@@ -25,6 +26,8 @@ cyan='\033[36m'
 magenta='\033[35m'
 red='\033[31m'
 gray='\033[90m'
+# Matches the orange of the in-app `/fast` indicator (↯).
+orange='\033[38;2;255;106;0m'
 reset='\033[0m'
 
 input=$(cat)
@@ -68,12 +71,11 @@ else
   thinking_color="$gray"
 fi
 
+# Fast mode is a billing/behavior change worth noticing, so render it as a loud
+# inverse-video badge and only when it's actually on (its absence means off).
+fast_mode_display=""
 if [[ "$fast_mode_enabled" == "true" ]]; then
-  fast_mode_display="🟢"
-  fast_mode_color="$green"
-else
-  fast_mode_display="⚪️"
-  fast_mode_color="$gray"
+  fast_mode_display="${bold}${inverse}${orange} ⚡️FAST ${reset}"
 fi
 
 # Debug: uncomment to see raw input
@@ -462,7 +464,11 @@ if [[ "$SHOW_CONTEXT_PCT" == "true" ]]; then
   context_pct_display=" ${gray}${context_pct}%${reset}"
 fi
 
-line="${line} • ${cyan}${model}${reset} ${bold}${tokens_used_color}${tokens_used_prefix}${tokens_k}k${reset}/${context_display}${context_pct_display}${advisor_display} 💪🏻${bold}${cyan}${effort_display}${reset} 🧠${bold}${thinking_color}${thinking_display}${reset} ⚡️${bold}${fast_mode_color}${fast_mode_display}${reset}"
+line="${line} • ${cyan}${model}${reset} ${bold}${tokens_used_color}${tokens_used_prefix}${tokens_k}k${reset}/${context_display}${context_pct_display}${advisor_display} 💪🏻${bold}${cyan}${effort_display}${reset} 🧠${bold}${thinking_color}${thinking_display}${reset}"
+
+if [[ -n "$fast_mode_display" ]]; then
+  line="${line} ${fast_mode_display}"
+fi
 
 # The default style is the common case, so only surface the segment when a
 # non-default style is deliberately in effect.
