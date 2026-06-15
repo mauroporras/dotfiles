@@ -2,7 +2,7 @@
 disable-model-invocation: true
 context: fork
 argument-hint: [push] [issue-number]
-allowed-tools: Bash(git --no-pager diff:*), Bash(git rev-parse:*), Bash(git remote get-url:*), Bash(git commit:*), Bash(git push:*)
+allowed-tools: Bash(git --no-pager diff:*), Bash(git rev-parse:*), Bash(git remote get-url:*), Bash(git commit:*), Bash(git push:*), Bash(grep:*), Bash(echo:*)
 model: haiku
 ---
 
@@ -12,6 +12,7 @@ model: haiku
 
 - Current staged changes only: !`git --no-pager diff --staged`
 - Current branch: !`git rev-parse --abbrev-ref HEAD`
+- Commit mode (`NORMAL` for base branches, `WIP` otherwise): !`git rev-parse --abbrev-ref HEAD | grep -qE '^(alpha|main|master|beta|production)$' && echo NORMAL || echo WIP`
 - Remote URL: !`git remote get-url origin`
 - Arguments (issue number and/or `push`, empty if none): `$ARGUMENTS`
 
@@ -26,12 +27,13 @@ The arguments above may contain an issue number, the literal token `push`, both,
 
 REQUIRED:
 
-- Commit mode is inferred from the current branch shown above:
+- Commit mode is the `Commit mode` value from the Context above. It is computed
+  deterministically; use it verbatim and do NOT re-derive it from the branch name:
   <!--
   Branch list mirrors `branchColorPatterns` in misc-configs/lazygit/config.yml
   -->
-  - Base branches (`alpha`, `main`, `master`, `beta`, `production`): normal commit.
-  - Any other branch: WIP commit.
+  - `NORMAL`: normal commit.
+  - `WIP`: WIP commit.
 - Prioritize brevity over grammar:
   Keep messages short, even if grammatically imperfect
 - Subject line:
