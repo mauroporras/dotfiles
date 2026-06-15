@@ -143,13 +143,8 @@ output_style=$(echo "$input" | jq -r '.output_style.name // empty')
 # than by switching the global style.
 output_style_display="${output_style:-default}"
 
-# Mute the default style so it reads as "nothing special set", and only let a
-# deliberately-chosen style stand out in cyan.
-if [[ "$output_style_display" == "default" ]]; then
-  output_style_color="$gray"
-else
-  output_style_color="$cyan"
-fi
+# Only a deliberately-chosen (non-default) style ever renders, so it's always cyan.
+output_style_color="$cyan"
 
 added_dirs_display=""
 
@@ -461,7 +456,11 @@ fi
 
 line="${line} • ${cyan}${model}${reset} ${bold}${tokens_used_color}${tokens_used_prefix}${tokens_k}k${reset}/${context_k}k${context_pct_display}${advisor_display} 💪🏻${bold}${cyan}${effort_display}${reset} 🧠${bold}${thinking_color}${thinking_display}${reset} ⚡️${bold}${fast_mode_color}${fast_mode_display}${reset}"
 
-line="${line} ${gray}style:${reset}${bold}${output_style_color}${output_style_display}${reset}"
+# The default style is the common case, so only surface the segment when a
+# non-default style is deliberately in effect.
+if [[ "$output_style_display" != "default" ]]; then
+  line="${line} ${gray}style:${reset}${bold}${output_style_color}${output_style_display}${reset}"
+fi
 
 line="${line} ${rate_limits_display}"
 
