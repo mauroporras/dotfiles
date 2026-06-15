@@ -2,7 +2,7 @@
 disable-model-invocation: true
 context: fork
 argument-hint: [push] [issue-number]
-allowed-tools: Bash(git --no-pager diff:*), Bash(git rev-parse:*), Bash(git remote get-url:*), Bash(git commit:*), Bash(git push:*), Bash(grep:*), Bash(echo:*)
+allowed-tools: Bash(git --no-pager diff:*), Bash(git rev-parse:*), Bash(git remote get-url:*), Bash(git commit:*), Bash(git push:*), Bash(grep:*), Bash(echo:*), Bash(head:*)
 model: haiku
 ---
 
@@ -15,15 +15,18 @@ model: haiku
 - Commit mode (`NORMAL` for base branches, `WIP` otherwise): !`git rev-parse --abbrev-ref HEAD | grep -qE '^(alpha|main|master|beta|production)$' && echo NORMAL || echo WIP`
 - Remote URL: !`git remote get-url origin`
 - Arguments (issue number and/or `push`, empty if none): `$ARGUMENTS`
+- Issue number (first numeric token in arguments, empty if none): !`echo "$ARGUMENTS" | grep -oE '[0-9]+' | head -n1`
+- Push requested (`yes`/`no`): !`echo "$ARGUMENTS" | grep -qw push && echo yes || echo no`
 
 ## Your task
 
 Create a commit for the STAGED changes above using `git commit`.
 
-The arguments above may contain an issue number, the literal token `push`, both, or neither (order does not matter):
+The arguments have already been parsed for you in the Context above. Use these
+precomputed values verbatim; do NOT re-parse `$ARGUMENTS` yourself:
 
-- Issue number: any numeric token (e.g. `72`).
-- Push flag: the literal token `push`.
+- `Issue number`: the issue number, or empty when none was given.
+- `Push requested`: `yes` if the commit should be pushed, `no` otherwise.
 
 REQUIRED:
 
@@ -42,10 +45,10 @@ REQUIRED:
   - WIP commit: `WIP(<current-branch>): <description>`
     Using the current branch as the scope and a brief conventional-style description of the staged changes.
     Also pass `--no-verify` to `git commit`.
-- Body: include if and only if an issue number is present.
-  - Present (e.g. `72`): body MUST be exactly `Close #72`. Pass it via a second `-m`.
-  - Absent: omit the body entirely.
-- Push: run `git push` after committing if and only if the `push` token is present.
+- Body: include if and only if `Issue number` (from Context) is non-empty.
+  - Non-empty (e.g. `72`): body MUST be exactly `Close #<Issue number>` (e.g. `Close #72`). Pass it via a second `-m`.
+  - Empty: omit the body entirely.
+- Push: run `git push` after committing if and only if `Push requested` (from Context) is `yes`.
 
 NEVER:
 
