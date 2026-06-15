@@ -46,7 +46,7 @@ if [[ -n "$project_dir_display" && "$project_dir_display" != "$current_dir_displ
   project_divergence_display="← ${project_dir_display}"
 fi
 model=$(echo "$input" | jq -r '.model.display_name')
-# The "/1000k" context segment already conveys the 1M window, so drop the suffix.
+# The "/1M" context segment already conveys the 1M window, so drop the suffix.
 model=${model% (1M context)}
 effort_level=$(echo "$input" | jq -r '.effort.level // "?"')
 
@@ -86,6 +86,14 @@ current_usage=$(echo "$input" | jq -r '[(.context_window.current_usage // {}) | 
 context_size=$(echo "$input" | jq -r '.context_window.context_window_size // 0')
 tokens_k=$((current_usage / 1000))
 context_k=$((context_size / 1000))
+
+# Render a 1M+ window as "1M" rather than "1000k". Windows are clean multiples
+# of 1000k (200k, 1M), so integer division is exact here.
+if [[ $context_k -ge 1000 ]]; then
+  context_display="$((context_k / 1000))M"
+else
+  context_display="${context_k}k"
+fi
 
 if [[ $context_size -gt 0 ]]; then
   context_pct=$((current_usage * 100 / context_size))
@@ -454,7 +462,7 @@ if [[ "$SHOW_CONTEXT_PCT" == "true" ]]; then
   context_pct_display=" ${gray}${context_pct}%${reset}"
 fi
 
-line="${line} • ${cyan}${model}${reset} ${bold}${tokens_used_color}${tokens_used_prefix}${tokens_k}k${reset}/${context_k}k${context_pct_display}${advisor_display} 💪🏻${bold}${cyan}${effort_display}${reset} 🧠${bold}${thinking_color}${thinking_display}${reset} ⚡️${bold}${fast_mode_color}${fast_mode_display}${reset}"
+line="${line} • ${cyan}${model}${reset} ${bold}${tokens_used_color}${tokens_used_prefix}${tokens_k}k${reset}/${context_display}${context_pct_display}${advisor_display} 💪🏻${bold}${cyan}${effort_display}${reset} 🧠${bold}${thinking_color}${thinking_display}${reset} ⚡️${bold}${fast_mode_color}${fast_mode_display}${reset}"
 
 # The default style is the common case, so only surface the segment when a
 # non-default style is deliberately in effect.
