@@ -410,7 +410,7 @@ five_hour_color=$(rate_limit_color "$five_hour_pct_int")
 seven_day_color=$(rate_limit_color "$seven_day_pct_int")
 five_hour_pct_text="${five_hour_pct_int:--}"
 seven_day_pct_text="${seven_day_pct_int:--}"
-rate_limits_display="${five_hour_color}5h:${bold}${five_hour_pct_text}%${reset} ${gray}${five_hour_reset_display}${reset} ${seven_day_color}7d:${bold}${seven_day_pct_text}%${reset} ${gray}${seven_day_reset_display}${reset}"
+rate_limits_display="${five_hour_color}${bold}${five_hour_pct_text}%${reset}⏱️${gray}${five_hour_reset_display}${reset} ${seven_day_color}${bold}${seven_day_pct_text}%${reset}🗓️${gray}${seven_day_reset_display}${reset}"
 
 current_dir_link=$(osc8_link "statusline-dir" "file://${current_dir}" "$current_dir_display")
 line="${blue}${current_dir_link}${reset}"
