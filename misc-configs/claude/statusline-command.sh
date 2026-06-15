@@ -64,7 +64,7 @@ if [[ "$thinking_enabled" == "true" ]]; then
   thinking_display="🟢"
   thinking_color="$green"
 else
-  thinking_display="🔴"
+  thinking_display="⚪️"
   thinking_color="$gray"
 fi
 
@@ -72,7 +72,7 @@ if [[ "$fast_mode_enabled" == "true" ]]; then
   fast_mode_display="🟢"
   fast_mode_color="$green"
 else
-  fast_mode_display="🔴"
+  fast_mode_display="⚪️"
   fast_mode_color="$gray"
 fi
 
