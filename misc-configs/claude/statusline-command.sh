@@ -377,14 +377,14 @@ fi
 pr_display=""
 if [[ -n "$pr_number" ]]; then
   case "$pr_review_state" in
-    approved)          pr_color="$green" ;;
-    changes_requested) pr_color="$red" ;;
-    pending)           pr_color="$yellow" ;;
-    draft)             pr_color="$gray" ;;
-    *)                 pr_color="$cyan" ;;
+    approved)          pr_color="$green"; pr_state_display="🟢" ;;
+    changes_requested) pr_color="$red"; pr_state_display="🔴" ;;
+    pending)           pr_color="$yellow"; pr_state_display="👀" ;;
+    draft)             pr_color="$gray"; pr_state_display="🚧" ;;
+    *)                 pr_color="$cyan"; pr_state_display="⚪️" ;;
   esac
 
-  pr_label="${git_branch_color}#${pr_number}${gray}:${pr_color}${pr_review_state}${reset}"
+  pr_label="${git_branch_color}#${pr_number}${gray}:${pr_color}${pr_state_display}${reset}"
 
   if [[ -n "$pr_url" ]]; then
     pr_display=$(osc8_link "statusline-pr" "$pr_url" "$pr_label")
