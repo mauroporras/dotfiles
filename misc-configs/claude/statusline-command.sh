@@ -53,11 +53,11 @@ model=$(echo "$input" | jq -r '.model.display_name')
 model=${model% (1M context)}
 effort_level=$(echo "$input" | jq -r '.effort.level // "?"')
 
-# Abbreviate the effort value to a single letter to keep the segment compact.
+# Effort as a colored box: more effort reads "greener", less "redder".
 case "$effort_level" in
-  high)   effort_display="H" ;;
-  medium) effort_display="M" ;;
-  low)    effort_display="L" ;;
+  high)   effort_display="🟩" ;;
+  medium) effort_display="🟨" ;;
+  low)    effort_display="🟥" ;;
   *)      effort_display="$effort_level" ;;
 esac
 thinking_enabled=$(echo "$input" | jq -r '.thinking.enabled // false')
@@ -65,10 +65,8 @@ fast_mode_enabled=$(echo "$input" | jq -r '.fast_mode // false')
 
 if [[ "$thinking_enabled" == "true" ]]; then
   thinking_display="🟢"
-  thinking_color="$green"
 else
   thinking_display="⚪️"
-  thinking_color="$gray"
 fi
 
 # Fast mode is a billing/behavior change worth noticing, so render it as a loud
@@ -464,7 +462,7 @@ if [[ "$SHOW_CONTEXT_PCT" == "true" ]]; then
   context_pct_display=" ${gray}${context_pct}%${reset}"
 fi
 
-line="${line} • ${cyan}${model}${reset} ${bold}${tokens_used_color}${tokens_used_prefix}${tokens_k}k${reset}/${context_display}${context_pct_display}${advisor_display} 💪🏻${bold}${cyan}${effort_display}${reset} 🧠${bold}${thinking_color}${thinking_display}${reset}"
+line="${line} • ${cyan}${model}${reset} ${bold}${tokens_used_color}${tokens_used_prefix}${tokens_k}k${reset}/${context_display}${context_pct_display}${advisor_display} 💪🏻${effort_display} 🧠${thinking_display}"
 
 if [[ -n "$fast_mode_display" ]]; then
   line="${line} ${fast_mode_display}"
