@@ -405,15 +405,29 @@ rate_limit_color() {
   fi
 }
 
-# The harness omits rate_limits entirely (e.g. on subscription plans), so only
-# render the segment when at least one window actually reports a percentage.
-rate_limits_display=""
-if [[ -n "$five_hour_pct" || -n "$seven_day_pct" ]]; then
+# The harness omits rate_limits entirely (e.g. on subscription plans), and a
+# window below 20% isn't worth the glance, so each meter renders only when it's
+# actually reporting and at or above the threshold. The `-n` guard short-circuits
+# before the numeric `-gt` so an empty (missing) percentage never trips bash.
+rate_limits_threshold=20
+
+five_hour_segment=""
+if [[ -n "$five_hour_pct_int" && $five_hour_pct_int -ge $rate_limits_threshold ]]; then
   five_hour_color=$(rate_limit_color "$five_hour_pct_int")
+  five_hour_segment="${five_hour_color}${bold}${five_hour_pct_int}%${reset}⏱️${gray}${five_hour_reset_display}${reset}"
+fi
+
+seven_day_segment=""
+if [[ -n "$seven_day_pct_int" && $seven_day_pct_int -ge $rate_limits_threshold ]]; then
   seven_day_color=$(rate_limit_color "$seven_day_pct_int")
-  five_hour_pct_text="${five_hour_pct_int:--}"
-  seven_day_pct_text="${seven_day_pct_int:--}"
-  rate_limits_display="${five_hour_color}${bold}${five_hour_pct_text}%${reset}⏱️${gray}${five_hour_reset_display}${reset} ${seven_day_color}${bold}${seven_day_pct_text}%${reset}🗓️${gray}${seven_day_reset_display}${reset}"
+  seven_day_segment="${seven_day_color}${bold}${seven_day_pct_int}%${reset}🗓️${gray}${seven_day_reset_display}${reset}"
+fi
+
+# Only insert the separating space when both meters are present.
+if [[ -n "$five_hour_segment" && -n "$seven_day_segment" ]]; then
+  rate_limits_display="${five_hour_segment} ${seven_day_segment}"
+else
+  rate_limits_display="${five_hour_segment}${seven_day_segment}"
 fi
 
 current_dir_link=$(osc8_link "statusline-dir" "file://${current_dir}" "$current_dir_display")
