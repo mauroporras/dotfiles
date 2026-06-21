@@ -34,7 +34,7 @@ require("lazy").setup({
   },
   -- Configure any other settings here. See the documentation for more details.
   -- colorscheme that will be used when installing plugins.
-  install = { colorscheme = { "catppuccin" } },
+  install = { colorscheme = { "catppuccin-nvim" } },
   -- full screen UI
   ui = { size = { width = 1, height = 1 } },
   -- automatically check for plugin updates

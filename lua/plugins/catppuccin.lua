@@ -22,6 +22,8 @@ return {
   },
   config = function(_, opts)
     require("catppuccin").setup(opts)
-    vim.cmd.colorscheme("catppuccin")
+    -- Neovim 0.12+ ships a builtin "catppuccin" scheme; the official plugin
+    -- renamed its scheme to "catppuccin-nvim" to avoid clashing with it.
+    vim.cmd.colorscheme("catppuccin-nvim")
   end,
 }
