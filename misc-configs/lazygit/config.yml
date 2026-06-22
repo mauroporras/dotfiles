@@ -33,11 +33,22 @@ git:
   # from within Lazygit with the `{` and `}` keys.
   diffContextSize: 15
 customCommands:
+  - key: "I"
+    context: "files"
+    description: "Invert staged/unstaged files"
+    command: |
+      bash -c '
+        staged=$(git diff --cached --name-only)
+        unstaged=$(git diff --name-only)
+        untracked=$(git ls-files --others --exclude-standard)
+        git reset -q -- $staged 2>/dev/null
+        git add -- $unstaged $untracked 2>/dev/null
+      '
   - key: "w"
     context: "files"
-    command: "git wip"
     description: "Work In Progress"
+    command: "git wip"
   - key: "W"
     context: "files"
-    command: "git wipp"
     description: "Work In Progress and push"
+    command: "git wipp"
