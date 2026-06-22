@@ -28,10 +28,19 @@ The JSON has this shape:
   "url": "https://github.com/owner/repo/pull/0",
   "title": "PR title",
   "unresolvedThreads": [
-    { "threadId": "…", "comments": [ { "author": "…", "body": "…", "path": "…", "line": 0 } ] }
+    {
+      "threadId": "…",
+      "comments": [{ "author": "…", "body": "…", "path": "…", "line": 0 }]
+    }
   ],
   "reviews": [
-    { "author": "…", "body": "…", "url": "…", "state": "CHANGES_REQUESTED", "submittedAt": "…" }
+    {
+      "author": "…",
+      "body": "…",
+      "url": "…",
+      "state": "CHANGES_REQUESTED",
+      "submittedAt": "…"
+    }
   ]
 }
 ```
@@ -72,7 +81,7 @@ URL: {url}
 Line: {path/to/file.ext:line}
 Author: @{the-author}
 Thread ID: {threadId}
-_Comment:_
+Comment:
 {comment}
 
 ## Contentious Comments
