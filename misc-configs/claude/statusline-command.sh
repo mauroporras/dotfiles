@@ -435,7 +435,7 @@ fi
 current_dir_link=$(osc8_link "statusline-dir" "file://${current_dir}" "$current_dir_display")
 line="${blue}${current_dir_link}${reset}"
 
-# Workspace decorations sit between the current dir and the branch chevron so
+# Workspace decorations sit between the current dir and the branch bullet so
 # they read as modifiers of the dir, not of the branch.
 if [[ -n "$project_divergence_display" ]]; then
   line="${line} ${blue}${project_divergence_display}${reset}"
@@ -445,7 +445,7 @@ if [[ -n "$added_dirs_display" ]]; then
   line="${line} ${added_dirs_display}"
 fi
 
-line="${line} ${gray}›${reset} ${git_branch_color}${git_branch}${reset}"
+line="${line} ${gray}•${reset} ${git_branch_color}${git_branch}${reset}"
 
 github_section=""
 if [[ -n "$github_repo_display" ]]; then
