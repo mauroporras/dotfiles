@@ -46,7 +46,9 @@ project_dir_display=${project_dir##*/}
 
 project_divergence_display=""
 if [[ -n "$project_dir_display" && "$project_dir_display" != "$current_dir_display" ]]; then
-  project_divergence_display="← ${project_dir_display}"
+  # Alert prefix so a `cd` away from the original project dir is impossible to
+  # miss: it changes the meaning of every relative path and git context below.
+  project_divergence_display="🚨 ← ${project_dir_display}"
 fi
 model=$(echo "$input" | jq -r '.model.display_name')
 # The "/1M" context segment already conveys the 1M window, so drop the suffix.
