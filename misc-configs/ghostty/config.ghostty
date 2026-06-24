@@ -27,7 +27,7 @@ font-family = Iosevka Fixed Extended
 #font-family = Iosevka Fixed Slab
 #font-family = Iosevka Fixed Slab Extended
 #font-family = JetBrains Mono NL
-font-size = 14
+#font-size = 14
 
 adjust-cursor-thickness = 2
 
