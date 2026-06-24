@@ -76,3 +76,4 @@ cask "wireshark-app" # GUI + ChmodBPF for non-root packet capture
 
 # Fonts
 cask "font-iosevka" # https://github.com/be5invis/Iosevka
+cask "font-jetbrains-mono" # https://www.jetbrains.com/lp/mono/
