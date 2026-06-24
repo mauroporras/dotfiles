@@ -24,8 +24,6 @@ shell-integration-features = no-title
 
 #font-family = Iosevka Fixed
 font-family = Iosevka Fixed Extended
-#font-family = Iosevka Fixed Slab
-#font-family = Iosevka Fixed Slab Extended
 #font-family = JetBrains Mono NL
 #font-size = 14
 
