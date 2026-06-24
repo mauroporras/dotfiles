@@ -23,8 +23,10 @@ shell-integration-features = no-title
 # == === != -- __ >= <= => -> -->
 
 #font-family = Iosevka Fixed
+font-family = Iosevka Fixed Extended
 #font-family = Iosevka Fixed Slab
-font-family = JetBrains Mono NL
+#font-family = Iosevka Fixed Slab Extended
+#font-family = JetBrains Mono NL
 #font-size = 15
 
 adjust-cursor-thickness = 2
