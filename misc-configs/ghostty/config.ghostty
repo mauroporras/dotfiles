@@ -10,6 +10,13 @@ working-directory = /tmp
 # This controls when resize overlays are shown.
 resize-overlay = never
 
+# Example characters to check font rendering:
+# abcdefghijklmnopqrstuvwxyz
+# ABCDEFGHIJKLMNOPQRSTUVWXYZ
+# 0123456789
+# !@#$%^&*()_+-=[]{}|;':",./<>?
+# == === !=
+
 font-family = Iosevka Fixed Slab
 font-size = 16
 
