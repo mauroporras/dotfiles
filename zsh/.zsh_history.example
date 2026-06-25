@@ -1,6 +1,6 @@
 : 1760301857:0;sudo vim /etc/hosts # Edit the hosts file
 : 1760658971:0;pnpm upgrade --latest --interactive # Pick which dependencies to upgrade
-: 1761055513:0;brew upgrade font-iosevka-slab # Upgrade the terminal font
+: 1761055513:0;brew upgrade font-iosevka # Upgrade the terminal font
 : 1761315658:0;direnv allow # Authorize the .envrc in this directory
 : 1761406911:0;npx npkill # Find and delete node_modules folders
 : 1761736490:0;docker compose stats # Live resource usage of the containers

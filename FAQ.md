@@ -1,18 +1,21 @@
 # FAQ
 
-## Terminal
-
-### Why to use a relatively big font size?
-
-- It's easier to read
-- You can always zoom out anyways (`⌘` + `-`)
+## Fonts
 
 ### Iosevka Term vs Iosevka Fixed
 
-Why `Iosevka Fixed Slab`:
+Why `Iosevka Fixed`:
 
 - **Term** scales wide glyphs down to fit one cell. May look compressed.
 - **Fixed** disables ligatures instead. No scaling, natural proportions.
+
+### Why not use slab fonts?
+
+Slab serifs add weight to each glyph, so they need a bigger font size to stay
+legible. That eats screen space for no real readability gain over a clean
+sans-serif monospace at a smaller size.
+
+## Terminal
 
 ### Never remap these keys
 
