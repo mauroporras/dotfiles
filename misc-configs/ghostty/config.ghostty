@@ -22,11 +22,9 @@ shell-integration-features = no-title
 # !@#$%^&*()_+-=[]{}|;':",./<>?
 # == === != -- __ >= <= => -> -->
 
-#font-family = Iosevka Fixed
-font-family = Iosevka Fixed Extended
-#font-family = JetBrains Mono NL
-font-family-italic = JetBrains Mono NL
-font-size = 14
+#font-family = Iosevka Fixed Extended
+font-family = JetBrains Mono NL
+#font-size = 14
 
 adjust-cursor-thickness = 2
 
