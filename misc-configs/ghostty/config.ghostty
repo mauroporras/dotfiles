@@ -15,7 +15,7 @@ resize-overlay = never
 # ABCDEFGHIJKLMNOPQRSTUVWXYZ
 # 0123456789
 # !@#$%^&*()_+-=[]{}|;':",./<>?
-# == === !=
+# == === != -- __ >= <= => -> -->
 
 font-family = Iosevka Fixed Slab
 font-size = 16
