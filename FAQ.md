@@ -15,6 +15,27 @@ Slab serifs add weight to each glyph, so they need a bigger font size to stay
 legible. That eats screen space for no real readability gain over a clean
 sans-serif monospace at a smaller size.
 
+### Font history
+
+Fonts this repo has used over time, and where they lived:
+
+- **2015** — **Ubuntu Mono**. The original GVim `guifont`, lasted ~3 months.
+- **2015–2018** — **Inconsolata / Inconsolata-g for Powerline**. GVim `guifont`.
+- **2018** — **FiraCode**. First real terminal font, in iTerm2, ~9 months. Left it
+  because I don't use ligatures.
+- **2018–2019** — **Roboto Mono**. iTerm2's non-ASCII/fallback font, never primary.
+- **2018–2024** — **Input** (InputMono → InputMonoNarrow, later patched to Nerd
+  Font). ~6 years across iTerm2, Hyper, and Alacritty. Longest-serving font by far.
+  Dropped when I moved from Alacritty to Kitty: Input wasn't a Homebrew cask and
+  needed manual `fontforge` patching for Nerd Font glyphs, whereas Iosevka
+  installs directly and Kitty added builtin Nerd symbols in v0.36.0.
+- **2024** — **Operator Mono**. Never actually used; it was just Kitty's shipped
+  example config comment, not a font I chose.
+- **2024–2026** — **Iosevka Fixed**. ~2 years across Kitty then Ghostty.
+- **2026** — revisited two old favorites and reverted both: **Inconsolata-g for
+  Powerline** and **Input** (now a one-line `font-input` cask, so the old patching
+  hassle is gone). Both feel outdated now.
+
 ## Terminal
 
 ### Never remap these keys
