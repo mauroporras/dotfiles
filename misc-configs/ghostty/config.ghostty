@@ -10,6 +10,11 @@ working-directory = /tmp
 # This controls when resize overlays are shown.
 resize-overlay = never
 
+# Disable title management.
+# Its integration otherwise sets the tab title to the running command, which
+# renames the tab away from the cwd.
+shell-integration-features = no-title
+
 # Example characters to check font rendering:
 # abcdefghijklmnopqrstuvwxyz
 # ABCDEFGHIJKLMNOPQRSTUVWXYZ
