@@ -1,5 +1,7 @@
 # Keep Claude Code from rewriting the terminal tab title (undocumented flag).
 alias ai='CLAUDE_CODE_DISABLE_TERMINAL_TITLE=1 claude'
+alias ai-cheap='CLAUDE_CODE_DISABLE_TERMINAL_TITLE=1 claude --model sonnet'
+alias ai-cheapest='CLAUDE_CODE_DISABLE_TERMINAL_TITLE=1 claude --model haiku'
 # Relative path is intentional: per-project shada (history, registers, marks).
 # Ignored globally via *.shada.
 alias e='nvim -i custom.shada'
