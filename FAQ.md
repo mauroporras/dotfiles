@@ -36,8 +36,8 @@ Fonts this repo has used over time, and where they lived:
   Powerline** and **Input** (now a one-line `font-input` cask, so the old patching
   hassle is gone). Both feel outdated now.
 - **2026** — **JetBrains Mono NL**.
-  - Feels modern, clean, and legible.
   - Renders better in small sizes.
+  - Feels modern, clean, and legible.
   - The NL variant doesn't have ligatures.
   - It's the default font for the other JetBrains products I use.
 
