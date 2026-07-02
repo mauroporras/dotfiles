@@ -1,6 +1,6 @@
 ---
 disable-model-invocation: true
-allowed-tools: Write, Bash(bash:*)
+allowed-tools: Write, Bash(bash *)
 ---
 
 # Fetch and summarize this PR's UNRESOLVED comments

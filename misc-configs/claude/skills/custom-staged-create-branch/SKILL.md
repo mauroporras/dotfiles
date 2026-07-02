@@ -1,7 +1,7 @@
 ---
 disable-model-invocation: true
 context: fork
-allowed-tools: Bash(git checkout:*), Bash(git --no-pager diff:*)
+allowed-tools: Bash(git checkout *), Bash(git --no-pager diff *)
 model: haiku
 ---
 

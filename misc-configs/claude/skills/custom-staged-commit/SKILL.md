@@ -2,7 +2,7 @@
 disable-model-invocation: true
 context: fork
 argument-hint: [push] [issue-number]
-allowed-tools: Bash(git --no-pager diff:*), Bash(git rev-parse:*), Bash(git remote get-url:*), Bash(git commit:*), Bash(git push:*), Bash(grep:*), Bash(echo:*), Bash(head:*)
+allowed-tools: Bash(git --no-pager diff *), Bash(git rev-parse *), Bash(git remote get-url *), Bash(git commit *), Bash(git push *), Bash(grep *), Bash(echo *), Bash(head *)
 model: haiku
 ---
 

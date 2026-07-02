@@ -1,6 +1,6 @@
 ---
 disable-model-invocation: true
-allowed-tools: Read, Bash(git --no-pager log:*), Bash(git --no-pager diff:*)
+allowed-tools: Read, Bash(git --no-pager log *), Bash(git --no-pager diff *)
 model: haiku
 ---
 
