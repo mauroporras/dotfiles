@@ -407,20 +407,17 @@ rate_limit_color() {
   fi
 }
 
-# The harness omits rate_limits entirely (e.g. on subscription plans), and a
-# window below 20% isn't worth the glance, so each meter renders only when it's
-# actually reporting and at or above the threshold. The `-n` guard short-circuits
-# before the numeric `-gt` so an empty (missing) percentage never trips bash.
-rate_limits_threshold=20
-
+# The harness omits rate_limits entirely (e.g. on subscription plans), so each
+# meter renders whenever it's actually reporting. The `-n` guard ensures an
+# empty (missing) percentage never renders a blank/zero segment.
 five_hour_segment=""
-if [[ -n "$five_hour_pct_int" && $five_hour_pct_int -ge $rate_limits_threshold ]]; then
+if [[ -n "$five_hour_pct_int" ]]; then
   five_hour_color=$(rate_limit_color "$five_hour_pct_int")
   five_hour_segment="${five_hour_color}${bold}${five_hour_pct_int}%${reset}⏱️${gray}${five_hour_reset_display}${reset}"
 fi
 
 seven_day_segment=""
-if [[ -n "$seven_day_pct_int" && $seven_day_pct_int -ge $rate_limits_threshold ]]; then
+if [[ -n "$seven_day_pct_int" ]]; then
   seven_day_color=$(rate_limit_color "$seven_day_pct_int")
   seven_day_segment="${seven_day_color}${bold}${seven_day_pct_int}%${reset}🗓️${gray}${seven_day_reset_display}${reset}"
 fi
