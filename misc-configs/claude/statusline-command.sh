@@ -19,6 +19,7 @@ SHOW_VERSION=false
 # Colors
 bold='\033[1m'
 inverse='\033[7m'
+italic='\033[3m'
 blue='\033[34m'
 green='\033[32m'
 yellow='\033[33m'
@@ -313,18 +314,12 @@ format_reset_short() {
   local hours=$(( (secs % 86400) / 3600 ))
   local mins=$(( (secs % 3600) / 60 ))
 
-  # Bold only the digits; the unit letters stay in the surrounding gray. `num_end`
-  # drops out of bold and restores gray (a plain reset would also clear the color
-  # the caller set around this whole segment).
-  local num="$bold"
-  local num_end="${reset}${gray}"
-
   if [[ $days -gt 0 ]]; then
-    echo "${num}${days}${num_end}d${num}${hours}${num_end}h"
+    echo "${days}${italic}d${reset}${hours}${italic}h${reset}"
   elif [[ $hours -gt 0 ]]; then
-    echo "${num}${hours}${num_end}h${num}${mins}${num_end}m"
+    echo "${hours}${italic}h${reset}${mins}${italic}m${reset}"
   else
-    echo "${num}${mins}${num_end}m"
+    echo "${mins}${italic}m${reset}"
   fi
 }
 
@@ -413,13 +408,13 @@ rate_limit_color() {
 five_hour_segment=""
 if [[ -n "$five_hour_pct_int" ]]; then
   five_hour_color=$(rate_limit_color "$five_hour_pct_int")
-  five_hour_segment="${five_hour_color}${bold}${five_hour_pct_int}%${reset}⏱️${gray}${five_hour_reset_display}${reset}"
+  five_hour_segment="${five_hour_color}${five_hour_pct_int}%${reset}⏱️${five_hour_reset_display}"
 fi
 
 seven_day_segment=""
 if [[ -n "$seven_day_pct_int" ]]; then
   seven_day_color=$(rate_limit_color "$seven_day_pct_int")
-  seven_day_segment="${seven_day_color}${bold}${seven_day_pct_int}%${reset}🗓️${gray}${seven_day_reset_display}${reset}"
+  seven_day_segment="${seven_day_color}${seven_day_pct_int}%${reset}🗓️${seven_day_reset_display}"
 fi
 
 # Only insert the separating space when both meters are present.
