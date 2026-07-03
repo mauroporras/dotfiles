@@ -17,6 +17,27 @@ if type brew &>/dev/null; then
   compinit
 fi
 
+# Completion {{{
+zmodload -i zsh/complist
+
+setopt auto_menu        # a second Tab cycles through the completion menu
+setopt always_to_end    # move cursor to end of the word after completing
+unsetopt menu_complete  # show the menu instead of inserting the first match
+unsetopt flowcontrol    # free up ^s / ^q
+
+# Colored completion picker; Tab cycles forward, Shift-Tab steps backward.
+# Arrow keys also work but aren't required.
+zstyle ':completion:*:*:*:*:*' menu select
+bindkey -M menuselect '^[[Z' reverse-menu-complete
+
+# Populate LS_COLORS (empty by default on macOS) so completion menus are
+# colored by file type. Also affects `ls`; `eza` uses its own colors.
+eval "$(dircolors -b)"
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+# cd: prefer local dirs, then the pushd stack, then $cdpath
+zstyle ':completion:*:cd:*' tag-order local-directories directory-stack path-directories
+# }}}
+
 # fzf
 # See: https://github.com/junegunn/fzf#setting-up-shell-integration
 source <(fzf --zsh)
@@ -67,10 +88,11 @@ bindkey "^h" backward-delete-char
 bindkey "^f" forward-char
 bindkey "^b" backward-char
 
+# Fuzzy history {{{
+# Search on the text before the cursor, preserving cursor position
+# (better than up-line-or-search, which jumps to end of line)
 #bindkey "^p" up-line-or-search
 #bindkey "^n" down-line-or-search
-# Fuzzy history search on the text before the cursor, preserving cursor position
-# (better than up-line-or-search, which jumps to end of line)
 autoload -U up-line-or-beginning-search down-line-or-beginning-search
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
@@ -82,6 +104,7 @@ bindkey -M viins "^p" up-line-or-beginning-search
 bindkey -M viins "^n" down-line-or-beginning-search
 bindkey -M viins "^[[A" up-line-or-beginning-search    # Up arrow
 bindkey -M viins "^[[B" down-line-or-beginning-search  # Down arrow
+# }}}
 
 # Custom functions
 take() {
@@ -90,3 +113,5 @@ take() {
 
 # Misc.
 # plugins=(colored-man-pages colorize docker httpie zsh-completions)
+
+# vim:foldmethod=marker
