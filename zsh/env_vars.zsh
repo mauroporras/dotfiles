@@ -65,5 +65,7 @@ setopt COMPLETE_IN_WORD
 setopt INTERACTIVE_COMMENTS
 # Prevent overwriting existing files with > redirection (use >| to force)
 setopt NO_CLOBBER
+# But let >> create the file if it doesn't exist yet (NO_CLOBBER breaks this by default)
+setopt APPEND_CREATE
 # Case-insensitive globbing
 setopt NO_CASE_GLOB
