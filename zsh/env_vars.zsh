@@ -47,6 +47,8 @@ setopt HIST_IGNORE_SPACE
 setopt HIST_SAVE_NO_DUPS
 # Remove superfluous blanks before recording entry
 setopt HIST_REDUCE_BLANKS
+# Load history expansion into the prompt for review instead of running it immediately
+setopt HIST_VERIFY
 # Change directory by typing directory name without cd
 setopt AUTO_CD
 # Make cd push the old directory onto the stack so `dirs -v` (the `d` alias) has history
