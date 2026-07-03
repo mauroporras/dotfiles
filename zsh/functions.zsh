@@ -66,8 +66,22 @@ bindkey "^?" backward-delete-char
 bindkey "^h" backward-delete-char
 bindkey "^f" forward-char
 bindkey "^b" backward-char
-bindkey "^p" up-line-or-search
-bindkey "^n" down-line-or-search
+
+#bindkey "^p" up-line-or-search
+#bindkey "^n" down-line-or-search
+# Fuzzy history search on the text before the cursor, preserving cursor position
+# (better than up-line-or-search, which jumps to end of line)
+autoload -U up-line-or-beginning-search down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+# Keep the cursor where it is instead of jumping to end after each recall
+# (the widgets run .end-of-line by default; leave-cursor=no opts out)
+zstyle ':zle:up-line-or-beginning-search' leave-cursor no
+zstyle ':zle:down-line-or-beginning-search' leave-cursor no
+bindkey -M viins "^p" up-line-or-beginning-search
+bindkey -M viins "^n" down-line-or-beginning-search
+bindkey -M viins "^[[A" up-line-or-beginning-search    # Up arrow
+bindkey -M viins "^[[B" down-line-or-beginning-search  # Down arrow
 
 # Custom functions
 take() {
