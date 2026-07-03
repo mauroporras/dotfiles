@@ -88,8 +88,8 @@ bindkey "^h" backward-delete-char
 bindkey "^f" forward-char
 bindkey "^b" backward-char
 
-# Edit the current command line in $EDITOR (nvim); save-quit runs it.
-# Handy for multi-line edits that are awkward inside the prompt.
+# Edit the current command line in $EDITOR (nvim); save-quit reloads it onto the
+# prompt (press Enter to run). Handy for multi-line edits awkward at the prompt.
 autoload -U edit-command-line
 zle -N edit-command-line
 bindkey -M viins "^x^e" edit-command-line
