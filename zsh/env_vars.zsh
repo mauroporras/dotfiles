@@ -49,6 +49,12 @@ setopt HIST_SAVE_NO_DUPS
 setopt HIST_REDUCE_BLANKS
 # Change directory by typing directory name without cd
 setopt AUTO_CD
+# Make cd push the old directory onto the stack so `dirs -v` (the `d` alias) has history
+setopt AUTO_PUSHD
+# Don't push duplicate directories onto the stack
+setopt PUSHD_IGNORE_DUPS
+# Don't print the stack after every pushd
+setopt PUSHD_SILENT
 # Complete from both ends of a word
 setopt COMPLETE_IN_WORD
 # Allow comments in interactive shell commands
