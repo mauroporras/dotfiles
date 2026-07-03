@@ -55,6 +55,8 @@ setopt AUTO_PUSHD
 setopt PUSHD_IGNORE_DUPS
 # Don't print the stack after every pushd
 setopt PUSHD_SILENT
+# Swap +/- so `cd -n` counts back through the stack (matches how `cd -` reads)
+setopt PUSHD_MINUS
 # Complete from both ends of a word
 setopt COMPLETE_IN_WORD
 # Allow comments in interactive shell commands
