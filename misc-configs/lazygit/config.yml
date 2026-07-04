@@ -22,6 +22,9 @@ gui:
       - black
     cherryPickedCommitFgColor:
       - green
+  authorColors:
+    mauroporras: magenta
+    "Mauro Pineda": magenta
   showDivergenceFromBaseBranch: arrowAndNumber
   showNumstatInFilesView: true
 git:
