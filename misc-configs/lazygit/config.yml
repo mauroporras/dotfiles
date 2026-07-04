@@ -32,6 +32,7 @@ git:
     - alpha
     - main
     - master
+  # Pagers can be changed from within Lazygit with the `|` and `\` keys.
   pagers:
     - name: "delta"
       pager: delta --paging=never
