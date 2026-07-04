@@ -29,9 +29,9 @@ gui:
   showNumstatInFilesView: true
 git:
   mainBranches:
+    - alpha
     - main
     - master
-    - alpha
   pagers:
     - name: "delta"
       pager: delta --paging=never
