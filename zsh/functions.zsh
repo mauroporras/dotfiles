@@ -118,6 +118,18 @@ take() {
   mkdir -p "$1" && cd "$1"
 }
 
+# Copy the full working directory path to the clipboard.
+# printf %s avoids the trailing newline that `pwd | pbcopy` would leave.
+cpcwd() {
+  printf %s "$PWD" | pbcopy
+}
+
+# Copy just the current folder name (basename of $PWD) to the clipboard.
+# ${PWD:t} is the zsh "tail" modifier; printf %s avoids a trailing newline.
+cpdirname() {
+  printf %s "${PWD:t}" | pbcopy
+}
+
 # Misc.
 # plugins=(colored-man-pages colorize docker httpie zsh-completions)
 

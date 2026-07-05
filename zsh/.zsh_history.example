@@ -29,3 +29,5 @@
 : 1782992079:0;ai # Opus
 : 1782992786:0;ai-cheap # Sonnet
 : 1782992796:0;ai-cheapest # Haiku
+: 1782993051:0;cpcwd # Copy current working directory path
+: 1782993079:0;cpdirname # Copy current working directory name
