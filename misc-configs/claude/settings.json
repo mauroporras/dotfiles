@@ -19,5 +19,6 @@
     "gopls-lsp@claude-plugins-official": true,
     "lua-lsp@claude-plugins-official": true
   },
-  "tui": "fullscreen"
+  "//": "Commented out because links don't work yet",
+  "//tui": "fullscreen"
 }
