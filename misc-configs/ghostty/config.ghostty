@@ -15,14 +15,13 @@ resize-overlay = never
 # renames the tab away from the cwd.
 shell-integration-features = no-title
 
-# Example characters to check font rendering:
+# Example characters for font rendering:
 # abcdefghijklmnopqrstuvwxyz
 # ABCDEFGHIJKLMNOPQRSTUVWXYZ
 # 0123456789
 # !@#$%^&*()_+-=[]{}|;':",./<>?
 # == === != -- __ >= <= => -> -->
 
-#font-family = Iosevka Fixed Extended
 #font-family = JetBrains Mono NL
 font-family = JetBrains Mono NL Medium
 font-family-italic = JetBrains Mono NL
