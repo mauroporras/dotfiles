@@ -130,6 +130,17 @@ cpdirname() {
   printf %s "${PWD:t}" | pbcopy
 }
 
+# Copy the current date and time (with seconds) to the clipboard.
+# $(...) strips date's trailing newline; printf %s adds none of its own.
+cpdate() {
+  printf %s "$(date +'%Y-%m-%d %H:%M:%S')" | pbcopy
+}
+
+# Copy the current date and time without seconds to the clipboard.
+cpdatens() {
+  printf %s "$(date +'%Y-%m-%d %H:%M')" | pbcopy
+}
+
 # Misc.
 # plugins=(colored-man-pages colorize docker httpie zsh-completions)
 
