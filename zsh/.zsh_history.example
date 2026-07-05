@@ -12,8 +12,7 @@
 : 1771791203:0;git rerere clear # Clear the Git rerere cache
 : 1771792334:0;brew upgrade claude-code # Upgrade Claude Code
 : 1771792629:0;git remote prune origin # Delete local refs to removed remote branches
-: 1771855139:0;cp ~/dotfiles/example-configs/* . # Copy example configs into a new project
-: 1771855166:0;cp ~/dotfiles/example-configs/.* . # Copy the hidden example configs too
+: 1771855139:0;cp ~/dotfiles/example-configs/* ~/dotfiles/example-configs/.* . # Copy example config files
 : 1771855469:0;pnpm add --save-dev --save-exact prettier # Install Prettier pinned to an exact version
 : 1771855523:0;pnpm add --save-dev --save-exact prettier-plugin-organize-imports # Sort imports with Prettier
 : 1777490809:0;brew outdated # Check for upgradable packages
