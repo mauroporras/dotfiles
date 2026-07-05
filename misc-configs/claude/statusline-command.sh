@@ -471,7 +471,7 @@ if [[ "$SHOW_CONTEXT_PCT" == "true" ]]; then
   context_pct_display=" ${gray}${context_pct}%${reset}"
 fi
 
-line="${line} • ${cyan}${model}${reset} ${bold}${tokens_used_color}${tokens_k}k${reset}/${context_display}${context_pct_display}${advisor_display} 💪🏻${effort_display} 🧠${thinking_display}"
+line="${line} • ${cyan}${model}${reset} ${tokens_used_color}${tokens_k}k${reset}/${context_display}${context_pct_display}${advisor_display} 💪🏻${effort_display} 🧠${thinking_display}"
 
 if [[ -n "$fast_mode_display" ]]; then
   line="${line} ${fast_mode_display}"
