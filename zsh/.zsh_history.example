@@ -22,10 +22,10 @@
 : 1779580601:0;k3d cluster list # List local k3d clusters
 : 1781465061:0;TERM=xterm-256color ssh someuser@some-vps # Connect to a VPS
 : 1782337258:0;lsof -nP -iTCP:8080 -sTCP:LISTEN # What process is using port 8080
-: 1782990850:0;ai-expensive # Fable
+: 1782990850:0;aiexpensive # Fable
 : 1782992079:0;ai # Opus
-: 1782992786:0;ai-cheap # Sonnet
-: 1782992796:0;ai-cheapest # Haiku
+: 1782992786:0;aicheap # Sonnet
+: 1782992796:0;aicheapest # Haiku
 : 1782993051:0;cpcwd # Copy current working directory path
 : 1782993079:0;cpdirname # Copy current working directory name
 : 1782993102:0;cpdate # Copy current date and time, with seconds
