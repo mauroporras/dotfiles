@@ -1,6 +1,5 @@
 : 1760301857:0;sudo vim /etc/hosts # Edit the hosts file
 : 1760658971:0;pnpm upgrade --latest --interactive # Pick which dependencies to upgrade
-: 1761055513:0;brew upgrade font-iosevka # Upgrade the terminal font
 : 1761315658:0;direnv allow # Authorize the .envrc in this directory
 : 1761406911:0;npx npkill # Find and delete node_modules folders
 : 1761736490:0;docker compose stats # Live resource usage of the containers
@@ -22,6 +21,7 @@
 : 1779580601:0;k3d cluster list # List local k3d clusters
 : 1781465061:0;TERM=xterm-256color ssh someuser@some-vps # Connect to a VPS
 : 1782337258:0;lsof -nP -iTCP:8080 -sTCP:LISTEN # What process is using port 8080
+: 1782408891:0;brew upgrade font-jetbrains-mono # Upgrade the terminal font
 : 1782990850:0;aiexpensive # Fable
 : 1782992079:0;ai # Opus
 : 1782992786:0;aicheap # Sonnet

@@ -2,13 +2,6 @@
 
 ## Fonts
 
-### Iosevka Term vs Iosevka Fixed
-
-Why `Iosevka Fixed`:
-
-- **Term** scales wide glyphs down to fit one cell. May look compressed.
-- **Fixed** disables ligatures instead. No scaling, natural proportions.
-
 ### Why not use slab fonts?
 
 Slab serifs add weight to each glyph, so they need a bigger font size to stay
@@ -27,14 +20,19 @@ Fonts this repo has used over time, and where they lived:
 - **2018–2024** — **Input** (InputMono → InputMonoNarrow, later patched to Nerd
   Font). ~6 years across iTerm2, Hyper, and Alacritty. Longest-serving font by far.
   Dropped when I moved from Alacritty to Kitty: Input wasn't a Homebrew cask and
-  needed manual `fontforge` patching for Nerd Font glyphs, whereas Iosevka
-  installs directly and Kitty added builtin Nerd symbols in v0.36.0.
+  needed manual `fontforge` patching for Nerd Font glyphs, whereas cask fonts
+  install directly and Kitty added builtin Nerd symbols in v0.36.0.
 - **2024** — **Operator Mono**. Never actually used; it was just Kitty's shipped
   example config comment, not a font I chose.
 - **2024–2026** — **Iosevka Fixed**. ~2 years across Kitty then Ghostty.
 - **2026** — revisited two old favorites and reverted both: **Inconsolata-g for
   Powerline** and **Input** (now a one-line `font-input` cask, so the old patching
   hassle is gone). Both feel outdated now.
+- **2026** — **JetBrains Mono NL**.
+  - Renders better in small sizes.
+  - Feels modern, clean, and legible.
+  - The NL variant doesn't have ligatures.
+  - It's the default font for the other JetBrains products I use.
 
 ## Terminal
 
