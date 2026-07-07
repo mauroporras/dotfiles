@@ -25,7 +25,7 @@
 : 1782990850:0;aiexpensive # Fable
 : 1782992079:0;ai # Opus
 : 1782992786:0;aicheap # Sonnet
-: 1782992796:0;aicheapest # Haiku. Almost no reason to use it.
+: 1782992796:0;aicheapest # Haiku. Almost no reason to use it. Mainly for very specific agents and skills.
 : 1782993051:0;cpcwd # Copy current working directory path
 : 1782993079:0;cpdirname # Copy current working directory name
 : 1782993102:0;cpdate # Copy current date and time, with seconds
