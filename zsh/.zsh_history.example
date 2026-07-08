@@ -30,3 +30,4 @@
 : 1782993079:0;cpdirname # Copy current working directory name
 : 1782993102:0;cpdate # Copy current date and time, with seconds
 : 1782993128:0;cpdatens # Copy current date and time, no seconds
+: 1783536197:0;curl -d "" "https://api.cloudflare.com/client/v4/pages/webhooks/deploy_hooks/some-hook-id" # Trigger a Cloudflare Pages deploy
