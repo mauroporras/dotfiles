@@ -25,6 +25,7 @@ gui:
   authorColors:
     mauroporras: magenta
     "Mauro Pineda": magenta
+    "Claude": yellow
   showDivergenceFromBaseBranch: arrowAndNumber
   showNumstatInFilesView: true
 git:
