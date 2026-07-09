@@ -457,8 +457,10 @@ if [[ -n "$github_section" ]]; then
 fi
 
 tokens_used_color=""
+tokens_used_alert=""
 if [[ "$exceeds_200k" == "true" ]]; then
   tokens_used_color="${bold}${red}"
+  tokens_used_alert="🚨"
 fi
 
 advisor_display=""
@@ -471,7 +473,7 @@ if [[ "$SHOW_CONTEXT_PCT" == "true" ]]; then
   context_pct_display=" ${gray}${context_pct}%${reset}"
 fi
 
-line="${line} • ${cyan}${model}${reset} ${tokens_used_color}${tokens_k}k${reset}/${context_display}${context_pct_display}${advisor_display} 💪🏻${effort_display} 🧠${thinking_display}"
+line="${line} • ${cyan}${model}${reset} ${tokens_used_alert}${tokens_used_color}${tokens_k}k${reset}/${context_display}${context_pct_display}${advisor_display} 💪🏻${effort_display} 🧠${thinking_display}"
 
 if [[ -n "$fast_mode_display" ]]; then
   line="${line} ${fast_mode_display}"
