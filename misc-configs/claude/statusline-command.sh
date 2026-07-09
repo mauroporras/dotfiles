@@ -458,7 +458,7 @@ fi
 
 tokens_used_color=""
 if [[ "$exceeds_200k" == "true" ]]; then
-  tokens_used_color="$red"
+  tokens_used_color="${bold}${red}"
 fi
 
 advisor_display=""
