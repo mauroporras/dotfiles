@@ -1,33 +1,33 @@
-: 1760301857:0;sudo vim /etc/hosts # Edit the hosts file
-: 1760658971:0;pnpm upgrade --latest --interactive # Pick which dependencies to upgrade
-: 1761315658:0;direnv allow # Authorize the .envrc in this directory
-: 1761406911:0;npx npkill # Find and delete node_modules folders
-: 1761736490:0;docker compose stats # Live resource usage of the containers
-: 1762054277:0;brew upgrade lazygit # Upgrade lazygit
-: 1762456224:0;e ~/.zshrc # Edit the zsh config
-: 1762456278:0;source ~/.zshrc # Reload the zsh config
-: 1763412907:0;brew upgrade starship # Upgrade the prompt
-: 1763556911:0;echo .git > .rgignore # Hide .git from ripgrep results
-: 1771791203:0;git rerere clear # Clear the Git rerere cache
-: 1771792334:0;brew upgrade claude-code # Upgrade Claude Code
-: 1771792629:0;git remote prune origin # Delete local refs to removed remote branches
-: 1771855139:0;cp ~/dotfiles/example-configs/* ~/dotfiles/example-configs/.* . # Copy example config files
-: 1771855469:0;pnpm add --save-dev --save-exact prettier # Install Prettier pinned to an exact version
-: 1771855523:0;pnpm add --save-dev --save-exact prettier-plugin-organize-imports # Sort imports with Prettier
-: 1777490809:0;brew outdated # Check for upgradable packages
-: 1777490825:0;brew upgrade # Upgrade all packages
-: 1777510634:0;lsof -iTCP:3000 -n -P # What process is using port 3000
-: 1777510800:0;defaults write com.apple.finder AppleShowAllFiles -boolean true && killall Finder # Show hidden files in Finder
-: 1779580601:0;k3d cluster list # List local k3d clusters
-: 1781465061:0;TERM=xterm-256color ssh someuser@some-vps # Connect to a VPS
-: 1782337258:0;lsof -nP -iTCP:8080 -sTCP:LISTEN # What process is using port 8080
-: 1782408891:0;brew upgrade font-jetbrains-mono # Upgrade the terminal font
-: 1782990850:0;aiexpensive # Fable
-: 1782992079:0;ai # Opus
-: 1782992786:0;aicheap # Sonnet
-: 1782992796:0;aicheapest # Haiku. Almost no reason to use it. Mainly for very specific agents and skills.
-: 1782993051:0;cpcwd # Copy current working directory path
-: 1782993079:0;cpdirname # Copy current working directory name
-: 1782993102:0;cpdate # Copy current date and time, with seconds
-: 1782993128:0;cpdatens # Copy current date and time, no seconds
-: 1783536197:0;curl -d "" "https://api.cloudflare.com/client/v4/pages/webhooks/deploy_hooks/some-hook-id" # Trigger a Cloudflare Pages deploy
+: 0000000000:0;sudo vim /etc/hosts # Edit the hosts file
+: 0000000000:0;pnpm upgrade --latest --interactive # Pick which dependencies to upgrade
+: 0000000000:0;direnv allow # Authorize the .envrc in this directory
+: 0000000000:0;npx npkill # Find and delete node_modules folders
+: 0000000000:0;docker compose stats # Live resource usage of the containers
+: 0000000000:0;brew upgrade lazygit # Upgrade lazygit
+: 0000000000:0;e ~/.zshrc # Edit the zsh config
+: 0000000000:0;source ~/.zshrc # Reload the zsh config
+: 0000000000:0;brew upgrade starship # Upgrade the prompt
+: 0000000000:0;echo .git > .rgignore # Hide .git from ripgrep results
+: 0000000000:0;git rerere clear # Clear the Git rerere cache
+: 0000000000:0;brew upgrade claude-code # Upgrade Claude Code
+: 0000000000:0;git remote prune origin # Delete local refs to removed remote branches
+: 0000000000:0;cp ~/dotfiles/example-configs/* ~/dotfiles/example-configs/.* . # Copy example config files
+: 0000000000:0;pnpm add --save-dev --save-exact prettier # Install Prettier pinned to an exact version
+: 0000000000:0;pnpm add --save-dev --save-exact prettier-plugin-organize-imports # Sort imports with Prettier
+: 0000000000:0;brew outdated # Check for upgradable packages
+: 0000000000:0;brew upgrade # Upgrade all packages
+: 0000000000:0;lsof -iTCP:3000 -n -P # What process is using port 3000
+: 0000000000:0;defaults write com.apple.finder AppleShowAllFiles -boolean true && killall Finder # Show hidden files in Finder
+: 0000000000:0;k3d cluster list # List local k3d clusters
+: 0000000000:0;TERM=xterm-256color ssh someuser@some-vps # Connect to a VPS
+: 0000000000:0;lsof -nP -iTCP:8080 -sTCP:LISTEN # What process is using port 8080
+: 0000000000:0;brew upgrade font-jetbrains-mono # Upgrade the terminal font
+: 0000000000:0;aiexpensive # Fable
+: 0000000000:0;ai # Opus
+: 0000000000:0;aicheap # Sonnet
+: 0000000000:0;aicheapest # Haiku. Almost no reason to use it. Mainly for very specific agents and skills.
+: 0000000000:0;cpcwd # Copy current working directory path
+: 0000000000:0;cpdirname # Copy current working directory name
+: 0000000000:0;cpdate # Copy current date and time, with seconds
+: 0000000000:0;cpdatens # Copy current date and time, no seconds
+: 0000000000:0;curl -d "" "https://api.cloudflare.com/client/v4/pages/webhooks/deploy_hooks/some-hook-id" # Trigger a Cloudflare Pages deploy
