@@ -28,6 +28,7 @@
 : 0000000000:0;aicheapest # Haiku. Almost no reason to use it. Mainly for very specific agents and skills.
 : 0000000000:0;cpcwd # Copy current working directory path
 : 0000000000:0;cpdirname # Copy current working directory name
-: 0000000000:0;cpdate # Copy current date and time, with seconds
-: 0000000000:0;cpdatens # Copy current date and time, no seconds
+: 0000000000:0;cpdate # Copy current date
+: 0000000000:0;cpdatetime # Copy current date and time, no seconds
+: 0000000000:0;cpdatetimews # Copy current date and time, with seconds
 : 0000000000:0;curl -d "" "https://api.cloudflare.com/client/v4/pages/webhooks/deploy_hooks/some-hook-id" # Trigger a Cloudflare Pages deploy

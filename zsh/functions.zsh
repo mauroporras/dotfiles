@@ -130,15 +130,19 @@ cpdirname() {
   printf %s "${PWD:t}" | pbcopy
 }
 
-# Copy the current date and time (with seconds) to the clipboard.
-# $(...) strips date's trailing newline; printf %s adds none of its own.
+# Copy current date
 cpdate() {
-  printf %s "$(date +'%Y-%m-%d %H:%M:%S')" | pbcopy
+  printf %s "$(date +'%Y-%m-%d')" | pbcopy
 }
 
-# Copy the current date and time without seconds to the clipboard.
-cpdatens() {
+# Copy current date and time, no seconds
+cpdatetime() {
   printf %s "$(date +'%Y-%m-%d %H:%M')" | pbcopy
+}
+
+# Copy current date and time, with seconds
+cpdatetimews() {
+  printf %s "$(date +'%Y-%m-%d %H:%M:%S')" | pbcopy
 }
 
 # Misc.
