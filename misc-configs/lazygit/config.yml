@@ -29,6 +29,8 @@ gui:
   showDivergenceFromBaseBranch: arrowAndNumber
   showNumstatInFilesView: true
 git:
+  # Can be changed from the branches panel with the `s` key.
+  #localBranchSortOrder: alphabetical
   mainBranches:
     - alpha
     - main
