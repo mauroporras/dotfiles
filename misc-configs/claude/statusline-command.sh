@@ -408,13 +408,25 @@ rate_limit_color() {
 five_hour_segment=""
 if [[ -n "$five_hour_pct_int" ]]; then
   five_hour_color=$(rate_limit_color "$five_hour_pct_int")
-  five_hour_segment="${five_hour_color}${five_hour_pct_int}%${reset}⏱️${five_hour_reset_display}"
+  # A color is only assigned outside the normal range, so reuse its presence as
+  # the signal to also bold the percentage for extra emphasis.
+  five_hour_emphasis=""
+  if [[ -n "$five_hour_color" ]]; then
+    five_hour_emphasis="$bold"
+  fi
+
+  five_hour_segment="${five_hour_color}${five_hour_emphasis}${five_hour_pct_int}%${reset}⏱️${five_hour_reset_display}"
 fi
 
 seven_day_segment=""
 if [[ -n "$seven_day_pct_int" ]]; then
   seven_day_color=$(rate_limit_color "$seven_day_pct_int")
-  seven_day_segment="${seven_day_color}${seven_day_pct_int}%${reset}🗓️${seven_day_reset_display}"
+  seven_day_emphasis=""
+  if [[ -n "$seven_day_color" ]]; then
+    seven_day_emphasis="$bold"
+  fi
+
+  seven_day_segment="${seven_day_color}${seven_day_emphasis}${seven_day_pct_int}%${reset}🗓️${seven_day_reset_display}"
 fi
 
 # Only insert the separating space when both meters are present.
