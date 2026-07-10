@@ -14,6 +14,9 @@ model: haiku
 
 Summarize the changes purely based on the code (do not check the branch name, linked GitHub issues, PR descriptions, or any other contextual clues).
 
+Unstaged and untracked changes do not exist for this skill: never mention them,
+and never let them influence the summary.
+
 REQUIRED:
 
 - Prioritize brevity over grammar:

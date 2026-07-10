@@ -15,6 +15,9 @@ model: haiku
 
 Based on the above STAGED changes, create a new branch with a descriptive name.
 
+Unstaged and untracked changes do not exist for this skill: never mention them,
+and never let them influence the branch name.
+
 ALWAYS:
 
 - Prioritize brevity over grammar:

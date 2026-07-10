@@ -22,6 +22,10 @@ model: haiku
 
 Create a commit for the STAGED changes above using `git commit`.
 
+Unstaged and untracked changes do not exist for this skill: never mention them,
+and never let them influence the commit message, even when they touch the same
+files as the staged diff.
+
 The arguments have already been parsed for you in the Context above. Use these
 precomputed values verbatim; do NOT re-parse `$ARGUMENTS` yourself:
 

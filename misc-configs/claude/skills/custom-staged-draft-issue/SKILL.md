@@ -19,6 +19,9 @@ Draft a GitHub issue based purely on the STAGED changes above (do not check the
 branch name, existing issues, PR descriptions, or any other contextual clues),
 then write it to a new `.md` file.
 
+Unstaged and untracked changes do not exist for this skill: never mention them,
+and never let them influence the issue.
+
 REQUIRED:
 
 - Frame the issue around the problem or feature the staged changes address, not
