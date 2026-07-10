@@ -22,6 +22,9 @@ then write it to a new `.md` file.
 Unstaged and untracked changes do not exist for this skill: never mention them,
 and never let them influence the issue.
 
+Guard clause: if the staged diff above is empty, do NOT write a file.
+Tell the user nothing is staged and stop.
+
 REQUIRED:
 
 - Frame the issue around the problem or feature the staged changes address, not

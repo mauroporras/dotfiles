@@ -26,6 +26,9 @@ Unstaged and untracked changes do not exist for this skill: never mention them,
 and never let them influence the commit message, even when they touch the same
 files as the staged diff.
 
+Guard clause: if the staged diff above is empty, do NOT run `git commit`.
+Tell the user nothing is staged and stop.
+
 The arguments have already been parsed for you in the Context above. Use these
 precomputed values verbatim; do NOT re-parse `$ARGUMENTS` yourself:
 

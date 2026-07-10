@@ -18,6 +18,9 @@ Based on the above STAGED changes, create a new branch with a descriptive name.
 Unstaged and untracked changes do not exist for this skill: never mention them,
 and never let them influence the branch name.
 
+Guard clause: if the staged diff above is empty, do NOT create a branch (there
+is nothing to derive a name from). Tell the user nothing is staged and stop.
+
 ALWAYS:
 
 - Prioritize brevity over grammar:
