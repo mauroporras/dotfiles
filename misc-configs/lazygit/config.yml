@@ -43,8 +43,8 @@ git:
       pager: delta --paging=never --side-by-side
     - name: "cat"
       pager: cat
-  # The number of lines of context to show around each diff hunk. Can be changed
-  # from within Lazygit with the `{` and `}` keys.
+  # The number of lines to show around diff hunks.
+  # Changed it using the `{` and `}` keys.
   diffContextSize: 15
 refresher:
   externalChangeCheckInterval: 3
