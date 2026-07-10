@@ -29,13 +29,13 @@ gui:
   showDivergenceFromBaseBranch: arrowAndNumber
   showNumstatInFilesView: true
 git:
-  # Can be changed from the branches panel with the `s` key.
+  # Change it from the branches panel using the `s` key.
   #localBranchSortOrder: alphabetical
   mainBranches:
     - alpha
     - main
     - master
-  # Pagers can be changed from within Lazygit with the `|` and `\` keys.
+  # Change it using the `|` and `\` keys.
   pagers:
     - name: "delta"
       pager: delta --paging=never
