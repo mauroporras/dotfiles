@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "doc-cleanup": {
+      "source": "aka-luan/doc-cleanup",
+      "sourceType": "github",
+      "skillPath": "skills/doc-cleanup/SKILL.md",
+      "computedHash": "54cfc805de67c9b0904ec046d273e87b42d9236f0902ab7c1afd84a778c166c5"
+    }
+  }
+}
