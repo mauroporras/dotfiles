@@ -26,6 +26,7 @@
       "WebFetch(domain:docs.anthropic.com)",
       "WebFetch(domain:docs.claude.com)",
       "WebFetch(domain:github.com)",
+      "WebFetch(domain:pnpm.io)",
       "WebFetch(domain:raw.githubusercontent.com)"
     ],
     "deny": [],
