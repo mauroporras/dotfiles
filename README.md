@@ -10,11 +10,11 @@ git clone git@github.com:mauroporras/dotfiles.git ~/dotfiles
 
 ## Install Homebrew
 
-### Step 1:
+### Step 1
 
 [https://brew.sh](https://brew.sh)
 
-### Step 2:
+### Step 2
 
 ```bash
 brew bundle --file ~/dotfiles/Brewfile
