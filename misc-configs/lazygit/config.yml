@@ -26,8 +26,10 @@ gui:
       - green
   showNumstatInFilesView: true
   nerdFontsVersion: "3"
+  # It's better to use the default value of 7 since it can throw off the
+  # recognition of commit hashes in remote VPSs.
   # Match Git's 7-char short hash after committing.
-  commitHashLength: 7
+  #commitHashLength: 7
   showDivergenceFromBaseBranch: arrowAndNumber
 git:
   # Change it using the `|` and `\` keys.
