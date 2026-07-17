@@ -124,6 +124,12 @@ keybind = ctrl+cmd+enter=toggle_split_zoom
 # keybind = cmd+-=decrease_font_size:4
 # keybind = cmd+==increase_font_size:2
 
+# The all: prefix applies the action to every surface, so splits stay in sync
+# instead of only the focused one resizing.
+keybind = all:shift+cmd+-=decrease_font_size:1
+keybind = all:shift+cmd+==increase_font_size:1
+keybind = all:shift+cmd+0=reset_font_size
+
 # Assigned to nothing to unlearn them
 keybind = cmd+[=text:
 keybind = cmd+]=text:
