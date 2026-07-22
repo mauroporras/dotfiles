@@ -84,3 +84,9 @@ Build the `Pushed to` field as follows:
     - HTTPS (`https://github.com/<owner>/<repo>.git`) becomes `https://github.com/<owner>/<repo>`.
     - Strip any trailing `.git`.
   - Append `/commit/<short commit hash>`.
+
+## Notifications
+
+Deliver the result as printed output only. The user runs this skill
+interactively and is already watching the terminal, so the text you print is the
+whole delivery. `PushNotification` belongs to long unattended work, not here.
