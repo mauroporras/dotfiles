@@ -12,13 +12,13 @@
     "type": "command",
     "command": "/bin/bash ~/.claude/statusline-command.sh"
   },
-  "autoMemoryEnabled": false,
   "enabledPlugins": {
     "typescript-lsp@claude-plugins-official": true,
     "pyright-lsp@claude-plugins-official": true,
     "gopls-lsp@claude-plugins-official": true,
     "lua-lsp@claude-plugins-official": true
   },
+  "autoMemoryEnabled": false,
   "//": "Commented out because links don't work yet",
   "//tui": "fullscreen"
 }
