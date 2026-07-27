@@ -19,6 +19,11 @@
     "lua-lsp@claude-plugins-official": true
   },
   "autoMemoryEnabled": false,
-  "//": "Commented out because links don't work yet",
+
+  "//01": "Commented out because sometimes they're useful. Just learn to ignore them.",
+  "//agentPushNotifEnabled": true,
+  "//preferredNotifChannel": "terminal_bell",
+
+  "//02": "Commented out because links don't work yet",
   "//tui": "fullscreen"
 }
