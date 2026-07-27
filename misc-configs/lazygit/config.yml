@@ -49,8 +49,9 @@ git:
   diffContextSize: 15
   # Change it from the branches panel using the `s` key.
   #localBranchSortOrder: alphabetical
-refresher:
-  externalChangeCheckInterval: 3
+# The default value is ok.
+#refresher:
+#  externalChangeCheckInterval: 3
 customCommands:
   - key: "I"
     context: "files"
