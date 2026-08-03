@@ -1,6 +1,7 @@
 ---
 disable-model-invocation: true
 context: fork
+background: false
 allowed-tools: Read, Write, Bash(git --no-pager diff *), Bash(git rev-parse *), Bash(gh issue create *)
 model: haiku
 ---
