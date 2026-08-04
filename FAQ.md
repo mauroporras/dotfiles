@@ -48,6 +48,19 @@ Used to delete back.
 
 Used to go to the beginning of the line.
 
+## Git
+
+### Why not use mergiraf?
+
+[mergiraf](https://mergiraf.org/) is a syntax-aware merge driver: it compares parse trees instead of lines, so it can resolve conflicts that are only conflicts because someone reindented or reformatted. Tried it, dropped it.
+
+- **It forces `merge.conflictStyle = diff3`.** That rules out `zdiff3`, which hoists the lines common to both sides out of the conflict region instead of repeating them inside it. Since most conflicts still land on me (see below), losing `zdiff3` costs more than mergiraf gives back. It also fails silently: under `zdiff3` it simply stops resolving, with no warning.
+- **It doesn't help with the common cases.** Conflicting additions to an ordered sequence (statements in a block, items in a list, arguments to a call) are left unresolved by design, because insertion order carries meaning it can't infer. That's most real conflicts. What it does solve is the reindent/reformat class.
+- **Where it does merge, the result can break linting.** Two branches each adding an import merges cleanly but in arbitrary order, which fails a sorted-imports rule.
+- **It resolves silently.** Same objection as `rerere`, which is disabled here for the same reason: a wrong resolution lands in a commit under my name with nothing marking it. `mergiraf review` can inspect a resolution, but only if you remember to ask.
+
+Worth revisiting if it ever drops the `diff3` requirement.
+
 ## Neovim
 
 ### Why use `quick-scope` over `flash.nvim`'s char mode?
