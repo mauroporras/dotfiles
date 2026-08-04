@@ -32,3 +32,5 @@
 : 0000000000:0;cpdatetime # Copy current date and time, no seconds
 : 0000000000:0;cpdatetimews # Copy current date and time, with seconds
 : 0000000000:0;curl -d "" "https://api.cloudflare.com/client/v4/pages/webhooks/deploy_hooks/some-hook-id" # Trigger a Cloudflare Pages deploy
+: 0000000000:0;mktemp # Create a temporary file
+: 0000000000:0;mktemp -d # Create a temporary directory
