@@ -33,13 +33,14 @@ gui:
   showDivergenceFromBaseBranch: arrowAndNumber
 git:
   # Change it using the `|` and `\` keys.
-  pagers:
+  # (Formerly `pagers`)
+  diffRenderers:
     - name: "delta"
-      pager: delta --paging=never
+      command: delta --paging=never
     - name: "delta side-by-side"
-      pager: delta --paging=never --side-by-side
+      command: delta --paging=never --side-by-side
     - name: "cat"
-      pager: cat
+      command: cat
   mainBranches:
     - alpha
     - main
