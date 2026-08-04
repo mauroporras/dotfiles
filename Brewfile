@@ -23,6 +23,7 @@ brew "yazi"
 brew "zoxide"
 
 # Git & GitHub
+brew "difftastic" # Syntax-aware diffs.
 brew "gh" # Required for the aliases.
 brew "git"
 brew "git-delta" # Syntax-highlighting pager.

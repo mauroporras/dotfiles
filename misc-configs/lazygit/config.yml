@@ -37,6 +37,12 @@ git:
   diffRenderers:
     - name: "delta"
       command: delta --paging=never
+    # Syntax-aware diffs: https://github.com/wilfred/difftastic
+    # `extDiff` hands diff generation to difftastic via git's `--ext-diff`
+    # instead of post-processing git's output like the stdin filters above.
+    - name: "difftastic"
+      type: extDiff
+      command: difft --color=always --context={{diffContext}}
     - name: "delta side-by-side"
       command: delta --paging=never --side-by-side
     - name: "cat"
