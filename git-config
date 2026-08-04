@@ -43,8 +43,10 @@ git config --global merge.conflictStyle 'zdiff3'
 # Distinguish relocated lines from genuine additions/deletions, so a refactor
 # that only moves code doesn't read as a rewrite.
 git config --global diff.colorMoved 'default'
-# Picks a `[delta "<name>"]` section out of the included themes file. `hoopoe`
-# is light and pairs itself with the GitHub syntax theme.
+# Picks a `[delta "<name>"]` section out of the included themes file.
+# To preview the light themes:
+#   `delta --show-themes --light`
+# `hoopoe` is light and pairs itself with the GitHub syntax theme.
 git config --global delta.features 'hoopoe'
 # Delta ships with these off.
 git config --global delta.line-numbers true
