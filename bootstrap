@@ -8,8 +8,14 @@ mkdir -p .config/bat
 ln -sf ~/dotfiles/misc-configs/bat/config .config/bat/config
 
 # -- Git Delta --
+# Themes are fetched from upstream instead of tracked in this repo, since
+# they're 600+ lines of vendor-owned config. Re-run bootstrap to pull updates.
+# Pick one by name with `delta.features` in `git-config`.
 mkdir -p .config/git-delta
-ln -sf ~/dotfiles/misc-configs/git-delta/themes.gitconfig .config/git-delta/themes.gitconfig
+# Download to a temp file first so a partial transfer never clobbers a working theme.
+curl -fsSL https://raw.githubusercontent.com/dandavison/delta/main/themes.gitconfig \
+  -o .config/git-delta/themes.gitconfig.tmp
+mv .config/git-delta/themes.gitconfig.tmp .config/git-delta/themes.gitconfig
 
 # -- Neovim --
 mkdir -p .config/nvim

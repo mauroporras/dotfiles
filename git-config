@@ -22,12 +22,31 @@ git config --global core.excludesfile ~/.gitignore_global
 git config --global core.editor 'nvim'
 
 # git-delta
+# Makes the upstream theme definitions selectable by name via `delta.features`
+# below. `bootstrap` fetches this file straight from the delta repo, so don't
+# hand-edit it: the next run overwrites it. Overrides belong in this file.
 git config --global include.path ~/.config/git-delta/themes.gitconfig
+# Syntax-highlight diff/show/log output.
 git config --global core.pager 'delta'
+# Same for `git add -p`. `--color-only` is required rather than cosmetic:
+# interactive mode parses the filtered output back into hunks, so delta may add
+# color but must not alter the diff's structure.
 git config --global interactive.diffFilter 'delta --color-only'
-git config --global merge.conflictStyle 'diff3'
+# Jump between diff sections with `n` and `N`. Has no effect inside LazyGit.
+git config --global delta.navigate true
+# Redundant while `hoopoe` is selected (the theme sets `light` itself), but
+# keeps the background assumption explicit if the theme ever changes.
+git config --global delta.light true
+# `zdiff3` hoists lines common to both sides out of the conflict region instead
+# of repeating them inside it. Delta recommends it; needs Git >= 2.35.
+git config --global merge.conflictStyle 'zdiff3'
+# Distinguish relocated lines from genuine additions/deletions, so a refactor
+# that only moves code doesn't read as a rewrite.
 git config --global diff.colorMoved 'default'
+# Picks a `[delta "<name>"]` section out of the included themes file. `hoopoe`
+# is light and pairs itself with the GitHub syntax theme.
 git config --global delta.features 'hoopoe'
+# Delta ships with these off.
 git config --global delta.line-numbers true
 
 # GitHub CLI
