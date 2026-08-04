@@ -36,3 +36,6 @@
 : 0000000000:0;mktemp -d # Create a temporary directory
 : 0000000000:0;taketemp # Create a temp dir and cd into it
 : 0000000000:0;taketemp foo # Create a temp dir with a prefix and cd into it
+: 0000000000:0;npx skills add github/gh-stack # Add GitHub stacked PRs skill
+: 0000000000:0;npx skills list # List installed skills
+: 0000000000:0;npx skills update # Update installed skills
