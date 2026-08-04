@@ -118,6 +118,18 @@ take() {
   mkdir -p "$1" && cd "$1"
 }
 
+# `take` for throwaway work: make a temp dir and cd into it.
+# The optional argument labels the directory so several somedir dirs stay
+# distinguishable; %/ strips the trailing slash macOS puts on $TMPDIR.
+taketemp() {
+  local label="${1:-somedir}"
+  local dir
+
+  dir="$(mktemp -d "${${TMPDIR:-/tmp}%/}/${label}.XXXXXX")" || return
+
+  cd "$dir"
+}
+
 # Copy the full working directory path to the clipboard.
 # printf %s avoids the trailing newline that `pwd | pbcopy` would leave.
 cpcwd() {

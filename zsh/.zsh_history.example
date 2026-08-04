@@ -34,3 +34,5 @@
 : 0000000000:0;curl -d "" "https://api.cloudflare.com/client/v4/pages/webhooks/deploy_hooks/some-hook-id" # Trigger a Cloudflare Pages deploy
 : 0000000000:0;mktemp # Create a temporary file
 : 0000000000:0;mktemp -d # Create a temporary directory
+: 0000000000:0;taketemp # Create a temp dir and cd into it
+: 0000000000:0;taketemp foo # Create a temp dir with a prefix and cd into it
