@@ -5,16 +5,25 @@
       "Bash(brew info *)",
       "Bash(brew list *)",
       "Bash(brew search *)",
+
       "Bash(cat *)",
       "Bash(claude --version)",
       "Bash(date *)",
       "Bash(find *)",
+      "Bash(grep *)",
+
+      "Bash(gh api *)",
+      "Bash(gh pr list *)",
       "Bash(gh run view *)",
+      "Bash(gh stack init *)",
+      "Bash(gh stack view *)",
+      "Bash(gh stack view --help)",
+
       "Bash(git log *)",
       "Bash(git ls-tree *)",
       "Bash(git mv *)",
       "Bash(git show *)",
-      "Bash(grep *)",
+
       "Bash(ls *)",
       "Bash(node --version *)",
       "Bash(npm --version *)",
