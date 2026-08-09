@@ -18,6 +18,9 @@
     "gopls-lsp@claude-plugins-official": true,
     "lua-lsp@claude-plugins-official": true
   },
+  "permissions": {
+    "defaultMode": "auto"
+  },
   "autoMemoryEnabled": false,
 
   "//01": "Commented out because sometimes they're useful. Just learn to ignore them.",
