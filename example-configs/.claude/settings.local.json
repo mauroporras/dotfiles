@@ -1,5 +1,8 @@
 {
   "plansDirectory": ".claude/plans",
+  "env": {
+    "CLAUDE_CODE_SESSION_NAME": "session-some-project"
+  },
   "permissions": {
     "allow": [
       "Bash(brew info *)",
