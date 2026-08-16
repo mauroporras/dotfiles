@@ -159,6 +159,10 @@ git config --global alias.spuki 'stash push --keep-index'
 git config --global alias.p 'pull'
 git config --global alias.pr 'pull --rebase'
 
+# Disabled because:
+#   - `g push` is already short enough
+#   - `g pu` is too easy to fat-finger
+#git config --global alias.pu 'push'
 git config --global alias.pfwl 'push --force-with-lease'
 
 git config --global alias.rb 'rebase'
