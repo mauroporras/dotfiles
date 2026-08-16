@@ -70,6 +70,7 @@ git config --global mergetool.prompt true
 git config --global diff.tool 'vimdiff'
 git config --global push.default 'simple'
 git config --global push.autoSetupRemote true
+git config --global fetch.prune true
 # Records conflict resolutions and replays them.
 # To wipe entire cache:
 #   `git rerere clear`
@@ -77,7 +78,6 @@ git config --global push.autoSetupRemote true
 # Disabled because:
 # Sounds great, but a wrong resolution gets silently repeated.
 git config --global rerere.enabled false
-git config --global fetch.prune true
 
 git config --global color.grep.filename 'magenta'
 git config --global color.grep.linenumber 'blue'
