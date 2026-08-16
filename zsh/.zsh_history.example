@@ -39,3 +39,4 @@
 : 0000000000:0;npx skills add github/gh-stack # Add GitHub stacked PRs skill
 : 0000000000:0;npx skills list # List installed skills
 : 0000000000:0;npx skills update # Update installed skills
+: 0000000000:0;ai "/custom-staged-commit push"
