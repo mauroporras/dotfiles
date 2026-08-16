@@ -99,13 +99,16 @@ git config --global alias.bib 'bisect bad'
 git config --global alias.big 'bisect good'
 git config --global alias.bir 'bisect reset'
 
-# I'm using LazyGit instead.
-# git config --global alias.c 'checkout'
-# git config --global alias.cb 'checkout -b'
-# git config --global alias.cd 'checkout dev'
-# git config --global alias.cm 'checkout main'
-# git config --global alias.cs 'checkout staging'
-# git config --global alias.cp 'checkout -p'
+git config --global alias.c 'checkout'
+git config --global alias.cb 'checkout -b'
+git config --global alias.cp 'checkout -p'
+# Working branches.
+git config --global alias.cba 'checkout alpha'
+git config --global alias.cbb 'checkout beta'
+git config --global alias.cbd 'checkout dev'
+git config --global alias.cbm 'checkout main'
+git config --global alias.cbp 'checkout production'
+git config --global alias.cbs 'checkout staging'
 
 git config --global alias.ci 'commit'
 git config --global alias.cip '!git commit && git push'
@@ -153,12 +156,10 @@ git config --global alias.spo2 "stash pop 'stash@{2}'"
 git config --global alias.spu 'stash push'
 git config --global alias.spuki 'stash push --keep-index'
 
-# I'm using LazyGit instead.
-# git config --global alias.p 'pull'
-# git config --global alias.pr 'pull --rebase'
+git config --global alias.p 'pull'
+git config --global alias.pr 'pull --rebase'
 
-# I'm using LazyGit instead.
-# git config --global alias.pfwl 'push --force-with-lease'
+git config --global alias.pfwl 'push --force-with-lease'
 
 git config --global alias.rb 'rebase'
 git config --global alias.rba 'rebase --abort'
@@ -167,10 +168,11 @@ git config --global alias.rbi 'rebase --interactive'
 git config --global alias.rbim 'rebase --interactive main'
 git config --global alias.rbm 'rebase main'
 
-# I'm using LazyGit instead.
-# git config --global alias.mm 'merge'
-# git config --global alias.ms 'merge --squash'
-# git config --global alias.mt 'mergetool'
+git config --global alias.mm 'merge'
+git config --global alias.mma 'merge --abort'
+git config --global alias.mmc 'merge --continue'
+git config --global alias.mms 'merge --squash'
+git config --global alias.mmt 'mergetool'
 
 # Git `fixup` and `autosquash`.
 # Example:
