@@ -1,0 +1,6 @@
+# Vim-like cursor motion relative to the viewport (yazi#3970).
+# Only M is bound: H and L are taken by history back/forward.
+[[mgr.prepend_keymap]]
+on = "M"
+run = "arrow 50vp"
+desc = "Move cursor to the middle of the viewport"

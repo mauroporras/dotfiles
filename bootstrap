@@ -66,6 +66,7 @@ ln -sf ~/dotfiles/misc-configs/starship/starship.toml .config/starship.toml
 # -- Yazi --
 mkdir -p .config/yazi
 ln -sf ~/dotfiles/misc-configs/yazi/yazi.toml .config/yazi/yazi.toml
+ln -sf ~/dotfiles/misc-configs/yazi/keymap.toml .config/yazi/keymap.toml
 
 # -- Directories --
 mkdir -p queue temp workspace
