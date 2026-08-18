@@ -24,7 +24,7 @@
   "autoMemoryEnabled": false,
 
   "//01": "Commented out because sometimes they're useful. Just learn to ignore them.",
-  "//agentPushNotifEnabled": true,
+  "//agentPushNotifEnabled": false,
   "//preferredNotifChannel": "terminal_bell",
 
   "//02": "Commented out because links don't work yet",
