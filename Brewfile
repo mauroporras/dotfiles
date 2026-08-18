@@ -47,6 +47,7 @@ brew "tree-sitter-cli"
 brew "markdownlint-cli" # Markdown linter for nvim-lint
 brew "neovim"
 brew "prettierd"
+brew "shfmt" # Shell formatter; options live in .editorconfig
 brew "stylua"
 
 # Kubernetes & containers
