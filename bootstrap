@@ -79,5 +79,5 @@ if ! grep -q 'dotfiles/zsh' ~/.zshrc 2>/dev/null; then
 for zsh_config in ~/dotfiles/zsh/*.zsh; do
   source "$zsh_config"
 done
-' >> ~/.zshrc
+' >>~/.zshrc
 fi

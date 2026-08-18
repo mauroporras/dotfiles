@@ -8,7 +8,7 @@
 # failed sub-command should degrade one segment, not wipe the whole line.
 
 set -o pipefail
-LC_ALL=C  # stable decimal separator for printf '$%.2f' across locales
+LC_ALL=C # stable decimal separator for printf '$%.2f' across locales
 
 SHOW_CACHE_AND_COST=false
 SHOW_SESSION_ID=false
@@ -36,8 +36,8 @@ input=$(cat)
 # Validate once up front: if the harness ever pipes us malformed or empty input,
 # fall back to an empty object so the ~14 downstream `jq` calls don't each
 # spew "parse error" to stderr.
-if ! printf '%s' "$input" | jq -e . >/dev/null 2>&1; then
-  input='{}'
+if ! printf '%s' "$input" | jq -e . > /dev/null 2>&1; then
+    input='{}'
 fi
 
 current_dir=$(echo "$input" | jq -r '.workspace.current_dir')
@@ -47,9 +47,9 @@ project_dir_display=${project_dir##*/}
 
 project_divergence_display=""
 if [[ -n "$project_dir_display" && "$project_dir_display" != "$current_dir_display" ]]; then
-  # Alert prefix so a `cd` away from the original project dir is impossible to
-  # miss: it changes the meaning of every relative path and git context below.
-  project_divergence_display="🚨 ← ${project_dir_display}"
+    # Alert prefix so a `cd` away from the original project dir is impossible to
+    # miss: it changes the meaning of every relative path and git context below.
+    project_divergence_display="🚨 ← ${project_dir_display}"
 fi
 model=$(echo "$input" | jq -r '.model.display_name')
 # The "/1M" context segment already conveys the 1M window, so drop the suffix.
@@ -57,25 +57,25 @@ model=${model% (1M context)}
 effort_level=$(echo "$input" | jq -r '.effort.level // "?"')
 
 case "$effort_level" in
-  high)   effort_display="🟩" ;;
-  medium) effort_display="🟨" ;;
-  low)    effort_display="🟥" ;;
-  *)      effort_display="$effort_level" ;;
+high) effort_display="🟩" ;;
+medium) effort_display="🟨" ;;
+low) effort_display="🟥" ;;
+*) effort_display="$effort_level" ;;
 esac
 thinking_enabled=$(echo "$input" | jq -r '.thinking.enabled // false')
 fast_mode_enabled=$(echo "$input" | jq -r '.fast_mode // false')
 
 if [[ "$thinking_enabled" == "true" ]]; then
-  thinking_display="🟢"
+    thinking_display="🟢"
 else
-  thinking_display="⚪️"
+    thinking_display="⚪️"
 fi
 
 # Fast mode is a billing/behavior change worth noticing, so render it as a loud
 # inverse-video badge and only when it's actually on (its absence means off).
 fast_mode_display=""
 if [[ "$fast_mode_enabled" == "true" ]]; then
-  fast_mode_display="${bold}${inverse}${orange} ⚡️FAST ${reset}"
+    fast_mode_display="${bold}${inverse}${orange} ⚡️FAST ${reset}"
 fi
 
 # Debug: uncomment to see raw input
@@ -91,18 +91,18 @@ context_k=$((context_size / 1000))
 
 # Windows are clean multiples of 1000k (200k, 1M), so integer division is exact.
 if [[ $context_k -ge 1000 ]]; then
-  context_display="$((context_k / 1000))M"
+    context_display="$((context_k / 1000))M"
 else
-  context_display="${context_k}k"
+    context_display="${context_k}k"
 fi
 
 if [[ $context_size -gt 0 ]]; then
-  context_pct=$((current_usage * 100 / context_size))
+    context_pct=$((current_usage * 100 / context_size))
 else
-  context_pct=0
+    context_pct=0
 fi
 
-cd "$current_dir" 2>/dev/null || cd /
+cd "$current_dir" 2> /dev/null || cd /
 
 git_branch="no-repo"
 git_branch_is_repo=false
@@ -110,32 +110,32 @@ git_branch_is_repo=false
 # Detect repo membership via rev-parse rather than `git branch --show-current`,
 # which returns empty during rebase / detached HEAD and would otherwise falsely
 # read as "no-repo".
-if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
-  git_branch_is_repo=true
-  current_branch=$(git branch --show-current 2>/dev/null)
+if git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
+    git_branch_is_repo=true
+    current_branch=$(git branch --show-current 2> /dev/null)
 
-  if [[ -n "$current_branch" ]]; then
-    git_branch="$current_branch"
-  else
-    git_dir=$(git rev-parse --git-dir 2>/dev/null)
-    rebase_merge_head_file="$git_dir/rebase-merge/head-name"
-    rebase_apply_head_file="$git_dir/rebase-apply/head-name"
-
-    if [[ -f "$rebase_merge_head_file" ]]; then
-      rebase_branch_ref=$(<"$rebase_merge_head_file")
-      git_branch="${rebase_branch_ref#refs/heads/} (rebasing)"
-    elif [[ -f "$rebase_apply_head_file" ]]; then
-      rebase_branch_ref=$(<"$rebase_apply_head_file")
-      git_branch="${rebase_branch_ref#refs/heads/} (rebasing)"
+    if [[ -n "$current_branch" ]]; then
+        git_branch="$current_branch"
     else
-      short_sha=$(git rev-parse --short HEAD 2>/dev/null)
-      git_branch="(detached @ ${short_sha:-?})"
+        git_dir=$(git rev-parse --git-dir 2> /dev/null)
+        rebase_merge_head_file="$git_dir/rebase-merge/head-name"
+        rebase_apply_head_file="$git_dir/rebase-apply/head-name"
+
+        if [[ -f "$rebase_merge_head_file" ]]; then
+            rebase_branch_ref=$(< "$rebase_merge_head_file")
+            git_branch="${rebase_branch_ref#refs/heads/} (rebasing)"
+        elif [[ -f "$rebase_apply_head_file" ]]; then
+            rebase_branch_ref=$(< "$rebase_apply_head_file")
+            git_branch="${rebase_branch_ref#refs/heads/} (rebasing)"
+        else
+            short_sha=$(git rev-parse --short HEAD 2> /dev/null)
+            git_branch="(detached @ ${short_sha:-?})"
+        fi
     fi
-  fi
 fi
 session_id=""
 if [[ "$SHOW_SESSION_ID" == "true" ]]; then
-  session_id=$(echo "$input" | jq -r '.session.id // .session_id // "unknown"')
+    session_id=$(echo "$input" | jq -r '.session.id // .session_id // "unknown"')
 fi
 
 # On 1M-context models, crossing 200k input tokens flips the whole request
@@ -144,7 +144,7 @@ fi
 exceeds_200k=$(echo "$input" | jq -r '.exceeds_200k_tokens // false')
 claude_version=""
 if [[ "$SHOW_VERSION" == "true" ]]; then
-  claude_version=$(echo "$input" | jq -r '.version // empty')
+    claude_version=$(echo "$input" | jq -r '.version // empty')
 fi
 output_style=$(echo "$input" | jq -r '.output_style.name // empty')
 
@@ -160,43 +160,52 @@ added_dirs_display=""
 cache_display=""
 cost_display=""
 if [[ "$SHOW_CACHE_AND_COST" == "true" ]]; then
-  # Cache hit ratio for this turn's input tokens. A sustained drop means the
-  # prompt prefix changed (TTL lapsed, CLAUDE.md edited, /compact ran, etc.)
-  # and the next turns will be ~10x slower and pricier until the cache rebuilds.
-  { read -r usage_input; read -r usage_cache_creation; read -r usage_cache_read; read -r cost_usd; } < <(
-    echo "$input" | jq -r '
+    # Cache hit ratio for this turn's input tokens. A sustained drop means the
+    # prompt prefix changed (TTL lapsed, CLAUDE.md edited, /compact ran, etc.)
+    # and the next turns will be ~10x slower and pricier until the cache rebuilds.
+    {
+        read -r usage_input
+        read -r usage_cache_creation
+        read -r usage_cache_read
+        read -r cost_usd
+    } < <(
+        echo "$input" | jq -r '
       .context_window.current_usage.input_tokens // 0,
       .context_window.current_usage.cache_creation_input_tokens // 0,
       .context_window.current_usage.cache_read_input_tokens // 0,
       .cost.total_cost_usd // ""
     '
-  )
-  cache_input_total=$((usage_input + usage_cache_creation + usage_cache_read))
-  cache_pct=0
+    )
+    cache_input_total=$((usage_input + usage_cache_creation + usage_cache_read))
+    cache_pct=0
 
-  if [[ $cache_input_total -gt 0 ]]; then
-    cache_pct=$((usage_cache_read * 100 / cache_input_total))
-  fi
+    if [[ $cache_input_total -gt 0 ]]; then
+        cache_pct=$((usage_cache_read * 100 / cache_input_total))
+    fi
 
-  if [[ $cache_pct -ge 70 ]]; then
-    cache_color="$green"
-  elif [[ $cache_pct -ge 40 ]]; then
-    cache_color="$yellow"
-  else
-    cache_color="$red"
-  fi
+    if [[ $cache_pct -ge 70 ]]; then
+        cache_color="$green"
+    elif [[ $cache_pct -ge 40 ]]; then
+        cache_color="$yellow"
+    else
+        cache_color="$red"
+    fi
 
-  cache_display="${cache_color}cache:${bold}${cache_pct}%${reset}"
+    cache_display="${cache_color}cache:${bold}${cache_pct}%${reset}"
 
-  if [[ -n "$cost_usd" ]]; then
-    cost_display=$(printf '$%.2f' "$cost_usd")
-  fi
+    if [[ -n "$cost_usd" ]]; then
+        cost_display=$(printf '$%.2f' "$cost_usd")
+    fi
 fi
 
 # One field per line so empty values don't collapse the way they would under
 # IFS=$'\t' (POSIX "IFS whitespace" rule).
-{ read -r github_repo_host; read -r github_repo_owner; read -r github_repo_name; } < <(
-  echo "$input" | jq -r '.workspace.repo.host // "", .workspace.repo.owner // "", .workspace.repo.name // ""'
+{
+    read -r github_repo_host
+    read -r github_repo_owner
+    read -r github_repo_name
+} < <(
+    echo "$input" | jq -r '.workspace.repo.host // "", .workspace.repo.owner // "", .workspace.repo.name // ""'
 )
 
 pr_number=""
@@ -206,75 +215,80 @@ pr_url=""
 # `gh pr view` hits the network (~300-800ms), so cache its output per
 # repo+branch and refresh in the background. Stale data is fine for a
 # statusline; what's not fine is a blocking call on every prompt.
-if [[ "$git_branch_is_repo" == "true" ]] && command -v gh >/dev/null 2>&1; then
-  pr_cache_dir="/tmp/claude-statusline-pr"
-  mkdir -p "$pr_cache_dir"
+if [[ "$git_branch_is_repo" == "true" ]] && command -v gh > /dev/null 2>&1; then
+    pr_cache_dir="/tmp/claude-statusline-pr"
+    mkdir -p "$pr_cache_dir"
 
-  pr_repo_root=$(git rev-parse --show-toplevel 2>/dev/null)
-  pr_cache_slug=$(printf '%s:%s' "$pr_repo_root" "$git_branch" | shasum | cut -c1-16)
-  pr_cache_file="$pr_cache_dir/$pr_cache_slug.json"
-  pr_lock_dir="$pr_cache_dir/$pr_cache_slug.lock"
-  pr_cache_ttl=30
+    pr_repo_root=$(git rev-parse --show-toplevel 2> /dev/null)
+    pr_cache_slug=$(printf '%s:%s' "$pr_repo_root" "$git_branch" | shasum | cut -c1-16)
+    pr_cache_file="$pr_cache_dir/$pr_cache_slug.json"
+    pr_lock_dir="$pr_cache_dir/$pr_cache_slug.lock"
+    pr_cache_ttl=30
 
-  # Store the fetch timestamp inside the cache JSON itself rather than relying
-  # on file mtime: `stat -f %m` (BSD) and `stat -c %Y` (GNU) have incompatible
-  # flag meanings, and either set may be installed on macOS depending on whether
-  # coreutils is on PATH.
-  pr_cache_fetched_at=$(jq -r '.fetched_at // 0' "$pr_cache_file" 2>/dev/null)
-  pr_cache_age=$(( $(date +%s) - pr_cache_fetched_at ))
+    # Store the fetch timestamp inside the cache JSON itself rather than relying
+    # on file mtime: `stat -f %m` (BSD) and `stat -c %Y` (GNU) have incompatible
+    # flag meanings, and either set may be installed on macOS depending on whether
+    # coreutils is on PATH.
+    pr_cache_fetched_at=$(jq -r '.fetched_at // 0' "$pr_cache_file" 2> /dev/null)
+    pr_cache_age=$(($(date +%s) - pr_cache_fetched_at))
 
-  pr_cache_is_fresh=false
-  if [[ $pr_cache_age -lt $pr_cache_ttl ]]; then
-    pr_cache_is_fresh=true
-  fi
-
-  # `mkdir` is atomic across processes, so it doubles as a single-writer lock:
-  # only one statusline invocation can spawn the background refresh at a time.
-  # Anything else for this repo+branch just renders the existing cache.
-  if [[ "$pr_cache_is_fresh" != "true" ]] && mkdir "$pr_lock_dir" 2>/dev/null; then
-    (
-      # Ensure the lock is released even if the subshell exits early (signal,
-      # disk error, gh hang killed externally), so future refreshes aren't
-      # blocked by a stale lock dir.
-      trap 'rmdir "$pr_lock_dir" 2>/dev/null' EXIT
-
-      fetched_at=$(date +%s)
-      pr_fetch_tmp="$pr_cache_file.fetch"
-      pr_write_tmp="$pr_cache_file.write"
-
-      # `.write` tmp + `mv` makes the final state visible atomically, so readers
-      # never observe a partial JSON.
-      if gh pr view --json number,reviewDecision,isDraft,url >"$pr_fetch_tmp" 2>/dev/null; then
-        jq --argjson ts "$fetched_at" '. + {fetched_at: $ts}' "$pr_fetch_tmp" > "$pr_write_tmp" \
-          && mv "$pr_write_tmp" "$pr_cache_file"
-        rm -f "$pr_fetch_tmp" "$pr_write_tmp"
-      else
-        jq -n --argjson ts "$fetched_at" '{fetched_at: $ts}' > "$pr_write_tmp" \
-          && mv "$pr_write_tmp" "$pr_cache_file"
-      fi
-
-      # Prune stale entries for branches/repos no longer visited. Cheap to
-      # run from the background refresh, no need to schedule it elsewhere.
-      find "$pr_cache_dir" -name '*.json' -mtime +7 -delete 2>/dev/null
-    ) &
-  fi
-
-  { read -r pr_number; read -r pr_is_draft; read -r pr_review_decision; read -r pr_url; } < <(
-    jq -r '.number // "", .isDraft // false, .reviewDecision // "", .url // ""' "$pr_cache_file" 2>/dev/null
-  )
-
-  if [[ -n "$pr_number" ]]; then
-    if [[ "$pr_is_draft" == "true" ]]; then
-      pr_review_state="draft"
-    else
-      case "$pr_review_decision" in
-        APPROVED)          pr_review_state="approved" ;;
-        CHANGES_REQUESTED) pr_review_state="changes_requested" ;;
-        REVIEW_REQUIRED)   pr_review_state="pending" ;;
-        *)                 pr_review_state="open" ;;
-      esac
+    pr_cache_is_fresh=false
+    if [[ $pr_cache_age -lt $pr_cache_ttl ]]; then
+        pr_cache_is_fresh=true
     fi
-  fi
+
+    # `mkdir` is atomic across processes, so it doubles as a single-writer lock:
+    # only one statusline invocation can spawn the background refresh at a time.
+    # Anything else for this repo+branch just renders the existing cache.
+    if [[ "$pr_cache_is_fresh" != "true" ]] && mkdir "$pr_lock_dir" 2> /dev/null; then
+        (
+            # Ensure the lock is released even if the subshell exits early (signal,
+            # disk error, gh hang killed externally), so future refreshes aren't
+            # blocked by a stale lock dir.
+            trap 'rmdir "$pr_lock_dir" 2>/dev/null' EXIT
+
+            fetched_at=$(date +%s)
+            pr_fetch_tmp="$pr_cache_file.fetch"
+            pr_write_tmp="$pr_cache_file.write"
+
+            # `.write` tmp + `mv` makes the final state visible atomically, so readers
+            # never observe a partial JSON.
+            if gh pr view --json number,reviewDecision,isDraft,url > "$pr_fetch_tmp" 2> /dev/null; then
+                jq --argjson ts "$fetched_at" '. + {fetched_at: $ts}' "$pr_fetch_tmp" > "$pr_write_tmp" &&
+                    mv "$pr_write_tmp" "$pr_cache_file"
+                rm -f "$pr_fetch_tmp" "$pr_write_tmp"
+            else
+                jq -n --argjson ts "$fetched_at" '{fetched_at: $ts}' > "$pr_write_tmp" &&
+                    mv "$pr_write_tmp" "$pr_cache_file"
+            fi
+
+            # Prune stale entries for branches/repos no longer visited. Cheap to
+            # run from the background refresh, no need to schedule it elsewhere.
+            find "$pr_cache_dir" -name '*.json' -mtime +7 -delete 2> /dev/null
+        ) &
+    fi
+
+    {
+        read -r pr_number
+        read -r pr_is_draft
+        read -r pr_review_decision
+        read -r pr_url
+    } < <(
+        jq -r '.number // "", .isDraft // false, .reviewDecision // "", .url // ""' "$pr_cache_file" 2> /dev/null
+    )
+
+    if [[ -n "$pr_number" ]]; then
+        if [[ "$pr_is_draft" == "true" ]]; then
+            pr_review_state="draft"
+        else
+            case "$pr_review_decision" in
+            APPROVED) pr_review_state="approved" ;;
+            CHANGES_REQUESTED) pr_review_state="changes_requested" ;;
+            REVIEW_REQUIRED) pr_review_state="pending" ;;
+            *) pr_review_state="open" ;;
+            esac
+        fi
+    fi
 fi
 
 five_hour_pct=$(echo "$input" | jq -r '.rate_limits.five_hour.used_percentage // empty')
@@ -288,39 +302,39 @@ seven_day_resets=$(echo "$input" | jq -r '.rate_limits.seven_day.resets_at // em
 # own scope. BEL terminator (not ESC+\) so a trailing backslash doesn't
 # collide with the next color escape's leading backslash on concatenation.
 osc8_link() {
-  local id=$1
-  local url=$2
-  local label=$3
+    local id=$1
+    local url=$2
+    local label=$3
 
-  printf '\033]8;id=%s;%s\a%s\033]8;id=%s;\a' "$id" "$url" "$label" "$id"
+    printf '\033]8;id=%s;%s\a%s\033]8;id=%s;\a' "$id" "$url" "$label" "$id"
 }
 
 format_reset_short() {
-  local target=$1
-  local now=$2
+    local target=$1
+    local now=$2
 
-  if [[ -z "$target" ]]; then
-    echo "-"
-    return
-  fi
+    if [[ -z "$target" ]]; then
+        echo "-"
+        return
+    fi
 
-  local secs=$((target - now))
-  if [[ $secs -le 0 ]]; then
-    echo "now"
-    return
-  fi
+    local secs=$((target - now))
+    if [[ $secs -le 0 ]]; then
+        echo "now"
+        return
+    fi
 
-  local days=$((secs / 86400))
-  local hours=$(( (secs % 86400) / 3600 ))
-  local mins=$(( (secs % 3600) / 60 ))
+    local days=$((secs / 86400))
+    local hours=$(((secs % 86400) / 3600))
+    local mins=$(((secs % 3600) / 60))
 
-  if [[ $days -gt 0 ]]; then
-    echo "${days}${italic}d${reset}${hours}${italic}h${reset}"
-  elif [[ $hours -gt 0 ]]; then
-    echo "${hours}${italic}h${reset}${mins}${italic}m${reset}"
-  else
-    echo "${mins}${italic}m${reset}"
-  fi
+    if [[ $days -gt 0 ]]; then
+        echo "${days}${italic}d${reset}${hours}${italic}h${reset}"
+    elif [[ $hours -gt 0 ]]; then
+        echo "${hours}${italic}h${reset}${mins}${italic}m${reset}"
+    else
+        echo "${mins}${italic}m${reset}"
+    fi
 }
 
 now_epoch=$(date +%s)
@@ -330,76 +344,76 @@ five_hour_reset_display=$(format_reset_short "$five_hour_resets" "$now_epoch")
 seven_day_reset_display=$(format_reset_short "$seven_day_resets" "$now_epoch")
 
 if [[ "$git_branch_is_repo" == "true" ]]; then
-  git_branch_color="$green"
+    git_branch_color="$green"
 else
-  git_branch_color="$red"
+    git_branch_color="$red"
 fi
 
 # Process substitution (`< <(...)`) keeps the loop in the parent shell so the
 # accumulated string isn't lost in a subshell.
 added_dirs_index=0
 while IFS= read -r added_dir; do
-  if [[ -z "$added_dir" ]]; then
-    continue
-  fi
+    if [[ -z "$added_dir" ]]; then
+        continue
+    fi
 
-  added_dir_basename=${added_dir##*/}
-  added_dir_link="$(osc8_link "statusline-added-${added_dirs_index}" "file://${added_dir}" "${added_dir_basename}")${reset}"
+    added_dir_basename=${added_dir##*/}
+    added_dir_link="$(osc8_link "statusline-added-${added_dirs_index}" "file://${added_dir}" "${added_dir_basename}")${reset}"
 
-  if [[ $added_dirs_index -eq 0 ]]; then
-    added_dirs_display="${blue}[${added_dir_link}"
-  else
-    added_dirs_display="${added_dirs_display}${gray},${blue}${added_dir_link}"
-  fi
+    if [[ $added_dirs_index -eq 0 ]]; then
+        added_dirs_display="${blue}[${added_dir_link}"
+    else
+        added_dirs_display="${added_dirs_display}${gray},${blue}${added_dir_link}"
+    fi
 
-  added_dirs_index=$((added_dirs_index + 1))
+    added_dirs_index=$((added_dirs_index + 1))
 done < <(echo "$input" | jq -r '.workspace.added_dirs // [] | .[]')
 
 if [[ -n "$added_dirs_display" ]]; then
-  added_dirs_display="${added_dirs_display}${blue}]${reset}"
+    added_dirs_display="${added_dirs_display}${blue}]${reset}"
 fi
 
 github_repo_display=""
 if [[ -n "$github_repo_owner" && -n "$github_repo_name" ]]; then
-  github_repo_label="${github_repo_owner}/${github_repo_name}"
+    github_repo_label="${github_repo_owner}/${github_repo_name}"
 
-  if [[ -n "$github_repo_host" ]]; then
-    github_repo_url="https://${github_repo_host}/${github_repo_label}"
-    github_repo_display=$(osc8_link "statusline-repo" "$github_repo_url" "$github_repo_label")
-  else
-    github_repo_display="$github_repo_label"
-  fi
+    if [[ -n "$github_repo_host" ]]; then
+        github_repo_url="https://${github_repo_host}/${github_repo_label}"
+        github_repo_display=$(osc8_link "statusline-repo" "$github_repo_url" "$github_repo_label")
+    else
+        github_repo_display="$github_repo_label"
+    fi
 fi
 
 pr_display=""
 if [[ -n "$pr_number" ]]; then
-  case "$pr_review_state" in
-    approved)          pr_state_display="🟢" ;;
+    case "$pr_review_state" in
+    approved) pr_state_display="🟢" ;;
     changes_requested) pr_state_display="🔴" ;;
-    pending)           pr_state_display="👀" ;;
-    draft)             pr_state_display="🚧" ;;
-    *)                 pr_state_display="⚪️" ;;
-  esac
+    pending) pr_state_display="👀" ;;
+    draft) pr_state_display="🚧" ;;
+    *) pr_state_display="⚪️" ;;
+    esac
 
-  pr_label="${git_branch_color}#${pr_number}${reset}${pr_state_display}"
+    pr_label="${git_branch_color}#${pr_number}${reset}${pr_state_display}"
 
-  if [[ -n "$pr_url" ]]; then
-    pr_display=$(osc8_link "statusline-pr" "$pr_url" "$pr_label")
-  else
-    pr_display="$pr_label"
-  fi
+    if [[ -n "$pr_url" ]]; then
+        pr_display=$(osc8_link "statusline-pr" "$pr_url" "$pr_label")
+    else
+        pr_display="$pr_label"
+    fi
 fi
 
 # Only the elevated tiers get a color; a healthy/low percentage stays in the
 # default foreground (like the context counter) so colors mean "pay attention".
 rate_limit_color() {
-  local pct=$1
+    local pct=$1
 
-  if [[ -n "$pct" && $pct -ge 80 ]]; then
-    echo "$red"
-  elif [[ -n "$pct" && $pct -ge 50 ]]; then
-    echo "$yellow"
-  fi
+    if [[ -n "$pct" && $pct -ge 80 ]]; then
+        echo "$red"
+    elif [[ -n "$pct" && $pct -ge 50 ]]; then
+        echo "$yellow"
+    fi
 }
 
 # The harness omits rate_limits entirely (e.g. on subscription plans), so each
@@ -407,33 +421,33 @@ rate_limit_color() {
 # empty (missing) percentage never renders a blank/zero segment.
 five_hour_segment=""
 if [[ -n "$five_hour_pct_int" ]]; then
-  five_hour_color=$(rate_limit_color "$five_hour_pct_int")
-  # A color is only assigned outside the normal range, so reuse its presence as
-  # the signal to also bold the percentage for extra emphasis.
-  five_hour_emphasis=""
-  if [[ -n "$five_hour_color" ]]; then
-    five_hour_emphasis="$bold"
-  fi
+    five_hour_color=$(rate_limit_color "$five_hour_pct_int")
+    # A color is only assigned outside the normal range, so reuse its presence as
+    # the signal to also bold the percentage for extra emphasis.
+    five_hour_emphasis=""
+    if [[ -n "$five_hour_color" ]]; then
+        five_hour_emphasis="$bold"
+    fi
 
-  five_hour_segment="${five_hour_color}${five_hour_emphasis}${five_hour_pct_int}%${reset}⏱️${five_hour_reset_display}"
+    five_hour_segment="${five_hour_color}${five_hour_emphasis}${five_hour_pct_int}%${reset}⏱️${five_hour_reset_display}"
 fi
 
 seven_day_segment=""
 if [[ -n "$seven_day_pct_int" ]]; then
-  seven_day_color=$(rate_limit_color "$seven_day_pct_int")
-  seven_day_emphasis=""
-  if [[ -n "$seven_day_color" ]]; then
-    seven_day_emphasis="$bold"
-  fi
+    seven_day_color=$(rate_limit_color "$seven_day_pct_int")
+    seven_day_emphasis=""
+    if [[ -n "$seven_day_color" ]]; then
+        seven_day_emphasis="$bold"
+    fi
 
-  seven_day_segment="${seven_day_color}${seven_day_emphasis}${seven_day_pct_int}%${reset}🗓️${seven_day_reset_display}"
+    seven_day_segment="${seven_day_color}${seven_day_emphasis}${seven_day_pct_int}%${reset}🗓️${seven_day_reset_display}"
 fi
 
 # Only insert the separating space when both meters are present.
 if [[ -n "$five_hour_segment" && -n "$seven_day_segment" ]]; then
-  rate_limits_display="${five_hour_segment} ${seven_day_segment}"
+    rate_limits_display="${five_hour_segment} ${seven_day_segment}"
 else
-  rate_limits_display="${five_hour_segment}${seven_day_segment}"
+    rate_limits_display="${five_hour_segment}${seven_day_segment}"
 fi
 
 current_dir_link=$(osc8_link "statusline-dir" "file://${current_dir}" "$current_dir_display")
@@ -442,79 +456,79 @@ line="${blue}${current_dir_link}${reset}"
 # Workspace decorations sit between the current dir and the branch bullet so
 # they read as modifiers of the dir, not of the branch.
 if [[ -n "$project_divergence_display" ]]; then
-  line="${line} ${blue}${project_divergence_display}${reset}"
+    line="${line} ${blue}${project_divergence_display}${reset}"
 fi
 
 if [[ -n "$added_dirs_display" ]]; then
-  line="${line} ${added_dirs_display}"
+    line="${line} ${added_dirs_display}"
 fi
 
 line="${line} ${gray}•${reset} ${git_branch_color}${git_branch}${reset}"
 
 github_section=""
 if [[ -n "$github_repo_display" ]]; then
-  github_section="${blue}${github_repo_display}${reset}"
+    github_section="${blue}${github_repo_display}${reset}"
 fi
 
 if [[ -n "$pr_display" ]]; then
-  if [[ -n "$github_section" ]]; then
-    github_section="${github_section} ${pr_display}"
-  else
-    github_section="$pr_display"
-  fi
+    if [[ -n "$github_section" ]]; then
+        github_section="${github_section} ${pr_display}"
+    else
+        github_section="$pr_display"
+    fi
 fi
 
 if [[ -n "$github_section" ]]; then
-  line="${line} • ${github_section}"
+    line="${line} • ${github_section}"
 fi
 
 tokens_used_color=""
 tokens_used_alert=""
 if [[ "$exceeds_200k" == "true" ]]; then
-  tokens_used_color="${bold}${red}"
-  tokens_used_alert="🚨"
+    tokens_used_color="${bold}${red}"
+    tokens_used_alert="🚨"
 fi
 
 advisor_display=""
 if [[ "$SHOW_ADVISOR" == "true" ]]; then
-  advisor_display=" ${gray}advisor:${reset}${cyan}?${reset}"
+    advisor_display=" ${gray}advisor:${reset}${cyan}?${reset}"
 fi
 
 context_pct_display=""
 if [[ "$SHOW_CONTEXT_PCT" == "true" ]]; then
-  context_pct_display=" ${gray}${context_pct}%${reset}"
+    context_pct_display=" ${gray}${context_pct}%${reset}"
 fi
 
 line="${line} • ${cyan}${model}${reset} ${tokens_used_alert}${tokens_used_color}${tokens_k}k${reset}/${context_display}${context_pct_display}${advisor_display} 💪🏻${effort_display} 🧠${thinking_display}"
 
 if [[ -n "$fast_mode_display" ]]; then
-  line="${line} ${fast_mode_display}"
+    line="${line} ${fast_mode_display}"
 fi
 
 # The default style is the common case, so only surface the segment when a
 # non-default style is deliberately in effect.
 if [[ "$output_style_display" != "default" ]]; then
-  line="${line} ${gray}style:${reset}${bold}${output_style_color}${output_style_display}${reset}"
+    line="${line} ${gray}style:${reset}${bold}${output_style_color}${output_style_display}${reset}"
 fi
 
 if [[ -n "$rate_limits_display" ]]; then
-  line="${line} ${rate_limits_display}"
+    line="${line} ${rate_limits_display}"
 fi
 
 if [[ -n "$cache_display" ]]; then
-  line="${line} • ${cache_display}"
+    line="${line} • ${cache_display}"
 fi
 
 if [[ -n "$cost_display" ]]; then
-  line="${line} ${gray}${cost_display}${reset}"
+    line="${line} ${gray}${cost_display}${reset}"
 fi
 
 if [[ -n "$session_id" ]]; then
-  line="${line} • ${gray}${session_id}${reset}"
+    line="${line} • ${gray}${session_id}${reset}"
 fi
 
 if [[ -n "$claude_version" ]]; then
-  line="${line} • ${gray}v${claude_version}${reset}"
+    line="${line} • ${gray}v${claude_version}${reset}"
 fi
 
 echo -e "$line"

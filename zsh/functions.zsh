@@ -20,10 +20,10 @@ fi
 # Completion {{{
 zmodload -i zsh/complist
 
-setopt auto_menu        # a second Tab cycles through the completion menu
-setopt always_to_end    # move cursor to end of the word after completing
-unsetopt menu_complete  # show the menu instead of inserting the first match
-unsetopt flowcontrol    # free up ^s / ^q
+setopt auto_menu       # a second Tab cycles through the completion menu
+setopt always_to_end   # move cursor to end of the word after completing
+unsetopt menu_complete # show the menu instead of inserting the first match
+unsetopt flowcontrol   # free up ^s / ^q
 
 # Colored completion picker; Tab cycles forward, Shift-Tab steps backward.
 # Arrow keys also work but aren't required.
@@ -57,14 +57,14 @@ eval "$(starship init zsh)"
 
 # Vi mode
 bindkey -v
-export KEYTIMEOUT=1  # Reduce escape delay
+export KEYTIMEOUT=1 # Reduce escape delay
 
 # Change cursor shape for different vi modes
 function zle-keymap-select {
   if [[ ${KEYMAP} == vicmd ]] || [[ $1 = 'block' ]]; then
-    echo -ne '\e[2 q'  # Block cursor
+    echo -ne '\e[2 q' # Block cursor
   elif [[ ${KEYMAP} == main ]] || [[ ${KEYMAP} == viins ]] || [[ $1 = 'beam' ]]; then
-    echo -ne '\e[6 q'  # Beam cursor
+    echo -ne '\e[6 q' # Beam cursor
   fi
 }
 zle -N zle-keymap-select
@@ -109,8 +109,8 @@ zstyle ':zle:up-line-or-beginning-search' leave-cursor no
 zstyle ':zle:down-line-or-beginning-search' leave-cursor no
 bindkey -M viins "^p" up-line-or-beginning-search
 bindkey -M viins "^n" down-line-or-beginning-search
-bindkey -M viins "^[[A" up-line-or-beginning-search    # Up arrow
-bindkey -M viins "^[[B" down-line-or-beginning-search  # Down arrow
+bindkey -M viins "^[[A" up-line-or-beginning-search   # Up arrow
+bindkey -M viins "^[[B" down-line-or-beginning-search # Down arrow
 # }}}
 
 # Custom functions
