@@ -15,7 +15,7 @@ model: sonnet
 - Current branch: !`git rev-parse --abbrev-ref HEAD`
 - Commit mode (`NORMAL` for base branches, `WIP` otherwise): !`git rev-parse --abbrev-ref HEAD | grep -qE '^(alpha|main|master|beta|production)$' && echo NORMAL || echo WIP`
 - Remote URL: !`git remote get-url origin`
-- Arguments (issue number and/or `push`, empty if none): `$ARGUMENTS`
+- Arguments (`issue-number` and/or `push`, empty if none): `$ARGUMENTS`
 - Issue number (first numeric token in arguments, empty if none): !`echo "$ARGUMENTS" | grep -oE '[0-9]+' | head -n1`
 - Push requested (`yes`/`no`): !`echo "$ARGUMENTS" | grep -qw push && echo yes || echo no`
 
@@ -53,9 +53,7 @@ REQUIRED:
   - WIP commit: `WIP(<current-branch>): <description>`
     Using the current branch as the scope and a brief conventional-style description of the staged changes.
     Also pass `--no-verify` to `git commit`.
-- Body: include if and only if `Issue number` (from Context) is non-empty.
-  - Non-empty (e.g. `72`): body MUST be exactly `Close #<Issue number>` (e.g. `Close #72`). Pass it via a second `-m`.
-  - Empty: omit the body entirely.
+- Body: if `Issue number` (from Context) is non-empty, the body's first line MUST be exactly `Close #<Issue number>` (e.g. `Close #72`).
 - Push: run `git push` after committing if and only if `Push requested` (from Context) is `yes`.
 
 NEVER:
