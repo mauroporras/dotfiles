@@ -4,7 +4,7 @@ context: fork
 background: false
 argument-hint: [push] [issue-number]
 allowed-tools: Bash(git --no-pager diff *), Bash(git rev-parse *), Bash(git remote get-url *), Bash(git commit *), Bash(git push *), Bash(grep *), Bash(echo *), Bash(head *)
-model: haiku
+model: sonnet
 ---
 
 # Commit STAGED changes, optionally push

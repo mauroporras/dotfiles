@@ -1,7 +1,7 @@
 ---
 disable-model-invocation: true
 allowed-tools: Read, Bash(git --no-pager log *), Bash(git --no-pager diff *)
-model: haiku
+model: sonnet
 ---
 
 # Summarize the current branch's changes
