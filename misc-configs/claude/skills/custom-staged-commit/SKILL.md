@@ -45,15 +45,21 @@ REQUIRED:
   -->
   - `NORMAL`: normal commit.
   - `WIP`: WIP commit.
-- Prioritize brevity over grammar:
-  Keep messages short, even if grammatically imperfect
+- Prioritize brevity over grammar in the subject line:
+  Keep it short, even if grammatically imperfect
 - Subject line:
   - Normal commit: conventional commits format
     E.g.: `<type>(<scope>): <description>`
   - WIP commit: `WIP(<current-branch>): <description>`
     Using the current branch as the scope and a brief conventional-style description of the staged changes.
     Also pass `--no-verify` to `git commit`.
-- Body: if `Issue number` (from Context) is non-empty, the body's first line MUST be exactly `Close #<Issue number>` (e.g. `Close #72`).
+- Body: optional, passed via a second `-m`. Add one only when the change carries
+  context the subject line cannot: the WHY behind it, a constraint, a workaround,
+  or non-obvious reasoning. Skip it for self-evident changes, and never use it to
+  restate the subject or narrate the diff.
+  - If `Issue number` (from Context) is non-empty, a body is required and its
+    first line MUST be exactly `Close #<Issue number>` (e.g. `Close #72`).
+    Any explanation follows after a blank line.
 - Push: run `git push` after committing if and only if `Push requested` (from Context) is `yes`.
 
 NEVER:
