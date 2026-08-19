@@ -44,6 +44,7 @@ brew "hashicorp/tap/terraform"
 brew "tree-sitter-cli"
 
 # Editors, linters & formatters
+brew "aspell" # Ships dictionaries; hunspell does not. Used by Claude Code's prompt spellchecker
 brew "markdownlint-cli" # Markdown linter for nvim-lint
 brew "neovim"
 brew "prettierd"

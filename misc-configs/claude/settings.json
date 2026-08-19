@@ -21,6 +21,9 @@
   "permissions": {
     "defaultMode": "auto"
   },
+  "spellcheck": {
+    "enabled": true
+  },
   "autoMemoryEnabled": false,
   "remoteControlAtStartup": true,
 
