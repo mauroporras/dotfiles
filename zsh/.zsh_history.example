@@ -40,3 +40,4 @@
 : 0000000000:0;npx skills list # List installed skills
 : 0000000000:0;npx skills update # Update installed skills
 : 0000000000:0;ai "/custom-staged-commit push"
+: 0000000000:0;ai --continue # Continue the last session
