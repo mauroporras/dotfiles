@@ -26,12 +26,14 @@
   },
   "autoMemoryEnabled": false,
   "remoteControlAtStartup": true,
-  "keybindingFlavor": "readline",
 
   "//01": "Commented out because sometimes they're useful. Just learn to ignore them.",
   "//agentPushNotifEnabled": false,
   "//preferredNotifChannel": "terminal_bell",
 
   "//02": "Commented out because links don't work yet",
-  "//tui": "fullscreen"
+  "//tui": "fullscreen",
+
+  "//03": "Commented out because it was not deleting word by word.",
+  "//keybindingFlavor": "readline"
 }
