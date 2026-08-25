@@ -1,5 +1,6 @@
 # Private Project Preferences
 
+- I'm Mauro (he/him).
 - This is just an MVP without customers yet.
 - The user can stage/unstage files and commit changes in the background. That's ok.
 - If you ever need to test something in the browser, ask the user to do it instead of trying to do it yourself. The user is faster at that.
