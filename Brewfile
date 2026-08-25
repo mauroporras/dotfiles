@@ -57,6 +57,7 @@ brew "derailed/k9s/k9s"
 brew "kubectl"
 
 # Databases
+brew "pgrundev/tap/pgbot" # In-database observability for PostgreSQL: https://pgbot.dev
 brew "redis"
 
 # Networking & HTTP
