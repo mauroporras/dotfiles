@@ -24,7 +24,6 @@ blue='\033[34m'
 green='\033[32m'
 yellow='\033[33m'
 cyan='\033[36m'
-magenta='\033[35m'
 red='\033[31m'
 gray='\033[90m'
 # Matches the orange of the in-app `/fast` indicator (↯).
