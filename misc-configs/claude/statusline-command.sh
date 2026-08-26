@@ -207,19 +207,6 @@ fi
     echo "$input" | jq -r '.workspace.repo.host // "", .workspace.repo.owner // "", .workspace.repo.name // ""'
 )
 
-# The harness resolves the current branch's PR itself (GitHub via `gh`, GitLab
-# via `glab`) and hands it over already parsed, so there is nothing to fetch or
-# cache here. Absent means "no open PR for this branch": it omits merged and
-# closed PRs, and never reports one while sitting on main/master.
-{
-    read -r pr_number
-    read -r pr_url
-    read -r pr_review_state
-    read -r pr_kind
-} < <(
-    echo "$input" | jq -r '(.pr // {}) | .number // "", .url // "", .review_state // "", .kind // ""'
-)
-
 five_hour_pct=$(echo "$input" | jq -r '.rate_limits.five_hour.used_percentage // empty')
 five_hour_resets=$(echo "$input" | jq -r '.rate_limits.five_hour.resets_at // empty')
 seven_day_pct=$(echo "$input" | jq -r '.rate_limits.seven_day.used_percentage // empty')
@@ -314,34 +301,6 @@ if [[ -n "$github_repo_owner" && -n "$github_repo_name" ]]; then
     fi
 fi
 
-pr_display=""
-if [[ -n "$pr_number" ]]; then
-    case "$pr_review_state" in
-    approved) pr_state_display="🟢" ;;
-    changes_requested) pr_state_display="🔴" ;;
-    pending) pr_state_display="👀" ;;
-    draft) pr_state_display="🚧" ;;
-    # The harness can report number+url a render before it has resolved the
-    # review state, so the fallback is "open, state unknown", not an error.
-    *) pr_state_display="⚪️" ;;
-    esac
-
-    # GitLab numbers merge requests with `!`, GitHub pull requests with `#`, so
-    # follow whichever host the harness resolved rather than always saying "#".
-    pr_sigil="#"
-    if [[ "$pr_kind" == "mr" ]]; then
-        pr_sigil="!"
-    fi
-
-    pr_label="${git_branch_color}${pr_sigil}${pr_number}${reset}${pr_state_display}"
-
-    if [[ -n "$pr_url" ]]; then
-        pr_display=$(osc8_link "statusline-pr" "$pr_url" "$pr_label")
-    else
-        pr_display="$pr_label"
-    fi
-fi
-
 # Only the elevated tiers get a color; a healthy/low percentage stays in the
 # default foreground (like the context counter) so colors mean "pay attention".
 rate_limit_color() {
@@ -403,21 +362,8 @@ fi
 
 line="${line} ${gray}•${reset} ${git_branch_color}${git_branch}${reset}"
 
-github_section=""
 if [[ -n "$github_repo_display" ]]; then
-    github_section="${blue}${github_repo_display}${reset}"
-fi
-
-if [[ -n "$pr_display" ]]; then
-    if [[ -n "$github_section" ]]; then
-        github_section="${github_section} ${pr_display}"
-    else
-        github_section="$pr_display"
-    fi
-fi
-
-if [[ -n "$github_section" ]]; then
-    line="${line} • ${github_section}"
+    line="${line} • ${blue}${github_repo_display}${reset}"
 fi
 
 tokens_used_color=""
