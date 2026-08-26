@@ -436,7 +436,7 @@ fi
 # Trails the line: it identifies the session rather than describing its state,
 # so it sits past the segments that change from turn to turn.
 if [[ -n "$session_name" ]]; then
-    line="${line} 🏷️${bold}${magenta}${session_name}${reset}"
+    line="${line} 🏷️${cyan}${session_name}${reset}"
 fi
 
 echo -e "$line"
