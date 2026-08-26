@@ -377,7 +377,7 @@ if [[ -n "$added_dirs_display" ]]; then
     line="${line} ${added_dirs_display}"
 fi
 
-line="${line} ${gray}•${reset} ${git_branch_color}${git_branch}${reset}"
+line="${line} 🌿${git_branch_color}${git_branch}${reset}"
 
 if [[ -n "$github_repo_display" ]]; then
     line="${line} • ${blue}${github_repo_display}${reset}"
