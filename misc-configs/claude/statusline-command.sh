@@ -152,7 +152,7 @@ fi
 
 session_id=""
 if [[ "$SHOW_SESSION_ID" == "true" ]]; then
-    session_id=$(echo "$input" | jq -r '.session.id // .session_id // "unknown"')
+    session_id="${session_id_value:-unknown}"
 fi
 
 # On 1M-context models, crossing 200k input tokens flips the whole request
