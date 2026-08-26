@@ -380,7 +380,7 @@ fi
 line="${line} 🌿${git_branch_color}${git_branch}${reset}"
 
 if [[ -n "$github_repo_display" ]]; then
-    line="${line} • ${blue}${github_repo_display}${reset}"
+    line="${line} 📦${blue}${github_repo_display}${reset}"
 fi
 
 tokens_used_color=""
