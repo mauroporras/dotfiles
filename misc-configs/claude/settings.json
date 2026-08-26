@@ -24,9 +24,10 @@
   "spellcheck": {
     "enabled": true
   },
+
   "autoMemoryEnabled": false,
-  "remoteControlAtStartup": true,
   "editorMode": "vim",
+  "remoteControlAtStartup": true,
   "terminalProgressBarEnabled": false,
   "theme": "auto",
 
