@@ -132,6 +132,24 @@ if git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
         fi
     fi
 fi
+# Two different "names" exist, and the payload only carries the weaker one:
+# `.session_name` is the conversation *title* (custom or AI-generated) and stays
+# absent until one is produced. The name the session is actually addressable by
+# (`/sessions`, cross-session messaging) lives in the concurrent-sessions
+# registry, one small JSON per pid, so prefer that and match it on session id
+# rather than on our parent pid, which assumes the harness spawns us directly.
+session_registry_dir="${CLAUDE_CONFIG_DIR:-$HOME/.claude}/sessions"
+session_id_value=$(echo "$input" | jq -r '.session_id // empty')
+session_name=""
+
+if [[ -n "$session_id_value" ]]; then
+    session_name=$(jq -r --arg session_id "$session_id_value" 'select(.sessionId == $session_id) | .name // empty' "$session_registry_dir"/*.json 2> /dev/null | head -n 1)
+fi
+
+if [[ -z "$session_name" ]]; then
+    session_name=$(echo "$input" | jq -r '.session_name // empty')
+fi
+
 session_id=""
 if [[ "$SHOW_SESSION_ID" == "true" ]]; then
     session_id=$(echo "$input" | jq -r '.session.id // .session_id // "unknown"')
@@ -415,4 +433,11 @@ if [[ -n "$claude_version" ]]; then
     line="${line} • ${gray}v${claude_version}${reset}"
 fi
 
+# Trails the line: it identifies the session rather than describing its state,
+# so it sits past the segments that change from turn to turn.
+if [[ -n "$session_name" ]]; then
+    line="${line} 🏷️${bold}${magenta}${session_name}${reset}"
+fi
+
 echo -e "$line"
+
