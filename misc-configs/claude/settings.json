@@ -27,6 +27,7 @@
   "autoMemoryEnabled": false,
   "remoteControlAtStartup": true,
   "editorMode": "vim",
+  "theme": "auto",
 
   "//01": "Commented out because sometimes they're useful. Just learn to ignore them.",
   "//agentPushNotifEnabled": false,
