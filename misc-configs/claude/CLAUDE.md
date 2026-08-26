@@ -145,6 +145,24 @@
     - `DELETE /cad-files/:id`
   - Queries use hierarchical paths scoped to parent resources:
     - `GET /workspaces/:workspaceId/cad-files?limit=100`
+- Reserve 404 for a route that doesn't exist, not for a route that exists and
+  legitimately found nothing.
+  "This endpoint is not a thing" and "this endpoint is a thing and its answer is empty" are
+  different failures, and collapsing them into one status makes them indistinguishable to the
+  client: a typo'd path and a valid lookup with no match look identical, so the client can't tell
+  a bug from an expected empty state.
+  Instead:
+  - Collection queries return `200` with an empty array (`[]`), never `404`.
+    An empty collection is a successful answer, and the client can render it without branching on
+    status codes.
+  - Single-resource queries return `200` with `null` (or `204 No Content` when the response has no
+    body at all) when the resource is absent but the caller had every right to ask.
+  - Reserve `404` for the cases where the path itself is meaningless: an unknown route, or an
+    identifier in the path that doesn't resolve to anything the caller can act on
+    (e.g. `GET /workspaces/:workspaceId/cad-files` where `:workspaceId` doesn't exist).
+  - Use `403`, not `404`, when the resource exists but the caller may not see it, unless hiding its
+    existence is a deliberate security requirement.
+    If you do hide it, say so in a comment so the next reader doesn't "fix" it back.
 
 ## Git
 
