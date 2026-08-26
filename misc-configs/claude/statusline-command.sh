@@ -365,7 +365,7 @@ else
 fi
 
 current_dir_link=$(osc8_link "statusline-dir" "file://${current_dir}" "$current_dir_display")
-line="${blue}${current_dir_link}${reset}"
+line="📁${blue}${current_dir_link}${reset}"
 
 # Workspace decorations sit between the current dir and the branch bullet so
 # they read as modifiers of the dir, not of the branch.
