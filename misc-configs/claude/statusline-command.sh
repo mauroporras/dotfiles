@@ -96,11 +96,10 @@ else
     context_display="${context_k}k"
 fi
 
-if [[ $context_size -gt 0 ]]; then
-    context_pct=$((current_usage * 100 / context_size))
-else
-    context_pct=0
-fi
+# The harness already reports how full the window is, so take its number rather
+# than re-deriving it from the token counts: it accounts for the same reserved
+# overhead the in-app /context view does, and stays correct if that math changes.
+context_pct=$(echo "$input" | jq -r '.context_window.used_percentage // 0 | floor')
 
 cd "$current_dir" 2> /dev/null || cd /
 
