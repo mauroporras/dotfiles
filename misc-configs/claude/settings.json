@@ -39,5 +39,8 @@
   "//tui": "fullscreen",
 
   "//03": "Commented out because it was not deleting word by word.",
-  "//keybindingFlavor": "readline"
+  "//keybindingFlavor": "readline",
+
+  "//04": "Commented out because scrollback gets too long.",
+  "//viewMode": "verbose"
 }
