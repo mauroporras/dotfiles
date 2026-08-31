@@ -1,15 +1,13 @@
 # CLAUDE.md
 
-## CRITICAL REMINDERS
+<!--
+Claude Code reads CLAUDE.md and not AGENTS.md, so the shared instructions are
+pulled in with an import. Keep this file thin: everything that applies to every
+agent belongs in `AGENTS.md`, and only Claude-specific instructions go below.
+-->
 
-- **ALWAYS** use the task runner (Taskfile) to execute any commands related to this project.
+@AGENTS.md
 
-## Key Technologies
+## Claude Code
 
-- **Task Runner**: Taskfile (Taskfile.yaml)
-
-## Environment Variables
-
-- When adding environment variables, prefix them with `MY_APP_` to avoid collisions with system and third-party variables.
-  - `MY_APP_` will be replaced with this project's actual prefix.
-  - Use `SCREAMING_SNAKE_CASE`: `MY_APP_DATABASE_URL`, not `my_app-databaseUrl`.
+- Use plan mode for changes that span more than one package.
