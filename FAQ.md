@@ -105,6 +105,18 @@ Load:
 nvim -i custom.shada
 ```
 
+## Agents
+
+### Why keep the ground rules in `AGENTS.md`?
+
+[AGENTS.md](https://agents.md) is the file most coding agents already look for, so a
+single copy in `misc-configs/agents/AGENTS.md` covers all of them. A per-vendor copy of
+the same rules would drift the moment one of them is edited and the other isn't.
+
+Claude Code is the exception: it reads `CLAUDE.md`, not `AGENTS.md`. `bootstrap` handles
+that by symlinking `~/.claude/CLAUDE.md` to the shared file. Projects do the same with an
+`@AGENTS.md` import, see `example-configs/CLAUDE.md`.
+
 ## Claude
 
 ### Why disable `autoMemoryEnabled`?

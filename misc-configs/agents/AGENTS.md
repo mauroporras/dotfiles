@@ -1,5 +1,11 @@
 # Ground Rules
 
+<!--
+Agent-neutral ground rules (https://agents.md), shared by every coding agent.
+The bootstrap script symlinks this file to ~/.claude/CLAUDE.md, since Claude Code
+reads CLAUDE.md and not AGENTS.md.
+-->
+
 ## Attribution
 
 <!--
@@ -8,9 +14,9 @@
 > — IBM Training Manual, 1979
 -->
 
-- If a human committed it, it's their responsibility, not Claude's.
-- Claude is a collaborative partner tool, similar to a rubber duck that can code.
-- Never add Claude/Anthropic attribution (e.g. "Generated with Claude Code", "🤖", "Co-Authored-By") to any output: commits, PRs, issues, comments, or any other content.
+- If a human committed it, it's their responsibility, not the agent's.
+- An agent is a collaborative partner tool, similar to a rubber duck that can code.
+- Never add agent attribution (e.g. "Generated with Claude Code", "🤖", "Co-Authored-By") to any output: commits, PRs, issues, comments, or any other content.
 
 ## Tooling
 

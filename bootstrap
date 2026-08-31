@@ -46,9 +46,14 @@ ln -sf ~/dotfiles/misc-configs/lazygit/config.yml .config/lazygit/config.yml
 # -- Git --
 ln -sf ~/dotfiles/gitignore_global .gitignore_global
 
-# -- Claude Code --
+# -- Agent instructions --
+# Ground rules live in an agent-neutral AGENTS.md (https://agents.md) so any
+# coding agent can read the same file. Claude Code reads CLAUDE.md and not
+# AGENTS.md, so it gets a symlink named after what it looks for.
 mkdir -p .claude
-ln -sf ~/dotfiles/misc-configs/claude/CLAUDE.md .claude/CLAUDE.md
+ln -sf ~/dotfiles/misc-configs/agents/AGENTS.md .claude/CLAUDE.md
+
+# -- Claude Code --
 # Linked individually (not the whole dir) to allow third-party skills alongside ours.
 mkdir -p .claude/skills
 for skill in ~/dotfiles/misc-configs/claude/skills/*/; do
