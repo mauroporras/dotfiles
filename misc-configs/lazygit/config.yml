@@ -68,12 +68,13 @@ customCommands:
   # left ("c w A C x i r s S a D f y - =", plus the universal "d n e o v m p P R
   # z Z W : @ | \"), and ";" is unbound in every context.
   # `commandMenu` beats a `prompts` menu here: each entry keeps its own command
-  # and output, which a `prompts` menu shares across every option.
+  # and context, which a `prompts` menu shares across every option.
   # A `commandMenu` parent accepts nothing but `key` and `description`.
-  # Every mode below one runs on a worker goroutine with the UI still live, so
-  # staging can change while a skill is already holding its `--staged` snapshot
-  # and the commit lands against the stale one. Only `output: terminal` closes
-  # that window, at the cost of suspending the TUI, which isn't worth it here.
+  # No `output` on any entry: lazygit then discards stdout and only raises a
+  # popup on a non-zero exit, which suits these, since the panels show the result
+  # on refresh. The cost is that a skill stopping early ("nothing is staged")
+  # exits 0 with its reason on stdout, so that path is silent and the key just
+  # looks dead. Run the skill from a shell to see what it said.
   - key: ";"
     description: "Custom actions"
     commandMenu:
@@ -81,18 +82,12 @@ customCommands:
         context: "files"
         description: "Branch from staged changes"
         loadingText: "Creating a branch from staged changes"
-        # The new branch shows up in the branches panel on refresh, so the output
-        # is only here for the skill's "nothing is staged" path, which exits 0
-        # and would otherwise make this key look dead.
         command: 'claude -p "/custom-staged-create-branch"'
-        output: log
       - key: "c"
         context: "files"
         description: "Commit staged changes"
         loadingText: "Committing staged changes"
         command: 'claude -p "/custom-staged-commit"'
-        output: popup
-        outputTitle: "Commit staged changes"
       - key: "C"
         context: "files"
         description: "Commit staged changes and push"
@@ -102,8 +97,8 @@ customCommands:
         # on its "nothing is staged" path, so `&&` would push whatever unrelated
         # commits happen to be sitting unpushed. The old `git wipp` alias got
         # this for free, since `git commit` fails outright with nothing staged.
-        # A push that prompts (credentials, key passphrase) will hang unseen
-        # under `popup`; switch this one entry to `terminal` if that ever bites.
+        # A push that prompts (credentials, key passphrase) will hang with
+        # nothing on screen; `output: terminal` is the fix if that ever bites.
         command: |
           bash -c '
             before=$(git rev-parse HEAD)
@@ -112,8 +107,6 @@ customCommands:
               git push
             fi
           '
-        output: popup
-        outputTitle: "Commit staged changes and push"
       - key: "i"
         context: "files"
         description: "Invert staged/unstaged files"
