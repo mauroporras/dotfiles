@@ -62,20 +62,6 @@ git:
 customCommands:
   # `claude` rather than the `ai` alias: aliases live in the interactive zsh
   # rc, which lazygit's command shell never sources.
-  # One key for every custom action. The files context has almost no free letters
-  # left ("c w A C x i r s S a D f y - =", plus the universal "d n e o v m p P R
-  # z Z W : @ | \"), and ";" is unbound in every context.
-  # `commandMenu` beats a `prompts` menu here: each entry keeps its own command
-  # and context, which a `prompts` menu shares across every option.
-  # A `commandMenu` parent accepts nothing but `key` and `description`.
-  # No `output` on any entry: lazygit discards stdout and only raises a popup on
-  # a non-zero exit, since the panels already show the result on refresh. That
-  # leaves the exit code as the only channel back to the UI, which is why the
-  # guards below `exit 1` instead of returning 0: the skills would otherwise stop
-  # on their own with an explanation on stdout that nothing ever displays, and
-  # the key would look dead. Bailing in the shell also skips the API call.
-  # `git diff --staged --quiet` exits 0 on an empty index, and is correct even in
-  # a repo with no commits yet.
   - key: ";"
     description: "Custom actions"
     commandMenu:
