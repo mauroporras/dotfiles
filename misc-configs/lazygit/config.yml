@@ -31,6 +31,7 @@ gui:
   # Match Git's 7-char short hash after committing.
   #commitHashLength: 7
   showDivergenceFromBaseBranch: arrowAndNumber
+
 git:
   # Change it using the `|` and `\` keys.
   # (Formerly `pagers`)
