@@ -70,11 +70,14 @@ customCommands:
   # `commandMenu` beats a `prompts` menu here: each entry keeps its own command
   # and context, which a `prompts` menu shares across every option.
   # A `commandMenu` parent accepts nothing but `key` and `description`.
-  # No `output` on any entry: lazygit then discards stdout and only raises a
-  # popup on a non-zero exit, which suits these, since the panels show the result
-  # on refresh. The cost is that a skill stopping early ("nothing is staged")
-  # exits 0 with its reason on stdout, so that path is silent and the key just
-  # looks dead. Run the skill from a shell to see what it said.
+  # No `output` on any entry: lazygit discards stdout and only raises a popup on
+  # a non-zero exit, since the panels already show the result on refresh. That
+  # leaves the exit code as the only channel back to the UI, which is why the
+  # guards below `exit 1` instead of returning 0: the skills would otherwise stop
+  # on their own with an explanation on stdout that nothing ever displays, and
+  # the key would look dead. Bailing in the shell also skips the API call.
+  # `git diff --staged --quiet` exits 0 on an empty index, and is correct even in
+  # a repo with no commits yet.
   - key: ";"
     description: "Custom actions"
     commandMenu:
@@ -82,26 +85,43 @@ customCommands:
         context: "files"
         description: "Branch from staged changes"
         loadingText: "Creating a branch from staged changes"
-        command: 'claude -p "/custom-staged-create-branch"'
+        command: |
+          bash -c '
+            if git diff --staged --quiet; then
+              echo "Nothing staged." >&2
+              exit 1
+            fi
+            claude -p "/custom-staged-create-branch"
+          '
       - key: "c"
         context: "files"
         description: "Commit staged changes"
         loadingText: "Committing staged changes"
-        command: 'claude -p "/custom-staged-commit"'
+        command: |
+          bash -c '
+            if git diff --staged --quiet; then
+              echo "Nothing staged." >&2
+              exit 1
+            fi
+            claude -p "/custom-staged-commit"
+          '
       - key: "C"
         context: "files"
         description: "Commit staged changes and push"
         loadingText: "Committing and pushing staged changes"
         # The push lives here because the skill no longer pushes. It is gated on
-        # HEAD actually moving rather than chained with `&&`: the skill exits 0
-        # on its "nothing is staged" path, so `&&` would push whatever unrelated
-        # commits happen to be sitting unpushed. The old `git wipp` alias got
-        # this for free, since `git commit` fails outright with nothing staged.
+        # HEAD actually moving rather than chained with `&&`, so a skill that
+        # declines to commit for its own reasons can't push unrelated commits
+        # that happen to be sitting unpushed.
         # A push that prompts (credentials, key passphrase) will hang with
         # nothing on screen; `output: terminal` is the fix if that ever bites.
         command: |
           bash -c '
-            before=$(git rev-parse HEAD)
+            if git diff --staged --quiet; then
+              echo "Nothing staged." >&2
+              exit 1
+            fi
+            before=$(git rev-parse HEAD 2>/dev/null || echo none)
             claude -p "/custom-staged-commit"
             if [ "$(git rev-parse HEAD)" != "$before" ]; then
               git push
