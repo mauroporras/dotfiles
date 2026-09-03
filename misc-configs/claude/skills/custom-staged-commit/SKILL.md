@@ -62,16 +62,3 @@ NEVER:
 
 - Run additional Git commands
 - Push. This skill commits only; pushing is the user's call.
-
-## Output
-
-After committing, report the result using EXACTLY this format, one field per line and nothing else:
-
-```markdown
-Subject: <the commit subject you generated>
-Body: <the commit body if you added one (e.g. `Close #72`); omit this line otherwise>
-Branch: <current branch, from the Context above>
-Commit: <short commit hash, from the `git commit` output>
-```
-
-Derive every field from data already available (the Context branch and the `git commit` output). Do not run extra commands to populate it.
