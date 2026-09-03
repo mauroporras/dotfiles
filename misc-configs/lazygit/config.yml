@@ -62,8 +62,6 @@ git:
 customCommands:
   # `claude` rather than the `ai` alias: aliases live in the interactive zsh
   # rc, which lazygit's command shell never sources.
-  # The `custom-staged-commit` skill picks NORMAL vs WIP from the branch name,
-  # so one entry covers both cases.
   # One key for every custom action. The files context has almost no free letters
   # left ("c w A C x i r s S a D f y - =", plus the universal "d n e o v m p P R
   # z Z W : @ | \"), and ";" is unbound in every context.
