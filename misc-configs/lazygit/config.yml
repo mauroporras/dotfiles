@@ -83,11 +83,19 @@ customCommands:
         fi
         rm -rf "$tmp"
       '
+  # `claude --model opus` rather than the `ai` alias: aliases live in the
+  # interactive zsh rc, which lazygit's command shell never sources.
   - key: "w"
     context: "files"
-    description: "Work In Progress"
-    command: "git wip"
+    description: "Commit staged changes"
+    loadingText: "Committing staged changes"
+    command: 'claude -p "/custom-staged-commit"'
+    output: popup
+    outputTitle: "Commit staged changes"
   - key: "W"
     context: "files"
-    description: "Work In Progress and push"
-    command: "git wipp"
+    description: "Commit staged changes and push"
+    loadingText: "Committing and pushing staged changes"
+    command: 'claude -p "/custom-staged-commit push"'
+    output: popup
+    outputTitle: "Commit staged changes and push"
