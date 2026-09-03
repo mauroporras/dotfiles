@@ -131,3 +131,30 @@ customCommands:
             fi
             rm -rf "$tmp"
           '
+      - key: "n"
+        context: "files"
+        description: "Commit staged changes, closing an issue"
+        loadingText: "Committing staged changes"
+        # The prompt value is substituted by lazygit before the shell sees it, so
+        # it is validated as digits here rather than trusted: the skill only
+        # greps the first numeric token out of its arguments and would silently
+        # ignore a typo like "#72a", committing with no `Close` line at all.
+        prompts:
+          - type: "input"
+            title: "Issue number to close"
+            key: "Issue"
+        command: |
+          bash -c '
+            if git diff --staged --quiet; then
+              echo "Nothing staged." >&2
+              exit 1
+            fi
+            issue="{{.Form.Issue}}"
+            case "$issue" in
+              ""|*[!0-9]*)
+                echo "Issue number must be digits only, got: $issue" >&2
+                exit 1
+                ;;
+            esac
+            claude -p "/custom-staged-commit $issue"
+          '
