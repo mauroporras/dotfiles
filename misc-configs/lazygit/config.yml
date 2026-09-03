@@ -93,9 +93,6 @@ customCommands:
         context: "files"
         description: "Commit staged changes and push"
         loadingText: "Committing and pushing staged changes"
-        # It is gated on HEAD actually moving rather than chained with `&&`, so
-        # a skill that declines to commit for its own reasons can't push
-        # unrelated commits that happen to be sitting unpushed.
         command: |
           bash -c '
             if git diff --staged --quiet; then
@@ -158,3 +155,11 @@ customCommands:
             esac
             claude -p "/custom-staged-commit $issue"
           '
+      - key: "w"
+        context: "files"
+        description: "Work In Progress"
+        command: "git wip"
+      - key: "W"
+        context: "files"
+        description: "Work In Progress and push"
+        command: "git wipp"
