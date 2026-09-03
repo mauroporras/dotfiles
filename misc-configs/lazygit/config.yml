@@ -60,42 +60,80 @@ git:
 #refresher:
 #  externalChangeCheckInterval: 3
 customCommands:
-  - key: "I"
-    context: "files"
-    description: "Invert staged/unstaged files"
-    # Pathspecs travel through NUL-delimited files instead of shell variables:
-    # bash word-splits an unquoted list on spaces, so a path like
-    # "Cortex Updates and Onboarding_transcript.txt" would silently become four
-    # non-matching pathspecs and git would no-op with exit 0.
-    # GIT_LITERAL_PATHSPECS stops git from reading `*` or `[` in a path as a glob.
-    # The stage list is captured before the reset so files unstaged here don't
-    # get immediately re-added as newly untracked.
-    command: |
-      bash -c '
-        tmp=$(mktemp -d)
-        git diff --cached --name-only -z > "$tmp/unstage"
-        { git diff --name-only -z; git ls-files --others --exclude-standard -z; } > "$tmp/stage"
-        if [ -s "$tmp/unstage" ]; then
-          GIT_LITERAL_PATHSPECS=1 git reset -q --pathspec-from-file="$tmp/unstage" --pathspec-file-nul
-        fi
-        if [ -s "$tmp/stage" ]; then
-          GIT_LITERAL_PATHSPECS=1 git add --pathspec-from-file="$tmp/stage" --pathspec-file-nul
-        fi
-        rm -rf "$tmp"
-      '
-  # `claude --model opus` rather than the `ai` alias: aliases live in the
-  # interactive zsh rc, which lazygit's command shell never sources.
-  - key: "w"
-    context: "files"
-    description: "Commit staged changes"
-    loadingText: "Committing staged changes"
-    command: 'claude -p "/custom-staged-commit"'
-    output: popup
-    outputTitle: "Commit staged changes"
-  - key: "W"
-    context: "files"
-    description: "Commit staged changes and push"
-    loadingText: "Committing and pushing staged changes"
-    command: 'claude -p "/custom-staged-commit push"'
-    output: popup
-    outputTitle: "Commit staged changes and push"
+  # `claude` rather than the `ai` alias: aliases live in the interactive zsh
+  # rc, which lazygit's command shell never sources.
+  # The `custom-staged-commit` skill picks NORMAL vs WIP from the branch name,
+  # so one entry covers both cases.
+  # One key for every custom action. The files context has almost no free letters
+  # left ("c w A C x i r s S a D f y - =", plus the universal "d n e o v m p P R
+  # z Z W : @ | \"), and ";" is unbound in every context.
+  # `commandMenu` beats a `prompts` menu here: each entry keeps its own command
+  # and output, which a `prompts` menu shares across every option.
+  # A `commandMenu` parent accepts nothing but `key` and `description`.
+  # Every mode below one runs on a worker goroutine with the UI still live, so
+  # staging can change while a skill is already holding its `--staged` snapshot
+  # and the commit lands against the stale one. Only `output: terminal` closes
+  # that window, at the cost of suspending the TUI, which isn't worth it here.
+  - key: ";"
+    description: "Custom actions"
+    commandMenu:
+      - key: "b"
+        context: "files"
+        description: "Branch from staged changes"
+        loadingText: "Creating a branch from staged changes"
+        # The new branch shows up in the branches panel on refresh, so the output
+        # is only here for the skill's "nothing is staged" path, which exits 0
+        # and would otherwise make this key look dead.
+        command: 'claude -p "/custom-staged-create-branch"'
+        output: log
+      - key: "c"
+        context: "files"
+        description: "Commit staged changes"
+        loadingText: "Committing staged changes"
+        command: 'claude -p "/custom-staged-commit"'
+        output: popup
+        outputTitle: "Commit staged changes"
+      - key: "C"
+        context: "files"
+        description: "Commit staged changes and push"
+        loadingText: "Committing and pushing staged changes"
+        # The push lives here because the skill no longer pushes. It is gated on
+        # HEAD actually moving rather than chained with `&&`: the skill exits 0
+        # on its "nothing is staged" path, so `&&` would push whatever unrelated
+        # commits happen to be sitting unpushed. The old `git wipp` alias got
+        # this for free, since `git commit` fails outright with nothing staged.
+        # A push that prompts (credentials, key passphrase) will hang unseen
+        # under `popup`; switch this one entry to `terminal` if that ever bites.
+        command: |
+          bash -c '
+            before=$(git rev-parse HEAD)
+            claude -p "/custom-staged-commit"
+            if [ "$(git rev-parse HEAD)" != "$before" ]; then
+              git push
+            fi
+          '
+        output: popup
+        outputTitle: "Commit staged changes and push"
+      - key: "i"
+        context: "files"
+        description: "Invert staged/unstaged files"
+        # Pathspecs travel through NUL-delimited files instead of shell variables:
+        # bash word-splits an unquoted list on spaces, so a path like
+        # "Cortex Updates and Onboarding_transcript.txt" would silently become four
+        # non-matching pathspecs and git would no-op with exit 0.
+        # GIT_LITERAL_PATHSPECS stops git from reading `*` or `[` in a path as a glob.
+        # The stage list is captured before the reset so files unstaged here don't
+        # get immediately re-added as newly untracked.
+        command: |
+          bash -c '
+            tmp=$(mktemp -d)
+            git diff --cached --name-only -z > "$tmp/unstage"
+            { git diff --name-only -z; git ls-files --others --exclude-standard -z; } > "$tmp/stage"
+            if [ -s "$tmp/unstage" ]; then
+              GIT_LITERAL_PATHSPECS=1 git reset -q --pathspec-from-file="$tmp/unstage" --pathspec-file-nul
+            fi
+            if [ -s "$tmp/stage" ]; then
+              GIT_LITERAL_PATHSPECS=1 git add --pathspec-from-file="$tmp/stage" --pathspec-file-nul
+            fi
+            rm -rf "$tmp"
+          '
