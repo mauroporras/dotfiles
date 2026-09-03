@@ -34,7 +34,7 @@ Do NOT run Git commands, grep the codebase, or investigate anything outside the 
 
 Present **3 guesses** ranked by confidence:
 
-```text
+```markdown
 1. [N%] <Your top guess>
    Why: <brief explanation of what led you here>
 
