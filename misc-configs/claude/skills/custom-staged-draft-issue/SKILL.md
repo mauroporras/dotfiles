@@ -65,7 +65,7 @@ NEVER:
 After writing the file (and, if confirmed, creating the issue), report the result
 using EXACTLY this format, one field per line and nothing else:
 
-```bash
+```text
 Title: <the issue title you generated>
 File: <absolute path to the file you wrote>
 Issue: <the created issue URL, or `not created` if the user declined>

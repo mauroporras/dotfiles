@@ -70,7 +70,7 @@ NEVER:
 
 After committing (and pushing, if requested), report the result using EXACTLY this format, one field per line and nothing else:
 
-```bash
+```text
 Subject: <the commit subject you generated>
 Body: <the commit body if you added one (e.g. `Close #72`); omit this line otherwise>
 Branch: <current branch, from the Context above>
