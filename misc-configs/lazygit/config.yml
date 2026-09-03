@@ -67,7 +67,7 @@ customCommands:
     commandMenu:
       - key: "b"
         context: "files"
-        description: "Branch from staged changes"
+        description: "[ai] Branch from staged changes"
         loadingText: "Creating a branch from staged changes"
         command: |
           bash -c '
@@ -79,7 +79,7 @@ customCommands:
           '
       - key: "c"
         context: "files"
-        description: "Commit staged changes"
+        description: "[ai] Commit staged changes"
         loadingText: "Committing staged changes"
         command: |
           bash -c '
@@ -91,7 +91,7 @@ customCommands:
           '
       - key: "C"
         context: "files"
-        description: "Commit staged changes and push"
+        description: "[ai] Commit staged changes and push"
         loadingText: "Committing and pushing staged changes"
         command: |
           bash -c '
@@ -130,7 +130,7 @@ customCommands:
           '
       - key: "n"
         context: "files"
-        description: "Commit staged changes, closing an issue"
+        description: "[ai] Commit staged changes, closing an issue"
         loadingText: "Committing staged changes"
         # The prompt value is substituted by lazygit before the shell sees it, so
         # it is validated as digits here rather than trusted: the skill only
