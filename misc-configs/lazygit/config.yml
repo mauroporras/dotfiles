@@ -96,6 +96,11 @@ customCommands:
         context: "files"
         description: "[ai] Commit staged changes and push"
         loadingText: "Committing and pushing staged changes"
+        # `after` needs the same fallback as `before`: in a repo with no commits
+        # where nothing got committed, a bare `git rev-parse HEAD` fails to the
+        # empty string, which differs from `none` and would push regardless.
+        # `|| exit` propagates a claude failure, which is the only way lazygit
+        # hears about it, since these entries set no `output`.
         command: |
           bash -c '
             if git diff --staged --quiet; then
@@ -103,8 +108,9 @@ customCommands:
               exit 1
             fi
             before=$(git rev-parse HEAD 2>/dev/null || echo none)
-            claude -p "/custom-staged-commit"
-            if [ "$(git rev-parse HEAD)" != "$before" ]; then
+            claude -p "/custom-staged-commit" || exit $?
+            after=$(git rev-parse HEAD 2>/dev/null || echo none)
+            if [ "$after" != "$before" ]; then
               git push
             fi
           '
