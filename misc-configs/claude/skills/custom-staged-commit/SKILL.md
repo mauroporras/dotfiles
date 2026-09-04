@@ -2,22 +2,20 @@
 disable-model-invocation: true
 context: fork
 background: false
-argument-hint: [push] [issue-number]
-allowed-tools: Bash(git --no-pager diff *), Bash(git rev-parse *), Bash(git remote get-url *), Bash(git commit *), Bash(git push *), Bash(grep *), Bash(echo *), Bash(head *)
+argument-hint: [issue-number]
+allowed-tools: Bash(git --no-pager diff *), Bash(git rev-parse *), Bash(git commit *), Bash(grep *), Bash(echo *), Bash(head *)
 model: sonnet
 ---
 
-# Commit STAGED changes, optionally push
+# Commit STAGED changes
 
 ## Context
 
 - Current staged changes only: !`git --no-pager diff --staged`
 - Current branch: !`git rev-parse --abbrev-ref HEAD`
 - Commit mode (`NORMAL` for base branches, `WIP` otherwise): !`git rev-parse --abbrev-ref HEAD | grep -qE '^(alpha|main|master|beta|production)$' && echo NORMAL || echo WIP`
-- Remote URL: !`git remote get-url origin`
-- Arguments (`issue-number` and/or `push`, empty if none): `$ARGUMENTS`
+- Arguments (`issue-number`, empty if none): `$ARGUMENTS`
 - Issue number (first numeric token in arguments, empty if none): !`echo "$ARGUMENTS" | grep -oE '[0-9]+' | head -n1`
-- Push requested (`yes`/`no`): !`echo "$ARGUMENTS" | grep -qw push && echo yes || echo no`
 
 ## Your task
 
@@ -30,11 +28,10 @@ files as the staged diff.
 Guard clause: if the staged diff above is empty, do NOT run `git commit`.
 Tell the user nothing is staged and stop.
 
-The arguments have already been parsed for you in the Context above. Use these
-precomputed values verbatim; do NOT re-parse `$ARGUMENTS` yourself:
+The arguments have already been parsed for you in the Context above. Use this
+precomputed value verbatim; do NOT re-parse `$ARGUMENTS` yourself:
 
 - `Issue number`: the issue number, or empty when none was given.
-- `Push requested`: `yes` if the commit should be pushed, `no` otherwise.
 
 REQUIRED:
 
@@ -60,32 +57,8 @@ REQUIRED:
   - If `Issue number` (from Context) is non-empty, a body is required and its
     first line MUST be exactly `Close #<Issue number>` (e.g. `Close #72`).
     Any explanation follows after a blank line.
-- Push: run `git push` after committing if and only if `Push requested` (from Context) is `yes`.
 
 NEVER:
 
 - Run additional Git commands
-
-## Output
-
-After committing (and pushing, if requested), report the result using EXACTLY this format, one field per line and nothing else:
-
-```markdown
-Subject: <the commit subject you generated>
-Body: <the commit body if you added one (e.g. `Close #72`); omit this line otherwise>
-Branch: <current branch, from the Context above>
-Commit: <short commit hash, from the `git commit` output>
-Pushed to: <GitHub commit URL; include this line only when you pushed to a GitHub remote, omit it otherwise>
-```
-
-Derive every field from data already available (the Context branch, the Context remote URL, and the `git commit` output). Do not run extra commands to populate it.
-
-Build the `Pushed to` field as follows:
-
-- If you did not push, omit the `Pushed to` line entirely.
-- If you pushed to a GitHub remote, the value is the GitHub commit URL:
-  - Normalize the Context remote URL to `https://github.com/<owner>/<repo>`:
-    - SSH (`git@github.com:<owner>/<repo>.git`) becomes `https://github.com/<owner>/<repo>`.
-    - HTTPS (`https://github.com/<owner>/<repo>.git`) becomes `https://github.com/<owner>/<repo>`.
-    - Strip any trailing `.git`.
-  - Append `/commit/<short commit hash>`.
+- Push. This skill commits only; pushing is the user's call.

@@ -31,6 +31,7 @@ gui:
   # Match Git's 7-char short hash after committing.
   #commitHashLength: 7
   showDivergenceFromBaseBranch: arrowAndNumber
+
 git:
   # Change it using the `|` and `\` keys.
   # (Formerly `pagers`)
@@ -59,43 +60,120 @@ git:
 # The default value is ok.
 #refresher:
 #  externalChangeCheckInterval: 3
+
 customCommands:
-  - key: "I"
-    context: "files"
-    description: "Invert staged/unstaged files"
-    # Pathspecs travel through NUL-delimited files instead of shell variables:
-    # bash word-splits an unquoted list on spaces, so a path like
-    # "Cortex Updates and Onboarding_transcript.txt" would silently become four
-    # non-matching pathspecs and git would no-op with exit 0.
-    # GIT_LITERAL_PATHSPECS stops git from reading `*` or `[` in a path as a glob.
-    # The stage list is captured before the reset so files unstaged here don't
-    # get immediately re-added as newly untracked.
-    command: |
-      bash -c '
-        tmp=$(mktemp -d)
-        git diff --cached --name-only -z > "$tmp/unstage"
-        { git diff --name-only -z; git ls-files --others --exclude-standard -z; } > "$tmp/stage"
-        if [ -s "$tmp/unstage" ]; then
-          GIT_LITERAL_PATHSPECS=1 git reset -q --pathspec-from-file="$tmp/unstage" --pathspec-file-nul
-        fi
-        if [ -s "$tmp/stage" ]; then
-          GIT_LITERAL_PATHSPECS=1 git add --pathspec-from-file="$tmp/stage" --pathspec-file-nul
-        fi
-        rm -rf "$tmp"
-      '
-  # `claude --model opus` rather than the `ai` alias: aliases live in the
-  # interactive zsh rc, which lazygit's command shell never sources.
-  - key: "w"
-    context: "files"
-    description: "Commit staged changes"
-    loadingText: "Committing staged changes"
-    command: 'claude -p "/custom-staged-commit"'
-    output: popup
-    outputTitle: "Commit staged changes"
-  - key: "W"
-    context: "files"
-    description: "Commit staged changes and push"
-    loadingText: "Committing and pushing staged changes"
-    command: 'claude -p "/custom-staged-commit push"'
-    output: popup
-    outputTitle: "Commit staged changes and push"
+  # `claude` rather than the `ai` alias: aliases live in the interactive zsh
+  # rc, which lazygit's command shell never sources.
+  - key: ";"
+    description: "Custom actions"
+    commandMenu:
+      - key: "b"
+        context: "files"
+        description: "[ai] Branch from staged changes"
+        loadingText: "Creating a branch from staged changes"
+        command: |
+          bash -c '
+            if git diff --staged --quiet; then
+              echo "Nothing staged." >&2
+              exit 1
+            fi
+            claude -p "/custom-staged-create-branch"
+          '
+
+      - key: "c"
+        context: "files"
+        description: "[ai] Commit staged changes"
+        loadingText: "Committing staged changes"
+        command: |
+          bash -c '
+            if git diff --staged --quiet; then
+              echo "Nothing staged." >&2
+              exit 1
+            fi
+            claude -p "/custom-staged-commit"
+          '
+
+      - key: "C"
+        context: "files"
+        description: "[ai] Commit staged changes and push"
+        loadingText: "Committing and pushing staged changes"
+        # `after` needs the same fallback as `before`: in a repo with no commits
+        # where nothing got committed, a bare `git rev-parse HEAD` fails to the
+        # empty string, which differs from `none` and would push regardless.
+        # `|| exit` propagates a claude failure, which is the only way lazygit
+        # hears about it, since these entries set no `output`.
+        command: |
+          bash -c '
+            if git diff --staged --quiet; then
+              echo "Nothing staged." >&2
+              exit 1
+            fi
+            before=$(git rev-parse HEAD 2>/dev/null || echo none)
+            claude -p "/custom-staged-commit" || exit $?
+            after=$(git rev-parse HEAD 2>/dev/null || echo none)
+            if [ "$after" != "$before" ]; then
+              git push
+            fi
+          '
+
+      - key: "i"
+        context: "files"
+        description: "Invert staged/unstaged files"
+        # Pathspecs travel through NUL-delimited files instead of shell variables:
+        # bash word-splits an unquoted list on spaces, so a path like
+        # "Cortex Updates and Onboarding_transcript.txt" would silently become four
+        # non-matching pathspecs and git would no-op with exit 0.
+        # GIT_LITERAL_PATHSPECS stops git from reading `*` or `[` in a path as a glob.
+        # The stage list is captured before the reset so files unstaged here don't
+        # get immediately re-added as newly untracked.
+        command: |
+          bash -c '
+            tmp=$(mktemp -d)
+            git diff --cached --name-only -z > "$tmp/unstage"
+            { git diff --name-only -z; git ls-files --others --exclude-standard -z; } > "$tmp/stage"
+            if [ -s "$tmp/unstage" ]; then
+              GIT_LITERAL_PATHSPECS=1 git reset -q --pathspec-from-file="$tmp/unstage" --pathspec-file-nul
+            fi
+            if [ -s "$tmp/stage" ]; then
+              GIT_LITERAL_PATHSPECS=1 git add --pathspec-from-file="$tmp/stage" --pathspec-file-nul
+            fi
+            rm -rf "$tmp"
+          '
+
+      - key: "n"
+        context: "files"
+        description: "[ai] Commit staged changes, closing an issue"
+        loadingText: "Committing staged changes"
+        # The prompt value is substituted by lazygit before the shell sees it, so
+        # it is validated as digits here rather than trusted: the skill only
+        # greps the first numeric token out of its arguments and would silently
+        # ignore a typo like "#72a", committing with no `Close` line at all.
+        prompts:
+          - type: "input"
+            title: "Issue number to close"
+            key: "Issue"
+        command: |
+          bash -c '
+            if git diff --staged --quiet; then
+              echo "Nothing staged." >&2
+              exit 1
+            fi
+            issue="{{.Form.Issue}}"
+            case "$issue" in
+              ""|*[!0-9]*)
+                echo "Issue number must be digits only, got: $issue" >&2
+                exit 1
+                ;;
+            esac
+            claude -p "/custom-staged-commit $issue"
+          '
+
+      - key: "w"
+        context: "files"
+        description: "Work In Progress"
+        command: "git wip"
+
+      - key: "W"
+        context: "files"
+        description: "Work In Progress and push"
+        command: "git wipp"
