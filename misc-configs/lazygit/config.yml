@@ -67,6 +67,14 @@ customCommands:
   - key: ";"
     description: "Custom actions"
     commandMenu:
+      # Commits
+      - key: "p"
+        context: "commits"
+        description: "Push a specific commit (and any preceding)"
+        loadingText: "Pushing commit"
+        command: "git push {{.SelectedRemote.Name}} {{.SelectedLocalCommit.Sha}}:{{.SelectedLocalBranch.Name}}"
+
+      # Files
       - key: "b"
         context: "files"
         description: "[ai] Branch from staged changes"
