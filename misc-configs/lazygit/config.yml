@@ -70,15 +70,21 @@ customCommands:
       # Commits
       - key: "e"
         context: "commits"
-        description: "Add empty commit"
-        loadingText: "Committing empty commit..."
+        description: "[empty commit]"
+        loadingText: "Creating empty commit"
         command: 'git commit --allow-empty -m "[empty commit]"'
 
       - key: "p"
         context: "commits"
-        description: "Push a specific commit (and any preceding)"
+        description: "Push specific commit and preceding"
         loadingText: "Pushing commit"
         command: "git push {{.SelectedRemote.Name}} {{.SelectedLocalCommit.Sha}}:{{.SelectedLocalBranch.Name}}"
+
+      - key: "t"
+        context: "commits"
+        description: "[trigger ci]"
+        loadingText: "Creating trigger CI commit"
+        command: 'git commit --allow-empty -m "[empty commit]"'
 
       # Files
       - key: "b"
