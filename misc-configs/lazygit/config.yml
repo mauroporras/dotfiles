@@ -84,7 +84,7 @@ customCommands:
         context: "commits"
         description: "[trigger ci]"
         loadingText: "Creating trigger CI commit"
-        command: 'git commit --allow-empty -m "[empty commit]"'
+        command: 'git commit --allow-empty -m "[trigger ci]"'
 
       # Files
       - key: "b"
