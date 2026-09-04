@@ -68,6 +68,12 @@ customCommands:
     description: "Custom actions"
     commandMenu:
       # Commits
+      - key: "e"
+        context: "commits"
+        description: "Add empty commit"
+        loadingText: "Committing empty commit..."
+        command: 'git commit --allow-empty -m "[empty commit]"'
+
       - key: "p"
         context: "commits"
         description: "Push a specific commit (and any preceding)"
