@@ -49,7 +49,7 @@
 - Always add explicit return types to functions.
   Type inference is convenient but explicit return types catch accidental changes, serve as documentation, and speed up type-checking in larger codebases.
 - Assign the return value of a function/method to a `retval` constant before returning it.
-  This makes the value visible in a debugger without needing to step out of the function.
+  This makes the value visible in a debugger while execution is still inside the function.
 - Avoid mutation as much as possible: produce new values rather than modifying in place.
 
 ### Control Flow
