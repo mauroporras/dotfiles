@@ -13,9 +13,10 @@
 
 ## Tooling
 
-- For finding symbol references, definitions, implementations, or call hierarchies, default to LSP (e.g. `findReferences`, `goToDefinition`) instead of text/grep search.
-  LSP resolves the actual symbol, so it won't conflate unrelated text matches or miss aliased imports.
-  Fall back to text search only when no LSP server is available for the file type.
+- Default to LSP for finding symbol references, definitions, implementations, or call hierarchies.
+  E.g., `findReferences`, `goToDefinition`
+  LSP resolves the actual symbol, so it matches exactly the right references and follows aliased imports.
+  Reserve text search for file types that have no LSP server.
   If an LSP query from a definition returns only itself, the server is likely cold/unindexed: re-query from a known call site to warm it before trusting the result.
 
 ## Verification
