@@ -93,8 +93,10 @@
 
 ### JavaScript/TypeScript
 
-- Use JavaScript private fields (`#field`) for class internals, not the TypeScript `private` keyword.
-- **ALWAYS USE TYPESCRIPT PATH ALIASES** instead of relative imports (e.g., use `@workspace/*` instead of `../../../workspace/*`)
+- Use JavaScript private fields (`#field`) for class internals.
+  They stay private at runtime, whereas TypeScript's `private` keyword disappears at compile time.
+- Use TypeScript path aliases in imports, E.g.:
+  `@workspace/*`, which stands in for `../../../workspace/*`
 
 ### Svelte
 
