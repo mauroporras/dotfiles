@@ -38,8 +38,8 @@
 
 ### Comments
 
-- When adding comments to code, explain _why_ something is done, not _what_ it does.
-  The code already shows the "what", a comment restating it is just noise.
+- When adding comments to code, explain _why_ something is done.
+  The code already shows the "what", so a comment earns its place by adding what the code alone leaves out.
   Comments should capture intent, constraints, workarounds, or non-obvious reasoning that a reader couldn't derive from the code alone.
 
 ### Functions
