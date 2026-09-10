@@ -21,7 +21,7 @@
 
 ## Verification
 
-- **NEVER ASSUME, ALWAYS ASK** - when you can verify a claim, verify it before asserting. When you genuinely cannot resolve it yourself, ask the user rather than emitting a speculation.
+- **ALWAYS VERIFY, ALWAYS ASK** - when you can verify a claim, verify it before asserting. When you genuinely cannot resolve it yourself, ask the user and let their answer be the one you report.
 
 ## Code Style
 
