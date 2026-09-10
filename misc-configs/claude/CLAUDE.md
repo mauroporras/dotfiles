@@ -111,9 +111,8 @@
 - A use case is a single unit of application logic exposing one public method: `execute`.
 - `execute` takes exactly one parameter named `input`, typed as the use case's
   own input contract (`<UseCaseName>Input`, an `interface`).
-- Keep use cases free of transport/persistence concerns: no HTTP, no SQL, no
-  framework types in the signature.
-  Adapters at the edges translate those into the input contract.
+- Keep use cases to pure application logic.
+  Transport/persistence concerns (HTTP, SQL, and framework types) belong to the adapters at the edges, which translate them into the input contract.
 - One responsibility per use case:
   If `execute` starts branching into several distinct operations, split it into
   separate use cases rather than overloading the input.
