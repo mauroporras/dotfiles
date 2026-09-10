@@ -54,18 +54,20 @@
 
 ### Control Flow
 
-- Minimize nesting depth:
+- Keep nesting depth shallow:
   - Flatten code by inverting conditions, returning early, and extracting helpers so indentation stays shallow and the main flow reads top to bottom.
   - Keep the happy path at the top indentation level.
-    Prefer guard clauses (early returns for invalid/edge cases) over deeply nested `if/else` blocks.
+    Prefer guard clauses (early returns) for invalid/edge cases over deeply nested `if/else` blocks.
 - Avoid single line early returns.
   Use a block instead so breakpoints can target the return independently. E.g.:
 
   ```ts
   // DON'T:
+  // Breakpoint lands on the whole statement.
   if (isEmpty) return;
 
   // DO:
+  // Breakpoint lands on the return alone:.
   if (isEmpty) {
     return;
   }
