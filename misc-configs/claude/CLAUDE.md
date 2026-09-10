@@ -81,12 +81,12 @@
 ### Error Handling
 
 - Handle errors at the edges and let the happy path stay clean.
-  Throw or return early on failure rather than wrapping the main logic in `try`/`catch`, and never swallow an error silently:
+  Throw or return early on failure, keeping the main logic outside `try`/`catch`, and give every error a voice:
   At minimum log it with enough context to trace where it came from.
 
 ### Formatting
 
-- Use empty lines liberally: a wall of code without spacing is hard to read.
+- Use empty lines liberally: spacing is what makes a block of code scannable.
   - Separate logical blocks of code with empty lines.
   - Always leave a blank line before `return` statements.
   - Leave a blank line after guard clauses to separate edge-case handling from the happy path.
