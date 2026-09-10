@@ -28,7 +28,7 @@
 ### Naming
 
 - Follow [the naming cheatsheet](https://github.com/kettanaito/naming-cheatsheet).
-- Extract `if` conditions into named constants instead of inlining them.
+- Extract `if` conditions into named constants.
   It makes the intent more readable. E.g.:
   `hasChildren = parent.children.length > 0`
   `isExpired = Date.now() > token.expiresAt`
