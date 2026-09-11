@@ -130,9 +130,9 @@
 - Adapters at the edges translate the input contract from, and the output
   contract into, HTTP responses, rows, etc.
 - Input and output must be simple data structures instead of entities.
-  If your output type is an Entity (e.g. an `Album` class), that's a smell.
-  Crossing a boundary with an Entity couples the caller to domain internals; map
-  the Entity to the input/output contract instead.
+  An output type that is an Entity (E.g., an `Album` class) is a smell.
+  Crossing a boundary with an Entity couples the caller to domain internals.
+  Map the Entity to the input/output contract instead.
   <!--
   As Uncle Bob puts it:
   > "we don't want to cheat and pass Entity objects between boundaries"
