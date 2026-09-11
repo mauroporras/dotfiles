@@ -2,7 +2,8 @@
   "plansDirectory": ".claude/plans",
   "env": {
     "CLAUDE_CODE_SESSION_NAME": "session-some-project",
-    "CLAUDE_CODE_DISABLE_ARTIFACT": 1
+    "CLAUDE_CODE_DISABLE_ARTIFACT": 1,
+    "CLAUDE_CODE_ENABLE_CFC": "false"
   },
   "permissions": {
     "allow": [
