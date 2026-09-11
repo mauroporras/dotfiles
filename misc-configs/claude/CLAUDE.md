@@ -181,9 +181,9 @@
 
 ### Schema
 
-- Name tables with an uninflected noun (singular) in `snake_case`, and no prefixes.
-  E.g. `user`, `cad_file`, `price_list`; not `users`, `Users`, `tbl_user`, `cadFiles`.
-  A table name describes what one row *is*, so the singular form reads correctly everywhere the
+- Name tables with an uninflected noun (singular) in `snake_case`, prefix-free.
+  E.g. `user`, `cad_file`, `price_list` (rather than `users`, `Users`, `tbl_user`, `cadFiles`).
+  A table name describes what one row _is_, so the singular form reads correctly everywhere the
   name appears: in a join, in a foreign key (`cad_file.id` → `cad_file_id`), and in the entity it
   maps to. It also sidesteps irregular plurals (`person`/`people`, `status`/`statuses`), which
   otherwise force every reader and every code generator to guess which form a given table used.
