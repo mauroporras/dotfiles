@@ -1,19 +1,11 @@
-# Private Project Preferences
+# CLAUDE.local.md
 
-## About the user
+@AGENTS.local.md
 
-- The user's name is Mauro. Use masculine pronouns when referring to the user.
+<!--
+Claude-specific instructions go below the import, E.g.:
 
-## About the project
+## Claude Code
 
-- This is just an MVP without customers yet.
-- Ask the user to regenerate the Swagger/OpenAPI client when you find it appropriate.
-
-## Preferences
-
-- When the auto-classifier blocks a command from running, feel free to ask the user to run it for you if you want.
-- The user can stage/unstage files and commit changes in the background. That's ok.
-- If you ever need to test something in the browser, ask the user to do it.
-  The user is faster at that.
-  Make sure to provide clear instructions for the user to follow.
-  It's ok to run tests in the browser if the user asks you to do so.
+- Do this or that.
+-->
