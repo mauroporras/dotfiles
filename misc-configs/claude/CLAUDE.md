@@ -169,7 +169,7 @@
 
 ## Git
 
-- NEVER, EVER, commit, push, or create PRs on your own unless explicitly told to.
+- Committing, pushing, and creating PRs each wait for an explicit instruction.
   PRs are a human responsibility; the user wants to review, title, and submit them on their own terms.
 - When asked to resolve Git conflicts, only resolve the conflicts.
   Don't stage, commit, continue the rebase/merge, build, test, or offer extra steps unless explicitly told to.
