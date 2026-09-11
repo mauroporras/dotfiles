@@ -205,7 +205,7 @@
 
 ### Upserts
 
-- Treat the upsert as the last line of defense, not the first.
+- Treat the upsert as the last line of defense.
   The query runs after the caller, the use case, and any conflict-detection logic have all had their say, and it is the final gate before bytes hit the table.
   By the time control reaches it, you can no longer assume the caller's intent (insert vs update) or that the incoming row is well-formed, so the column list must be conservative on its own: it should be safe even when every layer above it is wrong or absent.
   Don't rely on "this upsert is only ever called from create" to justify a permissive `SET`; that assumption is exactly what erodes over time and turns the dead `DO UPDATE` branch into a silent data-corruption bug.
