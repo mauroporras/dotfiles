@@ -163,9 +163,9 @@
   - Reserve `404` for the cases where the path itself is meaningless: an unknown route, or an
     identifier in the path that doesn't resolve to anything the caller can act on
     (e.g. `GET /workspaces/:workspaceId/cad-files` where `:workspaceId` doesn't exist).
-  - Use `403`, not `404`, when the resource exists but the caller may not see it, unless hiding its
-    existence is a deliberate security requirement.
-    If you do hide it, say so in a comment so the next reader doesn't "fix" it back.
+  - Use `403` when the resource exists but the caller may not see it.
+    Where hiding its existence is a deliberate security requirement, `404` is the right answer:
+    say so in a comment so the next reader keeps it that way.
 
 ## Git
 
