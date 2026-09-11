@@ -171,8 +171,11 @@
 
 - Committing, pushing, and creating PRs each wait for an explicit instruction.
   PRs are a human responsibility; the user wants to review, title, and submit them on their own terms.
-- When asked to resolve Git conflicts, only resolve the conflicts.
-  Don't stage, commit, continue the rebase/merge, build, test, or offer extra steps unless explicitly told to.
+- When asked to resolve Git conflicts, resolve exactly the conflicts and stop there.
+  Staging, committing, continuing the rebase/merge, building, testing, and any extra step each wait for an explicit instruction.
+- Work in the current checkout; creating a Git worktree waits for an explicit instruction.
+  A worktree spawns a second working directory the user didn't ask for, and it silently moves the work somewhere they aren't looking.
+  If the task seems to warrant one, say so and let the user decide.
 
 ## Database (DB, SQL)
 
