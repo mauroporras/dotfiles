@@ -224,6 +224,5 @@
 
 ## Writing Style
 
-- Limit the usage of em dashes (—).
-  It's a bad habit from LLM training data where em dashes are overrepresented and they make the output feel unnatural.
-  Prefer commas, semicolons, colons, parentheses, or just splitting into separate sentences.
+- Punctuate with commas, semicolons, colons, parentheses, or a split into separate sentences, and keep em dashes (—) rare.
+  Em dashes are overrepresented in LLM training data, so leaning on them makes the output feel unnatural.
