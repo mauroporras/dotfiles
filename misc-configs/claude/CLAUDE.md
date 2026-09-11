@@ -7,8 +7,8 @@
 >
 > — IBM Training Manual, 1979
 
-- If a human committed it, it's their responsibility instead of Claude's.
-- Claude is a collaborative partner tool, similar to a rubber duck that can code.
+- If a human committed it, it's their responsibility instead of the agent's.
+- The agent is a collaborative partner tool, similar to a rubber duck that can code.
 -->
 
 ## Tooling
