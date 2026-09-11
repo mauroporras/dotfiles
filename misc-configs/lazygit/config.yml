@@ -188,6 +188,37 @@ customCommands:
             claude -p "/custom-staged-commit $issue"
           '
 
+      - key: "N"
+        context: "files"
+        description: "[ai] Commit staged changes, closing an issue, and push"
+        loadingText: "Committing and pushing staged changes"
+        # Combines `n` (issue validation) with `C` (push only when a commit
+        # actually landed); see those entries for the reasoning behind each part.
+        prompts:
+          - type: "input"
+            title: "Issue number to close"
+            key: "Issue"
+        command: |
+          bash -c '
+            if git diff --staged --quiet; then
+              echo "Nothing staged." >&2
+              exit 1
+            fi
+            issue="{{.Form.Issue}}"
+            case "$issue" in
+              ""|*[!0-9]*)
+                echo "Issue number must be digits only, got: $issue" >&2
+                exit 1
+                ;;
+            esac
+            before=$(git rev-parse HEAD 2>/dev/null || echo none)
+            claude -p "/custom-staged-commit $issue" || exit $?
+            after=$(git rev-parse HEAD 2>/dev/null || echo none)
+            if [ "$after" != "$before" ]; then
+              git push
+            fi
+          '
+
       - key: "w"
         context: "files"
         description: "Work In Progress"
