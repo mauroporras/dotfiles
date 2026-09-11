@@ -201,7 +201,7 @@
 
 ### Migrations
 
-- **NEVER RUN DB MIGRATIONS ON YOUR OWN** - migrations must be run by the user.
+- **MIGRATIONS ARE THE USER'S TO RUN** - hand them the command and let them execute it.
 
 ### Upserts
 
