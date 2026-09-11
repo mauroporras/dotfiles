@@ -129,7 +129,7 @@
   contracts are its own, so they keep the `*Input` / `*Output` suffixes.
 - Adapters at the edges translate the input contract from, and the output
   contract into, HTTP responses, rows, etc.
-- Input and output must be simple data structures, never Entities.
+- Input and output must be simple data structures instead of entities.
   If your output type is an Entity (e.g. an `Album` class), that's a smell.
   Crossing a boundary with an Entity couples the caller to domain internals; map
   the Entity to the input/output contract instead.
