@@ -209,8 +209,9 @@
   The query runs after the caller, the use case, and any conflict-detection logic have all had their say, and it is the final gate before bytes hit the table.
   By the time control reaches it, the caller's intent (insert vs update) and the shape of the incoming row are both unknown, so the column list must be conservative on its own: it should be safe even when every layer above it is wrong or absent.
   Justify the `SET` list on its own terms, independently of "this upsert is only ever called from create": that assumption is exactly what erodes over time and turns the dead `DO UPDATE` branch into a silent data-corruption bug.
-- In an upsert (`INSERT ... ON CONFLICT ... DO UPDATE SET`), list the updatable columns explicitly instead of re-spreading the whole row (e.g. `${sql(row)}`).
-  The `DO UPDATE` branch must only assign the columns the operation legitimately owns, and leave these alone:
+- In an upsert (`INSERT ... ON CONFLICT ... DO UPDATE SET`), spell out the updatable columns one by one.
+  A whole-row spread (e.g. `${sql(row)}`) hands the `DO UPDATE` branch columns it has no business touching.
+  The branch assigns exactly the columns the operation legitimately owns, and leaves these alone:
   - **Identity columns** (primary key, public id, immutable foreign keys): re-assigning them is at best redundant and at worst rewrites the row's identity.
   - **`created_at`**: an update should preserve the original creation timestamp, not overwrite it with the incoming value.
   - **Lifecycle columns** (`deleted_at`, `archived_at`): a create-shaped upsert carries `null` for these, so spreading the full row would silently resurrect a soft-deleted row or un-archive an archived one. These transitions belong to their own dedicated operations (`softDelete`, `archive`), never as a side effect of an upsert.
