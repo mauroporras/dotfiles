@@ -152,12 +152,12 @@
   found nothing answers with success.
   "This endpoint is not a thing" and "this endpoint is a thing and its answer is empty" are
   different failures, and collapsing them into one status makes them indistinguishable to the
-  client: a typo'd path and a valid lookup with no match look identical, so the client can't tell
-  a bug from an expected empty state.
-  Instead:
-  - Collection queries return `200` with an empty array (`[]`), never `404`.
-    An empty collection is a successful answer, and the client can render it without branching on
-    status codes.
+  client: a typo'd path and a valid lookup with no match look identical, so the client reads a
+  bug and an expected empty state as the same thing.
+  So:
+  - Collection queries return `200` with an empty array (`[]`).
+    An empty collection is a successful answer, and the client can render it straight from the
+    body.
   - Single-resource queries return `200` with `null` (or `204 No Content` when the response has no
     body at all) when the resource is absent but the caller had every right to ask.
   - Reserve `404` for the cases where the path itself is meaningless: an unknown route, or an
