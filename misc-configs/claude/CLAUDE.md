@@ -214,7 +214,8 @@
   The branch assigns exactly the columns the operation legitimately owns, and leaves these alone:
   - **Identity columns** (primary key, public id, immutable foreign keys): re-assigning them is at best redundant and at worst rewrites the row's identity.
   - **`created_at`**: an update preserves the original creation timestamp.
-  - **Lifecycle columns** (`deleted_at`, `archived_at`): a create-shaped upsert carries `null` for these, so spreading the full row would silently resurrect a soft-deleted row or un-archive an archived one. These transitions belong to their own dedicated operations (`softDelete`, `archive`), never as a side effect of an upsert.
+  - **Lifecycle columns** (`deleted_at`, `archived_at`): a create-shaped upsert carries `null` for these, so a full-row spread silently resurrects a soft-deleted row or un-archives an archived one.
+    These transitions belong to their own dedicated operations (`softDelete`, `archive`).
 
 ## Testing
 
