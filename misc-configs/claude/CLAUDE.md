@@ -176,6 +176,8 @@
 - Work in the current checkout; creating a Git worktree waits for an explicit instruction.
   A worktree spawns a second working directory the user didn't ask for, and it silently moves the work somewhere they aren't looking.
   If the task seems to warrant one, say so and let the user decide.
+- **ANNOUNCE EVERY WORKTREE LOUDLY** - whenever a worktree gets created (by you, a subagent, or a tool), say so up front in bold, with its path and branch.
+  Repeat it in the final summary, so the user knows where the work actually lives and doesn't go looking for changes in the original checkout.
 
 ## Database (DB, SQL)
 
