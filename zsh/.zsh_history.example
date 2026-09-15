@@ -41,4 +41,4 @@
 : 0000000000:0;npx skills update # Update installed skills
 : 0000000000:0;ai --continue # Continue the last session
 : 0000000000:0;e -S Session.vim # Restore a Neovim session
-
+: 0000000000:0;ai '/context all' # Show all context
