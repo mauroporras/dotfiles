@@ -67,18 +67,19 @@ customCommands:
   - key: ";"
     description: "Custom actions"
     commandMenu:
+      # Global
+      - key: "p"
+        context: "global"
+        description: "[global] Pull with rebase"
+        loadingText: "Pulling with rebase"
+        command: "git pull --rebase"
+
       # Commits
       - key: "e"
         context: "commits"
         description: "[empty commit]"
         loadingText: "Creating empty commit"
         command: 'git commit --allow-empty -m "[empty commit]"'
-
-      - key: "p"
-        context: "commits"
-        description: "Pull with rebase"
-        loadingText: "Pulling with rebase"
-        command: "git pull --rebase"
 
       - key: "P"
         context: "commits"
