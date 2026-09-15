@@ -38,8 +38,8 @@
   "_agentPushNotifEnabled": false,
   "_preferredNotifChannel": "terminal_bell",
 
-  "//02": "Commented out because it was not deleting word by word.",
-  "//keybindingFlavor": "readline",
+  "//keybindingFlavor": "It was not deleting word by word.",
+  "_keybindingFlavor": "readline",
 
   "//03": "Commented out because scrollback gets too long.",
   "//viewMode": "verbose"
