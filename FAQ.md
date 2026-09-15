@@ -33,6 +33,8 @@ Fonts this repo has used over time, and where they lived:
   - Feels modern, clean, and legible.
   - The NL variant doesn't have ligatures.
   - It's the default font for the other JetBrains products I use.
+- **2026** — tried **SF Mono** (`font-sf-mono` cask) in Ghostty and reverted it
+  to JetBrains Mono NL: some symbols, like `@`, look botched.
 
 ## Terminal
 
