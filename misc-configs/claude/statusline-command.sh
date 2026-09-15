@@ -74,7 +74,7 @@ fi
 # inverse-video badge and only when it's actually on (its absence means off).
 fast_mode_display=""
 if [[ "$fast_mode_enabled" == "true" ]]; then
-    fast_mode_display="${bold}${inverse}${orange} ⚡️FAST ${reset}"
+    fast_mode_display="${bold}${inverse}${orange} ⚡️FAST💵 ${reset}"
 fi
 
 # The payload doesn't carry focus view, so mirror how Claude Code resolves it:
