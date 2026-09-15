@@ -34,9 +34,9 @@
   "//tui": "Links work without pressing cmd, and they have no visual cue.",
   "tui": "fullscreen",
 
-  "//01": "Commented out because sometimes they're useful. Just learn to ignore them.",
-  "//agentPushNotifEnabled": false,
-  "//preferredNotifChannel": "terminal_bell",
+  "//agentPushNotifEnabled": "Sometimes they're useful. Just learn to ignore them.",
+  "_agentPushNotifEnabled": false,
+  "_preferredNotifChannel": "terminal_bell",
 
   "//02": "Commented out because it was not deleting word by word.",
   "//keybindingFlavor": "readline",
