@@ -28,8 +28,10 @@
   "autoMemoryEnabled": false,
   "editorMode": "vim",
   "remoteControlAtStartup": true,
-  "terminalProgressBarEnabled": false,
   "theme": "auto",
+
+  "//terminalProgressBarEnabled": "It's inconsistend and annoying.",
+  "terminalProgressBarEnabled": false,
 
   "//tui": "Links work without pressing cmd, and they have no visual cue.",
   "tui": "fullscreen",
