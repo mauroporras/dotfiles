@@ -41,6 +41,6 @@
   "//keybindingFlavor": "It was not deleting word by word.",
   "_keybindingFlavor": "readline",
 
-  "//03": "Commented out because scrollback gets too long.",
-  "//viewMode": "verbose"
+  "//viewMode": "Commented out because scrollback gets too long.",
+  "_viewMode": "verbose"
 }
