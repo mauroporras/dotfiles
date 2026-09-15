@@ -100,6 +100,39 @@ else
     focus_mode_display="⚪️"
 fi
 
+# Fullscreen isn't in the payload either. Mirror the deterministic part of how
+# Claude Code picks the renderer: the env vars (inherited from the harness) win,
+# then the `tui` setting. Past that it falls back to rollout flags and runtime
+# probes (tmux -CC, crash auto-off, screen reader) we can't see, so say "?".
+is_truthy_env() {
+    case "$(printf '%s' "$1" | tr '[:upper:]' '[:lower:]')" in
+    1 | true | yes | on) return 0 ;;
+    *) return 1 ;;
+    esac
+}
+
+is_falsy_env() {
+    case "$(printf '%s' "$1" | tr '[:upper:]' '[:lower:]')" in
+    0 | false | no | off) return 0 ;;
+    *) return 1 ;;
+    esac
+}
+
+tui_setting=$(jq -rs '[.[].tui // empty] | last // empty' \
+    "$claude_config_dir/settings.json" \
+    "${project_dir:-$current_dir}/.claude/settings.json" \
+    "${project_dir:-$current_dir}/.claude/settings.local.json" 2> /dev/null)
+
+if is_falsy_env "$CLAUDE_CODE_NO_FLICKER" || is_truthy_env "$CLAUDE_CODE_DISABLE_ALTERNATE_SCREEN"; then
+    fullscreen_display="⚪️"
+elif is_truthy_env "$CLAUDE_CODE_NO_FLICKER" || [[ "$tui_setting" == "fullscreen" ]]; then
+    fullscreen_display="🟢"
+elif [[ "$tui_setting" == "default" ]]; then
+    fullscreen_display="⚪️"
+else
+    fullscreen_display="?"
+fi
+
 # Debug: uncomment to see raw input
 # echo "$input" > /tmp/statusline-debug.json
 
@@ -423,7 +456,7 @@ if [[ "$SHOW_CONTEXT_PCT" == "true" ]]; then
     context_pct_display=" ${gray}${context_pct}%${reset}"
 fi
 
-line="${line} ✳️${cyan}${model}${reset} ${tokens_used_alert}${tokens_used_color}${tokens_k}k${reset}/${context_display}${context_pct_display}${advisor_display} 💪🏻${effort_display} 🧠${thinking_display} 🎯${focus_mode_display}"
+line="${line} ✳️${cyan}${model}${reset} ${tokens_used_alert}${tokens_used_color}${tokens_k}k${reset}/${context_display}${context_pct_display}${advisor_display} 💪🏻${effort_display} 🧠${thinking_display} 🖥️${fullscreen_display} 🎯${focus_mode_display}"
 
 if [[ -n "$fast_mode_display" ]]; then
     line="${line} ${fast_mode_display}"
