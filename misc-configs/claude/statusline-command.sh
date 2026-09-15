@@ -77,6 +77,29 @@ if [[ "$fast_mode_enabled" == "true" ]]; then
     fast_mode_display="${bold}${inverse}${orange} ⚡️FAST ${reset}"
 fi
 
+# The payload doesn't carry focus view, so mirror how Claude Code resolves it:
+# a `viewMode` setting wins outright (last of user < project < local), and only
+# when none is set does the `/focus` toggle persisted in the global config apply.
+claude_config_dir="${CLAUDE_CONFIG_DIR:-$HOME/.claude}"
+global_config_file="${CLAUDE_CONFIG_DIR:-$HOME}/.claude.json"
+view_mode=$(jq -rs '[.[].viewMode // empty] | last // empty' \
+    "$claude_config_dir/settings.json" \
+    "${project_dir:-$current_dir}/.claude/settings.json" \
+    "${project_dir:-$current_dir}/.claude/settings.local.json" 2> /dev/null)
+
+is_focus_mode=false
+if [[ "$view_mode" == "focus" ]]; then
+    is_focus_mode=true
+elif [[ -z "$view_mode" ]]; then
+    is_focus_mode=$(jq -r '.briefTranscript // false' "$global_config_file" 2> /dev/null)
+fi
+
+if [[ "$is_focus_mode" == "true" ]]; then
+    focus_mode_display="🟢"
+else
+    focus_mode_display="⚪️"
+fi
+
 # Debug: uncomment to see raw input
 # echo "$input" > /tmp/statusline-debug.json
 
@@ -400,7 +423,7 @@ if [[ "$SHOW_CONTEXT_PCT" == "true" ]]; then
     context_pct_display=" ${gray}${context_pct}%${reset}"
 fi
 
-line="${line} ✳️${cyan}${model}${reset} ${tokens_used_alert}${tokens_used_color}${tokens_k}k${reset}/${context_display}${context_pct_display}${advisor_display} 💪🏻${effort_display} 🧠${thinking_display}"
+line="${line} ✳️${cyan}${model}${reset} ${tokens_used_alert}${tokens_used_color}${tokens_k}k${reset}/${context_display}${context_pct_display}${advisor_display} 💪🏻${effort_display} 🧠${thinking_display} 🎯${focus_mode_display}"
 
 if [[ -n "$fast_mode_display" ]]; then
     line="${line} ${fast_mode_display}"
