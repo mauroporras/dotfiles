@@ -133,7 +133,7 @@ fi
 # Focus view only exists in the fullscreen renderer, so a focus indicator next
 # to a known-off fullscreen would describe a mode that can't be active. An
 # unknown ("?") renderer keeps it, since fullscreen may well be on.
-focus_mode_segment=" 🎯${focus_mode_display}"
+focus_mode_segment="🎯${focus_mode_display}"
 if [[ "$fullscreen_display" == "⚪️" ]]; then
     focus_mode_segment=""
 fi
@@ -461,7 +461,7 @@ if [[ "$SHOW_CONTEXT_PCT" == "true" ]]; then
     context_pct_display=" ${gray}${context_pct}%${reset}"
 fi
 
-line="${line} ✳️${cyan}${model}${reset} ${tokens_used_alert}${tokens_used_color}${tokens_k}k${reset}/${context_display}${context_pct_display}${advisor_display} 💪🏻${effort_display} 🧠${thinking_display} ⚡️💵${fast_mode_display} 🖥️${fullscreen_display}${focus_mode_segment}"
+line="${line} ✳️${cyan}${model}${reset} ${tokens_used_alert}${tokens_used_color}${tokens_k}k${reset}/${context_display}${context_pct_display}${advisor_display} 💪🏻${effort_display}🧠${thinking_display} ⚡️💵${fast_mode_display} 🖥️${fullscreen_display}${focus_mode_segment}"
 
 # The default style is the common case, so only surface the segment when a
 # non-default style is deliberately in effect.
