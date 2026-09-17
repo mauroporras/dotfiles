@@ -33,6 +33,7 @@ alias k='kubectl'
 alias l='eza -agl --group-directories-first --time-style=long-iso'
 alias s="rg --follow --hidden --smart-case --no-ignore --glob '!{.git,dist,node_modules,tags}'"
 alias t='task'
+alias tf='terraform'
 alias v='lazygit'
 
 # Docker {{{
