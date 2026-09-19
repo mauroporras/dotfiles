@@ -235,3 +235,17 @@ customCommands:
         context: "files"
         description: "Work In Progress and push"
         command: "git wipp"
+
+      # The extra `-m` lands as the commit body: `git wip` is a shell alias,
+      # so git appends trailing arguments to its `git commit` invocation.
+      - key: "s"
+        context: "files"
+        description: "Work In Progress [skip ci]"
+        command: 'git wip -m "[skip ci]"'
+
+      - key: "S"
+        context: "files"
+        description: "Work In Progress [skip ci] and push"
+        # `&&` keeps a failed commit (e.g. nothing staged) from pushing
+        # whatever was already sitting unpushed on the branch.
+        command: 'bash -c ''git wip -m "[skip ci]" && git push'''
