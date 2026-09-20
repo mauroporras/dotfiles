@@ -34,6 +34,7 @@ brew "lazygit"
 brew "go"
 brew "node"
 brew "readline"
+brew "uv" # Python toolchain.
 brew "zlib"
 
 # Development tools
