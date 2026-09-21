@@ -1,6 +1,17 @@
 version: "3"
 
 tasks:
+  adr:new:
+    desc: Create a new ADR interactively (usage - task adr:new -- "Short decision title")
+    interactive: true
+    cmds:
+      - pnpm exec log4brains adr new {{.CLI_ARGS}}
+
+  adr:preview:
+    desc: Browse the ADR knowledge base locally with hot reload (http://localhost:4004)
+    cmds:
+      - pnpm exec log4brains preview {{.CLI_ARGS}}
+
   build:
     cmds:
       - pnpm run build
