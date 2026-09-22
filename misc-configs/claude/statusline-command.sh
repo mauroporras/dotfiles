@@ -426,22 +426,28 @@ else
 fi
 
 current_dir_link=$(osc8_link "statusline-dir" "file://${current_dir}" "$current_dir_display")
-line="📁${blue}${current_dir_link}${reset}"
+workspace_line="📁${blue}${current_dir_link}${reset}"
 
 # Workspace decorations sit between the current dir and the branch bullet so
 # they read as modifiers of the dir, not of the branch.
 if [[ -n "$project_divergence_display" ]]; then
-    line="${line} ${blue}${project_divergence_display}${reset}"
+    workspace_line="${workspace_line} ${blue}${project_divergence_display}${reset}"
 fi
 
 if [[ -n "$added_dirs_display" ]]; then
-    line="${line} ${added_dirs_display}"
+    workspace_line="${workspace_line} ${added_dirs_display}"
 fi
 
-line="${line} 🌿${git_branch_color}${git_branch}${reset}"
+workspace_line="${workspace_line} 🌿${git_branch_color}${git_branch}${reset}"
 
 if [[ -n "$github_repo_display" ]]; then
-    line="${line} 📦${blue}${github_repo_display}${reset}"
+    workspace_line="${workspace_line} 📦${blue}${github_repo_display}${reset}"
+fi
+
+# Trails the workspace line: it identifies the session rather than describing
+# its state, so it stays apart from the segments that change turn to turn.
+if [[ -n "$session_name" ]]; then
+    workspace_line="${workspace_line} 🏷️${cyan}${session_name}${reset}"
 fi
 
 tokens_used_color=""
@@ -461,39 +467,34 @@ if [[ "$SHOW_CONTEXT_PCT" == "true" ]]; then
     context_pct_display=" ${gray}${context_pct}%${reset}"
 fi
 
-line="${line} ✳️${cyan}${model}${reset} 🪣${tokens_used_alert}${tokens_used_color}${tokens_k}k${reset}/${context_display}${context_pct_display}${advisor_display} 💪🏻${effort_display}🧠${thinking_display} ⚡️💵${fast_mode_display} 🖥️${fullscreen_display}${focus_mode_segment}"
+state_line="✳️${cyan}${model}${reset} 🪣${tokens_used_alert}${tokens_used_color}${tokens_k}k${reset}/${context_display}${context_pct_display}${advisor_display} 💪🏻${effort_display}🧠${thinking_display} ⚡️💵${fast_mode_display} 🖥️${fullscreen_display}${focus_mode_segment}"
 
 # The default style is the common case, so only surface the segment when a
 # non-default style is deliberately in effect.
 if [[ "$output_style_display" != "default" ]]; then
-    line="${line} ${gray}style:${reset}${bold}${output_style_color}${output_style_display}${reset}"
+    state_line="${state_line} ${gray}style:${reset}${bold}${output_style_color}${output_style_display}${reset}"
 fi
 
 if [[ -n "$rate_limits_display" ]]; then
-    line="${line} ${rate_limits_display}"
+    state_line="${state_line} ${rate_limits_display}"
 fi
 
 if [[ -n "$cache_display" ]]; then
-    line="${line} • ${cache_display}"
+    state_line="${state_line} • ${cache_display}"
 fi
 
 if [[ -n "$cost_display" ]]; then
-    line="${line} ${gray}${cost_display}${reset}"
+    state_line="${state_line} ${gray}${cost_display}${reset}"
 fi
 
 if [[ -n "$session_id" ]]; then
-    line="${line} • ${gray}${session_id}${reset}"
+    state_line="${state_line} • ${gray}${session_id}${reset}"
 fi
 
 if [[ -n "$claude_version" ]]; then
-    line="${line} • ${gray}v${claude_version}${reset}"
+    state_line="${state_line} • ${gray}v${claude_version}${reset}"
 fi
 
-# Trails the line: it identifies the session rather than describing its state,
-# so it sits past the segments that change from turn to turn.
-if [[ -n "$session_name" ]]; then
-    line="${line} 🏷️${cyan}${session_name}${reset}"
-fi
-
-echo -e "$line"
+echo -e "$workspace_line"
+echo -e "$state_line"
 
