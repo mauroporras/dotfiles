@@ -444,12 +444,6 @@ if [[ -n "$github_repo_display" ]]; then
     workspace_line="${workspace_line} 📦${blue}${github_repo_display}${reset}"
 fi
 
-# Trails the workspace line: it identifies the session rather than describing
-# its state, so it stays apart from the segments that change turn to turn.
-if [[ -n "$session_name" ]]; then
-    workspace_line="${workspace_line} 🏷️${cyan}${session_name}${reset}"
-fi
-
 tokens_used_color=""
 tokens_used_alert=""
 if [[ "$exceeds_200k" == "true" ]]; then
@@ -493,6 +487,12 @@ fi
 
 if [[ -n "$claude_version" ]]; then
     state_line="${state_line} • ${gray}v${claude_version}${reset}"
+fi
+
+# Trails the state line: it identifies the session rather than describing its
+# state, so it sits past the segments that change from turn to turn.
+if [[ -n "$session_name" ]]; then
+    state_line="${state_line} 🏷️${cyan}${session_name}${reset}"
 fi
 
 echo -e "$workspace_line"
