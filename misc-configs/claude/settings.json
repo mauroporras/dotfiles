@@ -27,8 +27,10 @@
 
   "autoMemoryEnabled": false,
   "editorMode": "vim",
-  "remoteControlAtStartup": true,
   "theme": "auto",
+
+  "//remoteControlAtStartup": "Sometimes it fails at the worst time and blocks the session.",
+  "_remoteControlAtStartup": true,
 
   "//terminalProgressBarEnabled": "It's inconsistend and annoying.",
   "terminalProgressBarEnabled": false,
