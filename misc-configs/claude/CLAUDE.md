@@ -202,6 +202,11 @@
   A use case sits on the single write path where all the data is already at hand, so it can
   read the source of truth, validate the rule, and reject the input before anything is
   persisted; nothing needs to be kept in sync afterwards.
+  Schema-level enforcement also buys less than it seems: anyone with a database console can
+  introduce an invalid state by hand regardless of what the app does, so no amount of
+  `CHECK`s, triggers, or mirrored columns makes the data trustworthy on its own. Given that,
+  take the path of least resistance in the app: validate in the use case and keep the
+  schema normalized.
   Reserve denormalization for a measured read-path problem (a query that is provably too slow
   on normalized data), and when you do add it, name the source of truth in a comment and
   update the copy from one place only. E.g.:
