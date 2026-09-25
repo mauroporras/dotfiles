@@ -194,6 +194,29 @@
   - `is_workspace_base_price_set` → `workspace_base_price_set_at`
   - `is_published` → `published_at`
   - `is_email_verified` → `email_verified_at`
+- Prefer enforcing invariants in use cases over denormalizing the schema to make them checkable.
+  Denormalization copies a fact into a second place (a `product_count` on the parent, a
+  `workspace_id` repeated on a grandchild, a flag mirroring a row's existence elsewhere), and
+  every copy is a fact that can drift: each write path now has to keep both places in sync,
+  and the first one that forgets turns the invariant the copy was meant to guard into a lie.
+  A use case sits on the single write path where all the data is already at hand, so it can
+  read the source of truth, validate the rule, and reject the input before anything is
+  persisted; nothing needs to be kept in sync afterwards.
+  Reserve denormalization for a measured read-path problem (a query that is provably too slow
+  on normalized data), and when you do add it, name the source of truth in a comment and
+  update the copy from one place only. E.g.:
+  - "A workspace can have at most one default price list": check it in
+    `SetDefaultPriceListUseCase`, rather than adding a `default_price_list_id` column to
+    `workspace` that has to be kept in step with `price_list.is_default`.
+  - "A CAD file must belong to the same workspace as its project": look the project up in
+    `CreateCadFileUseCase` and reject a mismatch, rather than copying `workspace_id` onto
+    `cad_file` so a `CHECK` or trigger can compare them.
+  - "A person belongs to at most one team per workspace": check it in
+    `CreateWorkspaceTeamMembershipUseCase` (under a lock on workspace + email, so two
+    concurrent adds cannot both pass), rather than copying `workspace_id` onto
+    `workspace_team_membership` so a `UNIQUE (workspace_id, email)` index can hold it.
+    The copy drifted the moment someone edited the row by hand: the membership read as
+    belonging to one workspace while its team sat in another.
 
 ### Migrations
 
