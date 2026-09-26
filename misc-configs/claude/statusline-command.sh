@@ -232,10 +232,17 @@ if [[ "$SHOW_SESSION_ID" == "true" ]]; then
     session_id="${session_id_value:-unknown}"
 fi
 
-# On 1M-context models, crossing 200k input tokens flips the whole request
-# to the long-context pricing tier (~2x input, ~1.5x output), so we surface it
-# as a tripwire rather than a generic threshold.
-exceeds_200k=$(echo "$input" | jq -r '.exceeds_200k_tokens // false')
+# The harness's own `exceeds_200k_tokens` folds output tokens in, so it can fire
+# while the bucket beside it still reads under 200k. Derive the tripwire from the
+# same input-only count the bucket shows, so the two can never disagree.
+# 200k is where 200k-window models compact and where 1M-window models used to
+# flip to long-context pricing; Claude 4.6+ bill the full window at standard
+# rates, so on those models this is a size marker rather than a cost cliff.
+long_context_threshold_tokens=200000
+exceeds_200k=false
+if [[ $total_input_tokens -gt $long_context_threshold_tokens ]]; then
+    exceeds_200k=true
+fi
 claude_version=""
 if [[ "$SHOW_VERSION" == "true" ]]; then
     claude_version=$(echo "$input" | jq -r '.version // empty')
