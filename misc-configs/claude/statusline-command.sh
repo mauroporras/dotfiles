@@ -158,12 +158,12 @@ fi
 # Debug: uncomment to see raw input
 # echo "$input" > /tmp/statusline-debug.json
 
-# current_usage is an object. Default each field to 0 so jq's `add` never
-# returns null (which would feed "null" into bash arithmetic below and trip
-# an "unbound variable" stderr noise on every render).
-current_usage=$(echo "$input" | jq -r '[(.context_window.current_usage // {}) | (.input_tokens // 0), (.output_tokens // 0), (.cache_creation_input_tokens // 0), (.cache_read_input_tokens // 0)] | add')
+# Input tokens only (fresh + cache writes + cache reads): that's what fills
+# the window and what the harness's own `used_percentage` counts, so adding
+# output tokens would make the bucket disagree with the percentage next to it.
+total_input_tokens=$(echo "$input" | jq -r '.context_window.total_input_tokens // 0')
 context_size=$(echo "$input" | jq -r '.context_window.context_window_size // 0')
-tokens_k=$((current_usage / 1000))
+tokens_k=$((total_input_tokens / 1000))
 context_k=$((context_size / 1000))
 
 # Windows are clean multiples of 1000k (200k, 1M), so integer division is exact.
