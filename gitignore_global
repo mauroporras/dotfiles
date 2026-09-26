@@ -40,3 +40,4 @@ tags
 # AI
 **/.claude/settings.local.json
 **/.claude/.cc-writes/
+**/.claude/worktrees/
