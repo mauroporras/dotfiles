@@ -484,7 +484,7 @@ if [[ -n "$github_repo_display" ]]; then
 fi
 
 # A worktree moves the work into a second working directory the user isn't
-# looking at, so it gets alert styling (bold, yellow) rather than the muted blue
+# looking at, so it gets alert styling (yellow) rather than the muted blue
 # of the other dir decorations. The label links to the tree so a cmd-click lands
 # in the right place.
 is_in_worktree=false
@@ -494,7 +494,7 @@ fi
 
 if [[ "$is_in_worktree" == "true" ]]; then
     worktree_link=$(osc8_link "statusline-worktree" "file://${worktree_path}" "$worktree_name")
-    workspace_line="${workspace_line} 🌳${bold}${yellow}${worktree_link}${reset}"
+    workspace_line="${workspace_line} 🌳${yellow}${worktree_link}${reset}"
 fi
 
 workspace_line="${workspace_line} 🌿${git_branch_color}${git_branch}${reset}"
