@@ -10,7 +10,7 @@
 set -o pipefail
 LC_ALL=C # stable decimal separator for printf '$%.2f' across locales
 
-SHOW_CACHE_AND_COST=false
+SHOW_COST=false
 SHOW_SESSION_ID=false
 SHOW_ADVISOR=false
 SHOW_CONTEXT_PCT=false
@@ -251,41 +251,9 @@ output_style_color="$cyan"
 
 added_dirs_display=""
 
-cache_display=""
 cost_display=""
-if [[ "$SHOW_CACHE_AND_COST" == "true" ]]; then
-    # Cache hit ratio for this turn's input tokens. A sustained drop means the
-    # prompt prefix changed (TTL lapsed, CLAUDE.md edited, /compact ran, etc.)
-    # and the next turns will be ~10x slower and pricier until the cache rebuilds.
-    {
-        read -r usage_input
-        read -r usage_cache_creation
-        read -r usage_cache_read
-        read -r cost_usd
-    } < <(
-        echo "$input" | jq -r '
-      .context_window.current_usage.input_tokens // 0,
-      .context_window.current_usage.cache_creation_input_tokens // 0,
-      .context_window.current_usage.cache_read_input_tokens // 0,
-      .cost.total_cost_usd // ""
-    '
-    )
-    cache_input_total=$((usage_input + usage_cache_creation + usage_cache_read))
-    cache_pct=0
-
-    if [[ $cache_input_total -gt 0 ]]; then
-        cache_pct=$((usage_cache_read * 100 / cache_input_total))
-    fi
-
-    if [[ $cache_pct -ge 70 ]]; then
-        cache_color="$green"
-    elif [[ $cache_pct -ge 40 ]]; then
-        cache_color="$yellow"
-    else
-        cache_color="$red"
-    fi
-
-    cache_display="${cache_color}cache:${bold}${cache_pct}%${reset}"
+if [[ "$SHOW_COST" == "true" ]]; then
+    cost_usd=$(echo "$input" | jq -r '.cost.total_cost_usd // ""')
 
     if [[ -n "$cost_usd" ]]; then
         cost_display=$(printf '$%.2f' "$cost_usd")
@@ -353,6 +321,60 @@ five_hour_pct_int="${five_hour_pct%.*}"
 seven_day_pct_int="${seven_day_pct%.*}"
 five_hour_reset_display=$(format_reset_short "$five_hour_resets" "$now_epoch")
 seven_day_reset_display=$(format_reset_short "$seven_day_resets" "$now_epoch")
+
+# Session-level cache stats come straight from the harness (v2.1.251+), which
+# also re-runs this script the moment `expires_at` passes, so the warm→cold
+# flip needs no timer of its own. One field per line, same as the repo fields
+# below, so a null `hit_ratio` reads as empty instead of shifting the others.
+{
+    read -r prompt_cache_present
+    read -r prompt_cache_warm
+    read -r prompt_cache_expires_at
+    read -r prompt_cache_hit_pct
+} < <(
+    echo "$input" | jq -r '
+      (.prompt_cache != null),
+      (.prompt_cache.warm // false),
+      (.prompt_cache.expires_at // ""),
+      ((.prompt_cache.hit_ratio // "") | if . == "" then "" else (. * 100 | floor) end)
+    '
+)
+
+# Same convention as the rate-limit meters: a healthy ratio stays in the default
+# foreground and only a degraded one gets color, so color means "pay attention".
+# A sustained drop means the prefix changed (CLAUDE.md edited, tools added, TTL
+# lapsed) and the next turns run slower and pricier until the cache rebuilds.
+prompt_cache_hit_color() {
+    local pct=$1
+
+    if [[ -n "$pct" && $pct -lt 40 ]]; then
+        echo "$red"
+    elif [[ -n "$pct" && $pct -lt 70 ]]; then
+        echo "$yellow"
+    fi
+}
+
+prompt_cache_segment=""
+if [[ "$prompt_cache_present" == "true" ]]; then
+    if [[ "$prompt_cache_warm" == "true" ]]; then
+        prompt_cache_state="🔥$(format_reset_short "$prompt_cache_expires_at" "$now_epoch")"
+    else
+        prompt_cache_state="❄️"
+    fi
+
+    prompt_cache_hit_display=""
+    if [[ -n "$prompt_cache_hit_pct" ]]; then
+        prompt_cache_color=$(prompt_cache_hit_color "$prompt_cache_hit_pct")
+        prompt_cache_emphasis=""
+        if [[ -n "$prompt_cache_color" ]]; then
+            prompt_cache_emphasis="$bold"
+        fi
+
+        prompt_cache_hit_display="${prompt_cache_color}${prompt_cache_emphasis}${prompt_cache_hit_pct}%${reset}"
+    fi
+
+    prompt_cache_segment="${prompt_cache_hit_display}${prompt_cache_state}"
+fi
 
 if [[ "$git_branch_is_repo" == "true" ]]; then
     git_branch_color="$green"
@@ -504,8 +526,8 @@ if [[ -n "$rate_limits_display" ]]; then
     state_line="${state_line} ${rate_limits_display}"
 fi
 
-if [[ -n "$cache_display" ]]; then
-    state_line="${state_line} • ${cache_display}"
+if [[ -n "$prompt_cache_segment" ]]; then
+    state_line="${state_line} ${prompt_cache_segment}"
 fi
 
 if [[ -n "$cost_display" ]]; then
