@@ -169,9 +169,6 @@
 - Pushing and creating PRs each MUST wait for an explicit instruction.
   PRs are a human responsibility.
   The user wants to review, title, and submit them on their own terms.
-- **ANNOUNCE EVERY WORKTREE LOUDLY** - whenever a Git worktree gets created (by you, a subagent, or a tool), say so up front in bold, with its path and branch.
-  A worktree moves the work into a second working directory, somewhere the user isn't looking.
-  Repeat the announcement in the final summary, so the user doesn't go looking for changes in the original checkout.
 
 ## Database (DB, SQL)
 
