@@ -522,12 +522,12 @@ if [[ "$output_style_display" != "default" ]]; then
     state_line="${state_line} ${gray}style:${reset}${bold}${output_style_color}${output_style_display}${reset}"
 fi
 
-if [[ -n "$rate_limits_display" ]]; then
-    state_line="${state_line} ${rate_limits_display}"
-fi
-
 if [[ -n "$prompt_cache_segment" ]]; then
     state_line="${state_line} ${prompt_cache_segment}"
+fi
+
+if [[ -n "$rate_limits_display" ]]; then
+    state_line="${state_line} ${rate_limits_display}"
 fi
 
 if [[ -n "$cost_display" ]]; then
