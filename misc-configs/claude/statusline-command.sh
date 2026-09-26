@@ -477,6 +477,12 @@ if [[ -n "$added_dirs_display" ]]; then
     workspace_line="${workspace_line} ${added_dirs_display}"
 fi
 
+# The repo identity precedes the worktree so the eye reads "which repo, then
+# which tree of it" before the branch that tree has checked out.
+if [[ -n "$github_repo_display" ]]; then
+    workspace_line="${workspace_line} 📦${blue}${github_repo_display}${reset}"
+fi
+
 # A worktree moves the work into a second working directory the user isn't
 # looking at, so it gets alert styling (bold, yellow) rather than the muted blue
 # of the other dir decorations. The label links to the tree so a cmd-click lands
@@ -492,10 +498,6 @@ if [[ "$is_in_worktree" == "true" ]]; then
 fi
 
 workspace_line="${workspace_line} 🌿${git_branch_color}${git_branch}${reset}"
-
-if [[ -n "$github_repo_display" ]]; then
-    workspace_line="${workspace_line} 📦${blue}${github_repo_display}${reset}"
-fi
 
 tokens_used_color=""
 tokens_used_alert=""
