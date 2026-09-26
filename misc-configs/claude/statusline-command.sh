@@ -47,6 +47,23 @@ if [[ -n "$project_dir_display" && "$project_dir_display" != "$current_dir_displ
     # miss: it changes the meaning of every relative path and git context below.
     project_divergence_display="🚨 ← ${project_dir_display}"
 fi
+
+# Two worktree signals exist, and they differ in scope: `worktree.*` is only set
+# while Claude Code itself runs a worktree session (EnterWorktree, --worktree),
+# whereas `workspace.git_worktree` is set for any linked `git worktree add` tree.
+# Prefer the session one (it also carries the path) and fall back to the plain
+# one, so the segment fires whichever way the second working directory came about.
+{
+    read -r worktree_session_name
+    read -r worktree_session_path
+    read -r git_worktree_name
+} < <(
+    echo "$input" | jq -r '.worktree.name // "", .worktree.path // "", .workspace.git_worktree // ""'
+)
+
+worktree_name="${worktree_session_name:-$git_worktree_name}"
+worktree_path="${worktree_session_path:-$current_dir}"
+
 model=$(echo "$input" | jq -r '.model.display_name')
 # The "/1M" context segment already conveys the 1M window, so drop the suffix.
 model=${model% (1M context)}
@@ -436,6 +453,20 @@ fi
 
 if [[ -n "$added_dirs_display" ]]; then
     workspace_line="${workspace_line} ${added_dirs_display}"
+fi
+
+# A worktree moves the work into a second working directory the user isn't
+# looking at, so it gets alert styling (bold, yellow) rather than the muted blue
+# of the other dir decorations. The label links to the tree so a cmd-click lands
+# in the right place.
+is_in_worktree=false
+if [[ -n "$worktree_name" ]]; then
+    is_in_worktree=true
+fi
+
+if [[ "$is_in_worktree" == "true" ]]; then
+    worktree_link=$(osc8_link "statusline-worktree" "file://${worktree_path}" "$worktree_name")
+    workspace_line="${workspace_line} 🌳${bold}${yellow}${worktree_link}${reset}"
 fi
 
 workspace_line="${workspace_line} 🌿${git_branch_color}${git_branch}${reset}"
