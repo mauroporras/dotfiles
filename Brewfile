@@ -42,6 +42,7 @@ brew "direnv"
 brew "go-task/tap/go-task"
 brew "golang-migrate"
 brew "hashicorp/tap/terraform"
+brew "openspec" # Spec-driven development: https://formulae.brew.sh/formula/openspec
 brew "tree-sitter-cli"
 
 # Editors, linters & formatters
