@@ -442,10 +442,12 @@ rate_limit_color() {
     fi
 }
 
-# The harness omits rate_limits entirely (e.g. on subscription plans), so each
-# meter renders whenever it's actually reporting. The `-n` guard ensures an
-# empty (missing) percentage never renders a blank/zero segment.
-five_hour_segment=""
+# The harness omits rate_limits until the first API response (and entirely on
+# API-key billing), and each window can be absent independently. A placeholder
+# keeps each meter's slot from vanishing and shifting the rest of the line, the
+# same way the cache segment does. The `-n` guard ensures an empty (missing)
+# percentage never renders a blank/zero value.
+five_hour_segment="⏱️-"
 if [[ -n "$five_hour_pct_int" ]]; then
     five_hour_color=$(rate_limit_color "$five_hour_pct_int")
     # A color is only assigned outside the normal range, so reuse its presence as
@@ -458,7 +460,7 @@ if [[ -n "$five_hour_pct_int" ]]; then
     five_hour_segment="${five_hour_color}${five_hour_emphasis}${five_hour_pct_int}%${reset}⏱️${five_hour_reset_display}"
 fi
 
-seven_day_segment=""
+seven_day_segment="🗓️-"
 if [[ -n "$seven_day_pct_int" ]]; then
     seven_day_color=$(rate_limit_color "$seven_day_pct_int")
     seven_day_emphasis=""
@@ -469,12 +471,7 @@ if [[ -n "$seven_day_pct_int" ]]; then
     seven_day_segment="${seven_day_color}${seven_day_emphasis}${seven_day_pct_int}%${reset}🗓️${seven_day_reset_display}"
 fi
 
-# Only insert the separating space when both meters are present.
-if [[ -n "$five_hour_segment" && -n "$seven_day_segment" ]]; then
-    rate_limits_display="${five_hour_segment} ${seven_day_segment}"
-else
-    rate_limits_display="${five_hour_segment}${seven_day_segment}"
-fi
+rate_limits_display="${five_hour_segment} ${seven_day_segment}"
 
 current_dir_link=$(osc8_link "statusline-dir" "file://${current_dir}" "$current_dir_display")
 workspace_line="📁${blue}${current_dir_link}${reset}"
@@ -540,9 +537,7 @@ if [[ -n "$prompt_cache_segment" ]]; then
     state_line="${state_line} ${prompt_cache_segment}"
 fi
 
-if [[ -n "$rate_limits_display" ]]; then
-    state_line="${state_line} ${rate_limits_display}"
-fi
+state_line="${state_line} ${rate_limits_display}"
 
 if [[ -n "$cost_display" ]]; then
     state_line="${state_line} ${gray}${cost_display}${reset}"
