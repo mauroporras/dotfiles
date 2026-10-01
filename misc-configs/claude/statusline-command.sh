@@ -367,12 +367,14 @@ spend_limit_reset_display=$(format_reset_short "$spend_limit_resets" "$now_epoch
     read -r prompt_cache_warm
     read -r prompt_cache_expires_at
     read -r prompt_cache_hit_pct
+    read -r prompt_cache_ttl
 } < <(
     echo "$input" | jq -r '
       (.prompt_cache != null),
       (.prompt_cache.warm // false),
       (.prompt_cache.expires_at // ""),
-      ((.prompt_cache.hit_ratio // "") | if . == "" then "" else (. * 100 | floor) end)
+      ((.prompt_cache.hit_ratio // "") | if . == "" then "" else (. * 100 | floor) end),
+      (.prompt_cache.ttl // "")
     '
 )
 
@@ -394,6 +396,12 @@ prompt_cache_segment=""
 if [[ "$prompt_cache_present" == "true" ]]; then
     if [[ "$prompt_cache_warm" == "true" ]]; then
         prompt_cache_state="🔥$(format_reset_short "$prompt_cache_expires_at" "$now_epoch")"
+
+        # The countdown only means something against the lifetime it's racing
+        # (5m vs 1h), so show the TTL next to it.
+        if [[ -n "$prompt_cache_ttl" ]]; then
+            prompt_cache_state="${prompt_cache_state}${gray}/${prompt_cache_ttl}${reset}"
+        fi
     else
         prompt_cache_state="❄️"
     fi
