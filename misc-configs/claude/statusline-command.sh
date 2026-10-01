@@ -378,6 +378,20 @@ spend_limit_reset_display=$(format_reset_short "$spend_limit_resets" "$now_epoch
     '
 )
 
+# One field per line again, so a missing `review_state` (it can be absent while
+# `pr` is present) reads as empty instead of shifting a later field into its slot.
+{
+    read -r pr_number
+    read -r pr_url
+    read -r pr_review_state
+} < <(
+    echo "$input" | jq -r '
+      (.pr.number // ""),
+      (.pr.url // ""),
+      (.pr.review_state // "")
+    '
+)
+
 # Same convention as the rate-limit meters: a healthy ratio stays in the default
 # foreground and only a degraded one gets color, so color means "pay attention".
 # A sustained drop means the prefix changed (CLAUDE.md edited, tools added, TTL
@@ -479,6 +493,18 @@ rate_limit_color() {
     fi
 }
 
+# Same "color means pay attention" rule, plus green for the one state that says
+# the PR is ready to land; pending and unknown stay in the default foreground.
+pr_review_color() {
+    local review_state=$1
+
+    case "$review_state" in
+    approved) echo "$green" ;;
+    changes_requested) echo "${bold}${red}" ;;
+    draft) echo "$gray" ;;
+    esac
+}
+
 # The harness omits rate_limits until the first API response (and entirely on
 # API-key billing), and each window can be absent independently. A placeholder
 # keeps each meter's slot from vanishing and shifting the rest of the line, the
@@ -575,6 +601,20 @@ if [[ "$is_in_worktree" == "true" ]]; then
 fi
 
 workspace_line="${workspace_line} 🌿${git_branch_color}${git_branch}${reset}"
+
+# The PR belongs to the branch, so it follows the branch bullet. The harness
+# drops `pr` once it merges or closes, and "no open PR" is the common state, so
+# there is no placeholder.
+has_pr=false
+if [[ -n "$pr_number" ]]; then
+    has_pr=true
+fi
+
+if [[ "$has_pr" == "true" ]]; then
+    pr_color=$(pr_review_color "$pr_review_state")
+    pr_link=$(osc8_link "statusline-pr" "$pr_url" "#${pr_number}")
+    workspace_line="${workspace_line} 🔀${pr_color}${pr_link}${reset}"
+fi
 
 tokens_used_color=""
 tokens_used_alert=""
