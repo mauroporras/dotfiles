@@ -12,7 +12,7 @@ LC_ALL=C # stable decimal separator for printf '$%.2f' across locales
 
 SHOW_COST=false
 SHOW_SESSION_ID=false
-SHOW_ADVISOR=false
+SHOW_ADVISOR=true
 SHOW_CONTEXT_PCT=false
 SHOW_VERSION=false
 
