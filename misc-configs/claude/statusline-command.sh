@@ -80,8 +80,23 @@ esac
 
 thinking_enabled=$(echo "$input" | jq -r '.thinking.enabled // false')
 fast_mode_enabled=$(echo "$input" | jq -r '.fast_mode // false')
+model_id=$(echo "$input" | jq -r '.model.id // empty')
 
-if [[ "$thinking_enabled" == "true" ]]; then
+# The payload reports these models' thinking as on regardless of the setting
+# (capability `rejects_disabled_thinking` in Claude Code 2.1.286), so a lock
+# says "on, and not toggleable" rather than a dot that looks flippable. Globs
+# match substrings so 3P ids (Bedrock/Vertex prefixes, `[1m]` suffixes) still
+# hit; `claude-fable-5*` covers both Fable 5 and 5.1.
+is_thinking_forced=false
+case "$model_id" in
+*claude-fable-5* | *claude-mythos-5-1* | *claude-opus-5-5* | *claude-sonnet-5-5*)
+    is_thinking_forced=true
+    ;;
+esac
+
+if [[ "$is_thinking_forced" == "true" ]]; then
+    thinking_display="🔒"
+elif [[ "$thinking_enabled" == "true" ]]; then
     thinking_display="🟢"
 else
     thinking_display="⚪️"
