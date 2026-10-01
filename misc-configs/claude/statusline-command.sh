@@ -631,7 +631,9 @@ advisor_model=$(read_merged_setting advisorModel)
 
 advisor_display=""
 if [[ "$SHOW_ADVISOR" == "true" ]]; then
-    advisor_display="🤝🏻${cyan}${advisor_model:-off}${reset}"
+    advisor_docs_url="https://code.claude.com/docs/en/advisor"
+    advisor_segment="🤝🏻${cyan}${advisor_model:-off}${reset}"
+    advisor_display=$(osc8_link "statusline-advisor" "$advisor_docs_url" "$advisor_segment")
 fi
 
 context_pct_display=""
