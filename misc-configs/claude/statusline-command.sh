@@ -70,11 +70,14 @@ model=${model% (1M context)}
 effort_level=$(echo "$input" | jq -r '.effort.level // "?"')
 
 case "$effort_level" in
+max) effort_display="🟪" ;;
+xhigh) effort_display="🟦" ;;
 high) effort_display="🟩" ;;
 medium) effort_display="🟨" ;;
 low) effort_display="🟥" ;;
 *) effort_display="$effort_level" ;;
 esac
+
 thinking_enabled=$(echo "$input" | jq -r '.thinking.enabled // false')
 fast_mode_enabled=$(echo "$input" | jq -r '.fast_mode // false')
 
