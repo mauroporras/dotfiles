@@ -24,7 +24,7 @@
 : 0000000000:0;brew upgrade font-jetbrains-mono # Upgrade the terminal font
 : 0000000000:0;aiexpensive # Fable. Tasks larger than a single sitting. Long autonomous sessions
 : 0000000000:0;ai # Opus
-: 0000000000:0;aihybrid # Opus in plan mode and advisor, Sonnet for execution
+: 0000000000:0;aihybrid # Opus planning, Fable as advisor, and Sonnet for execution
 : 0000000000:0;aicheap # Sonnet. Faster and excels at well-scoped tasks
 : 0000000000:0;aicheapest # Haiku. Almost no reason to use it. Mainly for very specific agents and skills
 : 0000000000:0;ai --continue # Continue the last session
