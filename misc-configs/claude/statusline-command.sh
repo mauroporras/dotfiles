@@ -207,6 +207,7 @@ cd "$current_dir" 2> /dev/null || cd /
 
 git_branch="no-repo"
 git_branch_is_repo=false
+git_branch_upstream_display=""
 
 # Detect repo membership via rev-parse rather than `git branch --show-current`,
 # which returns empty during rebase / detached HEAD and would otherwise falsely
@@ -217,6 +218,22 @@ if git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
 
     if [[ -n "$current_branch" ]]; then
         git_branch="$current_branch"
+
+        # Reads local refs only (no fetch), so it never blocks on the network.
+        # `@{upstream}` also fails when the configured remote branch is gone
+        # (e.g. deleted after a merge + prune), which correctly reads as "not
+        # on the remote". Detached HEAD / rebasing have no branch to track, so
+        # they get no indicator.
+        has_upstream=false
+        if git rev-parse --abbrev-ref --symbolic-full-name '@{upstream}' > /dev/null 2>&1; then
+            has_upstream=true
+        fi
+
+        if [[ "$has_upstream" == "true" ]]; then
+            git_branch_upstream_display="☁️🟢"
+        else
+            git_branch_upstream_display="☁️⚪️"
+        fi
     else
         git_dir=$(git rev-parse --git-dir 2> /dev/null)
         rebase_merge_head_file="$git_dir/rebase-merge/head-name"
@@ -600,7 +617,7 @@ if [[ "$is_in_worktree" == "true" ]]; then
     workspace_line="${workspace_line} 🌳${yellow}${worktree_link}${reset}"
 fi
 
-workspace_line="${workspace_line} 🌿${git_branch_color}${git_branch}${reset}"
+workspace_line="${workspace_line} 🌿${git_branch_upstream_display}${git_branch_color}${git_branch}${reset}"
 
 # The PR belongs to the branch, so it follows the branch bullet. The harness
 # drops `pr` once it merges or closes, and "no open PR" is the common state, so
