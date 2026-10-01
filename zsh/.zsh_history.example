@@ -22,7 +22,7 @@
 : 0000000000:0;TERM=xterm-256color ssh someuser@some-vps # Connect to a VPS
 : 0000000000:0;lsof -nP -iTCP:8080 -sTCP:LISTEN # What process is using port 8080
 : 0000000000:0;brew upgrade font-jetbrains-mono # Upgrade the terminal font
-: 0000000000:0;aiexpensive # Fable. For tasks larger than a single sitting
+: 0000000000:0;aiexpensive # Fable. Tasks larger than a single sitting. Long autonomous sessions
 : 0000000000:0;ai # Opus
 : 0000000000:0;aihybrid # Opus in plan mode, Sonnet for execution
 : 0000000000:0;aicheap # Sonnet. Faster and excels at well-scoped tasks
