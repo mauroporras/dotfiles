@@ -30,8 +30,8 @@ reset='\033[0m'
 input=$(cat)
 
 # Validate once up front: if the harness ever pipes us malformed or empty input,
-# fall back to an empty object so the ~14 downstream `jq` calls don't each
-# spew "parse error" to stderr.
+# fall back to an empty object so each downstream `jq` call doesn't spew
+# "parse error" to stderr.
 if ! printf '%s' "$input" | jq -e . > /dev/null 2>&1; then
     input='{}'
 fi
