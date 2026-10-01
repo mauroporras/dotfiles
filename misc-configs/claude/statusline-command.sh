@@ -284,6 +284,8 @@ five_hour_pct=$(echo "$input" | jq -r '.rate_limits.five_hour.used_percentage //
 five_hour_resets=$(echo "$input" | jq -r '.rate_limits.five_hour.resets_at // empty')
 seven_day_pct=$(echo "$input" | jq -r '.rate_limits.seven_day.used_percentage // empty')
 seven_day_resets=$(echo "$input" | jq -r '.rate_limits.seven_day.resets_at // empty')
+spend_limit_pct=$(echo "$input" | jq -r '.rate_limits.spend_limit.used_percentage // empty')
+spend_limit_resets=$(echo "$input" | jq -r '.rate_limits.spend_limit.resets_at // empty')
 
 # Build an OSC 8 hyperlink with a unique id. Without an id (or with an id
 # shared across spans) some terminals (notably Ghostty) visually group
@@ -329,8 +331,10 @@ format_reset_short() {
 now_epoch=$(date +%s)
 five_hour_pct_int="${five_hour_pct%.*}"
 seven_day_pct_int="${seven_day_pct%.*}"
+spend_limit_pct_int="${spend_limit_pct%.*}"
 five_hour_reset_display=$(format_reset_short "$five_hour_resets" "$now_epoch")
 seven_day_reset_display=$(format_reset_short "$seven_day_resets" "$now_epoch")
+spend_limit_reset_display=$(format_reset_short "$spend_limit_resets" "$now_epoch")
 
 # Session-level cache stats come straight from the harness (v2.1.251+), which
 # also re-runs this script the moment `expires_at` passes, so the warm→cold
@@ -474,6 +478,25 @@ if [[ -n "$seven_day_pct_int" ]]; then
     seven_day_segment="${seven_day_color}${seven_day_emphasis}${seven_day_pct_int}%${reset}🗓️${seven_day_reset_display}"
 fi
 
+# Unlike the two windows above, the spend limit only exists behind a Claude apps
+# gateway (the harness omits it on subscription and API-key setups), so a `-`
+# placeholder would be a permanent dead slot there. Render it only when present.
+has_spend_limit=false
+if [[ -n "$spend_limit_pct_int" ]]; then
+    has_spend_limit=true
+fi
+
+spend_limit_segment=""
+if [[ "$has_spend_limit" == "true" ]]; then
+    spend_limit_color=$(rate_limit_color "$spend_limit_pct_int")
+    spend_limit_emphasis=""
+    if [[ -n "$spend_limit_color" ]]; then
+        spend_limit_emphasis="$bold"
+    fi
+
+    spend_limit_segment="${spend_limit_color}${spend_limit_emphasis}${spend_limit_pct_int}%${reset}💳${spend_limit_reset_display}"
+fi
+
 # The statusline only shows the percentage and reset time; the usage page holds
 # the full breakdown. Each meter gets its own link id so a terminal highlights
 # them separately instead of as one link spanning the space between them.
@@ -482,6 +505,11 @@ five_hour_link=$(osc8_link "statusline-five-hour" "$usage_settings_url" "$five_h
 seven_day_link=$(osc8_link "statusline-seven-day" "$usage_settings_url" "$seven_day_segment")
 
 rate_limits_display="${five_hour_link} ${seven_day_link}"
+
+if [[ "$has_spend_limit" == "true" ]]; then
+    spend_limit_link=$(osc8_link "statusline-spend-limit" "$usage_settings_url" "$spend_limit_segment")
+    rate_limits_display="${rate_limits_display} ${spend_limit_link}"
+fi
 
 current_dir_link=$(osc8_link "statusline-dir" "file://${current_dir}" "$current_dir_display")
 workspace_line="📁${blue}${current_dir_link}${reset}"
