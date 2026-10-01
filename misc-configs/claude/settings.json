@@ -31,6 +31,9 @@
   "editorMode": "vim",
   "theme": "auto",
 
+  "//advisorModel": "https://code.claude.com/docs/en/advisor",
+  "advisorModel": "opus",
+
   "//terminalProgressBarEnabled": "It's inconsistend and annoying.",
   "terminalProgressBarEnabled": false,
 
