@@ -99,10 +99,20 @@ fi
 # when none is set does the `/focus` toggle persisted in the global config apply.
 claude_config_dir="${CLAUDE_CONFIG_DIR:-$HOME/.claude}"
 global_config_file="${CLAUDE_CONFIG_DIR:-$HOME}/.claude.json"
-view_mode=$(jq -rs '[.[].viewMode // empty] | last // empty' \
-    "$claude_config_dir/settings.json" \
-    "${project_dir:-$current_dir}/.claude/settings.json" \
-    "${project_dir:-$current_dir}/.claude/settings.local.json" 2> /dev/null)
+
+# Mirrors Claude Code's settings merge for the scopes we can see: the last
+# non-null value of user < project < local wins.
+read_merged_setting() {
+    local retval
+    retval=$(jq -rs --arg key "$1" '[.[][$key] // empty] | last // empty' \
+        "$claude_config_dir/settings.json" \
+        "${project_dir:-$current_dir}/.claude/settings.json" \
+        "${project_dir:-$current_dir}/.claude/settings.local.json" 2> /dev/null)
+
+    printf '%s' "$retval"
+}
+
+view_mode=$(read_merged_setting viewMode)
 
 is_focus_mode=false
 if [[ "$view_mode" == "focus" ]]; then
@@ -135,10 +145,7 @@ is_falsy_env() {
     esac
 }
 
-tui_setting=$(jq -rs '[.[].tui // empty] | last // empty' \
-    "$claude_config_dir/settings.json" \
-    "${project_dir:-$current_dir}/.claude/settings.json" \
-    "${project_dir:-$current_dir}/.claude/settings.local.json" 2> /dev/null)
+tui_setting=$(read_merged_setting tui)
 
 if is_falsy_env "$CLAUDE_CODE_NO_FLICKER" || is_truthy_env "$CLAUDE_CODE_DISABLE_ALTERNATE_SCREEN"; then
     fullscreen_display="⚪️"
@@ -553,9 +560,15 @@ if [[ "$exceeds_200k" == "true" ]]; then
     tokens_used_alert="🚨"
 fi
 
+# Not in the payload, so read the setting `/advisor` persists. Flag-only or
+# session-only advisors (--advisor, remote /advisor) and the account-level
+# availability gate aren't visible from here, so this is the configured
+# default rather than a guarantee the advisor is consulted.
+advisor_model=$(read_merged_setting advisorModel)
+
 advisor_display=""
 if [[ "$SHOW_ADVISOR" == "true" ]]; then
-    advisor_display=" ${gray}advisor:${reset}${cyan}?${reset}"
+    advisor_display=" ${gray}advisor:${reset}${cyan}${advisor_model:-off}${reset}"
 fi
 
 context_pct_display=""
