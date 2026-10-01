@@ -471,7 +471,14 @@ if [[ -n "$seven_day_pct_int" ]]; then
     seven_day_segment="${seven_day_color}${seven_day_emphasis}${seven_day_pct_int}%${reset}🗓️${seven_day_reset_display}"
 fi
 
-rate_limits_display="${five_hour_segment} ${seven_day_segment}"
+# The statusline only shows the percentage and reset time; the usage page holds
+# the full breakdown. Each meter gets its own link id so a terminal highlights
+# them separately instead of as one link spanning the space between them.
+usage_settings_url="https://claude.ai/new#settings/usage"
+five_hour_link=$(osc8_link "statusline-five-hour" "$usage_settings_url" "$five_hour_segment")
+seven_day_link=$(osc8_link "statusline-seven-day" "$usage_settings_url" "$seven_day_segment")
+
+rate_limits_display="${five_hour_link} ${seven_day_link}"
 
 current_dir_link=$(osc8_link "statusline-dir" "file://${current_dir}" "$current_dir_display")
 workspace_line="📁${blue}${current_dir_link}${reset}"
