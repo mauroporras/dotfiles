@@ -32,7 +32,7 @@
   "theme": "auto",
 
   "//advisorModel": "https://code.claude.com/docs/en/advisor",
-  "advisorModel": "opus",
+  "advisorModel": "fable",
 
   "//terminalProgressBarEnabled": "It's inconsistend and annoying.",
   "terminalProgressBarEnabled": false,
