@@ -631,7 +631,7 @@ advisor_model=$(read_merged_setting advisorModel)
 
 advisor_display=""
 if [[ "$SHOW_ADVISOR" == "true" ]]; then
-    advisor_display=" ${gray}advisor:${reset}${cyan}${advisor_model:-off}${reset}"
+    advisor_display=" 👨🏻‍🏫${cyan}${advisor_model:-off}${reset}"
 fi
 
 context_pct_display=""
@@ -639,7 +639,7 @@ if [[ "$SHOW_CONTEXT_PCT" == "true" ]]; then
     context_pct_display=" ${gray}${context_pct}%${reset}"
 fi
 
-state_line="✳️${cyan}${model}${reset} 🪣${tokens_used_alert}${tokens_used_color}${tokens_k}k${reset}/${context_display}${context_pct_display}${advisor_display} 💪🏻${effort_display}🧠${thinking_display} ⚡️💵${fast_mode_display} 🖥️${fullscreen_display}${focus_mode_segment}"
+state_line="✳️${cyan}${model}${reset}${advisor_display} 🪣${tokens_used_alert}${tokens_used_color}${tokens_k}k${reset}/${context_display}${context_pct_display} 💪🏻${effort_display}🧠${thinking_display} ⚡️💵${fast_mode_display} 🖥️${fullscreen_display}${focus_mode_segment}"
 
 # The default style is the common case, so only surface the segment when a
 # non-default style is deliberately in effect.
