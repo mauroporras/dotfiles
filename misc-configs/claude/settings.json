@@ -32,7 +32,7 @@
   "theme": "auto",
 
   "//advisorModel": "https://code.claude.com/docs/en/advisor",
-  "advisorModel": "fable",
+  "advisorModel": "opus",
 
   "//maxProseWidth": "Min. 40. Text wraps at this many columns; tables and code blocks keep the full width.",
   "maxProseWidth": 80,
