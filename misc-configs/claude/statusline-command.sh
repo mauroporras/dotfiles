@@ -381,6 +381,11 @@ if [[ "$prompt_cache_present" == "true" ]]; then
     fi
 
     prompt_cache_segment="${prompt_cache_hit_display}${prompt_cache_state}"
+else
+    # The harness omits `prompt_cache` until the first main-thread response after
+    # startup, /clear, resume, fork, or remote attach. A placeholder keeps the
+    # segment from vanishing and shifting the rest of the line.
+    prompt_cache_segment="🔥-"
 fi
 
 if [[ "$git_branch_is_repo" == "true" ]]; then
