@@ -31,9 +31,6 @@
   "editorMode": "vim",
   "theme": "auto",
 
-  "//remoteControlAtStartup": "Sometimes it fails at the worst time and blocks the session.",
-  "_remoteControlAtStartup": true,
-
   "//terminalProgressBarEnabled": "It's inconsistend and annoying.",
   "terminalProgressBarEnabled": false,
 
@@ -46,6 +43,9 @@
 
   "//keybindingFlavor": "It was not deleting word by word.",
   "_keybindingFlavor": "readline",
+
+  "//remoteControlAtStartup": "Sometimes it fails at the worst time and blocks the session.",
+  "_remoteControlAtStartup": true,
 
   "//viewMode": "Scrollback gets too long.",
   "_viewMode": "verbose"
