@@ -34,6 +34,9 @@
   "//advisorModel": "https://code.claude.com/docs/en/advisor",
   "advisorModel": "fable",
 
+  "//maxProseWidth": "Min. 40. Text wraps at this many columns; tables and code blocks keep the full width.",
+  "maxProseWidth": 80,
+
   "//terminalProgressBarEnabled": "It's inconsistend and annoying.",
   "terminalProgressBarEnabled": false,
 
