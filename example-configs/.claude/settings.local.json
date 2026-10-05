@@ -5,6 +5,14 @@
     "CLAUDE_CODE_ENABLE_CFC": "false"
   },
   "plansDirectory": ".claude/plans",
+  "permissions": {
+    "allow": [],
+    "deny": [],
+    "ask": [],
+    "additionalDirectories": [
+      "/tmp"
+    ]
+  },
   "spinnerTipsOverride": {
     "label": "Mauro tip",
     "tips": [
@@ -15,14 +23,6 @@
         "cooldownSessions": 3,
         "priority": 2
       }
-    ]
-  },
-  "permissions": {
-    "allow": [],
-    "deny": [],
-    "ask": [],
-    "additionalDirectories": [
-      "/tmp"
     ]
   },
   "hooks": {
