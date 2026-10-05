@@ -641,13 +641,17 @@ if [[ "$SHOW_CONTEXT_PCT" == "true" ]]; then
     context_pct_display=" ${gray}${context_pct}%${reset}"
 fi
 
-state_line="✳️${cyan}${model}${reset}${advisor_display} 🪣${tokens_used_alert}${tokens_used_color}${tokens_k}k${reset}/${context_display}${context_pct_display} 💪🏻${effort_display}🧠${thinking_display} ⚡️💵${fast_mode_display} 🖥️${fullscreen_display}${focus_mode_segment}"
+context_segment="🪣${tokens_used_alert}${tokens_used_color}${tokens_k}k${reset}/${context_display}${context_pct_display}"
+
+state_line="✳️${cyan}${model}${reset}${advisor_display} 💪🏻${effort_display}🧠${thinking_display} ⚡️💵${fast_mode_display} 🖥️${fullscreen_display}${focus_mode_segment}"
 
 # The default style is the common case, so only surface the segment when a
 # non-default style is deliberately in effect.
 if [[ "$output_style_display" != "default" ]]; then
     state_line="${state_line} ${gray}style:${reset}${bold}${output_style_color}${output_style_display}${reset}"
 fi
+
+state_line="${state_line} ${context_segment}"
 
 if [[ -n "$prompt_cache_segment" ]]; then
     state_line="${state_line} ${prompt_cache_segment}"
