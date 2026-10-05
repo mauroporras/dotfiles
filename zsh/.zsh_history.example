@@ -43,4 +43,5 @@
 : 0000000000:0;npx skills list # List installed skills
 : 0000000000:0;npx skills update # Update installed skills
 : 0000000000:0;e -S Session.vim # Restore a Neovim session
+: 0000000000:0;openspec init # Set up OpenSpec in the current project
 : 0000000000:0;openspec update # Refresh the project's OpenSpec instruction files
