@@ -17,6 +17,7 @@
     "label": "Mauro tip",
     "tips": [
       "Run `task format:changed` before committing",
+      "Run `/output-style` to switch how Claude responds",
       {
         "id": "regenerate-api-client",
         "text": "Remember to regenerate the Swagger/OpenAPI client after API changes",
