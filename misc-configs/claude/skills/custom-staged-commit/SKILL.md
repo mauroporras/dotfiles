@@ -45,10 +45,8 @@ REQUIRED:
 - Prioritize brevity over grammar in the subject line:
   Keep it short, even if grammatically imperfect
 - Subject line:
-  - Normal commit: conventional commits format
-    E.g.: `<type>(<scope>): <description>`
   - WIP commit: `WIP(<current-branch>): <description>`
-    Using the current branch as the scope and a brief conventional-style description of the staged changes.
+    Using the current branch as the scope and a brief description of the staged changes.
     Also pass `--no-verify` to `git commit`.
 - Body: optional, passed via a second `-m`. Add one only when the change carries
   context the subject line cannot: the WHY behind it, a constraint, a workaround,

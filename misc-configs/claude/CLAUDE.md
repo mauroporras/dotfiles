@@ -166,6 +166,12 @@
 
 ## Git
 
+- Write commit messages in the [Conventional Commits](https://www.conventionalcommits.org/) format:
+  `<type>(<scope>): <description>` (e.g. `feat(auth): add password reset flow`).
+  A shared, machine-readable shape keeps the history scannable and lets tooling
+  (changelogs, version bumps) derive meaning from it.
+  The exception is WIP commits on non-base branches, which use `WIP(<branch>): <description>`
+  (see the `custom-staged-commit` skill).
 - Pushing and creating PRs each MUST wait for an explicit instruction.
   PRs are a human responsibility.
   The user wants to review, title, and submit them on their own terms.
