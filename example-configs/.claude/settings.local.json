@@ -5,6 +5,18 @@
     "CLAUDE_CODE_ENABLE_CFC": "false"
   },
   "plansDirectory": ".claude/plans",
+  "spinnerTipsOverride": {
+    "label": "Mauro tip",
+    "tips": [
+      "Run `task format:changed` before committing",
+      {
+        "id": "regenerate-api-client",
+        "text": "Remember to regenerate the Swagger/OpenAPI client after API changes",
+        "cooldownSessions": 3,
+        "priority": 2
+      }
+    ]
+  },
   "permissions": {
     "allow": [],
     "deny": [],
