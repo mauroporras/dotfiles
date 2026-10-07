@@ -25,9 +25,8 @@
 : 0000000000:0;aifable # Tasks larger than a single sitting. Long autonomous sessions
 : 0000000000:0;ai # OpusPlan
 : 0000000000:0;aiopus # Opus without plan mode switching
-: 0000000000:0;aihybrid # Opus for planning, Fable as advisor, and Sonnet for execution
-: 0000000000:0;aisonnet # Sonnet. Faster and excels at well-scoped tasks
-: 0000000000:0;aihaiku # Haiku. Almost no reason to use it. Mainly for very specific agents and skills
+: 0000000000:0;aisonnet # Faster and excels at well-scoped tasks
+: 0000000000:0;aihaiku # Almost no reason to use it. Mainly for very specific agents and skills
 : 0000000000:0;ai --continue # Continue the last session
 : 0000000000:0;ai '/context all' # Show all context
 : 0000000000:0;cpcwd # Copy current working directory path
