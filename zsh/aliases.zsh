@@ -17,10 +17,11 @@ alias 8='cd -8'
 alias 9='cd -9'
 
 # Claude Code
-alias aiexpensive='claude --model fable'
+alias aifable='claude --model fable'
 alias ai='claude --model opusplan'
-alias aicheap='claude --model sonnet'
-alias aicheapest='claude --model haiku'
+alias aiopus='claude --model opus'
+alias aisonnet='claude --model sonnet'
+alias aihaiku='claude --model haiku'
 
 # Relative path is intentional: per-project shada (history, registers, marks).
 # Ignored globally via *.shada.
