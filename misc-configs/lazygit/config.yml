@@ -2,16 +2,6 @@
 # https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md#default
 
 gui:
-  authorColors:
-    mauroporras: magenta
-    "Mauro Pineda": magenta
-    "Claude": yellow
-  branchColorPatterns:
-    "^alpha$": cyan
-    "^main$": cyan
-    "^master$": cyan
-    "^beta$": yellow
-    "^production$": magenta
   scrollHeight: 1
   expandFocusedSidePanel: true
   shrinkSidePanelsToContent: true
@@ -24,6 +14,16 @@ gui:
       - black
     cherryPickedCommitFgColor:
       - green
+    authorColors:
+      mauroporras: magenta
+      "Mauro Pineda": magenta
+      "Claude": yellow
+    branchColorPatterns:
+      "^alpha$": cyan
+      "^main$": cyan
+      "^master$": cyan
+      "^beta$": yellow
+      "^production$": magenta
   showNumstatInFilesView: true
   nerdFontsVersion: "3"
   # It's better to use the default value of 7 since it can throw off the
@@ -31,7 +31,6 @@ gui:
   # Match Git's 7-char short hash after committing.
   #commitHashLength: 7
   showDivergenceFromBaseBranch: arrowAndNumber
-
 git:
   # Change it using the `|` and `\` keys.
   # (Formerly `pagers`)
@@ -73,26 +72,22 @@ customCommands:
         description: "[global] Pull with rebase"
         loadingText: "Pulling with rebase"
         command: "git pull --rebase"
-
       # Commits
       - key: "e"
         context: "commits"
         description: "[empty commit]"
         loadingText: "Creating empty commit"
         command: 'git commit --allow-empty -m "[empty commit]"'
-
       - key: "P"
         context: "commits"
         description: "Push specific commit and preceding"
         loadingText: "Pushing commit"
         command: "git push {{.SelectedRemote.Name}} {{.SelectedLocalCommit.Sha}}:{{.SelectedLocalBranch.Name}}"
-
       - key: "t"
         context: "commits"
         description: "[trigger ci]"
         loadingText: "Creating trigger CI commit"
         command: 'git commit --allow-empty -m "[trigger ci]"'
-
       # Files
       - key: "b"
         context: "files"
@@ -106,7 +101,6 @@ customCommands:
             fi
             claude -p "/custom-staged-create-branch"
           '
-
       - key: "c"
         context: "files"
         description: "[ai] Commit staged changes"
@@ -119,7 +113,6 @@ customCommands:
             fi
             claude -p "/custom-staged-commit"
           '
-
       - key: "C"
         context: "files"
         description: "[ai] Commit staged changes and push"
@@ -142,7 +135,6 @@ customCommands:
               git push
             fi
           '
-
       - key: "i"
         context: "files"
         description: "Invert staged/unstaged files"
@@ -166,7 +158,6 @@ customCommands:
             fi
             rm -rf "$tmp"
           '
-
       - key: "n"
         context: "files"
         description: "[ai] Commit staged changes, closing an issue"
@@ -194,7 +185,6 @@ customCommands:
             esac
             claude -p "/custom-staged-commit $issue"
           '
-
       - key: "N"
         context: "files"
         description: "[ai] Commit staged changes, closing an issue, and push"
@@ -225,24 +215,20 @@ customCommands:
               git push
             fi
           '
-
       - key: "w"
         context: "files"
         description: "Work In Progress"
         command: "git wip"
-
       - key: "W"
         context: "files"
         description: "Work In Progress and push"
         command: "git wipp"
-
       # The extra `-m` lands as the commit body: `git wip` is a shell alias,
       # so git appends trailing arguments to its `git commit` invocation.
       - key: "s"
         context: "files"
         description: "Work In Progress [skip ci]"
         command: 'git wip -m "[skip ci]"'
-
       - key: "S"
         context: "files"
         description: "Work In Progress [skip ci] and push"
