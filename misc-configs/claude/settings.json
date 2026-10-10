@@ -30,6 +30,7 @@
   "autoMemoryEnabled": false,
   "editorMode": "vim",
   "theme": "auto",
+  "tui": "fullscreen",
 
   "//advisorModel": "https://code.claude.com/docs/en/advisor",
   "advisorModel": "fable",
@@ -42,9 +43,6 @@
 
   "//terminalTitleFromRename": "/rename and --name would otherwise still change the terminal tab title.",
   "terminalTitleFromRename": true,
-
-  "//tui": "Links work without pressing cmd, and they have no visual cue.",
-  "tui": "fullscreen",
 
   "//agentPushNotifEnabled": "Sometimes they're useful. Just learn to ignore them.",
   "_agentPushNotifEnabled": false,
