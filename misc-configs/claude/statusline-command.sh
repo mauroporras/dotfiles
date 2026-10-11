@@ -578,7 +578,7 @@ workspace_line="${current_dir_link}"
 # Workspace decorations sit between the current dir and the branch bullet so
 # they read as modifiers of the dir, not of the branch.
 if [[ -n "$project_divergence_display" ]]; then
-    project_dir_link=$(osc8_link "statusline-project-dir" "file://${project_dir}" "$project_dir_display")
+    project_dir_link=$(osc8_link "statusline-project-dir" "file://${project_dir}" "📁${project_dir_display}")
     workspace_line="${workspace_line} ${project_divergence_display} ${project_dir_link}"
 fi
 
