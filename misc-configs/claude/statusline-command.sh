@@ -661,8 +661,13 @@ advisor_model=$(read_merged_setting advisorModel)
 advisor_display=""
 if [[ "$SHOW_ADVISOR" == "true" ]]; then
     advisor_docs_url="${claude_code_docs_url}/advisor"
-    advisor_segment="🤝🏻${advisor_model:-off}"
-    advisor_display=$(osc8_link "statusline-advisor" "$advisor_docs_url" "$advisor_segment")
+    advisor_value="${advisor_model:-off}"
+    advisor_initial=$(printf '%s' "${advisor_value:0:1}" | tr '[:lower:]' '[:upper:]')
+    advisor_segment="🤝🏻${advisor_initial}${advisor_value:1}"
+    advisor_link=$(osc8_link "statusline-advisor" "$advisor_docs_url" "$advisor_segment")
+
+    # The leading space lives here so a hidden advisor doesn't leave a double space.
+    advisor_display=" ${advisor_link}"
 fi
 
 context_pct_display=""
