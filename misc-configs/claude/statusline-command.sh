@@ -19,7 +19,6 @@ SHOW_VERSION=false
 # Colors
 bold='\033[1m'
 italic='\033[3m'
-blue='\033[34m'
 green='\033[32m'
 yellow='\033[33m'
 cyan='\033[36m'
@@ -599,7 +598,7 @@ if [[ -n "$github_repo_display" ]]; then
 fi
 
 # A worktree moves the work into a second working directory the user isn't
-# looking at, so it gets alert styling (yellow) rather than the muted blue
+# looking at, so it gets alert styling (yellow) rather than the neutral default
 # of the other dir decorations. The label links to the tree so a cmd-click lands
 # in the right place.
 is_in_worktree=false
