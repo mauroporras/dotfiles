@@ -455,20 +455,17 @@ while IFS= read -r added_dir; do
     fi
 
     added_dir_basename=${added_dir##*/}
-    added_dir_link="$(osc8_link "statusline-added-${added_dirs_index}" "file://${added_dir}" "${added_dir_basename}")${reset}"
+    added_dir_link=$(osc8_link "statusline-added-${added_dirs_index}" "file://${added_dir}" "📁${added_dir_basename}")
+    added_dir_segment="${cyan}${added_dir_link}${reset}"
 
     if [[ $added_dirs_index -eq 0 ]]; then
-        added_dirs_display="${cyan}[${added_dir_link}"
+        added_dirs_display="${added_dir_segment}"
     else
-        added_dirs_display="${added_dirs_display}${gray},${cyan}${added_dir_link}"
+        added_dirs_display="${added_dirs_display} ${added_dir_segment}"
     fi
 
     added_dirs_index=$((added_dirs_index + 1))
 done < <(echo "$input" | jq -r '.workspace.added_dirs // [] | .[]')
-
-if [[ -n "$added_dirs_display" ]]; then
-    added_dirs_display="${added_dirs_display}${cyan}]${reset}"
-fi
 
 github_repo_display=""
 if [[ -n "$github_repo_owner" && -n "$github_repo_name" ]]; then
