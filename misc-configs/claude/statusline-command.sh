@@ -281,8 +281,12 @@ output_style=$(echo "$input" | jq -r '.output_style.name // empty')
 # than by switching the global style.
 output_style_display="${output_style:-default}"
 
-# Only a deliberately-chosen (non-default) style ever renders, so it's always cyan.
+# The default style is always shown, so only a deliberately-chosen one gets color;
+# otherwise it'd look like something unusual is in effect.
 output_style_color="$cyan"
+if [[ "$output_style_display" == "default" ]]; then
+    output_style_color="$gray"
+fi
 
 added_dirs_display=""
 
@@ -664,13 +668,9 @@ fi
 
 state_line="✳️${cyan}${model_link}${reset}${advisor_display} ${effort_link}🧠${thinking_display} ${fast_mode_link} ${fullscreen_link}${focus_mode_link}"
 
-# The default style is the common case, so only surface the segment when a
-# non-default style is deliberately in effect.
-if [[ "$output_style_display" != "default" ]]; then
-    output_style_label="${gray}style:${reset}${bold}${output_style_color}${output_style_display}${reset}"
-    output_style_link=$(osc8_link "statusline-output-style" "${claude_code_docs_url}/output-styles" "$output_style_label")
-    state_line="${state_line} ${output_style_link}"
-fi
+output_style_label="${gray}style:${reset}${bold}${output_style_color}${output_style_display}${reset}"
+output_style_link=$(osc8_link "statusline-output-style" "${claude_code_docs_url}/output-styles" "$output_style_label")
+state_line="${state_line} ${output_style_link}"
 
 state_line="${state_line} ${context_segment}"
 
