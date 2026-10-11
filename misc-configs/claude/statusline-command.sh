@@ -594,7 +594,7 @@ fi
 # The repo identity precedes the worktree so the eye reads "which repo, then
 # which tree of it" before the branch that tree has checked out.
 if [[ -n "$github_repo_display" ]]; then
-    workspace_line="${workspace_line} 📦${blue}${github_repo_display}${reset}"
+    workspace_line="${workspace_line} 📦${github_repo_display}"
 fi
 
 # A worktree moves the work into a second working directory the user isn't
