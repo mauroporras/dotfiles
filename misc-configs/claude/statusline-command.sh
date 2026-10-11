@@ -666,11 +666,10 @@ if [[ -n "$focus_mode_segment" ]]; then
     focus_mode_link=$(osc8_link "statusline-focus" "${claude_code_docs_url}/fullscreen" "$focus_mode_segment")
 fi
 
-state_line="✳️${cyan}${model_link}${reset}${advisor_display} ${effort_link}🧠${thinking_display} ${fast_mode_link} ${fullscreen_link}${focus_mode_link}"
-
 output_style_label="💅🏻${bold}${output_style_color}${output_style_display}${reset}"
 output_style_link=$(osc8_link "statusline-output-style" "${claude_code_docs_url}/output-styles" "$output_style_label")
-state_line="${state_line} ${output_style_link}"
+
+state_line="✳️${cyan}${model_link}${reset}${advisor_display} ${effort_link}🧠${thinking_display} ${output_style_link} ${fast_mode_link} ${fullscreen_link}${focus_mode_link}"
 
 state_line="${state_line} ${context_segment}"
 
