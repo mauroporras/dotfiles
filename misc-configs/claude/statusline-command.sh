@@ -668,7 +668,7 @@ fi
 
 state_line="✳️${cyan}${model_link}${reset}${advisor_display} ${effort_link}🧠${thinking_display} ${fast_mode_link} ${fullscreen_link}${focus_mode_link}"
 
-output_style_label="${gray}style:${reset}${bold}${output_style_color}${output_style_display}${reset}"
+output_style_label="💅🏻${bold}${output_style_color}${output_style_display}${reset}"
 output_style_link=$(osc8_link "statusline-output-style" "${claude_code_docs_url}/output-styles" "$output_style_label")
 state_line="${state_line} ${output_style_link}"
 
