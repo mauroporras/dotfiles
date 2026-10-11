@@ -691,6 +691,7 @@ if [[ "$SHOW_CONTEXT_PCT" == "true" ]]; then
 fi
 
 context_segment="🪣${tokens_used_alert}${tokens_used_color}${tokens_k}k${reset}/${context_display}${context_pct_display}"
+context_link=$(osc8_link "statusline-context" "${claude_code_docs_url}/context-window" "$context_segment")
 
 model_link=$(osc8_link "statusline-model" "${claude_code_docs_url}/model-config" "✳️${model}")
 effort_link=$(osc8_link "statusline-effort" "${claude_code_docs_url}/model-config#adjust-effort-level" "💪🏻${effort_display}")
@@ -714,7 +715,7 @@ output_style_link=$(osc8_link "statusline-output-style" "${claude_code_docs_url}
 
 state_line="${model_link}${advisor_display} ${effort_link}${thinking_link} ${output_style_link} ${fast_mode_link} ${fullscreen_link}${focus_mode_link}"
 
-state_line="${state_line} ${context_segment}"
+state_line="${state_line} ${context_link}"
 
 if [[ -n "$prompt_cache_segment" ]]; then
     prompt_cache_link=$(osc8_link "statusline-prompt-cache" "${claude_code_docs_url}/prompt-caching#check-cache-performance" "$prompt_cache_segment")
