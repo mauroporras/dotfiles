@@ -476,9 +476,9 @@ if [[ -n "$github_repo_owner" && -n "$github_repo_name" ]]; then
 
     if [[ -n "$github_repo_host" ]]; then
         github_repo_url="https://${github_repo_host}/${github_repo_label}"
-        github_repo_display=$(osc8_link "statusline-repo" "$github_repo_url" "$github_repo_label")
+        github_repo_display=$(osc8_link "statusline-repo" "$github_repo_url" "📦${github_repo_label}")
     else
-        github_repo_display="$github_repo_label"
+        github_repo_display="📦${github_repo_label}"
     fi
 fi
 
@@ -572,8 +572,8 @@ if [[ "$has_spend_limit" == "true" ]]; then
     rate_limits_display="${rate_limits_display} ${spend_limit_link}"
 fi
 
-current_dir_link=$(osc8_link "statusline-dir" "file://${current_dir}" "$current_dir_display")
-workspace_line="📁${current_dir_link}"
+current_dir_link=$(osc8_link "statusline-dir" "file://${current_dir}" "📁${current_dir_display}")
+workspace_line="${current_dir_link}"
 
 # Workspace decorations sit between the current dir and the branch bullet so
 # they read as modifiers of the dir, not of the branch.
@@ -592,7 +592,7 @@ fi
 if [[ "$git_branch_is_repo" != "true" ]]; then
     workspace_line="${workspace_line} 📦${red}no-repo${reset}"
 elif [[ -n "$github_repo_display" ]]; then
-    workspace_line="${workspace_line} 📦${github_repo_display}"
+    workspace_line="${workspace_line} ${github_repo_display}"
 fi
 
 # A worktree moves the work into a second working directory the user isn't
