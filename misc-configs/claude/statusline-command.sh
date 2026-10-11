@@ -44,7 +44,7 @@ project_divergence_display=""
 if [[ -n "$project_dir_display" && "$project_dir_display" != "$current_dir_display" ]]; then
     # Alert prefix so a `cd` away from the original project dir is impossible to
     # miss: it changes the meaning of every relative path and git context below.
-    project_divergence_display="⏪🚨 ${project_dir_display}"
+    project_divergence_display="⏪🚨"
 fi
 
 # Two worktree signals exist, and they differ in scope: `worktree.*` is only set
@@ -578,7 +578,8 @@ workspace_line="${current_dir_link}"
 # Workspace decorations sit between the current dir and the branch bullet so
 # they read as modifiers of the dir, not of the branch.
 if [[ -n "$project_divergence_display" ]]; then
-    workspace_line="${workspace_line} ${project_divergence_display}"
+    project_dir_link=$(osc8_link "statusline-project-dir" "file://${project_dir}" "$project_dir_display")
+    workspace_line="${workspace_line} ${project_divergence_display} ${project_dir_link}"
 fi
 
 if [[ -n "$added_dirs_display" ]]; then
