@@ -23,6 +23,7 @@ blue='\033[34m'
 green='\033[32m'
 yellow='\033[33m'
 cyan='\033[36m'
+magenta='\033[35m'
 red='\033[31m'
 gray='\033[90m'
 reset='\033[0m'
@@ -283,10 +284,18 @@ output_style_display="${output_style:-default}"
 
 # The default style is always shown, so only a deliberately-chosen one gets color;
 # otherwise it'd look like something unusual is in effect.
-output_style_color="$cyan"
-if [[ "$output_style_display" == "default" ]]; then
-    output_style_color="$gray"
-fi
+output_style_key=$(printf '%s' "$output_style_display" | tr '[:upper:]' '[:lower:]')
+
+# Red is left out on purpose: it means "something is wrong" elsewhere in the line.
+# Custom styles fall back to cyan.
+case "$output_style_key" in
+default) output_style_color="$gray" ;;
+proactive) output_style_color="$yellow" ;;
+concise) output_style_color="$blue" ;;
+explanatory) output_style_color="$green" ;;
+learning) output_style_color="$magenta" ;;
+*) output_style_color="$cyan" ;;
+esac
 
 added_dirs_display=""
 
