@@ -654,7 +654,7 @@ fi
 
 context_segment="🪣${tokens_used_alert}${tokens_used_color}${tokens_k}k${reset}/${context_display}${context_pct_display}"
 
-model_link=$(osc8_link "statusline-model" "${claude_code_docs_url}/model-config" "$model")
+model_link=$(osc8_link "statusline-model" "${claude_code_docs_url}/model-config" "✳️${model}")
 effort_link=$(osc8_link "statusline-effort" "${claude_code_docs_url}/model-config#adjust-effort-level" "💪🏻${effort_display}")
 fast_mode_link=$(osc8_link "statusline-fast-mode" "${claude_code_docs_url}/fast-mode" "⚡️💵${fast_mode_display}")
 fullscreen_link=$(osc8_link "statusline-fullscreen" "${claude_code_docs_url}/fullscreen" "🖥️${fullscreen_display}")
@@ -673,7 +673,7 @@ output_style_title="${output_style_initial}${output_style_display:1}"
 output_style_label="💅🏻${output_style_color}${output_style_title}${reset}"
 output_style_link=$(osc8_link "statusline-output-style" "${claude_code_docs_url}/output-styles" "$output_style_label")
 
-state_line="✳️${model_link}${advisor_display} ${effort_link}🧠${thinking_display} ${output_style_link} ${fast_mode_link} ${fullscreen_link}${focus_mode_link}"
+state_line="${model_link}${advisor_display} ${effort_link}🧠${thinking_display} ${output_style_link} ${fast_mode_link} ${fullscreen_link}${focus_mode_link}"
 
 state_line="${state_line} ${context_segment}"
 
