@@ -644,8 +644,9 @@ if [[ "$git_branch_is_repo" == "true" ]]; then
 fi
 
 # The PR belongs to the branch, so it follows the branch bullet. The harness
-# drops `pr` once it merges or closes, and "no open PR" is the common state, so
-# there is no placeholder.
+# drops `pr` once it merges or closes, so the indicator stays visible with a `-`
+# placeholder (same as the cache and rate-limit meters) to make "no open PR"
+# distinguishable from a segment that failed to render.
 has_pr=false
 if [[ -n "$pr_number" ]]; then
     has_pr=true
@@ -655,6 +656,8 @@ if [[ "$has_pr" == "true" ]]; then
     pr_color=$(pr_review_color "$pr_review_state")
     pr_link=$(osc8_link "statusline-pr" "$pr_url" "#${pr_number}")
     workspace_line="${workspace_line} 🔀${pr_color}${pr_link}${reset}"
+else
+    workspace_line="${workspace_line} 🔀-"
 fi
 
 tokens_used_color=""
