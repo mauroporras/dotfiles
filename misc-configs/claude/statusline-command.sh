@@ -643,8 +643,8 @@ advisor_model=$(read_merged_setting advisorModel)
 advisor_display=""
 if [[ "$SHOW_ADVISOR" == "true" ]]; then
     advisor_docs_url="${claude_code_docs_url}/advisor"
-    advisor_model_link=$(osc8_link "statusline-advisor" "$advisor_docs_url" "${advisor_model:-off}")
-    advisor_display="🤝🏻${advisor_model_link}"
+    advisor_segment="🤝🏻${advisor_model:-off}"
+    advisor_display=$(osc8_link "statusline-advisor" "$advisor_docs_url" "$advisor_segment")
 fi
 
 context_pct_display=""
@@ -701,7 +701,7 @@ fi
 # Trails the state line: it identifies the session rather than describing its
 # state, so it sits past the segments that change from turn to turn.
 if [[ -n "$session_name" ]]; then
-    session_label="$session_name"
+    session_label="🏷️${session_name}"
 
     # Without a transcript path there's nothing to open, so keep the plain label.
     has_transcript_path=false
@@ -710,10 +710,10 @@ if [[ -n "$session_name" ]]; then
     fi
 
     if [[ "$has_transcript_path" == "true" ]]; then
-        session_label=$(osc8_link "statusline-session" "file://${transcript_path}" "$session_name")
+        session_label=$(osc8_link "statusline-session" "file://${transcript_path}" "🏷️${session_name}")
     fi
 
-    state_line="${state_line} 🏷️${session_label}"
+    state_line="${state_line} ${session_label}"
 fi
 
 echo -e "$workspace_line"
