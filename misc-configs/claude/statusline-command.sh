@@ -612,7 +612,23 @@ if [[ "$is_in_worktree" == "true" ]]; then
 fi
 
 if [[ "$git_branch_is_repo" == "true" ]]; then
-    workspace_line="${workspace_line} 🌿${git_branch}"
+    branch_label="🌿${git_branch}"
+
+    # Detached HEAD and rebases leave `current_branch` empty, and there is no
+    # branch page to open for them. Without repo info there is no host to link to.
+    has_branch_url=false
+    if [[ -n "$github_repo_url" && -n "$current_branch" ]]; then
+        has_branch_url=true
+    fi
+
+    if [[ "$has_branch_url" == "true" ]]; then
+        # Encode per path segment so `feature/x` keeps its slash but `#`/`?`/`%` can't
+        # break the URL.
+        branch_path=$(jq -rn --arg branch "$current_branch" '$branch | split("/") | map(@uri) | join("/")')
+        branch_label=$(osc8_link "statusline-branch" "${github_repo_url}/tree/${branch_path}" "$branch_label")
+    fi
+
+    workspace_line="${workspace_line} ${branch_label}"
 fi
 
 # The PR belongs to the branch, so it follows the branch bullet. The harness
