@@ -666,7 +666,11 @@ if [[ -n "$focus_mode_segment" ]]; then
     focus_mode_link=$(osc8_link "statusline-focus" "${claude_code_docs_url}/fullscreen" "$focus_mode_segment")
 fi
 
-output_style_label="💅🏻${bold}${output_style_color}${output_style_display}${reset}"
+# `${var^}` needs bash 4 and /bin/bash on macOS is 3.2, hence `tr` on the first char.
+output_style_initial=$(printf '%s' "${output_style_display:0:1}" | tr '[:lower:]' '[:upper:]')
+output_style_title="${output_style_initial}${output_style_display:1}"
+
+output_style_label="💅🏻${output_style_color}${output_style_title}${reset}"
 output_style_link=$(osc8_link "statusline-output-style" "${claude_code_docs_url}/output-styles" "$output_style_label")
 
 state_line="✳️${cyan}${model_link}${reset}${advisor_display} ${effort_link}🧠${thinking_display} ${output_style_link} ${fast_mode_link} ${fullscreen_link}${focus_mode_link}"
