@@ -446,8 +446,9 @@ else
     prompt_cache_segment="🔥-"
 fi
 
+# Only the abnormal state (not a repo) gets color, so red stays an alert.
 if [[ "$git_branch_is_repo" == "true" ]]; then
-    git_branch_color="$green"
+    git_branch_color=""
 else
     git_branch_color="$red"
 fi
