@@ -204,7 +204,7 @@ context_pct=$(echo "$input" | jq -r '.context_window.used_percentage // 0 | floo
 
 cd "$current_dir" 2> /dev/null || cd /
 
-git_branch="no-repo"
+git_branch=""
 git_branch_is_repo=false
 
 # Detect repo membership via rev-parse rather than `git branch --show-current`,
@@ -445,12 +445,6 @@ else
     prompt_cache_segment="🔥-"
 fi
 
-# Only the abnormal state (not a repo) gets color, so red stays an alert.
-if [[ "$git_branch_is_repo" == "true" ]]; then
-    git_branch_color=""
-else
-    git_branch_color="$red"
-fi
 
 # Process substitution (`< <(...)`) keeps the loop in the parent shell so the
 # accumulated string isn't lost in a subshell.
@@ -592,8 +586,12 @@ if [[ -n "$added_dirs_display" ]]; then
 fi
 
 # The repo identity precedes the worktree so the eye reads "which repo, then
-# which tree of it" before the branch that tree has checked out.
-if [[ -n "$github_repo_display" ]]; then
+# which tree of it" before the branch that tree has checked out. Outside a repo
+# there is no repo identity to show, so the slot says so (red, as an alert)
+# instead of leaving the line looking merely incomplete.
+if [[ "$git_branch_is_repo" != "true" ]]; then
+    workspace_line="${workspace_line} 📦${red}no-repo${reset}"
+elif [[ -n "$github_repo_display" ]]; then
     workspace_line="${workspace_line} 📦${github_repo_display}"
 fi
 
@@ -611,7 +609,9 @@ if [[ "$is_in_worktree" == "true" ]]; then
     workspace_line="${workspace_line} 🌳${yellow}${worktree_link}${reset}"
 fi
 
-workspace_line="${workspace_line} 🌿${git_branch_color}${git_branch}${reset}"
+if [[ "$git_branch_is_repo" == "true" ]]; then
+    workspace_line="${workspace_line} 🌿${git_branch}"
+fi
 
 # The PR belongs to the branch, so it follows the branch bullet. The harness
 # drops `pr` once it merges or closes, and "no open PR" is the common state, so
