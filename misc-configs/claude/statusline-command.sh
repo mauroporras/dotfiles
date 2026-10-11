@@ -221,17 +221,15 @@ if git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
         # Reads local refs only (no fetch), so it never blocks on the network.
         # `@{upstream}` also fails when the configured remote branch is gone
         # (e.g. deleted after a merge + prune), which correctly reads as "not
-        # on the remote". Detached HEAD / rebasing have no branch to track, so
-        # they get no indicator.
+        # on the remote", so only a tracked branch shows the cloud. Detached
+        # HEAD / rebasing have no branch to track, so they get no indicator.
         has_upstream=false
         if git rev-parse --abbrev-ref --symbolic-full-name '@{upstream}' > /dev/null 2>&1; then
             has_upstream=true
         fi
 
         if [[ "$has_upstream" == "true" ]]; then
-            git_branch_upstream_display="☁️🟢"
-        else
-            git_branch_upstream_display="☁️⚪️"
+            git_branch_upstream_display="☁️"
         fi
     else
         git_dir=$(git rev-parse --git-dir 2> /dev/null)
