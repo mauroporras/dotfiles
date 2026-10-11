@@ -252,6 +252,9 @@ if [[ -z "$session_name" ]]; then
     session_name=$(echo "$input" | jq -r '.session_name // empty')
 fi
 
+# Lets the session label open the raw JSONL of this conversation.
+transcript_path=$(echo "$input" | jq -r '.transcript_path // empty')
+
 session_id=""
 if [[ "$SHOW_SESSION_ID" == "true" ]]; then
     session_id="${session_id_value:-unknown}"
@@ -557,6 +560,10 @@ fi
 # the full breakdown. Each meter gets its own link id so a terminal highlights
 # them separately instead of as one link spanning the space between them.
 usage_settings_url="https://claude.ai/new#settings/usage"
+
+# Indicator-only segments (emoji + a value) don't say what they mean, so each
+# one links to the docs page that explains it.
+claude_code_docs_url="https://code.claude.com/docs/en"
 five_hour_link=$(osc8_link "statusline-five-hour" "$usage_settings_url" "$five_hour_segment")
 seven_day_link=$(osc8_link "statusline-seven-day" "$usage_settings_url" "$seven_day_segment")
 
@@ -631,9 +638,9 @@ advisor_model=$(read_merged_setting advisorModel)
 
 advisor_display=""
 if [[ "$SHOW_ADVISOR" == "true" ]]; then
-    advisor_docs_url="https://code.claude.com/docs/en/advisor"
-    advisor_segment="🤝🏻${cyan}${advisor_model:-off}${reset}"
-    advisor_display=$(osc8_link "statusline-advisor" "$advisor_docs_url" "$advisor_segment")
+    advisor_docs_url="${claude_code_docs_url}/advisor"
+    advisor_model_link=$(osc8_link "statusline-advisor" "$advisor_docs_url" "${advisor_model:-off}")
+    advisor_display="🤝🏻${cyan}${advisor_model_link}${reset}"
 fi
 
 context_pct_display=""
@@ -643,24 +650,40 @@ fi
 
 context_segment="🪣${tokens_used_alert}${tokens_used_color}${tokens_k}k${reset}/${context_display}${context_pct_display}"
 
-state_line="✳️${cyan}${model}${reset}${advisor_display} 💪🏻${effort_display}🧠${thinking_display} ⚡️💵${fast_mode_display} 🖥️${fullscreen_display}${focus_mode_segment}"
+model_link=$(osc8_link "statusline-model" "${claude_code_docs_url}/model-config" "$model")
+effort_link=$(osc8_link "statusline-effort" "${claude_code_docs_url}/model-config#adjust-effort-level" "💪🏻${effort_display}")
+fast_mode_link=$(osc8_link "statusline-fast-mode" "${claude_code_docs_url}/fast-mode" "⚡️💵${fast_mode_display}")
+fullscreen_link=$(osc8_link "statusline-fullscreen" "${claude_code_docs_url}/fullscreen" "🖥️${fullscreen_display}")
+
+# `focus_mode_segment` is empty when fullscreen is known-off, and an empty label
+# would leave a dead zero-width link behind.
+focus_mode_link=""
+if [[ -n "$focus_mode_segment" ]]; then
+    focus_mode_link=$(osc8_link "statusline-focus" "${claude_code_docs_url}/fullscreen" "$focus_mode_segment")
+fi
+
+state_line="✳️${cyan}${model_link}${reset}${advisor_display} ${effort_link}🧠${thinking_display} ${fast_mode_link} ${fullscreen_link}${focus_mode_link}"
 
 # The default style is the common case, so only surface the segment when a
 # non-default style is deliberately in effect.
 if [[ "$output_style_display" != "default" ]]; then
-    state_line="${state_line} ${gray}style:${reset}${bold}${output_style_color}${output_style_display}${reset}"
+    output_style_label="${gray}style:${reset}${bold}${output_style_color}${output_style_display}${reset}"
+    output_style_link=$(osc8_link "statusline-output-style" "${claude_code_docs_url}/output-styles" "$output_style_label")
+    state_line="${state_line} ${output_style_link}"
 fi
 
 state_line="${state_line} ${context_segment}"
 
 if [[ -n "$prompt_cache_segment" ]]; then
-    state_line="${state_line} ${prompt_cache_segment}"
+    prompt_cache_link=$(osc8_link "statusline-prompt-cache" "${claude_code_docs_url}/prompt-caching#check-cache-performance" "$prompt_cache_segment")
+    state_line="${state_line} ${prompt_cache_link}"
 fi
 
 state_line="${state_line} ${rate_limits_display}"
 
 if [[ -n "$cost_display" ]]; then
-    state_line="${state_line} ${gray}${cost_display}${reset}"
+    cost_link=$(osc8_link "statusline-cost" "${claude_code_docs_url}/costs" "$cost_display")
+    state_line="${state_line} ${gray}${cost_link}${reset}"
 fi
 
 if [[ -n "$session_id" ]]; then
@@ -668,13 +691,26 @@ if [[ -n "$session_id" ]]; then
 fi
 
 if [[ -n "$claude_version" ]]; then
-    state_line="${state_line} • ${gray}v${claude_version}${reset}"
+    version_link=$(osc8_link "statusline-version" "${claude_code_docs_url}/changelog" "v${claude_version}")
+    state_line="${state_line} • ${gray}${version_link}${reset}"
 fi
 
 # Trails the state line: it identifies the session rather than describing its
 # state, so it sits past the segments that change from turn to turn.
 if [[ -n "$session_name" ]]; then
-    state_line="${state_line} 🏷️${cyan}${session_name}${reset}"
+    session_label="$session_name"
+
+    # Without a transcript path there's nothing to open, so keep the plain label.
+    has_transcript_path=false
+    if [[ -n "$transcript_path" ]]; then
+        has_transcript_path=true
+    fi
+
+    if [[ "$has_transcript_path" == "true" ]]; then
+        session_label=$(osc8_link "statusline-session" "file://${transcript_path}" "$session_name")
+    fi
+
+    state_line="${state_line} 🏷️${cyan}${session_label}${reset}"
 fi
 
 echo -e "$workspace_line"
