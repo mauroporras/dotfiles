@@ -584,7 +584,7 @@ workspace_line="📁${current_dir_link}"
 # Workspace decorations sit between the current dir and the branch bullet so
 # they read as modifiers of the dir, not of the branch.
 if [[ -n "$project_divergence_display" ]]; then
-    workspace_line="${workspace_line} ${blue}${project_divergence_display}${reset}"
+    workspace_line="${workspace_line} ${project_divergence_display}"
 fi
 
 if [[ -n "$added_dirs_display" ]]; then
