@@ -654,8 +654,8 @@ fi
 
 if [[ "$has_pr" == "true" ]]; then
     pr_color=$(pr_review_color "$pr_review_state")
-    pr_link=$(osc8_link "statusline-pr" "$pr_url" "#${pr_number}")
-    workspace_line="${workspace_line} 🔀${pr_color}${pr_link}${reset}"
+    pr_link=$(osc8_link "statusline-pr" "$pr_url" "🔀#${pr_number}")
+    workspace_line="${workspace_line} ${pr_color}${pr_link}${reset}"
 else
     workspace_line="${workspace_line} 🔀-"
 fi
