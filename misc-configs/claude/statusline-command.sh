@@ -579,7 +579,7 @@ if [[ "$has_spend_limit" == "true" ]]; then
 fi
 
 current_dir_link=$(osc8_link "statusline-dir" "file://${current_dir}" "$current_dir_display")
-workspace_line="📁${blue}${current_dir_link}${reset}"
+workspace_line="📁${current_dir_link}"
 
 # Workspace decorations sit between the current dir and the branch bullet so
 # they read as modifiers of the dir, not of the branch.
