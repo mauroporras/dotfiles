@@ -644,7 +644,7 @@ advisor_display=""
 if [[ "$SHOW_ADVISOR" == "true" ]]; then
     advisor_docs_url="${claude_code_docs_url}/advisor"
     advisor_model_link=$(osc8_link "statusline-advisor" "$advisor_docs_url" "${advisor_model:-off}")
-    advisor_display="🤝🏻${cyan}${advisor_model_link}${reset}"
+    advisor_display="🤝🏻${advisor_model_link}"
 fi
 
 context_pct_display=""
@@ -673,7 +673,7 @@ output_style_title="${output_style_initial}${output_style_display:1}"
 output_style_label="💅🏻${output_style_color}${output_style_title}${reset}"
 output_style_link=$(osc8_link "statusline-output-style" "${claude_code_docs_url}/output-styles" "$output_style_label")
 
-state_line="✳️${cyan}${model_link}${reset}${advisor_display} ${effort_link}🧠${thinking_display} ${output_style_link} ${fast_mode_link} ${fullscreen_link}${focus_mode_link}"
+state_line="✳️${model_link}${advisor_display} ${effort_link}🧠${thinking_display} ${output_style_link} ${fast_mode_link} ${fullscreen_link}${focus_mode_link}"
 
 state_line="${state_line} ${context_segment}"
 
