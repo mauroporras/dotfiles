@@ -713,7 +713,7 @@ if [[ -n "$session_name" ]]; then
         session_label=$(osc8_link "statusline-session" "file://${transcript_path}" "$session_name")
     fi
 
-    state_line="${state_line} 🏷️${cyan}${session_label}${reset}"
+    state_line="${state_line} 🏷️${session_label}"
 fi
 
 echo -e "$workspace_line"
