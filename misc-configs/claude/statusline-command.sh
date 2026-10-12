@@ -682,10 +682,8 @@ else
 fi
 
 tokens_used_color=""
-tokens_used_alert=""
 if [[ "$exceeds_200k" == "true" ]]; then
     tokens_used_color="${bold}${red}"
-    tokens_used_alert="🚨"
 fi
 
 # Not in the payload, so read the setting `/advisor` persists. Flag-only or
@@ -711,7 +709,7 @@ if [[ "$SHOW_CONTEXT_PCT" == "true" ]]; then
     context_pct_display=" ${gray}${context_pct}%${reset}"
 fi
 
-context_segment="🪣${tokens_used_alert}${tokens_used_color}${tokens_k}k${reset}/${context_display}${context_pct_display}"
+context_segment="🪣${tokens_used_color}${tokens_k}k${reset}/${context_display}${context_pct_display}"
 context_link=$(osc8_link "statusline-context" "${claude_code_docs_url}/context-window" "$context_segment")
 
 model_link=$(osc8_link "statusline-model" "${claude_code_docs_url}/model-config" "✳️${model}")
