@@ -278,17 +278,6 @@ if [[ "$SHOW_SESSION_ID" == "true" ]]; then
     session_id="${session_id_value:-unknown}"
 fi
 
-# The harness's own `exceeds_200k_tokens` folds output tokens in, so it can fire
-# while the bucket beside it still reads under 200k. Derive the tripwire from the
-# same input-only count the bucket shows, so the two can never disagree.
-# 200k is where 200k-window models compact and where 1M-window models used to
-# flip to long-context pricing; Claude 4.6+ bill the full window at standard
-# rates, so on those models this is a size marker rather than a cost cliff.
-long_context_threshold_tokens=200000
-exceeds_200k=false
-if [[ $total_input_tokens -gt $long_context_threshold_tokens ]]; then
-    exceeds_200k=true
-fi
 claude_version=""
 if [[ "$SHOW_VERSION" == "true" ]]; then
     claude_version=$(echo "$input" | jq -r '.version // empty')
@@ -520,6 +509,19 @@ rate_limit_color() {
     fi
 }
 
+# Tighter than the rate-limit tiers: quality and cost degrade well before the
+# window is full, so flag growth early. Percent of the window (not raw tokens)
+# keeps the tiers meaningful on both 200k and 1M windows.
+context_pct_color() {
+    local pct=$1
+
+    if [[ -n "$pct" && $pct -ge 30 ]]; then
+        echo "$red"
+    elif [[ -n "$pct" && $pct -ge 20 ]]; then
+        echo "$yellow"
+    fi
+}
+
 # Same "color means pay attention" rule, plus green for the one state that says
 # the PR is ready to land; pending and unknown stay in the default foreground.
 pr_review_color() {
@@ -681,9 +683,10 @@ else
     workspace_line="${workspace_line} 🔀-"
 fi
 
-tokens_used_color=""
-if [[ "$exceeds_200k" == "true" ]]; then
-    tokens_used_color="${bold}${red}"
+context_color=$(context_pct_color "$context_pct")
+context_emphasis=""
+if [[ -n "$context_color" ]]; then
+    context_emphasis="$bold"
 fi
 
 # Not in the payload, so read the setting `/advisor` persists. Flag-only or
@@ -709,7 +712,7 @@ if [[ "$SHOW_CONTEXT_PCT" == "true" ]]; then
     context_pct_display=" ${gray}${context_pct}%${reset}"
 fi
 
-context_segment="🪣${tokens_used_color}${tokens_k}k${reset}/${context_display}${context_pct_display}"
+context_segment="🪣${context_color}${context_emphasis}${tokens_k}k${reset}/${context_display}${context_pct_display}"
 context_link=$(osc8_link "statusline-context" "${claude_code_docs_url}/context-window" "$context_segment")
 
 model_link=$(osc8_link "statusline-model" "${claude_code_docs_url}/model-config" "✳️${model}")
