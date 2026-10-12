@@ -26,6 +26,10 @@ red='\033[31m'
 gray='\033[90m'
 reset='\033[0m'
 
+# Splits a meter's percentage from its countdown (`12%·2h19m`) without adding
+# width, leaving plain spaces to mean "next segment".
+value_separator="${gray}·${reset}"
+
 input=$(cat)
 
 # Validate once up front: if the harness ever pipes us malformed or empty input,
@@ -455,7 +459,14 @@ if [[ "$prompt_cache_present" == "true" ]]; then
         prompt_cache_hit_display="${prompt_cache_color}${prompt_cache_emphasis}${prompt_cache_hit_pct}%${reset}"
     fi
 
-    prompt_cache_segment="${prompt_cache_icon}${prompt_cache_hit_display}${prompt_cache_state}"
+    # A cold cache has no countdown and a missing ratio has no percentage, so
+    # the separator only appears when there are two values to split.
+    prompt_cache_separator=""
+    if [[ -n "$prompt_cache_hit_display" && -n "$prompt_cache_state" ]]; then
+        prompt_cache_separator="$value_separator"
+    fi
+
+    prompt_cache_segment="${prompt_cache_icon}${prompt_cache_hit_display}${prompt_cache_separator}${prompt_cache_state}"
 else
     # The harness omits `prompt_cache` until the first main-thread response after
     # startup, /clear, resume, fork, or remote attach. A placeholder keeps the
@@ -536,7 +547,7 @@ if [[ -n "$five_hour_pct_int" ]]; then
         five_hour_emphasis="$bold"
     fi
 
-    five_hour_segment="⏱️${five_hour_color}${five_hour_emphasis}${five_hour_pct_int}%${reset}${five_hour_reset_display}"
+    five_hour_segment="⏱️${five_hour_color}${five_hour_emphasis}${five_hour_pct_int}%${reset}${value_separator}${five_hour_reset_display}"
 fi
 
 seven_day_segment="🗓️-"
@@ -547,7 +558,7 @@ if [[ -n "$seven_day_pct_int" ]]; then
         seven_day_emphasis="$bold"
     fi
 
-    seven_day_segment="🗓️${seven_day_color}${seven_day_emphasis}${seven_day_pct_int}%${reset}${seven_day_reset_display}"
+    seven_day_segment="🗓️${seven_day_color}${seven_day_emphasis}${seven_day_pct_int}%${reset}${value_separator}${seven_day_reset_display}"
 fi
 
 # Unlike the two windows above, the spend limit only exists behind a Claude apps
@@ -566,7 +577,7 @@ if [[ "$has_spend_limit" == "true" ]]; then
         spend_limit_emphasis="$bold"
     fi
 
-    spend_limit_segment="💳${spend_limit_color}${spend_limit_emphasis}${spend_limit_pct_int}%${reset}${spend_limit_reset_display}"
+    spend_limit_segment="💳${spend_limit_color}${spend_limit_emphasis}${spend_limit_pct_int}%${reset}${value_separator}${spend_limit_reset_display}"
 fi
 
 # The statusline only shows the percentage and reset time; the usage page holds
