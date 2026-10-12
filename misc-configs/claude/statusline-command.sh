@@ -753,8 +753,17 @@ if [[ -n "$claude_version" ]]; then
 fi
 
 # Trails the state line: it identifies the session rather than describing its
-# state, so it sits past the segments that change from turn to turn.
+# state, so it sits past the segments that change from turn to turn. A `-`
+# placeholder (same as the cache and rate-limit meters) keeps the slot visible
+# before a name exists, so "unnamed" reads differently from a failed render.
+session_label="🏷️-"
+
+has_session_name=false
 if [[ -n "$session_name" ]]; then
+    has_session_name=true
+fi
+
+if [[ "$has_session_name" == "true" ]]; then
     session_label="🏷️${session_name}"
 
     # Without a transcript path there's nothing to open, so keep the plain label.
@@ -766,9 +775,9 @@ if [[ -n "$session_name" ]]; then
     if [[ "$has_transcript_path" == "true" ]]; then
         session_label=$(osc8_link "statusline-session" "file://${transcript_path}" "🏷️${session_name}")
     fi
-
-    state_line="${state_line} ${session_label}"
 fi
+
+state_line="${state_line} ${session_label}"
 
 echo -e "$workspace_line"
 echo -e "$state_line"
