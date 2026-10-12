@@ -16,7 +16,6 @@ SHOW_ADVISOR=true
 SHOW_CONTEXT_PCT=false
 SHOW_VERSION=false
 
-# Colors
 bold='\033[1m'
 italic='\033[3m'
 green='\033[32m'
@@ -113,8 +112,8 @@ else
 fi
 
 # The payload doesn't carry focus view, so mirror how Claude Code resolves it:
-# a `viewMode` setting wins outright (last of user < project < local), and only
-# when none is set does the `/focus` toggle persisted in the global config apply.
+# a `viewMode` setting wins outright, and only when none is set does the
+# `/focus` toggle persisted in the global config apply.
 claude_config_dir="${CLAUDE_CONFIG_DIR:-$HOME/.claude}"
 global_config_file="${CLAUDE_CONFIG_DIR:-$HOME}/.claude.json"
 
@@ -374,8 +373,7 @@ spend_limit_reset_display=$(format_reset_short "$spend_limit_resets" "$now_epoch
 
 # Session-level cache stats come straight from the harness (v2.1.251+), which
 # also re-runs this script the moment `expires_at` passes, so the warm→cold
-# flip needs no timer of its own. One field per line, same as the repo fields
-# below, so a null `hit_ratio` reads as empty instead of shifting the others.
+# flip needs no timer of its own.
 {
     read -r prompt_cache_present
     read -r prompt_cache_warm
@@ -392,8 +390,7 @@ spend_limit_reset_display=$(format_reset_short "$spend_limit_resets" "$now_epoch
     '
 )
 
-# One field per line again, so a missing `review_state` (it can be absent while
-# `pr` is present) reads as empty instead of shifting a later field into its slot.
+# `review_state` can be absent while `pr` is present.
 {
     read -r pr_number
     read -r pr_url
@@ -406,8 +403,7 @@ spend_limit_reset_display=$(format_reset_short "$spend_limit_resets" "$now_epoch
     '
 )
 
-# Same convention as the rate-limit meters: a healthy ratio stays in the default
-# foreground and only a degraded one gets color, so color means "pay attention".
+# Same color convention as the rate-limit meters below.
 # A sustained drop means the prefix changed (CLAUDE.md edited, tools added, TTL
 # lapsed) and the next turns run slower and pricier until the cache rebuilds.
 prompt_cache_hit_color() {
@@ -422,7 +418,6 @@ prompt_cache_hit_color() {
 
 prompt_cache_segment=""
 if [[ "$prompt_cache_present" == "true" ]]; then
-    # The icon leads the segment, so the state below carries only the countdown.
     if [[ "$prompt_cache_warm" == "true" ]]; then
         prompt_cache_icon="🔥"
         prompt_cache_state="$(format_reset_short "$prompt_cache_expires_at" "$now_epoch")"
@@ -458,8 +453,7 @@ if [[ "$prompt_cache_present" == "true" ]]; then
     prompt_cache_segment="${prompt_cache_icon}${prompt_cache_hit_display}${prompt_cache_separator}${prompt_cache_state}"
 else
     # The harness omits `prompt_cache` until the first main-thread response after
-    # startup, /clear, resume, fork, or remote attach. A placeholder keeps the
-    # segment from vanishing and shifting the rest of the line.
+    # startup, /clear, resume, fork, or remote attach.
     prompt_cache_segment="🔥-"
 fi
 
@@ -510,8 +504,8 @@ rate_limit_color() {
 }
 
 # Tighter than the rate-limit tiers: quality and cost degrade well before the
-# window is full, so flag growth early. Percent of the window (not raw tokens)
-# keeps the tiers meaningful on both 200k and 1M windows.
+# window is full. Percent of the window (not raw tokens) keeps the tiers
+# meaningful on both 200k and 1M windows.
 context_pct_color() {
     local pct=$1
 
@@ -522,8 +516,8 @@ context_pct_color() {
     fi
 }
 
-# Same "color means pay attention" rule, plus green for the one state that says
-# the PR is ready to land; pending and unknown stay in the default foreground.
+# Green marks the one state that says the PR is ready to land; pending and
+# unknown stay in the default foreground.
 pr_review_color() {
     local review_state=$1
 
@@ -537,8 +531,7 @@ pr_review_color() {
 # The harness omits rate_limits until the first API response (and entirely on
 # API-key billing), and each window can be absent independently. A placeholder
 # keeps each meter's slot from vanishing and shifting the rest of the line, the
-# same way the cache segment does. The `-n` guard ensures an empty (missing)
-# percentage never renders a blank/zero value.
+# same way the cache segment does.
 five_hour_segment="⏱️-"
 if [[ -n "$five_hour_pct_int" ]]; then
     five_hour_color=$(rate_limit_color "$five_hour_pct_int")
@@ -635,9 +628,7 @@ fi
 # A worktree moves the work into a second working directory the user isn't
 # looking at, so it gets cyan styling rather than the neutral default of the
 # other dir decorations. The emoji and label link to the tree so a cmd-click
-# lands in the right place. Outside a worktree the indicator stays visible with a
-# `-` placeholder (same as the PR segment) so "not in a worktree" is
-# distinguishable from a segment that failed to render.
+# lands in the right place.
 is_in_worktree=false
 if [[ -n "$worktree_name" ]]; then
     is_in_worktree=true
@@ -672,9 +663,7 @@ if [[ "$git_branch_is_repo" == "true" ]]; then
 fi
 
 # The PR belongs to the branch, so it follows the branch bullet. The harness
-# drops `pr` once it merges or closes, so the indicator stays visible with a `-`
-# placeholder (same as the cache and rate-limit meters) to make "no open PR"
-# distinguishable from a segment that failed to render.
+# drops `pr` once it merges or closes.
 has_pr=false
 if [[ -n "$pr_number" ]]; then
     has_pr=true
@@ -776,8 +765,7 @@ output_style_label="💅🏻${output_style_emoji}${output_style_color}${output_s
 output_style_url="${claude_code_docs_url}/output-styles#${output_style_anchor}"
 output_style_link=$(osc8_link "statusline-output-style" "$output_style_url" "$output_style_label")
 
-# The leading space lives here so a hidden cache segment wouldn't leave a double
-# space; it follows the context bucket because both describe the same window.
+# Follows the context bucket because both describe the same window.
 prompt_cache_display=""
 if [[ -n "$prompt_cache_segment" ]]; then
     prompt_cache_link=$(osc8_link "statusline-prompt-cache" "${claude_code_docs_url}/prompt-caching#check-cache-performance" "$prompt_cache_segment")
@@ -803,9 +791,7 @@ if [[ -n "$claude_version" ]]; then
 fi
 
 # Trails the state line: it identifies the session rather than describing its
-# state, so it sits past the segments that change from turn to turn. A `-`
-# placeholder (same as the cache and rate-limit meters) keeps the slot visible
-# before a name exists, so "unnamed" reads differently from a failed render.
+# state, so it sits past the segments that change from turn to turn.
 session_label="🏷️-"
 
 has_session_name=false
@@ -816,7 +802,6 @@ fi
 if [[ "$has_session_name" == "true" ]]; then
     session_label="🏷️${session_name}"
 
-    # Without a transcript path there's nothing to open, so keep the plain label.
     has_transcript_path=false
     if [[ -n "$transcript_path" ]]; then
         has_transcript_path=true
