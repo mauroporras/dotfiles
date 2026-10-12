@@ -741,12 +741,15 @@ esac
 output_style_label="💅🏻${output_style_emoji}${output_style_color}${output_style_title}${reset}"
 output_style_link=$(osc8_link "statusline-output-style" "${claude_code_docs_url}/output-styles" "$output_style_label")
 
-state_line="${model_link}${advisor_display} ${output_style_link} ${effort_link} ${thinking_link} ${context_link} ${fast_mode_link} ${fullscreen_link}${focus_mode_link}"
-
+# The leading space lives here so a hidden cache segment wouldn't leave a double
+# space; it follows the context bucket because both describe the same window.
+prompt_cache_display=""
 if [[ -n "$prompt_cache_segment" ]]; then
     prompt_cache_link=$(osc8_link "statusline-prompt-cache" "${claude_code_docs_url}/prompt-caching#check-cache-performance" "$prompt_cache_segment")
-    state_line="${state_line} ${prompt_cache_link}"
+    prompt_cache_display=" ${prompt_cache_link}"
 fi
+
+state_line="${model_link}${advisor_display} ${output_style_link} ${effort_link} ${thinking_link} ${context_link}${prompt_cache_display} ${fast_mode_link} ${fullscreen_link}${focus_mode_link}"
 
 state_line="${state_line} ${rate_limits_display}"
 
