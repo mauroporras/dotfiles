@@ -641,7 +641,7 @@ fi
 
 if [[ "$is_in_worktree" == "true" ]]; then
     worktree_link=$(osc8_link "statusline-worktree" "file://${worktree_path}" "$worktree_name")
-    workspace_line="${workspace_line} 🌳${yellow}${worktree_link}${reset}"
+    workspace_line="${workspace_line} 🌳${cyan}${worktree_link}${reset}"
 fi
 
 if [[ "$git_branch_is_repo" == "true" ]]; then
