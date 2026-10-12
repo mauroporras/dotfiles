@@ -429,8 +429,10 @@ prompt_cache_hit_color() {
 
 prompt_cache_segment=""
 if [[ "$prompt_cache_present" == "true" ]]; then
+    # The icon leads the segment, so the state below carries only the countdown.
     if [[ "$prompt_cache_warm" == "true" ]]; then
-        prompt_cache_state="🔥$(format_reset_short "$prompt_cache_expires_at" "$now_epoch")"
+        prompt_cache_icon="🔥"
+        prompt_cache_state="$(format_reset_short "$prompt_cache_expires_at" "$now_epoch")"
 
         # The countdown only means something against the lifetime it's racing
         # (5m vs 1h), so show the TTL next to it.
@@ -438,7 +440,8 @@ if [[ "$prompt_cache_present" == "true" ]]; then
             prompt_cache_state="${prompt_cache_state}${gray}/${prompt_cache_ttl}${reset}"
         fi
     else
-        prompt_cache_state="❄️"
+        prompt_cache_icon="❄️"
+        prompt_cache_state=""
     fi
 
     prompt_cache_hit_display=""
@@ -452,7 +455,7 @@ if [[ "$prompt_cache_present" == "true" ]]; then
         prompt_cache_hit_display="${prompt_cache_color}${prompt_cache_emphasis}${prompt_cache_hit_pct}%${reset}"
     fi
 
-    prompt_cache_segment="${prompt_cache_hit_display}${prompt_cache_state}"
+    prompt_cache_segment="${prompt_cache_icon}${prompt_cache_hit_display}${prompt_cache_state}"
 else
     # The harness omits `prompt_cache` until the first main-thread response after
     # startup, /clear, resume, fork, or remote attach. A placeholder keeps the
@@ -533,7 +536,7 @@ if [[ -n "$five_hour_pct_int" ]]; then
         five_hour_emphasis="$bold"
     fi
 
-    five_hour_segment="${five_hour_color}${five_hour_emphasis}${five_hour_pct_int}%${reset}⏱️${five_hour_reset_display}"
+    five_hour_segment="⏱️${five_hour_color}${five_hour_emphasis}${five_hour_pct_int}%${reset}${five_hour_reset_display}"
 fi
 
 seven_day_segment="🗓️-"
@@ -544,7 +547,7 @@ if [[ -n "$seven_day_pct_int" ]]; then
         seven_day_emphasis="$bold"
     fi
 
-    seven_day_segment="${seven_day_color}${seven_day_emphasis}${seven_day_pct_int}%${reset}🗓️${seven_day_reset_display}"
+    seven_day_segment="🗓️${seven_day_color}${seven_day_emphasis}${seven_day_pct_int}%${reset}${seven_day_reset_display}"
 fi
 
 # Unlike the two windows above, the spend limit only exists behind a Claude apps
@@ -563,7 +566,7 @@ if [[ "$has_spend_limit" == "true" ]]; then
         spend_limit_emphasis="$bold"
     fi
 
-    spend_limit_segment="${spend_limit_color}${spend_limit_emphasis}${spend_limit_pct_int}%${reset}💳${spend_limit_reset_display}"
+    spend_limit_segment="💳${spend_limit_color}${spend_limit_emphasis}${spend_limit_pct_int}%${reset}${spend_limit_reset_display}"
 fi
 
 # The statusline only shows the percentage and reset time; the usage page holds
