@@ -741,9 +741,7 @@ esac
 output_style_label="💅🏻${output_style_emoji}${output_style_color}${output_style_title}${reset}"
 output_style_link=$(osc8_link "statusline-output-style" "${claude_code_docs_url}/output-styles" "$output_style_label")
 
-state_line="${model_link}${advisor_display} ${output_style_link} ${effort_link} ${thinking_link} ${fast_mode_link} ${fullscreen_link}${focus_mode_link}"
-
-state_line="${state_line} ${context_link}"
+state_line="${model_link}${advisor_display} ${output_style_link} ${effort_link} ${thinking_link} ${context_link} ${fast_mode_link} ${fullscreen_link}${focus_mode_link}"
 
 if [[ -n "$prompt_cache_segment" ]]; then
     prompt_cache_link=$(osc8_link "statusline-prompt-cache" "${claude_code_docs_url}/prompt-caching#check-cache-performance" "$prompt_cache_segment")
