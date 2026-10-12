@@ -718,13 +718,13 @@ model_link=$(osc8_link "statusline-model" "${claude_code_docs_url}/model-config"
 effort_link=$(osc8_link "statusline-effort" "${claude_code_docs_url}/model-config#adjust-effort-level" "💪🏻${effort_display}")
 thinking_link=$(osc8_link "statusline-thinking" "${claude_code_docs_url}/model-config#extended-thinking" "🧠${thinking_display}")
 fast_mode_link=$(osc8_link "statusline-fast-mode" "${claude_code_docs_url}/fast-mode" "⚡️💵${fast_mode_display}")
-fullscreen_link=$(osc8_link "statusline-fullscreen" "${claude_code_docs_url}/fullscreen" "🖥️${fullscreen_display}")
+fullscreen_link=$(osc8_link "statusline-fullscreen" "${claude_code_docs_url}/fullscreen#enable-fullscreen-rendering" "🖥️${fullscreen_display}")
 
 # `focus_mode_segment` is empty when fullscreen is known-off, and an empty label
 # would leave a dead zero-width link behind.
 focus_mode_link=""
 if [[ -n "$focus_mode_segment" ]]; then
-    focus_mode_link=$(osc8_link "statusline-focus" "${claude_code_docs_url}/fullscreen" "$focus_mode_segment")
+    focus_mode_link=$(osc8_link "statusline-focus" "${claude_code_docs_url}/fullscreen#search-and-review-the-conversation" "$focus_mode_segment")
 fi
 
 # `${var^}` needs bash 4 and /bin/bash on macOS is 3.2, hence `tr` on the first char.
