@@ -710,7 +710,21 @@ fi
 output_style_initial=$(printf '%s' "${output_style_display:0:1}" | tr '[:lower:]' '[:upper:]')
 output_style_title="${output_style_initial}${output_style_display:1}"
 
-output_style_label="💅🏻${output_style_color}${output_style_title}${reset}"
+# Each style gets its own emoji after the generic 💅🏻 marker so a glance tells
+# which one is in effect; names arrive capitalized for built-ins ("Concise") and
+# lowercase for `default`, so match case-insensitively. `default` and unknown
+# (custom) styles get no extra emoji, since the generic marker already covers them.
+output_style_key=$(printf '%s' "$output_style_display" | tr '[:upper:]' '[:lower:]')
+
+case "$output_style_key" in
+proactive) output_style_emoji="🚀" ;;
+concise) output_style_emoji="✂️" ;;
+explanatory) output_style_emoji="📖" ;;
+learning) output_style_emoji="🎓" ;;
+*) output_style_emoji="" ;;
+esac
+
+output_style_label="💅🏻${output_style_emoji}${output_style_color}${output_style_title}${reset}"
 output_style_link=$(osc8_link "statusline-output-style" "${claude_code_docs_url}/output-styles" "$output_style_label")
 
 state_line="${model_link}${advisor_display} ${output_style_link} ${effort_link} ${thinking_link} ${fast_mode_link} ${fullscreen_link}${focus_mode_link}"
