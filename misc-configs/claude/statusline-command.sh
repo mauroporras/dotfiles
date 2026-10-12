@@ -598,7 +598,14 @@ if [[ "$has_spend_limit" == "true" ]]; then
     rate_limits_display="${rate_limits_display} ${spend_limit_link}"
 fi
 
-current_dir_link=$(osc8_link "statusline-dir" "file://${current_dir}" "📁${current_dir_display}")
+# Colored only after a `cd` away from the project dir, so the highlight flags the
+# change instead of being the permanent look.
+current_dir_name="$current_dir_display"
+if [[ -n "$project_divergence_display" ]]; then
+    current_dir_name="${cyan}${current_dir_display}${reset}"
+fi
+
+current_dir_link=$(osc8_link "statusline-dir" "file://${current_dir}" "📁${current_dir_name}")
 workspace_line="${current_dir_link}"
 
 # Workspace decorations sit between the current dir and the branch bullet so
