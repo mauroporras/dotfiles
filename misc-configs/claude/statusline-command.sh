@@ -713,7 +713,7 @@ output_style_title="${output_style_initial}${output_style_display:1}"
 output_style_label="💅🏻${output_style_color}${output_style_title}${reset}"
 output_style_link=$(osc8_link "statusline-output-style" "${claude_code_docs_url}/output-styles" "$output_style_label")
 
-state_line="${model_link}${advisor_display} ${effort_link}${thinking_link} ${output_style_link} ${fast_mode_link} ${fullscreen_link}${focus_mode_link}"
+state_line="${model_link}${advisor_display} ${output_style_link} ${effort_link}${thinking_link} ${fast_mode_link} ${fullscreen_link}${focus_mode_link}"
 
 state_line="${state_line} ${context_link}"
 
