@@ -41,8 +41,8 @@
   "//terminalProgressBarEnabled": "It's inconsistend and annoying.",
   "terminalProgressBarEnabled": false,
 
-  "//prStatusFooterEnabled": "The statusline already shows the PR link.",
-  "prStatusFooterEnabled": false,
+  "//prStatusFooterEnabled": "Keep true: custom PR indicator depends on it.",
+  "prStatusFooterEnabled": true,
 
   "//terminalTitleFromRename": "/rename and --name would otherwise still change the terminal tab title.",
   "terminalTitleFromRename": true,
