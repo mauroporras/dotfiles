@@ -38,11 +38,11 @@
   "//maxProseWidth": "Min. 40. Text wraps at this many columns; tables and code blocks keep the full width",
   "maxProseWidth": 80,
 
-  "//terminalProgressBarEnabled": "It's inconsistend and annoying",
-  "terminalProgressBarEnabled": false,
-
   "//prStatusFooterEnabled": "Keep true: custom PR indicator depends on it",
   "prStatusFooterEnabled": true,
+
+  "//terminalProgressBarEnabled": "It's inconsistend and annoying",
+  "terminalProgressBarEnabled": false,
 
   "//terminalTitleFromRename": "/rename and --name would otherwise still change the terminal tab title",
   "terminalTitleFromRename": true,
