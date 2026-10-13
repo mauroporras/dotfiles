@@ -348,7 +348,7 @@ format_reset_short() {
     local now=$2
 
     if [[ -z "$target" ]]; then
-        echo "-"
+        echo "➖"
         return
     fi
 
@@ -462,7 +462,7 @@ if [[ "$prompt_cache_present" == "true" ]]; then
 else
     # The harness omits `prompt_cache` until the first main-thread response after
     # startup, /clear, resume, fork, or remote attach.
-    prompt_cache_segment="🔥-"
+    prompt_cache_segment="🔥➖"
 fi
 
 
@@ -540,7 +540,7 @@ pr_review_color() {
 # API-key billing), and each window can be absent independently. A placeholder
 # keeps each meter's slot from vanishing and shifting the rest of the line, the
 # same way the cache segment does.
-five_hour_segment="⏱️-"
+five_hour_segment="⏱️➖"
 if [[ -n "$five_hour_pct_int" ]]; then
     five_hour_color=$(rate_limit_color "$five_hour_pct_int")
     # A color is only assigned outside the normal range, so reuse its presence as
@@ -553,7 +553,7 @@ if [[ -n "$five_hour_pct_int" ]]; then
     five_hour_segment="⏱️${five_hour_color}${five_hour_emphasis}${five_hour_pct_int}%${reset}${value_separator}${five_hour_reset_display}"
 fi
 
-seven_day_segment="🗓️-"
+seven_day_segment="🗓️➖"
 if [[ -n "$seven_day_pct_int" ]]; then
     seven_day_color=$(rate_limit_color "$seven_day_pct_int")
     seven_day_emphasis=""
@@ -565,7 +565,7 @@ if [[ -n "$seven_day_pct_int" ]]; then
 fi
 
 # Unlike the two windows above, the spend limit only exists behind a Claude apps
-# gateway (the harness omits it on subscription and API-key setups), so a `-`
+# gateway (the harness omits it on subscription and API-key setups), so a `➖`
 # placeholder would be a permanent dead slot there. Render it only when present.
 has_spend_limit=false
 if [[ -n "$spend_limit_pct_int" ]]; then
@@ -647,7 +647,7 @@ if [[ "$is_in_worktree" == "true" ]]; then
     worktree_link=$(osc8_link "statusline-worktree" "file://${worktree_path}" "$worktree_label")
     workspace_line="${workspace_line} ${worktree_link}"
 else
-    workspace_line="${workspace_line} 🌳-"
+    workspace_line="${workspace_line} 🌳➖"
 fi
 
 if [[ "$git_branch_is_repo" == "true" ]]; then
@@ -682,7 +682,7 @@ if [[ "$has_pr" == "true" ]]; then
     pr_link=$(osc8_link "statusline-pr" "$pr_url" "🔀#${pr_number}")
     workspace_line="${workspace_line} ${pr_color}${pr_link}${reset}"
 else
-    workspace_line="${workspace_line} 🔀-"
+    workspace_line="${workspace_line} 🔀➖"
 fi
 
 context_color=$(context_pct_color "$context_pct")
@@ -793,7 +793,7 @@ fi
 
 # Trails the state line: it identifies the session rather than describing its
 # state, so it sits past the segments that change from turn to turn.
-session_label="🏷️-"
+session_label="🏷️➖"
 
 has_session_name=false
 if [[ -n "$session_name" ]]; then
