@@ -174,12 +174,20 @@ else
     fullscreen_display="?"
 fi
 
-# Focus view only exists in the fullscreen renderer, so a focus indicator next
-# to a known-off fullscreen would describe a mode that can't be active. An
-# unknown ("?") renderer keeps it, since fullscreen may well be on.
-focus_mode_segment="🎯${focus_mode_display}"
+# Focus view only exists in the fullscreen renderer, so an on/off dot next to a
+# known-off fullscreen would describe a mode that can't be active. An unknown
+# ("?") renderer keeps the real value, since fullscreen may well be on.
+is_focus_unavailable=false
 if [[ "$fullscreen_display" == "⚪️" ]]; then
-    focus_mode_segment=""
+    is_focus_unavailable=true
+fi
+
+if [[ "$is_focus_unavailable" == "true" ]]; then
+    focus_mode_segment="🎯➖"
+    focus_mode_url_anchor="enable-fullscreen-rendering"
+else
+    focus_mode_segment="🎯${focus_mode_display}"
+    focus_mode_url_anchor="search-and-review-the-conversation"
 fi
 
 # Debug: uncomment to see raw input
@@ -713,14 +721,7 @@ model_link=$(osc8_link "statusline-model" "${claude_code_docs_url}/model-config"
 effort_link=$(osc8_link "statusline-effort" "${claude_code_docs_url}/model-config#adjust-effort-level" "💪🏻${effort_display}")
 thinking_link=$(osc8_link "statusline-thinking" "${claude_code_docs_url}/model-config#extended-thinking" "🧠${thinking_display}")
 fast_mode_link=$(osc8_link "statusline-fast-mode" "${claude_code_docs_url}/fast-mode" "⚡️💵${fast_mode_display}")
-fullscreen_link=$(osc8_link "statusline-fullscreen" "${claude_code_docs_url}/fullscreen#enable-fullscreen-rendering" "🖥️${fullscreen_display}")
-
-# `focus_mode_segment` is empty when fullscreen is known-off, and an empty label
-# would leave a dead zero-width link behind.
-focus_mode_link=""
-if [[ -n "$focus_mode_segment" ]]; then
-    focus_mode_link=$(osc8_link "statusline-focus" "${claude_code_docs_url}/fullscreen#search-and-review-the-conversation" "$focus_mode_segment")
-fi
+focus_mode_link=$(osc8_link "statusline-focus" "${claude_code_docs_url}/fullscreen#${focus_mode_url_anchor}" "$focus_mode_segment")
 
 # `${var^}` needs bash 4 and /bin/bash on macOS is 3.2, hence `tr` on the first char.
 output_style_initial=$(printf '%s' "${output_style_display:0:1}" | tr '[:lower:]' '[:upper:]')
@@ -772,7 +773,7 @@ if [[ -n "$prompt_cache_segment" ]]; then
     prompt_cache_display=" ${prompt_cache_link}"
 fi
 
-state_line="${model_link}${advisor_display} ${output_style_link} ${effort_link} ${thinking_link} ${context_link}${prompt_cache_display} ${fast_mode_link} ${fullscreen_link}${focus_mode_link}"
+state_line="${model_link}${advisor_display} ${output_style_link} ${effort_link} ${thinking_link} ${context_link}${prompt_cache_display} ${fast_mode_link} ${focus_mode_link}"
 
 state_line="${state_line} ${rate_limits_display}"
 
