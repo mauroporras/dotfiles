@@ -8,7 +8,7 @@
     "pr": "",
     "sessionUrl": false
   },
-  "//refreshInterval": "Rate-limit countdowns only re-render on events, so they go stale while idle.",
+  "//refreshInterval": "Rate-limit countdowns only re-render on events, so they go stale while idle",
   "statusLine": {
     "type": "command",
     "command": "/bin/bash ~/.claude/statusline-command.sh",
@@ -35,28 +35,28 @@
   "//advisorModel": "https://code.claude.com/docs/en/advisor",
   "advisorModel": "fable",
 
-  "//maxProseWidth": "Min. 40. Text wraps at this many columns; tables and code blocks keep the full width.",
+  "//maxProseWidth": "Min. 40. Text wraps at this many columns; tables and code blocks keep the full width",
   "maxProseWidth": 80,
 
-  "//terminalProgressBarEnabled": "It's inconsistend and annoying.",
+  "//terminalProgressBarEnabled": "It's inconsistend and annoying",
   "terminalProgressBarEnabled": false,
 
-  "//prStatusFooterEnabled": "Keep true: custom PR indicator depends on it.",
+  "//prStatusFooterEnabled": "Keep true: custom PR indicator depends on it",
   "prStatusFooterEnabled": true,
 
-  "//terminalTitleFromRename": "/rename and --name would otherwise still change the terminal tab title.",
+  "//terminalTitleFromRename": "/rename and --name would otherwise still change the terminal tab title",
   "terminalTitleFromRename": true,
 
-  "//agentPushNotifEnabled": "Sometimes they're useful. Just learn to ignore them.",
+  "//agentPushNotifEnabled": "Sometimes they're useful. Just learn to ignore them",
   "_agentPushNotifEnabled": false,
   "_preferredNotifChannel": "terminal_bell",
 
-  "//keybindingFlavor": "It was not deleting word by word.",
+  "//keybindingFlavor": "It was not deleting word by word",
   "_keybindingFlavor": "readline",
 
-  "//remoteControlAtStartup": "Sometimes it fails at the worst time and blocks the session.",
+  "//remoteControlAtStartup": "Sometimes it fails at the worst time and blocks the session",
   "_remoteControlAtStartup": true,
 
-  "//viewMode": "Scrollback gets too long.",
+  "//viewMode": "Scrollback gets too long",
   "_viewMode": "verbose"
 }
