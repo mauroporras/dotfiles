@@ -221,7 +221,7 @@ git_branch_upstream_display=""
 
 # Detect repo membership via rev-parse rather than `git branch --show-current`,
 # which returns empty during rebase / detached HEAD and would otherwise falsely
-# read as "no-repo".
+# read as not being in a repo.
 if git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
     git_branch_is_repo=true
     current_branch=$(git branch --show-current 2> /dev/null)
@@ -625,10 +625,10 @@ fi
 
 # The repo identity precedes the worktree so the eye reads "which repo, then
 # which tree of it" before the branch that tree has checked out. Outside a repo
-# there is no repo identity to show, so the slot says so (red, as an alert)
-# instead of leaving the line looking merely incomplete.
+# there is no repo identity to show, so the slot says so with the `➖`
+# placeholder instead of leaving the line looking merely incomplete.
 if [[ "$git_branch_is_repo" != "true" ]]; then
-    workspace_line="${workspace_line} 📦${red}no-repo${reset}"
+    workspace_line="${workspace_line} 📦➖"
 elif [[ -n "$github_repo_display" ]]; then
     workspace_line="${workspace_line} ${github_repo_display}"
 fi
