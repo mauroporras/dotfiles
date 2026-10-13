@@ -543,8 +543,6 @@ pr_review_color() {
 five_hour_segment="⏱️➖"
 if [[ -n "$five_hour_pct_int" ]]; then
     five_hour_color=$(rate_limit_color "$five_hour_pct_int")
-    # A color is only assigned outside the normal range, so reuse its presence as
-    # the signal to also bold the percentage for extra emphasis.
     five_hour_emphasis=""
     if [[ -n "$five_hour_color" ]]; then
         five_hour_emphasis="$bold"
@@ -588,8 +586,6 @@ fi
 # them separately instead of as one link spanning the space between them.
 usage_settings_url="https://claude.ai/new#settings/usage"
 
-# Indicator-only segments (emoji + a value) don't say what they mean, so each
-# one links to the docs page that explains it.
 claude_code_docs_url="https://code.claude.com/docs/en"
 five_hour_link=$(osc8_link "statusline-five-hour" "$usage_settings_url" "$five_hour_segment")
 seven_day_link=$(osc8_link "statusline-seven-day" "$usage_settings_url" "$seven_day_segment")
@@ -624,9 +620,7 @@ if [[ -n "$added_dirs_display" ]]; then
 fi
 
 # The repo identity precedes the worktree so the eye reads "which repo, then
-# which tree of it" before the branch that tree has checked out. Outside a repo
-# there is no repo identity to show, so the slot says so with the `➖`
-# placeholder instead of leaving the line looking merely incomplete.
+# which tree of it" before the branch that tree has checked out.
 if [[ "$git_branch_is_repo" != "true" ]]; then
     workspace_line="${workspace_line} 📦➖"
 elif [[ -n "$github_repo_display" ]]; then
@@ -635,8 +629,7 @@ fi
 
 # A worktree moves the work into a second working directory the user isn't
 # looking at, so it gets cyan styling rather than the neutral default of the
-# other dir decorations. The emoji and label link to the tree so a cmd-click
-# lands in the right place.
+# other dir decorations.
 is_in_worktree=false
 if [[ -n "$worktree_name" ]]; then
     is_in_worktree=true
