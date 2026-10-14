@@ -26,6 +26,13 @@
   "spellcheck": {
     "enabled": true
   },
+  "spinnerTipsOverride": {
+    "label": "Mauro tip",
+    "tips": [
+      "Check `~/.claude/projects` periodically: dirs of deleted worktrees and throwaway folders pile up",
+      "Check `~/.claude/file-history` periodically: per-session `/rewind` snapshots pile up"
+    ]
+  },
 
   "autoMemoryEnabled": false,
   "editorMode": "vim",
