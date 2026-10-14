@@ -36,7 +36,7 @@
   "advisorModel": "fable",
 
   "//cleanupPeriodDays": "Pinned explicitly so an upstream default change doesn't alter /resume history",
-  "cleanupPeriodDays": 30,
+  "cleanupPeriodDays": 20,
 
   "//maxProseWidth": "Min. 40. Text wraps at this many columns; tables and code blocks keep the full width",
   "maxProseWidth": 80,
