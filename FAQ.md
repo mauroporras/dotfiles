@@ -120,3 +120,17 @@ I prefer explicit CLAUDE.md over implicit memory. I don't want some comment I ma
 ```sh
 nix-shell --command zsh -p go
 ```
+
+## Direnv
+
+### Why does the prompt name an environment?
+
+A shell wired to production looks exactly like a shell wired to a scratch database, and the difference only shows up after you run the command. So the prompt says which one it is: 🚨 in red for `production` (or `prod`), 🧪 in green for anything else, and nothing at all when no environment is loaded.
+
+It reads `PROJECT_ENV` from the environment, which direnv exports on the way into a directory and drops on the way out — so the prompt can't keep naming an environment you've already left. See `example-configs/shell.development.nix` for the Nix-shell way to set it; a plain `export PROJECT_ENV=staging` in `.envrc` works just as well.
+
+The match is on "not production" rather than on a list of known names, so a new environment (`staging`, `review-42`) shows up without touching the config. The tradeoff is that only `production` and `prod` trigger the alarm: a typo like `producton` renders calm and green.
+
+### Why `PROJECT_ENV` and not `ENVIRONMENT` or `APP_ENV`?
+
+Those names are already taken by frameworks, CI runners, and container images, so the prompt would light up in shells nobody configured for it. `PROJECT_ENV` is only ever set on purpose.
