@@ -28,6 +28,7 @@ brew "gh" # Required for the aliases.
 brew "git"
 brew "git-delta" # Syntax-highlighting pager.
 brew "git-lfs"
+brew "gitlogue" # Cinematic commit replay: https://github.com/unhappychoice/gitlogue
 brew "lazygit"
 
 # Languages & runtimes
