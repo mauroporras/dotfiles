@@ -18,6 +18,7 @@ brew "fzf"
 brew "less"
 brew "ripgrep"
 brew "tree"
+brew "visidata" # Terminal spreadsheet multitool: https://www.visidata.org
 brew "watch"
 brew "yazi"
 brew "zoxide"
