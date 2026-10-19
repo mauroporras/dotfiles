@@ -814,7 +814,7 @@ if [[ -n "$prompt_cache_segment" ]]; then
     prompt_cache_display=" ${prompt_cache_link}"
 fi
 
-state_line="${vim_mode_link} ${model_link}${advisor_display} ${output_style_link} ${effort_link} ${thinking_link} ${context_link}${prompt_cache_display} ${fast_mode_link} ${focus_mode_link}"
+state_line="${model_link}${advisor_display} ${output_style_link} ${effort_link} ${thinking_link} ${context_link}${prompt_cache_display} ${fast_mode_link} ${focus_mode_link}"
 
 state_line="${state_line} ${rate_limits_display}"
 
@@ -855,6 +855,10 @@ if [[ "$has_session_name" == "true" ]]; then
 fi
 
 state_line="${state_line} ${session_label}"
+
+# Prepended here because the link is built after the workspace line; the mode
+# leads so it sits at a fixed position regardless of how long the dir names are.
+workspace_line="${vim_mode_link} ${workspace_line}"
 
 echo -e "$workspace_line"
 echo -e "$state_line"
