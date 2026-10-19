@@ -15,6 +15,9 @@ SHOW_SESSION_ID=false
 SHOW_ADVISOR=true
 SHOW_CONTEXT_PCT=false
 SHOW_VERSION=false
+# Off because the mode takes a long time to refresh in the statusline, so the
+# indicator lags behind the real vim mode and misleads more than it helps.
+SHOW_VIM_MODE=false
 
 bold='\033[1m'
 italic='\033[3m'
@@ -858,7 +861,9 @@ state_line="${state_line} ${session_label}"
 
 # Prepended here because the link is built after the workspace line; the mode
 # leads so it sits at a fixed position regardless of how long the dir names are.
-workspace_line="${vim_mode_link} ${workspace_line}"
+if [[ "$SHOW_VIM_MODE" == "true" ]]; then
+    workspace_line="${vim_mode_link} ${workspace_line}"
+fi
 
 echo -e "$workspace_line"
 echo -e "$state_line"
