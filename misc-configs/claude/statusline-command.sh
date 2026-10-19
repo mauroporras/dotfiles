@@ -23,6 +23,12 @@ yellow='\033[33m'
 cyan='\033[36m'
 red='\033[31m'
 gray='\033[90m'
+
+# Truecolor values from the lualine `codedark` theme, so the mode reads the same
+# as the neovim statusline.
+vim_normal_color='\033[38;2;96;139;78m'
+vim_insert_color='\033[38;2;86;156;214m'
+vim_visual_color='\033[38;2;197;134;192m'
 reset='\033[0m'
 
 # Splits a meter's percentage from its countdown (`12%·2h19m`) without adding
@@ -300,6 +306,47 @@ output_style_display="${output_style:-default}"
 output_style_color="$cyan"
 if [[ "$output_style_display" == "default" ]]; then
     output_style_color="$gray"
+fi
+
+# The payload omits `vim` entirely when vim mode is off, so a placeholder keeps
+# the slot from shifting the rest of the line, the same way the cache, PR and
+# rate-limit segments do.
+vim_mode=$(echo "$input" | jq -r '.vim.mode // empty')
+
+vim_mode_label=""
+vim_mode_color=""
+
+case "$vim_mode" in
+NORMAL)
+    vim_mode_label="N"
+    vim_mode_color="$vim_normal_color"
+    ;;
+INSERT)
+    vim_mode_label="I"
+    vim_mode_color="$vim_insert_color"
+    ;;
+VISUAL)
+    vim_mode_label="V"
+    vim_mode_color="$vim_visual_color"
+    ;;
+"VISUAL LINE")
+    vim_mode_label="VL"
+    vim_mode_color="$vim_visual_color"
+    ;;
+*)
+    # An unknown (future) mode still shows up rather than vanishing.
+    vim_mode_label="$vim_mode"
+    ;;
+esac
+
+has_vim_mode=false
+if [[ -n "$vim_mode" ]]; then
+    has_vim_mode=true
+fi
+
+vim_mode_segment="⌨️➖"
+if [[ "$has_vim_mode" == "true" ]]; then
+    vim_mode_segment="⌨️${vim_mode_color}${vim_mode_label}${reset}"
 fi
 
 added_dirs_display=""
@@ -715,6 +762,7 @@ effort_link=$(osc8_link "statusline-effort" "${claude_code_docs_url}/model-confi
 thinking_link=$(osc8_link "statusline-thinking" "${claude_code_docs_url}/model-config#extended-thinking" "🧠${thinking_display}")
 fast_mode_link=$(osc8_link "statusline-fast-mode" "${claude_code_docs_url}/fast-mode" "⚡️💵${fast_mode_display}")
 focus_mode_link=$(osc8_link "statusline-focus" "${claude_code_docs_url}/fullscreen#${focus_mode_url_anchor}" "$focus_mode_segment")
+vim_mode_link=$(osc8_link "statusline-vim-mode" "${claude_code_docs_url}/interactive-mode#vim-editor-mode" "$vim_mode_segment")
 
 # `${var^}` needs bash 4 and /bin/bash on macOS is 3.2, hence `tr` on the first char.
 output_style_initial=$(printf '%s' "${output_style_display:0:1}" | tr '[:lower:]' '[:upper:]')
@@ -766,7 +814,7 @@ if [[ -n "$prompt_cache_segment" ]]; then
     prompt_cache_display=" ${prompt_cache_link}"
 fi
 
-state_line="${model_link}${advisor_display} ${output_style_link} ${effort_link} ${thinking_link} ${context_link}${prompt_cache_display} ${fast_mode_link} ${focus_mode_link}"
+state_line="${vim_mode_link} ${model_link}${advisor_display} ${output_style_link} ${effort_link} ${thinking_link} ${context_link}${prompt_cache_display} ${fast_mode_link} ${focus_mode_link}"
 
 state_line="${state_line} ${rate_limits_display}"
 
