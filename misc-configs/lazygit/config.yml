@@ -53,8 +53,6 @@ git:
     - alpha
     - main
     - master
-  # Fetch manually (`f` in the files panel) so remote refs only move on request.
-  autoFetch: false
   # Keep local main branches where they are until explicitly pulled.
   autoForwardBranches: none
   # The number of lines to show around diff hunks.
