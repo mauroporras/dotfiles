@@ -87,6 +87,36 @@ customCommands:
         description: "Push specific commit and preceding"
         loadingText: "Pushing commit"
         command: "git push {{.SelectedRemote.Name}} {{.SelectedLocalCommit.Sha}}:{{.SelectedLocalBranch.Name}}"
+      - key: "s"
+        context: "commits"
+        description: "Add [skip ci] to commit"
+        loadingText: "Adding [skip ci] to commit"
+        # HEAD is amended in place; older commits get an `amend!` commit that
+        # autosquash folds in, since its body replaces the target's message
+        # without needing an editor. The `amend!` commit is built with
+        # `commit-tree` on HEAD's tree so staged changes never leak into it,
+        # and `--autostash` lets this run with a dirty tree.
+        # The guard keeps repeated presses from stacking the marker.
+        command: |
+          bash -c '
+            sha={{.SelectedLocalCommit.Sha}}
+            message=$(git log -1 --format=%B "$sha")
+            case "$message" in
+              *"[skip ci]"*)
+                echo "Commit already has [skip ci]." >&2
+                exit 1
+                ;;
+            esac
+            new_message=$(printf "%s\n\n[skip ci]" "$message")
+            if [ "$sha" = "$(git rev-parse HEAD)" ]; then
+              printf "%s\n" "$new_message" | git commit --amend --only -q -F -
+              exit $?
+            fi
+            subject=$(git log -1 --format=%s "$sha")
+            amend=$(printf "amend! %s\n\n%s\n" "$subject" "$new_message" | git commit-tree "HEAD^{tree}" -p HEAD -F -) || exit $?
+            git update-ref HEAD "$amend" || exit $?
+            GIT_SEQUENCE_EDITOR=true git rebase -i --autosquash --autostash "$sha^"
+          '
       - key: "t"
         context: "commits"
         description: "Create trigger CI commit"
