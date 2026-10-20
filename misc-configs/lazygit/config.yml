@@ -79,7 +79,7 @@ customCommands:
       # Commits
       - key: "e"
         context: "commits"
-        description: "[empty commit]"
+        description: "Create empty commit"
         loadingText: "Creating empty commit"
         command: 'git commit --allow-empty -m "[empty commit]"'
       - key: "P"
@@ -89,7 +89,7 @@ customCommands:
         command: "git push {{.SelectedRemote.Name}} {{.SelectedLocalCommit.Sha}}:{{.SelectedLocalBranch.Name}}"
       - key: "t"
         context: "commits"
-        description: "[trigger ci]"
+        description: "Create trigger CI commit"
         loadingText: "Creating trigger CI commit"
         command: 'git commit --allow-empty -m "[trigger ci]"'
       # Files
