@@ -139,29 +139,6 @@ customCommands:
               git push
             fi
           '
-      - key: "i"
-        context: "files"
-        description: "Invert staged/unstaged files"
-        # Pathspecs travel through NUL-delimited files instead of shell variables:
-        # bash word-splits an unquoted list on spaces, so a path like
-        # "Cortex Updates and Onboarding_transcript.txt" would silently become four
-        # non-matching pathspecs and git would no-op with exit 0.
-        # GIT_LITERAL_PATHSPECS stops git from reading `*` or `[` in a path as a glob.
-        # The stage list is captured before the reset so files unstaged here don't
-        # get immediately re-added as newly untracked.
-        command: |
-          bash -c '
-            tmp=$(mktemp -d)
-            git diff --cached --name-only -z > "$tmp/unstage"
-            { git diff --name-only -z; git ls-files --others --exclude-standard -z; } > "$tmp/stage"
-            if [ -s "$tmp/unstage" ]; then
-              GIT_LITERAL_PATHSPECS=1 git reset -q --pathspec-from-file="$tmp/unstage" --pathspec-file-nul
-            fi
-            if [ -s "$tmp/stage" ]; then
-              GIT_LITERAL_PATHSPECS=1 git add --pathspec-from-file="$tmp/stage" --pathspec-file-nul
-            fi
-            rm -rf "$tmp"
-          '
       - key: "n"
         context: "files"
         description: "[ai] Commit staged changes, closing an issue"
@@ -218,6 +195,29 @@ customCommands:
             if [ "$after" != "$before" ]; then
               git push
             fi
+          '
+      - key: "i"
+        context: "files"
+        description: "Invert staged/unstaged files"
+        # Pathspecs travel through NUL-delimited files instead of shell variables:
+        # bash word-splits an unquoted list on spaces, so a path like
+        # "Cortex Updates and Onboarding_transcript.txt" would silently become four
+        # non-matching pathspecs and git would no-op with exit 0.
+        # GIT_LITERAL_PATHSPECS stops git from reading `*` or `[` in a path as a glob.
+        # The stage list is captured before the reset so files unstaged here don't
+        # get immediately re-added as newly untracked.
+        command: |
+          bash -c '
+            tmp=$(mktemp -d)
+            git diff --cached --name-only -z > "$tmp/unstage"
+            { git diff --name-only -z; git ls-files --others --exclude-standard -z; } > "$tmp/stage"
+            if [ -s "$tmp/unstage" ]; then
+              GIT_LITERAL_PATHSPECS=1 git reset -q --pathspec-from-file="$tmp/unstage" --pathspec-file-nul
+            fi
+            if [ -s "$tmp/stage" ]; then
+              GIT_LITERAL_PATHSPECS=1 git add --pathspec-from-file="$tmp/stage" --pathspec-file-nul
+            fi
+            rm -rf "$tmp"
           '
       - key: "w"
         context: "files"
