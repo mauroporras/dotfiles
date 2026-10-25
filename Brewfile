@@ -67,6 +67,7 @@ brew "redis"
 # Networking & HTTP
 brew "cloudflared" # Cloudflare Tunnel client
 brew "httpie"
+brew "nmap"
 brew "swaks"
 
 # Recording & media
