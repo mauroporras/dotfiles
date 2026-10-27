@@ -50,7 +50,7 @@ window-width = 500
 
 window-new-tab-position = end
 
-scrollback-limit-bytes = 100000000
+scrollback-limit-lines = 20000
 
 quick-terminal-size = 80%
 
