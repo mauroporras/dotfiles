@@ -50,6 +50,9 @@ window-width = 500
 
 window-new-tab-position = end
 
+# Integrates the tab bar into the titlebar.
+macos-titlebar-style = tabs
+
 scrollback-limit-lines = 20000
 
 quick-terminal-size = 80%
