@@ -32,7 +32,7 @@ gui:
   #commitHashLength: 7
   showDivergenceFromBaseBranch: arrowAndNumber
   # Pressing a panel's jump key again while it's focused cycles its tabs
-  switchTabsWithPanelJumpKeys: true
+  switchTabsWithPanelJumpKeys: false
 git:
   # Change it using the `|` and `\` keys.
   # (Formerly `pagers`)
