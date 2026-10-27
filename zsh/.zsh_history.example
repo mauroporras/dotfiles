@@ -20,6 +20,7 @@
 : 0000000000:0;defaults write com.apple.finder AppleShowAllFiles -boolean true && killall Finder # Show hidden files in Finder
 : 0000000000:0;k3d cluster list # List local k3d clusters
 : 0000000000:0;TERM=xterm-256color ssh someuser@some-vps # Connect to a VPS
+: 0000000000:0;ghostty +ssh someuser@some-vps # Connect to a VPS and install Ghostty's terminfo on first use
 : 0000000000:0;lsof -nP -iTCP:8080 -sTCP:LISTEN # What process is using port 8080
 : 0000000000:0;brew upgrade font-jetbrains-mono # Upgrade the terminal font
 : 0000000000:0;aifable # Tasks larger than a single sitting. Long autonomous sessions
