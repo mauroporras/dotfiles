@@ -3,7 +3,7 @@
 # https://en.wikipedia.org/wiki/X11_color_names
 
 # ghostty +list-themes
-theme = Catppuccin Latte
+theme = light:Catppuccin Latte,dark:Catppuccin Mocha
 
 # Typically, this setting is used only for the first window.
 working-directory = /tmp
