@@ -253,7 +253,7 @@
 
 ## Writing Style
 
-- Punctuate with commas, semicolons, colons, parentheses, or a split into separate sentences, and keep em dashes (—) rare.
+- Keep em dashes (—) rare and use alternative punctuation instead.
   Em dashes are overrepresented in LLM training data, so leaning on them makes the output feel unnatural.
 - Use the Oxford comma in lists of three or more items.
   It makes the list unambiguous and easier to read.
