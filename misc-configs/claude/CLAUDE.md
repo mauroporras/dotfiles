@@ -255,3 +255,5 @@
 
 - Punctuate with commas, semicolons, colons, parentheses, or a split into separate sentences, and keep em dashes (—) rare.
   Em dashes are overrepresented in LLM training data, so leaning on them makes the output feel unnatural.
+- Use the Oxford comma in lists of three or more items.
+  It makes the list unambiguous and easier to read, and it is the style used in this document.
