@@ -483,7 +483,7 @@ if [[ "$prompt_cache_present" == "true" ]]; then
         # The countdown only means something against the lifetime it's racing
         # (5m vs 1h), so show the TTL next to it.
         if [[ -n "$prompt_cache_ttl" ]]; then
-            prompt_cache_state="${prompt_cache_state}${gray}/${prompt_cache_ttl}${reset}"
+            prompt_cache_state="${prompt_cache_state}/${prompt_cache_ttl}"
         fi
     else
         prompt_cache_icon="❄️"
