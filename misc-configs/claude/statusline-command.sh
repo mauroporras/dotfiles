@@ -36,7 +36,7 @@ reset='\033[0m'
 
 # Splits a meter's percentage from its countdown (`12%·2h19m`) without adding
 # width, leaving plain spaces to mean "next segment".
-value_separator="${gray}·${reset}"
+value_separator="·"
 
 input=$(cat)
 
