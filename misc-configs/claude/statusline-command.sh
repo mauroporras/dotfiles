@@ -528,7 +528,7 @@ while IFS= read -r added_dir; do
 
     added_dir_basename=${added_dir##*/}
     added_dir_link=$(osc8_link "statusline-added-${added_dirs_index}" "file://${added_dir}" "➕📁${added_dir_basename}")
-    added_dir_segment="${cyan}${added_dir_link}${reset}"
+    added_dir_segment="${added_dir_link}"
 
     if [[ $added_dirs_index -eq 0 ]]; then
         added_dirs_display="${added_dir_segment}"
