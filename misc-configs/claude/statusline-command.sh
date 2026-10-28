@@ -212,9 +212,9 @@ context_k=$((context_size / 1000))
 
 # Windows are clean multiples of 1000k (200k, 1M), so integer division is exact.
 if [[ $context_k -ge 1000 ]]; then
-    context_display="$((context_k / 1000))M"
+    context_display="$((context_k / 1000))${italic}M${reset}"
 else
-    context_display="${context_k}k"
+    context_display="${context_k}${italic}k${reset}"
 fi
 
 # The harness already reports how full the window is, so take its number rather
@@ -483,7 +483,9 @@ if [[ "$prompt_cache_present" == "true" ]]; then
         # The countdown only means something against the lifetime it's racing
         # (5m vs 1h), so show the TTL next to it.
         if [[ -n "$prompt_cache_ttl" ]]; then
-            prompt_cache_state="${prompt_cache_state}/${prompt_cache_ttl}"
+            prompt_cache_ttl_value="${prompt_cache_ttl%[a-z]}"
+            prompt_cache_ttl_unit="${prompt_cache_ttl#"$prompt_cache_ttl_value"}"
+            prompt_cache_state="${prompt_cache_state}/${prompt_cache_ttl_value}${italic}${prompt_cache_ttl_unit}${reset}"
         fi
     else
         prompt_cache_icon="❄️"
@@ -757,7 +759,7 @@ if [[ "$SHOW_CONTEXT_PCT" == "true" ]]; then
     context_pct_display=" ${gray}${context_pct}%${reset}"
 fi
 
-context_segment="🪣${context_color}${context_emphasis}${tokens_k}k${reset}/${context_display}${context_pct_display}"
+context_segment="🪣${context_color}${context_emphasis}${tokens_k}${italic}k${reset}/${context_display}${context_pct_display}"
 context_link=$(osc8_link "statusline-context" "${claude_code_docs_url}/context-window" "$context_segment")
 
 model_link=$(osc8_link "statusline-model" "${claude_code_docs_url}/model-config" "✳️${model}")
