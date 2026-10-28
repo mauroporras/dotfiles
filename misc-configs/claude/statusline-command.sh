@@ -664,7 +664,7 @@ workspace_line="${current_dir_link}"
 if [[ -n "$project_divergence_display" ]]; then
     project_dir_link=$(osc8_link "statusline-project-dir" "file://${project_dir}" "📁${project_dir_display}")
     divergence_link=$(osc8_link "statusline-divergence" "${claude_code_docs_url}/permissions#working-directories" "$project_divergence_display")
-    workspace_line="${workspace_line} ${divergence_link} ${project_dir_link}"
+    workspace_line="${workspace_line} ${divergence_link}${project_dir_link}"
 fi
 
 if [[ -n "$added_dirs_display" ]]; then
