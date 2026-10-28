@@ -30,7 +30,8 @@
     "label": "Mauro tip",
     "tips": [
       "Check `~/.claude/projects` periodically: dirs of deleted worktrees and throwaway folders pile up",
-      "Check `~/.claude/file-history` periodically: per-session `/rewind` snapshots pile up"
+      "Check `~/.claude/file-history` periodically: per-session `/rewind` snapshots pile up",
+      "Check `README.md`, `CLAUDE.md` and `AGENTS.md` periodically: they go stale as the code drifts"
     ]
   },
 
