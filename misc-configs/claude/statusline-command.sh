@@ -649,22 +649,15 @@ if [[ "$has_spend_limit" == "true" ]]; then
     rate_limits_display="${rate_limits_display} ${spend_limit_link}"
 fi
 
-# Colored only after a `cd` away from the project dir, so the highlight flags the
-# change instead of being the permanent look.
-current_dir_name="$current_dir_display"
-if [[ -n "$project_divergence_display" ]]; then
-    current_dir_name="${cyan}${current_dir_display}${reset}"
-fi
-
-current_dir_link=$(osc8_link "statusline-dir" "file://${current_dir}" "🏠${current_dir_name}")
+current_dir_link=$(osc8_link "statusline-dir" "file://${current_dir}" "🏠${current_dir_display}")
 workspace_line="${current_dir_link}"
 
 # Workspace decorations sit between the current dir and the branch bullet so
 # they read as modifiers of the dir, not of the branch.
 if [[ -n "$project_divergence_display" ]]; then
-    project_dir_link=$(osc8_link "statusline-project-dir" "file://${project_dir}" "📁${project_dir_display}")
+    project_dir_link=$(osc8_link "statusline-project-dir" "file://${project_dir}" "📂${project_dir_display}")
     divergence_link=$(osc8_link "statusline-divergence" "${claude_code_docs_url}/permissions#working-directories" "$project_divergence_display")
-    workspace_line="${workspace_line} ${divergence_link} ${project_dir_link}"
+    workspace_line="${project_dir_link} ${divergence_link} ${workspace_line}"
 fi
 
 if [[ -n "$added_dirs_display" ]]; then
