@@ -42,6 +42,11 @@ value_separator="·"
 # on the line instead of vanishing and shifting the rest.
 placeholder="➖"
 
+# Shared by every on/off toggle segment so the render and the comparisons against
+# it (e.g. the fullscreen check) can't drift apart.
+enabled_icon="🟢"
+disabled_icon="⚪️"
+
 input=$(cat)
 
 # Validate once up front: if the harness ever pipes us malformed or empty input,
@@ -112,16 +117,16 @@ esac
 if [[ "$is_thinking_forced" == "true" ]]; then
     thinking_display="🔒"
 elif [[ "$thinking_enabled" == "true" ]]; then
-    thinking_display="🟢"
+    thinking_display="${enabled_icon}"
 else
-    thinking_display="⚪️"
+    thinking_display="${disabled_icon}"
 fi
 
 # The banknote flags that fast mode draws from usage credits at a higher rate.
 if [[ "$fast_mode_enabled" == "true" ]]; then
-    fast_mode_display="🟢"
+    fast_mode_display="${enabled_icon}"
 else
-    fast_mode_display="⚪️"
+    fast_mode_display="${disabled_icon}"
 fi
 
 # The payload doesn't carry focus view, so mirror how Claude Code resolves it:
@@ -152,9 +157,9 @@ elif [[ -z "$view_mode" ]]; then
 fi
 
 if [[ "$is_focus_mode" == "true" ]]; then
-    focus_mode_display="🟢"
+    focus_mode_display="${enabled_icon}"
 else
-    focus_mode_display="⚪️"
+    focus_mode_display="${disabled_icon}"
 fi
 
 # Fullscreen isn't in the payload either. Mirror the deterministic part of how
@@ -178,11 +183,11 @@ is_falsy_env() {
 tui_setting=$(read_merged_setting tui)
 
 if is_falsy_env "$CLAUDE_CODE_NO_FLICKER" || is_truthy_env "$CLAUDE_CODE_DISABLE_ALTERNATE_SCREEN"; then
-    fullscreen_display="⚪️"
+    fullscreen_display="${disabled_icon}"
 elif is_truthy_env "$CLAUDE_CODE_NO_FLICKER" || [[ "$tui_setting" == "fullscreen" ]]; then
-    fullscreen_display="🟢"
+    fullscreen_display="${enabled_icon}"
 elif [[ "$tui_setting" == "default" ]]; then
-    fullscreen_display="⚪️"
+    fullscreen_display="${disabled_icon}"
 else
     fullscreen_display="?"
 fi
@@ -191,7 +196,7 @@ fi
 # known-off fullscreen would describe a mode that can't be active. An unknown
 # ("?") renderer keeps the real value, since fullscreen may well be on.
 is_focus_unavailable=false
-if [[ "$fullscreen_display" == "⚪️" ]]; then
+if [[ "$fullscreen_display" == "${disabled_icon}" ]]; then
     is_focus_unavailable=true
 fi
 
