@@ -9,8 +9,8 @@ gui:
   shortTimeFormat: "15:04"
   theme:
     authorColors:
-      mauroporras: magenta
-      "Mauro Pineda": magenta
+      mauroporras: blue
+      "Mauro Pineda": blue
       "Claude": yellow
     branchColorPatterns:
       "^alpha$": cyan
