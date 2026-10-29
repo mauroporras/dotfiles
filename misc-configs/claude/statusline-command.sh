@@ -812,25 +812,27 @@ if [[ -n "$prompt_cache_segment" ]]; then
     prompt_cache_display=" ${prompt_cache_link}"
 fi
 
-state_line="${model_link}${advisor_display} ${output_style_link} ${effort_link} ${thinking_link} ${context_link}${prompt_cache_display} ${fast_mode_link} ${focus_mode_link}"
+state_line="${model_link}${advisor_display} ${output_style_link} ${effort_link} ${thinking_link} ${fast_mode_link} ${focus_mode_link}"
 
-state_line="${state_line} ${rate_limits_display}"
+# Split from the state line so settings the user picks sit apart from what the
+# session has consumed; the usage figures change every turn, the settings rarely.
+usage_line="${context_link}${prompt_cache_display} ${rate_limits_display}"
 
 if [[ -n "$cost_display" ]]; then
     cost_link=$(osc8_link "statusline-cost" "${claude_code_docs_url}/costs" "$cost_display")
-    state_line="${state_line} ${gray}${cost_link}${reset}"
+    usage_line="${usage_line} ${gray}${cost_link}${reset}"
 fi
 
 if [[ -n "$session_id" ]]; then
-    state_line="${state_line} • ${gray}${session_id}${reset}"
+    usage_line="${usage_line} • ${gray}${session_id}${reset}"
 fi
 
 if [[ -n "$claude_version" ]]; then
     version_link=$(osc8_link "statusline-version" "${claude_code_docs_url}/changelog" "v${claude_version}")
-    state_line="${state_line} • ${gray}${version_link}${reset}"
+    usage_line="${usage_line} • ${gray}${version_link}${reset}"
 fi
 
-# Trails the state line: it identifies the session rather than describing its
+# Trails the usage line: it identifies the session rather than describing its
 # state, so it sits past the segments that change from turn to turn.
 session_label="🏷️➖"
 
@@ -852,7 +854,7 @@ if [[ "$has_session_name" == "true" ]]; then
     fi
 fi
 
-state_line="${state_line} ${session_label}"
+usage_line="${usage_line} ${session_label}"
 
 # Prepended here because the link is built after the workspace line; the mode
 # leads so it sits at a fixed position regardless of how long the dir names are.
@@ -862,4 +864,5 @@ fi
 
 echo -e "$workspace_line"
 echo -e "$state_line"
+echo -e "$usage_line"
 
