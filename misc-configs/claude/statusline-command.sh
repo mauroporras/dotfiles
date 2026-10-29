@@ -56,7 +56,7 @@ project_divergence_display=""
 if [[ -n "$project_dir_display" && "$project_dir_display" != "$current_dir_display" ]]; then
     # Alert prefix so a `cd` away from the original project dir is impossible to
     # miss: it changes the meaning of every relative path and git context below.
-    project_divergence_display="⏪🚨"
+    project_divergence_display="⏪"
 fi
 
 # Two worktree signals exist, and they differ in scope: `worktree.*` is only set
