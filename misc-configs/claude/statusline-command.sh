@@ -226,7 +226,7 @@ cd "$current_dir" 2> /dev/null || cd /
 
 git_branch=""
 git_branch_is_repo=false
-git_branch_upstream_display=""
+git_branch_color=""
 
 # Detect repo membership via rev-parse rather than `git branch --show-current`,
 # which returns empty during rebase / detached HEAD and would otherwise falsely
@@ -241,15 +241,16 @@ if git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
         # Reads local refs only (no fetch), so it never blocks on the network.
         # `@{upstream}` also fails when the configured remote branch is gone
         # (e.g. deleted after a merge + prune), which correctly reads as "not
-        # on the remote", so only a tracked branch shows the cloud. Detached
-        # HEAD / rebasing have no branch to track, so they get no indicator.
+        # on the remote", so a branch that was never pushed (or whose remote was
+        # deleted) gets cyan. Detached HEAD / rebasing have no branch to push, so
+        # they stay uncolored.
         has_upstream=false
         if git rev-parse --abbrev-ref --symbolic-full-name '@{upstream}' > /dev/null 2>&1; then
             has_upstream=true
         fi
 
-        if [[ "$has_upstream" == "true" ]]; then
-            git_branch_upstream_display="☁️"
+        if [[ "$has_upstream" != "true" ]]; then
+            git_branch_color="$cyan"
         fi
     else
         git_dir=$(git rev-parse --git-dir 2> /dev/null)
@@ -689,7 +690,7 @@ else
 fi
 
 if [[ "$git_branch_is_repo" == "true" ]]; then
-    branch_label="🌿${git_branch_upstream_display}${git_branch}"
+    branch_label="🌿${git_branch_color}${git_branch}${reset}"
 
     # Detached HEAD and rebases leave `current_branch` empty, and there is no
     # branch page to open for them. Without repo info there is no host to link to.
