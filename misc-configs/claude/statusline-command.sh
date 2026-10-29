@@ -767,42 +767,33 @@ vim_mode_link=$(osc8_link "statusline-vim-mode" "${claude_code_docs_url}/interac
 output_style_initial=$(printf '%s' "${output_style_display:0:1}" | tr '[:lower:]' '[:upper:]')
 output_style_title="${output_style_initial}${output_style_display:1}"
 
-# Each style gets its own emoji after the generic 💅🏻 marker so a glance tells
-# which one is in effect; names arrive capitalized for built-ins ("Concise") and
-# lowercase for `default`, so match case-insensitively. `default` and unknown
-# (custom) styles get no extra emoji, since the generic marker already covers them.
-# The same branch picks the docs section that explains the style; custom styles
-# have no section of their own, so they land on how to write one.
+# Names arrive capitalized for built-ins ("Concise") and lowercase for `default`,
+# so match case-insensitively. The match picks the docs section that explains the
+# style; custom styles have no section of their own, so they land on how to write one.
 output_style_key=$(printf '%s' "$output_style_display" | tr '[:upper:]' '[:lower:]')
 
 case "$output_style_key" in
 proactive)
-    output_style_emoji="🚀"
     output_style_anchor="proactive"
     ;;
 concise)
-    output_style_emoji="✂️"
     output_style_anchor="concise"
     ;;
 explanatory)
-    output_style_emoji="📖"
     output_style_anchor="explanatory"
     ;;
 learning)
-    output_style_emoji="🎓"
     output_style_anchor="learning"
     ;;
 default)
-    output_style_emoji=""
     output_style_anchor="default"
     ;;
 *)
-    output_style_emoji=""
     output_style_anchor="create-a-custom-output-style"
     ;;
 esac
 
-output_style_label="💅🏻${output_style_emoji}${output_style_color}${output_style_title}${reset}"
+output_style_label="💅🏻${output_style_color}${output_style_title}${reset}"
 output_style_url="${claude_code_docs_url}/output-styles#${output_style_anchor}"
 output_style_link=$(osc8_link "statusline-output-style" "$output_style_url" "$output_style_label")
 
