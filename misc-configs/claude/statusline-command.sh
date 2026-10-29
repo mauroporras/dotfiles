@@ -38,6 +38,10 @@ reset='\033[0m'
 # width, leaving plain spaces to mean "next segment".
 value_separator="·"
 
+# Splits the loosely related items on the usage row (session id, version) so they
+# read as distinct from the tightly coupled `value_separator` pairs.
+segment_separator=" • "
+
 # Marks a slot whose value isn't available yet, so the segment keeps its place
 # on the line instead of vanishing and shifting the rest.
 placeholder="➖"
@@ -825,12 +829,12 @@ if [[ -n "$cost_display" ]]; then
 fi
 
 if [[ -n "$session_id" ]]; then
-    usage_line="${usage_line} • ${gray}${session_id}${reset}"
+    usage_line="${usage_line}${segment_separator}${gray}${session_id}${reset}"
 fi
 
 if [[ -n "$claude_version" ]]; then
     version_link=$(osc8_link "statusline-version" "${claude_code_docs_url}/changelog" "v${claude_version}")
-    usage_line="${usage_line} • ${gray}${version_link}${reset}"
+    usage_line="${usage_line}${segment_separator}${gray}${version_link}${reset}"
 fi
 
 # Trails the usage line: it identifies the session rather than describing its
