@@ -38,6 +38,10 @@ reset='\033[0m'
 # width, leaving plain spaces to mean "next segment".
 value_separator="·"
 
+# Marks a slot whose value isn't available yet, so the segment keeps its place
+# on the line instead of vanishing and shifting the rest.
+placeholder="➖"
+
 input=$(cat)
 
 # Validate once up front: if the harness ever pipes us malformed or empty input,
@@ -192,7 +196,7 @@ if [[ "$fullscreen_display" == "⚪️" ]]; then
 fi
 
 if [[ "$is_focus_unavailable" == "true" ]]; then
-    focus_mode_segment="🎯➖"
+    focus_mode_segment="🎯${placeholder}"
     focus_mode_url_anchor="enable-fullscreen-rendering"
 else
     focus_mode_segment="🎯${focus_mode_display}"
@@ -348,7 +352,7 @@ if [[ -n "$vim_mode" ]]; then
     has_vim_mode=true
 fi
 
-vim_mode_segment="⌨️➖"
+vim_mode_segment="⌨️${placeholder}"
 if [[ "$has_vim_mode" == "true" ]]; then
     vim_mode_segment="⌨️${vim_mode_color}${vim_mode_label}${reset}"
 fi
@@ -399,7 +403,7 @@ format_reset_short() {
     local now=$2
 
     if [[ -z "$target" ]]; then
-        echo "➖"
+        echo "${placeholder}"
         return
     fi
 
@@ -515,7 +519,7 @@ if [[ "$prompt_cache_present" == "true" ]]; then
 else
     # The harness omits `prompt_cache` until the first main-thread response after
     # startup, /clear, resume, fork, or remote attach.
-    prompt_cache_segment="🔥➖"
+    prompt_cache_segment="🔥${placeholder}"
 fi
 
 
@@ -593,7 +597,7 @@ pr_review_color() {
 # API-key billing), and each window can be absent independently. A placeholder
 # keeps each meter's slot from vanishing and shifting the rest of the line, the
 # same way the cache segment does.
-five_hour_segment="⏱️➖"
+five_hour_segment="⏱️${placeholder}"
 if [[ -n "$five_hour_pct_int" ]]; then
     five_hour_color=$(rate_limit_color "$five_hour_pct_int")
     five_hour_emphasis=""
@@ -604,7 +608,7 @@ if [[ -n "$five_hour_pct_int" ]]; then
     five_hour_segment="⏱️${five_hour_color}${five_hour_emphasis}${five_hour_pct_int}%${reset}${value_separator}${five_hour_reset_display}"
 fi
 
-seven_day_segment="🗓️➖"
+seven_day_segment="🗓️${placeholder}"
 if [[ -n "$seven_day_pct_int" ]]; then
     seven_day_color=$(rate_limit_color "$seven_day_pct_int")
     seven_day_emphasis=""
@@ -616,7 +620,7 @@ if [[ -n "$seven_day_pct_int" ]]; then
 fi
 
 # Unlike the two windows above, the spend limit only exists behind a Claude apps
-# gateway (the harness omits it on subscription and API-key setups), so a `➖`
+# gateway (the harness omits it on subscription and API-key setups), so a
 # placeholder would be a permanent dead slot there. Render it only when present.
 has_spend_limit=false
 if [[ -n "$spend_limit_pct_int" ]]; then
@@ -668,7 +672,7 @@ fi
 # The repo identity precedes the worktree so the eye reads "which repo, then
 # which tree of it" before the branch that tree has checked out.
 if [[ "$git_branch_is_repo" != "true" ]]; then
-    workspace_line="${workspace_line} 📦➖"
+    workspace_line="${workspace_line} 📦${placeholder}"
 elif [[ -n "$github_repo_display" ]]; then
     workspace_line="${workspace_line} ${github_repo_display}"
 fi
@@ -686,7 +690,7 @@ if [[ "$is_in_worktree" == "true" ]]; then
     worktree_link=$(osc8_link "statusline-worktree" "file://${worktree_path}" "$worktree_label")
     workspace_line="${workspace_line} ${worktree_link}"
 else
-    workspace_line="${workspace_line} 🌳➖"
+    workspace_line="${workspace_line} 🌳${placeholder}"
 fi
 
 if [[ "$git_branch_is_repo" == "true" ]]; then
@@ -721,7 +725,7 @@ if [[ "$has_pr" == "true" ]]; then
     pr_link=$(osc8_link "statusline-pr" "$pr_url" "🔀#${pr_number}")
     workspace_line="${workspace_line} ${pr_color}${pr_link}${reset}"
 else
-    workspace_line="${workspace_line} 🔀➖"
+    workspace_line="${workspace_line} 🔀${placeholder}"
 fi
 
 context_color=$(context_pct_color "$context_pct")
@@ -826,7 +830,7 @@ fi
 
 # Trails the usage line: it identifies the session rather than describing its
 # state, so it sits past the segments that change from turn to turn.
-session_label="🏷️➖"
+session_label="🏷️${placeholder}"
 
 has_session_name=false
 if [[ -n "$session_name" ]]; then
