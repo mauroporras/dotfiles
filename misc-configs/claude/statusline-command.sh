@@ -656,7 +656,7 @@ if [[ -n "$project_divergence_display" ]]; then
     current_dir_name="${cyan}${current_dir_display}${reset}"
 fi
 
-current_dir_link=$(osc8_link "statusline-dir" "file://${current_dir}" "📂${current_dir_name}")
+current_dir_link=$(osc8_link "statusline-dir" "file://${current_dir}" "🏠${current_dir_name}")
 workspace_line="${current_dir_link}"
 
 # Workspace decorations sit between the current dir and the branch bullet so
