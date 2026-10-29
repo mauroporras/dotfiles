@@ -51,6 +51,15 @@ placeholder="➖"
 enabled_icon="🟢"
 disabled_icon="⚪️"
 
+# Each icon is rendered twice, once with a value and once as the `placeholder`
+# fallback, so one definition keeps the two forms identical.
+focus_mode_icon="🎯"
+seven_day_icon="🗓️"
+repo_icon="📦"
+worktree_icon="🌳"
+pr_icon="🔀"
+session_icon="🏷️"
+
 input=$(cat)
 
 # Validate once up front: if the harness ever pipes us malformed or empty input,
@@ -205,10 +214,10 @@ if [[ "$fullscreen_display" == "${disabled_icon}" ]]; then
 fi
 
 if [[ "$is_focus_unavailable" == "true" ]]; then
-    focus_mode_segment="🎯${placeholder}"
+    focus_mode_segment="${focus_mode_icon}${placeholder}"
     focus_mode_url_anchor="enable-fullscreen-rendering"
 else
-    focus_mode_segment="🎯${focus_mode_display}"
+    focus_mode_segment="${focus_mode_icon}${focus_mode_display}"
     focus_mode_url_anchor="search-and-review-the-conversation"
 fi
 
@@ -559,9 +568,9 @@ if [[ -n "$github_repo_owner" && -n "$github_repo_name" ]]; then
 
     if [[ -n "$github_repo_host" ]]; then
         github_repo_url="https://${github_repo_host}/${github_repo_label}"
-        github_repo_display=$(osc8_link "statusline-repo" "$github_repo_url" "📦${github_repo_label}")
+        github_repo_display=$(osc8_link "statusline-repo" "$github_repo_url" "${repo_icon}${github_repo_label}")
     else
-        github_repo_display="📦${github_repo_label}"
+        github_repo_display="${repo_icon}${github_repo_label}"
     fi
 fi
 
@@ -617,7 +626,7 @@ if [[ -n "$five_hour_pct_int" ]]; then
     five_hour_segment="⏱️${five_hour_color}${five_hour_emphasis}${five_hour_pct_int}%${reset}${value_separator}${five_hour_reset_display}"
 fi
 
-seven_day_segment="🗓️${placeholder}"
+seven_day_segment="${seven_day_icon}${placeholder}"
 if [[ -n "$seven_day_pct_int" ]]; then
     seven_day_color=$(rate_limit_color "$seven_day_pct_int")
     seven_day_emphasis=""
@@ -625,7 +634,7 @@ if [[ -n "$seven_day_pct_int" ]]; then
         seven_day_emphasis="$bold"
     fi
 
-    seven_day_segment="🗓️${seven_day_color}${seven_day_emphasis}${seven_day_pct_int}%${reset}${value_separator}${seven_day_reset_display}"
+    seven_day_segment="${seven_day_icon}${seven_day_color}${seven_day_emphasis}${seven_day_pct_int}%${reset}${value_separator}${seven_day_reset_display}"
 fi
 
 # Unlike the two windows above, the spend limit only exists behind a Claude apps
@@ -681,7 +690,7 @@ fi
 # The repo identity precedes the worktree so the eye reads "which repo, then
 # which tree of it" before the branch that tree has checked out.
 if [[ "$git_branch_is_repo" != "true" ]]; then
-    workspace_line="${workspace_line} 📦${placeholder}"
+    workspace_line="${workspace_line} ${repo_icon}${placeholder}"
 elif [[ -n "$github_repo_display" ]]; then
     workspace_line="${workspace_line} ${github_repo_display}"
 fi
@@ -695,11 +704,11 @@ if [[ -n "$worktree_name" ]]; then
 fi
 
 if [[ "$is_in_worktree" == "true" ]]; then
-    worktree_label="🌳${cyan}${worktree_name}${reset}"
+    worktree_label="${worktree_icon}${cyan}${worktree_name}${reset}"
     worktree_link=$(osc8_link "statusline-worktree" "file://${worktree_path}" "$worktree_label")
     workspace_line="${workspace_line} ${worktree_link}"
 else
-    workspace_line="${workspace_line} 🌳${placeholder}"
+    workspace_line="${workspace_line} ${worktree_icon}${placeholder}"
 fi
 
 if [[ "$git_branch_is_repo" == "true" ]]; then
@@ -731,10 +740,10 @@ fi
 
 if [[ "$has_pr" == "true" ]]; then
     pr_color=$(pr_review_color "$pr_review_state")
-    pr_link=$(osc8_link "statusline-pr" "$pr_url" "🔀#${pr_number}")
+    pr_link=$(osc8_link "statusline-pr" "$pr_url" "${pr_icon}#${pr_number}")
     workspace_line="${workspace_line} ${pr_color}${pr_link}${reset}"
 else
-    workspace_line="${workspace_line} 🔀${placeholder}"
+    workspace_line="${workspace_line} ${pr_icon}${placeholder}"
 fi
 
 context_color=$(context_pct_color "$context_pct")
@@ -839,7 +848,7 @@ fi
 
 # Trails the usage line: it identifies the session rather than describing its
 # state, so it sits past the segments that change from turn to turn.
-session_label="🏷️${placeholder}"
+session_label="${session_icon}${placeholder}"
 
 has_session_name=false
 if [[ -n "$session_name" ]]; then
@@ -847,7 +856,7 @@ if [[ -n "$session_name" ]]; then
 fi
 
 if [[ "$has_session_name" == "true" ]]; then
-    session_label="🏷️${session_name}"
+    session_label="${session_icon}${session_name}"
 
     has_transcript_path=false
     if [[ -n "$transcript_path" ]]; then
@@ -855,7 +864,7 @@ if [[ "$has_session_name" == "true" ]]; then
     fi
 
     if [[ "$has_transcript_path" == "true" ]]; then
-        session_label=$(osc8_link "statusline-session" "file://${transcript_path}" "🏷️${session_name}")
+        session_label=$(osc8_link "statusline-session" "file://${transcript_path}" "${session_icon}${session_name}")
     fi
 fi
 
