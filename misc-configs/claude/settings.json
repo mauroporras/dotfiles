@@ -47,8 +47,8 @@
   "//cleanupPeriodDays": "Pinned explicitly so an upstream default change doesn't alter /resume history",
   "cleanupPeriodDays": 20,
 
-  "//maxProseWidth": "Min. 40. Text wraps at this many columns; tables and code blocks keep the full width",
-  "maxProseWidth": 80,
+  "//maxProseWidth": "Min. 40. Text wraps at this many columns; tables and code blocks keep the full width. 100 instead of 80 because long sentences wrapped too often on a wide terminal",
+  "maxProseWidth": 100,
 
   "//prStatusFooterEnabled": "Keep true: custom PR indicator depends on it",
   "prStatusFooterEnabled": true,
