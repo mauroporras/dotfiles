@@ -21,7 +21,9 @@
     "lua-lsp@claude-plugins-official": true
   },
   "permissions": {
-    "defaultMode": "auto"
+    "defaultMode": "auto",
+    "//blockWritesOutsideWorkingDirectories": "Use /add-dir to allow more directories",
+    "blockWritesOutsideWorkingDirectories": true
   },
   "spellcheck": {
     "enabled": true
