@@ -102,14 +102,24 @@ model=$(echo "$input" | jq -r '.model.display_name')
 model=${model% (1M context)}
 effort_level=$(echo "$input" | jq -r '.effort.level // "?"')
 
-case "$effort_level" in
-max) effort_display="🟪" ;;
-xhigh) effort_display="🟦" ;;
-high) effort_display="🟩" ;;
-medium) effort_display="🟨" ;;
-low) effort_display="🟥" ;;
-*) effort_display="$effort_level" ;;
-esac
+# Shared by the session and subagent effort markers so the two can't drift apart.
+# Unknown levels pass through unchanged so a new level still shows something.
+format_effort_level() {
+    local retval
+
+    case "$1" in
+    max) retval="🟪" ;;
+    xhigh) retval="🟦" ;;
+    high) retval="🟩" ;;
+    medium) retval="🟨" ;;
+    low) retval="🟥" ;;
+    *) retval="$1" ;;
+    esac
+
+    printf '%s' "$retval"
+}
+
+effort_display=$(format_effort_level "$effort_level")
 
 thinking_enabled=$(echo "$input" | jq -r '.thinking.enabled // false')
 fast_mode_enabled=$(echo "$input" | jq -r '.fast_mode // false')
@@ -159,6 +169,22 @@ read_merged_setting() {
 
     printf '%s' "$retval"
 }
+
+# Same merge as `read_merged_setting`, but for keys under the `env` object, which
+# the top-level lookup can't reach.
+read_merged_env_setting() {
+    local retval
+    retval=$(jq -rs --arg key "$1" '[.[].env[$key]? // empty] | last // empty' \
+        "$claude_config_dir/settings.json" \
+        "${project_dir:-$current_dir}/.claude/settings.json" \
+        "${project_dir:-$current_dir}/.claude/settings.local.json" 2> /dev/null)
+
+    printf '%s' "$retval"
+}
+
+# Not in the payload. The inherited env var wins; the merged `env` setting is the
+# fallback for when the harness didn't export it to the statusline process.
+subagent_effort_level="${CLAUDE_CODE_SUBAGENT_EFFORT:-$(read_merged_env_setting CLAUDE_CODE_SUBAGENT_EFFORT)}"
 
 view_mode=$(read_merged_setting viewMode)
 
@@ -779,7 +805,13 @@ context_segment="🪣${context_color}${context_emphasis}${tokens_k}${italic}k${r
 context_link=$(osc8_link "statusline-context" "${claude_code_docs_url}/context-window" "$context_segment")
 
 model_link=$(osc8_link "statusline-model" "${claude_code_docs_url}/model-config" "✳️${model}")
-effort_link=$(osc8_link "statusline-effort" "${claude_code_docs_url}/model-config#adjust-effort-level" "💪🏻${effort_display}")
+# Hidden when unset because subagents then inherit the session effort already shown.
+subagent_effort_display=""
+if [[ -n "$subagent_effort_level" ]]; then
+    subagent_effort_display="🤖$(format_effort_level "$subagent_effort_level")"
+fi
+
+effort_link=$(osc8_link "statusline-effort" "${claude_code_docs_url}/model-config#adjust-effort-level" "💪🏻${effort_display}${subagent_effort_display}")
 thinking_link=$(osc8_link "statusline-thinking" "${claude_code_docs_url}/model-config#extended-thinking" "🧠${thinking_display}")
 fast_mode_link=$(osc8_link "statusline-fast-mode" "${claude_code_docs_url}/fast-mode" "⚡️💵${fast_mode_display}")
 focus_mode_link=$(osc8_link "statusline-focus" "${claude_code_docs_url}/fullscreen#${focus_mode_url_anchor}" "$focus_mode_segment")
