@@ -20,6 +20,12 @@ tasks:
     cmds:
       - rm -rf .git/rr-cache
 
+  db:current:
+    desc: Show the current DB (credentials masked)
+    silent: true
+    cmds:
+      - printf '%s\n' "MY_APP_DATABASE_URL=${MY_APP_DATABASE_URL}" | sed -E 's#://[^@/]*@#://***@#'
+
   dev:
     preconditions:
       - sh: which jq
