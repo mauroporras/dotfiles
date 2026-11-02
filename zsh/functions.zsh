@@ -130,6 +130,32 @@ taketemp() {
   cd "$dir"
 }
 
+# Kill whatever is listening on a TCP port (e.g. a stuck dev server).
+# -sTCP:LISTEN limits the match to the server, so clients that happen to be
+# connected to that port (browsers, DB tools) are left alone.
+# Sends TERM by default so the process can clean up; pass a signal to escalate,
+# e.g. `killport 3000 KILL`.
+killport() {
+  local port="$1"
+  local signal="${2:-TERM}"
+  local pids
+
+  if [[ -z "$port" ]]; then
+    echo "usage: killport <port> [signal]" >&2
+    return 1
+  fi
+
+  pids=(${(f)"$(lsof -ti "tcp:${port}" -sTCP:LISTEN)"})
+
+  if (( ${#pids} == 0 )); then
+    echo "Nothing listening on port ${port}" >&2
+    return 1
+  fi
+
+  ps -o pid=,command= -p "${(j:,:)pids}"
+  kill "-${signal}" "${pids[@]}"
+}
+
 # Copy the full working directory path to the clipboard.
 # printf %s avoids the trailing newline that `pwd | pbcopy` would leave.
 cpcwd() {
