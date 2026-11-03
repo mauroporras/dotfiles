@@ -172,6 +172,7 @@
   (changelogs, version bumps) derive meaning from it.
   The exception is WIP commits on non-base branches, which use `WIP(<branch>): <description>`
   (see the `custom-staged-commit` skill).
+- It's OK to commit to the default branch.
 - Pushing and creating PRs each MUST wait for an explicit instruction.
   PRs are a human responsibility.
   The user wants to review, title, and submit them on their own terms.
