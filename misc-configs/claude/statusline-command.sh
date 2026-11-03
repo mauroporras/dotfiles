@@ -864,7 +864,7 @@ if [[ -n "$prompt_cache_segment" ]]; then
     prompt_cache_display=" ${prompt_cache_link}"
 fi
 
-state_line="${model_link}${advisor_display} ${output_style_link} ${effort_link}${subagent_effort_link} ${thinking_link} ${fast_mode_link} ${focus_mode_link}"
+state_line="${model_link}${advisor_display} ${effort_link}${subagent_effort_link} ${thinking_link} ${fast_mode_link} ${output_style_link} ${focus_mode_link}"
 
 # Split from the state line so settings the user picks sit apart from what the
 # session has consumed; the usage figures change every turn, the settings rarely.
