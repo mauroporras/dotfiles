@@ -804,7 +804,7 @@ fi
 context_segment="🪣${context_color}${context_emphasis}${tokens_k}${italic}k${reset}/${context_display}${context_pct_display}"
 context_link=$(osc8_link "statusline-context" "${claude_code_docs_url}/context-window" "$context_segment")
 
-model_link=$(osc8_link "statusline-model" "${claude_code_docs_url}/model-config" "✳️${model}")
+model_link=$(osc8_link "statusline-model" "${claude_code_docs_url}/model-config" "🧙🏻‍♂️${model}")
 # Shows ➖ when unset because there is no single value to show: subagents on the
 # session model's family inherit the session effort already shown, while other
 # families (e.g. forked skills on haiku/sonnet) use their own saved or default
