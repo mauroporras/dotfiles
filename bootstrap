@@ -54,6 +54,11 @@ mkdir -p .claude/skills
 for skill in ~/dotfiles/misc-configs/claude/skills/*/; do
   ln -sfn "${skill%/}" ".claude/skills/$(basename "$skill")"
 done
+# Output styles
+mkdir -p .claude/output-styles
+for style in ~/dotfiles/misc-configs/claude/output-styles/*.md; do
+  ln -sf "$style" ".claude/output-styles/$(basename "$style")"
+done
 # Status line
 ln -sf ~/dotfiles/misc-configs/claude/statusline-command.sh .claude/statusline-command.sh
 # Copied (not symlinked) because Claude Code modifies settings.json at runtime.
