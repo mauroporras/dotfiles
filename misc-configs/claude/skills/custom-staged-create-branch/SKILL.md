@@ -4,6 +4,7 @@ context: fork
 background: false
 allowed-tools: Bash(git checkout *), Bash(git --no-pager diff *)
 model: haiku
+effort: low
 ---
 
 # New branch for STAGED changes

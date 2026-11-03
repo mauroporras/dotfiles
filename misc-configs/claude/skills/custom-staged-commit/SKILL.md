@@ -5,6 +5,7 @@ background: false
 argument-hint: [issue-number]
 allowed-tools: Bash(git --no-pager diff *), Bash(git rev-parse *), Bash(git commit *), Bash(grep *), Bash(echo *), Bash(head *)
 model: haiku
+effort: low
 ---
 
 # Commit STAGED changes
