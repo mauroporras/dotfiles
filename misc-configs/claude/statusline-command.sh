@@ -814,9 +814,10 @@ subagent_effort_marker="➖"
 if [[ -n "$subagent_effort_level" && "$subagent_effort_level" != "inherit" ]]; then
     subagent_effort_marker=$(format_effort_level "$subagent_effort_level")
 fi
-subagent_effort_display="🤖${subagent_effort_marker}"
 
-effort_link=$(osc8_link "statusline-effort" "${claude_code_docs_url}/model-config#adjust-effort-level" "💪🏻${effort_display}${subagent_effort_display}")
+effort_link=$(osc8_link "statusline-effort" "${claude_code_docs_url}/model-config#adjust-effort-level" "💪🏻${effort_display}")
+# Separate link and id: the session effort docs don't cover subagent effort.
+subagent_effort_link=$(osc8_link "statusline-subagent-effort" "${claude_code_docs_url}/sub-agents#choose-an-effort-level" "🤖${subagent_effort_marker}")
 thinking_link=$(osc8_link "statusline-thinking" "${claude_code_docs_url}/model-config#extended-thinking" "🧠${thinking_display}")
 fast_mode_link=$(osc8_link "statusline-fast-mode" "${claude_code_docs_url}/fast-mode" "⚡️💵${fast_mode_display}")
 focus_mode_link=$(osc8_link "statusline-focus" "${claude_code_docs_url}/fullscreen#${focus_mode_url_anchor}" "$focus_mode_segment")
@@ -863,7 +864,7 @@ if [[ -n "$prompt_cache_segment" ]]; then
     prompt_cache_display=" ${prompt_cache_link}"
 fi
 
-state_line="${model_link}${advisor_display} ${output_style_link} ${effort_link} ${thinking_link} ${fast_mode_link} ${focus_mode_link}"
+state_line="${model_link}${advisor_display} ${output_style_link} ${effort_link}${subagent_effort_link} ${thinking_link} ${fast_mode_link} ${focus_mode_link}"
 
 # Split from the state line so settings the user picks sit apart from what the
 # session has consumed; the usage figures change every turn, the settings rarely.
