@@ -23,6 +23,9 @@ tasks:
   db:current:
     desc: Show the current DB (credentials masked)
     silent: true
+    preconditions:
+      - sh: '[ -n "${MY_APP_DATABASE_URL}" ]'
+        msg: "MY_APP_DATABASE_URL is not set"
     cmds:
       - printf '%s\n' "MY_APP_DATABASE_URL=${MY_APP_DATABASE_URL}" | sed -E 's#://[^@/]*@#://***@#'
 
