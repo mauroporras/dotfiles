@@ -18,8 +18,8 @@ alias 9='cd -9'
 
 # Claude Code
 alias aifable='claude --model fable'
-alias ai='claude --model opusplan'
-alias aiopus='claude --model opus'
+alias ai='claude --model opus'
+alias aiopusplan='claude --model opusplan'
 alias aisonnet='claude --model sonnet'
 alias aihaiku='claude --model haiku'
 
