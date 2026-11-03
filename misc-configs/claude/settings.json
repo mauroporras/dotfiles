@@ -58,7 +58,7 @@
   "terminalProgressBarEnabled": false,
 
   "//terminalTitleFromRename": "/rename and --name would otherwise still change the terminal tab title",
-  "terminalTitleFromRename": true,
+  "terminalTitleFromRename": false,
 
   "//agentPushNotifEnabled": "Sometimes they're useful. Just learn to ignore them",
   "_agentPushNotifEnabled": false,
