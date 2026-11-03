@@ -12,6 +12,7 @@ gui:
       mauroporras: blue
       "Mauro Pineda": blue
       "Claude": yellow
+      "*": cyan
     branchColorPatterns:
       "^alpha$": cyan
       "^main$": cyan
