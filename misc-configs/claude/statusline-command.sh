@@ -817,9 +817,9 @@ fi
 
 effort_link=$(osc8_link "statusline-effort" "${claude_code_docs_url}/model-config#adjust-effort-level" "💪🏻${effort_display}")
 # Separate link and id: the session effort docs don't cover subagent effort.
-subagent_effort_link=$(osc8_link "statusline-subagent-effort" "${claude_code_docs_url}/sub-agents#choose-an-effort-level" "🤖${subagent_effort_marker}")
+subagent_effort_link=$(osc8_link "statusline-subagent-effort" "${claude_code_docs_url}/sub-agents#choose-an-effort-level" "👷🏻‍♂️${subagent_effort_marker}")
 thinking_link=$(osc8_link "statusline-thinking" "${claude_code_docs_url}/model-config#extended-thinking" "🧠${thinking_display}")
-fast_mode_link=$(osc8_link "statusline-fast-mode" "${claude_code_docs_url}/fast-mode" "⚡️💵${fast_mode_display}")
+fast_mode_link=$(osc8_link "statusline-fast-mode" "${claude_code_docs_url}/fast-mode" "🏃🏻💵${fast_mode_display}")
 focus_mode_link=$(osc8_link "statusline-focus" "${claude_code_docs_url}/fullscreen#${focus_mode_url_anchor}" "$focus_mode_segment")
 vim_mode_link=$(osc8_link "statusline-vim-mode" "${claude_code_docs_url}/interactive-mode#vim-editor-mode" "$vim_mode_segment")
 
