@@ -53,7 +53,7 @@ disabled_icon="⚪️"
 
 # Each icon is rendered twice, once with a value and once as the `placeholder`
 # fallback, so one definition keeps the two forms identical.
-focus_mode_icon="🎯"
+focus_mode_icon="🧘🏻‍♂️"
 seven_day_icon="🗓️"
 repo_icon="📦"
 worktree_icon="🌳"
