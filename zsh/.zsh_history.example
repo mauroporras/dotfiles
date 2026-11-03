@@ -16,8 +16,7 @@
 : 0000000000:0;pnpm add --save-dev --save-exact prettier-plugin-organize-imports # Sort imports with Prettier
 : 0000000000:0;brew outdated # Check for upgradable packages
 : 0000000000:0;brew upgrade # Upgrade all packages
-: 0000000000:0;lsof -iTCP:3000 -n -P # What process is using port
-: 0000000000:0;lsof -nP -iTCP:3000 -sTCP:LISTEN # What process is using port
+: 0000000000:0;lsof -nP -sTCP:LISTEN -iTCP:3000 # What process is using port
 : 0000000000:0;defaults write com.apple.finder AppleShowAllFiles -boolean true && killall Finder # Show hidden files in Finder
 : 0000000000:0;k3d cluster list # List local k3d clusters
 : 0000000000:0;TERM=xterm-256color ssh someuser@some-vps # Connect to a VPS
