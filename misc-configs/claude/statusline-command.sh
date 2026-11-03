@@ -805,11 +805,16 @@ context_segment="🪣${context_color}${context_emphasis}${tokens_k}${italic}k${r
 context_link=$(osc8_link "statusline-context" "${claude_code_docs_url}/context-window" "$context_segment")
 
 model_link=$(osc8_link "statusline-model" "${claude_code_docs_url}/model-config" "✳️${model}")
-# Hidden when unset because subagents then inherit the session effort already shown.
-subagent_effort_display=""
-if [[ -n "$subagent_effort_level" ]]; then
-    subagent_effort_display="🤖$(format_effort_level "$subagent_effort_level")"
+# Shows ➖ when unset because there is no single value to show: subagents on the
+# session model's family inherit the session effort already shown, while other
+# families (e.g. forked skills on haiku/sonnet) use their own saved or default
+# level. When set, the env var outranks both, but not an explicit `effort:`.
+# `inherit` is a valid env var value that opts back into that same behavior.
+subagent_effort_marker="➖"
+if [[ -n "$subagent_effort_level" && "$subagent_effort_level" != "inherit" ]]; then
+    subagent_effort_marker=$(format_effort_level "$subagent_effort_level")
 fi
+subagent_effort_display="🤖${subagent_effort_marker}"
 
 effort_link=$(osc8_link "statusline-effort" "${claude_code_docs_url}/model-config#adjust-effort-level" "💪🏻${effort_display}${subagent_effort_display}")
 thinking_link=$(osc8_link "statusline-thinking" "${claude_code_docs_url}/model-config#extended-thinking" "🧠${thinking_display}")
