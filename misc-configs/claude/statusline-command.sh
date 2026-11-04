@@ -357,9 +357,9 @@ output_style_display="${output_style:-default}"
 
 # The default style is always shown, so only a deliberately-chosen one gets color;
 # otherwise it'd look like something unusual is in effect.
-output_style_color="$cyan"
-if [[ "$output_style_display" == "default" ]]; then
-    output_style_color="$gray"
+output_style_color=""
+if [[ "$output_style_display" != "default" ]]; then
+    output_style_color="$cyan"
 fi
 
 # The payload omits `vim` entirely when vim mode is off, so a placeholder keeps
