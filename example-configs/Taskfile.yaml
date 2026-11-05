@@ -85,3 +85,9 @@ tasks:
       - task: use:env
         vars:
           ENV_NAME: production
+
+  version:bump:
+    desc: "Bump project version without committing (default: patch). E.g. task version:bump -- minor"
+    cmds:
+      - pnpm run version:bump {{.CLI_ARGS | default "patch"}}
+
