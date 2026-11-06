@@ -67,6 +67,7 @@ tasks:
 
   use:env:
     internal: true
+    silent: true
     preconditions:
       - sh: test -f shell.{{.ENV_NAME}}.nix
         msg: Missing "shell.{{.ENV_NAME}}.nix" file.
