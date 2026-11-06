@@ -34,7 +34,8 @@
     "tips": [
       "Check `~/.claude/projects` periodically: dirs of deleted worktrees and throwaway folders pile up",
       "Check `~/.claude/file-history` periodically: per-session `/rewind` snapshots pile up",
-      "Use workflows for big fan-out jobs, e.g. `/deep-research <question>`: https://code.claude.com/docs/en/workflows"
+      "Use workflows for big fan-out jobs, e.g. `/deep-research <question>`: https://code.claude.com/docs/en/workflows",
+      "Use `/subtask <task>` to fork a side task into a background subagent that inherits this conversation: https://code.claude.com/docs/en/sub-agents#fork-the-current-conversation"
     ]
   },
 
