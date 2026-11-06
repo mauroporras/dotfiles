@@ -71,6 +71,9 @@
   "//remoteControlAtStartup": "Sometimes it fails at the worst time and blocks the session",
   "_remoteControlAtStartup": true,
 
+  "//showClearContextOnPlanAccept": "Hidden by default since v2.1.81; restores the clear-context option on plan accept",
+  "showClearContextOnPlanAccept": true,
+
   "//viewMode": "Scrollback gets too long",
   "_viewMode": "verbose"
 }
