@@ -4,3 +4,14 @@ scrolloff = 10
 
 [input]
 cursor_blink = true
+
+# git.yazi: fetch Git status for files ("*") and directories ("*/").
+[[plugin.prepend_fetchers]]
+url = "*"
+run = "git"
+group = "git"
+
+[[plugin.prepend_fetchers]]
+url = "*/"
+run = "git"
+group = "git"

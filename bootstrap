@@ -64,7 +64,8 @@ ln -sf ~/dotfiles/misc-configs/yazi/yazi.toml .config/yazi/yazi.toml
 ln -sf ~/dotfiles/misc-configs/yazi/keymap.toml .config/yazi/keymap.toml
 ln -sf ~/dotfiles/misc-configs/yazi/theme.toml .config/yazi/theme.toml
 ln -sf ~/dotfiles/misc-configs/yazi/package.toml .config/yazi/package.toml
-# Flavors are pinned in package.toml but not committed; fetch them here.
+ln -sf ~/dotfiles/misc-configs/yazi/init.lua .config/yazi/init.lua
+# Flavors and plugins are pinned in package.toml but not committed; fetch them here.
 ya pkg install
 
 # -- Directories --
