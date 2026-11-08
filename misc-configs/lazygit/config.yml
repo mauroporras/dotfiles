@@ -81,7 +81,7 @@ customCommands:
         context: "commits"
         description: "Push specific commit and preceding"
         loadingText: "Pushing commit"
-        command: "git push {{.SelectedRemote.Name}} {{.SelectedLocalCommit.Sha}}:{{.SelectedLocalBranch.Name}}"
+        command: "git push {{.SelectedRemote.Name}} {{.SelectedCommit.Hash}}:{{.SelectedLocalBranch.Name}}"
       - key: "s"
         context: "commits"
         description: "Add [skip ci] to commit"
@@ -94,7 +94,7 @@ customCommands:
         # The guard keeps repeated presses from stacking the marker.
         command: |
           bash -c '
-            sha={{.SelectedLocalCommit.Sha}}
+            sha={{.SelectedCommit.Hash}}
             message=$(git log -1 --format=%B "$sha")
             case "$message" in
               *"[skip ci]"*)
