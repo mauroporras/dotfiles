@@ -1,0 +1,4 @@
+# Matches Ghostty, bat, and delta: Latte on light backgrounds, Mocha on dark.
+[flavor]
+light = "catppuccin-latte"
+dark = "catppuccin-mocha"

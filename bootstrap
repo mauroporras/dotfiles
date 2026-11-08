@@ -62,6 +62,10 @@ ln -sf ~/dotfiles/misc-configs/starship/starship.toml .config/starship.toml
 mkdir -p .config/yazi
 ln -sf ~/dotfiles/misc-configs/yazi/yazi.toml .config/yazi/yazi.toml
 ln -sf ~/dotfiles/misc-configs/yazi/keymap.toml .config/yazi/keymap.toml
+ln -sf ~/dotfiles/misc-configs/yazi/theme.toml .config/yazi/theme.toml
+ln -sf ~/dotfiles/misc-configs/yazi/package.toml .config/yazi/package.toml
+# Flavors are pinned in package.toml but not committed; fetch them here.
+ya pkg install
 
 # -- Directories --
 mkdir -p queue temp workspace
