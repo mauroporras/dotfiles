@@ -36,6 +36,12 @@ git config --global merge.conflictStyle 'zdiff3'
 git config --global diff.colorMoved 'default'
 # Delta ships with these off.
 git config --global delta.line-numbers true
+# Per-background syntax themes matching bat (`misc-configs/bat/config`).
+# Delta has no per-mode theme option, so they are features a caller picks with
+# `--features=catppuccin-<light|dark>` (see `misc-configs/lazygit/config.yml`).
+# A plain `delta.syntax-theme` would pin one theme for both backgrounds.
+git config --global delta.catppuccin-light.syntax-theme 'Catppuccin Latte'
+git config --global delta.catppuccin-dark.syntax-theme 'Catppuccin Mocha'
 
 # GitHub CLI
 gh alias set --clobber il 'issue list'

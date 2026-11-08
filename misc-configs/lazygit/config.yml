@@ -37,7 +37,7 @@ git:
   # If detection ever fails (e.g. over ssh), force it with `gui.colorScheme`.
   diffRenderers:
     - name: "delta"
-      command: delta --{{colorScheme}} --paging=never
+      command: delta --{{colorScheme}} --features=catppuccin-{{colorScheme}} --paging=never
     # Syntax-aware diffs: https://github.com/wilfred/difftastic
     # `extDiff` hands diff generation to difftastic via git's `--ext-diff`
     # instead of post-processing git's output like the stdin filters above.
@@ -45,7 +45,7 @@ git:
       type: extDiff
       command: difft --color=always --background={{colorScheme}} --context={{diffContext}}
     - name: "delta side-by-side"
-      command: delta --{{colorScheme}} --paging=never --side-by-side
+      command: delta --{{colorScheme}} --features=catppuccin-{{colorScheme}} --paging=never --side-by-side
     - name: "cat"
       command: cat
   mainBranches:
