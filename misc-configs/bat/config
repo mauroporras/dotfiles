@@ -4,7 +4,12 @@
 
 # Specify desired highlighting theme (e.g. "TwoDark").
 #   `bat --list-themes`
---theme="Catppuccin Latte"
+# `auto` asks the terminal for its background color. When it can't (output is
+# piped, e.g. fzf previews), bat skips both themes below and uses its built-in
+# default, Monokai Extended.
+--theme="auto"
+--theme-light="Catppuccin Latte"
+--theme-dark="Catppuccin Mocha"
 
 # Enable this to use italic text on the terminal. This is not supported on all
 # terminal emulators (like tmux, by default):
