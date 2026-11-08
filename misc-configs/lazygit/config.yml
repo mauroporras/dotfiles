@@ -31,17 +31,21 @@ gui:
 git:
   # Change it using the `|` and `\` keys.
   # (Formerly `pagers`)
+  # Renderers can't query the terminal's background from inside lazygit, so
+  # they fall back to dark. `{{colorScheme}}` expands to `dark` or `light` from
+  # lazygit's own query, so each renderer matches the terminal.
+  # If detection ever fails (e.g. over ssh), force it with `gui.colorScheme`.
   diffRenderers:
     - name: "delta"
-      command: delta --paging=never
+      command: delta --{{colorScheme}} --paging=never
     # Syntax-aware diffs: https://github.com/wilfred/difftastic
     # `extDiff` hands diff generation to difftastic via git's `--ext-diff`
     # instead of post-processing git's output like the stdin filters above.
     - name: "difftastic"
       type: extDiff
-      command: difft --color=always --context={{diffContext}}
+      command: difft --color=always --background={{colorScheme}} --context={{diffContext}}
     - name: "delta side-by-side"
-      command: delta --paging=never --side-by-side
+      command: delta --{{colorScheme}} --paging=never --side-by-side
     - name: "cat"
       command: cat
   mainBranches:
