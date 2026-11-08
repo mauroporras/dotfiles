@@ -20,10 +20,6 @@ git config --global core.excludesfile ~/.gitignore_global
 git config --global core.editor 'nvim'
 
 # git-delta
-# Makes the upstream theme definitions selectable by name via `delta.features`
-# below. `bootstrap` fetches this file straight from the delta repo, so don't
-# hand-edit it: the next run overwrites it. Overrides belong in this file.
-git config --global include.path ~/.config/git-delta/themes.gitconfig
 # Syntax-highlight diff/show/log output.
 git config --global core.pager 'delta'
 # Same for `git add -p`. `--color-only` is required rather than cosmetic:
@@ -41,11 +37,8 @@ git config --global merge.conflictStyle 'zdiff3'
 # Distinguish relocated lines from genuine additions/deletions, so a refactor
 # that only moves code doesn't read as a rewrite.
 git config --global diff.colorMoved 'default'
-# Picks a `[delta "<name>"]` section out of the included themes file.
-# To preview the light themes:
-#   `delta --show-themes --light`
-# `hoopoe` is light and pairs itself with the GitHub syntax theme.
-git config --global delta.features 'hoopoe'
+# Matches bat's theme (`misc-configs/bat/config`) so code reads the same in both.
+git config --global delta.syntax-theme 'Catppuccin Latte'
 # Delta ships with these off.
 git config --global delta.line-numbers true
 
