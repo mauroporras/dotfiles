@@ -4,6 +4,8 @@
 
 # ghostty +list-themes
 theme = light:Catppuccin Latte,dark:Catppuccin Mocha
+# Forces the theme to be dark, even if the system is light.
+#window-theme = dark
 
 # Typically, this setting is used only for the first window.
 working-directory = /tmp
