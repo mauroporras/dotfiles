@@ -20,16 +20,8 @@ return {
       hovered_buffer = {},
       hovered_buffer_in_same_directory = {},
     },
-    -- INFO: out of the box fullscreen is broken, so we use a hook instead.
-    --
-    -- floating_window_scaling_factor = 1,
-    -- yazi_floating_window_border = "none",
-    hooks = {
-      before_opening_window = function(window_options)
-        window_options.width = vim.o.columns
-        window_options.height = math.floor(vim.o.lines * 0.9)
-      end,
-    },
+    floating_window_scaling_factor = 1,
+    yazi_floating_window_border = "none",
   },
   keys = {
     {
