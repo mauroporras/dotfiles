@@ -18,6 +18,8 @@ SHOW_VERSION=false
 # Off because the mode takes a long time to refresh in the statusline, so the
 # indicator lags behind the real vim mode and misleads more than it helps.
 SHOW_VIM_MODE=false
+# Off because Claude Code's own `↯` prompt icon already shows when fast mode is on.
+SHOW_FAST_MODE=false
 
 bold='\033[1m'
 italic='\033[3m'
@@ -811,7 +813,15 @@ fi
 effort_link=$(osc8_link "statusline-effort" "${claude_code_docs_url}/model-config#adjust-effort-level" "💪🏻${effort_display}")
 # Separate link and id: the session effort docs don't cover subagent effort.
 subagent_effort_link=$(osc8_link "statusline-subagent-effort" "${claude_code_docs_url}/sub-agents#choose-an-effort-level" "👷🏻‍♂️${subagent_effort_marker}")
-fast_mode_link=$(osc8_link "statusline-fast-mode" "${claude_code_docs_url}/fast-mode" "🏃🏻💵${fast_mode_display}")
+
+fast_mode_segment=""
+if [[ "$SHOW_FAST_MODE" == "true" ]]; then
+    fast_mode_link=$(osc8_link "statusline-fast-mode" "${claude_code_docs_url}/fast-mode" "🏃🏻💵${fast_mode_display}")
+
+    # The leading space lives here so a hidden fast mode doesn't leave a double space.
+    fast_mode_segment=" ${fast_mode_link}"
+fi
+
 focus_mode_link=$(osc8_link "statusline-focus" "${claude_code_docs_url}/fullscreen#${focus_mode_url_anchor}" "$focus_mode_segment")
 vim_mode_link=$(osc8_link "statusline-vim-mode" "${claude_code_docs_url}/interactive-mode#vim-editor-mode" "$vim_mode_segment")
 
@@ -856,7 +866,7 @@ if [[ -n "$prompt_cache_segment" ]]; then
     prompt_cache_display=" ${prompt_cache_link}"
 fi
 
-state_line="${model_link}${advisor_display} ${effort_link}${subagent_effort_link} ${fast_mode_link} ${focus_mode_link} ${output_style_link}"
+state_line="${model_link}${advisor_display} ${effort_link}${subagent_effort_link}${fast_mode_segment} ${focus_mode_link} ${output_style_link}"
 
 # Split from the state line so settings the user picks sit apart from what the
 # session has consumed; the usage figures change every turn, the settings rarely.
