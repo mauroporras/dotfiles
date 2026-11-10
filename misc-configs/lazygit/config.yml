@@ -121,6 +121,46 @@ customCommands:
         description: "Create trigger CI commit"
         loadingText: "Creating trigger CI commit"
         command: 'git commit --allow-empty -m "[trigger ci]"'
+      - key: "T"
+        context: "commits"
+        description: "Set commit time to now"
+        loadingText: "Setting commit time to now"
+        # lazygit's source sets `From` to the older (bottom) commit but its docs
+        # say the opposite, so the ends are ordered here with `--is-ancestor`.
+        # With a single commit selected, both ends are the same hash.
+        # A plain `--exec` would re-date every commit up to HEAD, so each exec
+        # counts how far HEAD sits above `base` and only amends the first
+        # `count` commits, which are the selected ones. The `if … fi` form lets
+        # skipped commits exit 0, since a failing exec would stop the rebase.
+        # `--date=now` keeps the author (unlike `--reset-author`), which matters
+        # for commits by other authors, and `--allow-empty` keeps the `;e` and
+        # `;t` empty commits from stopping the rebase.
+        # `--autostash` matches `;s`. Merges are refused because a plain rebase
+        # flattens them, which would also break the count, and the root commit
+        # is refused because it has no parent to rebase onto.
+        # The script must stay free of single quotes, since one would close the
+        # `bash -c` string early.
+        command: |
+          bash -c '
+            older={{.SelectedCommitRange.From}}
+            newer={{.SelectedCommitRange.To}}
+            if ! git merge-base --is-ancestor "$older" "$newer"; then
+              older={{.SelectedCommitRange.To}}
+              newer={{.SelectedCommitRange.From}}
+            fi
+            if ! base=$(git rev-parse -q --verify "$older^"); then
+              echo "Re-dating the root commit is not supported." >&2
+              exit 1
+            fi
+            if [ -n "$(git rev-list --merges "$base..HEAD")" ]; then
+              echo "Merge commits between the selection and HEAD; aborting." >&2
+              exit 1
+            fi
+            count=$(git rev-list --count "$base..$newer")
+            GIT_SEQUENCE_EDITOR=true git rebase -i --autostash \
+              --exec "if [ \$(git rev-list --count $base..HEAD) -le $count ]; then git commit --amend --only --no-edit --allow-empty --date=now -q; fi" \
+              "$base"
+          '
       # Files
       - key: "b"
         context: "files"
