@@ -123,29 +123,7 @@ format_effort_level() {
 
 effort_display=$(format_effort_level "$effort_level")
 
-thinking_enabled=$(echo "$input" | jq -r '.thinking.enabled // false')
 fast_mode_enabled=$(echo "$input" | jq -r '.fast_mode // false')
-model_id=$(echo "$input" | jq -r '.model.id // empty')
-
-# The payload reports these models' thinking as on regardless of the setting
-# (capability `rejects_disabled_thinking` in Claude Code 2.1.295), so a lock
-# says "on, and not toggleable" rather than a dot that looks flippable. Globs
-# match substrings so 3P ids (Bedrock/Vertex prefixes, `[1m]` suffixes) still
-# hit; `claude-fable-5*` covers both Fable 5 and 5.1.
-is_thinking_forced=false
-case "$model_id" in
-*claude-fable-5* | *claude-mythos-5-1* | *claude-opus-5-5* | *claude-sonnet-5-5* | *claude-haiku-5-5*)
-    is_thinking_forced=true
-    ;;
-esac
-
-if [[ "$is_thinking_forced" == "true" ]]; then
-    thinking_display="🔒"
-elif [[ "$thinking_enabled" == "true" ]]; then
-    thinking_display="${enabled_icon}"
-else
-    thinking_display="${disabled_icon}"
-fi
 
 # The banknote flags that fast mode draws from usage credits at a higher rate.
 if [[ "$fast_mode_enabled" == "true" ]]; then
@@ -833,7 +811,6 @@ fi
 effort_link=$(osc8_link "statusline-effort" "${claude_code_docs_url}/model-config#adjust-effort-level" "💪🏻${effort_display}")
 # Separate link and id: the session effort docs don't cover subagent effort.
 subagent_effort_link=$(osc8_link "statusline-subagent-effort" "${claude_code_docs_url}/sub-agents#choose-an-effort-level" "👷🏻‍♂️${subagent_effort_marker}")
-thinking_link=$(osc8_link "statusline-thinking" "${claude_code_docs_url}/model-config#extended-thinking" "🧠${thinking_display}")
 fast_mode_link=$(osc8_link "statusline-fast-mode" "${claude_code_docs_url}/fast-mode" "🏃🏻💵${fast_mode_display}")
 focus_mode_link=$(osc8_link "statusline-focus" "${claude_code_docs_url}/fullscreen#${focus_mode_url_anchor}" "$focus_mode_segment")
 vim_mode_link=$(osc8_link "statusline-vim-mode" "${claude_code_docs_url}/interactive-mode#vim-editor-mode" "$vim_mode_segment")
@@ -879,7 +856,7 @@ if [[ -n "$prompt_cache_segment" ]]; then
     prompt_cache_display=" ${prompt_cache_link}"
 fi
 
-state_line="${model_link}${advisor_display} ${effort_link}${subagent_effort_link} ${thinking_link} ${fast_mode_link} ${output_style_link} ${focus_mode_link}"
+state_line="${model_link}${advisor_display} ${effort_link}${subagent_effort_link} ${fast_mode_link} ${output_style_link} ${focus_mode_link}"
 
 # Split from the state line so settings the user picks sit apart from what the
 # session has consumed; the usage figures change every turn, the settings rarely.
