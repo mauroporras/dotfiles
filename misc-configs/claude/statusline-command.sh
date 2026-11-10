@@ -12,7 +12,6 @@ LC_ALL=C # stable decimal separator for printf '$%.2f' across locales
 
 SHOW_COST=false
 SHOW_SESSION_ID=false
-SHOW_ADVISOR=true
 SHOW_CONTEXT_PCT=false
 SHOW_VERSION=false
 # Off because the mode takes a long time to refresh in the statusline, so the
@@ -771,17 +770,11 @@ fi
 # default rather than a guarantee the advisor is consulted.
 advisor_model=$(read_merged_setting advisorModel)
 
-advisor_display=""
-if [[ "$SHOW_ADVISOR" == "true" ]]; then
-    advisor_docs_url="${claude_code_docs_url}/advisor"
-    advisor_value="${advisor_model:-off}"
-    advisor_initial=$(printf '%s' "${advisor_value:0:1}" | tr '[:lower:]' '[:upper:]')
-    advisor_segment="🤝🏻${advisor_initial}${advisor_value:1}"
-    advisor_link=$(osc8_link "statusline-advisor" "$advisor_docs_url" "$advisor_segment")
-
-    # The leading space lives here so a hidden advisor doesn't leave a double space.
-    advisor_display=" ${advisor_link}"
-fi
+advisor_docs_url="${claude_code_docs_url}/advisor"
+advisor_value="${advisor_model:-off}"
+advisor_initial=$(printf '%s' "${advisor_value:0:1}" | tr '[:lower:]' '[:upper:]')
+advisor_segment="🤝🏻${advisor_initial}${advisor_value:1}"
+advisor_link=$(osc8_link "statusline-advisor" "$advisor_docs_url" "$advisor_segment")
 
 context_pct_display=""
 if [[ "$SHOW_CONTEXT_PCT" == "true" ]]; then
@@ -866,7 +859,7 @@ if [[ -n "$prompt_cache_segment" ]]; then
     prompt_cache_display=" ${prompt_cache_link}"
 fi
 
-state_line="${model_link}${advisor_display} ${effort_link}${subagent_effort_link}${fast_mode_segment} ${focus_mode_link} ${output_style_link}"
+state_line="${model_link} ${advisor_link} ${effort_link}${subagent_effort_link}${fast_mode_segment} ${focus_mode_link} ${output_style_link}"
 
 # Split from the state line so settings the user picks sit apart from what the
 # session has consumed; the usage figures change every turn, the settings rarely.
