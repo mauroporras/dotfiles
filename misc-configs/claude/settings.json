@@ -13,7 +13,7 @@
     "type": "command",
     "command": "/bin/bash ~/.claude/statusline-command.sh",
     "//refreshInterval": "Rate-limit countdowns only re-render on events, so they go stale while idle",
-    "refreshInterval": 60
+    "refreshInterval": 15
   },
   "enabledPlugins": {
     "typescript-lsp@claude-plugins-official": true,
