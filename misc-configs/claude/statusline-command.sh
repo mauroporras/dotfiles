@@ -879,8 +879,8 @@ if [[ -n "$claude_version" ]]; then
     usage_line="${usage_line}${segment_separator}${gray}${version_link}${reset}"
 fi
 
-# Trails the usage line: it identifies the session rather than describing its
-# state, so it sits past the segments that change from turn to turn.
+# Trails the state line: it identifies the session rather than describing a
+# setting, so it sits past the settings the user picks.
 session_label="${session_icon}${placeholder}"
 
 has_session_name=false
@@ -901,7 +901,7 @@ if [[ "$has_session_name" == "true" ]]; then
     fi
 fi
 
-usage_line="${usage_line} ${session_label}"
+state_line="${state_line} ${session_label}"
 
 # Prepended here because the link is built after the workspace line; the mode
 # leads so it sits at a fixed position regardless of how long the dir names are.
