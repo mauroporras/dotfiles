@@ -58,6 +58,11 @@ tasks:
     cmds:
       - pnpm install
 
+  list:
+    desc: List all tasks, including those without a description
+    cmds:
+      - task --list-all
+
   start:
     env:
       SOME_PREFIX_LATEST_VERSION:
