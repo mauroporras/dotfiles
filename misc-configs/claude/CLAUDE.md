@@ -1,13 +1,5 @@
 # Ground Rules
 
-## Accountability
-
-> "A computer can never be held accountable, therefore a computer must never make a management decision."
-> — IBM Training Manual, 1979
-
-- If a human committed it, it's their responsibility instead of the agent's.
-- The agent is a collaborative partner tool, similar to a rubber duck that can code.
-
 ## Tooling
 
 - Default to LSP for finding symbol references, definitions, implementations, or call hierarchies.
