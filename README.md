@@ -2,6 +2,14 @@
 
 Settings for a development environment using Neovim and Zsh.
 
+## Accountability
+
+> "A computer can never be held accountable, therefore a computer must never make a management decision."
+> — IBM Training Manual, 1979
+
+- If a human committed it, it's their responsibility instead of the agent's.
+- The agent is a collaborative partner tool, similar to a rubber duck that can code.
+
 ## Clone the repository
 
 ```bash
@@ -42,11 +50,3 @@ To optimize Neovim: `:checkhealth`
 ## FAQ
 
 [FAQ.md](FAQ.md)
-
-## Accountability
-
-> "A computer can never be held accountable, therefore a computer must never make a management decision."
-> — IBM Training Manual, 1979
-
-- If a human committed it, it's their responsibility instead of the agent's.
-- The agent is a collaborative partner tool, similar to a rubber duck that can code.
