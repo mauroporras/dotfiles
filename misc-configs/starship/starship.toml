@@ -40,6 +40,40 @@ display_private = true
 # disabled = true
 
 # https://starship.rs/config/#custom-commands
+# Name the environment this directory is wired to. `PROJECT_ENV` is exported by
+# whatever direnv loads for the checkout (see example-configs/shell.*.nix), so
+# the segment appears on `cd` in and disappears on `cd` out, with no shell
+# reload and nothing to remember to unset.
+#
+# Two modules rather than one `env_var` module because the styling has to depend
+# on the value: `env_var` renders every environment identically, and the whole
+# point is that a production shell can't be mistaken for a scratch one. The
+# `when` conditions are exhaustive and mutually exclusive, so exactly one of
+# them ever renders.
+#
+# Both run `sh` builtins only (no forks beyond the shell itself), which keeps
+# them well inside `command_timeout` on every prompt.
+[custom.project_env_production]
+description = "Alarm for a production environment loaded by direnv"
+shell = ["sh"]
+when = 'case "$PROJECT_ENV" in prod | production) exit 0 ;; *) exit 1 ;; esac'
+command = 'printf %s "$PROJECT_ENV"'
+symbol = "🚨 "
+format = "[$symbol$output]($style) "
+style = "bold red"
+
+# Anything that isn't production is safe to break, so it gets the calm styling.
+# Matching on "not production" instead of listing known names means a new
+# environment (staging, review-42) is never silently mistaken for production.
+[custom.project_env]
+description = "Non-production environment loaded by direnv"
+shell = ["sh"]
+when = 'case "$PROJECT_ENV" in "" | prod | production) exit 1 ;; *) exit 0 ;; esac'
+command = 'printf %s "$PROJECT_ENV"'
+symbol = "🧪 "
+format = "[$symbol$output]($style) "
+style = "bold green"
+
 # Show the installed psql client version.
 # [custom.psql]
 # description = "psql client version"
