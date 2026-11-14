@@ -1,6 +1,6 @@
 # DotFiles
 
-Settings for an agentic development environment using Neovim and Zsh.
+Settings for an agentic development environment using Neovim, Zsh, and lazygit.
 
 ## Accountability
 
