@@ -39,6 +39,8 @@ ln -sf ~/dotfiles/gitignore_global .gitignore_global
 # -- Claude Code --
 mkdir -p .claude
 ln -sf ~/dotfiles/misc-configs/claude/CLAUDE.md .claude/CLAUDE.md
+# CLAUDE.md imports @AGENTS.md by relative path, so AGENTS.md must sit next to it.
+ln -sf ~/dotfiles/misc-configs/claude/AGENTS.md .claude/AGENTS.md
 # Linked individually (not the whole dir) to allow third-party skills alongside ours.
 mkdir -p .claude/skills
 for skill in ~/dotfiles/misc-configs/claude/skills/*/; do
