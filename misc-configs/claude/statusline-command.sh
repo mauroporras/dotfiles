@@ -71,26 +71,16 @@ if ! printf '%s' "$input" | jq -e . > /dev/null 2>&1; then
 fi
 
 current_dir=$(echo "$input" | jq -r '.workspace.current_dir')
-current_dir_display=${current_dir##*/}
 project_dir=$(echo "$input" | jq -r '.workspace.project_dir // empty')
+# The launch dir stays put while `current_dir` follows every `cd`. `project_dir`
+# can be absent, in which case the current dir is the only root we know of.
+root_dir=${project_dir:-$current_dir}
 
-project_divergence_display=""
 # Compares full paths because two clones can share a basename, and a `cd` between
 # them must still raise the alert.
-has_project_dir=false
-if [[ -n "$project_dir" ]]; then
-    has_project_dir=true
-fi
-
-is_outside_project_dir=false
-if [[ "$project_dir" != "$current_dir" ]]; then
-    is_outside_project_dir=true
-fi
-
-if [[ "$has_project_dir" == "true" && "$is_outside_project_dir" == "true" ]]; then
-    # Alert prefix so a `cd` away from the original project dir is impossible to
-    # miss: it changes the meaning of every relative path and git context below.
-    project_divergence_display="⏪"
+is_outside_root_dir=false
+if [[ "$current_dir" != "$root_dir" ]]; then
+    is_outside_root_dir=true
 fi
 
 # Two worktree signals exist, and they differ in scope: `worktree.*` is only set
@@ -154,8 +144,8 @@ read_merged_setting() {
     local retval
     retval=$(jq -rs --arg key "$1" '[.[][$key] // empty] | last // empty' \
         "$claude_config_dir/settings.json" \
-        "${project_dir:-$current_dir}/.claude/settings.json" \
-        "${project_dir:-$current_dir}/.claude/settings.local.json" 2> /dev/null)
+        "$root_dir/.claude/settings.json" \
+        "$root_dir/.claude/settings.local.json" 2> /dev/null)
 
     printf '%s' "$retval"
 }
@@ -166,8 +156,8 @@ read_merged_env_setting() {
     local retval
     retval=$(jq -rs --arg key "$1" '[.[].env[$key]? // empty] | last // empty' \
         "$claude_config_dir/settings.json" \
-        "${project_dir:-$current_dir}/.claude/settings.json" \
-        "${project_dir:-$current_dir}/.claude/settings.local.json" 2> /dev/null)
+        "$root_dir/.claude/settings.json" \
+        "$root_dir/.claude/settings.local.json" 2> /dev/null)
 
     printf '%s' "$retval"
 }
@@ -689,16 +679,17 @@ if [[ "$has_spend_limit" == "true" ]]; then
 fi
 
 # 🏠 is pinned to the launch dir so it never moves; a `cd` only prepends the
-# dir the session moved into plus the ⏪ alert. `project_dir` can be absent,
-# in which case the current dir is the only root we know of.
-root_dir=${project_dir:-$current_dir}
+# dir the session moved into plus the ⏪ alert.
 root_dir_display=${root_dir##*/}
 root_dir_link=$(osc8_link "statusline-dir" "file://${root_dir}" "🏠${root_dir_display}")
 workspace_line="${root_dir_link}"
 
-if [[ -n "$project_divergence_display" ]]; then
+# Alert prefix so a `cd` away from the launch dir is impossible to miss: it
+# changes the meaning of every relative path and the git context.
+if [[ "$is_outside_root_dir" == "true" ]]; then
+    current_dir_display=${current_dir##*/}
     current_dir_link=$(osc8_link "statusline-current-dir" "file://${current_dir}" "📂${current_dir_display}")
-    divergence_link=$(osc8_link "statusline-divergence" "${claude_code_docs_url}/permissions#working-directories" "$project_divergence_display")
+    divergence_link=$(osc8_link "statusline-divergence" "${claude_code_docs_url}/permissions#working-directories" "⏪")
     workspace_line="${current_dir_link} ${divergence_link} ${workspace_line}"
 fi
 
