@@ -73,7 +73,6 @@ fi
 current_dir=$(echo "$input" | jq -r '.workspace.current_dir')
 current_dir_display=${current_dir##*/}
 project_dir=$(echo "$input" | jq -r '.workspace.project_dir // empty')
-project_dir_display=${project_dir##*/}
 
 project_divergence_display=""
 # Compares full paths because two clones can share a basename, and a `cd` between
@@ -556,7 +555,7 @@ while IFS= read -r added_dir; do
         continue
     fi
 
-    # After a `cd` into an added dir, the 🏠 segment already shows that dir.
+    # After a `cd` into an added dir, the moved-into segment before ⏪ already shows that dir.
     if [[ "$added_dir" == "$current_dir" ]]; then
         continue
     fi
@@ -684,15 +683,18 @@ if [[ "$has_spend_limit" == "true" ]]; then
     rate_limits_display="${rate_limits_display} ${spend_limit_link}"
 fi
 
-current_dir_link=$(osc8_link "statusline-dir" "file://${current_dir}" "🏠${current_dir_display}")
-workspace_line="${current_dir_link}"
+# 🏠 is pinned to the launch dir so it never moves; a `cd` only prepends the
+# dir the session moved into plus the ⏪ alert. `project_dir` can be absent,
+# in which case the current dir is the only root we know of.
+root_dir=${project_dir:-$current_dir}
+root_dir_display=${root_dir##*/}
+root_dir_link=$(osc8_link "statusline-dir" "file://${root_dir}" "🏠${root_dir_display}")
+workspace_line="${root_dir_link}"
 
-# Workspace decorations sit between the current dir and the branch bullet so
-# they read as modifiers of the dir, not of the branch.
 if [[ -n "$project_divergence_display" ]]; then
-    project_dir_link=$(osc8_link "statusline-project-dir" "file://${project_dir}" "📂${project_dir_display}")
+    current_dir_link=$(osc8_link "statusline-current-dir" "file://${current_dir}" "📂${current_dir_display}")
     divergence_link=$(osc8_link "statusline-divergence" "${claude_code_docs_url}/permissions#working-directories" "$project_divergence_display")
-    workspace_line="${project_dir_link} ${divergence_link} ${workspace_line}"
+    workspace_line="${current_dir_link} ${divergence_link} ${workspace_line}"
 fi
 
 if [[ -n "$added_dirs_display" ]]; then
