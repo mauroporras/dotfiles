@@ -77,7 +77,17 @@ project_dir=$(echo "$input" | jq -r '.workspace.project_dir // empty')
 project_divergence_display=""
 # Compares full paths because two clones can share a basename, and a `cd` between
 # them must still raise the alert.
-if [[ -n "$project_dir" && "$project_dir" != "$current_dir" ]]; then
+has_project_dir=false
+if [[ -n "$project_dir" ]]; then
+    has_project_dir=true
+fi
+
+is_outside_project_dir=false
+if [[ "$project_dir" != "$current_dir" ]]; then
+    is_outside_project_dir=true
+fi
+
+if [[ "$has_project_dir" == "true" && "$is_outside_project_dir" == "true" ]]; then
     # Alert prefix so a `cd` away from the original project dir is impossible to
     # miss: it changes the meaning of every relative path and git context below.
     project_divergence_display="⏪"
@@ -552,11 +562,6 @@ fi
 added_dirs_index=0
 while IFS= read -r added_dir; do
     if [[ -z "$added_dir" ]]; then
-        continue
-    fi
-
-    # After a `cd` into an added dir, the moved-into segment before ⏪ already shows that dir.
-    if [[ "$added_dir" == "$current_dir" ]]; then
         continue
     fi
 
