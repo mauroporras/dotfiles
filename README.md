@@ -4,7 +4,7 @@ Settings for an agentic development environment using Zsh, lazygit, and Neovim.
 
 ## Accountability
 
-> "A computer can never be held accountable, therefore a computer must never make a management decision."
+> A computer can never be held accountable, therefore a computer must never make a management decision.
 > — IBM Training Manual, 1979
 
 - If a human committed it, it's their responsibility instead of the agent's.
