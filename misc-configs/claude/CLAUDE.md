@@ -64,8 +64,8 @@
 
 ### Logging
 
-- When adding console logs, prefix the message with `---------- WITNESSME`.
-  This makes temporary debug logs easy to spot and grep out before committing.
+- When adding temporary logs, prefix them with `---------- WITNESSME`.
+  This makes them easy to spot and grep out before committing.
 
 ### Error Handling
 
