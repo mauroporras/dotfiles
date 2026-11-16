@@ -859,8 +859,8 @@ fi
 
 state_line="${model_link} ${advisor_link} ${effort_link}${subagent_effort_link}${fast_mode_segment} ${focus_mode_link} ${output_style_link}"
 
-# Split from the state line so settings the user picks sit apart from what the
-# session has consumed; the usage figures change every turn, the settings rarely.
+# Shares the second line with the state segments but follows them, so the
+# settings that rarely change lead and the figures that change every turn trail.
 usage_line="${context_link}${prompt_cache_display} ${rate_limits_display}"
 
 if [[ -n "$cost_display" ]]; then
@@ -877,8 +877,9 @@ if [[ -n "$claude_version" ]]; then
     usage_line="${usage_line}${segment_separator}${gray}${version_link}${reset}"
 fi
 
-# Trails the state line: it identifies the session rather than describing a
-# setting, so it sits past the settings the user picks.
+# Joins the workspace line: like the dirs and git context, it identifies where
+# the work happens rather than describing a setting, and trailing there keeps its
+# free length from shifting the meters on the second line.
 session_label="${session_icon}${placeholder}"
 
 has_session_name=false
@@ -899,15 +900,15 @@ if [[ "$has_session_name" == "true" ]]; then
     fi
 fi
 
-state_line="${state_line} ${session_label}"
-
 # Prepended here because the link is built after the workspace line; the mode
 # leads so it sits at a fixed position regardless of how long the dir names are.
 if [[ "$SHOW_VIM_MODE" == "true" ]]; then
     workspace_line="${vim_mode_link} ${workspace_line}"
 fi
 
+workspace_line="${workspace_line} ${session_label}"
+status_line="${state_line} ${usage_line}"
+
 echo -e "$workspace_line"
-echo -e "$state_line"
-echo -e "$usage_line"
+echo -e "$status_line"
 
