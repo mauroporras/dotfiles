@@ -97,7 +97,7 @@
 
 ### Use Cases
 
-- A use case is a single unit of application logic exposing one public method: `execute`.
+- A use case (often called application service) is a single unit of application logic exposing one public method: `execute`.
 - `execute` takes exactly one parameter named `input`, typed as the use case's
   own input contract (`<UseCaseName>Input`, an `interface`).
 - Keep use cases to pure application logic.
