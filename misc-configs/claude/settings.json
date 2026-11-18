@@ -39,6 +39,12 @@
     ]
   },
 
+  "//spinnerVerbs": "Default whimsical verbs (Cascading, Clauding, etc.) are distracting. Empty list falls back to defaults",
+  "spinnerVerbs": {
+    "mode": "replace",
+    "verbs": ["Working"]
+  },
+
   "autoMemoryEnabled": false,
   "editorMode": "vim",
   "theme": "auto",
