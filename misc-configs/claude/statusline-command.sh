@@ -762,11 +762,50 @@ if [[ -n "$context_color" ]]; then
     context_emphasis="$bold"
 fi
 
-# Not in the payload, so read the setting `/advisor` persists. Flag-only or
-# session-only advisors (--advisor, remote /advisor) and the account-level
-# availability gate aren't visible from here, so this is the configured
-# default rather than a guarantee the advisor is consulted.
-advisor_model=$(read_merged_setting advisorModel)
+# The `--advisor` flag isn't in the payload, so read it from the launching
+# `claude` process. The statusline may run under a shell wrapper, so walk up a
+# few ancestors instead of trusting `$PPID`; the cap keeps a missing match from
+# scanning the whole tree on every render.
+read_advisor_flag() {
+    local retval=""
+    local pid=$PPID
+    local depth args
+
+    for depth in 1 2 3 4; do
+        args=$(ps -o args= -p "$pid" 2> /dev/null)
+        # Match the executable alone: shell wrappers mention `claude` paths
+        # in their arguments and would otherwise match first.
+        local executable="${args%% *}"
+        local is_claude_process=false
+        if [[ "${executable##*/}" == "claude" ]]; then
+            is_claude_process=true
+        fi
+
+        if [[ "$is_claude_process" == "true" ]]; then
+            retval=$(printf '%s' "$args" | sed -nE 's/.*--advisor[= ]([^ ]+).*/\1/p')
+            break
+        fi
+
+        pid=$(ps -o ppid= -p "$pid" 2> /dev/null | tr -d ' ')
+        local is_tree_exhausted=false
+        if [[ -z "$pid" || "$pid" -le 1 ]]; then
+            is_tree_exhausted=true
+        fi
+
+        if [[ "$is_tree_exhausted" == "true" ]]; then
+            break
+        fi
+    done
+
+    printf '%s' "$retval"
+}
+
+# The flag wins over the setting `/advisor` persists, mirroring CLI precedence.
+# A mid-session `/advisor` change, remote sessions, and the account-level
+# availability gate still aren't visible from here, so this is the configured
+# advisor rather than a guarantee it's consulted.
+advisor_model=$(read_advisor_flag)
+advisor_model="${advisor_model:-$(read_merged_setting advisorModel)}"
 
 advisor_docs_url="${claude_code_docs_url}/advisor"
 advisor_value="${advisor_model:-off}"

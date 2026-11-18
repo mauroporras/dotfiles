@@ -17,11 +17,12 @@ alias 8='cd -8'
 alias 9='cd -9'
 
 # Claude Code
+# Advisor is the next model up; Fable is the top tier, so it runs without one.
 alias aifable='claude --model fable'
-alias ai='claude --model opus'
-alias aiopusplan='claude --model opusplan'
-alias aisonnet='claude --model sonnet'
-alias aihaiku='claude --model haiku'
+alias ai='claude --model opus --advisor fable'
+alias aiopusplan='claude --model opusplan --advisor fable'
+alias aisonnet='claude --model sonnet --advisor opus'
+alias aihaiku='claude --model haiku --advisor sonnet'
 
 # Relative path is intentional: per-project shada (history, registers, marks).
 # Ignored globally via *.shada.

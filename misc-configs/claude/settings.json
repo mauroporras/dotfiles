@@ -50,9 +50,6 @@
   "theme": "auto",
   "tui": "fullscreen",
 
-  "//advisorModel": "https://code.claude.com/docs/en/advisor",
-  "advisorModel": "fable",
-
   "//cleanupPeriodDays": "Pinned explicitly so an upstream default change doesn't alter /resume history",
   "cleanupPeriodDays": 20,
 
