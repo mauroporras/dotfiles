@@ -3,7 +3,7 @@ disable-model-invocation: true
 context: fork
 background: false
 argument-hint: [issue-number]
-allowed-tools: Bash(git --no-pager diff *), Bash(git rev-parse *), Bash(git commit *), Bash(grep *), Bash(echo *), Bash(head *)
+allowed-tools: Bash(git --no-pager diff *), Bash(git rev-parse *), Bash(git commit *), Bash(bash *)
 model: haiku
 effort: low
 ---
@@ -14,9 +14,9 @@ effort: low
 
 - Current staged changes only: !`git --no-pager diff --staged`
 - Current branch: !`git rev-parse --abbrev-ref HEAD`
-- Commit mode (`NORMAL` for base branches, `WIP` otherwise): !`git rev-parse --abbrev-ref HEAD | grep -qE '^(alpha|main|master|beta|production)$' && echo NORMAL || echo WIP`
+- Commit mode (`NORMAL` for base branches, `WIP` otherwise): !`bash "$HOME/.claude/skills/custom-staged-commit/scripts/commit-mode.sh"`
 - Arguments (`issue-number`, empty if none): `$ARGUMENTS`
-- Issue number (first numeric token in arguments, empty if none): !`echo "$ARGUMENTS" | grep -oE '[0-9]+' | head -n1`
+- Issue number (first numeric token in arguments, empty if none): !`bash "$HOME/.claude/skills/custom-staged-commit/scripts/issue-number.sh" "$ARGUMENTS"`
 
 ## Your task
 
@@ -39,7 +39,8 @@ REQUIRED:
 - Commit mode is the `Commit mode` value from the Context above. It is computed
   deterministically; use it verbatim and do NOT re-derive it from the branch name:
   <!--
-  Branch list mirrors `branchColorPatterns` in misc-configs/lazygit/config.yml
+  Computed by scripts/commit-mode.sh; its branch list mirrors
+  `branchColorPatterns` in misc-configs/lazygit/config.yml
   -->
   - `NORMAL`: normal commit.
   - `WIP`: WIP commit.
