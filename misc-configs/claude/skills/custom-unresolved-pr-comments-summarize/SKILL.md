@@ -11,13 +11,14 @@ The data has already been fetched and filtered for you below. Use this
 precomputed JSON verbatim; do NOT re-run any commands or re-fetch anything.
 
 <!--
-The fetch lives in fetch-unresolved-comments.sh because skill `!` commands are
-statically analyzed and reject the `$(...)` substitution the GraphQL calls need.
+The fetch lives in scripts/fetch-unresolved-comments.sh because skill `!`
+commands are statically analyzed and reject the `$(...)` substitution the
+GraphQL calls need.
 The script resolves owner/repo/pr, queries the API, and applies every filter
 (drops resolved threads and blank-body reviews), so the model only writes prose.
 -->
 
-- Unresolved comments data (JSON): !`bash "$HOME/.claude/skills/custom-unresolved-pr-comments-summarize/fetch-unresolved-comments.sh"`
+- Unresolved comments data (JSON): !`bash "$HOME/.claude/skills/custom-unresolved-pr-comments-summarize/scripts/fetch-unresolved-comments.sh"`
 
 The JSON has this shape:
 
