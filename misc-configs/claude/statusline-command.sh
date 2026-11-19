@@ -12,7 +12,6 @@ LC_ALL=C # stable decimal separator for printf '$%.2f' across locales
 
 SHOW_COST=false
 SHOW_SESSION_ID=false
-SHOW_CONTEXT_PCT=false
 SHOW_VERSION=false
 # Off because the mode takes a long time to refresh in the statusline, so the
 # indicator lags behind the real vim mode and misleads more than it helps.
@@ -813,12 +812,7 @@ advisor_initial=$(printf '%s' "${advisor_value:0:1}" | tr '[:lower:]' '[:upper:]
 advisor_segment="🤝🏻${advisor_initial}${advisor_value:1}"
 advisor_link=$(osc8_link "statusline-advisor" "$advisor_docs_url" "$advisor_segment")
 
-context_pct_display=""
-if [[ "$SHOW_CONTEXT_PCT" == "true" ]]; then
-    context_pct_display=" ${gray}${context_pct}%${reset}"
-fi
-
-context_segment="🪣${context_color}${context_emphasis}${tokens_k}${italic}k${reset}/${context_display}${context_pct_display}"
+context_segment="🪣${context_color}${context_emphasis}${tokens_k}${italic}k${reset}/${context_display}"
 context_link=$(osc8_link "statusline-context" "${claude_code_docs_url}/context-window" "$context_segment")
 
 # Opus 5.5 is the expected model, so only a different one gets color and stands out.
