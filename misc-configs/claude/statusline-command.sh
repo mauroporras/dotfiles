@@ -11,7 +11,6 @@ set -o pipefail
 LC_ALL=C # stable decimal separator for printf '$%.2f' across locales
 
 SHOW_COST=false
-SHOW_SESSION_ID=true
 # Off because the mode takes a long time to refresh in the statusline, so the
 # indicator lags behind the real vim mode and misleads more than it helps.
 SHOW_VIM_MODE=false
@@ -316,11 +315,8 @@ transcript_path=$(echo "$input" | jq -r '.transcript_path // empty')
 
 # The first UUID segment is enough to recognize the session at a glance without
 # spending a full 36 characters of statusline width on it.
-session_id=""
-if [[ "$SHOW_SESSION_ID" == "true" ]]; then
-    session_id_value_short="${session_id_value%%-*}"
-    session_id="${session_id_value_short:-unknown}"
-fi
+session_id_value_short="${session_id_value%%-*}"
+session_id="${session_id_value_short:-unknown}"
 
 output_style=$(echo "$input" | jq -r '.output_style.name // empty')
 
@@ -897,20 +893,18 @@ if [[ -n "$cost_display" ]]; then
     usage_line="${usage_line} ${gray}${cost_link}${reset}"
 fi
 
-if [[ -n "$session_id" ]]; then
-    session_id_segment="${session_id_icon}${session_id}"
+session_id_segment="${session_id_icon}${session_id}"
 
-    has_transcript_path=false
-    if [[ -n "$transcript_path" ]]; then
-        has_transcript_path=true
-    fi
-
-    if [[ "$has_transcript_path" == "true" ]]; then
-        session_id_segment=$(osc8_link "statusline-session-id" "file://${transcript_path}" "$session_id_segment")
-    fi
-
-    usage_line="${usage_line} ${session_id_segment}"
+has_transcript_path=false
+if [[ -n "$transcript_path" ]]; then
+    has_transcript_path=true
 fi
+
+if [[ "$has_transcript_path" == "true" ]]; then
+    session_id_segment=$(osc8_link "statusline-session-id" "file://${transcript_path}" "$session_id_segment")
+fi
+
+usage_line="${usage_line} ${session_id_segment}"
 
 # Trails the state line: it identifies the session rather than describing a
 # setting, so it sits past the settings the user picks.
