@@ -45,6 +45,8 @@ return {
       markdown = { "prettierd" },
       scss = { "prettierd" },
       svelte = { "prettierd" },
+      terraform = { "terraform_fmt" },
+      ["terraform-vars"] = { "terraform_fmt" },
       typescript = { "prettierd" },
       typescriptreact = { "prettierd" },
       yaml = { "prettierd" },

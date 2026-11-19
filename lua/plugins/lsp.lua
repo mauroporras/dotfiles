@@ -250,6 +250,7 @@ return {
         stylelint_lsp = {},
         svelte = {},
         tailwindcss = {},
+        terraformls = {},
         -- Replaced by typescript-tools.nvim
         -- ts_ls = {},
         yamlls = {},
