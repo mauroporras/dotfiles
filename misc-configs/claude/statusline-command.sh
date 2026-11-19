@@ -11,7 +11,7 @@ set -o pipefail
 LC_ALL=C # stable decimal separator for printf '$%.2f' across locales
 
 SHOW_COST=false
-SHOW_SESSION_ID=false
+SHOW_SESSION_ID=true
 # Off because the mode takes a long time to refresh in the statusline, so the
 # indicator lags behind the real vim mode and misleads more than it helps.
 SHOW_VIM_MODE=false
@@ -37,10 +37,6 @@ reset='\033[0m'
 # width, leaving plain spaces to mean "next segment".
 value_separator="·"
 
-# Splits the loosely related items on the usage row (session id, version) so they
-# read as distinct from the tightly coupled `value_separator` pairs.
-segment_separator=" • "
-
 # Marks a slot whose value isn't available yet, so the segment keeps its place
 # on the line instead of vanishing and shifting the rest.
 placeholder="➖"
@@ -58,6 +54,7 @@ repo_icon="📦"
 worktree_icon="🌳"
 pr_icon="🔀"
 session_icon="🏷️"
+session_id_icon="🆔"
 
 input=$(cat)
 
@@ -313,12 +310,16 @@ if [[ -z "$session_name" ]]; then
     session_name=$(echo "$input" | jq -r '.session_name // empty')
 fi
 
-# Lets the session label open the raw JSONL of this conversation.
+# Lets the session id open the raw JSONL of this conversation, and the session
+# label open the folder beside it.
 transcript_path=$(echo "$input" | jq -r '.transcript_path // empty')
 
+# The first UUID segment is enough to recognize the session at a glance without
+# spending a full 36 characters of statusline width on it.
 session_id=""
 if [[ "$SHOW_SESSION_ID" == "true" ]]; then
-    session_id="${session_id_value:-unknown}"
+    session_id_value_short="${session_id_value%%-*}"
+    session_id="${session_id_value_short:-unknown}"
 fi
 
 output_style=$(echo "$input" | jq -r '.output_style.name // empty')
@@ -897,7 +898,18 @@ if [[ -n "$cost_display" ]]; then
 fi
 
 if [[ -n "$session_id" ]]; then
-    usage_line="${usage_line}${segment_separator}${gray}${session_id}${reset}"
+    session_id_segment="${session_id_icon}${session_id}"
+
+    has_transcript_path=false
+    if [[ -n "$transcript_path" ]]; then
+        has_transcript_path=true
+    fi
+
+    if [[ "$has_transcript_path" == "true" ]]; then
+        session_id_segment=$(osc8_link "statusline-session-id" "file://${transcript_path}" "$session_id_segment")
+    fi
+
+    usage_line="${usage_line} ${session_id_segment}"
 fi
 
 # Trails the state line: it identifies the session rather than describing a
@@ -912,13 +924,18 @@ fi
 if [[ "$has_session_name" == "true" ]]; then
     session_label="${session_icon}${session_name}"
 
-    has_transcript_path=false
-    if [[ -n "$transcript_path" ]]; then
-        has_transcript_path=true
+    # The session id already opens the transcript, so the label opens the
+    # folder beside it (subagent transcripts) instead. The harness only creates
+    # that folder once a subagent runs, so skip the link rather than point at
+    # nothing.
+    session_dir="${transcript_path%.jsonl}"
+    has_session_dir=false
+    if [[ -n "$transcript_path" && -d "$session_dir" ]]; then
+        has_session_dir=true
     fi
 
-    if [[ "$has_transcript_path" == "true" ]]; then
-        session_label=$(osc8_link "statusline-session" "file://${transcript_path}" "${session_icon}${session_name}")
+    if [[ "$has_session_dir" == "true" ]]; then
+        session_label=$(osc8_link "statusline-session" "file://${session_dir}/" "${session_icon}${session_name}")
     fi
 fi
 
