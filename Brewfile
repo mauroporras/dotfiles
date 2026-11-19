@@ -40,6 +40,7 @@ brew "uv" # Python toolchain.
 brew "zlib"
 
 # Development tools
+brew "awscli"
 brew "direnv"
 brew "go-task/tap/go-task"
 brew "golang-migrate"
