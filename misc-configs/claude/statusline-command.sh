@@ -12,7 +12,6 @@ LC_ALL=C # stable decimal separator for printf '$%.2f' across locales
 
 SHOW_COST=false
 SHOW_SESSION_ID=false
-SHOW_VERSION=false
 # Off because the mode takes a long time to refresh in the statusline, so the
 # indicator lags behind the real vim mode and misleads more than it helps.
 SHOW_VIM_MODE=false
@@ -322,10 +321,6 @@ if [[ "$SHOW_SESSION_ID" == "true" ]]; then
     session_id="${session_id_value:-unknown}"
 fi
 
-claude_version=""
-if [[ "$SHOW_VERSION" == "true" ]]; then
-    claude_version=$(echo "$input" | jq -r '.version // empty')
-fi
 output_style=$(echo "$input" | jq -r '.output_style.name // empty')
 
 # Depth can also be requested in-conversation ("walk me through why ...") rather
@@ -903,11 +898,6 @@ fi
 
 if [[ -n "$session_id" ]]; then
     usage_line="${usage_line}${segment_separator}${gray}${session_id}${reset}"
-fi
-
-if [[ -n "$claude_version" ]]; then
-    version_link=$(osc8_link "statusline-version" "${claude_code_docs_url}/changelog" "v${claude_version}")
-    usage_line="${usage_line}${segment_separator}${gray}${version_link}${reset}"
 fi
 
 # Trails the state line: it identifies the session rather than describing a
