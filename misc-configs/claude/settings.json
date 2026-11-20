@@ -59,8 +59,8 @@
   "//prStatusFooterEnabled": "Keep true: custom PR indicator depends on it",
   "prStatusFooterEnabled": true,
 
-  "//terminalProgressBarEnabled": "It's inconsistend and annoying",
-  "terminalProgressBarEnabled": false,
+  "//terminalProgressBarEnabled": "Re-enabled: 2.1.326 fixed false 'working' while waiting/suspended and Ghostty dropping it after 15s",
+  "terminalProgressBarEnabled": true,
 
   "//terminalTitleFromRename": "/rename and --name would otherwise still change the terminal tab title",
   "terminalTitleFromRename": false,
