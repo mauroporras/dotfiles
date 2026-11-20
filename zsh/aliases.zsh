@@ -65,12 +65,17 @@ alias dkmub='docker compose up --build'
 
 # Kubernetes {{{
 alias k='kubectl'
+alias kctx='kubectx'
+alias kdn='kubectl describe node'
+alias kdp='kubectl describe pod'
 alias kgd='kubectl get deployments'
 alias kge='kubectl get events --sort-by=.lastTimestamp'
 alias kgn='kubectl get nodes'
 alias kgp='kubectl get pods'
 alias kgpa='kubectl get pods -A'
 alias kgs='kubectl get svc'
+alias kns='kubens'
+alias kwhere='kubectl config current-context'
 # }}}
 
 # Jobs {{{

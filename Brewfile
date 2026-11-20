@@ -60,6 +60,7 @@ brew "stylua"
 brew "k3d"
 brew "derailed/k9s/k9s"
 brew "kubectl"
+brew "kubectx" # Also provides kubens
 
 # Databases
 brew "pgrundev/tap/pgbot" # In-database observability for PostgreSQL: https://pgbot.dev

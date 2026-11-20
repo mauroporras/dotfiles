@@ -157,6 +157,43 @@ cpdatetimews() {
   printf %s "$(date +'%Y-%m-%d %H:%M:%S')" | pbcopy
 }
 
+# Kubernetes {{{
+# Functions rather than aliases because the arguments must land before the
+# trailing flags or `--`.
+kl() {
+  kubectl logs "$@" --tail=100 -f
+}
+
+# Logs from the previous container instance: what it printed before crashing.
+klp() {
+  kubectl logs "$@" --previous --tail=100
+}
+
+# Minimal images often ship without bash, so sh is the default.
+kex() {
+  kubectl exec -it "$1" -- /bin/sh
+}
+
+kexb() {
+  kubectl exec -it "$1" -- /bin/bash
+}
+
+# Skips graceful shutdown: for pods stuck in Terminating.
+kdelf() {
+  kubectl delete pod "$1" --grace-period=0 --force
+}
+
+# Usage: kapply <manifest> <deployment>
+kapply() {
+  kubectl apply -f "$1" && kubectl rollout status deployment/"$2"
+}
+
+# Usage: kpf <pod|svc/name> <local:remote>
+kpf() {
+  kubectl port-forward "$1" "$2"
+}
+# }}}
+
 # Misc.
 # plugins=(colored-man-pages colorize docker httpie zsh-completions)
 
