@@ -130,6 +130,13 @@ taketemp() {
   cd "$dir"
 }
 
+# Avoid "unknown terminal type" errors on remote hosts.
+# A function, not an alias: zsh completes an alias as the command it expands
+# to (`ghostty`), which drops ssh's hostname completion.
+ssh() {
+  ghostty +ssh -- "$@"
+}
+
 # Copy the full working directory path to the clipboard.
 # printf %s avoids the trailing newline that `pwd | pbcopy` would leave.
 cpcwd() {
