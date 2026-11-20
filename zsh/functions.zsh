@@ -157,6 +157,22 @@ cpdatetimews() {
   printf %s "$(date +'%Y-%m-%d %H:%M:%S')" | pbcopy
 }
 
+# Docker {{{
+# Minimal images often ship without bash, so sh is the default.
+dsh() {
+  docker exec -it "$1" /bin/sh
+}
+
+dbash() {
+  docker exec -it "$1" /bin/bash
+}
+
+# Usage: dbuild <tag>  (builds the current directory)
+dbuild() {
+  docker build -t "$1" .
+}
+# }}}
+
 # Kubernetes {{{
 # Functions rather than aliases because the arguments must land before the
 # trailing flags or `--`.

@@ -52,6 +52,17 @@ alias dkil='docker image ls'
 alias dkila='docker image ls -a'
 alias dkv='docker volume'
 alias dkvl='docker volume ls'
+alias dlogs='docker logs -f --tail=100'
+# -a removes every image no container uses (not just dangling ones).
+# Volumes are left alone, which is why dvolprune exists.
+alias dprune='docker system prune -af'
+# Cleaner ps output
+alias dps='docker ps --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"'
+alias dpsa='docker ps -a --format "table {{.Names}}\t{{.Status}}\t{{.Image}}"'
+alias drm='docker rm'
+alias drmi='docker rmi'
+alias dstop='docker stop'
+alias dvolprune='docker volume prune -f'
 # }}}
 
 # Docker Compose {{{
