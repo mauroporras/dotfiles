@@ -195,11 +195,18 @@ is_falsy_env() {
 
 tui_setting=$(read_merged_setting tui)
 
+# `classic` is the current name for the non-fullscreen renderer; `default`
+# is the older name, which Claude Code still accepts.
+is_classic_tui=false
+if [[ "$tui_setting" == "classic" || "$tui_setting" == "default" ]]; then
+    is_classic_tui=true
+fi
+
 if is_falsy_env "$CLAUDE_CODE_NO_FLICKER" || is_truthy_env "$CLAUDE_CODE_DISABLE_ALTERNATE_SCREEN"; then
     fullscreen_display="${disabled_icon}"
 elif is_truthy_env "$CLAUDE_CODE_NO_FLICKER" || [[ "$tui_setting" == "fullscreen" ]]; then
     fullscreen_display="${enabled_icon}"
-elif [[ "$tui_setting" == "default" ]]; then
+elif [[ "$is_classic_tui" == "true" ]]; then
     fullscreen_display="${disabled_icon}"
 else
     fullscreen_display="?"
