@@ -30,7 +30,6 @@ alias e='nvim -i custom.shada'
 
 alias f='yazi'
 alias g='git'
-alias k='kubectl'
 # Replacement for 'ls -lAhF --group-directories-first'
 alias l='eza -agl --group-directories-first --time-style=long-iso'
 # Avoid "unknown terminal type" errors.
@@ -62,6 +61,16 @@ alias dkmd='docker compose down'
 alias dkme='docker compose exec'
 alias dkmu='docker compose up'
 alias dkmub='docker compose up --build'
+# }}}
+
+# Kubernetes {{{
+alias k='kubectl'
+alias kgd='kubectl get deployments'
+alias kge='kubectl get events --sort-by=.lastTimestamp'
+alias kgn='kubectl get nodes'
+alias kgp='kubectl get pods'
+alias kgpa='kubectl get pods -A'
+alias kgs='kubectl get svc'
 # }}}
 
 # Jobs {{{
