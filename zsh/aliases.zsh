@@ -37,9 +37,9 @@ alias t='task'
 alias v='lazygit'
 
 # AWS {{{
+alias awswhoami='aws sts get-caller-identity'
 alias ec2ls='aws ec2 describe-instances --query "Reservations[].Instances[].[InstanceId,State.Name,Tags[?Key==\`Name\`].Value|[0],PrivateIpAddress]" --output table'
 alias s3ls='aws s3 ls'
-alias whoami-aws='aws sts get-caller-identity'
 # }}}
 
 # Docker {{{
