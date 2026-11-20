@@ -78,6 +78,22 @@ alias kns='kubens'
 alias kwhere='kubectl config current-context'
 # }}}
 
+# Terraform {{{
+alias tf='terraform'
+alias tfa='terraform apply'
+alias tfaa='terraform apply -auto-approve'
+alias tfd='terraform destroy'
+alias tfda='terraform destroy -auto-approve'
+alias tffmt='terraform fmt -recursive'
+alias tfi='terraform init'
+alias tfo='terraform output'
+alias tfp='terraform plan'
+alias tfs='terraform show'
+alias tfv='terraform validate'
+alias tfwl='terraform workspace list'
+alias tfws='terraform workspace show'
+# }}}
+
 # Jobs {{{
 alias j='jobs'
 alias k1='kill %1'

@@ -194,6 +194,25 @@ kpf() {
 }
 # }}}
 
+# Terraform {{{
+# Plan to a file, then apply exactly that file: what gets applied is what was
+# reviewed, even if the code or remote state changed in between.
+tfplan() {
+  terraform plan -out=tfplan.out "$@"
+}
+
+tfapply() {
+  terraform apply tfplan.out
+}
+
+# Releases a stuck *state* lock. .terraform.lock.hcl is the provider dependency
+# lock (version pins + checksums); deleting it does not free a state lock.
+# Usage: tfunlock <LOCK_ID>
+tfunlock() {
+  terraform force-unlock "$@"
+}
+# }}}
+
 # Misc.
 # plugins=(colored-man-pages colorize docker httpie zsh-completions)
 

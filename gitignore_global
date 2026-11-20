@@ -37,6 +37,10 @@ Thumbs.db
 *.vim
 tags
 
+# Terraform.
+# Saved plans can hold sensitive values in plain text.
+tfplan.out
+
 # AI
 **/.claude/settings.local.json
 **/.claude/.cc-writes/
