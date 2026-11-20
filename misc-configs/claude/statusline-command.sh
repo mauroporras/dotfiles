@@ -40,8 +40,7 @@ value_separator="·"
 # on the line instead of vanishing and shifting the rest.
 placeholder="➖"
 
-# Shared by every on/off toggle segment so the render and the comparisons against
-# it (e.g. the fullscreen check) can't drift apart.
+# Shared by every on/off toggle segment so their renders can't drift apart.
 enabled_icon="🟢"
 disabled_icon="⚪️"
 
@@ -175,58 +174,7 @@ else
     focus_mode_display="${disabled_icon}"
 fi
 
-# Fullscreen isn't in the payload either. Mirror the deterministic part of how
-# Claude Code picks the renderer: the env vars (inherited from the harness) win,
-# then the `tui` setting. Past that it falls back to rollout flags and runtime
-# probes (tmux -CC, crash auto-off, screen reader) we can't see, so say "?".
-is_truthy_env() {
-    case "$(printf '%s' "$1" | tr '[:upper:]' '[:lower:]')" in
-    1 | true | yes | on) return 0 ;;
-    *) return 1 ;;
-    esac
-}
-
-is_falsy_env() {
-    case "$(printf '%s' "$1" | tr '[:upper:]' '[:lower:]')" in
-    0 | false | no | off) return 0 ;;
-    *) return 1 ;;
-    esac
-}
-
-tui_setting=$(read_merged_setting tui)
-
-# `classic` is the current name for the non-fullscreen renderer; `default`
-# is the older name, which Claude Code still accepts.
-is_classic_tui=false
-if [[ "$tui_setting" == "classic" || "$tui_setting" == "default" ]]; then
-    is_classic_tui=true
-fi
-
-if is_falsy_env "$CLAUDE_CODE_NO_FLICKER" || is_truthy_env "$CLAUDE_CODE_DISABLE_ALTERNATE_SCREEN"; then
-    fullscreen_display="${disabled_icon}"
-elif is_truthy_env "$CLAUDE_CODE_NO_FLICKER" || [[ "$tui_setting" == "fullscreen" ]]; then
-    fullscreen_display="${enabled_icon}"
-elif [[ "$is_classic_tui" == "true" ]]; then
-    fullscreen_display="${disabled_icon}"
-else
-    fullscreen_display="?"
-fi
-
-# Focus view only exists in the fullscreen renderer, so an on/off dot next to a
-# known-off fullscreen would describe a mode that can't be active. An unknown
-# ("?") renderer keeps the real value, since fullscreen may well be on.
-is_focus_unavailable=false
-if [[ "$fullscreen_display" == "${disabled_icon}" ]]; then
-    is_focus_unavailable=true
-fi
-
-if [[ "$is_focus_unavailable" == "true" ]]; then
-    focus_mode_segment="${focus_mode_icon}${placeholder}"
-    focus_mode_url_anchor="enable-fullscreen-rendering"
-else
-    focus_mode_segment="${focus_mode_icon}${focus_mode_display}"
-    focus_mode_url_anchor="search-and-review-the-conversation"
-fi
+focus_mode_segment="${focus_mode_icon}${focus_mode_display}"
 
 # Debug: uncomment to see raw input
 # echo "$input" > /tmp/statusline-debug.json
@@ -845,7 +793,7 @@ if [[ "$SHOW_FAST_MODE" == "true" ]]; then
     fast_mode_segment=" ${fast_mode_link}"
 fi
 
-focus_mode_link=$(osc8_link "statusline-focus" "${claude_code_docs_url}/fullscreen#${focus_mode_url_anchor}" "$focus_mode_segment")
+focus_mode_link=$(osc8_link "statusline-focus" "${claude_code_docs_url}/fullscreen#search-and-review-the-conversation" "$focus_mode_segment")
 vim_mode_link=$(osc8_link "statusline-vim-mode" "${claude_code_docs_url}/interactive-mode#vim-editor-mode" "$vim_mode_segment")
 
 # `${var^}` needs bash 4 and /bin/bash on macOS is 3.2, hence `tr` on the first char.
