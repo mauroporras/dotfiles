@@ -38,6 +38,12 @@ alias s="rg --follow --hidden --smart-case --no-ignore --glob '!{.git,dist,node_
 alias t='task'
 alias v='lazygit'
 
+# AWS {{{
+alias ec2ls='aws ec2 describe-instances --query "Reservations[].Instances[].[InstanceId,State.Name,Tags[?Key==\`Name\`].Value|[0],PrivateIpAddress]" --output table'
+alias s3ls='aws s3 ls'
+alias whoami-aws='aws sts get-caller-identity'
+# }}}
+
 # Docker {{{
 alias dk='docker'
 alias dkc='docker container'

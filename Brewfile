@@ -41,6 +41,7 @@ brew "zlib"
 
 # Development tools
 brew "awscli"
+cask "session-manager-plugin" # Needed by `aws ssm start-session`
 brew "direnv"
 brew "go-task/tap/go-task"
 brew "golang-migrate"

@@ -157,6 +157,44 @@ cpdatetimews() {
   printf %s "$(date +'%Y-%m-%d %H:%M:%S')" | pbcopy
 }
 
+# AWS {{{
+# A function, not an alias: it has to export into the current shell.
+awsp() {
+  export AWS_PROFILE="$1"
+  echo "Switched to profile: $1"
+}
+
+# Usage: s3cat <bucket/key>  (streams the object to stdout)
+s3cat() {
+  aws s3 cp "s3://$1" -
+}
+
+# Usage: cwlogs <log-group>
+cwlogs() {
+  aws logs tail "$1" --follow
+}
+
+# Shell into an instance without SSH keys or open ports.
+# Needs the session-manager-plugin.
+# Usage: ssm <instance-id>
+ssm() {
+  aws ssm start-session --target "$1"
+}
+
+# Looks up the account first so expired credentials fail here instead of
+# handing docker login a malformed registry host.
+# Usage: ecr-login <region>
+ecr-login() {
+  local region="$1"
+  local account_id
+
+  account_id="$(aws sts get-caller-identity --query Account --output text)" || return
+
+  aws ecr get-login-password --region "$region" |
+    docker login --username AWS --password-stdin "${account_id}.dkr.ecr.${region}.amazonaws.com"
+}
+# }}}
+
 # Docker {{{
 # Minimal images often ship without bash, so sh is the default.
 dsh() {
