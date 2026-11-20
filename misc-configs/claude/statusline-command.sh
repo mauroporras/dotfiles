@@ -212,6 +212,20 @@ if git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
     git_branch_is_repo=true
     current_branch=$(git branch --show-current 2> /dev/null)
 
+    # Fallback 📦 label when the harness has no `workspace.repo` (e.g. a repo
+    # that was never pushed). The common git dir is shared by all worktrees, so
+    # a worktree reports the main repo's name rather than its own dir name.
+    git_common_dir=$(git rev-parse --path-format=absolute --git-common-dir 2> /dev/null)
+    local_repo_root=${git_common_dir%/.git}
+    local_repo_name=${local_repo_root##*/}
+
+    # No remote means the repo has never been pushed anywhere. Reads local
+    # config only, so it never blocks on the network.
+    has_remote=false
+    if [[ -n "$(git remote 2> /dev/null)" ]]; then
+        has_remote=true
+    fi
+
     if [[ -n "$current_branch" ]]; then
         git_branch="$current_branch"
 
@@ -649,6 +663,22 @@ if [[ "$git_branch_is_repo" != "true" ]]; then
     workspace_line="${workspace_line} ${repo_icon}${placeholder}"
 elif [[ -n "$github_repo_display" ]]; then
     workspace_line="${workspace_line} ${github_repo_display}"
+else
+    # Cyan flags a repo that exists only locally, matching the 🌿 branch's
+    # cyan for "not on the remote".
+    local_repo_color=""
+    is_unpushed_repo=false
+    if [[ "$has_remote" != "true" ]]; then
+        is_unpushed_repo=true
+    fi
+
+    if [[ "$is_unpushed_repo" == "true" ]]; then
+        local_repo_color="$cyan"
+    fi
+
+    local_repo_label="${repo_icon}${local_repo_color}${local_repo_name}${reset}"
+    local_repo_link=$(osc8_link "statusline-repo" "file://${local_repo_root}" "$local_repo_label")
+    workspace_line="${workspace_line} ${local_repo_link}"
 fi
 
 # A worktree moves the work into a second working directory the user isn't
