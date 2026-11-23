@@ -194,6 +194,10 @@
   - `is_workspace_base_price_set` → `workspace_base_price_set_at`
   - `is_published` → `published_at`
   - `is_email_verified` → `email_verified_at`
+
+  Keep a boolean for a flag that flips back and forth or moves between rows, such as
+  `price_list.is_default`: a single timestamp can't describe its history, and `null` wouldn't
+  mean "not yet".
 - Prefer enforcing invariants in use cases over denormalizing the schema to make them checkable.
   Denormalization copies a fact into a second place (a `product_count` on the parent, a
   `workspace_id` repeated on a grandchild, a flag mirroring a row's existence elsewhere), and
