@@ -16,6 +16,8 @@
 ## Verification
 
 - **VERIFY FIRST, ASK WHEN YOU CANNOT** - when you can verify a claim, verify it before asserting. When you genuinely cannot verify it yourself, ask the user and let their answer be the one you report.
+  A check that another rule hands to the user counts as one you cannot verify, even when you have the tools to run it: that rule already decided who runs the check, so ask the user to run it and report their answer.
+  E.g. running migrations (see Migrations), or a project rule that leaves browser testing to the user.
 
 ## Code Style
 
