@@ -2,7 +2,9 @@
 
 ## CRITICAL REMINDERS
 
-- **ALWAYS** use the task runner (Taskfile) to execute any commands related to this project.
+- **ALWAYS** use the task runner (Taskfile) for anything it defines a task for (e.g. build, test, lint, format, and migrations), instead of calling the underlying tool directly.
+  General tools with no task, such as `git` and `gh`, run directly.
+  Commands the user runs themselves (e.g. migrations) still go through the task runner: hand them the `task` command.
 
 ## Key Technologies
 
