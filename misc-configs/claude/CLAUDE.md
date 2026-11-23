@@ -201,24 +201,26 @@
   - `is_workspace_base_price_set` → `workspace_base_price_set_at`
   - `is_published` → `published_at`
   - `is_email_verified` → `email_verified_at`
-- Prefer enforcing invariants in use cases over denormalizing the schema to make them checkable.
-  Denormalization copies a fact into a second place (a `product_count` on the parent, a
-  `workspace_id` repeated on a grandchild, a flag mirroring a row's existence elsewhere), and
-  every copy is a fact that can drift: each write path now has to keep both places in sync,
-  and the first one that forgets turns the invariant the copy was meant to guard into a lie.
-  A use case sits on the single write path where all the data is already at hand, so it can
-  read the source of truth, validate the rule, and reject the input before anything is
-  persisted; nothing needs to be kept in sync afterwards.
-  Schema-level enforcement also buys less than it seems once it requires a copied fact: anyone
-  with a database console can introduce an invalid state by hand regardless of what the app
-  does, and the copy adds one more place for that to happen. Given that, take the path of
-  least resistance in the app: validate in the use case and keep the schema normalized.
-  Constraints that need no copy (foreign keys, `UNIQUE` on existing columns, single-row
-  `CHECK`s) are still worth having; they cannot drift and are the last line of defense
-  against a second write path or a concurrent request.
-  Reserve denormalization for a measured read-path problem (a query that is provably too slow
-  on normalized data), and when you do add it, name the source of truth in a comment and
-  update the copy from one place only.
+- Enforce invariants in the database wherever a constraint can hold them, and check them in the
+  use case as well.
+  The use case check rejects bad input early with a clear error; the constraint is what still
+  holds when a second write path, a concurrent request, or a hand edit from a database console
+  skips the use case.
+  - Prefer constraints that need no copied data: foreign keys, `UNIQUE` on existing columns
+    (including partial unique indexes, e.g. `UNIQUE (workspace_id, email) WHERE deleted_at IS NULL`),
+    and single-row `CHECK`s.
+  - When an invariant spans tables, copying a column is fine as long as a constraint ties the copy
+    to its source, so it cannot drift. E.g. copy `workspace_id` onto `cad_file` and reference
+    `project (id, workspace_id)` with a composite foreign key (which needs
+    `UNIQUE (id, workspace_id)` on `project`).
+  - Avoid copies that nothing enforces (a `product_count` on the parent, a flag mirroring a row's
+    existence elsewhere): every write path has to keep them in sync, and the first one that
+    forgets turns them into a lie.
+    Reserve those for a measured read-path problem (a query that is provably too slow on
+    normalized data), and when you do add one, name the source of truth in a comment and update
+    the copy from one place only.
+  - When no constraint can express the invariant, the use case is the only check: keep it there,
+    under a lock when two concurrent requests could both pass it.
 
 ### Migrations
 
