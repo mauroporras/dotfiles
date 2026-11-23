@@ -85,6 +85,19 @@ Thread ID: {threadId}
 Comment:
 {comment}
 
+## Reviews
+
+### #{unique-descriptive-tag}
+
+- [ ] Done
+
+URL: {review-url}
+Author: @{the-author}
+State: {state}
+Submitted: {submittedAt}
+Comment:
+{body}
+
 ## Contentious Comments
 
 {Highlight any comments that you'd push back on}
@@ -100,7 +113,7 @@ ALWAYS:
 - For inline comments:
   Group by file path if there are multiple in the same file
 - For top-level reviews:
-  Include a link to the review URL
+  List each one under `## Reviews`, with a link to its review URL
 - Omit any section that has no items
 - When you're done:
   Suggest the first tag to start working on and ask if the user wants to address it
