@@ -1,6 +1,6 @@
 ---
 name: custom-collapse-permissions
-description: "Collapse the current directory's .claude/settings.local.json permissions.allow list: fold one-off, machine-specific, and near-duplicate entries into a few broad wildcard patterns, dedupe, and group by tool for readability, keeping deny/ask exactly as they are."
+description: "Collapse the current directory's .claude/settings.local.json permissions.allow list: fold one-off, machine-specific, and near-duplicate entries into a few broad wildcard patterns, dedupe, and sort them so entries cluster by tool, keeping deny/ask exactly as they are."
 disable-model-invocation: true
 allowed-tools: Read, Edit
 ---
@@ -76,8 +76,8 @@ permission the user relied on). Work rule by rule:
 
 ## Apply and report
 
-- Rewrite only the `allow` array, via `Edit`. Keep valid JSON (trailing commas,
-  quoting, indentation matching the surrounding file).
+- Rewrite only the `allow` array, via `Edit`. Keep valid JSON (no trailing
+  commas; quoting and indentation matching the surrounding file).
 - After the `Edit`, stop there: leave running it through tooling and committing
   to the user.
 - Report the before/after entry count and list the notable folds (e.g. "12 git
