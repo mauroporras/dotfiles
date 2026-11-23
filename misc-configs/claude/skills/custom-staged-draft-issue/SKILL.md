@@ -50,9 +50,12 @@ REQUIRED:
   issue in the same turn.
 - Only create it if the user confirms in their reply. If they decline, stop.
 - On confirmation, create the issue from the file's current contents (so any
-  edits the user made are picked up): run
-  `gh issue create --title <title> --body-file <file>`, taking the title from
-  the file's top-level `# ` heading and `<file>` as the path you wrote.
+  edits the user made are picked up):
+  1. Read the file. The title is its top-level `# ` heading; the body is
+     everything after that heading.
+  2. Write the body alone to `<repository root>/issue-<short-kebab-title>.body.md`,
+     so the title doesn't appear twice in the created issue.
+  3. Run `gh issue create --title <title> --body-file <body file>`.
 
 NEVER:
 
