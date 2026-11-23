@@ -186,9 +186,8 @@
   `master`, `beta`, or `production`), which uses `WIP(<branch>): <description>` instead
   (see the `custom-staged-commit` skill).
 - It's OK to commit to the default branch when asked.
-- Pushing and creating PRs each MUST wait for an explicit instruction.
-  PRs are a human responsibility.
-  The user wants to review, title, and submit them on their own terms.
+- Pushing Git changes MUST wait for an explicit instruction.
+- Creating PRs MUST wait for an explicit instruction.
 
 ## Database (DB, SQL)
 
