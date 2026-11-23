@@ -45,15 +45,14 @@ REQUIRED:
     `<short-kebab-title>` is a brief kebab-case version of the issue title.
   - Immediately invoke the Write tool to create the file. Do not just print the
     contents, actually write them.
-- After writing the file, ask the user whether to create an actual GitHub issue
-  from the draft. Make clear they can edit the draft file first, since they may
-  want to tweak the title or body before it becomes a real issue:
-  - Only create it if the user confirms. If they decline (or do not answer),
-    stop after writing the file.
-  - On confirmation, create the issue from the file's current contents (so any
-    edits the user made are picked up): run
-    `gh issue create --title <title> --body-file <file>`, taking the title from
-    the file's top-level `# ` heading and `<file>` as the path you wrote.
+- After writing the file, end your turn by asking the user whether to create an
+  actual GitHub issue from the draft (see Output, step 1). Do not create the
+  issue in the same turn.
+- Only create it if the user confirms in their reply. If they decline, stop.
+- On confirmation, create the issue from the file's current contents (so any
+  edits the user made are picked up): run
+  `gh issue create --title <title> --body-file <file>`, taking the title from
+  the file's top-level `# ` heading and `<file>` as the path you wrote.
 
 NEVER:
 
@@ -63,11 +62,19 @@ NEVER:
 
 ## Output
 
-After writing the file (and, if confirmed, creating the issue), report the result
-using EXACTLY this format, one field per line and nothing else:
+The skill replies in two steps. Use EXACTLY these formats and nothing else.
 
-```markdown
-Title: <the issue title you generated>
-File: <absolute path to the file you wrote>
-Issue: <the created issue URL, or `not created` if the user declined>
-```
+1. After writing the file:
+
+   ```markdown
+   Title: <the issue title you generated>
+   File: <absolute path to the file you wrote>
+
+   Create a GitHub issue from this draft? Edit the file first if you want to change the title or body.
+   ```
+
+2. After the user answers:
+
+   ```markdown
+   Issue: <the created issue URL, or `not created` if the user declined>
+   ```
