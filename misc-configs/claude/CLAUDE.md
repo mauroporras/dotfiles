@@ -9,6 +9,9 @@
   Text search is still the right tool for non-symbol text, such as comments, strings, and the
   `WITNESSME` log prefix.
   If an LSP query from a definition returns only itself, the server is likely cold/unindexed: re-query from a known call site to warm it before trusting the result.
+- The shell has `noclobber` set, so `>` refuses to overwrite an existing file (`file exists`).
+  The guard is there to stop accidental overwrites, so keep it on: when overwriting is the intent,
+  use `>|` explicitly (or the Write tool), and use `>>` to append.
 
 ## Verification
 
