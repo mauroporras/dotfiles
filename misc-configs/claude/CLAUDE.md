@@ -129,7 +129,7 @@
 - Reserve the `*Dto` name for transport/persistence shapes: a use case's
   contracts are its own, so they keep the `*Input` / `*Output` suffixes.
 - Adapters at the edges translate the input contract from, and the output
-  contract into, HTTP responses, rows, etc.
+  contract into, HTTP requests, responses, rows, etc.
 - Input and output must be simple data structures instead of entities.
   An output type that is an Entity (E.g., an `Album` class) is a smell.
   Crossing a boundary with an Entity couples the caller to domain internals.
