@@ -160,8 +160,7 @@
   A shared, machine-readable shape keeps the history scannable and lets tooling
   (changelogs, version bumps) derive meaning from it.
   The exception is every commit on a non-base branch (anything other than `alpha`, `main`,
-  `master`, `beta`, or `production`), which uses `WIP(<branch>): <description>` instead
-  (see the `custom-staged-commit` skill).
+  `master`, `beta`, or `production`), which uses `WIP(<branch>): <description>` instead.
 - It's OK to commit to the default branch when asked.
 - Pushing Git changes MUST wait for an explicit instruction.
 - Creating PRs MUST wait for an explicit instruction.
