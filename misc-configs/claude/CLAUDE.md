@@ -212,9 +212,6 @@
   Reserve denormalization for a measured read-path problem (a query that is provably too slow
   on normalized data), and when you do add it, name the source of truth in a comment and
   update the copy from one place only. E.g.:
-  - "A workspace can have at most one default price list": check it in
-    `SetDefaultPriceListUseCase`, rather than adding a `default_price_list_id` column to
-    `workspace` that has to be kept in step with `price_list.made_default_at`.
   - "A CAD file must belong to the same workspace as its project": look the project up in
     `CreateCadFileUseCase` and reject a mismatch, rather than copying `workspace_id` onto
     `cad_file` so a `CHECK` or trigger can compare them.
