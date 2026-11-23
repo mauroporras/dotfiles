@@ -5,7 +5,9 @@
 - Default to LSP for finding symbol references, definitions, implementations, or call hierarchies.
   E.g., `findReferences`, `goToDefinition`
   LSP resolves the actual symbol, so it matches exactly the right references and follows aliased imports.
-  Reserve text search for file types that have no LSP server.
+  For symbol lookups, reserve text search for file types that have no LSP server.
+  Text search is still the right tool for non-symbol text, such as comments, strings, and the
+  `WITNESSME` log prefix.
   If an LSP query from a definition returns only itself, the server is likely cold/unindexed: re-query from a known call site to warm it before trusting the result.
 
 ## Verification
