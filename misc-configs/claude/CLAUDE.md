@@ -15,7 +15,7 @@
 
 ## Verification
 
-- **ALWAYS VERIFY, ALWAYS ASK** - when you can verify a claim, verify it before asserting. When you genuinely cannot resolve it yourself, ask the user and let their answer be the one you report.
+- **VERIFY FIRST, ASK WHEN YOU CANNOT** - when you can verify a claim, verify it before asserting. When you genuinely cannot verify it yourself, ask the user and let their answer be the one you report.
 
 ## Code Style
 
