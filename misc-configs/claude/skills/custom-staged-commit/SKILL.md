@@ -47,6 +47,8 @@ REQUIRED:
 - Prioritize brevity over grammar in the subject line:
   Keep it short, even if grammatically imperfect
 - Subject line:
+  - Normal commit: Conventional Commits, `<type>(<scope>): <description>`
+    (e.g. `feat(auth): add password reset flow`).
   - WIP commit: `WIP(<current-branch>): <description>`
     Using the current branch as the scope and a brief description of the staged changes.
     Also pass `--no-verify` to `git commit`.
