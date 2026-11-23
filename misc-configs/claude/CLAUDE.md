@@ -37,7 +37,7 @@
   When a function starts doing several things, split the extra responsibilities into their own well-named functions.
 - Always add explicit return types to functions.
   Type inference is convenient but explicit return types catch accidental changes, serve as documentation, and speed up type-checking in larger codebases.
-- Assign the return value of a function/method to a `retval` constant before returning it.
+- Assign the return value of a function/method to a `result` constant before returning it.
   This makes the value visible in a debugger while execution is still inside the function.
 - Avoid mutation as much as possible: produce new values rather than modifying in place.
 
@@ -91,7 +91,7 @@
 
 - Place imports in the `<script module lang="ts">` tag instead of the instance `<script>` tag.
   This keeps imports at the module level where they belong.
-- In `$effect` cleanup returns, assign the cleanup function to a named `teardown` constant before returning it (same reasoning as the `retval` rule: debugger visibility and readability).
+- In `$effect` cleanup returns, assign the cleanup function to a named `teardown` constant before returning it (same reasoning as the `result` rule: debugger visibility and readability).
 
 ## Clean Architecture
 
