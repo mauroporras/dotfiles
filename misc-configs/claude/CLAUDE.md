@@ -17,6 +17,7 @@
 ### Naming
 
 - Follow [the naming cheatsheet](https://github.com/kettanaito/naming-cheatsheet).
+  Exception: `retval` (see Functions) is a deliberate contraction, so keep it despite the cheatsheet's "avoid contractions" rule.
 - Extract `if` conditions into named constants.
   It makes the intent more readable. E.g.:
   `hasChildren = parent.children.length > 0`
