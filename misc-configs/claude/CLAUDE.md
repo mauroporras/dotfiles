@@ -138,6 +138,7 @@
     - `DELETE /cad-files/:id`
   - Queries use hierarchical paths scoped to parent resources:
     - `GET /workspaces/:workspaceId/cad-files?limit=100`
+    - `GET /workspaces/:workspaceId/cad-files/:id`
 - Reserve 404 for a path that means nothing (see the cases below); a route that exists and
   legitimately found nothing answers with success.
   "This endpoint is not a thing" and "this endpoint is a thing and its answer is empty" are
@@ -150,8 +151,8 @@
     body.
   - Single-resource queries return `200` with `null` (or `204 No Content` when the response has no
     body at all) when the resource is absent but the caller had every right to ask.
-    This covers the resource's own id in the path: `GET /cad-files/:id` with an unknown `:id` is a
-    valid lookup with no match, not a meaningless path.
+    This covers the resource's own id in the path: `GET /workspaces/:workspaceId/cad-files/:id`
+    with an unknown `:id` is a valid lookup with no match, not a meaningless path.
   - Reserve `404` for the cases where the path itself is meaningless: an unknown route, or a
     parent identifier in the path that doesn't resolve to anything the caller can act on
     (e.g. `GET /workspaces/:workspaceId/cad-files` where `:workspaceId` doesn't exist).
