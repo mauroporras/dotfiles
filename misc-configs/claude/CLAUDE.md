@@ -47,6 +47,7 @@
 - Assign the return value of a function/method to a `retval` constant before returning it.
   This makes the value visible in a debugger while execution is still inside the function.
   Exception: a `$effect` cleanup function (see Svelte) is assigned to a `teardown` constant instead of `retval`.
+  Exception: a guard clause (see Control Flow) usually returns nothing or a value the code already shows, so it returns directly, without `retval`.
 - Avoid mutation as much as possible: produce new values rather than modifying in place.
 
 ### Control Flow
