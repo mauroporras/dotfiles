@@ -140,8 +140,8 @@
   - Queries use hierarchical paths scoped to parent resources:
     - `GET /workspaces/:workspaceId/cad-files?limit=100`
     - `GET /workspaces/:workspaceId/cad-files/:id`
-- Reserve 404 for a route that doesn't exist; a route that exists and legitimately
-  found nothing answers with success.
+- Reserve 404 for a path that means nothing (see the cases below); a route that exists and
+  legitimately found nothing answers with success.
   "This endpoint is not a thing" and "this endpoint is a thing and its answer is empty" are
   different failures, and collapsing them into one status makes them indistinguishable to the
   client: a typo'd path and a valid lookup with no match look identical, so the client reads a
