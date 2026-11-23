@@ -161,13 +161,20 @@
   - Single-resource queries return `200` with `null` (or `204 No Content` when the response has no
     body at all) when the resource is absent but the caller had every right to ask.
     This covers the resource's own id in the path: `GET /workspaces/:workspaceId/cad-files/:id`
-    with an unknown `:id` is a valid lookup with no match, not a meaningless path.
+    with an `:id` that matches nothing in that workspace is a valid lookup with no match, not a
+    meaningless path.
   - Reserve `404` for the cases where the path itself is meaningless: an unknown route, or a
-    parent identifier in the path that doesn't resolve to anything the caller can act on
-    (e.g. `GET /workspaces/:workspaceId/cad-files` where `:workspaceId` doesn't exist).
-  - Use `403` when the resource exists but the caller may not see it.
-    Where hiding its existence is a deliberate security requirement, `404` is the right answer:
-    say so in a comment so the next reader keeps it that way.
+    parent identifier in the path that matches nothing
+    (e.g. `GET /workspaces/:workspaceId/cad-files` with an unknown `:workspaceId`).
+    A deliberately hidden parent (see the next case) counts as one that doesn't exist.
+  - Use `403` when a resource the request names (the one asked for or a parent) exists but the
+    caller may not see it.
+    Where hiding a resource's existence is a deliberate security requirement, answer exactly as if
+    it were absent: any difference in status or body gives it away.
+    For queries, that is `200` with `null` (or `204`) for the resource asked for, `404` for a
+    parent in the path, and omission from a collection.
+    Say in a comment at the access check that the absent-looking answer is deliberate hiding, so
+    the next reader keeps it that way.
 
 ## Git
 
