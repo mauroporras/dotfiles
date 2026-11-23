@@ -40,8 +40,8 @@ permission the user relied on). Work rule by rule:
 
 2. **Fold a group into one wildcard when the head is safe to generalize.**
    Many specific invocations sharing a head collapse to `Bash(<head> *)`:
-   - `git log ...`, `git diff ...`, `git show <hash> ...`,
-     `git -C "C:/..." ...`, `git stash`, `git config` → `Bash(git *)`.
+   - `git log ...` variants → `Bash(git log *)`; `git diff ...` variants →
+     `Bash(git diff *)`.
    - three `node .tmp_replace*.cjs` → `Bash(node .tmp_replace*)`.
    - `lsof -nP -iTCP ...` variants → `Bash(lsof *)`.
    - two `awk '...'` one-offs → `Bash(awk *)`; `echo` one-offs → `Bash(echo *)`.
@@ -61,9 +61,9 @@ permission the user relied on). Work rule by rule:
 
 4. **Keep each privilege boundary intact.** Fold heads together only when they
    share a privilege level; keep a read-only head and a mutating head in
-   separate wildcards even when they share a binary. `git` is treated as one
-   head here by the user's own prior grants (they already allowed
-   `git stash`/`git config`), so `Bash(git *)` is fine; but leave a command like
+   separate wildcards even when they share a binary. So never fold `git`
+   subcommands into `Bash(git *)`, which would also pre-approve `git push` and
+   `git reset --hard`; collapse per subcommand instead. Leave a command like
    `Bash(rm -rf /tmp/x)` verbatim, and keep wildcards scoped to a specific head
    rather than a bare `Bash(*)`.
 
@@ -81,7 +81,7 @@ permission the user relied on). Work rule by rule:
 - After the `Edit`, stop there: leave running it through tooling and committing
   to the user.
 - Report the before/after entry count and list the notable folds (e.g. "12 git
-  entries → `Bash(git *)`") and what you deliberately kept verbatim and why.
+  entries → `Bash(git log *)`") and what you deliberately kept verbatim and why.
 
 ## Guardrail
 
