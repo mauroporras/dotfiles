@@ -127,7 +127,7 @@
   <!--
   As Uncle Bob puts it:
   > "we don't want to cheat and pass Entity objects between boundaries"
-  > — Clean Architecture, p. 207
+  > (Clean Architecture, p. 207)
   -->
 
 ## API Design
