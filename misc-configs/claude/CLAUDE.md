@@ -211,19 +211,7 @@
   against a second write path or a concurrent request.
   Reserve denormalization for a measured read-path problem (a query that is provably too slow
   on normalized data), and when you do add it, name the source of truth in a comment and
-  update the copy from one place only. E.g.:
-  - "A workspace can have at most one default price list": check it in
-    `SetDefaultPriceListUseCase`, rather than adding a `default_price_list_id` column to
-    `workspace` that has to be kept in step with `price_list.is_default`.
-  - "A CAD file must belong to the same workspace as its project": look the project up in
-    `CreateCadFileUseCase` and reject a mismatch, rather than copying `workspace_id` onto
-    `cad_file` so a `CHECK` or trigger can compare them.
-  - "A person belongs to at most one team per workspace": check it in
-    `CreateWorkspaceTeamMembershipUseCase` (under a lock on workspace + email, so two
-    concurrent adds cannot both pass), rather than copying `workspace_id` onto
-    `workspace_team_membership` so a `UNIQUE (workspace_id, email)` index can hold it.
-    The copy drifted the moment someone edited the row by hand: the membership read as
-    belonging to one workspace while its team sat in another.
+  update the copy from one place only.
 
 ### Migrations
 
