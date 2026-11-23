@@ -1,7 +1,6 @@
 ---
 disable-model-invocation: true
 argument-hint: [hint]
-allowed-tools: Read
 ---
 
 # Guess What's Next
