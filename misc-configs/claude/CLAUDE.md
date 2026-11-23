@@ -65,7 +65,7 @@
   if (isEmpty) return;
 
   // DO:
-  // Breakpoint lands on the return alone:.
+  // Breakpoint lands on the return alone.
   if (isEmpty) {
     return;
   }
