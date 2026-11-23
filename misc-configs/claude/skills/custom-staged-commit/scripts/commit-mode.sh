@@ -2,6 +2,7 @@
 
 # Prints NORMAL when the current branch is a base branch, WIP otherwise.
 # Branch list mirrors `branchColorPatterns` in misc-configs/lazygit/config.yml.
+# custom-branch-changes-analyze/scripts/branch-diff.sh mirrors this list too.
 
 set -euo pipefail
 
