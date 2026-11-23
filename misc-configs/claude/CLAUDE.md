@@ -194,10 +194,6 @@
   - `is_workspace_base_price_set` → `workspace_base_price_set_at`
   - `is_published` → `published_at`
   - `is_email_verified` → `email_verified_at`
-
-  Keep a boolean for a flag that flips back and forth or moves between rows, such as
-  `price_list.is_default`: a single timestamp can't describe its history, and `null` wouldn't
-  mean "not yet".
 - Prefer enforcing invariants in use cases over denormalizing the schema to make them checkable.
   Denormalization copies a fact into a second place (a `product_count` on the parent, a
   `workspace_id` repeated on a grandchild, a flag mirroring a row's existence elsewhere), and
@@ -218,7 +214,7 @@
   update the copy from one place only. E.g.:
   - "A workspace can have at most one default price list": check it in
     `SetDefaultPriceListUseCase`, rather than adding a `default_price_list_id` column to
-    `workspace` that has to be kept in step with `price_list.is_default`.
+    `workspace` that has to be kept in step with `price_list.made_default_at`.
   - "A CAD file must belong to the same workspace as its project": look the project up in
     `CreateCadFileUseCase` and reject a mismatch, rather than copying `workspace_id` onto
     `cad_file` so a `CHECK` or trigger can compare them.
