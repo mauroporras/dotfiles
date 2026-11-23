@@ -206,6 +206,9 @@
     the copy from one place only.
   - When no constraint can express the invariant, the use case is the only check: keep it there,
     under a lock when two concurrent requests could both pass it.
+    The use case asks for that lock through a port (an interface it owns), and an adapter
+    implements it (e.g. a row lock or an advisory lock), so the SQL stays at the edges
+    (see Use Cases).
 
 ### Migrations
 
