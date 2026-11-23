@@ -15,7 +15,8 @@ The fetch lives in scripts/fetch-unresolved-comments.sh because skill `!`
 commands are statically analyzed and reject the `$(...)` substitution the
 GraphQL calls need.
 The script resolves owner/repo/pr, queries the API, and applies every filter
-(drops resolved threads and blank-body reviews), so the model only writes prose.
+(drops resolved threads, keeps only `CHANGES_REQUESTED` reviews, and drops
+blank-body reviews), so the model only writes prose.
 -->
 
 - Unresolved comments data (JSON): !`bash "$HOME/.claude/skills/custom-unresolved-pr-comments-summarize/scripts/fetch-unresolved-comments.sh"`
@@ -47,13 +48,16 @@ The JSON has this shape:
 ```
 
 `unresolvedThreads` already excludes resolved threads (all authors kept,
-including bots). `reviews` already excludes blank/whitespace-only bodies.
+including bots). `reviews` holds only top-level reviews in the
+`CHANGES_REQUESTED` state (approvals and comment-only reviews are deliberately
+left out), and already excludes blank/whitespace-only bodies.
 
 ## Your task
 
 Write a markdown file summarizing the unresolved comments above. Everything
-mechanical (fetching, filtering resolved threads, dropping blank-body reviews)
-is already done; build the file purely from the precomputed Context JSON.
+mechanical (fetching, filtering resolved threads, keeping only
+`CHANGES_REQUESTED` reviews, and dropping blank-body reviews) is already done;
+build the file purely from the precomputed Context JSON.
 
 ### Guard clause
 

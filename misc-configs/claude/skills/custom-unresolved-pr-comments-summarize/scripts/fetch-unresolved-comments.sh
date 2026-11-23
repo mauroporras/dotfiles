@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 
 # Emits a single JSON object with everything the skill needs, already filtered:
-# resolved threads dropped, blank-body reviews dropped. Lives in a script because
-# skill `!` Context commands are statically analyzed and reject the `$(...)`
-# command substitution this fetch requires.
+# resolved threads dropped, reviews limited to CHANGES_REQUESTED, and blank-body
+# reviews dropped. Lives in a script because skill `!` Context commands are
+# statically analyzed and reject the `$(...)` command substitution this fetch
+# requires.
 
 set -euo pipefail
 
