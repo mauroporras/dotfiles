@@ -150,33 +150,6 @@
   - Queries use hierarchical paths scoped to parent resources:
     - `GET /workspaces/:workspaceId/cad-files?limit=100`
     - `GET /workspaces/:workspaceId/cad-files/:id`
-- Reserve 404 for a path that means nothing (see the cases below); a route that exists and
-  legitimately found nothing answers with success.
-  "This endpoint is not a thing" and "this endpoint is a thing and its answer is empty" are
-  different outcomes, and collapsing them into one status makes them indistinguishable to the
-  client: a typo'd path and a valid lookup with no match look identical, so the client reads a
-  bug and an expected empty state as the same thing.
-  So:
-  - Collection queries return `200` with an empty array (`[]`).
-    An empty collection is a successful answer, and the client can render it straight from the
-    body.
-  - Single-resource queries return `200` with `null` (or `204 No Content` when the response has no
-    body at all) when the resource is absent but the caller had every right to ask.
-    This covers the resource's own id in the path: `GET /workspaces/:workspaceId/cad-files/:id`
-    with an `:id` that matches nothing in that workspace is a valid lookup with no match, not a
-    meaningless path.
-  - Reserve `404` for the cases where the path itself is meaningless: an unknown route, or a
-    parent identifier in the path that matches nothing
-    (e.g. `GET /workspaces/:workspaceId/cad-files` with an unknown `:workspaceId`).
-    A deliberately hidden parent (see the next case) counts as one that doesn't exist.
-  - Use `403` when a resource the request names (the one asked for or a parent) exists but the
-    caller may not see it.
-    Where hiding a resource's existence is a deliberate security requirement, answer exactly as if
-    it were absent: any difference in status or body gives it away.
-    For queries, that is `200` with `null` (or `204`) for the resource asked for, `404` for a
-    parent in the path, and omission from a collection.
-    Say in a comment at the access check that the absent-looking answer is deliberate hiding, so
-    the next reader keeps it that way.
 
 ## Git
 
