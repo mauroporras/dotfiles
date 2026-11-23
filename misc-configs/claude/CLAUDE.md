@@ -184,7 +184,7 @@
   timestamp, whereas an `is_` prefix signals a boolean), and treat `null` as
   "not yet". This keeps the column in the same `<event>_at` family as `created_at` / `updated_at` /
   `deleted_at`. E.g.:
-  - `is_workspace_base_price_set` → `workspace_base_price_set_at`
+  - `is_archived` → `archived_at`
   - `is_published` → `published_at`
   - `is_email_verified` → `email_verified_at`
 - Enforce invariants in the database wherever a constraint can hold them, and check them in the
