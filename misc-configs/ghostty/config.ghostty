@@ -25,9 +25,8 @@ shell-integration-features = no-title
 # !@#$%^&*()_+-=[]{}|;':",./<>?
 # == === != -- __ >= <= => -> -->
 
-#font-family = JetBrains Mono NL
-font-family = JetBrains Mono NL Medium
-font-family-italic = JetBrains Mono NL
+font-family = JetBrains Mono NL
+#font-family = JetBrains Mono NL Medium
 #font-size = 14
 
 adjust-cursor-thickness = 2
