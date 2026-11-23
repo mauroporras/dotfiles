@@ -79,7 +79,8 @@
 
 - Use empty lines liberally: spacing is what makes a block of code scannable.
   - Separate logical blocks of code with empty lines.
-  - Always leave a blank line before `return` statements.
+  - Leave a blank line before a `return` that follows other statements.
+    A `return` that opens its block (as in a guard clause) needs none.
   - Leave a blank line after guard clauses to separate edge-case handling from the happy path.
 
 ### JavaScript/TypeScript
