@@ -116,8 +116,11 @@
   an `interface`, and name the `execute` parameter `input`.
   E.g. `UpdatePriceListUseCase` takes `input: UpdatePriceListUseCaseInput`.
 - Name a use case's output type after the use case plus `Output`, declared as
-  an `interface`, and use it as `execute`'s explicit return type.
+  an `interface`, and use it as `execute`'s explicit return type (wrapped in `Promise<...>`
+  when `execute` is async).
   E.g. `UpdatePriceListUseCase.execute` returns `UpdatePriceListUseCaseOutput`.
+  A use case with nothing to return skips the `Output` type and returns `void`
+  (or `Promise<void>`).
 - Reserve the `*Dto` name for transport/persistence shapes: a use case's
   contracts are its own, so they keep the `*Input` / `*Output` suffixes.
 - Adapters at the edges translate the input contract from, and the output
