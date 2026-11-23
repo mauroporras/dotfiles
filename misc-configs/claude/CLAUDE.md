@@ -244,3 +244,6 @@
 - Use the Oxford comma in lists of three or more items.
   It makes the list unambiguous and easier to read.
 - Format dates as YYYY-MM-DD and for numbers use "," to delimit thousands and "." for decimals.
+- When a skill says to prioritize brevity over grammar, brevity wins over the rules above:
+  dropping articles, full sentences, or the Oxford comma is fine there.
+  Date and number formats still apply, since they carry meaning rather than style.
