@@ -633,9 +633,10 @@ seven_day_link=$(osc8_link "statusline-seven-day" "$usage_settings_url" "$seven_
 
 rate_limits_display="${five_hour_link} ${seven_day_link}"
 
+spend_limit_display=""
 if [[ "$has_spend_limit" == "true" ]]; then
     spend_limit_link=$(osc8_link "statusline-spend-limit" "$usage_settings_url" "$spend_limit_segment")
-    rate_limits_display="${rate_limits_display} ${spend_limit_link}"
+    spend_limit_display=" ${spend_limit_link}"
 fi
 
 # 🏠 is pinned to the launch dir so it never moves; a `cd` only prepends the
@@ -860,7 +861,8 @@ output_style_label="💅🏻${output_style_color}${output_style_title}${reset}"
 output_style_url="${claude_code_docs_url}/output-styles#${output_style_anchor}"
 output_style_link=$(osc8_link "statusline-output-style" "$output_style_url" "$output_style_label")
 
-# Follows the context bucket because both describe the same window.
+# Trails the rate-limit meters so the quota figures read first; the cache only
+# explains how cheaply those turns ran.
 prompt_cache_display=""
 if [[ -n "$prompt_cache_segment" ]]; then
     prompt_cache_link=$(osc8_link "statusline-prompt-cache" "${claude_code_docs_url}/prompt-caching#check-cache-performance" "$prompt_cache_segment")
@@ -871,7 +873,7 @@ state_line="${model_link} ${advisor_link} ${effort_link}${subagent_effort_link}$
 
 # Split from the state line so settings the user picks sit apart from what the
 # session has consumed; the usage figures change every turn, the settings rarely.
-usage_line="${context_link}${prompt_cache_display} ${rate_limits_display}"
+usage_line="${context_link} ${rate_limits_display}${prompt_cache_display}${spend_limit_display}"
 
 if [[ -n "$cost_display" ]]; then
     cost_link=$(osc8_link "statusline-cost" "${claude_code_docs_url}/costs" "$cost_display")
