@@ -65,7 +65,8 @@ brew "kubectx" # Also provides kubens
 
 # Databases
 brew "pgrundev/tap/pgbot" # In-database observability for PostgreSQL: https://pgbot.dev
-brew "redis"
+# brew "redis" # Replaced by valkey; both install `redis-*` binaries, so they conflict
+brew "valkey"
 
 # Networking & HTTP
 brew "cloudflared" # Cloudflare Tunnel client
@@ -83,7 +84,8 @@ cask "ghostty"
 cask "google-chrome"
 cask "postgres-app" # https://postgresapp.com
 cask "rectangle"
-cask "redis-insight"
+# cask "redis-insight" # Replaced by valkey-admin
+cask "valkey-admin"
 cask "wireshark-app" # GUI + ChmodBPF for non-root packet capture
 
 # Fonts
