@@ -1,33 +1,30 @@
 version: "3"
 
 tasks:
-  adr:new:
-    desc: Create a new ADR interactively (usage - task adr:new -- "Short decision title")
-    interactive: true
-    cmds:
-      - pnpm exec log4brains adr new {{.CLI_ARGS}}
+  # ----------------------------------------------------------------------------
+  # Meta
+  # ----------------------------------------------------------------------------
 
-  adr:preview:
-    desc: Browse the ADR knowledge base locally with hot reload (http://localhost:4004)
+  list:
+    desc: List all tasks, including those without a description
     cmds:
-      - pnpm exec log4brains preview {{.CLI_ARGS}}
+      - task --list-all
+
+  # ----------------------------------------------------------------------------
+  # Setup
+  # ----------------------------------------------------------------------------
+
+  install:
+    cmds:
+      - pnpm install
+
+  # ----------------------------------------------------------------------------
+  # Development
+  # ----------------------------------------------------------------------------
 
   build:
     cmds:
       - pnpm run build
-
-  clear-rr-cache:
-    cmds:
-      - rm -rf .git/rr-cache
-
-  db:current:
-    desc: Show the current DB (credentials masked)
-    silent: true
-    preconditions:
-      - sh: '[ -n "${MY_APP_DATABASE_URL}" ]'
-        msg: "MY_APP_DATABASE_URL is not set"
-    cmds:
-      - printf '%s\n' "MY_APP_DATABASE_URL=${MY_APP_DATABASE_URL}" | sed -E 's#://[^@/]*@#://***@#'
 
   dev:
     preconditions:
@@ -38,6 +35,17 @@ tasks:
         sh: jq -r .version ../desktop/package.json
     cmds:
       - pnpm run dev
+
+  start:
+    env:
+      MY_APP_LATEST_VERSION:
+        sh: jq -r .version ../desktop/package.json
+    cmds:
+      - pnpm run start
+
+  # ----------------------------------------------------------------------------
+  # Formatting
+  # ----------------------------------------------------------------------------
 
   format:
     desc: Format all files
@@ -54,21 +62,9 @@ tasks:
     cmds:
       - pnpm run format:check
 
-  install:
-    cmds:
-      - pnpm install
-
-  list:
-    desc: List all tasks, including those without a description
-    cmds:
-      - task --list-all
-
-  start:
-    env:
-      MY_APP_LATEST_VERSION:
-        sh: jq -r .version ../desktop/package.json
-    cmds:
-      - pnpm run start
+  # ----------------------------------------------------------------------------
+  # Environment
+  # ----------------------------------------------------------------------------
 
   use:env:
     internal: true
@@ -92,8 +88,47 @@ tasks:
         vars:
           ENV_NAME: production
 
+  # ----------------------------------------------------------------------------
+  # Database
+  # ----------------------------------------------------------------------------
+
+  db:current:
+    desc: Show the current DB (credentials masked)
+    silent: true
+    preconditions:
+      - sh: '[ -n "${MY_APP_DATABASE_URL}" ]'
+        msg: "MY_APP_DATABASE_URL is not set"
+    cmds:
+      - printf '%s\n' "MY_APP_DATABASE_URL=${MY_APP_DATABASE_URL}" | sed -E 's#://[^@/]*@#://***@#'
+
+  # ----------------------------------------------------------------------------
+  # Architecture Decision Records (ADR)
+  # ----------------------------------------------------------------------------
+
+  adr:new:
+    desc: Create a new ADR interactively (usage - task adr:new -- "Short decision title")
+    interactive: true
+    cmds:
+      - pnpm exec log4brains adr new {{.CLI_ARGS}}
+
+  adr:preview:
+    desc: Browse the ADR knowledge base locally with hot reload (http://localhost:4004)
+    cmds:
+      - pnpm exec log4brains preview {{.CLI_ARGS}}
+
+  # ----------------------------------------------------------------------------
+  # Git
+  # ----------------------------------------------------------------------------
+
+  clear-rr-cache:
+    cmds:
+      - rm -rf .git/rr-cache
+
+  # ----------------------------------------------------------------------------
+  # Release
+  # ----------------------------------------------------------------------------
+
   version:bump:
     desc: "Bump project version without committing (default: patch). E.g. task version:bump -- minor"
     cmds:
       - pnpm run version:bump {{.CLI_ARGS | default "patch"}}
-
