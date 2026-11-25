@@ -94,7 +94,10 @@ keybind = end=scroll_to_bottom
 
 keybind = shift+cmd+r=clear_screen
 
-keybind = shift+cmd+s=write_screen_file:paste
+# Copies the path (rather than pasting it) so it can be dropped into an AI
+# agent's prompt in another pane, letting the agent read the full scrollback
+# from the file instead of a pasted wall of text.
+keybind = shift+cmd+s=write_screen_file:copy
 
 keybind = shift+cmd+t=toggle_quick_terminal
 
