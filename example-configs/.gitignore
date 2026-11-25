@@ -1,3 +1,7 @@
+# Env vars.
+.envrc*
+!.envrc.example
+
 # Private Project Preferences
 AGENTS.local.md
 CLAUDE.local.md
