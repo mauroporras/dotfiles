@@ -23,6 +23,7 @@ alias ai='claude --model opus --advisor fable'
 alias aiopusplan='claude --model opusplan --advisor fable'
 alias aisonnet='claude --model sonnet --advisor opus'
 alias aihaiku='claude --model haiku --advisor sonnet'
+alias aiupgrade='brew upgrade --cask claude-code@latest'
 
 # Relative path is intentional: per-project shada (history, registers, marks).
 # Ignored globally via *.shada.
