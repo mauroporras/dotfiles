@@ -906,9 +906,9 @@ if [[ "$has_session_name" == "true" ]]; then
     session_label="${session_icon}${session_name}"
 
     # The session id already opens the transcript, so the label opens the
-    # folder beside it (subagent transcripts) instead. The harness only creates
-    # that folder once a subagent runs, so skip the link rather than point at
-    # nothing.
+    # folder beside it (subagent transcripts, persisted tool results) instead.
+    # The harness only creates that folder once a subagent runs or a tool
+    # result is persisted, so skip the link rather than point at nothing.
     session_dir="${transcript_path%.jsonl}"
     has_session_dir=false
     if [[ -n "$transcript_path" && -d "$session_dir" ]]; then
