@@ -92,6 +92,8 @@ keybind = cmd+y=scroll_page_lines:-1
 keybind = home=scroll_to_top
 keybind = end=scroll_to_bottom
 
+# Press ctrl+l first, then this.
+# Chaining text:\x0C before clear_screen was tried and didn't work.
 keybind = shift+cmd+r=clear_screen
 
 # Copies the path (rather than pasting it) so it can be dropped into an AI
