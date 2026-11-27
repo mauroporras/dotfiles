@@ -108,8 +108,10 @@ alias tfv='terraform validate'
 alias tfwl='terraform workspace list'
 alias tfws='terraform workspace show'
 # Disabled on purpose: destroy wipes every resource in the current workspace,
-# and a three-letter alias next to tfa/tfp is one typo away from running it
-# (tfda wouldn't even ask for "yes"). Type `terraform destroy` out in full.
+# and apply can destroy or replace resources too. Short aliases next to tfa/tfp
+# are one typo away from running them, and the -auto-approve ones skip the
+# "yes" prompt entirely. Type `terraform destroy` out in full, and use tfa (or
+# the tfplan/tfapply functions) so every apply still shows its plan first.
 # alias tfaa='terraform apply -auto-approve'
 # alias tfd='terraform destroy'
 # alias tfda='terraform destroy -auto-approve'
