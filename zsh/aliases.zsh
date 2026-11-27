@@ -99,12 +99,6 @@ alias kwhere='kubectl config current-context'
 # Terraform {{{
 alias tf='terraform'
 alias tfa='terraform apply'
-alias tfaa='terraform apply -auto-approve'
-# Disabled on purpose: destroy wipes every resource in the current workspace,
-# and a three-letter alias next to tfa/tfp is one typo away from running it
-# (tfda wouldn't even ask for "yes"). Type `terraform destroy` out in full.
-# alias tfd='terraform destroy'
-# alias tfda='terraform destroy -auto-approve'
 alias tffmt='terraform fmt -recursive'
 alias tfi='terraform init'
 alias tfo='terraform output'
@@ -113,6 +107,12 @@ alias tfs='terraform show'
 alias tfv='terraform validate'
 alias tfwl='terraform workspace list'
 alias tfws='terraform workspace show'
+# Disabled on purpose: destroy wipes every resource in the current workspace,
+# and a three-letter alias next to tfa/tfp is one typo away from running it
+# (tfda wouldn't even ask for "yes"). Type `terraform destroy` out in full.
+# alias tfaa='terraform apply -auto-approve'
+# alias tfd='terraform destroy'
+# alias tfda='terraform destroy -auto-approve'
 # }}}
 
 # Jobs {{{
