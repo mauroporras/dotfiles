@@ -27,7 +27,8 @@ ALWAYS:
 
 - Prioritize brevity over grammar:
   Keep the branch name short, even if grammatically imperfect
-- Name the branch `<type>/<short-kebab-description>`, where `<type>` is one of the widely known conventional commit types.
+- Name the branch `<type>/<short-kebab-description>`, where `<type>` is one of the
+  widely known conventional commit types.
 - Immediately invoke the Bash tool to create and switch to the new branch.
   Do not just print the command, actually run it: `git checkout -b <branch-name>`
 
