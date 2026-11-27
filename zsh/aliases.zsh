@@ -98,15 +98,24 @@ alias kwhere='kubectl config current-context'
 
 # Terraform {{{
 alias tf='terraform'
-alias tfa='terraform apply'
-alias tffmt='terraform fmt -recursive'
+
+# Setup: init first, then confirm the workspace before anything touches state.
 alias tfi='terraform init'
-alias tfo='terraform output'
-alias tfp='terraform plan'
-alias tfs='terraform show'
-alias tfv='terraform validate'
 alias tfwl='terraform workspace list'
 alias tfws='terraform workspace show'
+
+# Check: cheap, local, no state access; catch mistakes before planning.
+alias tffmt='terraform fmt -recursive'
+alias tfv='terraform validate'
+
+# Change: plan, then apply (which re-shows the plan and asks for "yes").
+alias tfp='terraform plan'
+alias tfa='terraform apply'
+
+# Inspect: read back what was applied.
+alias tfs='terraform show'
+alias tfo='terraform output'
+
 # Disabled on purpose: destroy wipes every resource in the current workspace,
 # and apply can destroy or replace resources too. Short aliases next to tfa/tfp
 # are one typo away from running them, and the -auto-approve ones skip the
