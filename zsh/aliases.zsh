@@ -81,6 +81,13 @@ alias dkmu='docker compose up'
 alias dkmub='docker compose up --build'
 # }}}
 
+# Jobs {{{
+alias j='jobs'
+alias k1='kill %1'
+alias k2='kill %2'
+alias k3='kill %3'
+# }}}
+
 # Kubernetes {{{
 alias k='kubectl'
 alias kctx='kubectx'
@@ -124,11 +131,4 @@ alias tfo='terraform output'
 # alias tfaa='terraform apply -auto-approve'
 # alias tfd='terraform destroy'
 # alias tfda='terraform destroy -auto-approve'
-# }}}
-
-# Jobs {{{
-alias j='jobs'
-alias k1='kill %1'
-alias k2='kill %2'
-alias k3='kill %3'
 # }}}
