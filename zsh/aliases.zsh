@@ -19,6 +19,7 @@ alias 9='cd -9'
 # Claude Code
 # Advisor is the next model up; Fable is the top tier, so it runs without one.
 alias aifable='claude --model fable'
+alias aimax='claude --model fable --effort max'
 alias ai='claude --model opus --advisor fable'
 alias aiopusplan='claude --model opusplan --advisor fable'
 # No built-in fableplan: opusplan resolves through the opus/sonnet aliases, so
