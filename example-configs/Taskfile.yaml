@@ -88,18 +88,26 @@ tasks:
         vars:
           ENV_NAME: production
 
-  # ----------------------------------------------------------------------------
-  # Database
-  # ----------------------------------------------------------------------------
-
-  db:current:
-    desc: Show the current DB (credentials masked)
+  # Run before anything that touches shared resources to confirm the target,
+  # since a stale shell.nix or shell would otherwise point at the wrong one.
+  about:
+    desc: Show which environment and DB the tasks will use (credentials masked)
     silent: true
-    preconditions:
-      - sh: '[ -n "${MY_APP_DATABASE_URL}" ]'
-        msg: "MY_APP_DATABASE_URL is not set"
+    vars:
+      # shell.nix is a copy, so the environment is whichever source matches it.
+      ENV_NAME:
+        sh: |
+          for file in shell.*.nix; do
+            if cmp -s shell.nix "$file"; then
+              name=${file#shell.}
+              echo "${name%.nix}"
+              exit 0
+            fi
+          done
+          echo "unknown (shell.nix missing or edited, run task use:dev or use:prod)"
     cmds:
-      - printf '%s\n' "MY_APP_DATABASE_URL=${MY_APP_DATABASE_URL}" | sed -E 's#://[^@/]*@#://***@#'
+      - echo "Environment  {{.ENV_NAME}}"
+      - printf '%s\n' "Database     ${MY_APP_DATABASE_URL:-<unset>}" | sed -E 's#://[^@/]*@#://***@#'
 
   # ----------------------------------------------------------------------------
   # Architecture Decision Records (ADR)
