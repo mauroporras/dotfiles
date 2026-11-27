@@ -21,6 +21,11 @@ alias 9='cd -9'
 alias aifable='claude --model fable'
 alias ai='claude --model opus --advisor fable'
 alias aiopusplan='claude --model opusplan --advisor fable'
+# No built-in fableplan: opusplan resolves through the opus/sonnet aliases, so
+# remapping them plans with Fable and executes with Opus.
+# IDs are pinned because these env vars take the value verbatim: an alias like
+# `fable` isn't resolved and fails at the API. Bump them on new releases.
+alias aifableplan='ANTHROPIC_DEFAULT_OPUS_MODEL=claude-fable-5-2 ANTHROPIC_DEFAULT_SONNET_MODEL=claude-opus-5-5 claude --model opusplan'
 alias aisonnet='claude --model sonnet --advisor opus'
 alias aihaiku='claude --model haiku --advisor sonnet'
 alias aiupgrade='brew upgrade --cask claude-code@latest'
