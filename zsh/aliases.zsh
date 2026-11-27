@@ -38,6 +38,8 @@ alias t='task'
 alias v='lazygit'
 
 # AWS {{{
+# Named so `awsl<TAB>` completes it in one keystroke: no other command starts with "awsl".
+alias awslogin='aws login'
 alias awswhoami='aws sts get-caller-identity'
 alias awsec2ls='aws ec2 describe-instances --query "Reservations[].Instances[].[InstanceId,State.Name,Tags[?Key==\`Name\`].Value|[0],PrivateIpAddress]" --output table'
 alias awss3ls='aws s3 ls'
